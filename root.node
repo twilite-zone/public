@@ -4,20 +4,20 @@
     "title": "Untitled Project",
     "description": "",
     "created": "2026-04-29T06:26:48.423Z",
-    "modified": "2026-04-29T06:45:03.349Z",
+    "modified": "2026-04-29T06:46:26.376Z",
     "author": "",
     "tags": [],
     "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
     {
-      "id": "7e27254f-374b-47ba-99a9-827c926fb47f",
+      "id": "agent-manifest",
       "type": "manifest",
       "label": "Manifest",
       "root": false,
       "position": {
-        "x": -465.5,
-        "y": -179.2552971570342
+        "x": -1380,
+        "y": -420
       },
       "width": 360,
       "height": 220,
@@ -25,32 +25,44 @@
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "d8ba0171-dd00-4782-92e8-420d599f988b",
-          "name": "Untitled Graph",
-          "version": "0.1.0",
-          "description": "",
-          "createdAt": "2026-02-22T22:38:51.769Z",
-          "updatedAt": "2026-02-22T22:38:51.769Z"
+          "graphId": "agent-root",
+          "name": "Agent",
+          "version": "0.2.0",
+          "description": "Agent orientation root for getting up to speed on Twilite through a bounded run.",
+          "createdAt": "2026-03-30T00:00:00.000Z",
+          "updatedAt": "2026-03-30T00:00:00.000Z"
         },
         "intent": {
           "kind": "graph",
-          "scope": "mixed"
+          "scope": "local"
         },
         "dependencies": {
           "nodeTypes": [
             "manifest",
             "legend",
-            "markdown",
             "bridge",
             "port",
             "title",
             "type-definition",
-            "ui-view"
+            "field",
+            "port-view",
+            "icon-view",
+            "document-view",
+            "task",
+            "agent",
+            "contract",
+            "prompt",
+            "tool",
+            "observation",
+            "result",
+            "handoff"
           ],
           "portContracts": [
             "core"
           ],
-          "skills": [],
+          "skills": [
+            "twilite-agent-prompting"
+          ],
           "schemaVersions": {
             "nodes": ">=1.0.0",
             "ports": ">=1.0.0"
@@ -86,22 +98,7 @@
           "snapToGrid": false,
           "gridSize": 20,
           "edgeRouting": "auto",
-          "github": {
-            "repo": "twilite-zone/public",
-            "path": "root.node",
-            "branch": "main",
-            "autoCreateRepo": true,
-            "repoVisibility": "private",
-            "seedOnCommit": false,
-            "enableGithubPages": false,
-            "installationId": "120403738",
-            "visibilityHint": "public",
-            "saveMode": "github"
-          },
           "autoSave": false,
-          "expansion": {
-            "allowGraphEntry": true
-          },
           "layout": {
             "mode": "autoOnMissingPositions",
             "defaultLayout": "layered",
@@ -120,611 +117,55 @@
               "nodeSpacing": 120,
               "layeredEdgeSpacing": 80
             }
+          },
+          "github": {
+            "repo": "twilite-zone/public",
+            "path": "root.node",
+            "branch": "main",
+            "autoCreateRepo": true,
+            "repoVisibility": "private",
+            "seedOnCommit": false,
+            "enableGithubPages": false,
+            "installationId": "120403738",
+            "visibilityHint": "public",
+            "saveMode": "github"
           }
-        },
-        "isRoot": false,
-        "root": false
+        }
       }
     },
     {
-      "id": "c1b98bf9-6821-4248-bb63-9908781f6ab7",
+      "id": "agent-legend",
       "type": "legend",
       "label": "Legend",
       "root": false,
       "position": {
-        "x": 14.5,
-        "y": -179.2552971570342
-      },
-      "width": 340,
-      "height": 220,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "entries": [
-          {
-            "key": "default",
-            "intent": "placeholder",
-            "implementation": "default renderer",
-            "dictionaryKey": "default"
-          }
-        ],
-        "markdown": "## Legend\\n- default: placeholder",
-        "isRoot": false,
-        "root": false
-      }
-    },
-    {
-      "id": "81d62441-815a-4404-8972-8ad9a447434c",
-      "type": "youtube-embedded",
-      "label": "youtube-embedded",
-      "root": false,
-      "position": {
-        "x": -61.47122284090039,
-        "y": 705.3366214655491
-      },
-      "width": 291,
-      "height": 197,
-      "ports": [],
-      "inputs": [],
-      "outputs": [],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "",
-        "link": "",
-        "html": "",
-        "svg": "",
-        "videoId": "BzyQ6SWVaxU",
-        "autoplay": "false",
-        "isRoot": false,
-        "root": false,
-        "_classBinding": {
-          "key": "youtube-embedded",
-          "sourceRef": "/library/classes/nodes/youtube-embedded.node-class.node",
-          "ref": "/library/classes/nodes/youtube-embedded.node-class.node",
-          "identity": {
-            "graphId": "youtube-embedded-class",
-            "name": "YouTube Embedded Node Class",
-            "version": "0.1.0",
-            "description": "Node class that renders a YouTube iframe using data.videoId.",
-            "createdAt": "2026-02-22T00:00:00.000Z",
-            "updatedAt": "2026-03-24T01:20:00.000Z"
-          },
-          "intent": "definition",
-          "meaning": "Node class that renders a YouTube iframe using data.videoId.",
-          "description": "Node class that renders a YouTube iframe using data.videoId.",
-          "defaults": {},
-          "nodeDef": {
-            "key": "youtube-embedded",
-            "ref": "/library/classes/nodes/youtube-embedded.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "views": [
-            {
-              "key": "youtube-embedded",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "/library/classes/nodes/youtube-embedded.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "youtube-embedded",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "/library/classes/nodes/youtube-embedded.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "youtube-embedded",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "/library/classes/nodes/youtube-embedded.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "youtube-embedded",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "/library/classes/nodes/youtube-embedded.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "youtube-embedded",
-              "intent": "node",
-              "payload": "render.html",
-              "ref": "/library/classes/nodes/youtube-embedded.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "youtube-embedded",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "/library/classes/nodes/youtube-embedded.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "youtube-embedded",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "/library/classes/nodes/youtube-embedded.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
-          "sourceRef": "/library/classes/nodes/youtube-embedded.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "youtube-embedded",
-          "classRef": "/library/classes/nodes/youtube-embedded.node-class.node"
-        },
-        "definitionKey": "youtube-embedded"
-      }
-    },
-    {
-      "id": "contact-developer",
-      "type": "markdown",
-      "label": "Contact",
-      "root": false,
-      "position": {
-        "x": 395.58704779973823,
-        "y": -78.40326097937465
-      },
-      "width": 360,
-      "height": 160,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## Contact the developer\n\ndev@twilite.zone",
-        "isRoot": false,
-        "root": false,
-        "_classBinding": {
-          "key": "markdown",
-          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
-          "ref": "/library/classes/nodes/markdown.node-class.node",
-          "identity": {
-            "graphId": "markdown_class",
-            "name": "markdown Node Class",
-            "version": "0.1.0",
-            "description": "Canonical markdown content node.",
-            "createdAt": "2026-02-24T20:05:15Z",
-            "updatedAt": "2026-03-24T01:20:00.000Z"
-          },
-          "intent": "graph",
-          "meaning": "Canonical markdown content node.",
-          "description": "Canonical markdown content node.",
-          "defaults": {},
-          "nodeDef": {
-            "key": "markdown",
-            "ref": "/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "views": [
-            {
-              "key": "markdown",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "markdown",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "markdown",
-            "intent": "node",
-            "payload": "node.web",
-            "ref": "/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "markdown",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
-          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "markdown",
-          "classRef": "/library/classes/nodes/markdown.node-class.node"
-        },
-        "definitionKey": "markdown"
-      }
-    },
-    {
-      "id": "port-tasks-root",
-      "type": "port",
-      "label": "Task Graphs",
-      "root": false,
-      "position": {
-        "x": 827.5691770465061,
-        "y": 140.85944216022892
-      },
-      "width": 360,
-      "height": 240,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        }
-      ],
-      "inputs": [],
-      "outputs": [],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "endpoint": "/tasks/root.node:root",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open",
-          "ref": "/tasks/root.node"
-        },
-        "memo": "",
-        "link": "",
-        "html": "",
-        "svg": "",
-        "sourceRef": "/tasks/root.node",
-        "sourceNodeId": "tasks-root-view",
-        "sourcePayload": "node.web.detail",
-        "authority": "consume-view",
-        "intent": "external",
-        "security": "prompt"
-      }
-    },
-    {
-      "id": "port-graph-theory-root",
-      "type": "port",
-      "label": "Graph Theory",
-      "root": false,
-      "position": {
-        "x": 1199.4805927954299,
-        "y": 531.5987920996665
+        "x": -980,
+        "y": -420
       },
       "width": 320,
-      "height": 220,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        }
-      ],
-      "inputs": [],
-      "outputs": [],
+      "height": 180,
       "visible": true,
       "showLabel": true,
       "data": {
-        "target": {
-          "endpoint": "/graph-theory/root.node:root",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open",
-          "ref": "/graph-theory/root.node"
-        },
-        "memo": "Open the Graph Theory section.",
-        "sourceRef": "/graph-theory/root.node",
-        "sourceNodeId": "graph-theory-view",
-        "sourcePayload": "node.web.detail",
-        "link": "",
-        "html": "",
-        "svg": "",
-        "authority": "consume-view",
-        "intent": "external",
-        "security": "prompt"
+        "entries": []
       }
     },
     {
-      "id": "port-github-root",
-      "type": "port",
-      "label": "Github",
-      "root": false,
-      "position": {
-        "x": -62.891017076580404,
-        "y": 161.3407170680133
-      },
-      "width": 320,
-      "height": 220,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        }
-      ],
-      "inputs": [],
-      "outputs": [],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "endpoint": "/github/root.node:root",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open",
-          "ref": "/github/root.node"
-        },
-        "memo": "Open the Github section.",
-        "sourceRef": "/github/root.node",
-        "sourceNodeId": "github-view",
-        "sourcePayload": "node.web.detail",
-        "link": "",
-        "html": "",
-        "svg": "",
-        "authority": "consume-view",
-        "intent": "external",
-        "security": "prompt"
-      }
-    },
-    {
-      "id": "port-twilite-root",
-      "type": "port",
-      "label": "Twilite",
-      "root": false,
-      "position": {
-        "x": 358.48178365160885,
-        "y": 924.5083762615039
-      },
-      "width": 320,
-      "height": 220,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        }
-      ],
-      "inputs": [],
-      "outputs": [],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "endpoint": "/twilite/root.node:root",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open",
-          "ref": "/twilite/root.node"
-        },
-        "memo": "Open the Twilite section.",
-        "sourceRef": "/twilite/root.node",
-        "sourceNodeId": "twilite-view",
-        "sourcePayload": "node.web.detail",
-        "link": "",
-        "html": "",
-        "svg": "",
-        "authority": "consume-view",
-        "intent": "external",
-        "security": "prompt"
-      }
-    },
-    {
-      "id": "port-agent-root",
-      "type": "port",
-      "label": "Agent",
-      "root": false,
-      "position": {
-        "x": 391.57846659401343,
-        "y": 122.29479265770004
-      },
-      "width": 320,
-      "height": 220,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        }
-      ],
-      "inputs": [],
-      "outputs": [],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "authority": "consume-view",
-        "target": {
-          "endpoint": "/agent/root.node:root",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open",
-          "ref": "/agent/root.node"
-        },
-        "memo": "Open the Agent section.",
-        "sourceRef": "/agent/root.node",
-        "sourceNodeId": "agent-view",
-        "sourcePayload": "node.web.detail",
-        "link": "",
-        "html": "",
-        "svg": "",
-        "intent": "external",
-        "security": "prompt"
-      }
-    },
-    {
-      "id": "port-tutorial-root",
-      "type": "port",
-      "label": "Tutorial",
-      "root": false,
-      "position": {
-        "x": 829.567008243187,
-        "y": 543.1524025093677
-      },
-      "width": 320,
-      "height": 220,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        }
-      ],
-      "inputs": [],
-      "outputs": [],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "authority": "consume-view",
-        "target": {
-          "endpoint": "/tutorial/root.node:root",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open",
-          "ref": "/tutorial/root.node"
-        },
-        "memo": "Open the Tutorial section.",
-        "sourceRef": "/tutorial/root.node",
-        "sourceNodeId": "tutorial-view",
-        "sourcePayload": "node.web.detail",
-        "link": "",
-        "html": "",
-        "svg": "",
-        "intent": "external",
-        "security": "prompt"
-      }
-    },
-    {
-      "id": "port-gallery-root",
-      "type": "port",
-      "label": "Gallery",
-      "root": false,
-      "position": {
-        "x": 897.4128085990162,
-        "y": 899.1047398461583
-      },
-      "width": 320,
-      "height": 220,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        }
-      ],
-      "inputs": [],
-      "outputs": [],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "endpoint": "/gallery/root.node:root",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open",
-          "ref": "/gallery/root.node"
-        },
-        "memo": "Open the Gallery section.",
-        "sourceRef": "/gallery/root.node",
-        "sourceNodeId": "gallery-view",
-        "sourcePayload": "node.web.detail",
-        "link": "",
-        "html": "",
-        "svg": "",
-        "authority": "consume-view",
-        "intent": "external",
-        "security": "prompt"
-      }
-    },
-    {
-      "id": "public-root-title-port",
+      "id": "agent-title-port",
       "type": "bridge",
       "label": "Title",
       "root": false,
       "position": {
-        "x": 1734.5,
-        "y": 180.7447028429658
+        "x": -540,
+        "y": -420
       },
       "width": 260,
       "height": 120,
       "visible": true,
       "showLabel": true,
       "data": {
+        "memo": "Bridge for the Title class.",
+        "intent": "external",
         "target": {
           "mode": "bridge",
           "ref": "/library/classes/nodes/template-structure/title.node-class.node",
@@ -762,25 +203,25 @@
           "targetKind": "node-class",
           "classKey": "title",
           "classRef": "/library/classes/nodes/template-structure/title.node-class.node"
-        },
-        "isRoot": false,
-        "root": false
+        }
       }
     },
     {
-      "id": "public-root-type-port",
+      "id": "agent-type-port",
       "type": "bridge",
       "label": "Type Definition",
       "root": false,
       "position": {
-        "x": -1013.7288863465442,
-        "y": 464.03136977263375
+        "x": -240,
+        "y": -420
       },
       "width": 260,
       "height": 120,
       "visible": true,
       "showLabel": true,
       "data": {
+        "memo": "Bridge for the Type Definition class.",
+        "intent": "external",
         "target": {
           "mode": "bridge",
           "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node",
@@ -818,36 +259,36 @@
           "targetKind": "node-class",
           "classKey": "type-definition",
           "classRef": "/library/classes/nodes/type-definition/type-definition.node-class.node"
-        },
-        "isRoot": false,
-        "root": false
+        }
       }
     },
     {
-      "id": "public-root-view-port",
+      "id": "agent-field-port",
       "type": "bridge",
-      "label": "View",
+      "label": "Field",
       "root": false,
       "position": {
-        "x": -1019.3795512248034,
-        "y": 743.8171462529391
+        "x": 60,
+        "y": -420
       },
       "width": 260,
       "height": 120,
       "visible": true,
       "showLabel": true,
       "data": {
+        "memo": "Bridge for the Field class.",
+        "intent": "external",
         "target": {
           "mode": "bridge",
-          "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "ref": "/library/classes/nodes/data-schema/field.node-class.node",
           "kind": "node-class",
           "resourceKind": "node-class",
           "scope": "focused-graph",
           "grants": [
             "create"
           ],
-          "label": "View",
-          "key": "ui-view"
+          "label": "Field",
+          "key": "field"
         },
         "resourceKind": "node-class",
         "scope": "focused-graph",
@@ -856,7 +297,7 @@
         ],
         "authority": "bridge",
         "bridge": {
-          "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "ref": "/library/classes/nodes/data-schema/field.node-class.node",
           "resourceKind": "node-class",
           "scope": "focused-graph",
           "grants": [
@@ -864,156 +305,683 @@
           ]
         },
         "_classBinding": {
-          "key": "ui-view",
-          "sourceRef": "/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+          "key": "field",
+          "sourceRef": "/library/classes/nodes/data-schema/field.node-class.node"
         },
         "_bridge": {
-          "sourceRef": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "sourceRef": "/library/classes/nodes/data-schema/field.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "ui-view",
-          "classRef": "/library/classes/nodes/ui-interaction/ui-view.node-class.node"
-        },
-        "isRoot": false,
-        "root": false
+          "classKey": "field",
+          "classRef": "/library/classes/nodes/data-schema/field.node-class.node"
+        }
       }
     },
     {
-      "id": "public-root-title",
+      "id": "agent-port-view-bridge",
+      "type": "bridge",
+      "label": "Port View",
+      "root": false,
+      "position": {
+        "x": 360,
+        "y": -420
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Port View class.",
+        "intent": "external",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/ui-interaction/port-view.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Port View",
+          "key": "port-view"
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/ui-interaction/port-view.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "port-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/port-view.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/ui-interaction/port-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "port-view",
+          "classRef": "/library/classes/nodes/ui-interaction/port-view.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-icon-view-bridge",
+      "type": "bridge",
+      "label": "Icon View",
+      "root": false,
+      "position": {
+        "x": 660,
+        "y": -420
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Icon View class.",
+        "intent": "external",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Icon View",
+          "key": "icon-view"
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "icon-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/icon-view.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "icon-view",
+          "classRef": "/library/classes/nodes/ui-interaction/icon-view.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-document-view-bridge",
+      "type": "bridge",
+      "label": "Document View",
+      "root": false,
+      "position": {
+        "x": 960,
+        "y": -420
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Document View class.",
+        "intent": "external",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Document View",
+          "key": "document-view"
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "document-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/document-view.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "document-view",
+          "classRef": "/library/classes/nodes/ui-interaction/document-view.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-task-bridge",
+      "type": "bridge",
+      "label": "Task",
+      "root": false,
+      "position": {
+        "x": -540,
+        "y": -240
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "external",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Task",
+          "key": "task"
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-agent-bridge",
+      "type": "bridge",
+      "label": "Agent",
+      "root": false,
+      "position": {
+        "x": -240,
+        "y": -240
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "external",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Agent",
+          "key": "agent"
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "agent",
+          "sourceRef": "/library/classes/nodes/agent-prompting/agent.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "agent",
+          "classRef": "/library/classes/nodes/agent-prompting/agent.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-contract-bridge",
+      "type": "bridge",
+      "label": "Contract",
+      "root": false,
+      "position": {
+        "x": 60,
+        "y": -240
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "external",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Contract",
+          "key": "contract"
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "contract",
+          "sourceRef": "/library/classes/nodes/agent-prompting/contract.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "contract",
+          "classRef": "/library/classes/nodes/agent-prompting/contract.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-prompt-bridge",
+      "type": "bridge",
+      "label": "Prompt",
+      "root": false,
+      "position": {
+        "x": 360,
+        "y": -240
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "external",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Prompt",
+          "key": "prompt"
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "prompt",
+          "sourceRef": "/library/classes/nodes/agent-prompting/prompt.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "prompt",
+          "classRef": "/library/classes/nodes/agent-prompting/prompt.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-tool-bridge",
+      "type": "bridge",
+      "label": "Tool",
+      "root": false,
+      "position": {
+        "x": 660,
+        "y": -240
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "external",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Tool",
+          "key": "tool"
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "tool",
+          "sourceRef": "/library/classes/nodes/agent-prompting/tool.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "tool",
+          "classRef": "/library/classes/nodes/agent-prompting/tool.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-observation-bridge",
+      "type": "bridge",
+      "label": "Observation",
+      "root": false,
+      "position": {
+        "x": 960,
+        "y": -240
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "external",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Observation",
+          "key": "observation"
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "observation",
+          "sourceRef": "/library/classes/nodes/agent-prompting/observation.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "observation",
+          "classRef": "/library/classes/nodes/agent-prompting/observation.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-result-bridge",
+      "type": "bridge",
+      "label": "Result",
+      "root": false,
+      "position": {
+        "x": 1260,
+        "y": -240
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "external",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Result",
+          "key": "result"
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "result",
+          "sourceRef": "/library/classes/nodes/agent-prompting/result.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/agent-prompting/result.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "result",
+          "classRef": "/library/classes/nodes/agent-prompting/result.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-handoff-bridge",
+      "type": "bridge",
+      "label": "Handoff",
+      "root": false,
+      "position": {
+        "x": 1560,
+        "y": -240
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "external",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Handoff",
+          "key": "handoff"
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "handoff",
+          "sourceRef": "/library/classes/nodes/agent-prompting/handoff.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "handoff",
+          "classRef": "/library/classes/nodes/agent-prompting/handoff.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-back",
+      "type": "port",
+      "label": "Back to Public Root",
+      "root": false,
+      "position": {
+        "x": 1600,
+        "y": 40
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "target": {
+          "endpoint": "github://twilite-zone/public/root.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Open"
+        },
+        "sourceRef": "github://twilite-zone/public/root.node",
+        "sourceNodeId": "public-root-view",
+        "sourcePayload": "node.web.summary"
+      }
+    },
+    {
+      "id": "agent-title",
       "type": "title",
       "label": "Title",
       "root": false,
       "position": {
-        "x": 294.5,
-        "y": 521.8907795132651
+        "x": -1380,
+        "y": 60
       },
-      "width": 460,
-      "height": 220,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "output",
-          "dataType": "any",
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        }
-      ],
+      "width": 520,
+      "height": 240,
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Twilite Zone Root",
-        "subtitle": "Public graph root for local sections, entry points, and shared destination surfaces.",
+        "title": "Agent",
+        "subtitle": "A first-pass orientation graph showing how an agent gets up to speed on Twilite through one bounded run.",
         "intent": "headline",
         "status": "active",
         "_classBinding": {
           "key": "title",
           "sourceRef": "/library/classes/nodes/template-structure/title.node-class.node",
           "ref": "/library/classes/nodes/template-structure/title.node-class.node",
-          "identity": {
-            "graphId": "title-node-class",
-            "name": "Title Node Class",
-            "version": "0.1.0",
-            "description": "Template heading or major framing node for reusable graph structures.",
-            "createdAt": "2026-03-26T02:30:00.000Z",
-            "updatedAt": "2026-03-26T02:30:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "Template heading or major framing node for reusable graph structures.",
-          "description": "Template heading or major framing node for reusable graph structures.",
-          "defaults": {
-            "label": "Title",
-            "size": {
-              "width": 420,
-              "height": 240
-            },
-            "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "subtitle": "",
-              "intent": "headline",
-              "status": "draft"
-            }
-          },
           "nodeDef": {
             "key": "title",
             "ref": "/library/classes/nodes/template-structure/title.node-class.node",
             "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Title",
-              "size": {
-                "width": 420,
-                "height": 240
-              },
-              "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "subtitle": "",
-                "intent": "headline",
-                "status": "draft"
-              }
-            }
+            "version": ">=0.1.0"
           },
-          "views": [
-            {
-              "key": "title",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "/library/classes/nodes/template-structure/title.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "title",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "/library/classes/nodes/template-structure/title.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "title",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "/library/classes/nodes/template-structure/title.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "title",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "/library/classes/nodes/template-structure/title.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
           "nodeView": {
             "key": "title",
             "intent": "node",
@@ -1032,12 +1000,11 @@
           }
         },
         "_bridge": {
-          "sourceBridgeNodeId": "public-root-title-port",
+          "sourceBridgeNodeId": "agent-title-port",
           "sourceBridgeLabel": "Title",
           "targetKind": "node-class",
           "classKey": "title",
-          "classRef": "/library/classes/nodes/template-structure/title.node-class.node",
-          "sourceNodeId": "tutorial-title-port"
+          "classRef": "/library/classes/nodes/template-structure/title.node-class.node"
         },
         "definitionKey": "title",
         "isRoot": true,
@@ -1045,86 +1012,29 @@
       }
     },
     {
-      "id": "public-root-type",
+      "id": "agent-type",
       "type": "type-definition",
       "label": "Type",
       "root": false,
       "position": {
-        "x": -605.6699799927869,
-        "y": 377.03902565823023
+        "x": -800,
+        "y": 80
       },
-      "width": 380,
-      "height": 250,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "output",
-          "dataType": "any",
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
-        }
-      ],
+      "width": 340,
+      "height": 220,
       "visible": true,
       "showLabel": true,
       "data": {
-        "name": "Root",
-        "key": "root",
-        "classRef": "/root.node",
-        "meaning": "Top-level public graph root for Twilite Zone sections and destinations.",
-        "description": "Use when a host should render the site root as a shared destination card.",
+        "name": "Agent",
+        "key": "agent",
+        "classRef": "/agent/root.node",
+        "meaning": "A public-facing orientation graph for how bounded agents work in Twilite.",
+        "description": "Use when a host should render the Agent section as a navigable entry and an onboarding run.",
         "category": "public",
         "status": "active",
         "_classBinding": {
           "key": "type-definition",
           "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "identity": {
-            "key": "type-definition",
-            "label": "Type Definition"
-          },
-          "meaning": "Declares a legend-facing type with its name, node class authority, and semantic meaning.",
-          "description": "Declares a legend-facing type with its name, node class authority, and semantic meaning.",
-          "defaults": {
-            "label": "Type Definition",
-            "size": {
-              "width": 420,
-              "height": 320
-            }
-          },
-          "views": [
-            {
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node"
-            },
-            {
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node"
-            },
-            {
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node"
-            },
-            {
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node"
-            }
-          ],
           "nodeView": {
             "intent": "node",
             "payload": "node.web.detail",
@@ -1137,338 +1047,1816 @@
           }
         },
         "_bridge": {
-          "sourceBridgeNodeId": "public-root-type-port",
+          "sourceBridgeNodeId": "agent-type-port",
           "sourceBridgeLabel": "Type Definition",
           "targetKind": "node-class",
           "classKey": "type-definition",
           "classRef": "/library/classes/nodes/type-definition/type-definition.node-class.node"
         },
-        "definitionKey": "type-definition",
-        "isRoot": false,
-        "root": false
+        "definitionKey": "type-definition"
       }
     },
     {
-      "id": "public-root-view",
-      "type": "ui-view",
-      "label": "View",
+      "id": "agent-field",
+      "type": "field",
+      "label": "Mode",
       "root": false,
       "position": {
-        "x": -617.4481879539998,
-        "y": 692.8691929027544
+        "x": -400,
+        "y": 100
       },
-      "width": 420,
-      "height": 280,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
-        }
-      ],
+      "width": 320,
+      "height": 180,
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Twilite Zone",
-        "purpose": "Shared host-facing view for the public graph root.",
-        "titleSourceNodeId": "public-root-title",
-        "typeSourceNodeId": "public-root-type",
+        "title": "Mode",
+        "value": "Bounded onboarding run",
+        "description": "This graph teaches the Twilite operating model by example: one task, one bounded agent, one explicit contract, visible tool use, evidence, result, and handoff.",
+        "fieldType": "string",
+        "required": true,
+        "_classBinding": {
+          "key": "field",
+          "ref": "/library/classes/nodes/data-schema/field.node-class.node",
+          "identity": {
+            "key": "field",
+            "label": "Field"
+          },
+          "meaning": "A field belonging to an entity with a specific type or meaning.",
+          "description": "Captures field-level schema structure without collapsing into implementation-specific code.",
+          "defaults": {
+            "label": "Field",
+            "size": {
+              "width": 400,
+              "height": 300
+            }
+          },
+          "views": [
+            {
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/data-schema/field.node-class.node"
+            },
+            {
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/data-schema/field.node-class.node"
+            },
+            {
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/data-schema/field.node-class.node"
+            },
+            {
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/data-schema/field.node-class.node"
+            }
+          ],
+          "nodeView": {
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/data-schema/field.node-class.node"
+          },
+          "editorView": {
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/data-schema/field.node-class.node"
+          }
+        },
+        "_bridge": {
+          "sourceBridgeNodeId": "agent-field-port",
+          "sourceBridgeLabel": "Field",
+          "targetKind": "node-class",
+          "classKey": "field",
+          "classRef": "/library/classes/nodes/data-schema/field.node-class.node"
+        },
+        "definitionKey": "field"
+      }
+    },
+    {
+      "id": "agent-view",
+      "type": "port-view",
+      "label": "Port View",
+      "root": false,
+      "position": {
+        "x": -20,
+        "y": 60
+      },
+      "width": 420,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Agent",
+        "purpose": "Shared host-facing surface for the Agent section.",
+        "titleSourceNodeId": "agent-title",
+        "typeSourceNodeId": "agent-type",
         "audience": "Public",
         "status": "active",
-        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"22\" fill=\"#f8fafc\" stroke=\"#0f172a\" stroke-width=\"5\"/><rect x=\"34\" y=\"38\" width=\"70\" height=\"14\" rx=\"7\" fill=\"#3b82f6\" opacity=\"0.9\"/><rect x=\"112\" y=\"38\" width=\"74\" height=\"14\" rx=\"7\" fill=\"#10b981\" opacity=\"0.85\"/><rect x=\"34\" y=\"72\" width=\"44\" height=\"32\" rx=\"10\" fill=\"#dbeafe\" stroke=\"#3b82f6\" stroke-width=\"3\"/><rect x=\"88\" y=\"72\" width=\"44\" height=\"32\" rx=\"10\" fill=\"#dcfce7\" stroke=\"#22c55e\" stroke-width=\"3\"/><rect x=\"142\" y=\"72\" width=\"44\" height=\"32\" rx=\"10\" fill=\"#fef3c7\" stroke=\"#f59e0b\" stroke-width=\"3\"/><rect x=\"34\" y=\"116\" width=\"90\" height=\"10\" rx=\"5\" fill=\"#cbd5e1\"/><rect x=\"132\" y=\"116\" width=\"54\" height=\"10\" rx=\"5\" fill=\"#e2e8f0\"/>",
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"22\" fill=\"#f8fafc\" stroke=\"#0f172a\" stroke-width=\"5\"/><circle cx=\"58\" cy=\"52\" r=\"18\" fill=\"#c77d20\" opacity=\"0.18\"/><rect x=\"86\" y=\"40\" width=\"90\" height=\"12\" rx=\"6\" fill=\"#c77d20\" opacity=\"0.9\"/><rect x=\"42\" y=\"86\" width=\"136\" height=\"10\" rx=\"5\" fill=\"#94a3b8\" opacity=\"0.9\"/><rect x=\"42\" y=\"106\" width=\"104\" height=\"10\" rx=\"5\" fill=\"#cbd5e1\" opacity=\"0.95\"/><path d=\"M44 52h28\" stroke=\"#c77d20\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M58 38v28\" stroke=\"#c77d20\" stroke-width=\"6\" stroke-linecap=\"round\"/></svg>",
         "_classBinding": {
-          "key": "ui-view",
-          "sourceRef": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "key": "port-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/port-view.node-class.node",
+          "ref": "/library/classes/nodes/ui-interaction/port-view.node-class.node",
           "identity": {
-            "graphId": "ui-view-node-class",
-            "name": "View Node Class",
+            "graphId": "port-view-node-class",
+            "name": "Port View Node Class",
             "version": "0.1.0",
-            "description": "A user-facing interface surface or screen-level view.",
+            "description": "A host-facing destination surface rendered through a port.",
             "createdAt": "2026-03-24T00:00:00.000Z",
             "updatedAt": "2026-03-26T19:45:00.000Z"
           },
           "intent": "node-class",
-          "meaning": "A user-facing interface surface or screen-level view.",
-          "description": "A user-facing interface surface or screen-level view.",
+          "meaning": "A host-facing destination surface rendered through a port.",
+          "description": "A host-facing destination surface rendered through a port.",
           "defaults": {
-            "label": "View",
+            "label": "Port View",
             "size": {
               "width": 420,
               "height": 320
+            }
+          },
+          "nodeDef": {
+            "key": "port-view",
+            "ref": "/library/classes/nodes/ui-interaction/port-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "port-view",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/ui-interaction/port-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
             },
-            "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
+            {
+              "key": "port-view",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/ui-interaction/port-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "port-view",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/ui-interaction/port-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "port-view",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/ui-interaction/port-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "port-view",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/ui-interaction/port-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "port-view",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/ui-interaction/port-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceBridgeNodeId": "agent-port-view-bridge",
+          "sourceBridgeLabel": "Port View",
+          "targetKind": "node-class",
+          "classKey": "port-view",
+          "classRef": "/library/classes/nodes/ui-interaction/port-view.node-class.node"
+        },
+        "definitionKey": "port-view"
+      }
+    },
+    {
+      "id": "agent-icon-view",
+      "type": "icon-view",
+      "label": "Icon View",
+      "root": false,
+      "position": {
+        "x": 440,
+        "y": 80
+      },
+      "width": 320,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Agent",
+        "purpose": "Far-zoom identity for the Agent section.",
+        "titleSourceNodeId": "agent-title",
+        "typeSourceNodeId": "agent-type",
+        "audience": "Public",
+        "status": "active",
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><circle cx=\"110\" cy=\"48\" r=\"24\" fill=\"#c77d20\" opacity=\"0.9\"/><rect x=\"70\" y=\"80\" width=\"80\" height=\"40\" rx=\"18\" fill=\"#c77d20\" opacity=\"0.78\"/><circle cx=\"100\" cy=\"44\" r=\"4\" fill=\"#fffdfa\"/><circle cx=\"120\" cy=\"44\" r=\"4\" fill=\"#fffdfa\"/></svg>",
+        "_classBinding": {
+          "key": "icon-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+          "ref": "/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+          "nodeDef": {
+            "key": "icon-view",
+            "ref": "/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "nodeView": {
+            "key": "icon-view",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "icon-view",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceBridgeNodeId": "agent-icon-view-bridge",
+          "sourceBridgeLabel": "Icon View",
+          "targetKind": "node-class",
+          "classKey": "icon-view",
+          "classRef": "/library/classes/nodes/ui-interaction/icon-view.node-class.node"
+        },
+        "definitionKey": "icon-view",
+        "payload": "node.web.detail",
+        "intent": "node",
+        "key": "node.web.detail",
+        "viewRole": "detail",
+        "viewKind": "display"
+      }
+    },
+    {
+      "id": "agent-task",
+      "type": "task",
+      "label": "Get Up To Speed",
+      "root": false,
+      "position": {
+        "x": -1380,
+        "y": 420
+      },
+      "width": 380,
+      "height": 240,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Get up to speed on Twilite",
+        "body": "Understand the operating model well enough to make one bounded, attributable change without treating the graph as a black box.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Agent",
+        "acceptanceCriteria": [
+          "Knows the difference between nodes, views, and bridges",
+          "Can identify the tutorial and task roots",
+          "Can make one bounded change and explain it"
+        ],
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
             "showLabel": false,
             "data": {
               "title": "",
-              "purpose": "",
-              "audience": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceBridgeNodeId": "agent-task-bridge",
+          "sourceBridgeLabel": "Task",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-contract",
+      "type": "contract",
+      "label": "Orientation Contract",
+      "root": false,
+      "position": {
+        "x": -940,
+        "y": 420
+      },
+      "width": 360,
+      "height": 280,
+      "color": "linear-gradient(135deg, #f7ddc6, #bb7332)",
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Twilite Orientation Contract",
+        "allowedActions": "Read the visible graphs, inspect current contracts, follow bridges, and make one bounded change inside the assigned graph when asked.",
+        "safetyLimits": "Do not invent missing capability. Do not widen authority. Do not treat undocumented behavior as settled law.",
+        "requiredOutputs": "A concrete result, the observation that supported it, and a clear explanation of what changed.",
+        "escalationRule": "Escalate when the task would cross graph boundaries or when doctrine is still unresolved.",
+        "approvalRequirement": "Human confirmation before destructive or publishing actions.",
+        "terminationCondition": "The orientation task is complete or blocked on missing authority.",
+        "status": "active",
+        "definitionKey": "contract",
+        "_classBinding": {
+          "key": "contract",
+          "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+          "identity": {
+            "graphId": "contract-class",
+            "name": "Contract Class",
+            "version": "0.1.0",
+            "description": "Node class for explicit execution bounds and required outputs.",
+            "createdAt": "2026-03-23T00:00:00.000Z",
+            "updatedAt": "2026-03-23T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for explicit execution bounds and required outputs.",
+          "description": "Node class for explicit execution bounds and required outputs.",
+          "defaults": {
+            "label": "Contract",
+            "size": {
+              "width": 360,
+              "height": 280
+            },
+            "color": "linear-gradient(135deg, #f7ddc6, #bb7332)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "allowedActions": "",
+              "safetyLimits": "",
+              "requiredOutputs": "",
+              "escalationRule": "",
+              "approvalRequirement": "",
+              "terminationCondition": "",
+              "status": "active"
+            }
+          },
+          "nodeDef": {
+            "key": "contract",
+            "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Contract",
+              "size": {
+                "width": 360,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #f7ddc6, #bb7332)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "allowedActions": "",
+                "safetyLimits": "",
+                "requiredOutputs": "",
+                "escalationRule": "",
+                "approvalRequirement": "",
+                "terminationCondition": "",
+                "status": "active"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "contract",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "contract",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "contract",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "contract",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "contract",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "contract",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "contract",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-contract-class-port",
+          "sourceBridgeNodeId": "agent-contract-bridge",
+          "sourceBridgeLabel": "Contract",
+          "sourceRef": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "contract",
+          "classRef": "/library/classes/nodes/agent-prompting/contract.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-agent",
+      "type": "agent",
+      "label": "Orientation Agent",
+      "root": false,
+      "position": {
+        "x": -500,
+        "y": 420
+      },
+      "width": 340,
+      "height": 260,
+      "color": "linear-gradient(135deg, #f6d88d, #c77d20)",
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Orientation Agent",
+        "role": "guide and implementer",
+        "authority": "bounded read and scoped edit",
+        "availableTools": [
+          "read graphs",
+          "follow bridges",
+          "edit scoped files",
+          "run validation"
+        ],
+        "owner": "Michael",
+        "status": "idle",
+        "body": "This agent is responsible for understanding the current Twilite substrate and carrying one bounded change through cleanly.",
+        "contractRef": "Twilite Orientation Contract",
+        "definitionKey": "agent",
+        "_classBinding": {
+          "key": "agent",
+          "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+          "identity": {
+            "graphId": "agent-class",
+            "name": "Agent Class",
+            "version": "0.1.0",
+            "description": "Node class for bounded agent actors in the agent-prompting nodeset.",
+            "createdAt": "2026-03-23T00:00:00.000Z",
+            "updatedAt": "2026-03-23T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for bounded agent actors in the agent-prompting nodeset.",
+          "description": "Node class for bounded agent actors in the agent-prompting nodeset.",
+          "defaults": {
+            "label": "Agent",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #f6d88d, #c77d20)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "role": "generalist",
+              "authority": "bounded",
+              "availableTools": [],
+              "owner": "",
+              "status": "idle",
+              "body": "Describe what this agent is responsible for.",
+              "contractRef": ""
+            }
+          },
+          "nodeDef": {
+            "key": "agent",
+            "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Agent",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #f6d88d, #c77d20)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "role": "generalist",
+                "authority": "bounded",
+                "availableTools": [],
+                "owner": "",
+                "status": "idle",
+                "body": "Describe what this agent is responsible for.",
+                "contractRef": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "agent",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "agent",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "agent",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "agent",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "agent",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "agent",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "agent",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-agent-class-port",
+          "sourceBridgeNodeId": "agent-agent-bridge",
+          "sourceBridgeLabel": "Agent",
+          "sourceRef": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "agent",
+          "classRef": "/library/classes/nodes/agent-prompting/agent.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-prompt",
+      "type": "prompt",
+      "label": "Execution Prompt",
+      "root": false,
+      "position": {
+        "x": -60,
+        "y": 420
+      },
+      "width": 360,
+      "height": 280,
+      "color": "linear-gradient(135deg, #8ed8f6, #1769aa)",
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Get Oriented In Twilite",
+        "instructionBody": "Learn the public root, the tutorial path, the task boards, and the class/view/bridge model. Prefer reading the graph as graph structure, not as a flattened page. When asked to change something, make one bounded edit and verify it.",
+        "scope": "graph-local orientation",
+        "inputs": [
+          "public root",
+          "tutorial graph",
+          "current contracts",
+          "active task fronts"
+        ],
+        "version": "v1",
+        "provenance": "agent root",
+        "expectedOutput": "A reliable understanding of Twilite’s operating model plus one attributable change when requested.",
+        "status": "ready",
+        "definitionKey": "prompt",
+        "_classBinding": {
+          "key": "prompt",
+          "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+          "identity": {
+            "graphId": "prompt-class",
+            "name": "Prompt Class",
+            "version": "0.1.0",
+            "description": "Node class for authored prompts in the agent-prompting nodeset.",
+            "createdAt": "2026-03-23T00:00:00.000Z",
+            "updatedAt": "2026-03-23T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for authored prompts in the agent-prompting nodeset.",
+          "description": "Node class for authored prompts in the agent-prompting nodeset.",
+          "defaults": {
+            "label": "Prompt",
+            "size": {
+              "width": 360,
+              "height": 280
+            },
+            "color": "linear-gradient(135deg, #8ed8f6, #1769aa)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "instructionBody": "Describe the prompt instruction here.",
+              "scope": "task-local",
+              "inputs": [],
+              "version": "v1",
+              "provenance": "",
+              "expectedOutput": "",
               "status": "draft"
             }
           },
           "nodeDef": {
-            "key": "ui-view",
-            "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+            "key": "prompt",
+            "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
             "source": "local",
             "version": ">=0.1.0",
             "defaults": {
-              "label": "View",
+              "label": "Prompt",
               "size": {
-                "width": 420,
-                "height": 320
+                "width": 360,
+                "height": 280
               },
-              "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
+              "color": "linear-gradient(135deg, #8ed8f6, #1769aa)",
               "showLabel": false,
               "data": {
                 "title": "",
-                "purpose": "",
-                "audience": "",
+                "instructionBody": "Describe the prompt instruction here.",
+                "scope": "task-local",
+                "inputs": [],
+                "version": "v1",
+                "provenance": "",
+                "expectedOutput": "",
                 "status": "draft"
               }
             }
           },
           "views": [
             {
-              "key": "ui-view",
+              "key": "prompt",
               "intent": "editor",
               "payload": "editor.web",
-              "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+              "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             },
             {
-              "key": "ui-view",
+              "key": "prompt",
               "intent": "node",
               "payload": "node.web.detail",
-              "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+              "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             },
             {
-              "key": "ui-view",
+              "key": "prompt",
               "intent": "node",
               "payload": "node.web.summary",
-              "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+              "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             },
             {
-              "key": "ui-view",
+              "key": "prompt",
               "intent": "node",
               "payload": "node.web.icon",
-              "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+              "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "prompt",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             }
           ],
           "nodeView": {
-            "key": "ui-view",
+            "key": "prompt",
             "intent": "node",
             "payload": "node.web.detail",
-            "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+            "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
             "source": "local",
             "version": ">=0.1.0"
           },
           "editorView": {
-            "key": "ui-view",
+            "key": "prompt",
             "intent": "editor",
             "payload": "editor.web",
-            "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+            "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
             "source": "local",
             "version": ">=0.1.0"
           }
         },
         "_bridge": {
-          "sourceBridgeNodeId": "public-root-view-port",
-          "sourceBridgeLabel": "View",
+          "sourceNodeId": "agent-prompting-template-prompt-class-port",
+          "sourceBridgeNodeId": "agent-prompt-bridge",
+          "sourceBridgeLabel": "Prompt",
+          "sourceRef": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "ui-view",
-          "classRef": "/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+          "classKey": "prompt",
+          "classRef": "/library/classes/nodes/agent-prompting/prompt.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-tool",
+      "type": "tool",
+      "label": "Workspace Tooling",
+      "root": false,
+      "position": {
+        "x": 360,
+        "y": 420
+      },
+      "width": 360,
+      "height": 280,
+      "color": "linear-gradient(135deg, #c7dcf6, #446ea8)",
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Workspace Tools",
+        "name": "graph-and-file-tools",
+        "capability": "read, edit, validate, inspect runtime behavior",
+        "invocationBoundary": "Use only for the scoped graph or file work in the current task.",
+        "failureMode": "A graph can still be stale, a class can still be incomplete, and validation can miss implied doctrine.",
+        "cost": "medium",
+        "latencyClass": "medium",
+        "status": "available",
+        "definitionKey": "tool",
+        "_classBinding": {
+          "key": "tool",
+          "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+          "identity": {
+            "graphId": "tool-class",
+            "name": "Tool Class",
+            "version": "0.1.0",
+            "description": "Node class for explicit tool capabilities used during an agent run.",
+            "createdAt": "2026-03-23T00:00:00.000Z",
+            "updatedAt": "2026-03-23T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for explicit tool capabilities used during an agent run.",
+          "description": "Node class for explicit tool capabilities used during an agent run.",
+          "defaults": {
+            "label": "Tool",
+            "size": {
+              "width": 360,
+              "height": 280
+            },
+            "color": "linear-gradient(135deg, #c7dcf6, #446ea8)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "name": "",
+              "capability": "",
+              "invocationBoundary": "",
+              "failureMode": "",
+              "cost": "",
+              "latencyClass": "",
+              "status": "available"
+            }
+          },
+          "nodeDef": {
+            "key": "tool",
+            "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Tool",
+              "size": {
+                "width": 360,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #c7dcf6, #446ea8)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "name": "",
+                "capability": "",
+                "invocationBoundary": "",
+                "failureMode": "",
+                "cost": "",
+                "latencyClass": "",
+                "status": "available"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "tool",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "tool",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "tool",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "tool",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "tool",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "tool",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "tool",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
         },
-        "definitionKey": "ui-view",
-        "localTitle": "Twilite Zone Root",
-        "publishedTitle": "Twilite Root",
-        "isRoot": false,
-        "root": false
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-tool-class-port",
+          "sourceBridgeNodeId": "agent-tool-bridge",
+          "sourceBridgeLabel": "Tool",
+          "sourceRef": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "tool",
+          "classRef": "/library/classes/nodes/agent-prompting/tool.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-observation",
+      "type": "observation",
+      "label": "Observed State",
+      "root": false,
+      "position": {
+        "x": 800,
+        "y": 420
+      },
+      "width": 360,
+      "height": 280,
+      "color": "linear-gradient(135deg, #b8e6d2, #2f8f6b)",
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Current Twilite State",
+        "evidencePayload": "Twilite already has real roots, real task boards, explicit class bindings, bridge doctrine, editor/browser visibility, and emerging document surfaces. Semantic zoom remains the major unresolved substrate front.",
+        "source": "repo and graph inspection",
+        "timestamp": "current",
+        "toolRef": "graph-and-file-tools",
+        "confidence": "medium",
+        "artifactRef": "/tasks/semantic-zoom/root.node",
+        "definitionKey": "observation",
+        "_classBinding": {
+          "key": "observation",
+          "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+          "identity": {
+            "graphId": "observation-class",
+            "name": "Observation Class",
+            "version": "0.1.0",
+            "description": "Node class for evidence captured during an agent run.",
+            "createdAt": "2026-03-23T00:00:00.000Z",
+            "updatedAt": "2026-03-23T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for evidence captured during an agent run.",
+          "description": "Node class for evidence captured during an agent run.",
+          "defaults": {
+            "label": "Observation",
+            "size": {
+              "width": 360,
+              "height": 280
+            },
+            "color": "linear-gradient(135deg, #b8e6d2, #2f8f6b)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "evidencePayload": "Describe what was observed.",
+              "source": "",
+              "timestamp": "",
+              "toolRef": "",
+              "confidence": "medium",
+              "artifactRef": ""
+            }
+          },
+          "nodeDef": {
+            "key": "observation",
+            "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Observation",
+              "size": {
+                "width": 360,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #b8e6d2, #2f8f6b)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "evidencePayload": "Describe what was observed.",
+                "source": "",
+                "timestamp": "",
+                "toolRef": "",
+                "confidence": "medium",
+                "artifactRef": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "observation",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "observation",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "observation",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "observation",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "observation",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "observation",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "observation",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-observation-class-port",
+          "sourceBridgeNodeId": "agent-observation-bridge",
+          "sourceBridgeLabel": "Observation",
+          "sourceRef": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "observation",
+          "classRef": "/library/classes/nodes/agent-prompting/observation.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-result",
+      "type": "result",
+      "label": "Orientation Result",
+      "root": false,
+      "position": {
+        "x": 1240,
+        "y": 420
+      },
+      "width": 360,
+      "height": 280,
+      "color": "linear-gradient(135deg, #f6c7c7, #c05656)",
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "What a Twilite-capable agent should know",
+        "outputPayload": "A capable agent should understand that graphs are primary, bridges formalize authority, views are role-specific surfaces, and changes should be carried as bounded, attributable graph/file edits rather than vague chat guidance.",
+        "status": "partial",
+        "confidence": "medium",
+        "qualityNote": "This is a first-pass orientation graph, not the final agent template family.",
+        "artifactRef": "/agent/root.node",
+        "definitionKey": "result",
+        "_classBinding": {
+          "key": "result",
+          "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+          "identity": {
+            "graphId": "result-class",
+            "name": "Result Class",
+            "version": "0.1.0",
+            "description": "Node class for outputs produced by an agent run.",
+            "createdAt": "2026-03-23T00:00:00.000Z",
+            "updatedAt": "2026-03-23T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for outputs produced by an agent run.",
+          "description": "Node class for outputs produced by an agent run.",
+          "defaults": {
+            "label": "Result",
+            "size": {
+              "width": 360,
+              "height": 280
+            },
+            "color": "linear-gradient(135deg, #f6c7c7, #c05656)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "outputPayload": "Describe the produced output.",
+              "status": "partial",
+              "confidence": "medium",
+              "qualityNote": "",
+              "artifactRef": ""
+            }
+          },
+          "nodeDef": {
+            "key": "result",
+            "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Result",
+              "size": {
+                "width": 360,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #f6c7c7, #c05656)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "outputPayload": "Describe the produced output.",
+                "status": "partial",
+                "confidence": "medium",
+                "qualityNote": "",
+                "artifactRef": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "result",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "result",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "result",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "result",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "result",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "result",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "result",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-result-class-port",
+          "sourceBridgeNodeId": "agent-result-bridge",
+          "sourceBridgeLabel": "Result",
+          "sourceRef": "/library/classes/nodes/agent-prompting/result.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "result",
+          "classRef": "/library/classes/nodes/agent-prompting/result.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-handoff",
+      "type": "handoff",
+      "label": "Next Move",
+      "root": false,
+      "position": {
+        "x": 1680,
+        "y": 420
+      },
+      "width": 360,
+      "height": 280,
+      "color": "linear-gradient(135deg, #d7c6f7, #7551b6)",
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Handoff to the next bounded task",
+        "sender": "Orientation Agent",
+        "receiver": "Implementation Agent or Human Operator",
+        "handoffPackage": "Use this understanding to enter a specific graph, inspect the relevant doctrine, and make one bounded change with visible verification.",
+        "unresolvedRisks": "Semantic zoom, remaining template gaps, and older graphs may still contain transitional substrate.",
+        "expectedNextAction": "Choose one concrete graph/task and execute a bounded change.",
+        "deadline": "",
+        "status": "queued",
+        "definitionKey": "handoff",
+        "_classBinding": {
+          "key": "handoff",
+          "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+          "identity": {
+            "graphId": "handoff-class",
+            "name": "Handoff Class",
+            "version": "0.1.0",
+            "description": "Node class for transferring responsibility between agents.",
+            "createdAt": "2026-03-23T00:00:00.000Z",
+            "updatedAt": "2026-03-23T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for transferring responsibility between agents.",
+          "description": "Node class for transferring responsibility between agents.",
+          "defaults": {
+            "label": "Handoff",
+            "size": {
+              "width": 360,
+              "height": 280
+            },
+            "color": "linear-gradient(135deg, #d7c6f7, #7551b6)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "sender": "",
+              "receiver": "",
+              "handoffPackage": "Describe what is being transferred.",
+              "unresolvedRisks": "",
+              "expectedNextAction": "",
+              "deadline": "",
+              "status": "queued"
+            }
+          },
+          "nodeDef": {
+            "key": "handoff",
+            "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Handoff",
+              "size": {
+                "width": 360,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #d7c6f7, #7551b6)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "sender": "",
+                "receiver": "",
+                "handoffPackage": "Describe what is being transferred.",
+                "unresolvedRisks": "",
+                "expectedNextAction": "",
+                "deadline": "",
+                "status": "queued"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "handoff",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "handoff",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "handoff",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "handoff",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "handoff",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "handoff",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "handoff",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-handoff-class-port",
+          "sourceBridgeNodeId": "agent-handoff-bridge",
+          "sourceBridgeLabel": "Handoff",
+          "sourceRef": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "handoff",
+          "classRef": "/library/classes/nodes/agent-prompting/handoff.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-document-view",
+      "type": "document-view",
+      "label": "Document View",
+      "root": false,
+      "position": {
+        "x": 1120,
+        "y": 80
+      },
+      "width": 440,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Agent",
+        "localTitle": "Agent",
+        "publishedTitle": "Agent",
+        "purpose": "Compose the bounded onboarding run into one readable orientation surface for Twilite agents.",
+        "titleSourceNodeId": "agent-title",
+        "typeSourceNodeId": "agent-type",
+        "audience": "Reader",
+        "status": "active",
+        "viewRole": "document",
+        "viewKind": "display",
+        "exposedAuthority": "consume-view",
+        "runtimeExposed": false,
+        "partNodeIds": [
+          "agent-title",
+          "agent-task",
+          "agent-contract",
+          "agent-agent",
+          "agent-prompt",
+          "agent-tool",
+          "agent-observation",
+          "agent-result",
+          "agent-handoff"
+        ],
+        "documentOrder": [
+          "agent-title",
+          "agent-task",
+          "agent-contract",
+          "agent-agent",
+          "agent-prompt",
+          "agent-tool",
+          "agent-observation",
+          "agent-result",
+          "agent-handoff"
+        ],
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"24\" y=\"18\" width=\"172\" height=\"124\" rx=\"18\" fill=\"#fffdfa\" stroke=\"#0f172a\" stroke-width=\"5\"/><rect x=\"42\" y=\"38\" width=\"82\" height=\"14\" rx=\"7\" fill=\"#c77d20\" opacity=\"0.85\"/><rect x=\"42\" y=\"68\" width=\"136\" height=\"16\" rx=\"8\" fill=\"#fef3c7\" stroke=\"#c77d20\" stroke-width=\"3\"/><rect x=\"42\" y=\"94\" width=\"120\" height=\"12\" rx=\"6\" fill=\"#dbeafe\"/><rect x=\"42\" y=\"116\" width=\"94\" height=\"12\" rx=\"6\" fill=\"#e2e8f0\"/></svg>",
+        "_classBinding": {
+          "key": "document-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "ref": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "nodeDef": {
+            "key": "document-view",
+            "ref": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "nodeView": {
+            "key": "document-view",
+            "intent": "node",
+            "payload": "node.web.document",
+            "ref": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "document-view",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceBridgeNodeId": "agent-document-view-bridge",
+          "sourceBridgeLabel": "Document View",
+          "targetKind": "node-class",
+          "classKey": "document-view",
+          "classRef": "/library/classes/nodes/ui-interaction/document-view.node-class.node"
+        },
+        "definitionKey": "document-view"
       }
     }
   ],
   "edges": [
     {
-      "id": "public-root-edge-3",
+      "id": "agent-edge-title-type",
       "type": "reference",
-      "source": "public-root-title",
-      "target": "port-tasks-root",
-      "sourcePort": "top",
-      "targetPort": "root",
-      "label": "entry",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "public-root-edge-4",
-      "type": "reference",
-      "source": "public-root-title",
-      "target": "port-graph-theory-root",
-      "sourcePort": "top",
-      "targetPort": "root",
-      "label": "entry",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "public-root-edge-5",
-      "type": "reference",
-      "source": "public-root-title",
-      "target": "port-github-root",
-      "sourcePort": "top",
-      "targetPort": "root",
-      "label": "entry",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "public-root-edge-6",
-      "type": "reference",
-      "source": "public-root-title",
-      "target": "port-twilite-root",
-      "sourcePort": "bottom",
-      "targetPort": "root",
-      "label": "entry",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "public-root-edge-7",
-      "type": "reference",
-      "source": "public-root-title",
-      "target": "port-agent-root",
-      "sourcePort": "top",
-      "targetPort": "root",
-      "label": "entry",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "public-root-edge-8",
-      "type": "reference",
-      "source": "public-root-title",
-      "target": "port-tutorial-root",
-      "sourcePort": "top",
-      "targetPort": "root",
-      "label": "entry",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "public-root-edge-9",
-      "type": "reference",
-      "source": "public-root-title",
-      "target": "port-gallery-root",
-      "sourcePort": "bottom",
-      "targetPort": "root",
-      "label": "entry",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "public-root-edge-10",
-      "type": "reference",
-      "source": "public-root-title",
-      "target": "contact-developer",
+      "source": "agent-title",
+      "target": "agent-type",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "entry",
+      "label": "names",
       "style": {},
       "data": {}
     },
     {
-      "id": "public-root-edge-youtube",
+      "id": "agent-edge-type-field",
       "type": "reference",
-      "source": "public-root-title",
-      "target": "81d62441-815a-4404-8972-8ad9a447434c",
+      "source": "agent-type",
+      "target": "agent-field",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "watch",
+      "label": "describes",
       "style": {},
       "data": {}
     },
     {
-      "id": "public-root-edge-title-type",
+      "id": "agent-edge-title-view",
       "type": "reference",
-      "source": "public-root-title",
-      "target": "public-root-type",
-      "sourcePort": "root",
-      "targetPort": "right",
-      "label": "declares type",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "public-root-edge-type-view",
-      "type": "reference",
-      "source": "public-root-type",
-      "target": "public-root-view",
+      "source": "agent-title",
+      "target": "agent-view",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "informs",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "public-root-edge-title-view",
-      "type": "reference",
-      "source": "public-root-title",
-      "target": "public-root-view",
-      "sourcePort": "root",
-      "targetPort": "right",
       "label": "host view",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-title-icon-view",
+      "type": "reference",
+      "source": "agent-title",
+      "target": "agent-icon-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "identity",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-title-document-view",
+      "type": "reference",
+      "source": "agent-title",
+      "target": "agent-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "document",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-title-back",
+      "type": "reference",
+      "source": "agent-title",
+      "target": "agent-back",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-task-contract",
+      "type": "reference",
+      "source": "agent-task",
+      "target": "agent-contract",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bounded by",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-task-agent",
+      "type": "reference",
+      "source": "agent-task",
+      "target": "agent-agent",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "assigned to",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-agent-prompt",
+      "type": "reference",
+      "source": "agent-agent",
+      "target": "agent-prompt",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "follows",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-prompt-tool",
+      "type": "reference",
+      "source": "agent-prompt",
+      "target": "agent-tool",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "uses",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-tool-observation",
+      "type": "reference",
+      "source": "agent-tool",
+      "target": "agent-observation",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "produces",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-observation-result",
+      "type": "reference",
+      "source": "agent-observation",
+      "target": "agent-result",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "supports",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-result-handoff",
+      "type": "reference",
+      "source": "agent-result",
+      "target": "agent-handoff",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "hands off",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-document-task",
+      "type": "reference",
+      "source": "agent-task",
+      "target": "agent-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "document part",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-document-contract",
+      "type": "reference",
+      "source": "agent-contract",
+      "target": "agent-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "document part",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-document-agent",
+      "type": "reference",
+      "source": "agent-agent",
+      "target": "agent-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "document part",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-document-prompt",
+      "type": "reference",
+      "source": "agent-prompt",
+      "target": "agent-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "document part",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-document-tool",
+      "type": "reference",
+      "source": "agent-tool",
+      "target": "agent-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "document part",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-document-observation",
+      "type": "reference",
+      "source": "agent-observation",
+      "target": "agent-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "document part",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-document-result",
+      "type": "reference",
+      "source": "agent-result",
+      "target": "agent-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "document part",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-edge-document-handoff",
+      "type": "reference",
+      "source": "agent-handoff",
+      "target": "agent-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "document part",
+      "style": {},
       "data": {}
     }
   ],
