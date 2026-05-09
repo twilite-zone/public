@@ -1,0 +1,195 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Type Definition Integrity Skill",
+    "description": "Contract graph for validating and repairing bounded drift in Type Definition graphs.",
+    "created": "2026-03-26T21:30:00.000Z",
+    "modified": "2026-03-26T21:30:00.000Z",
+    "author": "",
+    "tags": [
+      "documentation",
+      "contracts",
+      "skills",
+      "validation",
+      "type-definition"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "type-definition-skill-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -280,
+        "y": -160
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "type-definition-integrity-skill",
+          "name": "Type Definition Integrity",
+          "version": "0.1.0",
+          "description": "Contract graph for validating and repairing bounded drift in Type Definition graphs.",
+          "createdAt": "2026-03-26T21:30:00.000Z",
+          "updatedAt": "2026-03-26T21:30:00.000Z"
+        },
+        "intent": {
+          "kind": "graph",
+          "scope": "mixed"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "markdown",
+            "port"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "type-definition-skill-root",
+      "type": "markdown",
+      "label": "Skill: TypeDefinitionIntegrity",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 820,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Skill: TypeDefinitionIntegrity\n\n**Category:** Validation / Type Integrity\n\n**Intent:** Validate Type Definition graphs against the current v1 contract, report missing identity or authority surfaces, and only propose bounded metadata repairs.\n\nThis graph is the contract."
+      }
+    },
+    {
+      "id": "type-definition-skill-scope",
+      "type": "markdown",
+      "label": "Scope",
+      "position": {
+        "x": -980,
+        "y": 380
+      },
+      "width": 760,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Scope\n\nThis skill:\n- validates that a type definition declares `name`, `key`, `classRef`, and `meaning`\n- validates that the referenced class path is present and legible\n- validates that legend-facing identity is declared in data instead of being guessed from the view\n- reports drift in category or status metadata\n\nThis skill does NOT:\n- invent a new type key without review\n- choose a different class authority silently\n- rewrite a view to own semantic identity"
+      }
+    },
+    {
+      "id": "type-definition-skill-reads",
+      "type": "markdown",
+      "label": "Reads",
+      "position": {
+        "x": -160,
+        "y": 380
+      },
+      "width": 520,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Reads\n\n- type definition node data\n- legend-facing labels and keys\n- class references\n- any `typeSourceNodeId` relationships from views or host consumers"
+      }
+    },
+    {
+      "id": "type-definition-skill-writes",
+      "type": "markdown",
+      "label": "Writes",
+      "position": {
+        "x": 420,
+        "y": 380
+      },
+      "width": 520,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Writes\n\n- bounded metadata repairs to the type definition node\n- diagnostic notes about missing required fields\n- suggested alignment between type declarations and consuming views"
+      }
+    },
+    {
+      "id": "type-definition-skill-failure",
+      "type": "markdown",
+      "label": "Failure Modes",
+      "position": {
+        "x": 1000,
+        "y": 380
+      },
+      "width": 520,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Failure Modes\n\n- ambiguous class authority\n- missing stable `key`\n- type name present only in a view\n- host consumers depending on inferred rather than declared type\n\nWhen the meaning is unclear, the skill should report ambiguity instead of inventing semantic identity."
+      }
+    },
+    {
+      "id": "type-definition-skill-notes",
+      "type": "markdown",
+      "label": "Notes For AI",
+      "position": {
+        "x": 160,
+        "y": 740
+      },
+      "width": 760,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Notes For AI\n\nPrefer same-name fields when type semantics overlap with other nodesets. A `ui-view` may display the type, but the declared `type-definition` node remains the source of truth."
+      }
+    }
+  ],
+  "edges": [],
+  "timestamp": "2026-03-26T21:30:00.000Z",
+  "nodeCount": 6,
+  "edgeCount": 0
+}

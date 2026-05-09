@@ -1,0 +1,714 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Skill / Contract Authoring Skill",
+    "description": "Contract graph for validating and authoring skill / contract graphs.",
+    "created": "2026-03-26T18:30:00.000Z",
+    "modified": "2026-03-26T18:30:00.000Z",
+    "author": "",
+    "tags": [
+      "documentation",
+      "contracts",
+      "skills",
+      "validation",
+      "skill-contract"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "skill-contract-skill-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -280,
+        "y": -160
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "skill-contract-authoring-skill",
+          "name": "Skill / Contract Authoring",
+          "version": "0.1.0",
+          "description": "Contract graph for validating and authoring skill / contract graphs.",
+          "createdAt": "2026-03-26T18:30:00.000Z",
+          "updatedAt": "2026-03-26T18:30:00.000Z"
+        },
+        "intent": {
+          "kind": "graph",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "markdown",
+            "view",
+            "port"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "skill-contract-skill-root",
+      "type": "markdown",
+      "label": "Skill: SkillContractAuthoring",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 720,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Skill: SkillContractAuthoring\n\n**Category:** Validation / Contract Authoring\n\n**Intent:** Validate Skill / Contract graphs against the v1 contract, report missing interface or safety surfaces, and only propose bounded metadata repairs.\n\nThis graph is the contract.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown-class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-03-26T18:30:00.000Z",
+            "updatedAt": "2026-03-26T18:30:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "skill-contract-skill-scope",
+      "type": "markdown",
+      "label": "Scope",
+      "position": {
+        "x": -980,
+        "y": 380
+      },
+      "width": 720,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Scope\n\nThis skill:\n- validates v1 node membership\n- validates that a contract has identity, scope, interface, law, safety, failure, and procedure surfaces\n- reports missing or ambiguous contract structure\n- keeps overlapping field names aligned when meaning matches\n\nThis skill does NOT:\n- invent a new skill purpose\n- rewrite normative law without review\n- replace domain-specific contract meaning",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown-class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-03-26T18:30:00.000Z",
+            "updatedAt": "2026-03-26T18:30:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "skill-contract-skill-reads",
+      "type": "markdown",
+      "label": "Reads",
+      "position": {
+        "x": -180,
+        "y": 380
+      },
+      "width": 720,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Reads\n\n- skill / contract graph structure\n- class keys and bridge presence\n- node data fields like `title`, `body`, `steps`, `required`, and `hardStop`\n- existing contract notes and examples",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown-class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-03-26T18:30:00.000Z",
+            "updatedAt": "2026-03-26T18:30:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "skill-contract-skill-writes",
+      "type": "markdown",
+      "label": "Writes",
+      "position": {
+        "x": 620,
+        "y": 380
+      },
+      "width": 720,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Writes\n\n- bounded metadata repair proposals\n- normalized field names when meaning already matches\n- missing-node warnings and integrity findings\n- optional template guidance notes",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown-class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-03-26T18:30:00.000Z",
+            "updatedAt": "2026-03-26T18:30:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "skill-contract-skill-never",
+      "type": "markdown",
+      "label": "Never Touches",
+      "position": {
+        "x": 1420,
+        "y": 380
+      },
+      "width": 720,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Never Touches\n\n- external graph meaning outside the current contract\n- unrelated node class bindings\n- hidden dictionary authority\n- structural content that would change the stated skill intent without review",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown-class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-03-26T18:30:00.000Z",
+            "updatedAt": "2026-03-26T18:30:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "skill-contract-skill-failure",
+      "type": "markdown",
+      "label": "Failure Modes",
+      "position": {
+        "x": -180,
+        "y": 820
+      },
+      "width": 720,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Failure Modes\n\n- missing bridge cluster\n- ambiguous node meaning with conflicting field shapes\n- contract missing either safety or procedure surfaces\n- template used as final policy without domain review",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown-class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-03-26T18:30:00.000Z",
+            "updatedAt": "2026-03-26T18:30:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "skill-contract-skill-notes",
+      "type": "markdown",
+      "label": "Notes For AI",
+      "position": {
+        "x": 620,
+        "y": 820
+      },
+      "width": 720,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Notes For AI\n\nPrefer the most specific valid interpretation without inventing meaning.\n\nWhen two node types overlap semantically, keep field names aligned where meanings genuinely match.\n\nFall back toward generic rendering, never sideways into a semantic peer.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown-class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-03-26T18:30:00.000Z",
+            "updatedAt": "2026-03-26T18:30:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "skill-contract-skill-contract-port",
+      "type": "port",
+      "label": "Open Example Contract",
+      "position": {
+        "x": 1420,
+        "y": 840
+      },
+      "width": 320,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Open the example skill contract graph.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/skill-contract/skill-contract-example.node:root",
+          "mode": "navigate",
+          "label": "Open"
+        }
+      }
+    }
+  ],
+  "edges": []
+}

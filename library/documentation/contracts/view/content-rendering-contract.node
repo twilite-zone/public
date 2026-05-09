@@ -1,0 +1,613 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Content Rendering Contract",
+    "description": "Product-level contract for how Twilite should resolve content kind, content source, render role, and presentation rules instead of inferring rendering from field names.",
+    "created": "2026-04-16T00:00:00.000Z",
+    "modified": "2026-04-16T00:00:00.000Z",
+    "author": "",
+    "tags": [],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "content-rendering-contract-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "root": false,
+      "position": { "x": -1220, "y": -520 },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "content-rendering-contract",
+          "name": "Content Rendering Contract",
+          "version": "0.1.0",
+          "description": "Product-level contract for explicit content rendering in Twilite.",
+          "createdAt": "2026-04-16T00:00:00.000Z",
+          "updatedAt": "2026-04-16T00:00:00.000Z"
+        },
+        "intent": { "kind": "graph", "scope": "documentation" },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "title",
+            "type-definition",
+            "port-view",
+            "node-view",
+            "icon-view",
+            "skill",
+            "scope",
+            "input",
+            "output",
+            "rule",
+            "guardrail",
+            "failure-mode",
+            "procedure",
+            "port",
+            "bridge"
+          ],
+          "portContracts": ["core"],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": { "url": "" },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "summaryNodeId": "content-rendering-contract-node-view"
+      }
+    },
+    {
+      "id": "content-rendering-contract-legend",
+      "type": "legend",
+      "label": "Legend",
+      "root": false,
+      "position": { "x": -760, "y": -520 },
+      "width": 320,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "entries": [
+          { "label": "TTV Shell", "color": "#f3efe6" },
+          { "label": "Contract Nodes", "color": "#eef8e8" },
+          { "label": "Related Contracts", "color": "#e7f2ff" },
+          { "label": "Bridge Vocabulary", "color": "#f2f4f7" }
+        ],
+        "markdown": "## Content Rendering Contract\n- TTV shell: title, type-definition, port-view, node-view, icon-view\n- contract body: skill, scope, input, output, rule, guardrail, failure-mode, procedure\n- related contracts: node authoring and view-role primitives\n- bridge nodes: local creation vocabulary for the contract graph"
+      }
+    },
+    {
+      "id": "content-rendering-bridge-title",
+      "type": "bridge",
+      "label": "Title",
+      "position": { "x": -1220, "y": -240 },
+      "width": 240,
+      "height": 110,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for Title.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/template-structure/title.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "label": "Title",
+          "key": "title"
+        }
+      }
+    },
+    {
+      "id": "content-rendering-bridge-type",
+      "type": "bridge",
+      "label": "Type Definition",
+      "position": { "x": -1220, "y": -100 },
+      "width": 240,
+      "height": 110,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for Type Definition.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/type-definition/type-definition.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "label": "Type Definition",
+          "key": "type-definition"
+        }
+      }
+    },
+    {
+      "id": "content-rendering-bridge-views",
+      "type": "bridge",
+      "label": "Views",
+      "position": { "x": -1220, "y": 40 },
+      "width": 240,
+      "height": 110,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for view-role primitives.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/ui-interaction/ui-view.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "label": "View",
+          "key": "ui-view"
+        }
+      }
+    },
+    {
+      "id": "content-rendering-bridge-contract",
+      "type": "bridge",
+      "label": "Contract Nodes",
+      "position": { "x": -1220, "y": 180 },
+      "width": 240,
+      "height": 110,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for skill-contract nodes.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/skill-contract/skill.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "label": "Skill",
+          "key": "skill"
+        }
+      }
+    },
+    {
+      "id": "content-rendering-contract-title",
+      "type": "title",
+      "label": "Title",
+      "root": true,
+      "position": { "x": -220, "y": -520 },
+      "width": 540,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Content Rendering Contract",
+        "subtitle": "Defines how Twilite should declare content kind, source path, render role, and presentation rules instead of inferring rendering from field names like `markdown` or `html`.",
+        "intent": "headline",
+        "status": "draft",
+        "_classBinding": {
+          "key": "title",
+          "sourceRef": "/library/classes/nodes/template-structure/title.node-class.node",
+          "ref": "/library/classes/nodes/template-structure/title.node-class.node"
+        },
+        "definitionKey": "title"
+      }
+    },
+    {
+      "id": "content-rendering-contract-type",
+      "type": "type-definition",
+      "label": "Type",
+      "root": false,
+      "position": { "x": 380, "y": -520 },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "name": "Content Rendering Contract",
+        "key": "content-rendering-contract",
+        "classRef": "github://twilite-zone/public/library/documentation/contracts/view/content-rendering-contract.node",
+        "meaning": "Declares explicit content rendering as a product contract rather than a renderer-local heuristic.",
+        "description": "Content kind, render role, source path, and presentation rules must be declared explicitly.",
+        "category": "contracts/view",
+        "status": "draft",
+        "_classBinding": {
+          "key": "type-definition",
+          "sourceRef": "/library/classes/nodes/type-definition/type-definition.node-class.node",
+          "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node"
+        },
+        "definitionKey": "type-definition"
+      }
+    },
+    {
+      "id": "content-rendering-contract-port-view",
+      "type": "port-view",
+      "label": "Port View",
+      "root": false,
+      "position": { "x": 860, "y": -520 },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Content Rendering Contract",
+        "purpose": "Compact host-facing summary of the content rendering contract.",
+        "titleSourceNodeId": "content-rendering-contract-title",
+        "typeSourceNodeId": "content-rendering-contract-type",
+        "viewRole": "port",
+        "viewKind": "display",
+        "exposedAuthority": "consume-view",
+        "audience": "Author",
+        "status": "draft",
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"22\" fill=\"#f8fafc\" stroke=\"#0f172a\" stroke-width=\"5\"/><rect x=\"34\" y=\"34\" width=\"62\" height=\"12\" rx=\"6\" fill=\"#f59e0b\"/><rect x=\"106\" y=\"34\" width=\"80\" height=\"12\" rx=\"6\" fill=\"#3b82f6\"/><rect x=\"34\" y=\"62\" width=\"152\" height=\"16\" rx=\"8\" fill=\"#e2e8f0\"/><rect x=\"34\" y=\"88\" width=\"68\" height=\"30\" rx=\"10\" fill=\"#dcfce7\" stroke=\"#16a34a\" stroke-width=\"3\"/><rect x=\"118\" y=\"88\" width=\"68\" height=\"30\" rx=\"10\" fill=\"#dbeafe\" stroke=\"#2563eb\" stroke-width=\"3\"/><rect x=\"34\" y=\"128\" width=\"112\" height=\"10\" rx=\"5\" fill=\"#cbd5e1\"/></svg>",
+        "_classBinding": {
+          "key": "port-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/port-view.node-class.node",
+          "ref": "/library/classes/nodes/ui-interaction/port-view.node-class.node"
+        },
+        "definitionKey": "port-view"
+      }
+    },
+    {
+      "id": "content-rendering-contract-node-view",
+      "type": "node-view",
+      "label": "Node View",
+      "root": false,
+      "position": { "x": 860, "y": -220 },
+      "width": 520,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Content Rendering Contract",
+        "purpose": "Rendering must declare content kind, source path, render role, and presentation rules. Markdown support is not enough if spacing, title/body policy, and editor behavior remain implicit.",
+        "titleSourceNodeId": "content-rendering-contract-title",
+        "typeSourceNodeId": "content-rendering-contract-type",
+        "viewRole": "node",
+        "viewKind": "display",
+        "exposedAuthority": "consume-view",
+        "audience": "Author",
+        "status": "draft",
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"22\" fill=\"#ffffff\" stroke=\"#0f172a\" stroke-width=\"5\"/><rect x=\"34\" y=\"34\" width=\"56\" height=\"10\" rx=\"5\" fill=\"#f59e0b\"/><rect x=\"100\" y=\"34\" width=\"86\" height=\"10\" rx=\"5\" fill=\"#3b82f6\"/><rect x=\"34\" y=\"58\" width=\"152\" height=\"12\" rx=\"6\" fill=\"#d1d5db\"/><rect x=\"34\" y=\"80\" width=\"152\" height=\"12\" rx=\"6\" fill=\"#e5e7eb\"/><rect x=\"34\" y=\"102\" width=\"92\" height=\"12\" rx=\"6\" fill=\"#e5e7eb\"/><rect x=\"136\" y=\"102\" width=\"50\" height=\"12\" rx=\"6\" fill=\"#dcfce7\" stroke=\"#16a34a\" stroke-width=\"2\"/></svg>",
+        "_classBinding": {
+          "key": "node-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/node-view.node-class.node",
+          "ref": "/library/classes/nodes/ui-interaction/node-view.node-class.node"
+        },
+        "definitionKey": "node-view"
+      }
+    },
+    {
+      "id": "content-rendering-contract-icon-view",
+      "type": "icon-view",
+      "label": "Icon View",
+      "root": false,
+      "position": { "x": 860, "y": 120 },
+      "width": 300,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Content Rendering Contract",
+        "purpose": "Icon surface for contracts and indexes.",
+        "titleSourceNodeId": "content-rendering-contract-title",
+        "typeSourceNodeId": "content-rendering-contract-type",
+        "viewRole": "icon",
+        "viewKind": "display",
+        "exposedAuthority": "consume-view",
+        "audience": "Author",
+        "status": "draft",
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\"><rect x=\"26\" y=\"20\" width=\"168\" height=\"120\" rx=\"22\" fill=\"#ffffff\" stroke=\"#1f2937\" stroke-width=\"5\"/><rect x=\"46\" y=\"44\" width=\"40\" height=\"10\" rx=\"5\" fill=\"#f59e0b\"/><rect x=\"96\" y=\"44\" width=\"78\" height=\"10\" rx=\"5\" fill=\"#3b82f6\"/><rect x=\"46\" y=\"72\" width=\"128\" height=\"12\" rx=\"6\" fill=\"#d1d5db\"/><rect x=\"46\" y=\"94\" width=\"78\" height=\"12\" rx=\"6\" fill=\"#dcfce7\" stroke=\"#16a34a\" stroke-width=\"2\"/></svg>",
+        "_classBinding": {
+          "key": "icon-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+          "ref": "/library/classes/nodes/ui-interaction/icon-view.node-class.node"
+        },
+        "definitionKey": "icon-view"
+      }
+    },
+    {
+      "id": "content-rendering-contract-skill",
+      "type": "skill",
+      "label": "Skill",
+      "root": false,
+      "position": { "x": -220, "y": -200 },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Make Rendering Explicit",
+        "body": "A renderer must not infer product behavior solely from field names like `markdown`, `html`, or `text`. Content rendering should be declared so authored surfaces behave predictably across native and dynamic paths.",
+        "_classBinding": {
+          "key": "skill",
+          "sourceRef": "/library/classes/nodes/skill-contract/skill.node-class.node",
+          "ref": "/library/classes/nodes/skill-contract/skill.node-class.node"
+        },
+        "definitionKey": "skill"
+      }
+    },
+    {
+      "id": "content-rendering-contract-scope",
+      "type": "scope",
+      "label": "Scope",
+      "root": false,
+      "position": { "x": 220, "y": -200 },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Where It Applies",
+        "body": "Applies to `MarkdownNode`, `DynamicViewNode`, node/editor/web views, document-like surfaces, summary/icon surfaces, and any future content renderer that claims to render authored text-bearing payloads.",
+        "_classBinding": {
+          "key": "scope",
+          "sourceRef": "/library/classes/nodes/skill-contract/scope.node-class.node",
+          "ref": "/library/classes/nodes/skill-contract/scope.node-class.node"
+        },
+        "definitionKey": "scope"
+      }
+    },
+    {
+      "id": "content-rendering-contract-input",
+      "type": "input",
+      "label": "Input",
+      "root": false,
+      "position": { "x": -220, "y": 80 },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Required Inputs",
+        "body": "Every renderable surface should declare at least: content kind, source path, render role, and presentation profile. These inputs are the minimum needed to distinguish transport from presentation.",
+        "_classBinding": {
+          "key": "input",
+          "sourceRef": "/library/classes/nodes/skill-contract/input.node-class.node",
+          "ref": "/library/classes/nodes/skill-contract/input.node-class.node"
+        },
+        "definitionKey": "input"
+      }
+    },
+    {
+      "id": "content-rendering-contract-output",
+      "type": "output",
+      "label": "Output",
+      "root": false,
+      "position": { "x": 220, "y": 80 },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Expected Output",
+        "body": "A rendered surface with explicit behavior: content looks intentional, title/body policy is predictable, editor fallback is consistent, and typography/container rules are known instead of accidental.",
+        "_classBinding": {
+          "key": "output",
+          "sourceRef": "/library/classes/nodes/skill-contract/output.node-class.node",
+          "ref": "/library/classes/nodes/skill-contract/output.node-class.node"
+        },
+        "definitionKey": "output"
+      }
+    },
+    {
+      "id": "content-rendering-contract-rule-kind",
+      "type": "rule",
+      "label": "Rule",
+      "root": false,
+      "position": { "x": -220, "y": 360 },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Declare Content Kind",
+        "body": "Content kind must be explicit: markdown, html, text, svg, image, canvas, json, or another declared kind. A renderer should not determine product meaning purely by checking which field happens to be present.",
+        "_classBinding": {
+          "key": "rule",
+          "sourceRef": "/library/classes/nodes/skill-contract/rule.node-class.node",
+          "ref": "/library/classes/nodes/skill-contract/rule.node-class.node"
+        },
+        "definitionKey": "rule"
+      }
+    },
+    {
+      "id": "content-rendering-contract-rule-role",
+      "type": "rule",
+      "label": "Rule",
+      "root": false,
+      "position": { "x": 180, "y": 360 },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Declare Render Role",
+        "body": "The same content kind may render differently by role. Detail, summary, icon, editor, and document-like surfaces must be treated as declared roles with different presentation expectations.",
+        "_classBinding": {
+          "key": "rule",
+          "sourceRef": "/library/classes/nodes/skill-contract/rule.node-class.node",
+          "ref": "/library/classes/nodes/skill-contract/rule.node-class.node"
+        },
+        "definitionKey": "rule"
+      }
+    },
+    {
+      "id": "content-rendering-contract-rule-presentation",
+      "type": "rule",
+      "label": "Rule",
+      "root": false,
+      "position": { "x": 580, "y": 360 },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Declare Presentation Profile",
+        "body": "Markdown rendering must carry presentation rules such as container padding, title/body separation, typography rhythm, list and code treatment, and overflow policy. Rendering quality cannot remain implicit in component code alone.",
+        "_classBinding": {
+          "key": "rule",
+          "sourceRef": "/library/classes/nodes/skill-contract/rule.node-class.node",
+          "ref": "/library/classes/nodes/skill-contract/rule.node-class.node"
+        },
+        "definitionKey": "rule"
+      }
+    },
+    {
+      "id": "content-rendering-contract-guardrail",
+      "type": "guardrail",
+      "label": "Guardrail",
+      "root": false,
+      "position": { "x": -20, "y": 640 },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Do Not Infer Product Semantics From Field Names",
+        "body": "A field named `markdown` or `html` may describe payload transport, but it is not enough to define how the product should render, edit, or size that content. Content contract and render contract must stay explicit.",
+        "_classBinding": {
+          "key": "guardrail",
+          "sourceRef": "/library/classes/nodes/skill-contract/guardrail.node-class.node",
+          "ref": "/library/classes/nodes/skill-contract/guardrail.node-class.node"
+        },
+        "definitionKey": "guardrail"
+      }
+    },
+    {
+      "id": "content-rendering-contract-failure",
+      "type": "failure-mode",
+      "label": "Failure Mode",
+      "root": false,
+      "position": { "x": 460, "y": 640 },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Renderer Can Render But Does Not Render Well",
+        "body": "This is the markdown smoke-test failure. The generic dynamic path technically supports markdown, but because presentation rules are missing, the result is materially worse than the native markdown node and not fit as a replacement.",
+        "_classBinding": {
+          "key": "failure-mode",
+          "sourceRef": "/library/classes/nodes/skill-contract/failure-mode.node-class.node",
+          "ref": "/library/classes/nodes/skill-contract/failure-mode.node-class.node"
+        },
+        "definitionKey": "failure-mode"
+      }
+    },
+    {
+      "id": "content-rendering-contract-procedure",
+      "type": "procedure",
+      "label": "Procedure",
+      "root": false,
+      "position": { "x": 220, "y": 920 },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Apply The Contract",
+        "body": "1. Declare content kind and source path.\n2. Declare render role.\n3. Attach a presentation profile.\n4. Make editor behavior resolve to the same declared contract.\n5. Only then consider converging native and dynamic render paths.",
+        "_classBinding": {
+          "key": "procedure",
+          "sourceRef": "/library/classes/nodes/skill-contract/procedure.node-class.node",
+          "ref": "/library/classes/nodes/skill-contract/procedure.node-class.node"
+        },
+        "definitionKey": "procedure"
+      }
+    },
+    {
+      "id": "content-rendering-contract-port-node-authoring",
+      "type": "port",
+      "label": "Node Authoring Contract",
+      "root": false,
+      "position": { "x": -760, "y": 520 },
+      "width": 340,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "navigate",
+        "target": {
+          "endpoint": "github://twilite-zone/public/library/documentation/contracts/nodes/node-authoring-contract.node:root",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open"
+        },
+        "memo": "Authoring contract for node concerns and editing boundaries.",
+        "sourceRef": "github://twilite-zone/public/library/documentation/contracts/nodes/node-authoring-contract.node",
+        "sourceNodeId": "node-authoring-contract-node-view",
+        "sourcePayload": "node.web.summary"
+      }
+    },
+    {
+      "id": "content-rendering-contract-port-view-roles",
+      "type": "port",
+      "label": "View Role Primitives",
+      "root": false,
+      "position": { "x": -760, "y": 800 },
+      "width": 340,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "navigate",
+        "target": {
+          "endpoint": "github://twilite-zone/public/library/documentation/contracts/view/view-role-primitives-contract.node:root",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open"
+        },
+        "memo": "Contract for port-view, node-view, icon-view, document-view, and editor-view roles.",
+        "sourceRef": "github://twilite-zone/public/library/documentation/contracts/view/view-role-primitives-contract.node",
+        "sourceNodeId": "named-view-node-view",
+        "sourcePayload": "node.web.summary"
+      }
+    }
+  ],
+  "edges": [
+    { "id": "content-rendering-edge-1", "source": "content-rendering-contract-title", "target": "content-rendering-contract-type", "type": "relates", "label": "defines" },
+    { "id": "content-rendering-edge-2", "source": "content-rendering-contract-type", "target": "content-rendering-contract-port-view", "type": "relates", "label": "exposes" },
+    { "id": "content-rendering-edge-3", "source": "content-rendering-contract-type", "target": "content-rendering-contract-node-view", "type": "relates", "label": "exposes" },
+    { "id": "content-rendering-edge-4", "source": "content-rendering-contract-type", "target": "content-rendering-contract-icon-view", "type": "relates", "label": "exposes" },
+    { "id": "content-rendering-edge-5", "source": "content-rendering-contract-skill", "target": "content-rendering-contract-scope", "type": "relates", "label": "scoped by" },
+    { "id": "content-rendering-edge-6", "source": "content-rendering-contract-skill", "target": "content-rendering-contract-input", "type": "relates", "label": "needs" },
+    { "id": "content-rendering-edge-7", "source": "content-rendering-contract-skill", "target": "content-rendering-contract-output", "type": "relates", "label": "produces" },
+    { "id": "content-rendering-edge-8", "source": "content-rendering-contract-scope", "target": "content-rendering-contract-rule-kind", "type": "relates", "label": "governs" },
+    { "id": "content-rendering-edge-9", "source": "content-rendering-contract-scope", "target": "content-rendering-contract-rule-role", "type": "relates", "label": "governs" },
+    { "id": "content-rendering-edge-10", "source": "content-rendering-contract-scope", "target": "content-rendering-contract-rule-presentation", "type": "relates", "label": "governs" },
+    { "id": "content-rendering-edge-11", "source": "content-rendering-contract-rule-kind", "target": "content-rendering-contract-guardrail", "type": "relates", "label": "bounded by" },
+    { "id": "content-rendering-edge-12", "source": "content-rendering-contract-rule-role", "target": "content-rendering-contract-guardrail", "type": "relates", "label": "bounded by" },
+    { "id": "content-rendering-edge-13", "source": "content-rendering-contract-rule-presentation", "target": "content-rendering-contract-failure", "type": "relates", "label": "prevents" },
+    { "id": "content-rendering-edge-14", "source": "content-rendering-contract-failure", "target": "content-rendering-contract-procedure", "type": "relates", "label": "respond with" },
+    { "id": "content-rendering-edge-15", "source": "content-rendering-contract-port-node-authoring", "target": "content-rendering-contract-skill", "type": "relates", "label": "aligns with" },
+    { "id": "content-rendering-edge-16", "source": "content-rendering-contract-port-view-roles", "target": "content-rendering-contract-skill", "type": "relates", "label": "depends on" }
+  ],
+  "nodeCount": 22,
+  "edgeCount": 16,
+  "timestamp": "2026-04-16T12:00:00.000Z"
+}
