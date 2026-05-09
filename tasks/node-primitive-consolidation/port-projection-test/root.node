@@ -1,0 +1,773 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "port-projection-test-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -720,
+        "y": -260
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 340,
+      "height": 220,
+      "data": {
+        "identity": {
+          "graphId": "port-projection-test",
+          "name": "Port Projection Test",
+          "version": "0.1.0",
+          "description": "Test graph for declared ports, legacy inputs/outputs, and root fallback.",
+          "createdAt": "2026-03-21T00:00:00.000Z",
+          "updatedAt": "2026-03-21T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "graph",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "markdown"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "port-projection-test-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -720,
+        "y": 0
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 320,
+      "height": 180,
+      "data": {}
+    },
+    {
+      "id": "port-projection-test-overview",
+      "type": "markdown",
+      "label": "Port Projection Test",
+      "position": {
+        "x": -120,
+        "y": -140
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 520,
+      "height": 260,
+      "data": {
+        "markdown": "# Port Projection Test\n\nUse this graph to verify the first declared-port slice.\n\nExpected behavior:\n\n- explicit `ports[]` declarations win\n- legacy `inputs[]` / `outputs[]` still project to the node boundary\n- nodes with no declarations still get the fallback `root` handle\n- explicit port ids should match edge endpoints",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "port-projection-test-checklist",
+      "type": "markdown",
+      "label": "What To Check",
+      "position": {
+        "x": 1480,
+        "y": -140
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 420,
+      "height": 300,
+      "data": {
+        "markdown": "# What To Check\n\n## Explicit node\n- only declared ports appear\n- placement respects side/offset\n- no extra synthetic `root`\n\n## Legacy node\n- `inputs[]` / `outputs[]` still render as ports\n- no extra synthetic `root`\n\n## Fallback node\n- one `root` handle appears\n\n## Bound port node\n- projected handle appears on the host boundary\n- projected handle uses the bound `port` node, not a host declaration\n- host still has no explicit ports of its own\n\n## Edges\n- edge endpoints land on the declared or projected handles",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "port-projection-test-explicit",
+      "type": "markdown",
+      "label": "Explicit Ports Node",
+      "position": {
+        "x": 20,
+        "y": 260
+      },
+      "width": 380,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "ports": [
+        {
+          "id": "in-main",
+          "label": "In",
+          "direction": "input",
+          "dataType": "value",
+          "position": {
+            "side": "left",
+            "offset": 0.35
+          }
+        },
+        {
+          "id": "out-main",
+          "label": "Out",
+          "direction": "output",
+          "dataType": "content",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "status",
+          "label": "Status",
+          "direction": "output",
+          "dataType": "value",
+          "position": {
+            "side": "bottom",
+            "offset": 0.75
+          }
+        }
+      ],
+      "inputs": [
+        {
+          "key": "legacy-in",
+          "label": "Legacy In",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "legacy-out",
+          "label": "Legacy Out",
+          "type": "value"
+        }
+      ],
+      "data": {
+        "markdown": "# Explicit Ports\n\nThis node declares `ports[]` directly.\n\nIt also carries legacy `inputs[]` / `outputs[]` data, but the renderer should prefer the explicit unified declarations.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "port-projection-test-legacy",
+      "type": "markdown",
+      "label": "Legacy Inputs/Outputs Node",
+      "position": {
+        "x": 520,
+        "y": 260
+      },
+      "width": 380,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "inputs": [
+        {
+          "key": "legacy-in",
+          "label": "Legacy In",
+          "type": "content",
+          "position": {
+            "side": "left",
+            "offset": 0.4
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "legacy-out",
+          "label": "Legacy Out",
+          "type": "value",
+          "position": {
+            "side": "right",
+            "offset": 0.6
+          }
+        }
+      ],
+      "data": {
+        "markdown": "# Legacy Inputs / Outputs\n\nThis node has no `ports[]` array.\n\nThe renderer should derive boundary ports from `inputs[]` and `outputs[]`.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "port-projection-test-fallback",
+      "type": "markdown",
+      "label": "Fallback Root Node",
+      "position": {
+        "x": 1020,
+        "y": 260
+      },
+      "width": 380,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Fallback Root\n\nThis node declares no ports at all.\n\nIt should still expose the fallback `root` handle for compatibility.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "port-projection-test-host",
+      "type": "markdown",
+      "label": "Bound Port Host",
+      "position": {
+        "x": 520,
+        "y": 620
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Bound Port Host\n\nThis node declares no explicit ports.\n\nA nearby `port` node should project its own handle onto this node's boundary.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "port-projection-test-bound-port",
+      "type": "port",
+      "label": "Projected Boundary Port",
+      "position": {
+        "x": 940,
+        "y": 660
+      },
+      "width": 220,
+      "height": 110,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "hostNodeId": "port-projection-test-host",
+        "boundaryPortId": "root",
+        "intent": "boundary",
+        "target": {
+          "endpoint": "host.node#external-target:root",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Projected target"
+        },
+        "memo": "This standalone port node should project its handle onto the Bound Port Host."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "port-projection-test-edge-001",
+      "type": "reference",
+      "source": "port-projection-test-overview",
+      "target": "port-projection-test-explicit",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "case"
+    },
+    {
+      "id": "port-projection-test-edge-002",
+      "type": "reference",
+      "source": "port-projection-test-overview",
+      "target": "port-projection-test-legacy",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "case"
+    },
+    {
+      "id": "port-projection-test-edge-003",
+      "type": "reference",
+      "source": "port-projection-test-overview",
+      "target": "port-projection-test-fallback",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "case"
+    },
+    {
+      "id": "port-projection-test-edge-004",
+      "type": "reference",
+      "source": "port-projection-test-explicit",
+      "target": "port-projection-test-legacy",
+      "sourcePort": "out-main",
+      "targetPort": "legacy-in",
+      "label": "declared to legacy"
+    },
+    {
+      "id": "port-projection-test-edge-005",
+      "type": "reference",
+      "source": "port-projection-test-legacy",
+      "target": "port-projection-test-fallback",
+      "sourcePort": "legacy-out",
+      "targetPort": "root",
+      "label": "legacy to fallback"
+    },
+    {
+      "id": "port-projection-test-edge-006",
+      "type": "reference",
+      "source": "port-projection-test-explicit",
+      "target": "port-projection-test-checklist",
+      "sourcePort": "status",
+      "targetPort": "root",
+      "label": "verify"
+    },
+    {
+      "id": "port-projection-test-edge-007",
+      "type": "reference",
+      "source": "port-projection-test-overview",
+      "target": "port-projection-test-host",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "case"
+    },
+    {
+      "id": "port-projection-test-edge-008",
+      "type": "reference",
+      "source": "port-projection-test-explicit",
+      "target": "port-projection-test-bound-port",
+      "sourcePort": "out-main",
+      "targetPort": "root",
+      "label": "to projected port"
+    }
+  ],
+  "nodeCount": 9,
+  "edgeCount": 8,
+  "timestamp": "2026-03-24T15:44:08.257Z"
+}

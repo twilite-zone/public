@@ -1,0 +1,165 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Diagnostics Runtime Error Smoke Test",
+    "description": "Minimal graph for testing runtime diagnostics from a failing script node.",
+    "created": "2026-04-05T06:00:00.000Z",
+    "modified": "2026-04-05T06:00:00.000Z",
+    "author": "Codex",
+    "tags": [
+      "diagnostics",
+      "runtime",
+      "script",
+      "smoke-test"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "diagnostics-runtime-smoke-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -880,
+        "y": -240
+      },
+      "width": 380,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "diagnostics-runtime-error-smoke",
+          "name": "Diagnostics Runtime Error Smoke Test",
+          "version": "0.1.0",
+          "description": "Standalone graph for testing runtime diagnostics from a failing script node.",
+          "createdAt": "2026-04-05T06:00:00.000Z",
+          "updatedAt": "2026-04-05T06:00:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "validation"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "markdown",
+            "script"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "layout": {
+            "mode": "fixed"
+          },
+          "github": {
+            "repo": "",
+            "path": "",
+            "branch": "main"
+          },
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "diagnostics-runtime-smoke-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -880,
+        "y": 40
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "entries": [
+          {
+            "key": "script",
+            "intent": "Execute graph-owned script logic",
+            "implementation": "This graph intentionally throws from a script node to test diagnostics capture.",
+            "dictionaryKey": "script"
+          }
+        ]
+      }
+    },
+    {
+      "id": "diagnostics-runtime-smoke-overview",
+      "type": "markdown",
+      "label": "Overview",
+      "root": true,
+      "position": {
+        "x": -420,
+        "y": -180
+      },
+      "width": 860,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Runtime Error Smoke Test\n\nThis graph exists only to test diagnostics.\n\n## What it does\n- contains one graph-owned script node\n- the script throws intentionally\n- diagnostics should show the failing script node id and runtime kind\n\n## How to use it\n1. Open the diagnostics or validation panel.\n2. Load this graph.\n3. If the script does not fire automatically, click **RUN** on the script node.\n4. Confirm the panel shows a runtime/script diagnostic for `diagnostics-runtime-smoke-script`."
+      }
+    },
+    {
+      "id": "diagnostics-runtime-smoke-script",
+      "type": "script",
+      "label": "Intentional Failure",
+      "position": {
+        "x": 60,
+        "y": 120
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "scriptName": "Intentional Runtime Failure",
+        "source": "throw new Error('Diagnostics smoke test: intentional script failure from diagnostics-runtime-smoke-script');",
+        "script": "",
+        "scriptRef": "",
+        "dryRun": false,
+        "allowMutations": false,
+        "autoRun": true,
+        "autoRunOnGraphChange": false,
+        "autoRunOnLoad": true,
+        "lastResult": null,
+        "lastRunAt": null
+      }
+    }
+  ],
+  "edges": []
+}

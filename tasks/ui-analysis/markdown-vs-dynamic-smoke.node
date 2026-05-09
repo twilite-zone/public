@@ -1,0 +1,221 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "markdown-vs-dynamic-smoke-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -920,
+        "y": -260
+      },
+      "width": 420,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "markdown-vs-dynamic-smoke",
+          "name": "Markdown vs Dynamic Markdown Smoke Test",
+          "version": "0.1.0",
+          "description": "Side-by-side comparison between the built-in markdown node and a dynamic node rendering markdown content.",
+          "createdAt": "2026-04-13T00:00:00.000Z",
+          "updatedAt": "2026-04-13T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "validation"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "markdown",
+            "dyn-md"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "summaryNodeId": "markdown-vs-dynamic-smoke-plan"
+      }
+    },
+    {
+      "id": "markdown-vs-dynamic-smoke-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -920,
+        "y": 60
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "entries": [
+          {
+            "key": "markdown",
+            "intent": "built-in authored markdown node",
+            "implementation": "MarkdownNode renderer",
+            "dictionaryKey": "markdown"
+          },
+          {
+            "key": "dyn-md",
+            "intent": "dynamic markdown renderer",
+            "implementation": "DynamicViewNode -> render.markdown",
+            "dictionaryKey": "dyn-md"
+          }
+        ]
+      }
+    },
+    {
+      "id": "markdown-vs-dynamic-smoke-plan",
+      "type": "markdown",
+      "label": "Comparison Plan",
+      "position": {
+        "x": -420,
+        "y": -250
+      },
+      "width": 980,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Markdown vs Dynamic Markdown\n\nCompare the two nodes below side by side.\n\nChecks:\n- both render the same authored markdown content\n- built-in markdown uses the dedicated `MarkdownNode` path\n- dynamic markdown uses the `dyn-md` dynamic-view path\n- visual differences should be attributable to renderer behavior, not content differences"
+      }
+    },
+    {
+      "id": "markdown-vs-dynamic-built-in",
+      "type": "markdown",
+      "label": "Built-in Markdown",
+      "position": {
+        "x": -360,
+        "y": 40
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Shared Markdown Sample\n\n- Bullet A\n- Bullet B\n- Bullet C\n\n---\n\n**Bold text**, `inline code`, and a short paragraph so spacing is visible."
+      }
+    },
+    {
+      "id": "markdown-vs-dynamic-runtime",
+      "type": "dyn-md",
+      "label": "Dynamic Markdown",
+      "position": {
+        "x": 180,
+        "y": 40
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Shared Markdown Sample\n\n- Bullet A\n- Bullet B\n- Bullet C\n\n---\n\n**Bold text**, `inline code`, and a short paragraph so spacing is visible.",
+        "_classBinding": {
+          "key": "dyn-md",
+          "sourceRef": "/library/classes/nodes/dynamic-render-modes.node-class.node",
+          "ref": "/library/classes/nodes/dynamic-render-modes.node-class.node",
+          "nodeDef": {
+            "key": "dyn-md",
+            "ref": "/library/classes/nodes/dynamic-render-modes.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "dyn-md",
+              "intent": "node",
+              "payload": "render.markdown",
+              "ref": "/library/classes/nodes/dynamic-render-modes.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "dyn-md",
+            "intent": "node",
+            "payload": "render.markdown",
+            "ref": "/library/classes/nodes/dynamic-render-modes.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Dynamic markdown class",
+          "sourceRef": "/library/classes/nodes/dynamic-render-modes.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "dyn-md",
+          "classRef": "/library/classes/nodes/dynamic-render-modes.node-class.node"
+        },
+        "definitionKey": "dyn-md"
+      }
+    },
+    {
+      "id": "markdown-vs-dynamic-notes",
+      "type": "markdown",
+      "label": "What To Watch",
+      "position": {
+        "x": 660,
+        "y": 40
+      },
+      "width": 360,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## What To Watch\n\n- body padding\n- heading scale\n- bullet indentation\n- inline code treatment\n- label/header treatment\n- edit behavior in properties and editor panel"
+      }
+    }
+  ],
+  "edges": [],
+  "timestamp": "2026-04-13T12:00:00.000Z",
+  "nodeCount": 6,
+  "edgeCount": 0
+}

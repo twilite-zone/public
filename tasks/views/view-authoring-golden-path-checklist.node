@@ -1,0 +1,234 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "view-authoring-declaration",
+      "type": "declaration",
+      "label": "Declaration",
+      "position": { "x": -1160, "y": -700 },
+      "width": 420,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "view-authoring-golden-path-checklist",
+          "name": "View Authoring Golden Path Checklist",
+          "version": "0.1.0",
+          "description": "Manual QA checklist for creating view nodes, editing their render-shape, and assigning them in the declaration.",
+          "createdAt": "2026-04-23T00:00:00.000Z",
+          "updatedAt": "2026-04-23T00:00:00.000Z"
+        },
+        "intent": { "kind": "task", "scope": "validation" },
+        "dependencies": {
+          "nodeTypes": ["declaration", "markdown", "view"],
+          "portContracts": ["core"],
+          "skills": [],
+          "schemaVersions": { "nodes": ">=1.0.0", "ports": ">=1.0.0" },
+          "optional": []
+        },
+        "authority": {
+          "mutation": { "allowCreate": true, "allowUpdate": true, "allowDelete": true, "appendOnly": false },
+          "actors": { "humans": true, "agents": true, "tools": true },
+          "styleAuthority": "descriptive",
+          "history": { "rewriteAllowed": false, "squashAllowed": false }
+        },
+        "document": { "url": "" },
+        "declaration": {
+          "kind": "task",
+          "targetMode": "artifact",
+          "artifactKind": "task",
+          "graphViewRole": "authoring",
+          "defaultSurfaceId": "view",
+          "surfaces": [
+            {
+              "id": "view",
+              "kind": "view",
+              "label": "View",
+              "memo": "Local view nodes are authored inside the graph; assign primaries here.",
+              "exposes": {
+                "views": { "mode": "allow" },
+                "declarations": { "mode": "allow" }
+              }
+            },
+            {
+              "id": "export",
+              "kind": "export",
+              "label": "Export",
+              "memo": "Curated export surface (starts closed).",
+              "exposes": {
+                "nodeClasses": { "mode": "deny" },
+                "edgeClasses": { "mode": "deny" },
+                "views": { "mode": "deny" },
+                "scripts": { "mode": "deny" },
+                "declarations": { "mode": "allow" }
+              }
+            }
+          ],
+          "primaryNodeViewId": "",
+          "primaryEditorViewId": "",
+          "iconViewNodeId": "",
+          "portViewNodeId": ""
+        }
+      }
+    },
+    {
+      "id": "view-authoring-intro",
+      "type": "markdown",
+      "label": "View Authoring Checklist",
+      "position": { "x": -700, "y": -700 },
+      "width": 860,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# View Authoring Golden Path\n\nThis graph is a *separate* test from bridges/declarations.\n\nGoal: prove that a human can:\n\n1. create a view node\n2. edit intent/payload + render-shape\n3. enter renderable content (markdown/html/svg/text)\n4. assign that view in the declaration\n\nThis does not attempt to prove \"a class uses the view\" yet. It proves the authoring substrate is real and consistent."
+      }
+    },
+    {
+      "id": "view-authoring-steps",
+      "type": "markdown",
+      "label": "Steps",
+      "position": { "x": 200, "y": -700 },
+      "width": 620,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Manual Steps (quick)\n\n1. Add a `view` node.\n2. Edit it: set `intent=node`, `payload=node.web.detail`.\n3. Set render-shape kind to `markdown` and enter markdown content.\n4. Confirm only the active render field is visible (not 5 competing fields).\n5. In the declaration editor, set **Primary Node View** to that view node.\n6. Repeat for an editor view: `intent=editor`, `payload=editor.web`.\n\nIf any step fails, capture what you saw and what you expected."
+      }
+    },
+    {
+      "id": "view-authoring-step-01",
+      "type": "markdown",
+      "label": "Step 1",
+      "position": { "x": -700, "y": -340 },
+      "width": 560,
+      "height": 200,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 1: Create A View Node\n\nAction:\n- Create a new node of type `view`.\n\nPass condition:\n- A view node appears on canvas.\n- It has an Edit button.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "view-authoring-step-02",
+      "type": "markdown",
+      "label": "Step 2",
+      "position": { "x": -110, "y": -340 },
+      "width": 560,
+      "height": 200,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 2: Edit Intent + Payload\n\nAction:\n- Open the view node editor.\n- Set:\n  - intent: `node`\n  - payload: `node.web.detail`\n\nPass condition:\n- The view node header/chip reflects the new payload.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "view-authoring-step-03",
+      "type": "markdown",
+      "label": "Step 3",
+      "position": { "x": 480, "y": -340 },
+      "width": 560,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 3: Choose Render Kind + Enter Content\n\nAction:\n- Set render-shape kind to `markdown`.\n- Enter markdown content (include a header and a list).\n\nPass condition:\n- Content persists after closing editor.\n- Preview reflects the new payload content.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "view-authoring-step-04",
+      "type": "markdown",
+      "label": "Step 4",
+      "position": { "x": -700, "y": -70 },
+      "width": 560,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 4: Field Hygiene (Primary Format)\n\nAction:\n- Switch render kind between `markdown` and `html`.\n\nPass condition:\n- Only the active render field is visible.\n- Switching kind does not silently destroy other content.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "view-authoring-step-05",
+      "type": "markdown",
+      "label": "Step 5",
+      "position": { "x": -110, "y": -70 },
+      "width": 560,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 5: Assign In Declaration\n\nAction:\n- Open declaration editor.\n- Set **Primary Node View** to your authored view node.\n\nPass condition:\n- Your view node appears in the selector list.\n- Selection persists.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "view-authoring-step-06",
+      "type": "markdown",
+      "label": "Step 6",
+      "position": { "x": 480, "y": -70 },
+      "width": 560,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 6: Author An Editor View\n\nAction:\n- Create another `view` node.\n- Set:\n  - intent: `editor`\n  - payload: `editor.web`\n\nPass condition:\n- It appears in the declaration editor selector for **Primary Editor View**.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "view-authoring-sample-node-view",
+      "type": "view",
+      "label": "Sample Node View",
+      "position": { "x": -700, "y": 260 },
+      "width": 360,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": { "intent": "node", "payload": "node.web.detail" },
+        "renderShape": { "kind": "markdown" },
+        "markdown": "# Sample node view\n\n- This is an inline markdown payload.\n- Edit me and try switching kind.\n"
+      }
+    },
+    {
+      "id": "view-authoring-sample-editor-view",
+      "type": "view",
+      "label": "Sample Editor View",
+      "position": { "x": -320, "y": 260 },
+      "width": 360,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": { "intent": "editor", "payload": "editor.web" },
+        "renderShape": { "kind": "html" },
+        "html": "<div style=\"padding:12px;border:1px dashed rgba(120,120,120,0.5);border-radius:10px;\">Editor view sample payload</div>"
+      }
+    },
+    {
+      "id": "view-authoring-notes",
+      "type": "markdown",
+      "label": "Notes",
+      "position": { "x": 80, "y": 260 },
+      "width": 720,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Notes / Diagnostics\n\nIf the view editor looks like an \"error editor\":\n- capture the view node type (`view`, `node-view`, etc.)\n- capture which editor surface opened (header shows `View: ...`)\n- capture whether the edit button exists on the view node\n\nThis graph is intentionally simple: it is about authoring and assignment, not consumption."
+      }
+    }
+  ],
+  "edges": [
+    { "id": "view-step-edge-01", "source": "view-authoring-step-01", "target": "view-authoring-step-02", "sourcePort": "root", "targetPort": "root", "label": "next" },
+    { "id": "view-step-edge-02", "source": "view-authoring-step-02", "target": "view-authoring-step-03", "sourcePort": "root", "targetPort": "root", "label": "next" },
+    { "id": "view-step-edge-03", "source": "view-authoring-step-03", "target": "view-authoring-step-04", "sourcePort": "root", "targetPort": "root", "label": "next" },
+    { "id": "view-step-edge-04", "source": "view-authoring-step-04", "target": "view-authoring-step-05", "sourcePort": "root", "targetPort": "root", "label": "next" },
+    { "id": "view-step-edge-05", "source": "view-authoring-step-05", "target": "view-authoring-step-06", "sourcePort": "root", "targetPort": "root", "label": "next" }
+  ],
+  "timestamp": "2026-04-23T20:40:00.000Z",
+  "nodeCount": 13,
+  "edgeCount": 5
+}
+

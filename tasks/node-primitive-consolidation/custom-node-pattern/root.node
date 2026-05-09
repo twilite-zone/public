@@ -1,0 +1,1730 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Custom Node Pattern",
+    "description": "Define a sensible graph-native pattern for custom nodes without collapsing renderer responsibilities into node scripts.",
+    "created": "2026-03-22T00:00:00.000Z",
+    "modified": "2026-03-22T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "node-primitive",
+      "custom-node",
+      "dynamic-view"
+    ]
+  },
+  "settings": {
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "#666666",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "autoSave": false
+  },
+  "viewport": {
+    "pan": {
+      "x": 0,
+      "y": 0
+    },
+    "zoom": 1
+  },
+  "document": null,
+  "scripts": [],
+  "nodes": [
+    {
+      "id": "custom-node-pattern-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -760,
+        "y": -260
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "custom-node-pattern",
+          "name": "Custom Node Pattern",
+          "version": "0.1.0",
+          "description": "Define a graph-native custom node pattern with a clean separation of host renderer and declared behavior.",
+          "createdAt": "2026-03-22T00:00:00.000Z",
+          "updatedAt": "2026-03-22T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "markdown",
+            "task",
+            "decision",
+            "open-question",
+            "goal",
+            "task-summary-provider"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "summaryNodeId": "custom-node-pattern-summary"
+      }
+    },
+    {
+      "id": "custom-node-pattern-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -760,
+        "y": 0
+      },
+      "width": 320,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {}
+    },
+    {
+      "id": "custom-node-pattern-overview",
+      "type": "markdown",
+      "label": "Custom Node Pattern",
+      "position": {
+        "x": -120,
+        "y": -120
+      },
+      "width": 560,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Custom Node Pattern\n\nThe goal is not to hide everything in React, and not to pretend a class script should render buttons. We want a clean graph-native path for custom nodes:\n\n- host renderer owns generic control rendering and dispatch\n- node class owns declared controls, views, state transitions, and scripts\n- custom nodes become authored artifacts instead of one-off React escapes",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "custom-node-pattern-task-contract",
+      "type": "task",
+      "label": "Define the class-backed custom node contract",
+      "position": {
+        "x": 560,
+        "y": -140
+      },
+      "width": 400,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Specify what a graph-native custom node may declare: views, controls, event reactions, scripts, and optional slots for interior controls.",
+        "priority": "critical",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "4",
+        "acceptanceCriteria": [
+          "Renderer-owned versus class-owned responsibilities are explicit",
+          "The bootstrap node fits the contract without cheating",
+          "A future custom node can be authored without writing a bespoke React component"
+        ],
+        "resolutionPath": "The working pattern is now explicit: host renders generic controls, class defines behavior, and bootstrap is the proof case.",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "custom-node-pattern-decision-split",
+      "type": "decision",
+      "label": "Host renders controls, class defines behavior",
+      "position": {
+        "x": 1060,
+        "y": -220
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Actual button rendering, placement, theming, and click dispatch remain generic host responsibilities. The node class defines labels, actions, state patches, event reactions, and any script-backed logic.",
+        "rationale": "This keeps the renderer coherent while making custom nodes graph-native instead of React-only.",
+        "_classBinding": {
+          "key": "decision",
+          "sourceRef": "/library/classes/nodes/task-planning/decision.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+          "identity": {
+            "graphId": "decision-class",
+            "name": "Decision Class",
+            "version": "0.1.0",
+            "description": "Recorded, timestamped choice for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Recorded, timestamped choice for planning graphs.",
+          "description": "Recorded, timestamped choice for planning graphs.",
+          "defaults": {
+            "label": "Decision",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+            "showLabel": false,
+            "data": {
+              "rationale": "State why this decision was made.",
+              "status": "decided",
+              "decidedAt": "",
+              "owner": "",
+              "supersededBy": ""
+            }
+          },
+          "nodeDef": {
+            "key": "decision",
+            "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Decision",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+              "showLabel": false,
+              "data": {
+                "rationale": "State why this decision was made.",
+                "status": "decided",
+                "decidedAt": "",
+                "owner": "",
+                "supersededBy": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "decision",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "decision",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "decision",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/decision.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "decision",
+          "classRef": "/library/classes/nodes/task-planning/decision.node-class.node"
+        },
+        "definitionKey": "decision"
+      }
+    },
+    {
+      "id": "custom-node-pattern-decision-script-actions",
+      "type": "decision",
+      "label": "Named script actions are the next purity move",
+      "position": {
+        "x": 1060,
+        "y": 80
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "If we want more separation of concerns, controls should eventually dispatch named script actions or action contracts, not ever-larger hardcoded host action lists.",
+        "rationale": "That pushes behavior definition into the class while preserving generic host-owned control rendering.",
+        "_classBinding": {
+          "key": "decision",
+          "sourceRef": "/library/classes/nodes/task-planning/decision.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+          "identity": {
+            "graphId": "decision-class",
+            "name": "Decision Class",
+            "version": "0.1.0",
+            "description": "Recorded, timestamped choice for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Recorded, timestamped choice for planning graphs.",
+          "description": "Recorded, timestamped choice for planning graphs.",
+          "defaults": {
+            "label": "Decision",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+            "showLabel": false,
+            "data": {
+              "rationale": "State why this decision was made.",
+              "status": "decided",
+              "decidedAt": "",
+              "owner": "",
+              "supersededBy": ""
+            }
+          },
+          "nodeDef": {
+            "key": "decision",
+            "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Decision",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+              "showLabel": false,
+              "data": {
+                "rationale": "State why this decision was made.",
+                "status": "decided",
+                "decidedAt": "",
+                "owner": "",
+                "supersededBy": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "decision",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "decision",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "decision",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/decision.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "decision",
+          "classRef": "/library/classes/nodes/task-planning/decision.node-class.node"
+        },
+        "definitionKey": "decision"
+      }
+    },
+    {
+      "id": "custom-node-pattern-note-bootstrap",
+      "type": "markdown",
+      "label": "Bootstrap Node Lesson",
+      "position": {
+        "x": 1560,
+        "y": -200
+      },
+      "width": 460,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Bootstrap Node Lesson\n\nThe bootstrap handshake proved the right baseline:\n\n- node-specific surface and state live in the class file\n- generic copy/paste and event-reaction machinery live in the renderer\n- the node can look custom and behave custom without becoming a bespoke node type\n\nThat is the pattern to preserve.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "custom-node-pattern-task-interior-controls",
+      "type": "task",
+      "label": "Support interior host-rendered controls",
+      "position": {
+        "x": 560,
+        "y": 220
+      },
+      "width": 400,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Let classes place generic controls inside the node surface through declared slots or placements such as header, body-top, or footer, without requiring arbitrary HTML-native buttons.",
+        "priority": "high",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "3",
+        "acceptanceCriteria": [
+          "Controls can render somewhere other than browser chrome",
+          "The bootstrap node can use an interior action area",
+          "The mechanism stays host-rendered and theme-coherent"
+        ],
+        "resolutionPath": "DynamicViewNode now supports interior host-rendered control placement and the bootstrap node uses it.",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "custom-node-pattern-open-question-script-rendering",
+      "type": "open-question",
+      "label": "Should classes ever render their own controls?",
+      "position": {
+        "x": 1560,
+        "y": 140
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "True controls inside arbitrary `node.web.html` would require a runtime bridge. Decide later whether that is worth the complexity, or whether host-rendered interior controls are enough.",
+        "status": "answered",
+        "resolutionPath": "No for now. Host renders generic controls; class/script owns behavior and state changes.",
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "identity": {
+            "graphId": "open-question-class",
+            "name": "Open Question Class",
+            "version": "0.1.0",
+            "description": "Unresolved question node for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Unresolved question node for planning graphs.",
+          "description": "Unresolved question node for planning graphs.",
+          "defaults": {
+            "label": "Open Question",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+            "showLabel": false,
+            "data": {
+              "body": "State what is still unclear.",
+              "status": "open",
+              "owner": "",
+              "resolutionPath": "",
+              "prominence": "high"
+            }
+          },
+          "nodeDef": {
+            "key": "open-question",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Open Question",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+              "showLabel": false,
+              "data": {
+                "body": "State what is still unclear.",
+                "status": "open",
+                "owner": "",
+                "resolutionPath": "",
+                "prominence": "high"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "open-question",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "open-question",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "open-question",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "definitionKey": "open-question"
+      }
+    },
+    {
+      "id": "custom-node-pattern-note-shape",
+      "type": "markdown",
+      "label": "Pattern Shape",
+      "position": {
+        "x": 2060,
+        "y": -40
+      },
+      "width": 500,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Pattern Shape\n\n## Host renderer owns\n- generic control button rendering\n- control placement and slots\n- theming and interaction polish\n- dispatch into actions / scripts / event bus\n\n## Node class owns\n- `node.web` / `editor.web` views\n- control declarations\n- event reactions\n- named scripts or action contracts\n- custom state and visible transitions\n\n## Immediate next move\n- add interior host-rendered control placement to `DynamicViewNode`\n- then restyle bootstrap using that slot",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "custom-node-pattern-summary",
+      "type": "task-summary-provider",
+      "label": "Custom Node Pattern Summary",
+      "position": {
+        "x": -640,
+        "y": -120
+      },
+      "width": 420,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "goal": "Custom Node Pattern",
+        "status": "todo",
+        "taskProgress": {
+          "completed": 2,
+          "total": 2
+        },
+        "questionProgress": {
+          "answered": 1,
+          "total": 1
+        },
+        "summarySource": "graph-updater",
+        "taskTitles": [
+          "Define the class-backed custom node contract",
+          "Support interior host-rendered controls"
+        ],
+        "questionTitles": [
+          "Should classes ever render their own controls?"
+        ],
+        "taskListText": "1. Define the class-backed custom node contract\n2. Support interior host-rendered controls",
+        "questionListText": "1. Should classes ever render their own controls?",
+        "_classBinding": {
+          "key": "task-summary-provider",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-class",
+            "name": "Task Summary Provider Class",
+            "version": "0.1.0",
+            "description": "Provider surface for a planning task summary.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Provider surface for a planning task summary.",
+          "description": "Provider surface for a planning task summary.",
+          "defaults": {
+            "label": "Task Summary Provider",
+            "size": {
+              "width": 420,
+              "height": 250
+            },
+            "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+            "showLabel": false,
+            "data": {
+              "goal": "Summarize this task graph",
+              "status": "todo",
+              "taskProgress": {
+                "completed": 0,
+                "total": 0
+              },
+              "questionProgress": {
+                "answered": 0,
+                "total": 0
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "task-summary-provider",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary Provider",
+              "size": {
+                "width": 420,
+                "height": 250
+              },
+              "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+              "showLabel": false,
+              "data": {
+                "goal": "Summarize this task graph",
+                "status": "todo",
+                "taskProgress": {
+                  "completed": 0,
+                  "total": 0
+                },
+                "questionProgress": {
+                  "answered": 0,
+                  "total": 0
+                }
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task-summary-provider",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task-summary-provider",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task-summary-provider",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task-summary-provider",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task-summary-provider",
+          "classRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "definitionKey": "task-summary-provider"
+      }
+    },
+    {
+      "id": "custom-node-pattern-summary-updater",
+      "type": "script",
+      "label": "Summary Updater",
+      "position": {
+        "x": -640,
+        "y": 200
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "mode": "auto",
+        "status": "idle",
+        "scriptRef": "",
+        "source": "const SUMMARY_NODE_ID = 'custom-node-pattern-summary';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel, maxItems = 4) => {\n  const visible = items.filter(Boolean).slice(0, maxItems);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst fetchJson = async (ref) => {\n  const normalizedRef = String(ref || '').trim();\n  if (!normalizedRef) return null;\n  try {\n    const response = await fetch(normalizedRef, { cache: 'no-store' });\n    if (!response.ok) return null;\n    return await response.json();\n  } catch (error) {\n    return null;\n  }\n};\nconst summaryStatusCache = new Map();\nconst getExternalSummaryStatus = async (entry) => {\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  if (!sourceRef || !sourceNodeId || sourceNodeId === SUMMARY_NODE_ID) return '';\n  const cacheKey = sourceRef + '#' + sourceNodeId;\n  if (summaryStatusCache.has(cacheKey)) return summaryStatusCache.get(cacheKey);\n  const graphData = await fetchJson(sourceRef);\n  const sourceNode = Array.isArray(graphData?.nodes)\n    ? graphData.nodes.find((node) => node?.id === sourceNodeId)\n    : null;\n  const status = normalize(sourceNode?.data?.status);\n  summaryStatusCache.set(cacheKey, status);\n  return status;\n};\n\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nif (!summaryNode) {\n  return { success: false, error: 'Summary node missing' };\n}\n\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task');\nconst externalSummaryTasks = nodes.filter((entry) => {\n  if (entry?.type !== 'task-summary') return false;\n  if (entry?.data?.countAsTask === false) return false;\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  return Boolean(sourceRef && sourceNodeId && sourceNodeId !== SUMMARY_NODE_ID);\n});\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst literalTaskItems = tasks.map((entry) => ({\n  title: toTitle(entry, 'Untitled task'),\n  status: normalize(entry?.data?.status)\n}));\nconst externalTaskItems = await Promise.all(externalSummaryTasks.map(async (entry) => ({\n  title: toTitle(entry, 'Untitled task summary'),\n  status: await getExternalSummaryStatus(entry)\n})));\nconst taskItems = [...literalTaskItems, ...externalTaskItems].filter((entry) => entry?.title);\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalize(goalNode?.data?.status);\nconst derivedStatus = goalStatus\n  ? (goalStatus === 'done' && !allTasksDone ? 'in-progress' : goalNode?.data?.status)\n  : (allTasksDone ? 'done' : (completedTaskCount > 0 ? 'in-progress' : (summaryNode?.data?.status || 'todo')));\n\nconst nextData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  taskProgress: {\n    completed: completedTaskCount,\n    total: taskItems.length\n  },\n  questionProgress: {\n    answered: questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length,\n    total: questions.length\n  },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.', taskTitles.length || 4),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'graph-updater',\n  updatedAt: new Date().toISOString()\n};\n\nawait api.updateNode(SUMMARY_NODE_ID, { data: nextData });\nreturn { success: true, summary: nextData };",
+        "summaryNodeId": "custom-node-pattern-summary",
+        "autoRun": true,
+        "description": "Keep the Custom Node Pattern summary node in sync with the task graph contents.",
+        "scriptName": "Task Summary Provider Updater",
+        "scriptId": "",
+        "autoRunOnGraphChange": true
+      }
+    },
+    {
+      "id": "tasks-node-primitive-consolidation-custom-node-pattern-root-node-goal",
+      "type": "goal",
+      "label": "Custom Node Pattern",
+      "position": {
+        "x": 2520,
+        "y": -260
+      },
+      "width": 400,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Turn Custom Node Pattern into a concrete, maintainable task graph with explicit goals, trackable work, and visible unresolved questions.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "2",
+        "acceptanceCriteria": [
+          "A clear goal exists",
+          "At least one concrete task is visible",
+          "At least one unresolved question can stay explicit when needed"
+        ],
+        "_classBinding": {
+          "key": "goal",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "identity": {
+            "graphId": "goal-class",
+            "name": "Goal Class",
+            "version": "0.1.0",
+            "description": "Strategic or local outcome node for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Strategic or local outcome node for planning graphs.",
+          "description": "Strategic or local outcome node for planning graphs.",
+          "defaults": {
+            "label": "Goal",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+            "showLabel": false,
+            "data": {
+              "body": "Define the outcome this plan should achieve.",
+              "priority": "high",
+              "status": "open",
+              "owner": "",
+              "targetDate": "",
+              "successMetrics": [
+                "Describe a measurable success signal"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "goal",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Goal",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+              "showLabel": false,
+              "data": {
+                "body": "Define the outcome this plan should achieve.",
+                "priority": "high",
+                "status": "open",
+                "owner": "",
+                "targetDate": "",
+                "successMetrics": [
+                  "Describe a measurable success signal"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "goal",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "goal",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "goal",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "goal",
+          "classRef": "/library/classes/nodes/task-planning/goal.node-class.node"
+        },
+        "definitionKey": "goal"
+      }
+    },
+    {
+      "id": "root-bridge-task",
+      "type": "port",
+      "label": "Task",
+      "position": {
+        "x": -1140,
+        "y": -260
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Task.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "task",
+          "meaning": "Atomic executable unit of work for planning graphs."
+        }
+      }
+    },
+    {
+      "id": "root-bridge-decision",
+      "type": "port",
+      "label": "Decision",
+      "position": {
+        "x": -1140,
+        "y": -120
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Decision.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/decision.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "decision",
+          "meaning": "Recorded, timestamped choice for planning graphs."
+        }
+      }
+    },
+    {
+      "id": "root-bridge-open-question",
+      "type": "port",
+      "label": "Open Question",
+      "position": {
+        "x": -1140,
+        "y": 20
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Open Question.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/open-question.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "open-question",
+          "meaning": "Unresolved question node for planning graphs."
+        }
+      }
+    },
+    {
+      "id": "root-bridge-task-summary-provider",
+      "type": "port",
+      "label": "Task Summary Provider",
+      "position": {
+        "x": -1140,
+        "y": 160
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Task Summary Provider.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "task-summary-provider",
+          "meaning": "Provider surface for a planning task summary."
+        }
+      }
+    },
+    {
+      "id": "root-bridge-goal",
+      "type": "port",
+      "label": "Goal",
+      "position": {
+        "x": -1140,
+        "y": 300
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Goal.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/goal.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "goal",
+          "meaning": "Strategic or local outcome node for planning graphs."
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "custom-node-pattern-edge-001",
+      "type": "reference",
+      "source": "custom-node-pattern-overview",
+      "target": "custom-node-pattern-task-contract",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task"
+    },
+    {
+      "id": "custom-node-pattern-edge-002",
+      "type": "reference",
+      "source": "custom-node-pattern-task-contract",
+      "target": "custom-node-pattern-decision-split",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "centers"
+    },
+    {
+      "id": "custom-node-pattern-edge-003",
+      "type": "reference",
+      "source": "custom-node-pattern-decision-split",
+      "target": "custom-node-pattern-note-bootstrap",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "proved by"
+    },
+    {
+      "id": "custom-node-pattern-edge-004",
+      "type": "reference",
+      "source": "custom-node-pattern-task-contract",
+      "target": "custom-node-pattern-task-interior-controls",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "next"
+    },
+    {
+      "id": "custom-node-pattern-edge-005",
+      "type": "reference",
+      "source": "custom-node-pattern-task-contract",
+      "target": "custom-node-pattern-decision-script-actions",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "future purity"
+    },
+    {
+      "id": "custom-node-pattern-edge-006",
+      "type": "reference",
+      "source": "custom-node-pattern-task-interior-controls",
+      "target": "custom-node-pattern-open-question-script-rendering",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "boundary"
+    },
+    {
+      "id": "custom-node-pattern-edge-007",
+      "type": "reference",
+      "source": "custom-node-pattern-decision-split",
+      "target": "custom-node-pattern-note-shape",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "shape"
+    },
+    {
+      "id": "custom-node-pattern-edge-008",
+      "type": "reference",
+      "source": "custom-node-pattern-decision-script-actions",
+      "target": "custom-node-pattern-note-shape",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "shape"
+    },
+    {
+      "id": "custom-node-pattern-edge-summary",
+      "type": "reference",
+      "source": "custom-node-pattern-overview",
+      "target": "custom-node-pattern-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "summary"
+    },
+    {
+      "id": "custom-node-pattern-edge-summary-updater",
+      "type": "reference",
+      "source": "custom-node-pattern-summary-updater",
+      "target": "custom-node-pattern-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "updates"
+    },
+    {
+      "id": "tasks-node-primitive-consolidation-custom-node-pattern-root-node-edge-goal",
+      "type": "reference",
+      "source": "custom-node-pattern-overview",
+      "target": "tasks-node-primitive-consolidation-custom-node-pattern-root-node-goal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "goal",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-node-primitive-consolidation-custom-node-pattern-root-node-edge-task",
+      "type": "reference",
+      "source": "tasks-node-primitive-consolidation-custom-node-pattern-root-node-goal",
+      "target": "custom-node-pattern-task-contract",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-node-primitive-consolidation-custom-node-pattern-root-node-edge-question",
+      "type": "reference",
+      "source": "tasks-node-primitive-consolidation-custom-node-pattern-root-node-goal",
+      "target": "custom-node-pattern-open-question-script-rendering",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "question",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "clusters": [],
+  "nodeCount": 18,
+  "edgeCount": 13,
+  "timestamp": "2026-03-24T15:52:25.382Z"
+}

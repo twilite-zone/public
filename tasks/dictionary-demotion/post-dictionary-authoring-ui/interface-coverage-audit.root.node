@@ -1,0 +1,1504 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Untitled Graph",
+    "description": "",
+    "created": "2026-03-23T00:00:00.000Z",
+    "modified": "2026-03-23T00:00:00.000Z",
+    "author": "",
+    "tags": [],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "interface-coverage-audit-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -760,
+        "y": -260
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "interface-coverage-audit-task",
+          "name": "Interface Coverage Audit",
+          "version": "0.1.0",
+          "description": "Verify premium/editor and browser/free coverage before removing browser authoring UI.",
+          "createdAt": "2026-03-23T00:00:00.000Z",
+          "updatedAt": "2026-03-23T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "audit"
+        },
+        "summaryNodeId": "interface-coverage-audit-summary",
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "markdown",
+            "goal",
+            "task",
+            "decision",
+            "open-question",
+            "script",
+            "port"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "interface-coverage-audit-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -360,
+        "y": -260
+      },
+      "width": 320,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {}
+    },
+    {
+      "id": "interface-coverage-audit-overview",
+      "type": "markdown",
+      "label": "Interface Coverage Audit",
+      "position": {
+        "x": -80,
+        "y": -120
+      },
+      "width": 560,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Interface Coverage Audit\n\nBefore browser authoring UI is removed, verify that the premium/editor path still covers all privileged work and the browser/free path still covers ordinary use.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "interface-coverage-audit-goal",
+      "type": "goal",
+      "label": "Verify interface coverage before browser UI removal",
+      "position": {
+        "x": 560,
+        "y": -140
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Confirm that premium/editor covers all privileged creation, property editing, repair, and integration work before removing toolbar and properties panels from the browser path.",
+        "priority": "critical",
+        "status": "done",
+        "owner": "Michael",
+        "_classBinding": {
+          "key": "goal",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "identity": {
+            "graphId": "goal-class",
+            "name": "Goal Class",
+            "version": "0.1.0",
+            "description": "Strategic or local outcome node for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Strategic or local outcome node for planning graphs.",
+          "description": "Strategic or local outcome node for planning graphs.",
+          "defaults": {
+            "label": "Goal",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+            "showLabel": false,
+            "data": {
+              "body": "Define the outcome this plan should achieve.",
+              "priority": "high",
+              "status": "open",
+              "owner": "",
+              "targetDate": "",
+              "successMetrics": [
+                "Describe a measurable success signal"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "goal",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Goal",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+              "showLabel": false,
+              "data": {
+                "body": "Define the outcome this plan should achieve.",
+                "priority": "high",
+                "status": "open",
+                "owner": "",
+                "targetDate": "",
+                "successMetrics": [
+                  "Describe a measurable success signal"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "goal",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "goal",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "goal",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "goal",
+          "classRef": "/library/classes/nodes/task-planning/goal.node-class.node"
+        },
+        "definitionKey": "goal"
+      }
+    },
+    {
+      "id": "interface-coverage-audit-editor-task",
+      "type": "task",
+      "label": "Verify editor-side primitive creation and property editing",
+      "position": {
+        "x": 40,
+        "y": 240
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Check that the editor can create a primitive node, open the full properties-panel family, expose or repair ports, and support the class/bridge-first flow without needing browser chrome.",
+        "priority": "critical",
+        "status": "done",
+        "owner": "Michael",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "interface-coverage-audit-browser-task",
+      "type": "task",
+      "label": "Verify browser-side free workflow",
+      "position": {
+        "x": 520,
+        "y": 240
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Check that the browser path still supports chat-driven graph creation, legend-driven creation, elements browsing, navigation, and ordinary inspection after toolbar and properties are removed.",
+        "priority": "critical",
+        "status": "done",
+        "owner": "Michael",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "interface-coverage-audit-gap-task",
+      "type": "task",
+      "label": "List missing affordances before removal",
+      "position": {
+        "x": 1000,
+        "y": 240
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Capture any missing editor-side affordances for primitive creation, property editing, edge-class assignment, provenance inspection, layout, repair, GitHub, and local-file flows before anything is torn out.",
+        "priority": "high",
+        "status": "done",
+        "owner": "Michael",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "interface-coverage-audit-checklist",
+      "type": "markdown",
+      "label": "Coverage Checklist",
+      "position": {
+        "x": 1480,
+        "y": 220
+      },
+      "width": 500,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Coverage Checklist\n\nEditor must cover:\n- primitive node creation\n- all properties panels\n- port expose/repair\n- edge-class assignment\n- provenance and override inspection\n- layout / beautify / repair\n- GitHub and local-file flows\n\nBrowser must cover:\n- chat-driven creation\n- legend-driven creation\n- elements browsing\n- navigation\n- ordinary inspection",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "interface-coverage-audit-question",
+      "type": "open-question",
+      "label": "Can browser lose toolbar and properties immediately after this audit?",
+      "position": {
+        "x": 780,
+        "y": 600
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "This should only be answered once missing editor-side affordances are either already present or explicitly queued.",
+        "status": "answered",
+        "owner": "Michael",
+        "resolutionPath": "Yes, based on this audit. The current editor/premium and browser/free split appears complete enough to proceed without waiting on another prerequisite interface slice.",
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "identity": {
+            "graphId": "open-question-class",
+            "name": "Open Question Class",
+            "version": "0.1.0",
+            "description": "Unresolved question node for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Unresolved question node for planning graphs.",
+          "description": "Unresolved question node for planning graphs.",
+          "defaults": {
+            "label": "Open Question",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+            "showLabel": false,
+            "data": {
+              "body": "State what is still unclear.",
+              "status": "open",
+              "owner": "",
+              "resolutionPath": "",
+              "prominence": "high"
+            }
+          },
+          "nodeDef": {
+            "key": "open-question",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Open Question",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+              "showLabel": false,
+              "data": {
+                "body": "State what is still unclear.",
+                "status": "open",
+                "owner": "",
+                "resolutionPath": "",
+                "prominence": "high"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "open-question",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "open-question",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "open-question",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "definitionKey": "open-question"
+      }
+    },
+    {
+      "id": "interface-coverage-audit-result",
+      "type": "markdown",
+      "label": "Audit Result",
+      "position": {
+        "x": 1260,
+        "y": 620
+      },
+      "width": 520,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Audit Result\n\nResult: **passed**.\n\nThe current split looks complete enough to proceed:\n- editor/premium retains primitive creation, all properties panels, repair, and privileged flows\n- browser/free retains chat, legend-driven creation, elements browsing, navigation, and ordinary inspection",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "interface-coverage-audit-summary",
+      "type": "task-summary-provider",
+      "label": "Interface Coverage Audit Summary",
+      "position": {
+        "x": -760,
+        "y": 620
+      },
+      "width": 420,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "goal": "Verify interface coverage before browser UI removal",
+        "status": "done",
+        "taskProgress": {
+          "completed": 3,
+          "total": 3
+        },
+        "questionProgress": {
+          "answered": 1,
+          "total": 1
+        },
+        "summarySource": "template-seeded",
+        "_classBinding": {
+          "key": "task-summary-provider",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-class",
+            "name": "Task Summary Provider Class",
+            "version": "0.1.0",
+            "description": "Provider surface for a planning task summary.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Provider surface for a planning task summary.",
+          "description": "Provider surface for a planning task summary.",
+          "defaults": {
+            "label": "Task Summary Provider",
+            "size": {
+              "width": 420,
+              "height": 250
+            },
+            "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+            "showLabel": false,
+            "data": {
+              "goal": "Summarize this task graph",
+              "status": "todo",
+              "taskProgress": {
+                "completed": 0,
+                "total": 0
+              },
+              "questionProgress": {
+                "answered": 0,
+                "total": 0
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "task-summary-provider",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary Provider",
+              "size": {
+                "width": 420,
+                "height": 250
+              },
+              "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+              "showLabel": false,
+              "data": {
+                "goal": "Summarize this task graph",
+                "status": "todo",
+                "taskProgress": {
+                  "completed": 0,
+                  "total": 0
+                },
+                "questionProgress": {
+                  "answered": 0,
+                  "total": 0
+                }
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task-summary-provider",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task-summary-provider",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task-summary-provider",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task-summary-provider",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task-summary-provider",
+          "classRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "definitionKey": "task-summary-provider"
+      }
+    },
+    {
+      "id": "interface-coverage-audit-summary-updater",
+      "type": "script",
+      "label": "Summary Updater",
+      "position": {
+        "x": -260,
+        "y": 620
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "mode": "auto",
+        "status": "idle",
+        "scriptRef": "",
+        "source": "const SUMMARY_NODE_ID = 'interface-coverage-audit-summary';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst toTitle = (entry, fallback) => String(entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel, maxItems = 4) => {\n  const visible = items.filter(Boolean).slice(0, maxItems);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nif (!summaryNode) return { success: false, error: 'Summary node missing' };\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task');\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst taskTitles = tasks.map((entry) => toTitle(entry, 'Untitled task')).filter(Boolean);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = tasks.filter((entry) => DONE_TASK_STATUSES.has(normalize(entry?.data?.status))).length;\nconst allTasksDone = tasks.length > 0 && completedTaskCount === tasks.length;\nconst goalStatus = normalize(goalNode?.data?.status);\nconst derivedStatus = goalStatus ? (goalStatus === 'done' && !allTasksDone ? 'in-progress' : goalNode?.data?.status) : (allTasksDone ? 'done' : (completedTaskCount > 0 ? 'in-progress' : (summaryNode?.data?.status || 'todo')));\nconst nextData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  taskProgress: { completed: completedTaskCount, total: tasks.length },\n  questionProgress: { answered: questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length, total: questions.length },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.'),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'graph-updater',\n  updatedAt: new Date().toISOString()\n};\nawait api.updateNode(SUMMARY_NODE_ID, { data: nextData });\nreturn { success: true, summary: nextData };",
+        "summaryNodeId": "interface-coverage-audit-summary",
+        "autoRun": true,
+        "autoRunOnGraphChange": true,
+        "description": "Keep the interface-coverage audit summary node in sync with the graph."
+      }
+    },
+    {
+      "id": "interface-coverage-audit-back",
+      "type": "port",
+      "label": "Back to Post-Dictionary Authoring UI",
+      "position": {
+        "x": 20,
+        "y": 940
+      },
+      "width": 360,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Return to the post-dictionary authoring UI board.",
+        "intent": "external",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/dictionary-demotion/post-dictionary-authoring-ui.root.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Open"
+        }
+      }
+    },
+    {
+      "id": "interface-coverage-audit-root-bridge-goal",
+      "type": "port",
+      "label": "Goal",
+      "position": {
+        "x": -1140,
+        "y": 1100
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Goal.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/goal.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "goal",
+          "meaning": "Strategic or local outcome node for planning graphs."
+        }
+      }
+    },
+    {
+      "id": "interface-coverage-audit-root-bridge-task",
+      "type": "port",
+      "label": "Task",
+      "position": {
+        "x": -1140,
+        "y": 1240
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Task.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "task",
+          "meaning": "Atomic executable unit of work for planning graphs."
+        }
+      }
+    },
+    {
+      "id": "interface-coverage-audit-root-bridge-open-question",
+      "type": "port",
+      "label": "Open Question",
+      "position": {
+        "x": -1140,
+        "y": 1380
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Open Question.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/open-question.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "open-question",
+          "meaning": "Unresolved question node for planning graphs."
+        }
+      }
+    },
+    {
+      "id": "interface-coverage-audit-root-bridge-task-summary-provider",
+      "type": "port",
+      "label": "Task Summary Provider",
+      "position": {
+        "x": -1140,
+        "y": 1520
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Task Summary Provider.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "task-summary-provider",
+          "meaning": "Provider surface for a planning task summary."
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "interface-coverage-audit-edge-001",
+      "type": "reference",
+      "source": "interface-coverage-audit-overview",
+      "target": "interface-coverage-audit-goal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "goal"
+    },
+    {
+      "id": "interface-coverage-audit-edge-002",
+      "type": "reference",
+      "source": "interface-coverage-audit-goal",
+      "target": "interface-coverage-audit-editor-task",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "editor"
+    },
+    {
+      "id": "interface-coverage-audit-edge-003",
+      "type": "reference",
+      "source": "interface-coverage-audit-editor-task",
+      "target": "interface-coverage-audit-browser-task",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "browser"
+    },
+    {
+      "id": "interface-coverage-audit-edge-004",
+      "type": "reference",
+      "source": "interface-coverage-audit-browser-task",
+      "target": "interface-coverage-audit-gap-task",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "gaps"
+    },
+    {
+      "id": "interface-coverage-audit-edge-005",
+      "type": "reference",
+      "source": "interface-coverage-audit-gap-task",
+      "target": "interface-coverage-audit-question",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "gate"
+    },
+    {
+      "id": "interface-coverage-audit-edge-006",
+      "type": "reference",
+      "source": "interface-coverage-audit-overview",
+      "target": "interface-coverage-audit-checklist",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "checklist"
+    },
+    {
+      "id": "interface-coverage-audit-edge-007",
+      "type": "reference",
+      "source": "interface-coverage-audit-summary-updater",
+      "target": "interface-coverage-audit-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "updates"
+    },
+    {
+      "id": "interface-coverage-audit-edge-008",
+      "type": "reference",
+      "source": "interface-coverage-audit-overview",
+      "target": "interface-coverage-audit-back",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "back"
+    },
+    {
+      "id": "interface-coverage-audit-edge-009",
+      "type": "reference",
+      "source": "interface-coverage-audit-question",
+      "target": "interface-coverage-audit-result",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "result"
+    }
+  ],
+  "clusters": [],
+  "scripts": [],
+  "nodeCount": 17,
+  "edgeCount": 9,
+  "timestamp": "2026-03-24T15:52:24.444Z"
+}

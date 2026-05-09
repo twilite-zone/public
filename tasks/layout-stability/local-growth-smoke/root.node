@@ -1,0 +1,95 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "layout-growth-smoke-note",
+      "type": "markdown",
+      "label": "Local Growth Smoke",
+      "root": true,
+      "position": {
+        "x": 120,
+        "y": 100
+      },
+      "width": 460,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "# Local Growth Smoke\n\nThis graph exercises the bridge-created growth path.\n\n## What to do\n\n1. Click `Create` on `Task Bridge` several times.\n2. Click `Create` on `Question Bridge` several times.\n3. Watch where new nodes land.\n\n## What should be true\n\n- new nodes grow near the bridge node\n- repeated creates should avoid a simple rightward pile\n- local density should influence placement more than a fixed offset\n"
+      }
+    },
+    {
+      "id": "layout-growth-smoke-bridge-task",
+      "type": "bridge",
+      "label": "Task Bridge",
+      "position": {
+        "x": 760,
+        "y": 140
+      },
+      "width": 280,
+      "height": 170,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "kind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root"
+        }
+      }
+    },
+    {
+      "id": "layout-growth-smoke-bridge-question",
+      "type": "bridge",
+      "label": "Question Bridge",
+      "position": {
+        "x": 760,
+        "y": 380
+      },
+      "width": 280,
+      "height": 170,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "kind": "node-class",
+          "classKey": "open-question",
+          "classRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "layout-growth-smoke-edge-1",
+      "type": "reference",
+      "source": "layout-growth-smoke-note",
+      "target": "layout-growth-smoke-bridge-task",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "test",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "layout-growth-smoke-edge-2",
+      "type": "reference",
+      "source": "layout-growth-smoke-note",
+      "target": "layout-growth-smoke-bridge-question",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "test",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "timestamp": "2026-04-05T20:05:00.000Z",
+  "nodeCount": 3,
+  "edgeCount": 2
+}

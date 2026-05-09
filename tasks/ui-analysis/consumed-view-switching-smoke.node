@@ -1,0 +1,337 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "consumed-view-switching-smoke-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -980,
+        "y": -260
+      },
+      "width": 420,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "consumed-view-switching-smoke",
+          "name": "Consumed View Switching Smoke Test",
+          "version": "0.1.0",
+          "description": "Smoke graph for a fixed consumer node that switches among multiple exposed views from one addressed source node.",
+          "createdAt": "2026-04-16T00:00:00.000Z",
+          "updatedAt": "2026-04-16T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "validation"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "markdown",
+            "document-summary",
+            "port"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "summaryNodeId": "consumed-view-switching-smoke-guide"
+      }
+    },
+    {
+      "id": "consumed-view-switching-smoke-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -980,
+        "y": 60
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "entries": [
+          {
+            "key": "document-summary",
+            "intent": "source node with multiple exposed views",
+            "implementation": "document-summary node class"
+          },
+          {
+            "key": "port",
+            "intent": "fixed consumer node",
+            "implementation": "consume-view via sourceRef + sourceNodeId + sourcePayload"
+          }
+        ]
+      }
+    },
+    {
+      "id": "consumed-view-switching-smoke-guide",
+      "type": "markdown",
+      "label": "How To Test",
+      "position": {
+        "x": -460,
+        "y": -240
+      },
+      "width": 1160,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Consumed View Switching Smoke Test\n\nThis graph tests the final consumed-view model:\n\n- one fixed consumer node type: `port`\n- one explicit source node address: `/tasks/ui-analysis/consumed-view-switching-smoke.node#smoke-source-summary`\n- one explicit selected view: `sourcePayload`\n\n## Checks\n\n1. Select `Switch Me`.\n2. In **Behavior**, confirm the Node Address resolves to the source node.\n3. Change **Consumed View** between `node.web.summary`, `node.web.detail`, and `node.web.icon`.\n4. Confirm the same `port` node changes surface without changing its runtime type.\n5. Use the prewired `Detail` and `Icon` consumers as comparison targets."
+      }
+    },
+    {
+      "id": "smoke-source-summary",
+      "type": "document-summary",
+      "label": "Source Summary",
+      "position": {
+        "x": -380,
+        "y": 120
+      },
+      "width": 420,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Source Summary",
+        "summary": "This source node exposes multiple published node views. The consumer ports to the right should be able to switch among summary, detail, and icon without changing node type.",
+        "scope": "Consumed view switching smoke test",
+        "audience": "Author",
+        "status": "active",
+        "_classBinding": {
+          "key": "document-summary",
+          "ref": "/library/classes/nodes/document-publishing/document-summary.node-class.node",
+          "identity": {
+            "key": "document-summary",
+            "label": "Summary"
+          },
+          "meaning": "A document-region summary that rolls up larger publishing sections without colliding with research summary semantics.",
+          "description": "Uses the key `document-summary` to avoid colliding with the research `summary` class while still reading as Summary in the UI.",
+          "defaults": {
+            "label": "Summary",
+            "size": {
+              "width": 400,
+              "height": 280
+            }
+          },
+          "views": [
+            {
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/document-publishing/document-summary.node-class.node"
+            },
+            {
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/document-publishing/document-summary.node-class.node"
+            },
+            {
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/document-publishing/document-summary.node-class.node"
+            },
+            {
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/document-publishing/document-summary.node-class.node"
+            }
+          ]
+        },
+        "_bridge": {
+          "sourceBridgeLabel": "Summary",
+          "targetKind": "node-class",
+          "classKey": "document-summary",
+          "classRef": "/library/classes/nodes/document-publishing/document-summary.node-class.node"
+        },
+        "definitionKey": "document-summary"
+      }
+    },
+    {
+      "id": "smoke-consumer-switch",
+      "type": "port",
+      "label": "Switch Me",
+      "position": {
+        "x": 220,
+        "y": 40
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "authority": "consume-view",
+        "memo": "Primary interactive consumer. Use Behavior to switch the consumed view.",
+        "intent": "external",
+        "consumerKind": "reference",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/ui-analysis/consumed-view-switching-smoke.node:smoke-source-summary",
+          "mode": "navigate",
+          "label": "Open Source"
+        },
+        "sourceRef": "github://twilite-zone/public/tasks/ui-analysis/consumed-view-switching-smoke.node",
+        "sourceNodeId": "smoke-source-summary",
+        "sourcePayload": "node.web.summary",
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "smoke-consumer-detail",
+      "type": "port",
+      "label": "Detail",
+      "position": {
+        "x": 660,
+        "y": 10
+      },
+      "width": 380,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "authority": "consume-view",
+        "memo": "Reference consumer locked to the source detail view.",
+        "intent": "external",
+        "consumerKind": "detail",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/ui-analysis/consumed-view-switching-smoke.node:smoke-source-summary",
+          "mode": "navigate",
+          "label": "Open Source"
+        },
+        "sourceRef": "github://twilite-zone/public/tasks/ui-analysis/consumed-view-switching-smoke.node",
+        "sourceNodeId": "smoke-source-summary",
+        "sourcePayload": "node.web.detail",
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "smoke-consumer-icon",
+      "type": "port",
+      "label": "Icon",
+      "position": {
+        "x": 1120,
+        "y": 80
+      },
+      "width": 280,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "authority": "consume-view",
+        "memo": "Reference consumer locked to the source icon view.",
+        "intent": "external",
+        "consumerKind": "icon",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/ui-analysis/consumed-view-switching-smoke.node:smoke-source-summary",
+          "mode": "navigate",
+          "label": "Open Source"
+        },
+        "sourceRef": "github://twilite-zone/public/tasks/ui-analysis/consumed-view-switching-smoke.node",
+        "sourceNodeId": "smoke-source-summary",
+        "sourcePayload": "node.web.icon",
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "consumed-view-switching-smoke-note",
+      "type": "markdown",
+      "label": "Why This Graph Exists",
+      "position": {
+        "x": 640,
+        "y": 360
+      },
+      "width": 760,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Contract Under Test\n\nThe `port` renderer should remain the host surface.\n\n- `sourceRef` + `sourceNodeId` identify the source node.\n- `sourcePayload` selects the consumed view.\n- `consumerKind` may classify intent, but it must **not** become runtime node type.\n\nIf switching works, then this graph proves the UI can author the final consumed-view model directly."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "consumed-view-switching-smoke-edge-guide-source",
+      "type": "reference",
+      "source": "consumed-view-switching-smoke-guide",
+      "target": "smoke-source-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "source"
+    },
+    {
+      "id": "consumed-view-switching-smoke-edge-guide-switch",
+      "type": "reference",
+      "source": "consumed-view-switching-smoke-guide",
+      "target": "smoke-consumer-switch",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "switch"
+    },
+    {
+      "id": "consumed-view-switching-smoke-edge-source-detail",
+      "type": "reference",
+      "source": "smoke-source-summary",
+      "target": "smoke-consumer-detail",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "detail"
+    },
+    {
+      "id": "consumed-view-switching-smoke-edge-source-icon",
+      "type": "reference",
+      "source": "smoke-source-summary",
+      "target": "smoke-consumer-icon",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "icon"
+    }
+  ],
+  "timestamp": "2026-04-16T00:00:00.000Z",
+  "nodeCount": 8,
+  "edgeCount": 4
+}

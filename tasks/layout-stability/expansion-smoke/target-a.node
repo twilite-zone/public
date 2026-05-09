@@ -1,0 +1,124 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Expansion Target A",
+    "description": "Purpose-built fragment target for expansion placement smoke testing.",
+    "created": "2026-04-05T00:00:00.000Z",
+    "modified": "2026-04-05T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "layout",
+      "expansion",
+      "smoke-test"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "expansion-target-a-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": { "x": -640, "y": -200 },
+      "width": 360,
+      "height": 240,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "expansion-target-a",
+          "name": "Expansion Target A",
+          "version": "0.1.0",
+          "description": "Top-lane fragment target for layout smoke testing.",
+          "createdAt": "2026-04-05T00:00:00.000Z",
+          "updatedAt": "2026-04-05T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "validation"
+        },
+        "settings": {
+          "expansion": {
+            "allowGraphEntry": true
+          }
+        }
+      }
+    },
+    {
+      "id": "expansion-target-a-root-task",
+      "type": "task",
+      "label": "Stage incoming fragment near its source",
+      "root": true,
+      "position": { "x": 0, "y": 0 },
+      "width": 320,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "This root task is the branch entry for expansion. It should land near the source graph-reference node.",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "high",
+        "estimateHours": "2"
+      }
+    },
+    {
+      "id": "expansion-target-a-task-1",
+      "type": "task",
+      "label": "Keep sibling nodes readable",
+      "position": { "x": 360, "y": -40 },
+      "width": 300,
+      "height": 200,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Expanded nodes should stay locally coherent instead of fanning into a single lane.",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "medium",
+        "estimateHours": "1"
+      }
+    },
+    {
+      "id": "expansion-target-a-question",
+      "type": "open-question",
+      "label": "Does the cluster stay legible?",
+      "position": { "x": 330, "y": 240 },
+      "width": 300,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Use this as a second obstacle inside the fragment so placement has to respect local density.",
+        "status": "open"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "expansion-target-a-edge-1",
+      "type": "reference",
+      "source": "expansion-target-a-root-task",
+      "target": "expansion-target-a-task-1",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "expansion-target-a-edge-2",
+      "type": "reference",
+      "source": "expansion-target-a-root-task",
+      "target": "expansion-target-a-question",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "question",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "clusters": [],
+  "scripts": [],
+  "nodeCount": 4,
+  "edgeCount": 2,
+  "timestamp": "2026-04-05T00:00:00.000Z"
+}

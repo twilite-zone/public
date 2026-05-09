@@ -1,0 +1,230 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Typography Override Smoke",
+    "description": "Graph with an explicit theme override. Should use graph-scoped theme instead of browser theme.",
+    "created": "2026-04-08T23:55:00.000Z",
+    "modified": "2026-04-08T23:55:00.000Z",
+    "author": "",
+    "tags": [
+      "typography",
+      "theme",
+      "smoke-test"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "typography-override-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -980,
+        "y": -260
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "typography-override-smoke",
+          "name": "Typography Override Smoke",
+          "version": "0.1.0",
+          "description": "Graph-level theme override for typography and palette smoke testing.",
+          "createdAt": "2026-04-08T23:55:00.000Z",
+          "updatedAt": "2026-04-08T23:55:00.000Z"
+        },
+        "intent": {
+          "kind": "graph",
+          "scope": "validation"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "markdown",
+            "graph-reference",
+            "port"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": {
+            "mode": "dark",
+            "primary": {
+              "main": "#d97706",
+              "light": "#f59e0b",
+              "dark": "#92400e",
+              "contrastText": "#fff7ed"
+            },
+            "secondary": {
+              "main": "#0f766e",
+              "light": "#14b8a6",
+              "dark": "#115e59",
+              "contrastText": "#ecfeff"
+            },
+            "background": {
+              "default": "#140f08",
+              "paper": "#21160f"
+            },
+            "text": {
+              "primary": "#f7efe4",
+              "secondary": "#d6c2aa"
+            },
+            "divider": "#5b4633"
+          },
+          "backgroundImage": null,
+          "defaultNodeColor": "#d97706",
+          "defaultEdgeColor": "#8b7355",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "typography-override-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -980,
+        "y": 20
+      },
+      "width": 340,
+      "height": 200,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "entries": [
+          {
+            "key": "graph-reference",
+            "intent": "Shared graph-authored preview surface",
+            "implementation": "GraphReferenceNode"
+          },
+          {
+            "key": "port",
+            "intent": "Linked preview surface",
+            "implementation": "PortNode"
+          }
+        ]
+      }
+    },
+    {
+      "id": "typography-override-notes",
+      "type": "markdown",
+      "label": "Graph Theme Override",
+      "root": true,
+      "position": {
+        "x": -500,
+        "y": -220
+      },
+      "width": 520,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Typography Override Smoke\n\nThis graph **does** expose a theme.\n\nExpected behavior:\n- graph-authored surfaces should use this graph theme instead of the browser theme\n- typography roles stay the same, but palette authority comes from the graph\n- the graph-reference and linked preview surfaces should visibly differ from the fallback smoke graph"
+      }
+    },
+    {
+      "id": "typography-override-reference",
+      "type": "graph-reference",
+      "label": "Beta Readiness Preview",
+      "position": {
+        "x": 120,
+        "y": -220
+      },
+      "width": 520,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "src": "github://twilite-zone/public/tasks/beta-readiness/root.node",
+        "mode": "interactive",
+        "maxDepth": 3,
+        "notes": "This reference card should use the graph theme override from the host manifest."
+      }
+    },
+    {
+      "id": "typography-override-port",
+      "type": "port",
+      "label": "Layout Stability Link",
+      "position": {
+        "x": 700,
+        "y": -180
+      },
+      "width": 360,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "inputs": [],
+      "outputs": [],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/layout-stability/root.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Open"
+        },
+        "memo": "Linked preview should use the graph theme override from this host graph.",
+        "sourceRef": "github://twilite-zone/public/tasks/layout-stability/root.node",
+        "sourceNodeId": "layout-stability-summary",
+        "sourcePayload": "node.web",
+        "link": "",
+        "html": "",
+        "svg": "",
+        "isRoot": false,
+        "root": false
+      }
+    }
+  ],
+  "edges": [],
+  "timestamp": "2026-04-08T23:55:00.000Z",
+  "nodeCount": 5,
+  "edgeCount": 0
+}

@@ -1,0 +1,428 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Expansion Placement Smoke",
+    "description": "Stress local fragment expansion placement with two nearby graph references.",
+    "created": "2026-04-05T00:00:00.000Z",
+    "modified": "2026-04-05T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "layout",
+      "expansion",
+      "smoke-test"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "expansion-smoke-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -960,
+        "y": -240
+      },
+      "width": 390,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "layout-expansion-smoke",
+          "name": "Expansion Placement Smoke",
+          "version": "0.1.0",
+          "description": "Stress expansion placement with two nearby graph references.",
+          "createdAt": "2026-04-05T00:00:00.000Z",
+          "updatedAt": "2026-04-05T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "validation"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "markdown",
+            "graph-reference"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "github": {
+            "repo": "",
+            "path": "",
+            "branch": "main"
+          },
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "expansion-smoke-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -960,
+        "y": 60
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "entries": [
+          {
+            "key": "graph-reference",
+            "intent": "Expand another graph into the current working surface",
+            "implementation": "iframe-based graph-reference renderer",
+            "dictionaryKey": "graph-reference"
+          }
+        ]
+      }
+    },
+    {
+      "id": "expansion-smoke-notes",
+      "type": "markdown",
+      "label": "What To Check",
+      "position": {
+        "x": -470,
+        "y": -240
+      },
+      "width": 560,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Expansion Placement Smoke\n\nUse the `Expand` control on both graph-reference nodes.\n\nChecks:\n- each fragment lands near its source reference\n- the second expansion does not pile directly on top of the first\n- the resulting local cluster still reads as one area instead of a single rightward lane\n- collapse/re-expand remains stable enough to trust",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "expansion-smoke-users-ref",
+      "type": "graph-reference",
+      "label": "Expand: Users Task",
+      "position": {
+        "x": 140,
+        "y": -220
+      },
+      "width": 500,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "src": "github://twilite-zone/public/tasks/layout-stability/expansion-smoke/target-a.node",
+        "mode": "interactive",
+        "maxDepth": 4,
+        "notes": "Expand the first purpose-built fragment target near the top lane.",
+        "target": {
+          "ref": "github://twilite-zone/public/tasks/layout-stability/expansion-smoke/target-a.node",
+          "mode": "expand",
+          "kind": "fragment",
+          "entryPort": "root"
+        },
+        "_classBinding": {
+          "key": "graph-reference",
+          "sourceRef": "/library/classes/nodes/graph-reference.node-class.node",
+          "ref": "/library/classes/nodes/graph-reference.node-class.node",
+          "identity": {
+            "graphId": "graph_reference_class",
+            "name": "graph-reference Node Class",
+            "version": "0.1.0",
+            "description": "Reference another graph/document with optional endpoint.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Reference another graph/document with optional endpoint.",
+          "description": "Reference another graph/document with optional endpoint.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "graph-reference",
+            "ref": "/library/classes/nodes/graph-reference.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "graph-reference",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/graph-reference.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "graph-reference",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/graph-reference.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "graph-reference",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/graph-reference.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "graph-reference",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/graph-reference.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/graph-reference.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "graph-reference",
+          "classRef": "/library/classes/nodes/graph-reference.node-class.node"
+        },
+        "definitionKey": "graph-reference"
+      }
+    },
+    {
+      "id": "expansion-smoke-diagnostics-ref",
+      "type": "graph-reference",
+      "label": "Expand: Diagnostics Task",
+      "position": {
+        "x": 180,
+        "y": 150
+      },
+      "width": 500,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "src": "github://twilite-zone/public/tasks/layout-stability/expansion-smoke/target-b.node",
+        "mode": "interactive",
+        "maxDepth": 4,
+        "notes": "Expand a second fragment target close enough to contend for space.",
+        "target": {
+          "ref": "github://twilite-zone/public/tasks/layout-stability/expansion-smoke/target-b.node",
+          "mode": "expand",
+          "kind": "fragment",
+          "entryPort": "root"
+        },
+        "_classBinding": {
+          "key": "graph-reference",
+          "sourceRef": "/library/classes/nodes/graph-reference.node-class.node",
+          "ref": "/library/classes/nodes/graph-reference.node-class.node",
+          "identity": {
+            "graphId": "graph_reference_class",
+            "name": "graph-reference Node Class",
+            "version": "0.1.0",
+            "description": "Reference another graph/document with optional endpoint.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Reference another graph/document with optional endpoint.",
+          "description": "Reference another graph/document with optional endpoint.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "graph-reference",
+            "ref": "/library/classes/nodes/graph-reference.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "graph-reference",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/graph-reference.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "graph-reference",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/graph-reference.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "graph-reference",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/graph-reference.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "graph-reference",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/graph-reference.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/graph-reference.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "graph-reference",
+          "classRef": "/library/classes/nodes/graph-reference.node-class.node"
+        },
+        "definitionKey": "graph-reference"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "expansion-smoke-edge-users",
+      "type": "relates",
+      "source": "expansion-smoke-notes",
+      "target": "expansion-smoke-users-ref",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "expand",
+      "style": {
+        "width": 2,
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "expansion-smoke-edge-diagnostics",
+      "type": "relates",
+      "source": "expansion-smoke-notes",
+      "target": "expansion-smoke-diagnostics-ref",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "expand",
+      "style": {
+        "width": 2,
+        "curved": true
+      },
+      "data": {}
+    }
+  ],
+  "clusters": [],
+  "scripts": [],
+  "nodeCount": 5,
+  "edgeCount": 2,
+  "timestamp": "2026-04-05T00:00:00.000Z"
+}

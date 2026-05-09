@@ -1,0 +1,1167 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "layout-stability-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -920,
+        "y": -980
+      },
+      "width": 360,
+      "height": 220,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "layout-stability-task-root",
+          "name": "Layout Stability",
+          "version": "0.1.0",
+          "description": "Task graph for making Twilite graph placement, expansion, and relayout behavior predictable enough for beta use.",
+          "createdAt": "2026-04-05T19:40:00.000Z",
+          "updatedAt": "2026-04-05T19:40:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "bridge",
+            "script",
+            "section",
+            "goal",
+            "task",
+            "open-question",
+            "summary"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "summaryNodeId": "layout-stability-summary"
+      }
+    },
+    {
+      "id": "layout-stability-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -1290,
+        "y": -980
+      },
+      "width": 300,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "entries": []
+      }
+    },
+    {
+      "id": "root-bridge-section",
+      "type": "bridge",
+      "label": "Section",
+      "position": {
+        "x": -1260,
+        "y": -650
+      },
+      "width": 280,
+      "height": 170,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "label": "Section",
+        "target": {
+          "kind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root"
+        }
+      }
+    },
+    {
+      "id": "root-bridge-goal",
+      "type": "bridge",
+      "label": "Goal",
+      "position": {
+        "x": -1260,
+        "y": -450
+      },
+      "width": 280,
+      "height": 170,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "label": "Goal",
+        "target": {
+          "kind": "node-class",
+          "classKey": "goal",
+          "classRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "entryPort": "root"
+        }
+      }
+    },
+    {
+      "id": "root-bridge-task",
+      "type": "bridge",
+      "label": "Task",
+      "position": {
+        "x": -1260,
+        "y": -250
+      },
+      "width": 280,
+      "height": 170,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "label": "Task",
+        "target": {
+          "kind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root"
+        }
+      }
+    },
+    {
+      "id": "root-bridge-open-question",
+      "type": "bridge",
+      "label": "Open Question",
+      "position": {
+        "x": -1260,
+        "y": -50
+      },
+      "width": 280,
+      "height": 170,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "label": "Open Question",
+        "target": {
+          "kind": "node-class",
+          "classKey": "open-question",
+          "classRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root"
+        }
+      }
+    },
+    {
+      "id": "root-bridge-summary",
+      "type": "bridge",
+      "label": "Summary",
+      "position": {
+        "x": -1260,
+        "y": 150
+      },
+      "width": 280,
+      "height": 170,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "label": "Summary",
+        "target": {
+          "kind": "node-class",
+          "classKey": "summary",
+          "classRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root"
+        }
+      }
+    },
+    {
+      "id": "layout-stability-overview",
+      "type": "section",
+      "label": "Layout Stability",
+      "position": {
+        "x": 1520,
+        "y": -900
+      },
+      "width": 500,
+      "height": 300,
+      "color": "#1976d2",
+      "ports": [
+        {
+          "id": "in",
+          "label": "In",
+          "direction": "input",
+          "dataType": "flow",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "out",
+          "label": "Out",
+          "direction": "output",
+          "dataType": "content",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "inputs": [
+        {
+          "key": "in",
+          "label": "In",
+          "type": "flow"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "out",
+          "label": "Out",
+          "type": "content"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Layout Stability",
+        "summary": "Twilite currently has several competing placement authorities: plain node creation uses a fallback grid, expansion uses hardcoded rightward attachment, bridged/class creation uses another fixed offset, missing-position imports invent temporary coordinates before relayout, and auto-layout recenters the whole graph globally.\n\nThat means graphs can feel jumpy, crowded, and locally disrespectful even when each individual placement rule is deterministic.\n\nThe main goal of this task is to replace those disconnected placement habits with one readable doctrine: local growth should be incremental and collision-aware, global layout should be explicit or reserved for positionless content, and manual placement should not be casually overwritten.",
+        "level": "h2",
+        "anchor": "layout-stability",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "layout-stability-doctrine",
+      "type": "section",
+      "label": "Placement Doctrine",
+      "position": {
+        "x": 1520,
+        "y": -520
+      },
+      "width": 500,
+      "height": 320,
+      "color": "#1976d2",
+      "ports": [
+        {
+          "id": "in",
+          "label": "In",
+          "direction": "input",
+          "dataType": "flow",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "out",
+          "label": "Out",
+          "direction": "output",
+          "dataType": "content",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "inputs": [
+        {
+          "key": "in",
+          "label": "In",
+          "type": "flow"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "out",
+          "label": "Out",
+          "type": "content"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Placement Doctrine",
+        "summary": "1. Local growth first: expansion, bridge-created nodes, and other nearby additions should use incremental placement near their source.\n\n2. Global relayout only by authority: use full relayout when the user explicitly asks for it or when incoming graph content has no meaningful placement yet.\n\n3. Manual placement is sticky: once a user has arranged a region intentionally, ordinary growth should adapt to that region instead of casually wiping it out.\n\n4. Positionless imports are intentional: importing nodes without positions is its own placement mode, not a half-random intermediate state.\n\n5. Reroute is lighter than relayout: edge cleanup can respond to node movement, but reroute alone should not relocate nodes.\n\n6. One coordinate model: rendering, bounds, fitting, and placement helpers must agree about what node position means.",
+        "level": "h3",
+        "anchor": "placement-doctrine",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "layout-stability-behavior-law",
+      "type": "section",
+      "label": "Behavior Law",
+      "position": {
+        "x": 1520,
+        "y": -120
+      },
+      "width": 500,
+      "height": 320,
+      "color": "#1976d2",
+      "ports": [
+        {
+          "id": "in",
+          "label": "In",
+          "direction": "input",
+          "dataType": "flow",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "out",
+          "label": "Out",
+          "direction": "output",
+          "dataType": "content",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "inputs": [
+        {
+          "key": "in",
+          "label": "In",
+          "type": "flow"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "out",
+          "label": "Out",
+          "type": "content"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Relayout And Reroute Behavior",
+        "summary": "Local growth owns normal editing. Repeated creation, expansion, and positionless imports should adapt near their source or active area instead of invoking whole-graph cleanup. Manual placement is sticky: once a user has shaped a region, later ordinary growth should work around that meaning. Global relayout is explicit and exceptional, reserved for user-requested layout operations or graphs that have no meaningful placement yet. Reroute is lighter than relayout: edges may adapt as nodes move, but edge cleanup alone should not relocate nodes. Preserve meaning over neatness.",
+        "level": "h3",
+        "anchor": "relayout-reroute-behavior",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "layout-stability-reference-authority-contract",
+      "type": "reference",
+      "label": "Authority Contract",
+      "position": {
+        "x": 2080,
+        "y": -240
+      },
+      "width": 420,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Graph Layout Authority Contract",
+        "citation": "Document-first doctrine stating that disconnected is normal, connection is explicit, and growth and layout decisions belong to the graph that owns the content.",
+        "locator": "/library/documentation/contracts/layout/graph-layout-authority-contract.node",
+        "refType": "citation",
+        "status": "linked",
+        "_classBinding": {
+          "key": "reference",
+          "ref": "/library/classes/nodes/document-publishing/reference.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-reference",
+          "sourceBridgeNodeId": "root-bridge-reference",
+          "sourceBridgeLabel": "Reference",
+          "sourceRef": "/library/classes/nodes/document-publishing/reference.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "reference",
+          "classRef": "/library/classes/nodes/document-publishing/reference.node-class.node"
+        },
+        "definitionKey": "reference"
+      }
+    },
+    {
+      "id": "layout-stability-goal",
+      "type": "goal",
+      "label": "Make graph placement and relayout trustworthy",
+      "position": {
+        "x": 2080,
+        "y": -620
+      },
+      "width": 420,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Make expansion placement, imported graph placement, overlap handling, relayout behavior, and viewport math predictable enough that users can trust where graph content will appear and how it will move.",
+        "priority": "critical",
+        "status": "done",
+        "owner": "Michael",
+        "targetDate": "2026-05-31",
+        "successMetrics": [
+          "Expansion and new-node growth behave consistently in dense graphs",
+          "Positionless imports land predictably without arbitrary drift",
+          "Global relayout preserves meaning instead of surprising the user"
+        ],
+        "_classBinding": {
+          "key": "goal",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-goal",
+          "sourceBridgeNodeId": "root-bridge-goal",
+          "sourceBridgeLabel": "Goal",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "goal",
+          "classRef": "/library/classes/nodes/task-planning/goal.node-class.node"
+        },
+        "definitionKey": "goal"
+      }
+    },
+    {
+      "id": "layout-stability-task-doctrine",
+      "type": "task",
+      "label": "Define one placement doctrine",
+      "position": {
+        "x": 1540,
+        "y": -140
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Define clear authority boundaries for local growth, global relayout, missing-position placement, and manual positioning. The graph should not feel like multiple competing systems are all trying to place nodes at once.",
+        "priority": "critical",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "6",
+        "acceptanceCriteria": [
+          "The product has a documented rule for when local vs global placement is used",
+          "Manual placement is preserved by default",
+          "Positionless content has a defined placement mode"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "layout-stability-task-growth",
+      "type": "task",
+      "label": "Replace naive growth placement with incremental placement",
+      "position": {
+        "x": 2080,
+        "y": -140
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Wire the smarter incremental growth placement logic into live expansion and bridge-created node paths so new content grows near its source, respects local density, and avoids obvious collisions.",
+        "priority": "critical",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "10",
+        "acceptanceCriteria": [
+          "Expansion placement no longer relies on fixed attach-right offsets alone",
+          "Bridge-created nodes use context-aware local placement",
+          "Repeated growth does not collapse into a crowded rightward pile"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "layout-stability-task-imports",
+      "type": "task",
+      "label": "Make positionless import placement intentional",
+      "position": {
+        "x": 2620,
+        "y": -140
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Treat missing-position paste/import as a first-class placement mode instead of inventing temporary coordinates and hoping global relayout makes it feel coherent afterward.",
+        "priority": "high",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "8",
+        "acceptanceCriteria": [
+          "Positionless imports land predictably",
+          "Imported clusters do not appear to jump between arbitrary intermediate states",
+          "The chosen import placement mode is explicit in code and behavior"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "layout-stability-task-global",
+      "type": "task",
+      "label": "Constrain global relayout and reroute behavior",
+      "position": {
+        "x": 1810,
+        "y": 280
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Define the concrete operating rule for when global relayout is allowed, when reroute may act alone, and what kinds of manual placement must be protected from being overwritten. Preserve meaning over neatness. Placement provenance is live, automatic layout now respects manually shaped nodes, and explicit layout now asks before overriding manual placement.",
+        "priority": "high",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "8",
+        "acceptanceCriteria": [
+          "Auto-layout modes feel predictably different and useful",
+          "Reroute behavior does not create avoidable visual churn",
+          "Global relayout respects the placement doctrine"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "layout-stability-task-coordinates",
+      "type": "task",
+      "label": "Audit coordinate assumptions and viewport math",
+      "position": {
+        "x": 2350,
+        "y": 280
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Find and reconcile the remaining places where position is treated inconsistently, especially around fit-to-nodes, bounds calculations, and any helpers that behave as if node position were center instead of top-left. Fit-to-nodes now uses top-left bounds, and deliberate align/distribute actions are recorded as manual placement.",
+        "priority": "high",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "6",
+        "acceptanceCriteria": [
+          "Viewport fitting uses the same coordinate model as node rendering",
+          "Bounds helpers agree about what node position means",
+          "Spatial math is consistent enough to trust debugging output"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "layout-stability-question-global",
+      "type": "open-question",
+      "label": "When should global relayout override local placement?",
+      "position": {
+        "x": 2890,
+        "y": 280
+      },
+      "width": 380,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Global relayout should override local placement only when the graph is effectively unplaced or when the user explicitly grants layout authority. Ordinary local growth should remain local, reroute should stay edge-only, and manual placement should be sticky by default.",
+        "status": "answered",
+        "owner": "Michael",
+        "prominence": "high",
+        "resolutionPath": "/library/documentation/contracts/layout/graph-layout-authority-contract.node",
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-open-question",
+          "sourceBridgeNodeId": "root-bridge-open-question",
+          "sourceBridgeLabel": "Open Question",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "definitionKey": "open-question"
+      }
+    },
+    {
+      "id": "layout-stability-summary",
+      "type": "summary",
+      "label": "Layout Stability Summary",
+      "position": {
+        "x": 3190,
+        "y": -620
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "goal": "Make graph placement and relayout trustworthy",
+        "status": "done",
+        "taskProgress": {
+          "completed": 5,
+          "total": 5
+        },
+        "questionProgress": {
+          "answered": 1,
+          "total": 1
+        },
+        "taskTitles": [
+          "Define one placement doctrine",
+          "Replace naive growth placement with incremental placement",
+          "Make positionless import placement intentional",
+          "Constrain global relayout and reroute behavior",
+          "Audit coordinate assumptions and viewport math"
+        ],
+        "questionTitles": [
+          "When should global relayout override local placement?"
+        ],
+        "taskListText": "1. Define one placement doctrine\n2. Replace naive growth placement with incremental placement\n3. Make positionless import placement intentional\n4. Constrain global relayout and reroute behavior\n5. Audit coordinate assumptions and viewport math",
+        "questionListText": "1. When should global relayout override local placement?",
+        "summarySource": "graph-updater",
+        "_classBinding": {
+          "key": "summary",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-summary",
+          "sourceBridgeNodeId": "root-bridge-summary",
+          "sourceBridgeLabel": "Summary",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "summary",
+          "classRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "definitionKey": "summary"
+      }
+    },
+    {
+      "id": "layout-stability-summary-task",
+      "type": "task",
+      "label": "Make graph placement and relayout trustworthy",
+      "root": true,
+      "position": {
+        "x": 3190,
+        "y": -250
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Goal: Make graph placement and relayout trustworthy\nStatus: done\n\nTasks in scope:\n1. Define one placement doctrine\n2. Replace naive growth placement with incremental placement\n3. Make positionless import placement intentional\n4. Constrain global relayout and reroute behavior\n5. Audit coordinate assumptions and viewport math\n\nOpen questions:\n1. When should global relayout override local placement?",
+        "status": "done",
+        "owner": "Michael",
+        "priority": "critical",
+        "estimateHours": "10",
+        "acceptanceCriteria": [
+          "Expansion and growth placement behave consistently in dense graphs",
+          "Positionless imports land predictably",
+          "Global relayout preserves meaning instead of surprising the user"
+        ],
+        "title": "Make graph placement and relayout trustworthy",
+        "countAsTask": false,
+        "summarySource": "node-updater",
+        "taskProgress": {
+          "completed": 5,
+          "total": 5
+        },
+        "questionProgress": {
+          "answered": 1,
+          "total": 1
+        },
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "layout-stability-summary-updater",
+      "type": "script",
+      "label": "Summary Updater",
+      "position": {
+        "x": 3190,
+        "y": -980
+      },
+      "width": 320,
+      "height": 190,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "scriptName": "Layout Stability Summary Coordinator",
+        "summaryNodeId": "layout-stability-summary",
+        "autoRun": true,
+        "autoRunOnGraphChange": true,
+        "allowMutations": true,
+        "dryRun": false,
+        "source": "const SUMMARY_NODE_ID = 'layout-stability-summary';\nconst SUMMARY_TASK_ID = 'layout-stability-summary-task';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel) => {\n  const visible = items.filter(Boolean);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nconst summaryTaskNode = nodes.find((entry) => entry?.id === SUMMARY_TASK_ID);\nif (!summaryNode || !summaryTaskNode) return { success: false, error: 'Summary surface missing' };\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task' && entry?.id !== SUMMARY_TASK_ID && entry?.data?.countAsTask !== false);\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst taskItems = tasks.map((entry) => ({ title: toTitle(entry, 'Untitled task'), status: normalize(entry?.data?.status) })).filter((entry) => entry?.title);\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst answeredQuestionCount = questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalize(goalNode?.data?.status);\nconst derivedStatus = goalStatus ? (goalStatus === 'done' && !allTasksDone ? 'in-progress' : (goalNode?.data?.status || 'open')) : (allTasksDone ? 'done' : (completedTaskCount > 0 ? 'in-progress' : (summaryNode?.data?.status || 'todo')));\nconst nextSummaryData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  taskProgress: { completed: completedTaskCount, total: taskItems.length },\n  questionProgress: { answered: answeredQuestionCount, total: questions.length },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.'),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'graph-updater'\n};\nconst nextSummaryTaskData = {\n  ...(summaryTaskNode.data || {}),\n  title: goalNode?.label || summaryTaskNode?.data?.title || 'Task graph',\n  body: `Goal: ${goalNode?.label || 'Task graph'}\\nStatus: ${derivedStatus}\\n\\nTasks in scope:\\n${toListText(taskTitles, 'No tasks listed.')}\\n\\nOpen questions:\\n${toListText(questionTitles, 'No open questions.')}`,\n  status: derivedStatus,\n  taskProgress: { completed: completedTaskCount, total: taskItems.length },\n  questionProgress: { answered: answeredQuestionCount, total: questions.length },\n  summarySource: 'node-updater',\n  countAsTask: false,\n  definitionKey: 'task'\n};\nif (!isEqual(summaryNode.data || {}, nextSummaryData)) await api.updateNode(SUMMARY_NODE_ID, { data: { ...nextSummaryData, updatedAt: new Date().toISOString() } });\nif (!isEqual(summaryTaskNode.data || {}, nextSummaryTaskData)) await api.updateNode(SUMMARY_TASK_ID, { data: { ...nextSummaryTaskData, updatedAt: new Date().toISOString() } });\nreturn { success: true, status: derivedStatus, taskCount: taskItems.length, questionCount: questions.length };"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "layout-stability-edge-1",
+      "type": "reference",
+      "source": "layout-stability-overview",
+      "target": "layout-stability-goal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "frames",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-1b",
+      "type": "reference",
+      "source": "layout-stability-overview",
+      "target": "layout-stability-doctrine",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "states",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-2",
+      "type": "reference",
+      "source": "layout-stability-goal",
+      "target": "layout-stability-task-doctrine",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-2b",
+      "type": "reference",
+      "source": "layout-stability-doctrine",
+      "target": "layout-stability-task-doctrine",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "drives",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-3",
+      "type": "reference",
+      "source": "layout-stability-goal",
+      "target": "layout-stability-task-growth",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-4",
+      "type": "reference",
+      "source": "layout-stability-goal",
+      "target": "layout-stability-task-imports",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-5",
+      "type": "reference",
+      "source": "layout-stability-goal",
+      "target": "layout-stability-task-global",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-6",
+      "type": "reference",
+      "source": "layout-stability-goal",
+      "target": "layout-stability-task-coordinates",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-7",
+      "type": "reference",
+      "source": "layout-stability-goal",
+      "target": "layout-stability-question-global",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "asks",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-8",
+      "type": "reference",
+      "source": "layout-stability-task-doctrine",
+      "target": "layout-stability-task-growth",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "guides",
+      "style": {
+        "width": 2,
+        "dash": [
+          6,
+          4
+        ],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-9",
+      "type": "reference",
+      "source": "layout-stability-task-doctrine",
+      "target": "layout-stability-task-imports",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "guides",
+      "style": {
+        "width": 2,
+        "dash": [
+          6,
+          4
+        ],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-10",
+      "type": "reference",
+      "source": "layout-stability-task-growth",
+      "target": "layout-stability-task-global",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "stabilizes",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-11",
+      "type": "reference",
+      "source": "layout-stability-task-imports",
+      "target": "layout-stability-task-global",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "clarifies",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-12",
+      "type": "reference",
+      "source": "layout-stability-task-coordinates",
+      "target": "layout-stability-task-global",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "supports",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-13",
+      "type": "reference",
+      "source": "layout-stability-doctrine",
+      "target": "layout-stability-reference-authority-contract",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "formalized by",
+      "style": {
+        "width": 2,
+        "dash": [
+          6,
+          4
+        ],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-14",
+      "type": "reference",
+      "source": "layout-stability-doctrine",
+      "target": "layout-stability-behavior-law",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "concretized by",
+      "style": {
+        "width": 2,
+        "dash": [
+          6,
+          4
+        ],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "layout-stability-edge-15",
+      "type": "reference",
+      "source": "layout-stability-behavior-law",
+      "target": "layout-stability-task-global",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "implemented by",
+      "style": {
+        "width": 2,
+        "dash": [
+          6,
+          4
+        ],
+        "curved": true
+      },
+      "data": {}
+    }
+  ],
+  "timestamp": "2026-04-05T19:40:00.000Z",
+  "nodeCount": 21,
+  "edgeCount": 17
+}

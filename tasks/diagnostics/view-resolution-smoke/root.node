@@ -1,0 +1,130 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Diagnostics View Resolution Smoke Test",
+    "description": "Minimal graph for testing sourced-view diagnostics from a broken source node reference.",
+    "created": "2026-04-05T06:20:00.000Z",
+    "modified": "2026-04-05T06:20:00.000Z",
+    "author": "Codex",
+    "tags": ["diagnostics", "view-resolution", "smoke-test"]
+  },
+  "nodes": [
+    {
+      "id": "diagnostics-view-smoke-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": { "x": -860, "y": -220 },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "diagnostics-view-resolution-smoke",
+          "name": "Diagnostics View Resolution Smoke Test",
+          "version": "0.1.0",
+          "description": "Standalone graph for testing sourced-view diagnostics from a bad source node reference.",
+          "createdAt": "2026-04-05T06:20:00.000Z",
+          "updatedAt": "2026-04-05T06:20:00.000Z"
+        },
+        "intent": { "kind": "task", "scope": "validation" },
+        "dependencies": {
+          "nodeTypes": ["manifest", "legend", "markdown", "task"],
+          "portContracts": ["core"],
+          "skills": [],
+          "schemaVersions": { "nodes": ">=1.0.0", "ports": ">=1.0.0" },
+          "optional": []
+        },
+        "authority": {
+          "mutation": { "allowCreate": true, "allowUpdate": true, "allowDelete": true, "appendOnly": false },
+          "actors": { "humans": true, "agents": true, "tools": true },
+          "styleAuthority": "descriptive",
+          "history": { "rewriteAllowed": false, "squashAllowed": false }
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "layout": { "mode": "fixed" },
+          "github": { "repo": "", "path": "", "branch": "main" },
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "diagnostics-view-smoke-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": { "x": -860, "y": 40 },
+      "width": 380,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "entries": [
+          {
+            "key": "task",
+            "intent": "Consume a sourced task view",
+            "implementation": "This graph intentionally points a task consumer at a nonexistent source node to test view-resolution diagnostics.",
+            "dictionaryKey": "task"
+          }
+        ]
+      }
+    },
+    {
+      "id": "diagnostics-view-smoke-overview",
+      "type": "markdown",
+      "label": "Overview",
+      "position": { "x": -420, "y": -180 },
+      "width": 860,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# View Resolution Smoke Test\n\nThis graph intentionally points a sourced task consumer at a missing node in `/tasks/beta-readiness/root.node`.\n\nExpected diagnostics:\n- `kind: view-resolution`\n- `node: diagnostics-view-smoke-task`\n- `source: /tasks/beta-readiness/root.node`"
+      }
+    },
+    {
+      "id": "diagnostics-view-smoke-task",
+      "type": "task",
+      "label": "Broken Source Task",
+      "root": true,
+      "position": { "x": 140, "y": 120 },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Broken Source Task",
+        "body": "Intentional sourced-view failure for diagnostics testing.",
+        "priority": "medium",
+        "status": "todo",
+        "sourceRef": "github://twilite-zone/public/tasks/beta-readiness/root.node",
+        "sourceNodeId": "beta-readiness-does-not-exist",
+        "sourcePayload": "node.web",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "diagnostics-view-smoke-task",
+          "sourceBridgeNodeId": "diagnostics-view-smoke-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    }
+  ],
+  "edges": []
+}

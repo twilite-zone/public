@@ -1,0 +1,325 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "bridge-rendering-smoke-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": { "x": -980, "y": -260 },
+      "width": 420,
+      "height": 280,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "bridge-rendering-smoke",
+          "name": "Bridge Rendering Smoke Test",
+          "version": "0.1.0",
+          "description": "Smoke graph for standardizing bridge rendering across stored bridge nodes and legacy bridge-mode ports.",
+          "createdAt": "2026-04-18T00:00:00.000Z",
+          "updatedAt": "2026-04-18T00:00:00.000Z"
+        },
+        "intent": { "kind": "task", "scope": "validation" },
+        "dependencies": {
+          "nodeTypes": ["manifest", "markdown", "bridge", "port"],
+          "portContracts": ["core"],
+          "skills": [],
+          "schemaVersions": { "nodes": ">=1.0.0", "ports": ">=1.0.0" },
+          "optional": []
+        },
+        "authority": {
+          "mutation": { "allowCreate": true, "allowUpdate": true, "allowDelete": true, "appendOnly": false },
+          "actors": { "humans": true, "agents": true, "tools": true },
+          "styleAuthority": "descriptive",
+          "history": { "rewriteAllowed": false, "squashAllowed": false }
+        },
+        "document": { "url": "" },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "summaryNodeId": "bridge-rendering-smoke-guide"
+      }
+    },
+    {
+      "id": "bridge-rendering-smoke-guide",
+      "type": "markdown",
+      "label": "Bridge Rendering Smoke Test",
+      "position": { "x": -460, "y": -260 },
+      "width": 1260,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Bridge Rendering Smoke Test\n\nThis graph exists to catch non-standard bridge rendering.\n\n## What Should Be True\n\n- Stored bridge nodes (`type: bridge`) and legacy bridge-mode ports (`type: port` + `data.mode: bridge`) render the *same* bridge chrome.\n- The left glyph is the referenced artifact's icon view (`node.web.icon` / `icon.web`) when available.\n- If no icon view is exposed, the bridge falls back to a small glyph based on `resourceKind`.\n\n## Checks\n\n1. Compare \"Stored Bridge\" cards vs \"Bridge-Mode Port\" cards: they should look the same.\n2. Confirm the icon slot is populated for node-classes that expose an icon view.\n3. Confirm endpoint-only legacy bridge still resolves and renders.\n4. Confirm graph-target bridges render with disabled create (until graph bridging is implemented).\n"
+      }
+    },
+    {
+      "id": "bridge-rendering-smoke-back",
+      "type": "port",
+      "label": "Back to UI Analysis",
+      "position": { "x": 860, "y": -220 },
+      "width": 340,
+      "height": 110,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Return to the UI Analysis task root.",
+        "intent": "external",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/ui-analysis/root.node:root",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open"
+        }
+      }
+    },
+    {
+      "id": "bridge-rendering-smoke-stored-header",
+      "type": "markdown",
+      "label": "Stored Bridges",
+      "position": { "x": -460, "y": 80 },
+      "width": 360,
+      "height": 140,
+      "visible": true,
+      "showLabel": true,
+      "data": { "markdown": "## Stored Bridges\n`type: bridge`" }
+    },
+    {
+      "id": "bridge-rendering-smoke-port-header",
+      "type": "markdown",
+      "label": "Bridge-Mode Ports",
+      "position": { "x": -460, "y": 420 },
+      "width": 360,
+      "height": 140,
+      "visible": true,
+      "showLabel": true,
+      "data": { "markdown": "## Bridge-Mode Ports\n`type: port` + `data.mode: bridge`" }
+    },
+    {
+      "id": "bridge-rendering-smoke-stored-title",
+      "type": "bridge",
+      "label": "Title",
+      "position": { "x": -60, "y": 80 },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Stored bridge to Title node-class.",
+        "intent": "external",
+        "authority": "bridge",
+        "bridge": { "ref": "/library/classes/nodes/template-structure/title.node-class.node", "resourceKind": "node-class", "scope": "focused-graph", "grants": ["create"] },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": ["create"],
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"],
+          "label": "Title",
+          "key": "title"
+        }
+      }
+    },
+    {
+      "id": "bridge-rendering-smoke-stored-declaration",
+      "type": "bridge",
+      "label": "Declaration",
+      "position": { "x": 240, "y": 80 },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Stored bridge to Declaration node-class.",
+        "intent": "external",
+        "authority": "bridge",
+        "bridge": { "ref": "/library/classes/nodes/declaration.node-class.node", "resourceKind": "node-class", "scope": "focused-graph", "grants": ["create"] },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": ["create"],
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/declaration.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"],
+          "label": "Declaration",
+          "key": "declaration"
+        }
+      }
+    },
+    {
+      "id": "bridge-rendering-smoke-stored-bridge",
+      "type": "bridge",
+      "label": "Bridge",
+      "position": { "x": 540, "y": 80 },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Stored bridge to Bridge node-class.",
+        "intent": "external",
+        "authority": "bridge",
+        "bridge": { "ref": "/library/classes/nodes/bridge.node-class.node", "resourceKind": "node-class", "scope": "focused-graph", "grants": ["create"] },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": ["create"],
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/bridge.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"],
+          "label": "Bridge",
+          "key": "bridge"
+        }
+      }
+    },
+    {
+      "id": "bridge-rendering-smoke-stored-ttv-template",
+      "type": "bridge",
+      "label": "TTV Template Graph",
+      "position": { "x": 840, "y": 80 },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Graph-target bridge (create disabled until graph bridging is implemented).",
+        "intent": "external",
+        "authority": "bridge",
+        "bridge": { "ref": "/library/classes/nodes/template-structure/ttv-pattern-template.node", "resourceKind": "graph", "scope": "focused-graph", "grants": ["consume-view"] },
+        "resourceKind": "graph",
+        "scope": "focused-graph",
+        "grants": ["consume-view"],
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/template-structure/ttv-pattern-template.node",
+          "kind": "graph",
+          "resourceKind": "graph",
+          "scope": "focused-graph",
+          "grants": ["consume-view"],
+          "label": "TTV Pattern Template"
+        }
+      }
+    },
+    {
+      "id": "bridge-rendering-smoke-port-title",
+      "type": "port",
+      "label": "Title",
+      "position": { "x": -60, "y": 420 },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Legacy port acting as a bridge (should render like a stored bridge).",
+        "intent": "external",
+        "mode": "bridge",
+        "authority": "bridge",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"],
+          "label": "Title",
+          "key": "title"
+        }
+      }
+    },
+    {
+      "id": "bridge-rendering-smoke-port-endpoint-only",
+      "type": "port",
+      "label": "Endpoint Only",
+      "position": { "x": 240, "y": 420 },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Legacy endpoint-only bridge (no ref). Should still resolve and render consistently.",
+        "intent": "external",
+        "mode": "bridge",
+        "authority": "bridge",
+        "target": {
+          "mode": "bridge",
+          "endpoint": "/library/classes/nodes/template-structure/title.node-class.node:root",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"],
+          "label": "Title (endpoint)"
+        }
+      }
+    },
+    {
+      "id": "bridge-rendering-smoke-port-graph-target",
+      "type": "port",
+      "label": "Graph Target",
+      "position": { "x": 540, "y": 420 },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Port in bridge mode targeting a graph (create disabled until graph bridging is implemented).",
+        "intent": "external",
+        "mode": "bridge",
+        "authority": "bridge",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/template-structure/minimum-content-node-template.node",
+          "kind": "graph",
+          "resourceKind": "graph",
+          "scope": "focused-graph",
+          "grants": ["consume-view"],
+          "label": "Minimum Content Template"
+        }
+      }
+    },
+    {
+      "id": "bridge-rendering-smoke-port-contract-graph",
+      "type": "port",
+      "label": "Bridge UI Contract",
+      "position": { "x": 840, "y": 420 },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Port in bridge mode targeting the bridge UI contract graph.",
+        "intent": "external",
+        "mode": "bridge",
+        "authority": "bridge",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/documentation/contracts/bridges/bridge-node-ui-contract.node",
+          "kind": "graph",
+          "resourceKind": "graph",
+          "scope": "focused-graph",
+          "grants": ["consume-view"],
+          "label": "Bridge Node UI Contract"
+        }
+      }
+    }
+  ],
+  "edges": [],
+  "timestamp": "2026-04-18T00:00:00.000Z"
+}
+

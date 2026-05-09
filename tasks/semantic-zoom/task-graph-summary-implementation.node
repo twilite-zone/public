@@ -1,0 +1,2057 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "task-summary-impl-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -760,
+        "y": -260
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "task-graph-summary-implementation",
+          "name": "Task Summary Provider Implementation",
+          "version": "0.1.0",
+          "description": "Old-school task graph for implementing the task summary provider surface.",
+          "createdAt": "2026-03-22T00:00:00.000Z",
+          "updatedAt": "2026-03-22T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "implementation"
+        },
+        "summaryNodeId": "task-summary-impl-summary",
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "markdown",
+            "goal",
+            "task",
+            "decision",
+            "open-question",
+            "script"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "task-summary-impl-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -760,
+        "y": 20
+      },
+      "width": 320,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {}
+    },
+    {
+      "id": "task-summary-impl-overview",
+      "type": "markdown",
+      "label": "Task Summary Provider Implementation",
+      "position": {
+        "x": -80,
+        "y": -120
+      },
+      "width": 540,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Task Summary Provider Implementation\n\nThis is the simpler implementation board.\n\nWe are making a template task graph that computes its own summary through a local summary node and script, then exposes that summary so a host-side dynamic view can render it.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "task-summary-impl-goal",
+      "type": "goal",
+      "label": "Make task graphs expose their own summary surface",
+      "position": {
+        "x": 560,
+        "y": -140
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "A task graph should compute and expose its own outward summary so host graphs can render it through a dynamic view without rummaging through internals.",
+        "priority": "critical",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "6",
+        "acceptanceCriteria": [
+          "A template task graph contains a summary node",
+          "A local script updates the summary node",
+          "A host-side dynamic view can point at that summary surface"
+        ],
+        "_classBinding": {
+          "key": "goal",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "identity": {
+            "graphId": "goal-class",
+            "name": "Goal Class",
+            "version": "0.1.0",
+            "description": "Strategic or local outcome node for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Strategic or local outcome node for planning graphs.",
+          "description": "Strategic or local outcome node for planning graphs.",
+          "defaults": {
+            "label": "Goal",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+            "showLabel": false,
+            "data": {
+              "body": "Define the outcome this plan should achieve.",
+              "priority": "high",
+              "status": "open",
+              "owner": "",
+              "targetDate": "",
+              "successMetrics": [
+                "Describe a measurable success signal"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "goal",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Goal",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+              "showLabel": false,
+              "data": {
+                "body": "Define the outcome this plan should achieve.",
+                "priority": "high",
+                "status": "open",
+                "owner": "",
+                "targetDate": "",
+                "successMetrics": [
+                  "Describe a measurable success signal"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "goal",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "goal",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "goal",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "goal",
+          "classRef": "/library/classes/nodes/task-planning/goal.node-class.node"
+        },
+        "definitionKey": "goal"
+      }
+    },
+    {
+      "id": "task-summary-impl-task-class",
+      "type": "task",
+      "label": "Create task-graph-summary node class",
+      "position": {
+        "x": 40,
+        "y": 240
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Make a node class that renders goal, status, task progress, and question progress as the outward summary surface.",
+        "priority": "high",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "2",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "task-summary-impl-task-template",
+      "type": "task",
+      "label": "Create a template task graph",
+      "position": {
+        "x": 460,
+        "y": 240
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Build a normal planning-graph template that includes the summary node and the local summary-updater machinery.",
+        "priority": "high",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "2",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "task-summary-impl-task-script",
+      "type": "task",
+      "label": "Attach a local summary updater script",
+      "position": {
+        "x": 880,
+        "y": 240
+      },
+      "width": 400,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Count goal/task/open-question state inside the task graph and write the results into the summary node.",
+        "priority": "critical",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "3",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "task-summary-impl-task-entry",
+      "type": "task",
+      "label": "Declare the summary entry surface",
+      "position": {
+        "x": 1320,
+        "y": 240
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Give the task graph a stable outward summary target so host graphs can ask for summary without knowing internal node ids.",
+        "priority": "critical",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "2",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "task-summary-impl-task-host",
+      "type": "task",
+      "label": "Render the summary through DynamicView",
+      "position": {
+        "x": 1760,
+        "y": 240
+      },
+      "width": 400,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Point a host-side dynamic view at the task summary provider surface and render the exposed node view there.",
+        "priority": "critical",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "3",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "task-summary-impl-decision",
+      "type": "decision",
+      "label": "The source graph should know its own summary",
+      "position": {
+        "x": 1320,
+        "y": -120
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Do not derive task-graph meaning in the host renderer. The source graph computes and exposes the summary; the host only renders it.",
+        "rationale": "This keeps the graph self-describing and lets summary semantics live with the source graph.",
+        "_classBinding": {
+          "key": "decision",
+          "sourceRef": "/library/classes/nodes/task-planning/decision.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+          "identity": {
+            "graphId": "decision-class",
+            "name": "Decision Class",
+            "version": "0.1.0",
+            "description": "Recorded, timestamped choice for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Recorded, timestamped choice for planning graphs.",
+          "description": "Recorded, timestamped choice for planning graphs.",
+          "defaults": {
+            "label": "Decision",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+            "showLabel": false,
+            "data": {
+              "rationale": "State why this decision was made.",
+              "status": "decided",
+              "decidedAt": "",
+              "owner": "",
+              "supersededBy": ""
+            }
+          },
+          "nodeDef": {
+            "key": "decision",
+            "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Decision",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+              "showLabel": false,
+              "data": {
+                "rationale": "State why this decision was made.",
+                "status": "decided",
+                "decidedAt": "",
+                "owner": "",
+                "supersededBy": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "decision",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "decision",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "decision",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/decision.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "decision",
+          "classRef": "/library/classes/nodes/task-planning/decision.node-class.node"
+        },
+        "definitionKey": "decision"
+      }
+    },
+    {
+      "id": "task-summary-impl-question",
+      "type": "open-question",
+      "label": "What runtime shape should the local updater use?",
+      "position": {
+        "x": 1760,
+        "y": -120
+      },
+      "width": 400,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Decide whether the summary updater should use current script-node/library machinery or a tighter graph-local runtime path.",
+        "status": "answered",
+        "resolutionPath": "graph-owned script node attached to the graph artifact",
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "identity": {
+            "graphId": "open-question-class",
+            "name": "Open Question Class",
+            "version": "0.1.0",
+            "description": "Unresolved question node for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Unresolved question node for planning graphs.",
+          "description": "Unresolved question node for planning graphs.",
+          "defaults": {
+            "label": "Open Question",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+            "showLabel": false,
+            "data": {
+              "body": "State what is still unclear.",
+              "status": "open",
+              "owner": "",
+              "resolutionPath": "",
+              "prominence": "high"
+            }
+          },
+          "nodeDef": {
+            "key": "open-question",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Open Question",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+              "showLabel": false,
+              "data": {
+                "body": "State what is still unclear.",
+                "status": "open",
+                "owner": "",
+                "resolutionPath": "",
+                "prominence": "high"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "open-question",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "open-question",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "open-question",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "definitionKey": "open-question"
+      }
+    },
+    {
+      "id": "task-summary-impl-back",
+      "type": "port",
+      "label": "Back to Summary View Task",
+      "position": {
+        "x": 40,
+        "y": 560
+      },
+      "width": 320,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Return to the task summary task.",
+        "intent": "external",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/semantic-zoom/task-graph-summary-view.task.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Open"
+        }
+      }
+    },
+    {
+      "id": "task-summary-impl-template-port",
+      "type": "port",
+      "label": "Canonical Template Graph",
+      "position": {
+        "x": 460,
+        "y": 560
+      },
+      "width": 340,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Concrete task-graph template artifact near the planning node set.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task-graph-template.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Open"
+        }
+      }
+    },
+    {
+      "id": "task-summary-impl-summary-view-node",
+      "type": "task-summary",
+      "label": "Template Summary Consumer",
+      "position": {
+        "x": 1760,
+        "y": 560
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "sourceRef": "/library/classes/nodes/task-planning/task-graph-template.node",
+        "sourceNodeId": "task-graph-template-summary",
+        "sourcePayload": "node.web",
+        "_classBinding": {
+          "key": "task-summary",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
+            "version": "0.1.0",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "defaults": {
+            "label": "Task Summary",
+            "size": {
+              "width": 420,
+              "height": 260
+            },
+            "showLabel": false,
+            "data": {
+              "sourceRef": "/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
+            }
+          },
+          "nodeDef": {
+            "key": "task-summary",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "showLabel": false,
+              "data": {
+                "sourceRef": "/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task-summary",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task-summary",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task-summary",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task-summary",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task-summary",
+          "classRef": "/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
+        },
+        "definitionKey": "task-summary"
+      }
+    },
+    {
+      "id": "task-summary-impl-summary",
+      "type": "task-summary-provider",
+      "label": "Implementation Summary",
+      "position": {
+        "x": 2240,
+        "y": 540
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "goal": "Make task graphs expose their own summary surface",
+        "status": "done",
+        "taskProgress": {
+          "completed": 5,
+          "total": 5
+        },
+        "questionProgress": {
+          "answered": 1,
+          "total": 1
+        },
+        "summarySource": "graph-updater",
+        "updatedAt": "2026-03-22T22:15:00.000Z",
+        "taskTitles": [
+          "Create task-graph-summary node class",
+          "Create a template task graph",
+          "Attach a local summary updater script",
+          "Declare the summary entry surface",
+          "Render the summary through DynamicView"
+        ],
+        "questionTitles": [
+          "What runtime shape should the local updater use?"
+        ],
+        "taskListText": "1. Create task-graph-summary node class\n2. Create a template task graph\n3. Attach a local summary updater script\n4. Declare the summary entry surface",
+        "questionListText": "1. What runtime shape should the local updater use?",
+        "_classBinding": {
+          "key": "task-summary-provider",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-class",
+            "name": "Task Summary Provider Class",
+            "version": "0.1.0",
+            "description": "Provider surface for a planning task summary.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Provider surface for a planning task summary.",
+          "description": "Provider surface for a planning task summary.",
+          "defaults": {
+            "label": "Task Summary Provider",
+            "size": {
+              "width": 420,
+              "height": 250
+            },
+            "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+            "showLabel": false,
+            "data": {
+              "goal": "Summarize this task graph",
+              "status": "todo",
+              "taskProgress": {
+                "completed": 0,
+                "total": 0
+              },
+              "questionProgress": {
+                "answered": 0,
+                "total": 0
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "task-summary-provider",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary Provider",
+              "size": {
+                "width": 420,
+                "height": 250
+              },
+              "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+              "showLabel": false,
+              "data": {
+                "goal": "Summarize this task graph",
+                "status": "todo",
+                "taskProgress": {
+                  "completed": 0,
+                  "total": 0
+                },
+                "questionProgress": {
+                  "answered": 0,
+                  "total": 0
+                }
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task-summary-provider",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task-summary-provider",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task-summary-provider",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task-summary-provider",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task-summary-provider",
+          "classRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "definitionKey": "task-summary-provider"
+      }
+    },
+    {
+      "id": "task-summary-impl-updater",
+      "type": "script",
+      "label": "Implementation Summary Updater",
+      "position": {
+        "x": 2240,
+        "y": 240
+      },
+      "width": 340,
+      "height": 200,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "scriptName": "Task Summary Provider Updater",
+        "summaryNodeId": "task-summary-impl-summary",
+        "autoRun": true,
+        "autoRunOnGraphChange": true,
+        "allowMutations": true,
+        "dryRun": false,
+        "source": "const SUMMARY_NODE_ID = 'task-summary-impl-summary';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel, maxItems = 4) => {\n  const visible = items.filter(Boolean).slice(0, maxItems);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst fetchJson = async (ref) => {\n  const normalizedRef = String(ref || '').trim();\n  if (!normalizedRef) return null;\n  try {\n    const response = await fetch(normalizedRef, { cache: 'no-store' });\n    if (!response.ok) return null;\n    return await response.json();\n  } catch (error) {\n    return null;\n  }\n};\nconst summaryStatusCache = new Map();\nconst getExternalSummaryStatus = async (entry) => {\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  if (!sourceRef || !sourceNodeId || sourceNodeId === SUMMARY_NODE_ID) return '';\n  const cacheKey = sourceRef + '#' + sourceNodeId;\n  if (summaryStatusCache.has(cacheKey)) return summaryStatusCache.get(cacheKey);\n  const graphData = await fetchJson(sourceRef);\n  const sourceNode = Array.isArray(graphData?.nodes)\n    ? graphData.nodes.find((node) => node?.id === sourceNodeId)\n    : null;\n  const status = normalize(sourceNode?.data?.status);\n  summaryStatusCache.set(cacheKey, status);\n  return status;\n};\n\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nif (!summaryNode) {\n  return { success: false, error: 'Summary node missing' };\n}\n\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task');\nconst externalSummaryTasks = nodes.filter((entry) => {\n  if (entry?.type !== 'task-summary') return false;\n  if (entry?.data?.countAsTask === false) return false;\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  return Boolean(sourceRef && sourceNodeId && sourceNodeId !== SUMMARY_NODE_ID);\n});\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst literalTaskItems = tasks.map((entry) => ({\n  title: toTitle(entry, 'Untitled task'),\n  status: normalize(entry?.data?.status)\n}));\nconst externalTaskItems = await Promise.all(externalSummaryTasks.map(async (entry) => ({\n  title: toTitle(entry, 'Untitled task summary'),\n  status: await getExternalSummaryStatus(entry)\n})));\nconst taskItems = [...literalTaskItems, ...externalTaskItems].filter((entry) => entry?.title);\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalize(goalNode?.data?.status);\nconst derivedStatus = goalStatus\n  ? (goalStatus === 'done' && !allTasksDone ? 'in-progress' : goalNode?.data?.status)\n  : (allTasksDone ? 'done' : (completedTaskCount > 0 ? 'in-progress' : (summaryNode?.data?.status || 'todo')));\n\nconst nextData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  taskProgress: {\n    completed: completedTaskCount,\n    total: taskItems.length\n  },\n  questionProgress: {\n    answered: questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length,\n    total: questions.length\n  },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.', taskTitles.length || 4),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'graph-updater',\n  updatedAt: new Date().toISOString()\n};\n\nawait api.updateNode(SUMMARY_NODE_ID, { data: nextData });\nreturn { success: true, summary: nextData };",
+        "scriptId": "",
+        "scriptRef": ""
+      }
+    },
+    {
+      "id": "task-graph-summary-implementation-summary-updater",
+      "type": "script",
+      "label": "Summary Updater",
+      "position": {
+        "x": -600,
+        "y": 200
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "mode": "auto",
+        "status": "idle",
+        "scriptRef": "",
+        "source": "const SUMMARY_NODE_ID = 'task-summary-impl-summary';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel, maxItems = 4) => {\n  const visible = items.filter(Boolean).slice(0, maxItems);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst fetchJson = async (ref) => {\n  const normalizedRef = String(ref || '').trim();\n  if (!normalizedRef) return null;\n  try {\n    const response = await fetch(normalizedRef, { cache: 'no-store' });\n    if (!response.ok) return null;\n    return await response.json();\n  } catch (error) {\n    return null;\n  }\n};\nconst summaryStatusCache = new Map();\nconst getExternalSummaryStatus = async (entry) => {\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  if (!sourceRef || !sourceNodeId || sourceNodeId === SUMMARY_NODE_ID) return '';\n  const cacheKey = sourceRef + '#' + sourceNodeId;\n  if (summaryStatusCache.has(cacheKey)) return summaryStatusCache.get(cacheKey);\n  const graphData = await fetchJson(sourceRef);\n  const sourceNode = Array.isArray(graphData?.nodes)\n    ? graphData.nodes.find((node) => node?.id === sourceNodeId)\n    : null;\n  const status = normalize(sourceNode?.data?.status);\n  summaryStatusCache.set(cacheKey, status);\n  return status;\n};\n\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nif (!summaryNode) {\n  return { success: false, error: 'Summary node missing' };\n}\n\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task');\nconst externalSummaryTasks = nodes.filter((entry) => {\n  if (entry?.type !== 'task-summary') return false;\n  if (entry?.data?.countAsTask === false) return false;\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  return Boolean(sourceRef && sourceNodeId && sourceNodeId !== SUMMARY_NODE_ID);\n});\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst literalTaskItems = tasks.map((entry) => ({\n  title: toTitle(entry, 'Untitled task'),\n  status: normalize(entry?.data?.status)\n}));\nconst externalTaskItems = await Promise.all(externalSummaryTasks.map(async (entry) => ({\n  title: toTitle(entry, 'Untitled task summary'),\n  status: await getExternalSummaryStatus(entry)\n})));\nconst taskItems = [...literalTaskItems, ...externalTaskItems].filter((entry) => entry?.title);\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalize(goalNode?.data?.status);\nconst derivedStatus = goalStatus\n  ? (goalStatus === 'done' && !allTasksDone ? 'in-progress' : goalNode?.data?.status)\n  : (allTasksDone ? 'done' : (completedTaskCount > 0 ? 'in-progress' : (summaryNode?.data?.status || 'todo')));\n\nconst nextData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  taskProgress: {\n    completed: completedTaskCount,\n    total: taskItems.length\n  },\n  questionProgress: {\n    answered: questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length,\n    total: questions.length\n  },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.', taskTitles.length || 4),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'graph-updater',\n  updatedAt: new Date().toISOString()\n};\n\nawait api.updateNode(SUMMARY_NODE_ID, { data: nextData });\nreturn { success: true, summary: nextData };",
+        "summaryNodeId": "task-summary-impl-summary",
+        "autoRun": true,
+        "description": "Keep the Task Summary Provider Implementation summary node in sync with the task graph contents.",
+        "scriptName": "Task Summary Provider Updater",
+        "scriptId": "",
+        "autoRunOnGraphChange": true
+      }
+    },
+    {
+      "id": "task-graph-summary-implementation-bridge-goal",
+      "type": "port",
+      "label": "Goal",
+      "position": {
+        "x": -1140,
+        "y": 720
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Goal.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/goal.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "goal",
+          "meaning": "Strategic or local outcome node for planning graphs."
+        }
+      }
+    },
+    {
+      "id": "task-graph-summary-implementation-bridge-task",
+      "type": "port",
+      "label": "Task",
+      "position": {
+        "x": -1140,
+        "y": 860
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Task.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "task",
+          "meaning": "Atomic executable unit of work for planning graphs."
+        }
+      }
+    },
+    {
+      "id": "task-graph-summary-implementation-bridge-decision",
+      "type": "port",
+      "label": "Decision",
+      "position": {
+        "x": -1140,
+        "y": 1000
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Decision.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/decision.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "decision",
+          "meaning": "Recorded, timestamped choice for planning graphs."
+        }
+      }
+    },
+    {
+      "id": "task-graph-summary-implementation-bridge-open-question",
+      "type": "port",
+      "label": "Open Question",
+      "position": {
+        "x": -1140,
+        "y": 1140
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Open Question.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/open-question.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "open-question",
+          "meaning": "Unresolved question node for planning graphs."
+        }
+      }
+    },
+    {
+      "id": "task-graph-summary-implementation-bridge-task-summary",
+      "type": "port",
+      "label": "Task Summary",
+      "position": {
+        "x": -1140,
+        "y": 1280
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Task Summary.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "task-summary",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface."
+        }
+      }
+    },
+    {
+      "id": "task-graph-summary-implementation-bridge-task-summary-provider",
+      "type": "port",
+      "label": "Task Summary Provider",
+      "position": {
+        "x": -1140,
+        "y": 1420
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Task Summary Provider.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "task-summary-provider",
+          "meaning": "Provider surface for a planning task summary."
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "task-summary-impl-edge-001",
+      "type": "reference",
+      "source": "task-summary-impl-overview",
+      "target": "task-summary-impl-goal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "goal"
+    },
+    {
+      "id": "task-summary-impl-edge-002",
+      "type": "reference",
+      "source": "task-summary-impl-goal",
+      "target": "task-summary-impl-task-class",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "class"
+    },
+    {
+      "id": "task-summary-impl-edge-003",
+      "type": "reference",
+      "source": "task-summary-impl-task-class",
+      "target": "task-summary-impl-task-template",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "template"
+    },
+    {
+      "id": "task-summary-impl-edge-004",
+      "type": "reference",
+      "source": "task-summary-impl-task-template",
+      "target": "task-summary-impl-task-script",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "script"
+    },
+    {
+      "id": "task-summary-impl-edge-005",
+      "type": "reference",
+      "source": "task-summary-impl-task-script",
+      "target": "task-summary-impl-task-entry",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "entry"
+    },
+    {
+      "id": "task-summary-impl-edge-006",
+      "type": "reference",
+      "source": "task-summary-impl-task-entry",
+      "target": "task-summary-impl-task-host",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "host"
+    },
+    {
+      "id": "task-summary-impl-edge-007",
+      "type": "reference",
+      "source": "task-summary-impl-goal",
+      "target": "task-summary-impl-decision",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "rule"
+    },
+    {
+      "id": "task-summary-impl-edge-008",
+      "type": "reference",
+      "source": "task-summary-impl-task-script",
+      "target": "task-summary-impl-question",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "runtime"
+    },
+    {
+      "id": "task-summary-impl-edge-009",
+      "type": "reference",
+      "source": "task-summary-impl-task-template",
+      "target": "task-summary-impl-template-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "artifact"
+    },
+    {
+      "id": "task-summary-impl-edge-010",
+      "type": "reference",
+      "source": "task-summary-impl-task-host",
+      "target": "task-summary-impl-summary-view-node",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "consumer"
+    },
+    {
+      "id": "task-summary-impl-edge-011",
+      "type": "reference",
+      "source": "task-summary-impl-task-host",
+      "target": "task-summary-impl-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "surface"
+    },
+    {
+      "id": "task-summary-impl-edge-012",
+      "type": "reference",
+      "source": "task-summary-impl-task-script",
+      "target": "task-summary-impl-updater",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "updater"
+    },
+    {
+      "id": "task-graph-summary-implementation-edge-summary",
+      "type": "reference",
+      "source": "task-summary-impl-overview",
+      "target": "task-summary-impl-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "summary"
+    },
+    {
+      "id": "task-graph-summary-implementation-edge-summary-updater",
+      "type": "reference",
+      "source": "task-graph-summary-implementation-summary-updater",
+      "target": "task-summary-impl-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "updates"
+    }
+  ],
+  "nodeCount": 23,
+  "edgeCount": 14,
+  "timestamp": "2026-03-24T15:52:24.122Z"
+}

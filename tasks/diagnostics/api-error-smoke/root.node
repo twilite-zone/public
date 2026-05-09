@@ -1,0 +1,58 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "diagnostics-api-smoke-note",
+      "type": "markdown",
+      "label": "API Error Smoke",
+      "root": true,
+      "position": {
+        "x": 120,
+        "y": 120
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "# API Error Smoke\n\nThis graph is intended to prove that API fetch failures enter the diagnostics ledger.\n\n1. Select the API node.\n2. Click its fetch/execute control.\n3. Open the diagnostics panel.\n\nExpected:\n- snackbar error\n- durable diagnostics entry\n- `kind: api`\n- `code: API_FETCH`\n- `op: api:fetch`\n"
+      }
+    },
+    {
+      "id": "diagnostics-api-smoke-node",
+      "type": "api",
+      "label": "Broken API Fetch",
+      "position": {
+        "x": 620,
+        "y": 80
+      },
+      "width": 420,
+      "height": 420,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "url": "http://127.0.0.1:1/diagnostics-smoke",
+        "method": "GET",
+        "headers": {},
+        "body": "",
+        "memo": "Intentional bad endpoint for diagnostics smoke testing."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "diagnostics-api-smoke-edge-note",
+      "type": "reference",
+      "source": "diagnostics-api-smoke-note",
+      "target": "diagnostics-api-smoke-node",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "test",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "timestamp": "2026-04-05T12:00:00.000Z",
+  "nodeCount": 2,
+  "edgeCount": 1
+}

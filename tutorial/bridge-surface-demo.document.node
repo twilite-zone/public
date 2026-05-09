@@ -1,0 +1,186 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Bridge Surface Demo",
+    "description": "A small graph demonstrating an import bridge (create nodes from an external node-class) and an export bridge (expose resources outward).",
+    "created": "2026-04-28T00:00:00.000Z",
+    "modified": "2026-04-28T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "tutorial",
+      "bridge",
+      "demo"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "bridge-surface-demo-declaration",
+      "type": "declaration",
+      "label": "Declaration",
+      "position": { "x": -260, "y": -220 },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "bridge-surface-demo",
+          "name": "Bridge Surface Demo.Document",
+          "version": "0.1.0",
+          "description": "Demonstrates import/export bridge primitives.",
+          "createdAt": "2026-04-28T00:00:00.000Z",
+          "updatedAt": "2026-04-28T00:00:00.000Z"
+        },
+        "intent": { "kind": "graph", "scope": "mixed" },
+        "dependencies": {
+          "nodeTypes": [
+            "declaration",
+            "ui-view",
+            "markdown",
+            "bridge"
+          ],
+          "portContracts": [ "core" ],
+          "skills": [],
+          "schemaVersions": { "nodes": ">=1.0.0", "ports": ">=1.0.0" },
+          "optional": []
+        },
+        "authority": {
+          "mutation": { "allowCreate": true, "allowUpdate": true, "allowDelete": true, "appendOnly": false },
+          "actors": { "humans": true, "agents": true, "tools": true },
+          "styleAuthority": "descriptive",
+          "history": { "rewriteAllowed": false, "squashAllowed": false }
+        },
+        "document": { "url": "" },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "bridge-surface-demo-view",
+      "type": "ui-view",
+      "label": "node.web.summary",
+      "position": { "x": 140, "y": -220 },
+      "width": 460,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "payload": "node.web.summary",
+        "title": "Bridge Surface Demo",
+        "purpose": "This graph contains two bridge nodes:\n- Import bridge: creates nodes from an external node-class.\n- Export bridge: configures outward exposure (allowlists) for other graphs.\n\nUse the edit drawer on each bridge to inspect the contract.",
+        "status": "active",
+        "viewRole": "summary",
+        "viewKind": "display",
+        "exposedAuthority": "consume-view",
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"18\" fill=\"#fff7ed\" stroke=\"#ea580c\" stroke-width=\"5\"/><path d=\"M54 58h58\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\"/><path d=\"M54 102h58\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\" opacity=\"0.6\"/><path d=\"M128 80h34\" stroke=\"#ea580c\" stroke-width=\"10\" stroke-linecap=\"round\"/><path d=\"M154 62v36\" stroke=\"#ea580c\" stroke-width=\"10\" stroke-linecap=\"round\"/></svg>",
+        "_classBinding": {
+          "key": "ui-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+        },
+        "definitionKey": "ui-view"
+      }
+    },
+    {
+      "id": "bridge-surface-demo-instructions",
+      "type": "markdown",
+      "label": "Instructions",
+      "position": { "x": -260, "y": 40 },
+      "width": 520,
+      "height": 360,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Try it\n\n1) Click the **Import Bridge** node.\n2) Use its primary action to create an instance of the bridged class in this graph.\n3) Edit the bridge node and change `bridge.ref` to a different node-class ref.\n\nNotes:\n- Import bridges usually need `create` grant.\n- Export bridges define outward exposure (views/node classes/edges/scripts)."
+      }
+    },
+    {
+      "id": "bridge-surface-demo-import-bridge",
+      "type": "bridge",
+      "label": "Import Bridge",
+      "position": { "x": 140, "y": 90 },
+      "width": 360,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Import bridge: create summary-view nodes in this graph.",
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/ui-interaction/summary-view.node-class.node",
+          "role": "import",
+          "scope": "focused-graph",
+          "grants": [ "create" ],
+          "exposure": {
+            "nodeClasses": { "mode": "deny" },
+            "edgeClasses": { "mode": "deny" },
+            "views": { "mode": "deny" },
+            "scripts": { "mode": "deny" },
+            "declarations": { "mode": "deny" }
+          }
+        },
+        "target": {
+          "endpoint": "/library/classes/nodes/ui-interaction/summary-view.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "role": "import",
+          "grants": [ "create" ],
+          "label": "Summary View",
+          "key": "summary-view"
+        }
+      }
+    },
+    {
+      "id": "bridge-surface-demo-export-bridge",
+      "type": "bridge",
+      "label": "Export Bridge",
+      "position": { "x": 520, "y": 90 },
+      "width": 360,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Export bridge: expose views outward (example allowlist).",
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/tutorial/views-surface-demo.document.node",
+          "role": "export",
+          "scope": "focused-graph",
+          "grants": [ "create" ],
+          "exposure": {
+            "nodeClasses": { "mode": "deny" },
+            "edgeClasses": { "mode": "deny" },
+            "views": { "mode": "allowlist", "allowKeys": [ "node.web.summary", "node.web.detail", "node.web.icon" ] },
+            "scripts": { "mode": "deny" },
+            "declarations": { "mode": "allow" }
+          }
+        },
+        "target": {
+          "endpoint": "/tutorial/views-surface-demo.document.node:root",
+          "mode": "bridge",
+          "kind": "graph",
+          "resourceKind": "graph",
+          "scope": "focused-graph",
+          "role": "export",
+          "grants": [ "create" ],
+          "label": "Views Surface Demo"
+        }
+      }
+    }
+  ],
+  "edges": [],
+  "timestamp": "2026-04-28T00:00:00.000Z",
+  "nodeCount": 6,
+  "edgeCount": 0
+}
+

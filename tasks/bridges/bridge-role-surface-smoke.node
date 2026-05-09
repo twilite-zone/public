@@ -1,0 +1,137 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "bridge-role-surface-smoke-declaration",
+      "type": "declaration",
+      "label": "Declaration",
+      "position": { "x": -980, "y": -300 },
+      "width": 420,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "bridge-role-surface-smoke",
+          "name": "Bridge Role + Surface Smoke Test",
+          "version": "0.1.0",
+          "description": "Smoke test for bridge import/export behavior and declaration-surface curated exposure.",
+          "createdAt": "2026-04-23T00:00:00.000Z",
+          "updatedAt": "2026-04-23T00:00:00.000Z"
+        },
+        "intent": { "kind": "task", "scope": "validation" },
+        "dependencies": {
+          "nodeTypes": ["declaration", "title", "markdown", "bridge"],
+          "portContracts": ["core"],
+          "skills": [],
+          "schemaVersions": { "nodes": ">=1.0.0", "ports": ">=1.0.0" },
+          "optional": []
+        },
+        "authority": {
+          "mutation": { "allowCreate": true, "allowUpdate": true, "allowDelete": true, "appendOnly": false },
+          "actors": { "humans": true, "agents": true, "tools": true },
+          "styleAuthority": "descriptive",
+          "history": { "rewriteAllowed": false, "squashAllowed": false }
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "summaryNodeId": "bridge-role-surface-smoke-instructions",
+        "declaration": {
+          "surfaces": [
+            {
+              "id": "export",
+              "kind": "export",
+              "label": "Export",
+              "memo": "Curated export surface: empty until explicitly enabled.",
+              "exposes": {
+                "nodeClasses": { "mode": "deny" },
+                "edgeClasses": { "mode": "deny" },
+                "views": { "mode": "deny" },
+                "scripts": { "mode": "deny" },
+                "declarations": { "mode": "allow" }
+              }
+            }
+          ],
+          "defaultSurfaceId": "export"
+        }
+      }
+    },
+    {
+      "id": "bridge-role-surface-smoke-title",
+      "type": "markdown",
+      "label": "Title",
+      "position": { "x": -460, "y": -300 },
+      "width": 1160,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Bridge Role + Surface Smoke\n\nImport bridges populate legend entries. Export bridges define outward exposure and should not populate the current graph’s legend."
+      }
+    },
+    {
+      "id": "bridge-role-surface-smoke-instructions",
+      "type": "markdown",
+      "label": "How To Test",
+      "position": { "x": -460, "y": -60 },
+      "width": 1160,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Checks\n\n1. Select **Import Edge Library**.\n2. In the editor panel, ensure `Grant: Create` is enabled and `Role = import`.\n3. Confirm edge-class entries appear in the Legend.\n4. Toggle `Role = export` and confirm those entries disappear from the Legend.\n5. Toggle `Expose: Edge classes` on/off to confirm the effective counts update.\n\nThis graph uses a declaration surface whose default behavior is *deny until enabled*."
+      }
+    },
+    {
+      "id": "bridge-role-surface-smoke-bridge-import",
+      "type": "bridge",
+      "label": "Import Edge Library",
+      "position": { "x": -460, "y": 260 },
+      "width": 520,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Should populate legend when role=import and create grant is enabled.",
+        "bridge": {
+          "ref": "/library/classes/edges/root.node",
+          "role": "import",
+          "grants": ["create"],
+          "exposure": {
+            "edgeClasses": { "mode": "allow" }
+          }
+        }
+      }
+    },
+    {
+      "id": "bridge-role-surface-smoke-bridge-export",
+      "type": "bridge",
+      "label": "Export Edge Library (control)",
+      "position": { "x": 120, "y": 260 },
+      "width": 520,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Control: export bridges should not add legend entries to this graph.",
+        "bridge": {
+          "ref": "/library/classes/edges/root.node",
+          "role": "export",
+          "grants": ["create"],
+          "exposure": {
+            "edgeClasses": { "mode": "allow" }
+          }
+        }
+      }
+    }
+  ],
+  "edges": []
+}

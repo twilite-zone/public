@@ -1,0 +1,2081 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Untitled Graph",
+    "description": "",
+    "created": "2026-04-04T21:30:07.718Z",
+    "modified": "2026-04-04T21:30:07.718Z",
+    "author": "",
+    "tags": [],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "landing-seriousness-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "root": false,
+      "position": {
+        "x": -640,
+        "y": -895
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "users-implementation-path",
+          "name": "Users Implementation Path",
+          "version": "0.1.0",
+          "description": "Task graph for sequencing the first implementation slice of hosted users in Twilite.",
+          "createdAt": "2026-03-16T12:15:00.000Z",
+          "updatedAt": "2026-03-16T12:15:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "goal",
+            "task",
+            "open-question",
+            "bridge",
+            "script",
+            "section",
+            "title",
+            "document-view",
+            "summary"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false,
+          "expansion": {
+            "allowGraphEntry": true
+          },
+          "github": {
+            "repo": "",
+            "path": "",
+            "branch": "main",
+            "autoCreateRepo": true,
+            "repoVisibility": "private",
+            "seedOnCommit": false,
+            "enableGithubPages": false
+          }
+        },
+        "summaryNodeId": "users-implementation-summary"
+      }
+    },
+    {
+      "id": "landing-seriousness-legend",
+      "type": "legend",
+      "label": "Legend",
+      "root": false,
+      "position": {
+        "x": -160,
+        "y": -895
+      },
+      "width": 320,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Legend\n- bridge cluster: local creation vocabulary for planning nodes\n- `goal`: first-slice outcome\n- `task`: source-backed parent task or concrete implementation step\n- `open-question`: unresolved execution boundary"
+      }
+    },
+    {
+      "id": "users-implementation-bridge-library",
+      "type": "bridge",
+      "label": "Open Planning Class Library",
+      "root": false,
+      "position": {
+        "x": 280,
+        "y": -895
+      },
+      "width": 300,
+      "height": 140,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/root.node:root",
+          "mode": "navigate",
+          "kind": "graph",
+          "portId": "root",
+          "label": "Open"
+        },
+        "memo": "Reference planning-node language used to model the users implementation path.",
+        "intent": "external",
+        "resourceKind": "graph",
+        "scope": "external",
+        "authority": "navigate",
+        "grants": [
+          "open"
+        ],
+        "bridge": {
+          "ref": "/library/classes/nodes/task-planning/root.node",
+          "resourceKind": "graph",
+          "scope": "external",
+          "grants": [
+            "open"
+          ]
+        }
+      }
+    },
+    {
+      "id": "users-implementation-bridge-goal",
+      "type": "bridge",
+      "label": "Goal",
+      "root": false,
+      "position": {
+        "x": 700,
+        "y": -895
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Goal.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "authority": "bridge",
+        "grants": [
+          "create"
+        ],
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/goal.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "portId": "root",
+          "label": "Create",
+          "key": "goal",
+          "meaning": "Strategic or local outcome node for planning graphs."
+        },
+        "bridge": {
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "id": "users-implementation-bridge-section",
+      "type": "bridge",
+      "label": "Section",
+      "root": false,
+      "position": {
+        "x": 1080,
+        "y": -895
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Markdown.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "authority": "bridge",
+        "grants": [
+          "create"
+        ],
+        "target": {
+          "endpoint": "/library/classes/nodes/document-publishing/section.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "portId": "root",
+          "label": "Create",
+          "key": "section",
+          "meaning": "A durable explanatory section for implementation guidance."
+        },
+        "bridge": {
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "id": "users-implementation-bridge-task",
+      "type": "bridge",
+      "label": "Task",
+      "root": false,
+      "position": {
+        "x": 1460,
+        "y": -895
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Task.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "authority": "bridge",
+        "grants": [
+          "create"
+        ],
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "portId": "root",
+          "label": "Create",
+          "key": "task",
+          "meaning": "Atomic executable unit of work for planning graphs."
+        },
+        "bridge": {
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "id": "users-implementation-bridge-open-question",
+      "type": "bridge",
+      "label": "Open Question",
+      "root": false,
+      "position": {
+        "x": 1840,
+        "y": -895
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Open Question.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "authority": "bridge",
+        "grants": [
+          "create"
+        ],
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/open-question.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "portId": "root",
+          "label": "Create",
+          "key": "open-question",
+          "meaning": "Unresolved question node for planning graphs."
+        },
+        "bridge": {
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "id": "landing-seriousness-overview",
+      "type": "section",
+      "label": "Users Implementation Path",
+      "root": false,
+      "position": {
+        "x": -640,
+        "y": -535
+      },
+      "width": 460,
+      "height": 260,
+      "color": "#1976d2",
+      "ports": [
+        {
+          "id": "in",
+          "label": "In",
+          "direction": "input",
+          "dataType": "flow",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "out",
+          "label": "Out",
+          "direction": "output",
+          "dataType": "content",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "inputs": [
+        {
+          "key": "in",
+          "label": "In",
+          "type": "flow"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "out",
+          "label": "Out",
+          "type": "content"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Users Implementation Path",
+        "summary": "The abstract model is done.\n\nThis graph now defines the first concrete hosted slice in code terms: four persisted records, one sign-in resolution bundle, and one default-save rule.\n\nFirst slice records:\n- `users`\n- `auth_identities`\n- `user_workspaces`\n- `repo_mappings`",
+        "level": "h2",
+        "anchor": "users-implementation-path",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-section",
+          "sourceBridgeNodeId": "users-implementation-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "landing-seriousness-entry",
+      "type": "section",
+      "label": "Execution Boundary",
+      "root": false,
+      "position": {
+        "x": -60,
+        "y": -535
+      },
+      "width": 360,
+      "height": 210,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Execution Boundary",
+        "summary": "This first implementation slice should only make hosted identity and workspace ownership real.\n\nDo not fold in every local preference, cache, or editor convenience state yet.",
+        "level": "h2",
+        "anchor": "execution-boundary",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-section",
+          "sourceBridgeNodeId": "users-implementation-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "landing-seriousness-identity",
+      "type": "section",
+      "label": "Schema First",
+      "root": false,
+      "position": {
+        "x": 420,
+        "y": -535
+      },
+      "width": 360,
+      "height": 210,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Concrete Schema",
+        "summary": "The first hosted schema should be:\n- `users(id, primary_email, display_name, avatar_url, status, created_at, updated_at)`\n- `auth_identities(id, user_id, provider, provider_user_id, provider_email, installation_id, provider_metadata, created_at, updated_at)`\n- `user_workspaces(id, user_id, default_save_slot, selected_provider, selected_installation_id, onboarding_state, preferences, created_at, updated_at)`\n- `repo_mappings(id, workspace_id, slot, provider, owner, repo, branch, path_prefix, visibility, installation_id, is_active, created_at, updated_at)`\n\nThat is enough to make users durable without trying to model every preference on day one.",
+        "level": "h2",
+        "anchor": "schema-first",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-section",
+          "sourceBridgeNodeId": "users-implementation-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "landing-seriousness-hierarchy",
+      "type": "section",
+      "label": "Auth Attachment",
+      "root": false,
+      "position": {
+        "x": 900,
+        "y": -535
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Auth Identity",
+        "summary": "Attach GitHub and future providers through `auth_identities`.\n\nThat table should link each external provider account back to one canonical `users.id`. The provider record is allowed to store installation linkage and provider metadata, but it should not replace the Twilite user record itself.",
+        "level": "h2",
+        "anchor": "auth-attachment",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-section",
+          "sourceBridgeNodeId": "users-implementation-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "landing-seriousness-signals",
+      "type": "section",
+      "label": "Workspace Resolution",
+      "root": false,
+      "position": {
+        "x": 1380,
+        "y": -535
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Workspace Bundle",
+        "summary": "On sign-in, Twilite should resolve one durable workspace bundle in this order:\n1. `users` by canonical identity\n2. `user_workspaces` for that user\n3. active `repo_mappings` for `work`, `public`, and `private`\n4. `default_save_slot`, which should initially resolve to `work`\n\nThe app should stop deriving this from scattered local state once this path exists.",
+        "level": "h2",
+        "anchor": "workspace-resolution",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-section",
+          "sourceBridgeNodeId": "users-implementation-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "landing-seriousness-conversion",
+      "type": "section",
+      "label": "Migration Boundary",
+      "root": false,
+      "position": {
+        "x": -640,
+        "y": -155
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Migration Boundary",
+        "summary": "Do not migrate everything.\n\nMove only product-critical user state in the first pass:\n- canonical user identity\n- provider linkage\n- selected installation\n- default save slot\n- repo mappings\n- onboarding state that must survive devices\n\nLeave pan/zoom, recents, caches, and session-local editor convenience state where they are for now.",
+        "level": "h2",
+        "anchor": "migration-boundary",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-section",
+          "sourceBridgeNodeId": "users-implementation-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "landing-seriousness-sequence",
+      "type": "section",
+      "label": "Suggested Sequence",
+      "root": false,
+      "position": {
+        "x": -160,
+        "y": -155
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Suggested Sequence",
+        "summary": "1. create `users`, `auth_identities`, `user_workspaces`, and `repo_mappings`\n2. attach GitHub sign-in and installation linkage through `auth_identities`\n3. resolve the workspace bundle on sign-in\n4. make `work` the default save slot for new files\n5. move only critical hosted user state out of browser-local storage\n6. build settings and setup flows on top of the stable schema",
+        "level": "h2",
+        "anchor": "suggested-sequence",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-section",
+          "sourceBridgeNodeId": "users-implementation-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "landing-seriousness-questions",
+      "type": "section",
+      "label": "Questions To Answer",
+      "root": false,
+      "position": {
+        "x": 380,
+        "y": -155
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Questions To Answer",
+        "summary": "- Which hosted auth and database layer will own these four records in deployment?\n- Should every user start with exactly one workspace, or do we need multi-workspace support immediately?\n- What installation and repo-mapping edits belong in onboarding versus later settings?",
+        "level": "h2",
+        "anchor": "questions-to-answer",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-section",
+          "sourceBridgeNodeId": "users-implementation-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "landing-seriousness-output",
+      "type": "section",
+      "label": "Expected Outcome",
+      "root": false,
+      "position": {
+        "x": 920,
+        "y": -155
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Expected Outcome",
+        "summary": "Once this slice lands, Twilite will have a real hosted user foundation: a canonical user record, attached provider identities, a durable workspace, explicit slot-to-repo mappings, and a trustworthy default-save rule that follows the user across devices.",
+        "level": "h2",
+        "anchor": "expected-outcome",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-section",
+          "sourceBridgeNodeId": "users-implementation-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "landing-page-seriousness-summary",
+      "type": "task",
+      "label": "Define the implementation path",
+      "root": false,
+      "position": {
+        "x": 1400,
+        "y": -155
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Source-backed parent task from the users planning graph.",
+        "sourceRef": "github://twilite-zone/public/tasks/users/root.node",
+        "sourceNodeId": "tasks-landing-page-seriousness-task-node-task",
+        "sourcePayload": "node.web",
+        "title": "Define the implementation path",
+        "body": "Source-backed task view.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "2",
+        "countAsTask": false,
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-task",
+          "sourceBridgeNodeId": "users-implementation-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "tasks-landing-page-seriousness-task-node-goal",
+      "type": "goal",
+      "label": "Implement the concrete hosted users schema",
+      "root": false,
+      "position": {
+        "x": -640,
+        "y": 225
+      },
+      "width": 400,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Implement the first hosted users slice with four persisted records: `users`, `auth_identities`, `user_workspaces`, and `repo_mappings`, plus the sign-in workspace bundle and `work` as the default save slot.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "8",
+        "acceptanceCriteria": [
+          "Hosted schema exists for users, auth identities, workspaces, and repo mappings",
+          "External providers attach through auth identities rather than replacing the Twilite user",
+          "Sign-in resolves user, workspace, active mappings, and default save slot in one path",
+          "New files default to the work mapping"
+        ],
+        "_classBinding": {
+          "key": "goal",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "identity": {
+            "graphId": "goal-class",
+            "name": "Goal Class",
+            "version": "0.1.0",
+            "description": "Strategic or local outcome node for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Strategic or local outcome node for planning graphs.",
+          "description": "Strategic or local outcome node for planning graphs.",
+          "defaults": {
+            "label": "Goal",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+            "showLabel": false,
+            "data": {
+              "body": "Define the outcome this plan should achieve.",
+              "priority": "high",
+              "status": "open",
+              "owner": "",
+              "targetDate": "",
+              "successMetrics": [
+                "Describe a measurable success signal"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "goal",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Goal",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+              "showLabel": false,
+              "data": {
+                "body": "Define the outcome this plan should achieve.",
+                "priority": "high",
+                "status": "open",
+                "owner": "",
+                "targetDate": "",
+                "successMetrics": [
+                  "Describe a measurable success signal"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "goal",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "goal",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "goal",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-goal",
+          "sourceBridgeNodeId": "users-implementation-bridge-goal",
+          "sourceBridgeLabel": "Goal",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "goal",
+          "classRef": "/library/classes/nodes/task-planning/goal.node-class.node"
+        },
+        "definitionKey": "goal"
+      }
+    },
+    {
+      "id": "tasks-landing-page-seriousness-task-node-task",
+      "type": "task",
+      "label": "Create the persisted user records",
+      "root": false,
+      "position": {
+        "x": -120,
+        "y": 225
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Create the real hosted persistence layer for `users`, `auth_identities`, `user_workspaces`, and `repo_mappings`, including the fields needed for GitHub identity linkage, installation attachment, default save slot resolution, and slot-to-repo routing.",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "high",
+        "estimateHours": "4",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-task",
+          "sourceBridgeNodeId": "users-implementation-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task",
+        "acceptanceCriteria": [
+          "users table exists with canonical identity fields",
+          "auth_identities table exists with provider linkage fields",
+          "user_workspaces table exists with default save and onboarding fields",
+          "repo_mappings table exists with work/public/private routing fields"
+        ]
+      }
+    },
+    {
+      "id": "users-implementation-task-auth-attachment",
+      "type": "task",
+      "label": "Attach GitHub through auth_identities",
+      "root": false,
+      "position": {
+        "x": 380,
+        "y": 225
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Implement the auth boundary so GitHub sign-in and installation linkage write to `auth_identities` and resolve back to one canonical `users.id`, leaving room for additional providers later.",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "high",
+        "estimateHours": "3",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-task",
+          "sourceBridgeNodeId": "users-implementation-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task",
+        "acceptanceCriteria": [
+          "GitHub account maps to auth_identities rather than replacing the user record",
+          "Provider user id and installation id are stored durably",
+          "Auth lookup can resolve the owning Twilite user"
+        ]
+      }
+    },
+    {
+      "id": "users-implementation-task-workspace-resolution",
+      "type": "task",
+      "label": "Resolve the workspace bundle on sign-in",
+      "root": false,
+      "position": {
+        "x": 880,
+        "y": 225
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "On sign-in, resolve `users`, `user_workspaces`, and active `repo_mappings` together so the app can load the selected installation, the `work` / `public` / `private` destinations, and the default save slot in one durable step.",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "high",
+        "estimateHours": "4",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-task",
+          "sourceBridgeNodeId": "users-implementation-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task",
+        "acceptanceCriteria": [
+          "Sign-in resolves one canonical user",
+          "Workspace loads with default save slot and onboarding state",
+          "Active work/public/private repo mappings load with the workspace"
+        ]
+      }
+    },
+    {
+      "id": "users-implementation-task-default-save",
+      "type": "task",
+      "label": "Make work the default save destination",
+      "root": false,
+      "position": {
+        "x": 1380,
+        "y": 225
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Use the resolved `user_workspaces.default_save_slot` and `repo_mappings` records to make new files land in the `work` slot by default, while still allowing later promotion into `public` or `private`.",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "high",
+        "estimateHours": "2",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-task",
+          "sourceBridgeNodeId": "users-implementation-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task",
+        "acceptanceCriteria": [
+          "New files default to the work slot when a workspace is present",
+          "Default save slot comes from hosted workspace data, not browser-only state",
+          "Public and private remain explicit later decisions"
+        ]
+      }
+    },
+    {
+      "id": "tasks-landing-page-seriousness-task-node-question",
+      "type": "open-question",
+      "label": "Which hosted stack will own the first users slice?",
+      "root": false,
+      "position": {
+        "x": -640,
+        "y": 595
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Choose the deployed auth and database layer that will own `users`, `auth_identities`, `user_workspaces`, and `repo_mappings`, and decide whether the first release needs one workspace per user or immediate multi-workspace support.",
+        "status": "open",
+        "owner": "Michael",
+        "resolutionPath": "Resolve before implementation begins so the schema lands on the real hosting stack.",
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "identity": {
+            "graphId": "open-question-class",
+            "name": "Open Question Class",
+            "version": "0.1.0",
+            "description": "Unresolved question node for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Unresolved question node for planning graphs.",
+          "description": "Unresolved question node for planning graphs.",
+          "defaults": {
+            "label": "Open Question",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+            "showLabel": false,
+            "data": {
+              "body": "State what is still unclear.",
+              "status": "open",
+              "owner": "",
+              "resolutionPath": "",
+              "prominence": "high"
+            }
+          },
+          "nodeDef": {
+            "key": "open-question",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Open Question",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+              "showLabel": false,
+              "data": {
+                "body": "State what is still unclear.",
+                "status": "open",
+                "owner": "",
+                "resolutionPath": "",
+                "prominence": "high"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "open-question",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "open-question",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "open-question",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-open-question",
+          "sourceBridgeNodeId": "users-implementation-bridge-open-question",
+          "sourceBridgeLabel": "Open Question",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "definitionKey": "open-question"
+      }
+    },
+    {
+      "id": "users-implementation-bridge-title",
+      "type": "bridge",
+      "label": "Title",
+      "root": false,
+      "position": {
+        "x": -140,
+        "y": 595
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Title class.",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "id": "users-implementation-bridge-document-view",
+      "type": "bridge",
+      "label": "Document View",
+      "root": false,
+      "position": {
+        "x": 240,
+        "y": 595
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Document View class.",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "id": "users-implementation-title",
+      "type": "title",
+      "label": "Users Implementation Path",
+      "root": true,
+      "position": {
+        "x": 621,
+        "y": 595
+      },
+      "width": 520,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Users Implementation Path",
+        "subtitle": "First hosted execution slice for Twilite users: persisted records, provider attachment, workspace resolution, and work-as-default save behavior.",
+        "intent": "headline",
+        "status": "active",
+        "_classBinding": {
+          "key": "title",
+          "sourceRef": "/library/classes/nodes/template-structure/title.node-class.node",
+          "ref": "/library/classes/nodes/template-structure/title.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-title",
+          "sourceBridgeNodeId": "users-implementation-bridge-title",
+          "sourceBridgeLabel": "Title",
+          "sourceRef": "/library/classes/nodes/template-structure/title.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "title",
+          "classRef": "/library/classes/nodes/template-structure/title.node-class.node"
+        },
+        "definitionKey": "title"
+      }
+    },
+    {
+      "id": "users-implementation-document-view",
+      "type": "document-view",
+      "label": "Document View",
+      "root": false,
+      "position": {
+        "x": 1260,
+        "y": 595
+      },
+      "width": 440,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Users Implementation Path",
+        "localTitle": "Users Implementation Path",
+        "publishedTitle": "Users Implementation Path",
+        "purpose": "Compose the users implementation path into one readable document surface.",
+        "titleSourceNodeId": "users-implementation-title",
+        "audience": "Reader",
+        "status": "active",
+        "viewRole": "document",
+        "viewKind": "display",
+        "exposedAuthority": "consume-view",
+        "runtimeExposed": false,
+        "partNodeIds": [
+          "users-implementation-title",
+          "landing-page-seriousness-summary",
+          "landing-seriousness-overview",
+          "landing-seriousness-entry",
+          "landing-seriousness-identity",
+          "landing-seriousness-hierarchy",
+          "landing-seriousness-signals",
+          "landing-seriousness-conversion",
+          "landing-seriousness-sequence",
+          "landing-seriousness-questions",
+          "landing-seriousness-output"
+        ],
+        "documentOrder": [
+          "users-implementation-title",
+          "landing-page-seriousness-summary",
+          "landing-seriousness-overview",
+          "landing-seriousness-entry",
+          "landing-seriousness-identity",
+          "landing-seriousness-hierarchy",
+          "landing-seriousness-signals",
+          "landing-seriousness-conversion",
+          "landing-seriousness-sequence",
+          "landing-seriousness-questions",
+          "landing-seriousness-output"
+        ],
+        "documentHtml": "<section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;box-sizing:border-box;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,252,245,0.99), rgba(255,248,235,0.96));border:1px solid rgba(146,64,14,0.16);box-shadow:0 12px 28px rgba(180,83,9,0.10);gap:14px;\"><div style=\"display:flex;align-items:flex-start;justify-content:space-between;gap:12px;\"><div style=\"display:flex;flex-direction:column;gap:6px;min-width:0;\"><div style=\"font:700 11px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#b45309;\">Title</div><div style=\"font:700 28px/1.12 ui-sans-serif, system-ui, sans-serif;color:#1f2937;word-break:break-word;\">Users Implementation Path</div></div><div style=\"display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(180,83,9,0.1);color:#92400e;font-size:11px;font-weight:700;letter-spacing:0.04em;\">headline</span><span style=\"font:600 10px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.12em;text-transform:uppercase;color:#9a3412;opacity:0.72;\">active</span></div></div><div style=\"height:1px;background:linear-gradient(90deg, rgba(245,158,11,0.45), rgba(245,158,11,0));\"></div><div style=\"font:500 15px/1.65 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\">First hosted execution slice for Twilite users: persisted records, provider attachment, workspace resolution, and work-as-default save behavior.</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Define the implementation path</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(16,185,129,0.16);color:#047857;font-size:11px;font-weight:600;\">Task</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #10b981, #34d399);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">Decide the concrete implementation path for hosted users, canonical user records, repo mappings, and default save behavior, then break that into shippable tasks across auth, persistence, migration, and UX.</div><div style=\"font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#64748b;\">Status: todo • Priority: high • Owner: Michael • Estimate: 2h</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Implement the first hosted users slice</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(219,39,119,0.14);color:#9d174d;font-size:11px;font-weight:600;\">Summary</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #db2777, #f472b6);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\"><strong>Goal:</strong> Implement the first hosted users slice<br><br><strong>Tasks In Scope</strong><br>1. Implement the hosted storage schema<br>2. Attach auth providers to the Twilite user<br>3. Resolve workspace and repo mappings on sign-in<br>4. Make work the default save destination<br><br><strong>Open Questions</strong><br>1. What remains unresolved?</div><div style=\"font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#64748b;\">0/4 tasks complete • 0/1 questions answered</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div id=\"users-implementation-path\" style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Users Implementation Path</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;\">Section</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">The abstract model is done.<br><br>This graph now defines the first concrete hosted slice in code terms: four persisted records, one sign-in resolution bundle, and one default-save rule.<br><br>First slice records:<br>- `users`<br>- `auth_identities`<br>- `user_workspaces`<br>- `repo_mappings`</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div id=\"execution-boundary\" style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Execution Boundary</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;\">Section</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">This first implementation slice should only make hosted identity and workspace ownership real.<br><br>Do not fold in every local preference, cache, or editor convenience state yet.</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div id=\"schema-first\" style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Concrete Schema</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;\">Section</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">The first hosted schema should be:<br>- `users(id, primary_email, display_name, avatar_url, status, created_at, updated_at)`<br>- `auth_identities(id, user_id, provider, provider_user_id, provider_email, installation_id, provider_metadata, created_at, updated_at)`<br>- `user_workspaces(id, user_id, default_save_slot, selected_provider, selected_installation_id, onboarding_state, preferences, created_at, updated_at)`<br>- `repo_mappings(id, workspace_id, slot, provider, owner, repo, branch, path_prefix, visibility, installation_id, is_active, created_at, updated_at)`<br><br>That is enough to make users durable without trying to model every preference on day one.</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div id=\"auth-attachment\" style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Auth Identity</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;\">Section</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">Attach GitHub and future providers through `auth_identities`.<br><br>That table should link each external provider account back to one canonical `users.id`. The provider record is allowed to store installation linkage and provider metadata, but it should not replace the Twilite user record itself.</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div id=\"workspace-resolution\" style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Workspace Bundle</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;\">Section</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">On sign-in, Twilite should resolve one durable workspace bundle in this order:<br>1. `users` by canonical identity<br>2. `user_workspaces` for that user<br>3. active `repo_mappings` for `work`, `public`, and `private`<br>4. `default_save_slot`, which should initially resolve to `work`<br><br>The app should stop deriving this from scattered local state once this path exists.</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div id=\"migration-boundary\" style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Migration Boundary</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;\">Section</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">Do not migrate everything.<br><br>Move only product-critical user state in the first pass:<br>- canonical user identity<br>- provider linkage<br>- selected installation<br>- default save slot<br>- repo mappings<br>- onboarding state that must survive devices<br><br>Leave pan/zoom, recents, caches, and session-local editor convenience state where they are for now.</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div id=\"suggested-sequence\" style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Suggested Sequence</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;\">Section</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">1. create `users`, `auth_identities`, `user_workspaces`, and `repo_mappings`<br>2. attach GitHub sign-in and installation linkage through `auth_identities`<br>3. resolve the workspace bundle on sign-in<br>4. make `work` the default save slot for new files<br>5. move only critical hosted user state out of browser-local storage<br>6. build settings and setup flows on top of the stable schema</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div id=\"questions-to-answer\" style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Questions To Answer</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;\">Section</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">- Which hosted auth and database layer will own these four records in deployment?<br>- Should every user start with exactly one workspace, or do we need multi-workspace support immediately?<br>- What installation and repo-mapping edits belong in onboarding versus later settings?</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div id=\"expected-outcome\" style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Expected Outcome</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;\">Section</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">Once this slice lands, Twilite will have a real hosted user foundation: a canonical user record, attached provider identities, a durable workspace, explicit slot-to-repo mappings, and a trustworthy default-save rule that follows the user across devices.</div></div></section>",
+        "summarySource": "seed",
+        "updatedAt": "2026-04-04T20:03:42.636Z",
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"24\" y=\"18\" width=\"172\" height=\"124\" rx=\"18\" fill=\"#fffdfa\" stroke=\"#0f172a\" stroke-width=\"5\"/><rect x=\"42\" y=\"38\" width=\"82\" height=\"14\" rx=\"7\" fill=\"#0f172a\" opacity=\"0.9\"/><rect x=\"42\" y=\"68\" width=\"136\" height=\"16\" rx=\"8\" fill=\"#e5e7eb\" stroke=\"#111827\" stroke-width=\"3\"/><rect x=\"42\" y=\"96\" width=\"120\" height=\"12\" rx=\"6\" fill=\"#dbeafe\"/><rect x=\"42\" y=\"118\" width=\"94\" height=\"12\" rx=\"6\" fill=\"#e2e8f0\"/></svg>",
+        "_classBinding": {
+          "key": "document-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "ref": "/library/classes/nodes/ui-interaction/document-view.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-document-view",
+          "sourceBridgeNodeId": "users-implementation-bridge-document-view",
+          "sourceBridgeLabel": "Document View",
+          "sourceRef": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "document-view",
+          "classRef": "/library/classes/nodes/ui-interaction/document-view.node-class.node"
+        },
+        "definitionKey": "document-view"
+      }
+    },
+    {
+      "id": "users-implementation-document-updater",
+      "type": "script",
+      "label": "Document Updater",
+      "root": false,
+      "position": {
+        "x": -640,
+        "y": 1035
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "source": "const DOCUMENT_VIEW_ID = 'users-implementation-document-view';\nconst ORDERED_IDS = [\n  \"users-implementation-title\",\n  \"landing-page-seriousness-summary\",\n  \"landing-seriousness-overview\",\n  \"landing-seriousness-entry\",\n  \"landing-seriousness-identity\",\n  \"landing-seriousness-hierarchy\",\n  \"landing-seriousness-signals\",\n  \"landing-seriousness-conversion\",\n  \"landing-seriousness-sequence\",\n  \"landing-seriousness-questions\",\n  \"landing-seriousness-output\"\n];\nconst isEqual = (a, b) => {\n  if (a === b) return true;\n  if (!a || !b || typeof a !== 'object' || typeof b !== 'object') return false;\n  const aKeys = Object.keys(a);\n  const bKeys = Object.keys(b);\n  if (aKeys.length !== bKeys.length) return false;\n  for (const key of aKeys) {\n    if (!Object.prototype.hasOwnProperty.call(b, key)) return false;\n    const aVal = a[key];\n    const bVal = b[key];\n    if (Array.isArray(aVal) || Array.isArray(bVal)) {\n      if (JSON.stringify(aVal) !== JSON.stringify(bVal)) return false;\n      continue;\n    }\n    if (aVal && typeof aVal === 'object') {\n      if (!isEqual(aVal, bVal)) return false;\n      continue;\n    }\n    if (aVal !== bVal) return false;\n  }\n  return true;\n};\nconst escapeHtml = (value) => String(value || '')\n  .replace(/&/g, '&amp;')\n  .replace(/</g, '&lt;')\n  .replace(/>/g, '&gt;')\n  .replace(/\\\"/g, '&quot;')\n  .replace(/'/g, '&#39;');\nconst paragraphize = (value) => escapeHtml(value).replace(/\\n\\n+/g, '<br><br>').replace(/\\n/g, '<br>');\nconst renderErrorCard = (title, detail) =>         `<section style=\"padding:18px;border:1px solid rgba(220,38,38,0.22);border-radius:16px;background:linear-gradient(180deg, rgba(254,242,242,0.98), rgba(255,255,255,0.98));display:flex;flex-direction:column;gap:10px;\"><div style=\"font:700 18px/1.25 ui-sans-serif, system-ui, sans-serif;color:#991b1b;\">${escapeHtml(title)}</div><div style=\"font:500 14px/1.6 ui-sans-serif, system-ui, sans-serif;color:#7f1d1d;\">${escapeHtml(detail)}</div></section>`;\nconst renderCardPart = ({ title, badge, badgeStyle, ruleStyle, body, meta, anchor }) => {\n  const safeTitle = escapeHtml(title || 'Untitled');\n  const bodyHtml = body ? `<div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">${body}</div>` : '';\n  const metaHtml = meta ? `<div style=\"font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#64748b;\">${meta}</div>` : '';\n  const anchorAttr = anchor ? ` id=\"${escapeHtml(anchor)}\"` : '';\n  return `<section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div${anchorAttr} style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">${safeTitle}</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"${badgeStyle}\">${escapeHtml(badge)}</span></div></div><div style=\"${ruleStyle}\"></div>${bodyHtml}${metaHtml}</div></section>`;\n};\nconst renderTitlePart = (data) => {\n  const safeTitle = escapeHtml(data.title || 'Untitled Title');\n  const safeSubtitle = escapeHtml(data.subtitle || 'Use this node to frame the document.');\n  return `<section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;box-sizing:border-box;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,252,245,0.99), rgba(255,248,235,0.96));border:1px solid rgba(146,64,14,0.16);box-shadow:0 12px 28px rgba(180,83,9,0.10);gap:14px;\"><div style=\"display:flex;align-items:flex-start;justify-content:space-between;gap:12px;\"><div style=\"display:flex;flex-direction:column;gap:6px;min-width:0;\"><div style=\"font:700 11px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#b45309;\">Title</div><div style=\"font:700 28px/1.12 ui-sans-serif, system-ui, sans-serif;color:#1f2937;word-break:break-word;\">${safeTitle}</div></div><div style=\"display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(180,83,9,0.1);color:#92400e;font-size:11px;font-weight:700;letter-spacing:0.04em;\">${escapeHtml(data.intent || 'headline')}</span><span style=\"font:600 10px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.12em;text-transform:uppercase;color:#9a3412;opacity:0.72;\">${escapeHtml(data.status || 'draft')}</span></div></div><div style=\"height:1px;background:linear-gradient(90deg, rgba(245,158,11,0.45), rgba(245,158,11,0));\"></div><div style=\"font:500 15px/1.65 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\">${safeSubtitle}</div></div></section>`;\n};\nconst renderTaskPart = (node, data) => {\n  const status = escapeHtml(data.status || 'todo');\n  const priority = escapeHtml(data.priority || '');\n  const owner = escapeHtml(data.owner || '');\n  const estimate = escapeHtml(data.estimateHours || '');\n  const body = paragraphize(data.body || 'Source-backed task view.');\n  const meta = [status ? `Status: ${status}` : '', priority ? `Priority: ${priority}` : '', owner ? `Owner: ${owner}` : '', estimate ? `Estimate: ${estimate}h` : ''].filter(Boolean).join(' • ');\n  return renderCardPart({\n    title: data.title || node.label || 'Task',\n    badge: 'Task',\n    badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(16,185,129,0.16);color:#047857;font-size:11px;font-weight:600;',\n    ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #10b981, #34d399);opacity:0.95;',\n    body,\n    meta\n  });\n};\nconst renderTaskSummaryPart = (data) => {\n  const progress = `${Number(data?.taskProgress?.completed||0)}/${Number(data?.taskProgress?.total||0)} tasks complete`;\n  const questions = `${Number(data?.questionProgress?.answered||0)}/${Number(data?.questionProgress?.total||0)} questions answered`;\n  const body = [\n    data.goal ? `<strong>Goal:</strong> ${escapeHtml(data.goal)}` : '',\n    data.taskListText ? `<strong>Tasks In Scope</strong><br>${paragraphize(data.taskListText)}` : '',\n    data.questionListText ? `<strong>Open Questions</strong><br>${paragraphize(data.questionListText)}` : ''\n  ].filter(Boolean).join('<br><br>');\n  return renderCardPart({\n    title: data.goal || 'Implementation Summary',\n    badge: 'Summary',\n    badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(219,39,119,0.14);color:#9d174d;font-size:11px;font-weight:600;',\n    ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #db2777, #f472b6);opacity:0.95;',\n    body,\n    meta: `${progress} • ${questions}`\n  });\n};\nconst renderNodePart = (node) => {\n  const data = node.data || {};\n  if (node.type === 'title') return renderTitlePart(data);\n  if (node.type === 'task-summary-provider' || node.type === 'summary') return renderTaskSummaryPart(data);\n  if (node.type === 'task') return renderTaskPart(node, data);\n  if (node.type === 'section') return renderCardPart({\n    title: data.title || node.label || 'Section',\n    badge: 'Section',\n    badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;',\n    ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;',\n    body: paragraphize(data.summary),\n    anchor: data.anchor\n  });\n  return '';\n};\nconst nodes = await api.getNodes();\nconst documentView = nodes.find((entry) => entry?.id === DOCUMENT_VIEW_ID);\nif (!documentView) return { success: false, error: 'Document view missing' };\nconst nodesById = new Map(nodes.map((entry) => [entry?.id, entry]));\nconst existingIds = new Set(nodes.map((entry) => entry?.id).filter(Boolean));\nconst missingOrderedIds = ORDERED_IDS.filter((id) => !existingIds.has(id));\nconst resolvedOrder = ORDERED_IDS.filter((id) => existingIds.has(id));\nconst renderedParts = resolvedOrder.map((id) => renderNodePart(nodesById.get(id))).filter(Boolean);\nconst invalidOrdering = missingOrderedIds.length > 0 || renderedParts.length !== resolvedOrder.length;\nconst documentHtml = invalidOrdering ? renderErrorCard('Document view contract error', `Document order is invalid or incomplete. Missing: ${missingOrderedIds.join(', ') || 'unknown part rendering failure'}.`) : (renderedParts.join('') || renderErrorCard('Document view contract error', 'Document content is missing. Add document parts or provide documentHtml/documentBlocks.'));\nconst nextData = { ...(documentView.data || {}), partNodeIds: resolvedOrder, documentOrder: resolvedOrder, documentHtml, summarySource: 'node-updater' };\nconst currentComparable = { ...(documentView.data || {}) };\ndelete currentComparable.updatedAt;\nconst nextComparable = { ...nextData };\ndelete nextComparable.updatedAt;\nif (!isEqual(currentComparable, nextComparable)) {\n  await api.updateNode(DOCUMENT_VIEW_ID, {\n    data: {\n      ...nextData,\n      updatedAt: new Date().toISOString()\n    }\n  });\n}\nreturn { success: true, updated: resolvedOrder.length, invalidOrdering, missingOrderedIds };",
+        "summaryNodeId": "users-implementation-document-view",
+        "summarySource": "node-updater"
+      }
+    },
+    {
+      "id": "users-implementation-bridge-summary",
+      "type": "bridge",
+      "label": "Summary",
+      "root": false,
+      "position": {
+        "x": -100,
+        "y": 1035
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Summary.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "portId": "root",
+          "label": "Create",
+          "key": "summary",
+          "meaning": "Summary surface for a planning task graph."
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "authority": "bridge",
+        "grants": [
+          "create"
+        ],
+        "bridge": {
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "summary",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "summary",
+          "classRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "users-implementation-summary",
+      "type": "summary",
+      "label": "Users Implementation Path Summary",
+      "root": false,
+      "position": {
+        "x": 280,
+        "y": 1035
+      },
+      "width": 420,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "goal": "Implement the concrete hosted users schema",
+        "status": "todo",
+        "taskProgress": {
+          "completed": 0,
+          "total": 4
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 1
+        },
+        "summarySource": "node-updater",
+        "taskTitles": [
+          "Create the persisted user records",
+          "Attach GitHub through auth_identities",
+          "Resolve the workspace bundle on sign-in",
+          "Make work the default save destination"
+        ],
+        "questionTitles": [
+          "Which hosted stack will own the first users slice?"
+        ],
+        "taskListText": "1. Create the persisted user records\n2. Attach GitHub through auth_identities\n3. Resolve the workspace bundle on sign-in\n4. Make work the default save destination",
+        "questionListText": "1. Which hosted stack will own the first users slice?",
+        "_classBinding": {
+          "key": "summary",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-summary",
+          "sourceBridgeNodeId": "users-implementation-bridge-summary",
+          "sourceBridgeLabel": "Summary",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "summary",
+          "classRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "definitionKey": "summary"
+      }
+    },
+    {
+      "id": "users-implementation-summary-task",
+      "type": "task",
+      "label": "Implement the concrete hosted users schema",
+      "root": false,
+      "position": {
+        "x": 820,
+        "y": 1035
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Goal: Implement the concrete hosted users schema\nStatus: todo\n\nTasks in scope:\n1. Create the persisted user records\n2. Attach GitHub through auth_identities\n3. Resolve the workspace bundle on sign-in\n4. Make work the default save destination\n\nOpen questions:\n1. Which hosted stack will own the first users slice?",
+        "priority": "high",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "acceptanceCriteria": [
+          "Scan the task list for scope and progress"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-task",
+          "sourceBridgeNodeId": "users-implementation-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task",
+        "title": "Implement the concrete hosted users schema",
+        "countAsTask": false,
+        "summarySource": "node-updater",
+        "taskProgress": {
+          "completed": 0,
+          "total": 4
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 1
+        }
+      }
+    },
+    {
+      "id": "users-implementation-summary-updater",
+      "type": "script",
+      "label": "Summary Updater",
+      "root": false,
+      "position": {
+        "x": 1320,
+        "y": 1035
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "mode": "auto",
+        "status": "idle",
+        "scriptRef": "",
+        "source": "const SUMMARY_NODE_ID = 'users-implementation-summary';\nconst SUMMARY_TASK_NODE_ID = 'users-implementation-summary-task';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel, maxItems = 4) => {\n  const visible = items.filter(Boolean).slice(0, maxItems);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst isEqual = (a, b) => {\n  if (a === b) return true;\n  if (!a || !b || typeof a !== 'object' || typeof b !== 'object') return false;\n  const aKeys = Object.keys(a);\n  const bKeys = Object.keys(b);\n  if (aKeys.length !== bKeys.length) return false;\n  for (const key of aKeys) {\n    if (!Object.prototype.hasOwnProperty.call(b, key)) return false;\n    const aVal = a[key];\n    const bVal = b[key];\n    if (Array.isArray(aVal) || Array.isArray(bVal)) {\n      if (JSON.stringify(aVal) !== JSON.stringify(bVal)) return false;\n      continue;\n    }\n    if (aVal && typeof aVal === 'object') {\n      if (!isEqual(aVal, bVal)) return false;\n      continue;\n    }\n    if (aVal !== bVal) return false;\n  }\n  return true;\n};\nconst fetchJson = async (ref) => {\n  const normalizedRef = String(ref || '').trim();\n  if (!normalizedRef) return null;\n  try {\n    const response = await fetch(normalizedRef, { cache: 'no-store' });\n    if (!response.ok) return null;\n    return await response.json();\n  } catch (error) {\n    return null;\n  }\n};\nconst summaryStatusCache = new Map();\nconst getExternalSummaryStatus = async (entry) => {\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  if (!sourceRef || !sourceNodeId || sourceNodeId === SUMMARY_NODE_ID) return '';\n  const cacheKey = sourceRef + '#' + sourceNodeId;\n  if (summaryStatusCache.has(cacheKey)) return summaryStatusCache.get(cacheKey);\n  const graphData = await fetchJson(sourceRef);\n  const sourceNode = Array.isArray(graphData?.nodes)\n    ? graphData.nodes.find((node) => node?.id === sourceNodeId)\n    : null;\n  const status = normalize(sourceNode?.data?.status);\n  summaryStatusCache.set(cacheKey, status);\n  return status;\n};\n\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nif (!summaryNode) {\n  return { success: false, error: 'Summary node missing' };\n}\n\nconst summaryTaskNode = nodes.find((entry) => entry?.id === SUMMARY_TASK_NODE_ID);\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task' && entry?.id !== SUMMARY_TASK_NODE_ID && entry?.data?.countAsTask !== false);\nconst externalSummaryTasks = nodes.filter((entry) => {\n  if (entry?.type !== 'task-summary') return false;\n  if (entry?.data?.countAsTask === false) return false;\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  return Boolean(sourceRef && sourceNodeId && sourceNodeId !== SUMMARY_NODE_ID);\n});\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst literalTaskItems = tasks.map((entry) => ({\n  title: toTitle(entry, 'Untitled task'),\n  status: normalize(entry?.data?.status)\n}));\nconst externalTaskItems = await Promise.all(externalSummaryTasks.map(async (entry) => ({\n  title: toTitle(entry, 'Untitled task summary'),\n  status: await getExternalSummaryStatus(entry)\n})));\nconst taskItems = [...literalTaskItems, ...externalTaskItems].filter((entry) => entry?.title);\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalize(goalNode?.data?.status);\nconst derivedStatus = goalStatus\n  ? (goalStatus === 'done' && !allTasksDone ? 'in-progress' : goalNode?.data?.status)\n  : (allTasksDone ? 'done' : (completedTaskCount > 0 ? 'in-progress' : (summaryNode?.data?.status || 'todo')));\n\nconst nextData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  taskProgress: {\n    completed: completedTaskCount,\n    total: taskItems.length\n  },\n  questionProgress: {\n    answered: questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length,\n    total: questions.length\n  },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.', taskTitles.length || 4),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'node-updater'\n};\nconst currentSummaryComparable = { ...(summaryNode.data || {}) };\ndelete currentSummaryComparable.updatedAt;\nconst nextSummaryComparable = { ...nextData };\ndelete nextSummaryComparable.updatedAt;\nif (!isEqual(currentSummaryComparable, nextSummaryComparable)) {\n  await api.updateNode(SUMMARY_NODE_ID, {\n    data: {\n      ...nextData,\n      updatedAt: new Date().toISOString()\n    }\n  });\n}\n\nif (summaryTaskNode) {\n  const taskTitle = goalNode?.label || summaryNode?.data?.goal || 'Task view';\n  const taskBody = ['Goal: ' + taskTitle, 'Status: ' + derivedStatus, '', 'Tasks in scope:', nextData.taskListText, '', 'Open questions:', nextData.questionListText].join('\\n');\n  const taskData = {\n    ...(summaryTaskNode.data || {}),\n    title: taskTitle,\n    body: taskBody,\n    status: derivedStatus,\n    summarySource: 'node-updater',\n    taskProgress: nextData.taskProgress,\n    questionProgress: nextData.questionProgress\n  };\n  const currentTaskComparable = { ...(summaryTaskNode.data || {}) };\n  delete currentTaskComparable.updatedAt;\n  const nextTaskComparable = { ...taskData };\n  delete nextTaskComparable.updatedAt;\n  if (!isEqual(currentTaskComparable, nextTaskComparable)) {\n    await api.updateNode(SUMMARY_TASK_NODE_ID, {\n      data: {\n        ...taskData,\n        updatedAt: new Date().toISOString()\n      }\n    });\n  }\n}\nreturn { success: true, summary: nextData, taskNodeId: SUMMARY_TASK_NODE_ID };",
+        "summaryNodeId": "users-implementation-summary",
+        "autoRun": true,
+        "description": "Keep the users implementation-path summary and task view in sync with the graph contents.",
+        "scriptName": "Task Node Updater",
+        "scriptId": "",
+        "autoRunOnGraphChange": true
+      }
+    },
+    {
+      "id": "users-implementation-task-mysql-schema",
+      "type": "task",
+      "label": "Implement the MySQL schema",
+      "position": {
+        "x": 1880,
+        "y": 225
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Translate the hosted users model into concrete MySQL DDL for `users`, `auth_identities`, `user_workspaces`, and `repo_mappings`, including primary keys, foreign keys, unique constraints, enums/check strategy, timestamps, and indexes needed for sign-in and save-target resolution.",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "high",
+        "estimateHours": "4",
+        "acceptanceCriteria": [
+          "Four core tables are defined in concrete MySQL terms",
+          "Foreign keys and uniqueness rules match the hosted users model",
+          "The schema supports workspace resolution and default-save lookup"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "users-implementation-bridge-task",
+          "sourceBridgeNodeId": "users-implementation-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "landing-seriousness-edge-1",
+      "type": "reference",
+      "source": "landing-seriousness-overview",
+      "target": "landing-seriousness-entry",
+      "sourcePort": "out",
+      "targetPort": "root",
+      "label": "needs",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "landing-seriousness-edge-2",
+      "type": "reference",
+      "source": "landing-seriousness-overview",
+      "target": "landing-seriousness-identity",
+      "sourcePort": "out",
+      "targetPort": "root",
+      "label": "needs",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "landing-seriousness-edge-3",
+      "type": "reference",
+      "source": "landing-seriousness-overview",
+      "target": "landing-seriousness-hierarchy",
+      "sourcePort": "out",
+      "targetPort": "root",
+      "label": "needs",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "landing-seriousness-edge-4",
+      "type": "reference",
+      "source": "landing-seriousness-overview",
+      "target": "landing-seriousness-signals",
+      "sourcePort": "out",
+      "targetPort": "root",
+      "label": "needs",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "landing-seriousness-edge-5",
+      "type": "reference",
+      "source": "landing-seriousness-overview",
+      "target": "landing-seriousness-conversion",
+      "sourcePort": "out",
+      "targetPort": "root",
+      "label": "needs",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "landing-seriousness-edge-6",
+      "type": "reference",
+      "source": "landing-seriousness-entry",
+      "target": "landing-seriousness-sequence",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "suggests",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "landing-seriousness-edge-7",
+      "type": "reference",
+      "source": "landing-seriousness-hierarchy",
+      "target": "landing-seriousness-questions",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "raises",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "landing-seriousness-edge-8",
+      "type": "reference",
+      "source": "landing-seriousness-identity",
+      "target": "landing-seriousness-questions",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "feeds",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "landing-seriousness-edge-9",
+      "type": "reference",
+      "source": "landing-seriousness-signals",
+      "target": "landing-seriousness-questions",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "feeds",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "landing-seriousness-edge-10",
+      "type": "reference",
+      "source": "landing-seriousness-conversion",
+      "target": "landing-seriousness-output",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "drives",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "landing-seriousness-edge-11",
+      "type": "reference",
+      "source": "landing-seriousness-questions",
+      "target": "landing-seriousness-output",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "enables",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "landing-page-seriousness-edge-summary",
+      "type": "reference",
+      "source": "landing-seriousness-overview",
+      "target": "landing-page-seriousness-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "summary",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-landing-page-seriousness-task-node-edge-goal",
+      "type": "reference",
+      "source": "landing-seriousness-overview",
+      "target": "tasks-landing-page-seriousness-task-node-goal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "goal",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-landing-page-seriousness-task-node-edge-task",
+      "type": "reference",
+      "source": "tasks-landing-page-seriousness-task-node-goal",
+      "target": "tasks-landing-page-seriousness-task-node-task",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-landing-page-seriousness-task-node-edge-question",
+      "type": "reference",
+      "source": "tasks-landing-page-seriousness-task-node-goal",
+      "target": "tasks-landing-page-seriousness-task-node-question",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "question",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "users-implementation-edge-task-auth",
+      "type": "reference",
+      "source": "tasks-landing-page-seriousness-task-node-task",
+      "target": "users-implementation-task-auth-attachment",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "users-implementation-edge-task-workspace",
+      "type": "reference",
+      "source": "users-implementation-task-auth-attachment",
+      "target": "users-implementation-task-workspace-resolution",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "users-implementation-edge-task-default-save",
+      "type": "reference",
+      "source": "users-implementation-task-workspace-resolution",
+      "target": "users-implementation-task-default-save",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "users-implementation-edge-title-document",
+      "type": "reference",
+      "source": "users-implementation-title",
+      "target": "users-implementation-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "frames",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "users-implementation-edge-summary-document",
+      "type": "reference",
+      "source": "landing-page-seriousness-summary",
+      "target": "users-implementation-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "summarizes",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "users-implementation-edge-document-updater",
+      "type": "reference",
+      "source": "users-implementation-document-updater",
+      "target": "users-implementation-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "updates",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "users-implementation-edge-summary-updater",
+      "type": "reference",
+      "source": "users-implementation-summary-updater",
+      "target": "users-implementation-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "updates",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "users-implementation-edge-summary-task",
+      "type": "reference",
+      "source": "users-implementation-summary",
+      "target": "users-implementation-summary-task",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task-view",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "users-implementation-edge-task-mysql-schema",
+      "type": "reference",
+      "source": "users-implementation-task-default-save",
+      "target": "users-implementation-task-mysql-schema",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "clusters": [],
+  "scripts": []
+}

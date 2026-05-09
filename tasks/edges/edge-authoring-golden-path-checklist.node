@@ -1,0 +1,234 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "edge-authoring-checklist-declaration",
+      "type": "declaration",
+      "label": "Declaration",
+      "position": { "x": -1180, "y": -760 },
+      "width": 420,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "edge-authoring-golden-path-checklist",
+          "name": "Edge Authoring Golden Path Checklist",
+          "version": "0.1.0",
+          "description": "Manual QA checklist for authoring plain edges and upgrading them to edge classes via bridged libraries.",
+          "createdAt": "2026-04-24T00:00:00.000Z",
+          "updatedAt": "2026-04-24T00:00:00.000Z"
+        },
+        "intent": { "kind": "task", "scope": "validation" },
+        "dependencies": {
+          "nodeTypes": ["declaration", "markdown", "bridge"],
+          "portContracts": ["core"],
+          "skills": [],
+          "schemaVersions": { "nodes": ">=1.0.0", "ports": ">=1.0.0" },
+          "optional": []
+        },
+        "authority": {
+          "mutation": { "allowCreate": true, "allowUpdate": true, "allowDelete": true, "appendOnly": false },
+          "actors": { "humans": true, "agents": true, "tools": true },
+          "styleAuthority": "descriptive",
+          "history": { "rewriteAllowed": false, "squashAllowed": false }
+        },
+        "declaration": {
+          "kind": "task",
+          "targetMode": "artifact",
+          "artifactKind": "task",
+          "graphViewRole": "authoring",
+          "defaultSurfaceId": "export",
+          "surfaces": [
+            {
+              "id": "export",
+              "kind": "export",
+              "label": "Export",
+              "memo": "Checklist graphs are not meant to export primitives; this stays closed by default.",
+              "exposes": {
+                "nodeClasses": { "mode": "deny" },
+                "edgeClasses": { "mode": "deny" },
+                "views": { "mode": "deny" },
+                "scripts": { "mode": "deny" },
+                "declarations": { "mode": "allow" }
+              }
+            },
+            {
+              "id": "view",
+              "kind": "view",
+              "label": "View",
+              "memo": "Human-facing reading surface for the checklist graph.",
+              "exposes": {
+                "views": { "mode": "allow" },
+                "declarations": { "mode": "allow" }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "edge-authoring-checklist-intro",
+      "type": "markdown",
+      "label": "Edge Authoring Golden Path",
+      "position": { "x": -720, "y": -760 },
+      "width": 760,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Edge Authoring Golden Path Checklist\n\nGoal: prove the minimum edge workflow from a blank graph:\n- draw a `relationship` edge (`plain.edge`)\n- import the edge class library\n- upgrade the edge to a class-backed edge via the edge type selector\n\nHow to use:\n- Walk step-by-step from **Step 1** onward.\n- Mark each step **PASS** or **FAIL**.\n- If a step fails, write a minimal repro note."
+      }
+    },
+    {
+      "id": "edge-authoring-checklist-known-refs",
+      "type": "markdown",
+      "label": "Known Refs",
+      "position": { "x": 80, "y": -760 },
+      "width": 520,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Known Good Target Refs\n\n- Edge class library: `/library/classes/edges/root.node#root`\n- Edge class smoke test: `/tasks/graph-organization/edge-class-contract/edge-class-bridge-smoke.node#root`\n\nIf a ref fails to resolve, capture diagnostics from the bridge properties panel."
+      }
+    },
+    {
+      "id": "step-01",
+      "type": "markdown",
+      "label": "Step 1",
+      "position": { "x": -980, "y": -420 },
+      "width": 520,
+      "height": 200,
+      "visible": true,
+      "showLabel": true,
+      "data": { "markdown": "## Step 1: Open A Brand New Graph\n\nAction:\n- Open a brand new graph (blank canvas).\n- Ensure you are in **edit** mode.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:" }
+    },
+    {
+      "id": "expect-01",
+      "type": "markdown",
+      "label": "Expected 1",
+      "position": { "x": -420, "y": -420 },
+      "width": 520,
+      "height": 200,
+      "visible": true,
+      "showLabel": true,
+      "data": { "markdown": "### Expected\n\n- Canvas renders.\n- You can select/deselect.\n- No modal errors.\n- Edit affordances are available." }
+    },
+    {
+      "id": "step-02",
+      "type": "markdown",
+      "label": "Step 2",
+      "position": { "x": -980, "y": -190 },
+      "width": 520,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": { "markdown": "## Step 2: Add Declaration\n\nAction:\n- Use the UI to **Add Declaration**.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:" }
+    },
+    {
+      "id": "expect-02",
+      "type": "markdown",
+      "label": "Expected 2",
+      "position": { "x": -420, "y": -190 },
+      "width": 520,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": { "markdown": "### Expected\n\n- A declaration node appears.\n- It has an **Edit** button.\n- Diagnostics do not show \"mutations blocked\" after creation." }
+    },
+    {
+      "id": "step-03",
+      "type": "markdown",
+      "label": "Step 3",
+      "position": { "x": -980, "y": 70 },
+      "width": 520,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": { "markdown": "## Step 3: Add Import Bridge To Edge Library\n\nAction:\n- Create a `bridge` node.\n- Set `Bridge Ref` to:\n  - `/library/classes/edges/root.node#root`\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:" }
+    },
+    {
+      "id": "expect-03",
+      "type": "markdown",
+      "label": "Expected 3",
+      "position": { "x": -420, "y": 70 },
+      "width": 520,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": { "markdown": "### Expected\n\n- The bridge resolves the target (no freeze).\n- Target mode resolves to `library`.\n- Surface options include at least `export` and `view`." }
+    },
+    {
+      "id": "step-04",
+      "type": "markdown",
+      "label": "Step 4",
+      "position": { "x": -980, "y": 360 },
+      "width": 520,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": { "markdown": "## Step 4: Enable Edge Class Exposure\n\nAction:\n- In bridge properties:\n  - Set `Surface` = `export`\n  - Ensure `Grant: Create` is enabled\n  - Set `Exposure -> Edges` = `allow` (or `allowlist`)\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:" }
+    },
+    {
+      "id": "expect-04",
+      "type": "markdown",
+      "label": "Expected 4",
+      "position": { "x": -420, "y": 360 },
+      "width": 520,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": { "markdown": "### Expected\n\n- Legend updates to show imported edge classes (e.g. `task.depends-on`, `planning.answers`).\n- Edge class previews are visible (not just a plain line).\n- Bridge effective result shows `edge classes > 0`." }
+    },
+    {
+      "id": "step-05",
+      "type": "markdown",
+      "label": "Step 5",
+      "position": { "x": -980, "y": 680 },
+      "width": 520,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": { "markdown": "## Step 5: Create Two Nodes And A Plain Edge\n\nAction:\n- Create two markdown nodes.\n- Draw an edge between them.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:" }
+    },
+    {
+      "id": "expect-05",
+      "type": "markdown",
+      "label": "Expected 5",
+      "position": { "x": -420, "y": 680 },
+      "width": 520,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": { "markdown": "### Expected\n\n- The new edge is created as `relationship` / `plain.edge`.\n- Edge preview renders.\n- Connection section shows `sourcePort -> targetNode+port` (no ambiguity)." }
+    },
+    {
+      "id": "step-06",
+      "type": "markdown",
+      "label": "Step 6",
+      "position": { "x": -980, "y": 990 },
+      "width": 520,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": { "markdown": "## Step 6: Upgrade Edge To A Class\n\nAction:\n- Select the edge.\n- In edge properties, change edge type to a bridged edge class.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:" }
+    },
+    {
+      "id": "expect-06",
+      "type": "markdown",
+      "label": "Expected 6",
+      "position": { "x": -420, "y": 990 },
+      "width": 520,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": { "markdown": "### Expected\n\n- Edge stroke updates to match the class.\n- Edge preview matches the legend preview.\n- The change persists after reload." }
+    }
+  ],
+  "edges": [],
+  "timestamp": "2026-04-24T00:00:00.000Z",
+  "nodeCount": 15,
+  "edgeCount": 0
+}
+

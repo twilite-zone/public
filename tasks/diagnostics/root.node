@@ -1,0 +1,1034 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Diagnostics",
+    "description": "Task graph for building a durable, attributable diagnostics surface in Twilite.",
+    "created": "2026-04-05T18:10:00.000Z",
+    "modified": "2026-04-05T18:10:00.000Z",
+    "author": "Michael",
+    "tags": [
+      "diagnostics",
+      "beta",
+      "task-graph",
+      "reliability"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "diagnostics-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -920,
+        "y": -980
+      },
+      "width": 360,
+      "height": 220,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "diagnostics-task-root",
+          "name": "Diagnostics",
+          "version": "0.1.0",
+          "description": "Task graph for building a durable, attributable diagnostics surface in Twilite.",
+          "createdAt": "2026-04-05T18:10:00.000Z",
+          "updatedAt": "2026-04-05T18:10:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "bridge",
+            "script",
+            "section",
+            "goal",
+            "task",
+            "open-question",
+            "summary"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "summaryNodeId": "diagnostics-summary"
+      }
+    },
+    {
+      "id": "diagnostics-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -1290,
+        "y": -980
+      },
+      "width": 300,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "entries": []
+      }
+    },
+    {
+      "id": "root-bridge-section",
+      "type": "bridge",
+      "label": "Section",
+      "position": {
+        "x": -1290,
+        "y": -700
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Hidden node-class bridge for Section.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "authority": "bridge",
+        "grants": [
+          "create"
+        ],
+        "target": {
+          "endpoint": "/library/classes/nodes/document-publishing/section.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "section",
+          "meaning": "Document-style explanatory section."
+        },
+        "bridge": {
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "id": "root-bridge-goal",
+      "type": "bridge",
+      "label": "Goal",
+      "position": {
+        "x": -1290,
+        "y": -560
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Hidden node-class bridge for Goal.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "authority": "bridge",
+        "grants": [
+          "create"
+        ],
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/goal.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "goal",
+          "meaning": "Strategic or local outcome node for planning graphs."
+        },
+        "bridge": {
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "id": "root-bridge-task",
+      "type": "bridge",
+      "label": "Task",
+      "position": {
+        "x": -1290,
+        "y": -420
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Hidden node-class bridge for Task.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "authority": "bridge",
+        "grants": [
+          "create"
+        ],
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "task",
+          "meaning": "Atomic executable unit of work for planning graphs."
+        },
+        "bridge": {
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "id": "root-bridge-open-question",
+      "type": "bridge",
+      "label": "Open Question",
+      "position": {
+        "x": -1290,
+        "y": -280
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Hidden node-class bridge for Open Question.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "authority": "bridge",
+        "grants": [
+          "create"
+        ],
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/open-question.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "open-question",
+          "meaning": "Unresolved question node for planning graphs."
+        },
+        "bridge": {
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "id": "root-bridge-summary",
+      "type": "bridge",
+      "label": "Summary",
+      "position": {
+        "x": -1290,
+        "y": -140
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Hidden node-class bridge for Summary.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "authority": "bridge",
+        "grants": [
+          "create"
+        ],
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "key": "summary",
+          "meaning": "Provider surface for a planning task summary."
+        },
+        "bridge": {
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "id": "diagnostics-overview",
+      "type": "section",
+      "label": "Overview",
+      "position": {
+        "x": 2080,
+        "y": -980
+      },
+      "width": 520,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Diagnostics must be durable and attributable",
+        "summary": "Twilite needs one diagnostics surface that users and builders can trust. Runtime failures, class and contract violations, validation errors, and integration failures should all be captured in a persistent place with clear attribution: which graph, which node, which script, which class, which operation, and whether the issue is still active.",
+        "level": "h2",
+        "anchor": "diagnostics-overview",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "diagnostics-goal",
+      "type": "goal",
+      "label": "Make diagnostics durable and attributable",
+      "position": {
+        "x": 2080,
+        "y": -620
+      },
+      "width": 420,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Give Twilite one trustworthy diagnostics surface that captures failures durably, attributes them clearly, and helps users understand whether issues are still active.",
+        "priority": "critical",
+        "status": "open",
+        "owner": "Michael",
+        "targetDate": "2026-05-15",
+        "successMetrics": [
+          "Runtime failures persist long enough to inspect",
+          "Diagnostics identify graph, node, script, class, and operation when available",
+          "Users can distinguish active issues from already-resolved ones"
+        ],
+        "_classBinding": {
+          "key": "goal",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-goal",
+          "sourceBridgeNodeId": "root-bridge-goal",
+          "sourceBridgeLabel": "Goal",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "goal",
+          "classRef": "/library/classes/nodes/task-planning/goal.node-class.node"
+        },
+        "definitionKey": "goal"
+      }
+    },
+    {
+      "id": "diagnostics-task-surface",
+      "type": "task",
+      "label": "Define the diagnostics record and surface",
+      "position": {
+        "x": 1540,
+        "y": -140
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Define the canonical diagnostics record, severity model, active/resolved status, and the in-app surface where diagnostics will live. Decide what survives reload, what is graph-scoped, and what is session-scoped.",
+        "priority": "critical",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "6",
+        "acceptanceCriteria": [
+          "One diagnostics record shape is defined",
+          "Severity and active/resolved status are explicit",
+          "One app surface is chosen for diagnostics review"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "diagnostics-task-runtime",
+      "type": "task",
+      "label": "Capture runtime and integration failures",
+      "position": {
+        "x": 2080,
+        "y": -140
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Route script errors, dynamic-view failures, source-fetch failures, save/export failures, and GitHub API failures into the diagnostics surface with clear operation context.",
+        "priority": "critical",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "8",
+        "acceptanceCriteria": [
+          "Script and dynamic-view failures are captured",
+          "GitHub and save/load failures reach the same surface",
+          "Each entry includes operation context"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "diagnostics-task-contracts",
+      "type": "task",
+      "label": "Capture class, bridge, and contract violations",
+      "position": {
+        "x": 2620,
+        "y": -140
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Capture missing view payloads, unresolved class refs, bad source-node ids, bridge mismatches, and contract violations like incomplete document order. These should read as attributable diagnostics, not opaque console chatter.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "8",
+        "acceptanceCriteria": [
+          "Class and contract failures are normalized into diagnostics records",
+          "Entries identify node and class refs where available",
+          "Contract errors read as actionable product feedback"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "diagnostics-task-validation",
+      "type": "task",
+      "label": "Capture validation and graph-shape errors",
+      "position": {
+        "x": 1810,
+        "y": 280
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Capture malformed node data, missing required fields, broken references, incompatible node shapes, and other graph validation problems in the same diagnostics stream.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "6",
+        "acceptanceCriteria": [
+          "Validation issues appear in the diagnostics surface",
+          "Malformed graph data is attributable to a graph and node when possible",
+          "The diagnostics surface does not require the browser console to understand the issue"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "diagnostics-task-trust",
+      "type": "task",
+      "label": "Make diagnostics useful to users",
+      "position": {
+        "x": 2350,
+        "y": 280
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Present diagnostics so users can answer three questions immediately: what broke, where, and whether it is still active. Prioritize trust over completeness in the first beta pass.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "6",
+        "acceptanceCriteria": [
+          "Diagnostics surface exposes severity and active/resolved state",
+          "Users can navigate from a diagnostic to relevant graph context",
+          "The first beta pass favors clarity over exhaustive instrumentation"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "diagnostics-question-storage",
+      "type": "open-question",
+      "label": "Where should diagnostics live first?",
+      "position": {
+        "x": 2890,
+        "y": 280
+      },
+      "width": 400,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Should the first durable diagnostics surface live inside graph-local state, browser-local storage, hosted user state, or a hybrid path that keeps recent issues local while preserving critical failures centrally?",
+        "status": "open",
+        "owner": "Michael",
+        "resolutionPath": "",
+        "prominence": "high",
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-open-question",
+          "sourceBridgeNodeId": "root-bridge-open-question",
+          "sourceBridgeLabel": "Open Question",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "definitionKey": "open-question"
+      }
+    },
+    {
+      "id": "diagnostics-summary",
+      "type": "summary",
+      "label": "Diagnostics Summary",
+      "position": {
+        "x": 3190,
+        "y": -620
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "goal": "Make diagnostics durable and attributable",
+        "status": "open",
+        "taskProgress": {
+          "completed": 0,
+          "total": 5
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 1
+        },
+        "taskTitles": [
+          "Define the diagnostics record and surface",
+          "Capture runtime and integration failures",
+          "Capture class, bridge, and contract violations",
+          "Capture validation and graph-shape errors",
+          "Make diagnostics useful to users"
+        ],
+        "questionTitles": [
+          "Where should diagnostics live first?"
+        ],
+        "taskListText": "1. Define the diagnostics record and surface\n2. Capture runtime and integration failures\n3. Capture class, bridge, and contract violations\n4. Capture validation and graph-shape errors\n5. Make diagnostics useful to users",
+        "questionListText": "1. Where should diagnostics live first?",
+        "summarySource": "graph-updater",
+        "_classBinding": {
+          "key": "summary",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-summary",
+          "sourceBridgeNodeId": "root-bridge-summary",
+          "sourceBridgeLabel": "Summary",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "summary",
+          "classRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "definitionKey": "summary"
+      }
+    },
+    {
+      "id": "diagnostics-summary-updater",
+      "type": "script",
+      "label": "Summary Updater",
+      "position": {
+        "x": 3190,
+        "y": -980
+      },
+      "width": 320,
+      "height": 190,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "scriptName": "Diagnostics Summary Coordinator",
+        "summaryNodeId": "diagnostics-summary",
+        "autoRun": true,
+        "autoRunOnGraphChange": true,
+        "allowMutations": true,
+        "dryRun": false,
+        "source": "const SUMMARY_NODE_ID = 'diagnostics-summary';\nconst SUMMARY_TASK_ID = 'diagnostics-summary-task';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel) => {\n  const visible = items.filter(Boolean);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nconst summaryTaskNode = nodes.find((entry) => entry?.id === SUMMARY_TASK_ID);\nif (!summaryNode || !summaryTaskNode) return { success: false, error: 'Summary surface missing' };\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task' && entry?.id !== SUMMARY_TASK_ID && entry?.data?.countAsTask !== false);\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst taskItems = tasks.map((entry) => ({ title: toTitle(entry, 'Untitled task'), status: normalize(entry?.data?.status) })).filter((entry) => entry?.title);\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst answeredQuestionCount = questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalize(goalNode?.data?.status);\nconst derivedStatus = goalStatus ? (goalStatus === 'done' && !allTasksDone ? 'in-progress' : (goalNode?.data?.status || 'open')) : (allTasksDone ? 'done' : (completedTaskCount > 0 ? 'in-progress' : (summaryNode?.data?.status || 'todo')));\nconst nextSummaryData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  taskProgress: { completed: completedTaskCount, total: taskItems.length },\n  questionProgress: { answered: answeredQuestionCount, total: questions.length },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.'),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'graph-updater'\n};\nconst nextSummaryTaskData = {\n  ...(summaryTaskNode.data || {}),\n  title: goalNode?.label || summaryTaskNode?.data?.title || 'Task graph',\n  body: `Goal: ${goalNode?.label || 'Task graph'}\\nStatus: ${derivedStatus}\\n\\nTasks in scope:\\n${toListText(taskTitles, 'No tasks listed.')}\\n\\nOpen questions:\\n${toListText(questionTitles, 'No open questions.')}`,\n  status: derivedStatus,\n  taskProgress: { completed: completedTaskCount, total: taskItems.length },\n  questionProgress: { answered: answeredQuestionCount, total: questions.length },\n  summarySource: 'node-updater',\n  countAsTask: false,\n  definitionKey: 'task'\n};\nif (!isEqual(summaryNode.data || {}, nextSummaryData)) await api.updateNode(SUMMARY_NODE_ID, { data: { ...nextSummaryData, updatedAt: new Date().toISOString() } });\nif (!isEqual(summaryTaskNode.data || {}, nextSummaryTaskData)) await api.updateNode(SUMMARY_TASK_ID, { data: { ...nextSummaryTaskData, updatedAt: new Date().toISOString() } });\nreturn { success: true, status: derivedStatus, taskCount: taskItems.length, questionCount: questions.length };"
+      }
+    },
+    {
+      "id": "diagnostics-summary-task",
+      "type": "task",
+      "label": "Make diagnostics durable and attributable",
+      "root": true,
+      "position": {
+        "x": 3190,
+        "y": -250
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Goal: Make diagnostics durable and attributable\nStatus: open\n\nTasks in scope:\n1. Define the diagnostics record and surface\n2. Capture runtime and integration failures\n3. Capture class, bridge, and contract violations\n4. Capture validation and graph-shape errors\n5. Make diagnostics useful to users\n\nOpen questions:\n1. Where should diagnostics live first?",
+        "status": "open",
+        "owner": "Michael",
+        "priority": "critical",
+        "estimateHours": "8",
+        "acceptanceCriteria": [
+          "Runtime failures persist long enough to inspect",
+          "Diagnostics identify graph, node, script, class, and operation when available",
+          "Users can distinguish active issues from already-resolved ones"
+        ],
+        "title": "Make diagnostics durable and attributable",
+        "countAsTask": false,
+        "summarySource": "node-updater",
+        "taskProgress": {
+          "completed": 0,
+          "total": 5
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 1
+        },
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "diagnostics-edge-1",
+      "type": "reference",
+      "source": "diagnostics-overview",
+      "target": "diagnostics-goal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "frames",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "diagnostics-edge-2",
+      "type": "reference",
+      "source": "diagnostics-goal",
+      "target": "diagnostics-task-surface",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "diagnostics-edge-3",
+      "type": "reference",
+      "source": "diagnostics-goal",
+      "target": "diagnostics-task-runtime",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "diagnostics-edge-4",
+      "type": "reference",
+      "source": "diagnostics-goal",
+      "target": "diagnostics-task-contracts",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "diagnostics-edge-5",
+      "type": "reference",
+      "source": "diagnostics-goal",
+      "target": "diagnostics-task-validation",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "diagnostics-edge-6",
+      "type": "reference",
+      "source": "diagnostics-goal",
+      "target": "diagnostics-task-trust",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "diagnostics-edge-7",
+      "type": "reference",
+      "source": "diagnostics-goal",
+      "target": "diagnostics-question-storage",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "asks",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "diagnostics-edge-8",
+      "type": "reference",
+      "source": "diagnostics-task-surface",
+      "target": "diagnostics-task-runtime",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "enables",
+      "style": {
+        "width": 2,
+        "dash": [
+          6,
+          4
+        ],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "diagnostics-edge-9",
+      "type": "reference",
+      "source": "diagnostics-task-surface",
+      "target": "diagnostics-task-contracts",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "enables",
+      "style": {
+        "width": 2,
+        "dash": [
+          6,
+          4
+        ],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "diagnostics-edge-10",
+      "type": "reference",
+      "source": "diagnostics-task-surface",
+      "target": "diagnostics-task-validation",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "enables",
+      "style": {
+        "width": 2,
+        "dash": [
+          6,
+          4
+        ],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "diagnostics-edge-11",
+      "type": "reference",
+      "source": "diagnostics-task-runtime",
+      "target": "diagnostics-task-trust",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "feeds",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "diagnostics-edge-12",
+      "type": "reference",
+      "source": "diagnostics-task-contracts",
+      "target": "diagnostics-task-trust",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "feeds",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "diagnostics-edge-13",
+      "type": "reference",
+      "source": "diagnostics-task-validation",
+      "target": "diagnostics-task-trust",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "feeds",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "diagnostics-edge-14",
+      "type": "reference",
+      "source": "diagnostics-summary-updater",
+      "target": "diagnostics-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "updates",
+      "style": {
+        "width": 2,
+        "dash": [
+          8,
+          4
+        ],
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "diagnostics-edge-15",
+      "type": "reference",
+      "source": "diagnostics-summary",
+      "target": "diagnostics-summary-task",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "rolls up to",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
+      "data": {}
+    }
+  ]
+}

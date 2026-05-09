@@ -1,0 +1,764 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Mouse Controls (Context Menus + Radial Menu)",
+    "description": "Proposal/task graph for completing Twilite mouse interaction surfaces: context menus, radial menu, and core pointer gestures.",
+    "created": "2026-05-02T00:00:00.000Z",
+    "modified": "2026-05-02T00:00:00.000Z",
+    "author": "Michael",
+    "tags": [
+      "tasks",
+      "ux",
+      "mouse",
+      "context-menu",
+      "radial-menu"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "mouse-controls-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -860,
+        "y": -420
+      },
+      "width": 380,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "mouse-controls",
+          "name": "Mouse Controls (Context Menus + Radial Menu)",
+          "version": "0.1.0",
+          "description": "Plan the remaining mouse interaction surfaces: context menus, radial menu, and core pointer gestures.",
+          "createdAt": "2026-05-02T00:00:00.000Z",
+          "updatedAt": "2026-05-02T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "declaration",
+            "legend",
+            "markdown",
+            "goal",
+            "task",
+            "open-question",
+            "decision",
+            "dependency",
+            "summary"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "edges": ">=1.0.0"
+          }
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "summaryNodeId": "mouse-controls-summary"
+      }
+    },
+    {
+      "id": "mouse-controls-declaration",
+      "type": "declaration",
+      "label": "Declaration",
+      "position": {
+        "x": -420,
+        "y": 140
+      },
+      "width": 520,
+      "height": 360,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "mouse-controls",
+          "name": "Mouse Controls (Context Menus + Radial Menu)",
+          "version": "0.1.0",
+          "description": "Proposal/task graph for completing Twilite mouse interaction surfaces.",
+          "createdAt": "2026-05-02T00:00:00.000Z",
+          "updatedAt": "2026-05-02T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "local"
+        },
+        "declaresKind": "graph",
+        "purpose": "Define the canonical mouse-controls proposal surface and what it should expose to other graphs.",
+        "declaration": {
+          "kind": "graph",
+          "graphViewRole": "authoring",
+          "targetMode": "artifact",
+          "artifactKind": "graph",
+          "defaultSurfaceId": "export",
+          "surfaces": [
+            {
+              "id": "export",
+              "kind": "export",
+              "label": "Export",
+              "memo": "Curated consumable surface for bridges.",
+              "exposes": {
+                "nodeClasses": { "mode": "deny" },
+                "edgeClasses": { "mode": "deny" },
+                "views": { "mode": "allow" },
+                "scripts": { "mode": "deny" },
+                "declarations": { "mode": "allow" }
+              }
+            },
+            {
+              "id": "view",
+              "kind": "view",
+              "label": "View",
+              "memo": "Human-readable surface for browsing the proposal.",
+              "exposes": {
+                "views": { "mode": "allow" },
+                "declarations": { "mode": "allow" }
+              }
+            }
+          ]
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "declaration",
+            "legend",
+            "markdown",
+            "goal",
+            "task",
+            "open-question",
+            "decision",
+            "dependency",
+            "summary"
+          ],
+          "portContracts": ["core"],
+          "skills": ["twilite-planning-graphs"],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          }
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": { "humans": true, "agents": true, "tools": true },
+          "styleAuthority": "descriptive",
+          "history": { "rewriteAllowed": false, "squashAllowed": false }
+        }
+      }
+    },
+    {
+      "id": "mouse-controls-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -860,
+        "y": -120
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {}
+    },
+    {
+      "id": "mouse-controls-overview",
+      "type": "markdown",
+      "label": "Overview",
+      "position": {
+        "x": -420,
+        "y": -420
+      },
+      "width": 520,
+      "height": 520,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "# Mouse Controls Proposal\n\nThis graph is the planning surface for completing Twilite mouse interaction surfaces (context menus + radial menu + core pointer gestures) with a clear **have vs need** inventory.\n\n## How planning nodes render (why this graph works)\n- Planning nodes (`task`, `goal`, `open-question`, `decision`, `dependency`, `summary`) render via their task-planning **node-class bindings** (\"bridged\" contract-first rendering).\n- If a planning node shows as `UNKNOWN_NODE_TYPE`, it usually means `_classBinding` is missing or mismatched.\n\n## We Have (today)\n\n### Browser (menus)\n- Address bar right-click menu: **Copy**, **Paste & Go**, **Copy Web-Friendly URL** (`components/Browser/Browser.js`).\n- Home button right-click menu: **Template gallery**, **Set Home**, **Clear Home** (`components/Browser/Browser.js`).\n\n### Graph Editor (menus)\n- Node right-click menu: **Run Node**, **Open Definition** (`components/GraphEditor/GraphEditorContent.js`).\n- Radial menu exists (premium editor): layout + view toggles + quick-add (`components/GraphEditor/components/RadialMenu.js`).\n\n### Graph Editor (mouse controls already present)\n- Node dragging (left mouse), selection, marquee selection, pan/zoom infrastructure (via NodeGraph layers and event handlers).\n\n## We Need (proposal)\n\n### Context menus (minimum baseline)\n**Graph canvas/background**\n- Paste at cursor (graph clipboard)\n- Add node at cursor (quick add)\n- Fit to content, layout/beautify, reroute edges\n- Toggle: grid, snap-to-grid, minimap, properties panel\n- Document properties\n\n**Node**\n- Copy / Cut / Paste (selection-aware)\n- Duplicate, Delete\n- Open properties\n- Lock / Unlock\n- Style shortcuts (color, label visibility)\n- Group / Ungroup\n- Keep: Run Node, Open Definition\n\n**Edge**\n- Delete\n- Routing/style options\n- Label edit/toggle\n- Open properties\n\n**Group**\n- Rename\n- Color\n- Ungroup / Delete\n- Fit/zoom to group\n\n**Browser address bar parity**\n- Cut\n- Paste (without navigating)\n- Select All\n- Optional: Undo/Redo (when supported)\n- Clipboard-permission failure UX (toast + keyboard hint)\n\n### Radial menu (high-frequency only)\n- Own 8–16 actions that benefit from spatial memory (fast, repeatable)\n- Avoid duplicating full context menus\n- Clearly define invocation (right-click background vs hotkey vs hold) and selection interaction\n\n### Mouse gestures / controls (baseline)\n- Right-click: target-aware context menu\n- Drag: pan, node move (edit-only), marquee selection\n- Wheel: cursor-centered zoom\n- Double-click: open properties (node/edge/group)\n- Optional: middle-click pan, space-drag pan\n\n## Deliverable\nA single coherent mouse-control system:\n- Context menus cover completeness + discoverability\n- Radial menu covers speed for the most common actions\n- Clipboard contract makes copy/paste predictable across nodes/edges/groups\n\n---\n\nTasks in this graph break the work down into implementable steps and keep the key decisions/questions explicit."
+      }
+    },
+    {
+      "id": "mouse-controls-goal",
+      "type": "goal",
+      "label": "Complete mouse interaction surfaces",
+      "position": {
+        "x": 180,
+        "y": -420
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Deliver complete, consistent, and discoverable mouse controls: target-aware context menus across the graph editor (canvas/node/edge/group) and parity-oriented menus in the browser UI, with a radial menu that complements (not duplicates) high-frequency actions.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "10",
+        "definitionKey": "goal",
+        "_classBinding": {
+          "key": "goal",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "mouse-controls-dependency-radial-menu-task",
+      "type": "dependency",
+      "label": "Existing radial menu task graph",
+      "position": {
+        "x": 180,
+        "y": -120
+      },
+      "width": 420,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Reference prior design/implementation work for the radial menu.",
+        "kind": "graph",
+        "ref": "github://twilite-zone/public/tasks/radial-menu/root.node",
+        "status": "known",
+        "definitionKey": "dependency",
+        "_classBinding": {
+          "key": "dependency",
+          "ref": "/library/classes/nodes/task-planning/dependency.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/dependency.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "mouse-controls-decision-ownership",
+      "type": "decision",
+      "label": "Radial vs Context Menu ownership",
+      "position": {
+        "x": 640,
+        "y": -120
+      },
+      "width": 460,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Decide which actions belong in the radial menu vs context menus so we avoid duplication and keep discoverability.\n\nProposed rule:\n- Radial menu: 8–16 highest-frequency actions with strong spatial memory value.\n- Context menus: complete, target-aware lists including less frequent actions.\n- Toolbar: persistent controls + global state.\n",
+        "status": "open",
+        "options": [
+          "Radial menu is primary for high-frequency actions; context menus remain complete.",
+          "Context menus are primary; radial menu is limited to layout/view toggles.",
+          "Hybrid: radial menu for global actions; context menus for object-specific actions."
+        ],
+        "definitionKey": "decision",
+        "_classBinding": {
+          "key": "decision",
+          "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/decision.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "mouse-controls-task-context-menu-framework",
+      "type": "task",
+      "label": "Create a graph-editor context menu framework",
+      "position": {
+        "x": 180,
+        "y": 200
+      },
+      "width": 520,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Implement target-aware context menus for GraphEditor:\n- Identify target type at pointer (canvas/node/edge/group)\n- Centralize menu building (actions, enabled/disabled state, labels/icons)\n- Ensure consistent close behavior, keyboard focus, and escape handling\n- Add instrumentation hooks (source: context-menu / radial-menu)\n",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "4",
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "mouse-controls-constraint-selection-preserve",
+      "type": "constraint",
+      "label": "Preserve selection on right-click",
+      "position": {
+        "x": 1280,
+        "y": -120
+      },
+      "width": 440,
+      "height": 200,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Selection policy: right-click **preserves** current selection when the clicked target is already selected. Context menus should be selection-aware for multi-select cases.",
+        "status": "active",
+        "definitionKey": "constraint",
+        "_classBinding": {
+          "key": "constraint",
+          "ref": "/library/classes/nodes/task-planning/constraint.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/constraint.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "mouse-controls-constraint-system-nodes-excluded",
+      "type": "constraint",
+      "label": "Exclude system nodes from copy",
+      "position": {
+        "x": 1280,
+        "y": 80
+      },
+      "width": 440,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "System nodes (`manifest`, `declaration`, `legend`, `dictionary`) should **not** be copied by default. If we ever allow it, it should be an explicit advanced action (e.g., \"Copy Graph System Nodes\").",
+        "status": "active",
+        "definitionKey": "constraint",
+        "_classBinding": {
+          "key": "constraint",
+          "ref": "/library/classes/nodes/task-planning/constraint.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/constraint.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "mouse-controls-task-node-menu",
+      "type": "task",
+      "label": "Expand node context menu to editing actions",
+      "position": {
+        "x": 740,
+        "y": 200
+      },
+      "width": 520,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Add node-level actions: copy/cut/paste, duplicate, delete, lock/unlock, open properties, open definition, run.\n\nAlso fix selection behavior:\n- If right-clicking an already-selected node, preserve current multi-selection.\n- If right-clicking an unselected node, select it (current behavior).\n",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "3",
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "mouse-controls-task-edge-group-canvas-menus",
+      "type": "task",
+      "label": "Add edge/group/canvas context menus",
+      "position": {
+        "x": 180,
+        "y": 560
+      },
+      "width": 520,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Implement:\n- Canvas menu: paste at cursor, add node at cursor, fit-to-nodes, toggles (grid/snap/minimap), document properties.\n- Edge menu: delete, routing/style, label edit/toggle, open properties.\n- Group menu: rename, color, delete/ungroup, fit/zoom to group.\n",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "4",
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "mouse-controls-task-clipboard-contract",
+      "type": "task",
+      "label": "Define clipboard data contract for graph items",
+      "position": {
+        "x": 740,
+        "y": 560
+      },
+      "width": 520,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Define a stable copy/paste payload for graph elements:\n- node(s), edge(s), group(s)\n- preserve relative positions and IDs (with remap)\n- include minimal metadata for forward compatibility\n- support paste-at-cursor and paste-in-place\n",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "4",
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "mouse-controls-clipboard-contract-doc",
+      "type": "markdown",
+      "label": "Clipboard Contract (Current)",
+      "position": {
+        "x": 1280,
+        "y": 940
+      },
+      "width": 560,
+      "height": 520,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "# Clipboard Contract (Current)\n\nThis is the **current** clipboard payload shape used by the graph editor shortcuts (`components/GraphEditor/hooks/useGraphShortcuts.js`). Paste is handled through `pasteFromClipboardUnified` → `pasteHandler` → `pasteGraphData`.\n\n## Decisions (for context menu work)\n- **Selection policy:** preserve selection on right-click (multi-select context actions).\n- **Paste semantics:** context-menu paste should be **paste-at-cursor**; keyboard paste can remain viewport/anchor based.\n- **Groups:** excluded for now (group concept will be revisited separately).\n- **System nodes:** should **not** be copied by default.\n\n## Primary payload: `nodegraph-data`\n\n```json\n{\n  \"type\": \"nodegraph-data\",\n  \"action\": \"add\",\n  \"nodes\": [/* node objects */],\n  \"edges\": [/* edge objects */],\n  \"clusters\": [/* group objects (optional) */],\n  \"timestamp\": \"2026-05-02T00:00:00.000Z\",\n  \"nodeCount\": 3,\n  \"edgeCount\": 2\n}\n```\n\n### Notes\n- `action` is optional; when present, supported values include `add` and `replace` (see `handlers/graphEditorHandlers.js`).\n- Nodes *may* omit `position`; paste handler hydrates positions and can trigger an auto-layout when positions are missing.\n- Copy shortcut currently includes:\n  - selected nodes\n  - edges whose `source` and `target` are both selected\n  - (groups are not currently included by the shortcut copy)\n\n## Alternative payload: CRUD command list\n\nThe paste handler also supports JSON that represents **Graph CRUD commands** (transaction/batch patterns). This is used by some advanced flows and plugin-like interactions.\n\n## System node remap policy (paste)\n\nWhen pasting payloads that include system nodes (manifest/declaration/legend/dictionary), the paste handler may remap IDs to existing system nodes in the destination graph rather than creating duplicates.\n\n## Gaps vs desired future (clipboard)\n- Add paste-at-cursor semantics for context-menu paste.\n- Define explicit \"copy system nodes\" advanced action (if ever needed).\n- Document ID remap strategy for nodes/edges on duplicate/paste.\n"
+      }
+    },
+    {
+      "id": "mouse-controls-task-browser-address-menu-parity",
+      "type": "task",
+      "label": "Improve address bar context menu parity",
+      "position": {
+        "x": 180,
+        "y": 940
+      },
+      "width": 520,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Extend the custom address-bar context menu to include baseline text-field actions:\n- Cut\n- Paste (without navigating)\n- Select All\n- Optional: Undo/Redo when supported\n\nAdd user-visible feedback when clipboard read is blocked by permissions.\n",
+        "priority": "medium",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "2",
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "mouse-controls-task-radial-menu-scope",
+      "type": "task",
+      "label": "Refine radial menu action set + invocation",
+      "position": {
+        "x": 740,
+        "y": 940
+      },
+      "width": 520,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Decide:\n- How radial menu is invoked (right-click background? hotkey? hold?)\n- Which high-frequency actions move there (and which remain in context menus)\n- How it behaves on mobile (long-press) and with selection\n\nEnsure no duplicated/confusing action surfaces.\n",
+        "priority": "medium",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "3",
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "mouse-controls-openq-clipboard-permissions",
+      "type": "open-question",
+      "label": "Clipboard permissions + fallback UX?",
+      "position": {
+        "x": 1280,
+        "y": 200
+      },
+      "width": 440,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "When `navigator.clipboard.readText()` is denied, what fallback should we use?\n- Prompt user to paste via keyboard\n- Show a toast with instructions\n- Provide a hidden input focus trick (if acceptable)\n",
+        "status": "open",
+        "definitionKey": "open-question",
+        "_classBinding": {
+          "key": "open-question",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "mouse-controls-openq-multi-select-policy",
+      "type": "open-question",
+      "label": "Multi-select context menu policy?",
+      "position": {
+        "x": 1280,
+        "y": 480
+      },
+      "width": 440,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Should right-click on a selected node show actions for the full selection (bulk delete/align/group/copy) or force single-target actions?\n\nResolution: preserve selection and show selection-aware actions when selectionCount > 1.\n",
+        "status": "answered",
+        "definitionKey": "open-question",
+        "_classBinding": {
+          "key": "open-question",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "resolutionPath": "components/NodeGraph/NodeLayer.js:1"
+      }
+    },
+    {
+      "id": "mouse-controls-openq-touch-mapping",
+      "type": "open-question",
+      "label": "Touch mapping (long-press) rules?",
+      "position": {
+        "x": 1280,
+        "y": 760
+      },
+      "width": 440,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "How do we map context menus/radial menu to mobile?\n- long-press node/edge/canvas opens context menu\n- long-press background opens radial menu\n- avoid interference with drag/pan\n",
+        "status": "open",
+        "definitionKey": "open-question",
+        "_classBinding": {
+          "key": "open-question",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "mouse-controls-summary",
+      "type": "summary",
+      "label": "Mouse Controls Summary",
+      "position": {
+        "x": -860,
+        "y": 200
+      },
+      "width": 420,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "goal": "Mouse Controls (Context Menus + Radial Menu)",
+        "status": "todo",
+        "taskProgress": {
+          "completed": 0,
+          "total": 6
+        },
+        "questionProgress": {
+          "answered": 1,
+          "total": 3
+        },
+        "summarySource": "manual",
+        "taskTitles": [
+          "Create a graph-editor context menu framework",
+          "Expand node context menu to editing actions",
+          "Add edge/group/canvas context menus",
+          "Define clipboard data contract for graph items",
+          "Improve address bar context menu parity",
+          "Refine radial menu action set + invocation"
+        ],
+        "questionTitles": [
+          "Clipboard permissions + fallback UX?",
+          "Multi-select context menu policy?",
+          "Touch mapping (long-press) rules?"
+        ],
+        "taskListText": "1. Create a graph-editor context menu framework\\n2. Expand node context menu to editing actions\\n3. Add edge/group/canvas context menus\\n4. Define clipboard data contract for graph items\\n5. Improve address bar context menu parity\\n6. Refine radial menu action set + invocation",
+        "questionListText": "1. Clipboard permissions + fallback UX?\\n2. Multi-select context menu policy?\\n3. Touch mapping (long-press) rules?",
+        "definitionKey": "summary",
+        "_classBinding": {
+          "key": "summary",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "mouse-controls-edge-1",
+      "type": "reference",
+      "source": "mouse-controls-overview",
+      "target": "mouse-controls-goal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "goal"
+    },
+    {
+      "id": "mouse-controls-edge-0",
+      "type": "reference",
+      "source": "mouse-controls-manifest",
+      "target": "mouse-controls-declaration",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "declares"
+    },
+    {
+      "id": "mouse-controls-edge-2",
+      "type": "reference",
+      "source": "mouse-controls-goal",
+      "target": "mouse-controls-task-context-menu-framework",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task"
+    },
+    {
+      "id": "mouse-controls-edge-2a",
+      "type": "reference",
+      "source": "mouse-controls-task-context-menu-framework",
+      "target": "mouse-controls-constraint-selection-preserve",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "constraint"
+    },
+    {
+      "id": "mouse-controls-edge-2b",
+      "type": "reference",
+      "source": "mouse-controls-task-clipboard-contract",
+      "target": "mouse-controls-constraint-system-nodes-excluded",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "constraint"
+    },
+    {
+      "id": "mouse-controls-edge-3",
+      "type": "reference",
+      "source": "mouse-controls-goal",
+      "target": "mouse-controls-task-node-menu",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task"
+    },
+    {
+      "id": "mouse-controls-edge-4",
+      "type": "reference",
+      "source": "mouse-controls-goal",
+      "target": "mouse-controls-task-edge-group-canvas-menus",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task"
+    },
+    {
+      "id": "mouse-controls-edge-5",
+      "type": "reference",
+      "source": "mouse-controls-goal",
+      "target": "mouse-controls-task-clipboard-contract",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task"
+    },
+    {
+      "id": "mouse-controls-edge-5a",
+      "type": "reference",
+      "source": "mouse-controls-task-clipboard-contract",
+      "target": "mouse-controls-clipboard-contract-doc",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "contract"
+    },
+    {
+      "id": "mouse-controls-edge-6",
+      "type": "reference",
+      "source": "mouse-controls-goal",
+      "target": "mouse-controls-task-browser-address-menu-parity",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task"
+    },
+    {
+      "id": "mouse-controls-edge-7",
+      "type": "reference",
+      "source": "mouse-controls-goal",
+      "target": "mouse-controls-task-radial-menu-scope",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task"
+    },
+    {
+      "id": "mouse-controls-edge-8",
+      "type": "reference",
+      "source": "mouse-controls-task-context-menu-framework",
+      "target": "mouse-controls-openq-multi-select-policy",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "question"
+    },
+    {
+      "id": "mouse-controls-edge-9",
+      "type": "reference",
+      "source": "mouse-controls-task-browser-address-menu-parity",
+      "target": "mouse-controls-openq-clipboard-permissions",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "question"
+    },
+    {
+      "id": "mouse-controls-edge-10",
+      "type": "reference",
+      "source": "mouse-controls-task-radial-menu-scope",
+      "target": "mouse-controls-openq-touch-mapping",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "question"
+    },
+    {
+      "id": "mouse-controls-edge-11",
+      "type": "reference",
+      "source": "mouse-controls-goal",
+      "target": "mouse-controls-decision-ownership",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "decision"
+    },
+    {
+      "id": "mouse-controls-edge-12",
+      "type": "reference",
+      "source": "mouse-controls-goal",
+      "target": "mouse-controls-dependency-radial-menu-task",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "dependency"
+    }
+  ]
+}

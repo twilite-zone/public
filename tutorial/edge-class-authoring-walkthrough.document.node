@@ -1,0 +1,409 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Edge Class Authoring Walkthrough",
+    "description": "Manual golden path: create an edge class, export it from the edge library, and consume it from a new graph.",
+    "created": "2026-04-25T00:00:00.000Z",
+    "modified": "2026-04-25T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "tutorial",
+      "edges",
+      "edge-classes"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "edge-class-authoring-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -260,
+        "y": -220
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "edge-class-authoring-walkthrough",
+          "name": "Edge Class Authoring Walkthrough.Document",
+          "version": "0.1.0",
+          "description": "Manual golden path: create an edge class from scratch and consume it through the edge-class library bridge.",
+          "createdAt": "2026-04-25T00:00:00.000Z",
+          "updatedAt": "2026-04-25T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "graph",
+          "scope": "mixed"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "markdown",
+            "field",
+            "ui-view",
+            "port",
+            "bridge"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "layout": {
+            "mode": "autoOnMissingPositions",
+            "defaultLayout": "layered",
+            "direction": "DOWN",
+            "edgeLaneGapPx": 10,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
+          },
+          "github": {
+            "repo": "",
+            "path": "",
+            "branch": "main"
+          },
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "edge-class-authoring-view",
+      "type": "ui-view",
+      "label": "View",
+      "position": {
+        "x": 140,
+        "y": -220
+      },
+      "width": 420,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Edge Class Authoring Walkthrough",
+        "purpose": "Manual steps from New Graph → Saved Edge Class → Export via Edge Library → Import and Test in a Consumer Graph.",
+        "audience": "Author",
+        "status": "active",
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"22\" y=\"18\" width=\"176\" height=\"124\" rx=\"18\" fill=\"#fff7ed\" stroke=\"#7c2d12\" stroke-width=\"5\"/><path d=\"M58 56h104\" stroke=\"#ef4444\" stroke-width=\"8\" stroke-linecap=\"round\" stroke-dasharray=\"16 10\"/><circle cx=\"58\" cy=\"56\" r=\"12\" fill=\"#111827\"/><circle cx=\"162\" cy=\"56\" r=\"12\" fill=\"#111827\"/><path d=\"M118 96h44\" stroke=\"#16a34a\" stroke-width=\"7\" stroke-linecap=\"round\"/><path d=\"M154 86l14 10-14 10\" fill=\"none\" stroke=\"#16a34a\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
+        "_classBinding": {
+          "key": "ui-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "intent": "node-class",
+          "meaning": "A user-facing interface surface or screen-level view.",
+          "description": "A user-facing interface surface or screen-level view.",
+          "nodeDef": {
+            "key": "ui-view",
+            "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "definitionKey": "ui-view"
+      }
+    },
+    {
+      "id": "edge-class-authoring-port-edge-contract",
+      "type": "port",
+      "label": "Edge Contract",
+      "position": {
+        "x": 600,
+        "y": -220
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "navigate",
+        "target": {
+          "endpoint": "/library/documentation/contracts/edges/edge-contract.node:root",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open"
+        },
+        "memo": "Open the Edge Contract (normative) for edge instance structure and assignment rules."
+      }
+    },
+    {
+      "id": "edge-class-authoring-port-demo-edge-class",
+      "type": "port",
+      "label": "Demo Edge Class",
+      "position": {
+        "x": 980,
+        "y": -220
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "navigate",
+        "sourcePayload": "node.web.summary",
+        "target": {
+          "endpoint": "/library/classes/edges/tutorial-edge-class-demo.edge-class.node:root",
+          "ref": "/library/classes/edges/tutorial-edge-class-demo.edge-class.node",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open"
+        },
+        "memo": "Consumes the demo edge class artifact as a port-style view (Field node pattern)."
+      }
+    },
+    {
+      "id": "edge-class-authoring-bridge-import-edge-library",
+      "type": "bridge",
+      "label": "Import Edge Classes (Library)",
+      "position": {
+        "x": 980,
+        "y": 40
+      },
+      "width": 520,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Imports the edge-class library so edge classes appear in the legend/type selector while running this walkthrough.",
+        "bridge": {
+          "ref": "/library/classes/edges/root.node",
+          "role": "import",
+          "grants": ["create"],
+          "exposure": {
+            "edgeClasses": { "mode": "allow" }
+          }
+        }
+      }
+    },
+    {
+      "id": "edge-class-authoring-overview",
+      "type": "markdown",
+      "label": "Overview",
+      "position": {
+        "x": -260,
+        "y": 120
+      },
+      "width": 820,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Edge Class Authoring Walkthrough\n\nThis is a manual, end-to-end test of the edge-class authoring loop.\n\n**Goal**\n- Start a new graph.\n- Define a new edge class (meaning + render).\n- Save it under the edge class library path.\n- Export it from the edge class library.\n- Import it from a fresh consumer graph.\n- Create 1–2 edges and assign the edge class.\n\n**Pass Criteria**\n- The new edge class appears in the legend/type selector.\n- The legend preview matches the on-canvas edge stroke (color, dash, arrow).\n- Selecting the edge type/class updates the on-canvas edge.\n"
+      }
+    },
+    {
+      "id": "edge-class-authoring-step-1",
+      "type": "markdown",
+      "label": "Step 1",
+      "position": {
+        "x": -260,
+        "y": 460
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 1: Start A New Edge Class Graph\n\nAction:\n- Create a new graph (New File).\n- Add a **Declaration** node.\n- Set the declaration:\n  - Mode: `artifact`\n  - Artifact kind: `edge-class`\n  - Set graph id/name.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "edge-class-authoring-step-2",
+      "type": "markdown",
+      "label": "Step 2",
+      "position": {
+        "x": 160,
+        "y": 460
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 2: Define The Edge Class (Nodes, Not JSON)\n\nReference contract:\n- `/library/documentation/contracts/edges/edge-class-contract.node`\n\n### A) Add `field` nodes (identity)\n1) Add a **Field** node.\n2) In Properties → Advanced → Relevant, set:\n   - `title`: `edgeClass.key`\n   - `fieldType`: `string`\n   - `value`: your stable key (example: `task.depends-on`)\n3) Repeat for:\n   - `edgeClass.label` (string)\n   - `edgeClass.meaning` (string)\n\n### B) Add `field` nodes (render defaults)\nCreate Field nodes:\n- `renderDefaults.stroke` (string hex like `#22c55e`)\n- `renderDefaults.width` (number)\n\nOptional:\n- `renderDefaults.dash` (json like `[22, 8]`)\n- `renderDefaults.routingHint` (string like `orthogonal`)\n\n### C) Add a port-consumable summary view (REQUIRED)\n- Add a `summary-view` node\n- Set `payload` = `node.web.summary`\n\n### D) Quick self-test (before Step 3)\n- Add 2 markdown nodes\n- Draw 1 edge\n- Verify the edge style matches the render defaults (color/width/dash)\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "edge-class-authoring-step-3",
+      "type": "markdown",
+      "label": "Step 3",
+      "position": {
+        "x": 580,
+        "y": 460
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 3: Save The Edge Class File\n\nAction:\n- Save the graph under the edge class library path:\n\n`/library/classes/edges/<your-edge-class-id>.edge-class.node`\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "edge-class-authoring-step-4",
+      "type": "markdown",
+      "label": "Step 4",
+      "position": {
+        "x": -260,
+        "y": 760
+      },
+      "width": 610,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 4: Export It From The Edge Class Library (REQUIRED)\n\nWhy:\n- Your edge class will **not** show up in consumer legends/type selectors until the library exports it.\n\nAction:\n1) Open the edge class library root graph:\n\n`/library/classes/edges/root.node#root`\n\n2) Add a **Bridge** node in the library graph pointing to your new edge class file.\n   - Target ref: `/library/classes/edges/<your-edge-class-id>.edge-class.node#root`\n\n3) Configure the Bridge:\n- Role: `export`\n- Resource kind: `edge-class`\n\n4) Update the library **export surface allowlist** (required):\n- Open the library **Declaration** node\n- Find `surfaces[]` where `kind = export`\n- Add your `edgeClass.key` to `exposes.edgeClasses.allowKeys`\n\nVerification:\n- From the library graph, the export surface should now include your key.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "edge-class-authoring-step-5",
+      "type": "markdown",
+      "label": "Step 5",
+      "position": {
+        "x": 370,
+        "y": 760
+      },
+      "width": 610,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 5: Import And Test In A Fresh Consumer Graph\n\nAction:\n1) Create a new graph.\n2) Add a **Declaration** node.\n3) Add a **Bridge** node:\n- Role: `import`\n- Bridge Ref: `/library/classes/edges/root.node#root`\n- Grant: `Create` (implies consume)\n- Exposure: allow edge classes.\n\nThen:\n- Create 2 markdown nodes\n- Draw an edge\n- In edge properties, pick your new edge class\n\nIf your edge class is missing:\n- Re-check Step 4: export bridge exists AND the library export surface allowlist includes your `edgeClass.key`.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "edge-class-authoring-expectations",
+      "type": "markdown",
+      "label": "Expected Result",
+      "position": {
+        "x": -260,
+        "y": 1120
+      },
+      "width": 1240,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Expected Result\n\n- The imported edge class appears in the legend/type selector.\n- The legend preview matches the on-canvas edge style (color, dash, arrowheads).\n- Changing the edge type/class updates the on-canvas edge.\n- The selection persists after save/reload.\n"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-class-authoring-edge-overview-1",
+      "type": "reference",
+      "source": "edge-class-authoring-overview",
+      "target": "edge-class-authoring-step-1",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "start",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "edge-class-authoring-edge-1-2",
+      "type": "reference",
+      "source": "edge-class-authoring-step-1",
+      "target": "edge-class-authoring-step-2",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "then",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "edge-class-authoring-edge-2-3",
+      "type": "reference",
+      "source": "edge-class-authoring-step-2",
+      "target": "edge-class-authoring-step-3",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "save",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "edge-class-authoring-edge-3-4",
+      "type": "reference",
+      "source": "edge-class-authoring-step-3",
+      "target": "edge-class-authoring-step-4",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "export",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "edge-class-authoring-edge-4-5",
+      "type": "reference",
+      "source": "edge-class-authoring-step-4",
+      "target": "edge-class-authoring-step-5",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "import",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "edge-class-authoring-edge-5-exp",
+      "type": "reference",
+      "source": "edge-class-authoring-step-5",
+      "target": "edge-class-authoring-expectations",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "verify",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "clusters": [],
+  "nodeCount": 12,
+  "edgeCount": 6,
+  "timestamp": "2026-04-25T00:00:00.000Z"
+}

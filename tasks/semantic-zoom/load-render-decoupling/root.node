@@ -1,0 +1,1815 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Load Render Decoupling",
+    "description": "Task graph for separating semantic-zoom loading order from rendering density.",
+    "created": "2026-03-27T22:58:29.150Z",
+    "modified": "2026-03-27T22:58:29.150Z",
+    "author": "",
+    "tags": [],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "load-render-decoupling-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -1120,
+        "y": -260
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "load-render-decoupling-root",
+          "name": "Load Render Decoupling",
+          "version": "0.1.0",
+          "description": "Task graph for separating semantic-zoom loading order from rendering density.",
+          "createdAt": "2026-03-27T00:00:00.000Z",
+          "updatedAt": "2026-03-27T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "graph",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "title",
+            "goal",
+            "task",
+            "open-question",
+            "port",
+            "summary"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false,
+          "expansion": {
+            "allowGraphEntry": true
+          },
+          "github": {
+            "repo": "",
+            "path": "",
+            "branch": "main",
+            "autoCreateRepo": true,
+            "repoVisibility": "private",
+            "seedOnCommit": false,
+            "enableGithubPages": false
+          }
+        },
+        "summaryNodeId": "load-render-decoupling-summary",
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "load-render-decoupling-bridge-title",
+      "type": "port",
+      "label": "Title",
+      "position": {
+        "x": -1120,
+        "y": 120
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Title class.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/template-structure/title.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "label": "Title",
+          "key": "title"
+        },
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "load-render-decoupling-bridge-goal",
+      "type": "port",
+      "label": "Goal",
+      "position": {
+        "x": -1120,
+        "y": 270
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Goal class.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/goal.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "label": "Goal",
+          "key": "goal"
+        },
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "load-render-decoupling-bridge-task",
+      "type": "port",
+      "label": "Task",
+      "position": {
+        "x": -1120,
+        "y": 420
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Task class.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "label": "Task",
+          "key": "task"
+        },
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "load-render-decoupling-bridge-open-question",
+      "type": "port",
+      "label": "Open Question",
+      "position": {
+        "x": -1120,
+        "y": 570
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Open Question class.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/open-question.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "label": "Open Question",
+          "key": "open-question"
+        },
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "load-render-decoupling-bridge-task-summary-provider",
+      "type": "port",
+      "label": "Summary",
+      "position": {
+        "x": -1120,
+        "y": 720
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Summary class.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "label": "Task Summary Provider",
+          "key": "summary"
+        },
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "load-render-decoupling-title",
+      "type": "title",
+      "label": "Load / Render Decoupling",
+      "position": {
+        "x": -260,
+        "y": -40
+      },
+      "width": 520,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Load / Render Decoupling",
+        "subtitle": "Keep currently visible surfaces rendering smoothly while richer fragments and denser views load in the background. Loading order and render density should cooperate without blocking each other.",
+        "intent": "headline",
+        "status": "active",
+        "_classBinding": {
+          "key": "title",
+          "sourceRef": "/library/classes/nodes/template-structure/title.node-class.node",
+          "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+          "identity": {
+            "graphId": "title-class",
+            "name": "title Node Class",
+            "version": "0.1.0",
+            "description": "Names the template or a major template part.",
+            "createdAt": "2026-03-26T18:30:00.000Z",
+            "updatedAt": "2026-03-26T18:30:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Names the template or a major template part.",
+          "description": "Names the template or a major template part.",
+          "defaults": {
+            "label": "Title",
+            "size": {
+              "width": 360,
+              "height": 220
+            },
+            "color": "linear-gradient(135deg, #f9f6ea, #f0dcc0)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "subtitle": "",
+              "intent": "headline"
+            }
+          },
+          "nodeDef": {
+            "key": "title",
+            "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Title",
+              "size": {
+                "width": 360,
+                "height": 220
+              },
+              "color": "linear-gradient(135deg, #f9f6ea, #f0dcc0)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "subtitle": "",
+                "intent": "headline"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "title",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "title",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "title",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "load-render-decoupling-bridge-title",
+          "sourceBridgeLabel": "Title",
+          "sourceRef": "/library/classes/nodes/template-structure/title.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "title",
+          "classRef": "/library/classes/nodes/template-structure/title.node-class.node"
+        },
+        "definitionKey": "title",
+        "isRoot": true,
+        "root": true
+      }
+    },
+    {
+      "id": "load-render-decoupling-goal",
+      "type": "goal",
+      "label": "Decouple loading from rendering",
+      "position": {
+        "x": 340,
+        "y": -20
+      },
+      "width": 440,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Make runtime capability narrow and explicit",
+        "body": "Define how semantic zoom can load richer fragments and surfaces asynchronously while continuing to render the best currently available surface without popping to blankness.",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "high",
+        "estimateHours": "3",
+        "_classBinding": {
+          "key": "goal",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "identity": {
+            "graphId": "goal-class",
+            "name": "Goal Class",
+            "version": "0.1.0",
+            "description": "Strategic or local outcome node for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Strategic or local outcome node for planning graphs.",
+          "description": "Strategic or local outcome node for planning graphs.",
+          "defaults": {
+            "label": "Goal",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+            "showLabel": false,
+            "data": {
+              "body": "Define the outcome this plan should achieve.",
+              "priority": "high",
+              "status": "open",
+              "owner": "",
+              "targetDate": "",
+              "successMetrics": [
+                "Describe a measurable success signal"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "goal",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Goal",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+              "showLabel": false,
+              "data": {
+                "body": "Define the outcome this plan should achieve.",
+                "priority": "high",
+                "status": "open",
+                "owner": "",
+                "targetDate": "",
+                "successMetrics": [
+                  "Describe a measurable success signal"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "goal",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "goal",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "goal",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "load-render-decoupling-bridge-goal",
+          "sourceBridgeLabel": "Goal",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "goal",
+          "classRef": "/library/classes/nodes/task-planning/goal.node-class.node"
+        },
+        "definitionKey": "goal",
+        "acceptanceCriteria": [
+          "A fallback render ladder exists while richer surfaces load",
+          "Background loading can promote surfaces without blank intermediate states",
+          "Load order and render density are documented as separate decisions"
+        ],
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "load-render-decoupling-task-1",
+      "type": "task",
+      "label": "Define render fallback ladder",
+      "position": {
+        "x": 320,
+        "y": 300
+      },
+      "width": 430,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Define render fallback ladder",
+        "body": "Specify what stays visible when the desired surface is not loaded yet: icon first, then summary, then detail, without dropping to empty shells.",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "high",
+        "estimateHours": "2",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "load-render-decoupling-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task",
+        "acceptanceCriteria": [
+          "The allowed read surface is listed explicitly",
+          "No default access to arbitrary graph nodes is implied",
+          "Navigation is exposed only as an explicit callback"
+        ],
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "load-render-decoupling-task-2",
+      "type": "task",
+      "label": "Define background load promotion",
+      "position": {
+        "x": 800,
+        "y": 300
+      },
+      "width": 430,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Define background load promotion rules",
+        "body": "Specify when a loaded fragment or richer surface may replace the current one, and what conditions must hold before promotion happens.",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "high",
+        "estimateHours": "2",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "load-render-decoupling-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task",
+        "acceptanceCriteria": [
+          "Local node and view reads are explicit",
+          "Title/type source reads are allowed when resolved locally",
+          "Cross-graph or arbitrary graph reads stay out of scope for v1"
+        ],
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "load-render-decoupling-task-3",
+      "type": "task",
+      "label": "Keep visible surfaces stable",
+      "position": {
+        "x": 1280,
+        "y": 300
+      },
+      "width": 430,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Keep visible surfaces stable during upgrades",
+        "body": "Define how the canvas avoids flicker, blank states, or attention jumps while moving from icon to summary to detail.",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "high",
+        "estimateHours": "2",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "load-render-decoupling-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task",
+        "acceptanceCriteria": [
+          "Graph-model mutation is explicitly excluded from v1 runtime",
+          "Bridge authority is not reachable from runtime by accident",
+          "Any future mutation capability requires a new explicit contract"
+        ],
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "load-render-decoupling-task-4",
+      "type": "task",
+      "label": "Connect bullseye focus",
+      "position": {
+        "x": 1760,
+        "y": 300
+      },
+      "width": 430,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Connect bullseye focus to load order",
+        "body": "Define how outer bullseye focus decides what to load next while inner bullseye surface density decides what to render now.",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "high",
+        "estimateHours": "3",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "load-render-decoupling-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task",
+        "acceptanceCriteria": [
+          "Effective authority is defined as a downgrade-only computation",
+          "Missing exposure removes the capability by default",
+          "No implicit authority escalation remains in the boundary model"
+        ],
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "load-render-decoupling-question",
+      "type": "open-question",
+      "label": "What stays pinned?",
+      "position": {
+        "x": 940,
+        "y": 680
+      },
+      "width": 500,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "What should stay pinned while richer fragments load?",
+        "body": "Decide whether currently visible icon or summary surfaces remain pinned until replacement surfaces are fully ready, or whether partial upgrades are allowed.",
+        "status": "open",
+        "owner": "Michael",
+        "prominence": "high",
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "identity": {
+            "graphId": "open-question-class",
+            "name": "Open Question Class",
+            "version": "0.1.0",
+            "description": "Unresolved question node for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Unresolved question node for planning graphs.",
+          "description": "Unresolved question node for planning graphs.",
+          "defaults": {
+            "label": "Open Question",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+            "showLabel": false,
+            "data": {
+              "body": "State what is still unclear.",
+              "status": "open",
+              "owner": "",
+              "resolutionPath": "",
+              "prominence": "high"
+            }
+          },
+          "nodeDef": {
+            "key": "open-question",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Open Question",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+              "showLabel": false,
+              "data": {
+                "body": "State what is still unclear.",
+                "status": "open",
+                "owner": "",
+                "resolutionPath": "",
+                "prominence": "high"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "open-question",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "open-question",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "open-question",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "load-render-decoupling-bridge-open-question",
+          "sourceBridgeLabel": "Open Question",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "definitionKey": "open-question",
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "load-render-decoupling-back",
+      "type": "port",
+      "label": "Back to Semantic Zoom",
+      "position": {
+        "x": 1760,
+        "y": -40
+      },
+      "width": 340,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Return to the semantic-zoom task board.",
+        "intent": "external",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/semantic-zoom/root.node:root",
+          "mode": "navigate",
+          "label": "Open"
+        },
+        "isRoot": false,
+        "root": false,
+        "sourceRef": "github://twilite-zone/public/tasks/semantic-zoom/root.node",
+        "sourceNodeId": "semantic-zoom-root-summary",
+        "sourcePayload": "node.web"
+      }
+    },
+    {
+      "id": "load-render-decoupling-loader-contract",
+      "type": "port",
+      "label": "Loader Contract",
+      "position": {
+        "x": 1760,
+        "y": 140
+      },
+      "width": 340,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Contract for focus-first loading, outward ring order, and cache caps.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/documentation/contracts/view/semantic-zoom-loader-contract.node:root",
+          "mode": "navigate",
+          "label": "Open"
+        },
+        "sourceRef": "/library/documentation/contracts/view/semantic-zoom-loader-contract.node",
+        "sourceNodeId": "semantic-zoom-loader-title",
+        "sourcePayload": "node.web.summary",
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "load-render-decoupling-summary",
+      "type": "summary",
+      "label": "Runtime API Boundary Summary",
+      "position": {
+        "x": 1760,
+        "y": 680
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "goal": "Decouple loading from rendering",
+        "status": "todo",
+        "taskProgress": {
+          "completed": 0,
+          "total": 4
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 1
+        },
+        "taskTitles": [
+          "Define render fallback ladder",
+          "Define background load promotion rules",
+          "Keep visible surfaces stable during upgrades",
+          "Connect bullseye focus to load order"
+        ],
+        "questionTitles": [
+          "What should stay pinned while richer fragments load?"
+        ],
+        "taskListText": "1. Define render fallback ladder\n2. Define background load promotion rules\n3. Keep visible surfaces stable during upgrades\n4. Connect bullseye focus to load order",
+        "questionListText": "1. What should stay pinned while richer fragments load?",
+        "summarySource": "node-updater",
+        "_classBinding": {
+          "key": "summary",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-class",
+            "name": "Task Summary Provider Class",
+            "version": "0.1.0",
+            "description": "Provider surface for a planning task summary.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Provider surface for a planning task summary.",
+          "description": "Provider surface for a planning task summary.",
+          "defaults": {
+            "label": "Task Summary Provider",
+            "size": {
+              "width": 420,
+              "height": 250
+            },
+            "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+            "showLabel": false,
+            "data": {
+              "goal": "Summarize this task graph",
+              "status": "todo",
+              "taskProgress": {
+                "completed": 0,
+                "total": 0
+              },
+              "questionProgress": {
+                "answered": 0,
+                "total": 0
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "summary",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary Provider",
+              "size": {
+                "width": 420,
+                "height": 250
+              },
+              "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+              "showLabel": false,
+              "data": {
+                "goal": "Summarize this task graph",
+                "status": "todo",
+                "taskProgress": {
+                  "completed": 0,
+                  "total": 0
+                },
+                "questionProgress": {
+                  "answered": 0,
+                  "total": 0
+                }
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "summary",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "summary",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "summary",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "summary",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "load-render-decoupling-bridge-task-summary-provider",
+          "sourceBridgeLabel": "Summary",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "summary",
+          "classRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "definitionKey": "summary",
+        "updatedAt": "2026-04-04T17:43:15.094Z",
+        "title": "Load / Render Decoupling",
+        "sourceGraphRef": "github://twilite-zone/public/tasks/semantic-zoom/load-render-decoupling/root.node",
+        "sourceGraphId": "load-render-decoupling-root",
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "load-render-decoupling-summary-task",
+      "type": "task",
+      "label": "Decouple loading from rendering",
+      "position": {
+        "x": 1760,
+        "y": 1000
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Decouple loading from rendering",
+        "body": "Goal: Decouple loading from rendering\nStatus: todo\n\nTasks in scope:\n1. Define render fallback ladder\n2. Define background load promotion rules\n3. Keep visible surfaces stable during upgrades\n4. Connect bullseye focus to load order\n\nOpen questions:\n1. What should stay pinned while richer fragments load?",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "high",
+        "estimateHours": "2",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "load-render-decoupling-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task",
+        "acceptanceCriteria": [
+          "The allowed read surface is listed explicitly",
+          "No default access to arbitrary graph nodes is implied",
+          "Navigation is exposed only as an explicit callback"
+        ],
+        "isRoot": false,
+        "root": false,
+        "countAsTask": false,
+        "summarySource": "node-updater",
+        "taskProgress": {
+          "completed": 0,
+          "total": 4
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 1
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "load-render-decoupling-edge-title-goal",
+      "type": "reference",
+      "source": "load-render-decoupling-title",
+      "target": "load-render-decoupling-goal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "focus",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "load-render-decoupling-edge-goal-task-1",
+      "type": "reference",
+      "source": "load-render-decoupling-goal",
+      "target": "load-render-decoupling-task-1",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "load-render-decoupling-edge-goal-task-2",
+      "type": "reference",
+      "source": "load-render-decoupling-goal",
+      "target": "load-render-decoupling-task-2",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "load-render-decoupling-edge-goal-task-3",
+      "type": "reference",
+      "source": "load-render-decoupling-goal",
+      "target": "load-render-decoupling-task-3",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "load-render-decoupling-edge-goal-task-4",
+      "type": "reference",
+      "source": "load-render-decoupling-goal",
+      "target": "load-render-decoupling-task-4",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "load-render-decoupling-edge-goal-question",
+      "type": "reference",
+      "source": "load-render-decoupling-goal",
+      "target": "load-render-decoupling-question",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "question",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "load-render-decoupling-edge-title-back",
+      "type": "reference",
+      "source": "load-render-decoupling-title",
+      "target": "load-render-decoupling-back",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "board",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "load-render-decoupling-edge-title-loader-contract",
+      "type": "reference",
+      "source": "load-render-decoupling-title",
+      "target": "load-render-decoupling-loader-contract",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "law",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "load-render-decoupling-edge-summary-goal",
+      "type": "reference",
+      "source": "load-render-decoupling-summary",
+      "target": "load-render-decoupling-goal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "summarizes",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "clusters": [],
+  "scripts": [
+    {
+      "id": "script_1761684730975",
+      "name": "New Script",
+      "source": "// Write your script here\n// Available API:\n//   api.getNodes()\n//   api.getNode(id)\n//   api.getEdges()\n//   api.createNode(data)\n//   api.updateNode(id, patch)\n//   api.deleteNode(id)\n//   api.createEdge(data)\n//   api.deleteEdge(id)\n//   api.log(level, message)\n\nconst nodes = await api.getNodes();\nreturn { count: nodes.length };",
+      "tags": ""
+    },
+    {
+      "id": "script_1761684295367",
+      "name": "Mike",
+      "source": "console.clear();\nconst nodes = await api.getNodes();\nconsole.log(\"Mike\");\nreturn { count: nodes.length };",
+      "tags": ""
+    }
+  ]
+}

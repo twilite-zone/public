@@ -1,0 +1,2116 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "ui-analysis-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -920,
+        "y": -980
+      },
+      "width": 360,
+      "height": 220,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "ui-analysis-task-root",
+          "name": "UI Analysis",
+          "version": "0.1.0",
+          "description": "Task graph for mapping Twilite's app-wide UI rough spots and turning them into concrete work.",
+          "createdAt": "2026-04-08T23:30:00.000Z",
+          "updatedAt": "2026-04-08T23:30:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "bridge",
+            "script",
+            "section",
+            "goal",
+            "task",
+            "open-question",
+            "summary"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "summaryNodeId": "ui-analysis-summary"
+      }
+    },
+    {
+      "id": "ui-analysis-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -1290,
+        "y": -980
+      },
+      "width": 300,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "entries": []
+      }
+    },
+    {
+      "id": "root-bridge-section",
+      "type": "bridge",
+      "label": "Section",
+      "position": {
+        "x": -1260,
+        "y": -650
+      },
+      "width": 280,
+      "height": 170,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "label": "Section",
+        "target": {
+          "kind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root"
+        }
+      }
+    },
+    {
+      "id": "root-bridge-goal",
+      "type": "bridge",
+      "label": "Goal",
+      "position": {
+        "x": -1260,
+        "y": -450
+      },
+      "width": 280,
+      "height": 170,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "label": "Goal",
+        "target": {
+          "kind": "node-class",
+          "classKey": "goal",
+          "classRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "entryPort": "root"
+        }
+      }
+    },
+    {
+      "id": "root-bridge-task",
+      "type": "bridge",
+      "label": "Task",
+      "position": {
+        "x": -1260,
+        "y": -250
+      },
+      "width": 280,
+      "height": 170,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "label": "Task",
+        "target": {
+          "kind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root"
+        }
+      }
+    },
+    {
+      "id": "root-bridge-open-question",
+      "type": "bridge",
+      "label": "Open Question",
+      "position": {
+        "x": -1260,
+        "y": -50
+      },
+      "width": 280,
+      "height": 170,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "label": "Open Question",
+        "target": {
+          "kind": "node-class",
+          "classKey": "open-question",
+          "classRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root"
+        }
+      }
+    },
+    {
+      "id": "root-bridge-summary",
+      "type": "bridge",
+      "label": "Summary",
+      "position": {
+        "x": -1260,
+        "y": 150
+      },
+      "width": 280,
+      "height": 170,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "label": "Summary",
+        "target": {
+          "kind": "node-class",
+          "classKey": "summary",
+          "classRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root"
+        }
+      }
+    },
+    {
+      "id": "ui-analysis-overview",
+      "type": "section",
+      "label": "UI Analysis",
+      "position": {
+        "x": 1500,
+        "y": -900
+      },
+      "width": 520,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "UI Analysis",
+        "summary": "Map the app-wide user interface as one coherent landscape instead of treating rough spots as isolated annoyances. The goal is to identify where Twilite still feels founder-native, ambiguous, or under-explained to a real user, then break those problems into concrete work.",
+        "level": "h2",
+        "anchor": "ui-analysis",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "ui-analysis-scope",
+      "type": "section",
+      "label": "Analysis Scope",
+      "position": {
+        "x": 2060,
+        "y": -900
+      },
+      "width": 520,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Analysis Scope",
+        "summary": "Treat browser chrome, graph authoring, system panels, management/settings flows, onboarding/help, and visual language as one product surface. The point is not just to make isolated controls prettier, but to find where the app's UI model is still fragmented or implicit.",
+        "level": "h3",
+        "anchor": "analysis-scope",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "ui-analysis-goal",
+      "type": "goal",
+      "label": "Understand Twilite's app-wide UI landscape and turn rough spots into concrete work",
+      "position": {
+        "x": 1780,
+        "y": -470
+      },
+      "width": 540,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Produce a trustworthy UI map of the product, identify the user-facing friction zones, and turn them into scoped implementation tasks instead of leaving them as general discomfort.",
+        "status": "open",
+        "priority": "critical",
+        "owner": "Michael",
+        "definitionKey": "goal",
+        "_classBinding": {
+          "key": "goal",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-goal",
+          "sourceBridgeNodeId": "root-bridge-goal",
+          "sourceBridgeLabel": "Goal",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "goal",
+          "classRef": "/library/classes/nodes/task-planning/goal.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "ui-analysis-task-browser",
+      "type": "task",
+      "label": "Audit browser chrome and navigation surfaces",
+      "position": {
+        "x": 1580,
+        "y": -60
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Review tabs, address bar, viewport chip, browser controls, bookmarks, browser settings, account surfaces, and shell behavior to find where Twilite still feels inconsistent or surprising as a browser-shaped environment. Progress so far: browser chrome now has avatar and overflow affordances, a browser appearance drawer, an account drawer, explicit Twilite-first account creation, and returning-user GitHub sign-in recovery, but the account model still needs a native Twilite re-entry path and additional linked-provider support.",
+        "priority": "high",
+        "status": "in-progress",
+        "owner": "Michael",
+        "estimateHours": "4",
+        "acceptanceCriteria": [
+          "Browser-level controls are mapped clearly",
+          "Navigation and account surfaces are grouped by responsibility",
+          "Account creation, sign-in, and provider-linking work are captured as concrete follow-up tasks"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-task-editor",
+      "type": "task",
+      "label": "Audit graph authoring and editing surfaces",
+      "position": {
+        "x": 2110,
+        "y": -60
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Review graph creation, selection, toolbar actions, radial controls, drag/drop, layout controls, semantic zoom behaviors, node editing, and panel interactions to identify where authoring still depends on builder intuition. Initial findings already show a dead grid action, an overloaded Legend surface, duplicated control authority across toolbar/radial/side tabs, and at least one major action label that does not match its actual behavior.",
+        "priority": "critical",
+        "status": "in-progress",
+        "owner": "Michael",
+        "estimateHours": "8",
+        "acceptanceCriteria": [
+          "Authoring surfaces are grouped into a readable mental model",
+          "Major editor friction points are named explicitly",
+          "Interaction rough spots are converted into follow-up work"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-editor-findings",
+      "type": "section",
+      "label": "Initial Editor Findings",
+      "position": {
+        "x": 3160,
+        "y": -60
+      },
+      "width": 520,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Initial Editor Findings",
+        "summary": "The editor is no longer broken, but it is still founder-native. The current rough spots are structural rather than purely visual: one dead grid control, a misleading Legend label for a much broader system panel, too many parallel control authorities, and action labels that sometimes promise more than the UI actually does.",
+        "level": "h3",
+        "anchor": "initial-editor-findings",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "ui-analysis-task-grid-action",
+      "type": "task",
+      "label": "Repair or remove dead grid action paths",
+      "position": {
+        "x": 3160,
+        "y": 300
+      },
+      "width": 400,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "The current Grid Options menu exposed an `Align to Grid` action that was not actually wired safely. That path is now connected to the real editor behavior and has been re-homed under selection layout tools, which is a better fit for its actual scope.",
+        "priority": "high",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "2",
+        "acceptanceCriteria": [
+          "Grid-related controls all invoke real behavior",
+          "No dead or misleading grid action remains in the toolbar",
+          "The surviving grid controls have a coherent scope"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-task-system-panel-label",
+      "type": "task",
+      "label": "Rename and reframe the Legend surface as a system panel",
+      "position": {
+        "x": 3600,
+        "y": 300
+      },
+      "width": 400,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "The left-side `Legend` affordance currently opens a panel containing legend, manifest, scripts, diagnostics, and related graph-system surfaces. The first copy cleanup is in: the subtitle is clearer, the legacy dictionary mention is gone, diagnostics is named honestly, and the drawer now stops at the browser bar instead of fighting the shell. The remaining question is whether the rail label itself should stay `Legend` permanently or evolve into a broader graph-system label.",
+        "priority": "critical",
+        "status": "in-progress",
+        "owner": "Michael",
+        "estimateHours": "4",
+        "acceptanceCriteria": [
+          "The panel label matches its real contents",
+          "Users can infer where validation and scripts live without insider knowledge",
+          "The surface reads as one coherent responsibility"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-task-control-authority",
+      "type": "task",
+      "label": "Choose a primary authority for editor controls",
+      "position": {
+        "x": 4040,
+        "y": 300
+      },
+      "width": 400,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Toolbar, radial menu, and side tabs currently expose overlapping editor actions. The current proposal is: toolbar owns primary editing authority, side rails own persistent reference and management surfaces, and the radial menu becomes shortcut-only. Use that map to demote or remove duplicates so the editor teaches one model instead of three convenience layers.",
+        "priority": "critical",
+        "status": "in-progress",
+        "owner": "Michael",
+        "estimateHours": "6",
+        "acceptanceCriteria": [
+          "Each editor action category has a clear primary home",
+          "Duplicate affordances are reduced or intentionally downgraded to shortcuts",
+          "A new user can infer where to look for layout, inspection, and creation controls"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-control-authority-notes",
+      "type": "section",
+      "label": "Editor Control Authority",
+      "position": {
+        "x": 4040,
+        "y": -80
+      },
+      "width": 520,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Editor Control Authority",
+        "summary": "Primary authority should live in the toolbar. Persistent reference and management surfaces should live in the side rails and drawers. The radial menu should survive only as a shortcut surface, not as the place where a user has to discover how the editor works. If an action is important enough that a new user must learn it, it needs a clear home outside the radial menu.",
+        "level": "h3",
+        "anchor": "editor-control-authority",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "ui-analysis-task-radial-shortcuts",
+      "type": "task",
+      "label": "Reduce the radial menu to shortcut-only status",
+      "position": {
+        "x": 4920,
+        "y": 300
+      },
+      "width": 400,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Trim the radial menu so it accelerates common actions without carrying management or discovery burden. The first pass is in: management and reference surfaces like Legend, Document, Inspect, Minimap, and Elements inventory have been removed from the radial menu so it reads more like a shortcut surface.",
+        "priority": "high",
+        "status": "in-progress",
+        "owner": "Michael",
+        "estimateHours": "3",
+        "acceptanceCriteria": [
+          "The radial menu no longer defines the editor mental model",
+          "Management and reference surfaces are no longer primarily represented there",
+          "The remaining radial actions read as shortcuts instead of primary controls"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-task-action-labels",
+      "type": "task",
+      "label": "Reconcile action labels with actual behavior",
+      "position": {
+        "x": 4480,
+        "y": 300
+      },
+      "width": 400,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Some actions still promise broader scope than they actually provide, such as whole-graph actions that appear to depend on selection. The first concrete mismatch is now fixed: `Copy Entire Graph` no longer requires a prior selection. Continue auditing similar mismatches so the UI does not lie.",
+        "priority": "high",
+        "status": "in-progress",
+        "owner": "Michael",
+        "estimateHours": "3",
+        "acceptanceCriteria": [
+          "Action names reflect their true scope",
+          "Selection-scoped actions are clearly distinguished from graph-scoped actions",
+          "No major toolbar action requires users to discover hidden caveats"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-layout-panel-proposal",
+      "type": "section",
+      "label": "Layout Panel Redesign Proposal",
+      "position": {
+        "x": 5360,
+        "y": -80
+      },
+      "width": 560,
+      "height": 340,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Layout Panel Redesign Proposal",
+        "summary": "The layout surface should stop behaving like an internal console. Make it a smaller, action-first panel with a clear purpose: arrange this graph and control how new content is placed. The primary surface should contain only `Apply layout`, `Reroute edges`, `Default layout`, `Flow direction`, and `Auto-place imported content`. `Edge Appearance` should move to a visual/style surface instead of living beside layout defaults. ELK tuning, serpentine fallback, cycle fallback, and live-update behavior should become an expert path rather than a normal panel section.",
+        "level": "h3",
+        "anchor": "layout-panel-redesign-proposal",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "ui-analysis-task-layout-panel",
+      "type": "task",
+      "label": "Reshape the layout panel into a smaller action-first surface",
+      "position": {
+        "x": 5360,
+        "y": 300
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "The current layout panel is less chaotic than before, but it still feels creator-native and visually heavy. Recast it as a compact, decisive product surface: keep graph-arrangement actions and the few defaults a normal user should understand, move edge-appearance controls to a visual/style home, and demote algorithm tuning into an expert path instead of a big visible block.",
+        "priority": "critical",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "5",
+        "acceptanceCriteria": [
+          "The primary layout panel contains only layout actions and core graph defaults",
+          "Edge appearance is no longer presented as part of layout authority",
+          "Advanced layout tuning is available without dominating the default surface",
+          "The panel reads like a product feature instead of an internal control dump"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-task-edge-default-appearance-home",
+      "type": "task",
+      "label": "Decide where graph-wide edge appearance defaults live",
+      "position": {
+        "x": 5800,
+        "y": 300
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Per-edge styling already belongs in edge properties, but the product still needs a home for graph-wide default edge appearance. Do not keep that authority in the layout panel. Evaluate whether graph-wide edge defaults should live in the theme node, future edge classes, or another authored visual surface.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "3",
+        "acceptanceCriteria": [
+          "Per-edge styling and graph-wide edge defaults are clearly distinguished",
+          "The layout panel no longer acts as the home for edge appearance",
+          "A future authored home is chosen for graph-wide edge defaults"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-task-panels",
+      "type": "task",
+      "label": "Audit panels, settings, and management flows",
+      "position": {
+        "x": 2640,
+        "y": -60
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Review settings panels, diagnostics, GitHub/save flows, properties, manifests, and management surfaces to find where the product exposes real power but lacks user-readable framing or safe defaults. Initial findings show an overloaded save model, a cognitively dense GitHub save flow, and an unclear boundary between graph-level settings and selected-node properties.",
+        "priority": "high",
+        "status": "in-progress",
+        "owner": "Michael",
+        "estimateHours": "6",
+        "acceptanceCriteria": [
+          "Management surfaces are mapped by user job",
+          "Settings and state-heavy surfaces are called out clearly",
+          "Complex flows are broken into smaller remediation tasks"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-management-findings",
+      "type": "section",
+      "label": "Initial Management Findings",
+      "position": {
+        "x": 3180,
+        "y": 700
+      },
+      "width": 520,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Initial Management Findings",
+        "summary": "The product's management and settings surfaces are not broken, but they are still expert-shaped. Save flows, GitHub targeting, document settings, manifest editing, and graph-level controls are all present, but too much of their meaning still depends on insider knowledge. The save model is now moving in the right direction: ordinary save and export are split apart, `Change Home` teaches the current home, and GitHub destination details use progressive disclosure instead of opening at full plumbing depth.",
+        "level": "h3",
+        "anchor": "initial-management-findings",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "ui-analysis-save-model-proposal",
+      "type": "section",
+      "label": "Save Model Proposal",
+      "position": {
+        "x": 4060,
+        "y": 700
+      },
+      "width": 560,
+      "height": 360,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Save Model Proposal",
+        "summary": "Treat persistence as a home model, not a file-menu model. `Save` should always write to the current home. `Change Home` should let the user choose where this graph lives now. `Export` should create a copy or fragment artifact. In the `Change Home` dialog, show three layers: current home summary, destination type, and destination details. Destination types should be explicit: Browser Local, GitHub, Hosted Workspace, and later Local Filesystem for the node app. GitHub-specific choices like work/private/public belong inside the GitHub destination details, not at the top of the model.",
+        "level": "h3",
+        "anchor": "save-model-proposal",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "ui-analysis-settings-boundary-findings",
+      "type": "section",
+      "label": "Settings Boundary Findings",
+      "position": {
+        "x": 3620,
+        "y": 700
+      },
+      "width": 560,
+      "height": 360,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Settings Boundary Findings",
+        "summary": "The problem is not that graph settings are spread across many tabs. The problem is that they are spread across too many authorities. `DocumentPropertiesDialog` already behaves like the primary graph-settings surface: it owns overview, layout defaults, plugins, theme, GitHub, and now names itself honestly as `Graph Settings & Management`. `PropertiesPanel` should primarily describe the current selection; it no longer offers the full manifest form inline and now hands manifest editing off to graph settings, which is the right direction. The dialog's hidden `system` and `collaboration` tab content has been removed from the live tab model so it no longer carries shadow authorities. `SystemNodesPanel` should remain the graph's reference and health drawer for legend, metadata, scripts, and diagnostics, but not the preferred editing home for deep graph configuration. Target arrangement: graph-level settings live under one graph-settings authority, selection properties stay in the properties panel, and the system drawer remains a graph-native reference surface rather than a competing settings console.",
+        "level": "h3",
+        "anchor": "settings-boundary-findings",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "ui-analysis-task-save-model",
+      "type": "task",
+      "label": "Clarify the file and save model in the toolbar",
+      "position": {
+        "x": 3180,
+        "y": 1060
+      },
+      "width": 400,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "The current file toolbar exposes Save, Change Home, Save Without Expanded, Export Fragment, and boundary-port toggles as a tight row of icons. Clarify which actions are ordinary saving, which actions change the graph's home, and which actions are advanced export operations. Implementation progress: the toolbar now splits home/save from export actions, the destination drawer teaches `current home`, browser-local save is framed honestly as a local copy, and GitHub destination details now use a summary-plus-advanced pattern instead of forcing every repo control open by default.",
+        "priority": "critical",
+        "status": "in-progress",
+        "owner": "Michael",
+        "estimateHours": "4",
+        "acceptanceCriteria": [
+          "The toolbar distinguishes ordinary save from advanced export/re-root operations",
+          "A new user can infer which save path is normal",
+          "Advanced save/export operations no longer read like undifferentiated icon noise"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-task-settings-boundary",
+      "type": "task",
+      "label": "Define the boundary between graph settings and node properties",
+      "position": {
+        "x": 3620,
+        "y": 1060
+      },
+      "width": 400,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Graph-level settings currently live across Document Properties, the system drawer, and manifest editing inside the Properties panel. Decide what belongs to graph/document settings versus selected-node properties so the product stops exposing the same concern through multiple mental models. Current target model: `DocumentPropertiesDialog` becomes the primary graph-settings authority, `PropertiesPanel` focuses on the current selection, and the system drawer remains a graph-native reference/health surface rather than the preferred home for deep configuration. Implementation progress: manifest editing in the properties panel has already been reduced to a summary plus `Open Graph Settings` handoff, and the document dialog now enforces the visible tab model instead of carrying hidden `system` and `collaboration` authorities.",
+        "priority": "critical",
+        "status": "in-progress",
+        "owner": "Michael",
+        "estimateHours": "6",
+        "acceptanceCriteria": [
+          "Graph-level settings have a clear primary home",
+          "Manifest and document concerns are no longer ambiguously split across surfaces",
+          "Users can tell whether they are editing the graph or the current selection",
+          "Manifest selection in the properties panel clearly hands off to graph settings instead of duplicating the full graph-level editor"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-properties-vocabulary-proposal",
+      "type": "section",
+      "label": "Properties Vocabulary Proposal",
+      "position": {
+        "x": 4060,
+        "y": 1060
+      },
+      "width": 560,
+      "height": 360,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Properties Vocabulary Proposal",
+        "summary": "The properties panel no longer needs a speculative vocabulary sketch; the first real pass has been applied. Nodes now treat semantic `Type` and instance `Name` separately, consumed views are inspect-first, ports are structural instead of buried under advanced authoring, and the generic appearance surface has been reduced to local overrides rather than a style console. Edges now distinguish `Connection` from `Edge`, use `plain.edge` as the baseline relationship type, expose a top-level preview, and treat edge classes as the semantic upgrade path instead of making the UI invent meaning. The remaining work is refinement: cleaner diagnostics wording, stronger type-owned editors, and continued removal of prototype-era controls.",
+        "level": "h3",
+        "anchor": "properties-vocabulary-proposal",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "ui-analysis-task-properties-vocabulary",
+      "type": "task",
+      "label": "Define properties-panel vocabulary and type-sensitive field ownership",
+      "position": {
+        "x": 4500,
+        "y": 1420
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Settle the vocabulary and structural model before polishing the properties panel further. Decide what counts as common structural identity versus type-owned semantic content. Stop leading the UI with implementation terms like `label` when the meaningful field may actually be `Type`, `Name`, `Content`, `Reference`, or `Behavior` depending on node kind. Approved target arrangement: a small common shell, node-type-specific primary fields, `Appearance` as explicit authoring, `Advanced` for raw authoring controls, and `Inspect` for class and bridge diagnostics. Current mapping direction: node sections should organize around `Type`, `Name`, `Content`, `Behavior`, `Appearance`, `Advanced`, and `Inspect`; edge sections should organize around `Connection`, `Meaning`, `Appearance`, `Advanced`, and `Inspect`.",
+        "priority": "critical",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "5",
+        "acceptanceCriteria": [
+          "Common structural fields are distinguished from type-owned semantic fields",
+          "Properties vocabulary stops conflating implementation labels with product language",
+          "A clear `Advanced` versus `Inspect` split exists for the selection surface",
+          "Node and edge properties can be reorganized around a semantically honest field taxonomy"
+        ],
+        "memo": "Completed first implementation pass. Nodes now separate semantic type from view kind, consumed views stop pretending to be editable source nodes, and both node and edge appearance panels have been reduced to override-first surfaces.",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-task-onboarding",
+      "type": "task",
+      "label": "Audit onboarding, help, and discoverability",
+      "position": {
+        "x": 1840,
+        "y": 360
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Review how a new user learns the app, discovers available actions, understands state, and recovers from uncertainty. Include onboarding paths, hints, empty states, and places where the product assumes prior knowledge.",
+        "priority": "critical",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "6",
+        "acceptanceCriteria": [
+          "New-user confusion points are made explicit",
+          "Discoverability gaps are captured by surface",
+          "Onboarding/help work is translated into actionable follow-up tasks"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-task-language",
+      "type": "task",
+      "label": "Audit visual language, terminology, and consistency",
+      "position": {
+        "x": 2370,
+        "y": 360
+      },
+      "width": 400,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Review typography, iconography, labels, component naming, affordance consistency, and graph/browser theme boundaries so the UI reads like one product instead of a collection of individually sensible parts. Current clarification: typography should be treated as a system/document concern rather than a generic appearance panel feature. Primitive text-bearing nodes carry typographic role, while font choice and scale should mostly come from document and structure. Next pass should test that model on markdown nodes, title nodes, and summary/document views before broadening it to the shell.",
+        "priority": "high",
+        "status": "in-progress",
+        "owner": "Michael",
+        "estimateHours": "6",
+        "acceptanceCriteria": [
+          "The product's visual language gaps are named concretely",
+          "Terminology inconsistencies are captured",
+          "System-level consistency work is scoped into follow-up tasks",
+          "Typography authority is grounded in text-bearing primitives and document structure rather than generic node appearance controls"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-typography-proposal",
+      "type": "section",
+      "label": "Typography System Proposal",
+      "position": {
+        "x": 2820,
+        "y": 360
+      },
+      "width": 560,
+      "height": 360,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Typography System Proposal",
+        "summary": "Typography should be introduced as a bounded text system, not as a generic styling playground. The first usable slice should define text roles such as `title`, `heading`, `body`, and later `caption`/`code`; assign those roles to primitive text-bearing nodes; and let document or summary structure provide font choice, scale, and rhythm. Generic node appearance should stay out of typography except for local color overrides. The first proving surfaces should be markdown nodes, title nodes, and summary/document views before typography spreads into browser chrome or fully custom HTML surfaces.",
+        "level": "h3",
+        "anchor": "typography-system-proposal",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "ui-analysis-task-typography-system",
+      "type": "task",
+      "label": "Define a bounded typography system for text-bearing primitives",
+      "position": {
+        "x": 3420,
+        "y": 360
+      },
+      "width": 440,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Turn typography into a bounded `v1` system instead of a vague design ambition. Open questions to settle: 1. Which text roles exist in `v1` (`title`, `heading`, `body`, and possibly `caption`/`code`)? 2. Which primitive nodes own those roles directly? 3. What comes from document or summary structure versus local node overrides? 4. Which font choices and scale rules belong to the document/system level? 5. How should HTML nodes participate without bypassing the system? 6. Which surfaces prove the model first: markdown nodes, title nodes, and summary/document views, or something broader? Keep the first slice small enough to test in real authored content before attempting shell-wide typography.",
+        "priority": "high",
+        "status": "in-progress",
+        "owner": "Michael",
+        "estimateHours": "5",
+        "acceptanceCriteria": [
+          "Typography `v1` defines a bounded set of text roles",
+          "Primitive text-bearing nodes are mapped to those roles",
+          "Document or summary structure is established as the authority for font choice and scale",
+          "The first proving surfaces for typography are chosen explicitly",
+          "HTML-node participation is defined without turning typography into arbitrary per-node styling"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-task-theme-node",
+      "type": "task",
+      "label": "Create the graph theme node model",
+      "position": {
+        "x": 2810,
+        "y": 1060
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Implement theme authority so browser theme remains a browser-level concern, a graph gets its authored theme from a dedicated theme node when present, and individual nodes can still carry local style overrides. The graph should fall back to the browser theme when no theme node exists. Graph settings may expose theme status or a quick handoff, but the theme node itself is the graph's theme authority.",
+        "priority": "critical",
+        "status": "in-progress",
+        "owner": "Michael",
+        "estimateHours": "8",
+        "acceptanceCriteria": [
+          "A graph can declare its theme through a dedicated theme node",
+          "Graphs without a theme node inherit the browser theme",
+          "Graph settings no longer act as a competing graph-theme editor",
+          "Per-node style overrides continue to work over the graph theme"
+        ],
+        "implementationNotes": [
+          "Theme node type scaffolded in the graph editor runtime",
+          "Graph theme resolution now prefers a theme node and falls back to browser theme when no node or legacy config exists",
+          "Graph Settings now shows theme-node status and create/open handoff instead of editing graph theme directly"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-task-interactive-markdown",
+      "type": "task",
+      "label": "Evaluate bounded interactive markdown as an authored UI path",
+      "position": {
+        "x": 3270,
+        "y": 1060
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Source-backed task view.",
+        "intent": "external",
+        "sourceRef": "github://twilite-zone/public/tasks/bounded-interactive-markdown/root.node",
+        "sourceNodeId": "bounded-interactive-markdown-summary",
+        "sourcePayload": "node.web",
+        "body": "Source-backed task view.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "",
+        "countAsTask": true,
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-question-beta",
+      "type": "open-question",
+      "label": "Which UI rough spots are beta-critical versus post-beta polish?",
+      "position": {
+        "x": 2900,
+        "y": 360
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Use this analysis to separate friction that blocks trust, comprehension, or successful operation from roughness that can wait until after beta. The output should help prioritize the next UI-focused task graphs.",
+        "status": "open",
+        "owner": "Michael",
+        "prominence": "high",
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-open-question",
+          "sourceBridgeNodeId": "root-bridge-open-question",
+          "sourceBridgeLabel": "Open Question",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "definitionKey": "open-question"
+      }
+    },
+    {
+      "id": "ui-analysis-summary",
+      "type": "summary",
+      "label": "UI Analysis Summary",
+      "position": {
+        "x": 3180,
+        "y": -620
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "goal": "Understand Twilite's app-wide UI landscape and turn rough spots into concrete work",
+        "status": "todo",
+        "taskProgress": {
+          "completed": 0,
+          "total": 5
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 1
+        },
+        "taskTitles": [
+          "Audit browser chrome and navigation surfaces",
+          "Audit graph authoring and editing surfaces",
+          "Audit panels, settings, and management flows",
+          "Audit onboarding, help, and discoverability",
+          "Audit visual language, terminology, and consistency"
+        ],
+        "questionTitles": [
+          "Which UI rough spots are beta-critical versus post-beta polish?"
+        ],
+        "taskListText": "1. Audit browser chrome and navigation surfaces\n2. Audit graph authoring and editing surfaces\n3. Audit panels, settings, and management flows\n4. Audit onboarding, help, and discoverability\n5. Audit visual language, terminology, and consistency",
+        "questionListText": "1. Which UI rough spots are beta-critical versus post-beta polish?",
+        "summarySource": "graph-updater",
+        "_classBinding": {
+          "key": "summary",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-summary",
+          "sourceBridgeNodeId": "root-bridge-summary",
+          "sourceBridgeLabel": "Summary",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "summary",
+          "classRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "definitionKey": "summary"
+      }
+    },
+    {
+      "id": "ui-analysis-summary-task",
+      "type": "task",
+      "label": "Understand Twilite's app-wide UI landscape and turn rough spots into concrete work",
+      "root": true,
+      "position": {
+        "x": 3180,
+        "y": -250
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Goal: Understand Twilite's app-wide UI landscape and turn rough spots into concrete work\nStatus: todo\n\nTasks in scope:\n1. Audit browser chrome and navigation surfaces\n2. Audit graph authoring and editing surfaces\n3. Audit panels, settings, and management flows\n4. Audit onboarding, help, and discoverability\n5. Audit visual language, terminology, and consistency\n\nOpen questions:\n1. Which UI rough spots are beta-critical versus post-beta polish?",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "critical",
+        "estimateHours": "12",
+        "title": "Understand Twilite's app-wide UI landscape and turn rough spots into concrete work",
+        "countAsTask": false,
+        "summarySource": "node-updater",
+        "taskProgress": {
+          "completed": 0,
+          "total": 5
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 1
+        },
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-summary-updater",
+      "type": "script",
+      "label": "Summary Updater",
+      "position": {
+        "x": 3180,
+        "y": -980
+      },
+      "width": 320,
+      "height": 190,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "scriptName": "UI Analysis Summary Coordinator",
+        "summaryNodeId": "ui-analysis-summary",
+        "autoRun": true,
+        "autoRunOnGraphChange": true,
+        "allowMutations": true,
+        "dryRun": false,
+        "source": "const SUMMARY_NODE_ID = 'ui-analysis-summary';\nconst SUMMARY_TASK_ID = 'ui-analysis-summary-task';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel) => {\n  const visible = items.filter(Boolean);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nconst summaryTaskNode = nodes.find((entry) => entry?.id === SUMMARY_TASK_ID);\nif (!summaryNode || !summaryTaskNode) return { success: false, error: 'Summary surface missing' };\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task' && entry?.id !== SUMMARY_TASK_ID && entry?.data?.countAsTask !== false);\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst taskItems = tasks.map((entry) => ({ title: toTitle(entry, 'Untitled task'), status: normalize(entry?.data?.status) })).filter((entry) => entry?.title);\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst answeredQuestionCount = questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalize(goalNode?.data?.status);\nconst derivedStatus = goalStatus ? (goalStatus === 'done' && !allTasksDone ? 'in-progress' : (goalNode?.data?.status || 'open')) : (allTasksDone ? 'done' : (completedTaskCount > 0 ? 'in-progress' : (summaryNode?.data?.status || 'todo')));\nconst nextSummaryData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  taskProgress: { completed: completedTaskCount, total: taskItems.length },\n  questionProgress: { answered: answeredQuestionCount, total: questions.length },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.'),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'graph-updater'\n};\nconst nextSummaryTaskData = {\n  ...(summaryTaskNode.data || {}),\n  title: goalNode?.label || summaryTaskNode?.data?.title || 'Task graph',\n  body: `Goal: ${goalNode?.label || 'Task graph'}\\nStatus: ${derivedStatus}\\n\\nTasks in scope:\\n${toListText(taskTitles, 'No tasks listed.')}\\n\\nOpen questions:\\n${toListText(questionTitles, 'No open questions.')}`,\n  status: derivedStatus,\n  taskProgress: { completed: completedTaskCount, total: taskItems.length },\n  questionProgress: { answered: answeredQuestionCount, total: questions.length },\n  summarySource: 'node-updater',\n  countAsTask: false,\n  definitionKey: 'task'\n};\nif (!isEqual(summaryNode.data || {}, nextSummaryData)) await api.updateNode(SUMMARY_NODE_ID, { data: { ...nextSummaryData, updatedAt: new Date().toISOString() } });\nif (!isEqual(summaryTaskNode.data || {}, nextSummaryTaskData)) await api.updateNode(SUMMARY_TASK_ID, { data: { ...nextSummaryTaskData, updatedAt: new Date().toISOString() } });\nreturn { success: true, status: derivedStatus, taskCount: taskItems.length, questionCount: questions.length };"
+      }
+    },
+    {
+      "id": "ui-analysis-account-findings",
+      "type": "section",
+      "label": "Account And Identity Findings",
+      "position": {
+        "x": 2080,
+        "y": -360
+      },
+      "width": 520,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Account And Identity Findings",
+        "summary": "The browser now has a real home for account state, but the identity model is still mid-flight. Twilite account creation now exists and is the correct primary authority, GitHub can restore a linked Twilite account for returning users, and provider linking has started to take shape. The remaining gap is Twilite-native re-entry for users who already have a Twilite account but no linked provider, plus explicit secondary-provider support such as Google.",
+        "level": "h3",
+        "anchor": "account-and-identity-findings",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section"
+      }
+    },
+    {
+      "id": "ui-analysis-task-account-signin",
+      "type": "task",
+      "label": "Add Twilite-native sign-in and returning-user re-entry",
+      "position": {
+        "x": 2080,
+        "y": -10
+      },
+      "width": 420,
+      "height": 270,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Twilite account creation now exists, and linked GitHub sign-in can restore returning users whose provider identity is already attached. The missing product path is Twilite-native re-entry for users who already have a Twilite account but no linked provider. Define and implement the first real Twilite sign-in method, then make the browser account surface teach create-account vs returning-user paths honestly.",
+        "priority": "critical",
+        "status": "in-progress",
+        "owner": "Michael",
+        "estimateHours": "6",
+        "acceptanceCriteria": [
+          "A returning Twilite user can sign back in without relying on GitHub being linked first",
+          "The browser account surface clearly distinguishes new-account creation from returning-user sign-in",
+          "Twilite account recovery and re-entry no longer depend solely on third-party providers"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-task-google-linking",
+      "type": "task",
+      "label": "Add Google as a secondary linked provider",
+      "position": {
+        "x": 2520,
+        "y": -10
+      },
+      "width": 420,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "GitHub is the first linked provider, but many browser users will already have a Google session available. Add Google as a secondary linked identity provider so Twilite accounts can attach it for convenience and later use it as a returning-user sign-in path once the Twilite-native account model is stable.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "5",
+        "acceptanceCriteria": [
+          "A Twilite account can link a Google identity without changing Twilite account authority",
+          "The account drawer can show linked Google status alongside GitHub",
+          "Google can serve as a returning-user sign-in path once linked"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    },
+    {
+      "id": "ui-analysis-task-node-authoring-contract",
+      "type": "task",
+      "label": "Define a node authoring contract before reducing properties further",
+      "position": {
+        "x": 4970,
+        "y": 1630
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Define a node authoring contract before reducing properties further",
+        "body": "Properties cleanup reached the limit of what vocabulary changes alone could solve. The node authoring contract now exists as a real contract artifact at `/library/documentation/contracts/nodes/node-authoring-contract.node`, using the standard contract nodes plus the TTV shell, and the first contract-driven reduction pass has already been applied to the Properties panel. Current state: node and edge properties are materially cleaner, appearance panels now behave like local override surfaces, and consumed views no longer masquerade as editable source nodes. Remaining work is narrower: type-owned editors, final diagnostics/provenance wording, and continued surface reduction where the shared panel is still pretending to own too much.",
+        "priority": "high",
+        "status": "done",
+        "owner": "Michael",
+        "estimateHours": "",
+        "countAsTask": true,
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task",
+        "memo": "Resolved as a contract artifact plus first implementation pass. Future work should build on the contract rather than reopen the vocabulary problem."
+      }
+    },
+    {
+      "id": "ui-analysis-task-markdown-dynamic-baseline",
+      "type": "task",
+      "label": "Make markdown the baseline dynamic content node",
+      "position": {
+        "x": 5470,
+        "y": 1630
+      },
+      "width": 440,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Treat `markdown` as the baseline authored node and converge it with the dynamic content path instead of keeping it as a permanently privileged special renderer. Current reality: `DynamicViewNode` already understands markdown payloads, but `MarkdownNode` still carries dedicated editor handoff, runtime edge-value ingestion, canvas interaction behavior, and markdown-specific presentation. This task should audit those gaps, decide which behaviors belong in the shared dynamic substrate, and preserve `markdown` as the user-facing primitive even if the renderer path converges underneath it.",
+        "priority": "high",
+        "status": "in-progress",
+        "owner": "Michael",
+        "estimateHours": "4",
+        "acceptanceCriteria": [
+          "The gap between `MarkdownNode` behavior and the dynamic content path is explicit",
+          "Markdown editing and runtime-value behavior are either preserved or intentionally moved into the dynamic substrate",
+          "Markdown remains the baseline user-facing primitive node even if the renderer path converges",
+          "The minimum authored node model becomes clearer because markdown is treated as the default authored node"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "ui-analysis-edge-1",
+      "type": "reference",
+      "source": "ui-analysis-overview",
+      "target": "ui-analysis-goal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "frames",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-2",
+      "type": "reference",
+      "source": "ui-analysis-scope",
+      "target": "ui-analysis-goal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "scopes",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-3",
+      "type": "reference",
+      "source": "ui-analysis-goal",
+      "target": "ui-analysis-task-browser",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "requires",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-4",
+      "type": "reference",
+      "source": "ui-analysis-goal",
+      "target": "ui-analysis-task-editor",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "requires",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-5",
+      "type": "reference",
+      "source": "ui-analysis-goal",
+      "target": "ui-analysis-task-panels",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "requires",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-6",
+      "type": "reference",
+      "source": "ui-analysis-goal",
+      "target": "ui-analysis-task-onboarding",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "requires",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-7",
+      "type": "reference",
+      "source": "ui-analysis-goal",
+      "target": "ui-analysis-task-language",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "requires",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-8",
+      "type": "reference",
+      "source": "ui-analysis-goal",
+      "target": "ui-analysis-question-beta",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "clarifies",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-9",
+      "type": "reference",
+      "source": "ui-analysis-task-editor",
+      "target": "ui-analysis-editor-findings",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "finds",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-10",
+      "type": "reference",
+      "source": "ui-analysis-editor-findings",
+      "target": "ui-analysis-task-grid-action",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "spawns",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-11",
+      "type": "reference",
+      "source": "ui-analysis-editor-findings",
+      "target": "ui-analysis-task-system-panel-label",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "spawns",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-12",
+      "type": "reference",
+      "source": "ui-analysis-editor-findings",
+      "target": "ui-analysis-task-control-authority",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "spawns",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-13",
+      "type": "reference",
+      "source": "ui-analysis-editor-findings",
+      "target": "ui-analysis-task-action-labels",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "spawns",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-14",
+      "type": "reference",
+      "source": "ui-analysis-task-control-authority",
+      "target": "ui-analysis-control-authority-notes",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "formalizes",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-15",
+      "type": "reference",
+      "source": "ui-analysis-control-authority-notes",
+      "target": "ui-analysis-task-radial-shortcuts",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "spawns",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-15b",
+      "type": "reference",
+      "source": "ui-analysis-editor-findings",
+      "target": "ui-analysis-layout-panel-proposal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "proposes",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-15c",
+      "type": "reference",
+      "source": "ui-analysis-layout-panel-proposal",
+      "target": "ui-analysis-task-layout-panel",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "guides",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-15d",
+      "type": "reference",
+      "source": "ui-analysis-layout-panel-proposal",
+      "target": "ui-analysis-task-edge-default-appearance-home",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "opens",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-16",
+      "type": "reference",
+      "source": "ui-analysis-task-panels",
+      "target": "ui-analysis-management-findings",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "finds",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-17",
+      "type": "reference",
+      "source": "ui-analysis-management-findings",
+      "target": "ui-analysis-task-save-model",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "spawns",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-18",
+      "type": "reference",
+      "source": "ui-analysis-management-findings",
+      "target": "ui-analysis-task-settings-boundary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "spawns",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-19",
+      "type": "reference",
+      "source": "ui-analysis-management-findings",
+      "target": "ui-analysis-save-model-proposal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "proposes",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-20",
+      "type": "reference",
+      "source": "ui-analysis-save-model-proposal",
+      "target": "ui-analysis-task-save-model",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "guides",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-21",
+      "type": "reference",
+      "source": "ui-analysis-task-settings-boundary",
+      "target": "ui-analysis-settings-boundary-findings",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "finds",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-22",
+      "type": "reference",
+      "source": "ui-analysis-settings-boundary-findings",
+      "target": "ui-analysis-task-settings-boundary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "guides",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-23",
+      "type": "reference",
+      "source": "ui-analysis-task-language",
+      "target": "ui-analysis-task-theme-node",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "spawns",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-24",
+      "type": "reference",
+      "source": "ui-analysis-settings-boundary-findings",
+      "target": "ui-analysis-task-theme-node",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "spawns",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-25",
+      "type": "reference",
+      "source": "ui-analysis-task-language",
+      "target": "ui-analysis-task-interactive-markdown",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "opens",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-25b",
+      "type": "reference",
+      "source": "ui-analysis-task-language",
+      "target": "ui-analysis-typography-proposal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "clarifies",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-25c",
+      "type": "reference",
+      "source": "ui-analysis-typography-proposal",
+      "target": "ui-analysis-task-typography-system",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "drives",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-26",
+      "type": "reference",
+      "source": "ui-analysis-task-theme-node",
+      "target": "ui-analysis-task-interactive-markdown",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "follows",
+      "color": "#666666"
+    },
+    {
+      "id": "ui-analysis-edge-27",
+      "source": "ui-analysis-task-browser",
+      "target": "ui-analysis-account-findings",
+      "label": "finds",
+      "type": "default",
+      "data": {}
+    },
+    {
+      "id": "ui-analysis-edge-28",
+      "source": "ui-analysis-account-findings",
+      "target": "ui-analysis-task-account-signin",
+      "label": "spawns",
+      "type": "default",
+      "data": {}
+    },
+    {
+      "id": "ui-analysis-edge-29",
+      "source": "ui-analysis-account-findings",
+      "target": "ui-analysis-task-google-linking",
+      "label": "spawns",
+      "type": "default",
+      "data": {}
+    },
+    {
+      "id": "ui-analysis-edge-30",
+      "source": "ui-analysis-task-onboarding",
+      "target": "ui-analysis-task-account-signin",
+      "label": "depends on",
+      "type": "default",
+      "data": {}
+    },
+    {
+      "id": "ui-analysis-edge-properties-vocabulary-to-node-authoring-contract",
+      "source": "ui-analysis-task-properties-vocabulary",
+      "target": "ui-analysis-task-node-authoring-contract",
+      "type": "needs",
+      "label": "needs",
+      "data": {}
+    },
+    {
+      "id": "ui-analysis-edge-node-authoring-to-markdown-baseline",
+      "source": "ui-analysis-task-node-authoring-contract",
+      "target": "ui-analysis-task-markdown-dynamic-baseline",
+      "type": "default",
+      "label": "sharpens",
+      "data": {}
+    }
+  ]
+}
