@@ -1,0 +1,749 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "storage-closet-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -1120,
+        "y": -260
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "storage-closet-root",
+          "name": "Storage Closet",
+          "version": "0.1.0",
+          "description": "Storage Closet section root for Twilite.",
+          "createdAt": "2026-03-27T00:00:00.000Z",
+          "updatedAt": "2026-03-27T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "graph",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "title",
+            "type-definition",
+            "ui-view",
+            "port"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "summaryNodeId": ""
+      }
+    },
+    {
+      "id": "storage-closet-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -1120,
+        "y": 20
+      },
+      "width": 300,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "entries": [
+          {
+            "label": "Title",
+            "color": "#f3efe6"
+          },
+          {
+            "label": "Type",
+            "color": "#e7f2ff"
+          },
+          {
+            "label": "View",
+            "color": "#f4f7ff"
+          },
+          {
+            "label": "Port",
+            "color": "#f2f4f7"
+          }
+        ]
+      }
+    },
+    {
+      "id": "storage-closet-title-port",
+      "type": "port",
+      "label": "Title",
+      "position": {
+        "x": -1180,
+        "y": 180
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Title class.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/template-structure/title.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "label": "Title",
+          "key": "title"
+        }
+      }
+    },
+    {
+      "id": "storage-closet-type-port",
+      "type": "port",
+      "label": "Type Definition",
+      "position": {
+        "x": -1180,
+        "y": 330
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Type Definition class.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/type-definition/type-definition.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "label": "Type Definition",
+          "key": "type-definition"
+        }
+      }
+    },
+    {
+      "id": "storage-closet-view-port",
+      "type": "port",
+      "label": "View",
+      "position": {
+        "x": -1180,
+        "y": 480
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the UI View class.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/ui-interaction/ui-view.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "label": "View",
+          "key": "ui-view"
+        }
+      }
+    },
+    {
+      "id": "storage-closet-back",
+      "type": "port",
+      "label": "Back to Twilite",
+      "position": {
+        "x": 1260,
+        "y": 10
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Return to the Twilite section root.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/twilite/root.node:root",
+          "mode": "navigate",
+          "label": "Open"
+        },
+        "sourceRef": "/twilite/root.node",
+        "sourceNodeId": "twilite-view",
+        "sourcePayload": "node.web.summary"
+      }
+    },
+    {
+      "id": "storage-closet-title",
+      "type": "title",
+      "label": "Title",
+      "position": {
+        "x": -300,
+        "y": -40
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Storage Closet",
+        "subtitle": "Low-ceremony Twilite space for parking loose artifacts, references, and not-yet-organized material.",
+        "intent": "section",
+        "status": "active",
+        "_classBinding": {
+          "key": "title",
+          "sourceRef": "/library/classes/nodes/template-structure/title.node-class.node",
+          "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+          "identity": {
+            "graphId": "title-node-class",
+            "name": "Title Node Class",
+            "version": "0.1.0",
+            "description": "Template heading or major framing node for reusable graph structures.",
+            "createdAt": "2026-03-26T02:30:00.000Z",
+            "updatedAt": "2026-03-26T02:30:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Template heading or major framing node for reusable graph structures.",
+          "description": "Template heading or major framing node for reusable graph structures.",
+          "defaults": {
+            "label": "Title",
+            "size": {
+              "width": 420,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "subtitle": "",
+              "intent": "headline",
+              "status": "draft"
+            }
+          },
+          "nodeDef": {
+            "key": "title",
+            "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Title",
+              "size": {
+                "width": 420,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "subtitle": "",
+                "intent": "headline",
+                "status": "draft"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "title",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "title",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "title",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceBridgeNodeId": "storage-closet-title-port",
+          "sourceBridgeLabel": "Title",
+          "targetKind": "node-class",
+          "classKey": "title",
+          "classRef": "/library/classes/nodes/template-structure/title.node-class.node",
+          "sourceNodeId": "tutorial-title-port"
+        },
+        "definitionKey": "title"
+      }
+    },
+    {
+      "id": "storage-closet-type",
+      "type": "type-definition",
+      "label": "Type",
+      "position": {
+        "x": 180,
+        "y": -20
+      },
+      "width": 380,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "name": "Storage Closet",
+        "key": "storage-closet",
+        "classRef": "/twilite/storage-closet/root.node",
+        "meaning": "Shared destination surface for temporary storage and loosely organized Twilite material.",
+        "description": "Section root for storage-oriented work inside the Twilite area.",
+        "category": "section",
+        "status": "active",
+        "_classBinding": {
+          "key": "type-definition",
+          "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node",
+          "identity": {
+            "key": "type-definition",
+            "label": "Type Definition"
+          },
+          "meaning": "Declares a legend-facing type with its name, node class authority, and semantic meaning.",
+          "description": "Declares a legend-facing type with its name, node class authority, and semantic meaning.",
+          "defaults": {
+            "label": "Type Definition",
+            "size": {
+              "width": 420,
+              "height": 320
+            }
+          },
+          "views": [
+            {
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node"
+            },
+            {
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node"
+            },
+            {
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node"
+            },
+            {
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node"
+            }
+          ],
+          "nodeView": {
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node"
+          },
+          "editorView": {
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node"
+          }
+        },
+        "_bridge": {
+          "sourceBridgeNodeId": "storage-closet-type-port",
+          "sourceBridgeLabel": "Type Definition",
+          "targetKind": "node-class",
+          "classKey": "type-definition",
+          "classRef": "/library/classes/nodes/type-definition/type-definition.node-class.node"
+        },
+        "definitionKey": "type-definition"
+      }
+    },
+    {
+      "id": "storage-closet-view",
+      "type": "ui-view",
+      "label": "View",
+      "position": {
+        "x": 700,
+        "y": -60
+      },
+      "width": 420,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Storage Closet",
+        "purpose": "Shared host-facing view for the Storage Closet section.",
+        "audience": "Author",
+        "status": "active",
+        "titleSourceNodeId": "storage-closet-title",
+        "typeSourceNodeId": "storage-closet-type",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"240\" height=\"180\" viewBox=\"0 0 240 180\" fill=\"none\"><rect x=\"34\" y=\"36\" width=\"172\" height=\"108\" rx=\"18\" fill=\"#f8fafc\" stroke=\"#0f172a\" stroke-width=\"6\"/><rect x=\"54\" y=\"58\" width=\"132\" height=\"18\" rx=\"9\" fill=\"#8b5cf6\" opacity=\"0.85\"/><rect x=\"54\" y=\"88\" width=\"46\" height=\"34\" rx=\"8\" fill=\"#e9d5ff\" stroke=\"#7c3aed\" stroke-width=\"3\"/><rect x=\"110\" y=\"88\" width=\"34\" height=\"34\" rx=\"8\" fill=\"#ddd6fe\" stroke=\"#7c3aed\" stroke-width=\"3\"/><rect x=\"154\" y=\"88\" width=\"32\" height=\"34\" rx=\"8\" fill=\"#ede9fe\" stroke=\"#7c3aed\" stroke-width=\"3\"/></svg>",
+        "_classBinding": {
+          "key": "ui-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "identity": {
+            "graphId": "ui-view-node-class",
+            "name": "View Node Class",
+            "version": "0.1.0",
+            "description": "A user-facing interface surface or screen-level view.",
+            "createdAt": "2026-03-24T00:00:00.000Z",
+            "updatedAt": "2026-03-26T19:45:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "A user-facing interface surface or screen-level view.",
+          "description": "A user-facing interface surface or screen-level view.",
+          "defaults": {
+            "label": "View",
+            "size": {
+              "width": 420,
+              "height": 320
+            },
+            "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "purpose": "",
+              "audience": "",
+              "status": "draft"
+            }
+          },
+          "nodeDef": {
+            "key": "ui-view",
+            "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "View",
+              "size": {
+                "width": 420,
+                "height": 320
+              },
+              "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "purpose": "",
+                "audience": "",
+                "status": "draft"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "ui-view",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "ui-view",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "ui-view",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "ui-view",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "ui-view",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "ui-view",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceBridgeNodeId": "storage-closet-view-port",
+          "sourceBridgeLabel": "View",
+          "targetKind": "node-class",
+          "classKey": "ui-view",
+          "classRef": "/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+        },
+        "definitionKey": "ui-view"
+      }
+    },
+    {
+      "id": "port-kernel-core-ontology",
+      "type": "port",
+      "label": "Core Ontology",
+      "position": {
+        "x": 1260,
+        "y": 270
+      },
+      "width": 320,
+      "height": 130,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Twilite Kernel ontology primitives",
+        "link": "",
+        "intent": "external",
+        "target": {
+          "endpoint": "/twilite-core-ontology.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": ""
+        },
+        "html": "",
+        "svg": "",
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "port-kernel-node-class-library",
+      "type": "port",
+      "label": "Node Class Library",
+      "position": {
+        "x": 1260,
+        "y": 520
+      },
+      "width": 320,
+      "height": 130,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Canonical class graphs",
+        "link": "",
+        "intent": "external",
+        "target": {
+          "endpoint": "/node-class-library.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": ""
+        },
+        "html": "",
+        "svg": "",
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "port-kernel-documentation",
+      "type": "port",
+      "label": "Twilite Documentation",
+      "position": {
+        "x": 1680,
+        "y": 270
+      },
+      "width": 320,
+      "height": 130,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Self-describing docs graph",
+        "link": "",
+        "intent": "external",
+        "target": {
+          "endpoint": "/twilite-documentation.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": ""
+        },
+        "html": "",
+        "svg": "",
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "storage-closet-plugin-runtime-boundary",
+      "type": "port",
+      "label": "Plugin Runtime Boundary",
+      "position": {
+        "x": 1680,
+        "y": 520
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Detailed storage-closet explainer for how plugin nodes fit the port/view/runtime boundary model.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/twilite/storage-closet/plugin-runtime-boundary/root.node:root",
+          "mode": "navigate",
+          "label": "Open"
+        },
+        "sourceRef": "/twilite/storage-closet/plugin-runtime-boundary/root.node",
+        "sourceNodeId": "plugin-runtime-boundary-view",
+        "sourcePayload": "node.web.summary"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "storage-closet-edge-title-type",
+      "type": "reference",
+      "source": "storage-closet-title",
+      "target": "storage-closet-type",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "declares type"
+    },
+    {
+      "id": "storage-closet-edge-type-view",
+      "type": "reference",
+      "source": "storage-closet-type",
+      "target": "storage-closet-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "informs"
+    },
+    {
+      "id": "storage-closet-edge-title-view",
+      "type": "reference",
+      "source": "storage-closet-title",
+      "target": "storage-closet-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "host view"
+    },
+    {
+      "id": "storage-closet-edge-title-back",
+      "type": "reference",
+      "source": "storage-closet-title",
+      "target": "storage-closet-back",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "back"
+    },
+    {
+      "id": "storage-closet-edge-port-kernel-core-ontology",
+      "type": "reference",
+      "source": "storage-closet-title",
+      "target": "port-kernel-core-ontology",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "ontology"
+    },
+    {
+      "id": "storage-closet-edge-port-kernel-node-class-library",
+      "type": "reference",
+      "source": "storage-closet-title",
+      "target": "port-kernel-node-class-library",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "library"
+    },
+    {
+      "id": "storage-closet-edge-port-kernel-documentation",
+      "type": "reference",
+      "source": "storage-closet-title",
+      "target": "port-kernel-documentation",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "docs"
+    },
+    {
+      "id": "storage-closet-edge-plugin-runtime-boundary",
+      "type": "reference",
+      "source": "storage-closet-title",
+      "target": "storage-closet-plugin-runtime-boundary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "explainer"
+    }
+  ],
+  "timestamp": "2026-03-27T17:00:42.758Z",
+  "nodeCount": 12,
+  "edgeCount": 7
+}
