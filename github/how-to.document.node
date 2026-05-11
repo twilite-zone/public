@@ -1,0 +1,274 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "GitHub How-To",
+    "description": "Practical guide for using Twilite's current GitHub integration: installations, save targets, repo visibility, and write states.",
+    "created": "2026-05-11T00:00:00.000Z",
+    "modified": "2026-05-11T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "github",
+      "how-to",
+      "guide"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "github-howto-declaration",
+      "type": "declaration",
+      "label": "Declaration",
+      "position": {
+        "x": -260,
+        "y": -220
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "github-how-to-document",
+          "name": "GitHub How-To.Document",
+          "version": "0.1.0",
+          "description": "Practical guidance for operating Twilite's current GitHub integration.",
+          "createdAt": "2026-05-11T00:00:00.000Z",
+          "updatedAt": "2026-05-11T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "graph",
+          "scope": "mixed"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "declaration",
+            "markdown",
+            "ui-view",
+            "port"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "github-howto-view",
+      "type": "ui-view",
+      "label": "node.web.summary",
+      "position": {
+        "x": 140,
+        "y": -220
+      },
+      "width": 520,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "payload": "node.web.summary",
+        "title": "GitHub How-To",
+        "purpose": "Use this guide when you need to save a graph to GitHub, understand missing repos, or interpret the toolbar's document/save/access state.",
+        "status": "active",
+        "viewRole": "summary",
+        "viewKind": "display",
+        "exposedAuthority": "consume-view",
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"18\" fill=\"#111827\" stroke=\"#374151\" stroke-width=\"5\"/><path d=\"M110 46c-12 0-22 10-22 22 0 9 6 17 14 20 1 0 2-1 2-2v-4c-6 2-7-3-7-3-1-2-3-3-3-3-2-1 0-1 0-1 2 0 3 2 3 2 2 3 5 2 7 2 0-1 1-2 2-3-5-1-10-2-10-11 0-3 1-5 2-6 0-1-1-3 0-5 0 0 2-1 6 2 2-1 4-1 6-1s4 0 6 1c4-3 6-2 6-2 1 2 0 4 0 5 1 1 2 3 2 6 0 9-5 10-10 11 1 1 2 2 2 4v6c0 1 1 2 2 2 8-3 14-11 14-20 0-12-10-22-22-22z\" fill=\"#e5e7eb\"/></svg>",
+        "_classBinding": {
+          "key": "ui-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "ref": "/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+        },
+        "definitionKey": "ui-view"
+      }
+    },
+    {
+      "id": "github-howto-step-status",
+      "type": "markdown",
+      "label": "Status Strip",
+      "position": {
+        "x": -260,
+        "y": 40
+      },
+      "width": 560,
+      "height": 340,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Read the status strip first\n\nThe toolbar is the authoritative summary surface.\n\n- **Document** tells you what graph you are actually on.\n- **Save target** tells you where the next save is pointed.\n- **Access** tells you which GitHub installation context Twilite is using.\n\nWhen `Document` and `Save target` disagree, treat that as the first thing to resolve before writing."
+      }
+    },
+    {
+      "id": "github-howto-step-save",
+      "type": "markdown",
+      "label": "Save Flow",
+      "position": {
+        "x": -260,
+        "y": 400
+      },
+      "width": 560,
+      "height": 420,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Save a graph to GitHub\n\n1. Open **Save to GitHub** from the toolbar.\n2. Choose the **Installation** that can see the destination repo.\n3. Choose the **Repository**.\n4. Confirm **Branch** and **File path in repo**.\n5. Read the capability pill next to the save button.\n\nInterpret the capability pill like this:\n- **Writable**: Twilite has high confidence a direct commit should work.\n- **Accessible**: GitHub can reach the destination, but Twilite cannot fully predict the final write outcome.\n- **Blocked**: the selected installation cannot access that repo directly."
+      }
+    },
+    {
+      "id": "github-howto-step-repos",
+      "type": "markdown",
+      "label": "Missing Repos",
+      "position": {
+        "x": 340,
+        "y": 40
+      },
+      "width": 640,
+      "height": 360,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## If a repo is missing\n\nMissing repos are usually an installation-scope issue, not a local-folder issue.\n\n- Local folders do **not** make a repo visible to Twilite.\n- Workspace mappings are defaults, not GitHub authority.\n- The repo picker only shows repos returned by the selected GitHub App installation.\n\nSo if you expect `owner/public` or `owner/private` and do not see it, inspect the GitHub App installation settings first."
+      }
+    },
+    {
+      "id": "github-howto-step-model",
+      "type": "markdown",
+      "label": "Mental Model",
+      "position": {
+        "x": 340,
+        "y": 440
+      },
+      "width": 640,
+      "height": 380,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Current mental model\n\nTwilite's current GitHub integration is built around four separate ideas:\n\n- **Document identity**: the `github://...` graph you opened.\n- **Save target**: the repo, branch, and path the next write will use.\n- **Installation access**: what the selected GitHub App installation can actually see.\n- **Workspace mapping**: your preferred `work`, `public`, or `private` default.\n\nThe UI is safest when it keeps those separate. The how-to is about operating that model cleanly, not pretending they are all the same thing."
+      }
+    },
+    {
+      "id": "github-howto-port-reference",
+      "type": "port",
+      "label": "GitHub Reference",
+      "position": {
+        "x": -260,
+        "y": 860
+      },
+      "width": 320,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "navigate",
+        "authority": "consume-view",
+        "sourcePayload": "node.web.document",
+        "memo": "Open the GitHub reference document.",
+        "target": {
+          "endpoint": "/github/document/root.node:github-document-view",
+          "mode": "navigate",
+          "label": "Open reference",
+          "ref": "/github/document/root.node",
+          "nodeId": "github-document-view",
+          "portId": "root"
+        },
+        "sourceRef": "/github/document/root.node",
+        "sourceNodeId": "github-document-view"
+      }
+    },
+    {
+      "id": "github-howto-port-tutorial",
+      "type": "port",
+      "label": "GitHub Walkthrough",
+      "position": {
+        "x": 120,
+        "y": 860
+      },
+      "width": 320,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "navigate",
+        "authority": "consume-view",
+        "sourcePayload": "node.web.summary",
+        "memo": "Open the GitHub tutorial walkthrough.",
+        "target": {
+          "endpoint": "/tutorial/github-authoring-walkthrough.document.node:root",
+          "mode": "navigate",
+          "label": "Open walkthrough",
+          "ref": "/tutorial/github-authoring-walkthrough.document.node",
+          "portId": "root"
+        },
+        "sourceRef": "/tutorial/github-authoring-walkthrough.document.node",
+        "sourceNodeId": "github-walkthrough-view"
+      }
+    },
+    {
+      "id": "github-howto-port-root",
+      "type": "port",
+      "label": "Back to GitHub Root",
+      "position": {
+        "x": 500,
+        "y": 860
+      },
+      "width": 320,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "navigate",
+        "authority": "consume-view",
+        "sourcePayload": "node.web.summary",
+        "memo": "Return to the GitHub root graph.",
+        "target": {
+          "endpoint": "/github/root.node:root",
+          "mode": "navigate",
+          "label": "Open root",
+          "ref": "/github/root.node",
+          "portId": "root"
+        },
+        "sourceRef": "/github/root.node",
+        "sourceNodeId": "github-view"
+      }
+    }
+  ],
+  "edges": [],
+  "timestamp": "2026-05-11T00:00:00.000Z",
+  "nodeCount": 9,
+  "edgeCount": 0
+}

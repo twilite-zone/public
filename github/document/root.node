@@ -256,7 +256,7 @@
       "showLabel": true,
       "data": {
         "target": {
-          "endpoint": "github://twilite-zone/public/github/root.node:root",
+          "endpoint": "/github/root.node:root",
           "mode": "navigate",
           "url": "",
           "graphId": "",
@@ -268,7 +268,7 @@
         "link": "",
         "html": "",
         "svg": "",
-        "sourceRef": "github://twilite-zone/public/github/root.node",
+        "sourceRef": "/github/root.node",
         "sourceNodeId": "github-view",
         "sourcePayload": "node.web.summary"
       }
@@ -288,7 +288,7 @@
       "showLabel": true,
       "data": {
         "title": "GitHub",
-        "subtitle": "Dedicated document graph for Twilite's current GitHub integration model, with the landing graph left free to point here cleanly.",
+        "subtitle": "Reference surface for Twilite's current GitHub model: document identity, save targets, installation-scoped repo visibility, and the boundaries of direct commit workflows.",
         "intent": "headline",
         "status": "active",
         "_classBinding": {
@@ -420,7 +420,7 @@
       "data": {
         "name": "GitHub Document",
         "key": "github-document",
-        "classRef": "github://twilite-zone/public/github/document/root.node",
+        "classRef": "/github/document/root.node",
         "meaning": "Document graph for Twilite's current GitHub integration model.",
         "description": "Use this type when a host should render the dedicated GitHub document.",
         "category": "integration",
@@ -832,7 +832,7 @@
       "showLabel": true,
       "data": {
         "title": "Introduction",
-        "summary": "The ideal setup is three folders mapped to three repos: `work/`, `public/`, and `private/`. New graphs, documents, and experiments should start in `work/` by default. Users can then move them into `public/` or `private/` when it becomes appropriate to decide who should see them. Twilite's GitHub integration should support that progression instead of forcing a permanent visibility choice too early.",
+        "summary": "Twilite's current GitHub integration is built around explicit document identity. A graph can be opened at a `github://...` address, the toolbar can show the active document and save target separately, and the save panel can surface installation-scoped repo visibility instead of pretending local folders are GitHub authority.",
         "level": "h2",
         "anchor": "introduction",
         "status": "active",
@@ -900,7 +900,7 @@
       "showLabel": true,
       "data": {
         "title": "Workflow first, publishing smart",
-        "summary": "Treat folder placement and GitHub publishing as a workflow across three mapped repos. Twilite should save new work into `work/` by default, then offer explicit movement paths: `work/` to `public/` for broadly shareable material, or `work/` to `private/` for restricted material. The connector remains the preferred surface for structured repo and pull-request workflows, while local git and gh handle checkout-aware steps such as branch creation, staging, commit, push, and Actions logs.",
+        "summary": "The integration is now more legible because it separates four concerns: document identity, save target, installation access, and workspace defaults. Local folders and slot mappings still matter, but they are advisory. Actual repo visibility comes from the selected GitHub App installation, and save safety depends on that reality rather than on hidden assumptions.",
         "level": "h2",
         "anchor": "hybrid-model",
         "status": "active",
@@ -968,7 +968,7 @@
       "showLabel": true,
       "data": {
         "title": "Opening repo and promotion workflows",
-        "summary": "The opening GitHub workflow should scaffold `work/`, `public/`, and `private/`, explain what belongs in each folder, and instruct the user to create three matching repos. `work/` should be the default landing zone and default save location for new files. From there, Twilite can support differentiated actions such as save to `work/`, move to `public/`, move to `private/`, publish public changes to the public repo, and prepare restricted changes for the private repos. These should be explicit workflows, not one generic sync button.",
+        "summary": "Current authoring flows support opening a graph by `github://...`, selecting a concrete installation/repository/path destination, and saving back through the GitHub App commit route. The save panel now emphasizes the actual write target, while the toolbar persists the higher-level status so the user can tell what document they are on and where save is pointed.",
         "level": "h2",
         "anchor": "supported-workflows",
         "status": "active",
@@ -1036,7 +1036,7 @@
       "showLabel": true,
       "data": {
         "title": "How to set it up",
-        "summary": "Set up three folders locally: `work/`, `public/`, and `private/`. Instruct the user to create three matching repos: a work repo, a public repo, and a private repo. Map each folder to its corresponding repo. Default new user-created material into `work/`, or at minimum make `work/` the default save location. When the user decides a graph or document is ready, move it to `public/` or `private/` and use GitHub publishing flows appropriate to that mapped destination. If the request depends on branch state or current checkout, resolve local git context instead of pretending the connector alone knows it.",
+        "summary": "Use the toolbar strip first, then the save panel. `Document` tells you what graph is open, `Save target` tells you where the next write goes, and `Access` tells you which installation context Twilite is using. Missing repos are usually installation-scope issues on GitHub, not local-folder issues. The practical procedure now lives in the GitHub how-to document, while the walkthrough demonstrates the full round trip.",
         "level": "h2",
         "anchor": "usage",
         "status": "active",
@@ -1104,7 +1104,7 @@
       "showLabel": true,
       "data": {
         "title": "Boundaries and current status",
-        "summary": "Do not treat `private/` as a secrets vault; secrets should stay out of the repo entirely. Three repos is the ideal setup, but users still need to create and authorize those repos explicitly. Do not imply that Actions logs come from the connector alone; use gh for GitHub Actions checks and logs. Smart publishing still requires local branch awareness and explicit scope confirmation before staging, commit, push, and draft PR creation. The graph should describe the ideal mapped-repo workflow and the current hybrid reality without pretending the whole setup is already automatic.",
+        "summary": "Twilite can now classify GitHub destinations as `Writable`, `Accessible`, or `Blocked`, but only `Blocked` is a hard denial. `Accessible` means the installation can reach the repo even if Twilite cannot fully predict the final write outcome. Direct commits are still not a full substitute for local checkout-aware workflows such as branching, PR preparation, or Actions investigation.",
         "level": "h2",
         "anchor": "boundaries",
         "status": "active",
@@ -1308,7 +1308,7 @@
       "showLabel": true,
       "data": {
         "title": "Working note",
-        "note": "This graph is intentionally about the working integration. It should not promise a fully unified GitHub surface until the migration front actually lands.",
+        "note": "This graph should describe the current working model clearly. The point is not to promise a finished GitHub substrate, but to make the present document/save/access contract understandable and safe to operate.",
         "anchorRef": "boundaries",
         "author": "Michael",
         "status": "open",
@@ -1495,6 +1495,64 @@
           "classRef": "/library/classes/nodes/document-publishing/reference.node-class.node"
         },
         "definitionKey": "reference"
+      }
+    },
+    {
+      "id": "github-howto-port",
+      "type": "port",
+      "label": "GitHub How-To",
+      "root": false,
+      "position": {
+        "x": 380,
+        "y": 920
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "navigate",
+        "authority": "consume-view",
+        "sourcePayload": "node.web.summary",
+        "memo": "Open the GitHub how-to guide.",
+        "target": {
+          "endpoint": "/github/how-to.document.node:root",
+          "mode": "navigate",
+          "label": "Open how-to",
+          "ref": "/github/how-to.document.node",
+          "portId": "root"
+        },
+        "sourceRef": "/github/how-to.document.node",
+        "sourceNodeId": "github-howto-view"
+      }
+    },
+    {
+      "id": "github-tutorial-port",
+      "type": "port",
+      "label": "GitHub Walkthrough",
+      "root": false,
+      "position": {
+        "x": -120,
+        "y": 920
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "intent": "navigate",
+        "authority": "consume-view",
+        "sourcePayload": "node.web.summary",
+        "memo": "Open the GitHub tutorial walkthrough.",
+        "target": {
+          "endpoint": "/tutorial/github-authoring-walkthrough.document.node:root",
+          "mode": "navigate",
+          "label": "Open walkthrough",
+          "ref": "/tutorial/github-authoring-walkthrough.document.node",
+          "portId": "root"
+        },
+        "sourceRef": "/tutorial/github-authoring-walkthrough.document.node",
+        "sourceNodeId": "github-walkthrough-view"
       }
     }
   ],
@@ -1716,6 +1774,28 @@
       "sourcePort": "root",
       "targetPort": "root",
       "label": "implementation front",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "github-edge-usage-howto",
+      "type": "reference",
+      "source": "github-usage",
+      "target": "github-howto-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "procedure",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "github-edge-workflows-tutorial",
+      "type": "reference",
+      "source": "github-workflows",
+      "target": "github-tutorial-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "walkthrough",
       "style": {},
       "data": {}
     }
