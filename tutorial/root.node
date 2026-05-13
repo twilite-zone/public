@@ -12,8 +12,8 @@
   "nodes": [
     {
       "id": "tutorial-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "type": "declaration",
+      "label": "Declaration",
       "root": false,
       "position": {
         "x": 908.4718354918932,
@@ -38,8 +38,9 @@
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
+            "declaration",
             "legend",
+            "bridge",
             "title",
             "type-definition",
             "field",
@@ -101,6 +102,57 @@
             "allowGraphEntry": true
           }
         },
+        "summaryNodeId": "tutorial-view",
+        "name": "Tutorial Declaration",
+        "declaresKind": "graph",
+        "purpose": "Declare the Tutorial public section root and its exposed host-facing surfaces.",
+        "primaryNodeViewId": "tutorial-view",
+        "portViewNodeId": "tutorial-view",
+        "iconViewNodeId": "tutorial-icon-view",
+        "declaration": {
+          "kind": "graph",
+          "primaryNodeViewId": "tutorial-view",
+          "portViewNodeId": "tutorial-view",
+          "iconViewNodeId": "tutorial-icon-view",
+          "defaultSurfaceId": "port",
+          "surfaces": [
+            {
+              "id": "port",
+              "kind": "port",
+              "label": "UI View",
+              "memo": "Default host-facing surface for the Tutorial section.",
+              "viewNodeId": "tutorial-view",
+              "exposes": {
+                "views": { "mode": "allow" },
+                "declarations": { "mode": "allow" }
+              }
+            },
+            {
+              "id": "icon",
+              "kind": "icon",
+              "label": "Icon View",
+              "memo": "Minimal semantic-zoom identity surface for the Tutorial section.",
+              "viewNodeId": "tutorial-icon-view",
+              "exposes": {
+                "views": { "mode": "allow" },
+                "declarations": { "mode": "allow" }
+              }
+            }
+          ],
+          "graphViewRole": "authoring",
+          "targetMode": "artifact",
+          "artifactKind": "graph"
+        },
+        "_classBinding": {
+          "key": "declaration",
+          "sourceRef": "/library/classes/nodes/declaration.node-class.node",
+          "ref": "/library/classes/nodes/declaration.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "declaration",
+          "classRef": "/library/classes/nodes/declaration.node-class.node"
+        },
+        "definitionKey": "declaration",
         "isRoot": false,
         "root": false,
         "_placement": {
