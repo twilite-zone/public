@@ -1910,6 +1910,100 @@
         "intent": "external",
         "security": "prompt"
       }
+    },
+    {
+      "id": "github-repo-home-node-task-5",
+      "type": "task",
+      "label": "Define repo-home template contract",
+      "root": false,
+      "position": {
+        "x": 2400,
+        "y": 300
+      },
+      "width": 430,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Define repo-home template contract",
+        "summary": "Specialize the generic home-page template for a GitHub repository landing surface.",
+        "status": "draft",
+        "owner": "openai",
+        "priority": "medium",
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "github-repo-home-node-contract-repo-template",
+      "type": "markdown",
+      "label": "Repo-Home Template Contract",
+      "root": false,
+      "position": {
+        "x": 2400,
+        "y": 1400
+      },
+      "width": 460,
+      "height": 380,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Repo-Home Template Contract\n\nThe repo-home template specializes the generic home-page template for a GitHub repository as the main public-facing landing surface.\n\nPrimary job:\n- identify the repository clearly\n- show what this repo is for\n- make the first public destination obvious\n- expose the key repo destinations without turning into a long article\n\nMinimum structure:\n- declaration\n- title\n- type-definition\n- ui-view\n- one `github-repo` node\n- one featured/primary destination\n- at least one additional repo destination\n- one short repo-context/supporting node\n\nRecommended composition zones:\n- Repo Identity\n- Featured Start Here\n- Key Destinations\n- Repo Context\n- Supporting Links (optional)\n\nRules:\n- specialize the generic home-page template, do not replace it\n- the `github-repo` node owns repo identity and repo-home semantics\n- the page owns composition and public orientation\n- destination-first, with explanation kept short\n- no GitHub installation/write-status UI on the home page by default\n\nDefault surface:\n- a `ui-view` should be the main public repo-home surface\n\nWhat success looks like:\n- a visitor can answer “what repo is this?” immediately\n- a visitor can tell where to start\n- the page reads as a public repo landing surface, not as an internal planning graph\n- the template still works for public repos beyond Twilite itself.",
+        "definitionKey": "markdown",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "github-repo-home-node-repo-template-smoke-port",
+      "type": "port",
+      "label": "Repo-Home Template Smoke Test",
+      "root": false,
+      "position": {
+        "x": 2920,
+        "y": 1400
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/github-integration/repo-home-node/repo-home-template-smoke.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Open",
+          "ref": "github://twilite-zone/public/tasks/github-integration/repo-home-node/repo-home-template-smoke.node"
+        },
+        "memo": "Open the repo-home template smoke test graph.",
+        "authority": "consume-view",
+        "sourceRef": "github://twilite-zone/public/tasks/github-integration/repo-home-node/repo-home-template-smoke.node",
+        "sourceNodeId": "repo-home-smoke-sample-view",
+        "sourcePayload": "node.web.summary",
+        "link": "",
+        "html": "",
+        "svg": "",
+        "intent": "external",
+        "security": "prompt"
+      }
     }
   ],
   "edges": [
@@ -2087,6 +2181,48 @@
       "type": "reference",
       "source": "github-repo-home-node-task-3",
       "target": "github-repo-home-node-home-template-smoke-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "smoke test",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "github-repo-home-node-edge-goal-task-5",
+      "type": "reference",
+      "source": "github-repo-home-node-goal",
+      "target": "github-repo-home-node-task-5",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "github-repo-home-node-edge-task5-contract",
+      "type": "reference",
+      "source": "github-repo-home-node-task-5",
+      "target": "github-repo-home-node-contract-repo-template",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "draft",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "github-repo-home-node-edge-task5-smoke",
+      "type": "reference",
+      "source": "github-repo-home-node-task-5",
+      "target": "github-repo-home-node-repo-template-smoke-port",
       "sourcePort": "root",
       "targetPort": "root",
       "label": "smoke test",
