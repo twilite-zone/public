@@ -1674,7 +1674,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Home-Page Template Contract\n\nThe home-page template should scaffold a first-pass landing graph.\n\nMinimum structure:\n- declaration or manifest authority\n- title\n- type-definition\n- UI View as the default page surface\n- one or more landing/content sections\n- ports or destination surfaces for major navigation targets\n\nGood defaults:\n- hero framing\n- primary destinations\n- supporting context\n- proof/example area\n- CTA or next-step path\n\nImplementation note:\nThis should stay page-first. Document View may exist later, but it should not be required for v1.",
+        "markdown": "# Home-Page Template Contract\n\nThe home-page template should scaffold a destination-centered landing graph.\n\nPrimary job:\n- tell a visitor what this place is\n- show the main destinations\n- make the first click obvious\n\nMinimum structure:\n- declaration\n- title\n- type-definition\n- ui-view\n- at least two primary destination ports\n- one short supporting-context node\n\nRecommended composition zones:\n- Identity\n- Primary Destinations\n- Supporting Context\n- Secondary Destinations (optional)\n\nRules:\n- page-first, not document-first\n- destination-centered, not article-centered\n- hero plus destinations before explanation\n- use existing primitives where possible\n- do not make repo-specific assumptions\n\nDefault surface:\n- a `ui-view` should be the main public surface\n\nWhat success looks like:\n- a reader can answer “what is this place?”\n- a reader can identify the main next click immediately\n- the graph still works for repo homes, product homes, section homes, and workspace homes.",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -1874,6 +1874,42 @@
         "sourcePayload": "node.web",
         "authority": "consume-view"
       }
+    },
+    {
+      "id": "github-repo-home-node-home-template-smoke-port",
+      "type": "port",
+      "label": "Home-Page Template Smoke Test",
+      "root": false,
+      "position": {
+        "x": 2400,
+        "y": 1040
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/github-integration/repo-home-node/home-page-template-smoke.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Open",
+          "ref": "github://twilite-zone/public/tasks/github-integration/repo-home-node/home-page-template-smoke.node"
+        },
+        "memo": "Open the home-page template smoke test graph.",
+        "authority": "consume-view",
+        "sourceRef": "github://twilite-zone/public/tasks/github-integration/repo-home-node/home-page-template-smoke.node",
+        "sourceNodeId": "home-template-smoke-sample-view",
+        "sourcePayload": "node.web.summary",
+        "link": "",
+        "html": "",
+        "svg": "",
+        "intent": "external",
+        "security": "prompt"
+      }
     }
   ],
   "edges": [
@@ -2044,6 +2080,20 @@
       "targetPort": "root",
       "label": "smoke test",
       "style": {},
+      "data": {}
+    },
+    {
+      "id": "github-repo-home-node-edge-task3-smoke",
+      "type": "reference",
+      "source": "github-repo-home-node-task-3",
+      "target": "github-repo-home-node-home-template-smoke-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "smoke test",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
       "data": {}
     }
   ],
