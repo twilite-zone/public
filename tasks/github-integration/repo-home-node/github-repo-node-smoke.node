@@ -1,0 +1,379 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "github-repo-smoke-declaration",
+      "type": "declaration",
+      "label": "Declaration",
+      "position": {
+        "x": -1160,
+        "y": -720
+      },
+      "width": 420,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "github-repo-node-smoke",
+          "name": "GitHub Repo Node Smoke Test",
+          "version": "0.1.0",
+          "description": "Manual smoke test for the first-pass GitHub repo node class.",
+          "createdAt": "2026-05-15T00:00:00.000Z",
+          "updatedAt": "2026-05-15T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "validation"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "declaration",
+            "markdown",
+            "bridge",
+            "github-repo"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "declaration": {
+          "kind": "task",
+          "targetMode": "artifact",
+          "artifactKind": "task",
+          "graphViewRole": "authoring",
+          "defaultSurfaceId": "view",
+          "surfaces": [
+            {
+              "id": "view",
+              "kind": "view",
+              "label": "View",
+              "memo": "Human-facing reading surface for the smoke test.",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            },
+            {
+              "id": "export",
+              "kind": "export",
+              "label": "Export",
+              "memo": "Smoke test graphs do not export primitives by default.",
+              "exposes": {
+                "nodeClasses": {
+                  "mode": "deny"
+                },
+                "edgeClasses": {
+                  "mode": "deny"
+                },
+                "views": {
+                  "mode": "deny"
+                },
+                "scripts": {
+                  "mode": "deny"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            }
+          ]
+        },
+        "summaryNodeId": "github-repo-smoke-intro"
+      }
+    },
+    {
+      "id": "github-repo-smoke-intro",
+      "type": "markdown",
+      "label": "GitHub Repo Node Smoke",
+      "position": {
+        "x": -700,
+        "y": -720
+      },
+      "width": 760,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# GitHub Repo Node Smoke Test\n\nGoal: prove the first-pass `github-repo` class is usable as a real authored primitive.\n\nWhat this graph tests:\n- the class resolves through a visible import bridge\n- a known-good `github-repo` instance renders\n- the instance editor exposes the expected repo fields\n- the instance can switch between its detail, summary, and icon surfaces\n- a second repo node can be created from the bridge without type-resolution errors"
+      }
+    },
+    {
+      "id": "github-repo-smoke-known",
+      "type": "markdown",
+      "label": "Known Good Sample",
+      "position": {
+        "x": 100,
+        "y": -720
+      },
+      "width": 520,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Known Good Sample\n\nThe sample repo node in this graph uses:\n\n- `owner`: `twilitellc`\n- `repo`: `public`\n- `branch`: `main`\n- `homeRef`: `/root.node`\n\nExpected interpretation:\n- repo identity is `twilitellc/public`\n- home resolution is declaration-driven when available\n- `/root.node` remains the bootstrap fallback"
+      }
+    },
+    {
+      "id": "github-repo-smoke-step-01",
+      "type": "markdown",
+      "label": "Step 1",
+      "position": {
+        "x": -980,
+        "y": -360
+      },
+      "width": 520,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 1: Open The Graph\n\nAction:\n- Open this smoke test graph.\n- Confirm the sample repo node renders on canvas.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "github-repo-smoke-expect-01",
+      "type": "markdown",
+      "label": "Expected 1",
+      "position": {
+        "x": -420,
+        "y": -360
+      },
+      "width": 520,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "### Expected\n\n- The `GitHub Repo` card renders.\n- No `Unknown node type` error appears.\n- The sample reads as a repo identity surface, not a generic placeholder card."
+      }
+    },
+    {
+      "id": "github-repo-smoke-step-02",
+      "type": "markdown",
+      "label": "Step 2",
+      "position": {
+        "x": -980,
+        "y": -100
+      },
+      "width": 520,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 2: Edit The Sample Repo Node\n\nAction:\n- Select the sample `github-repo` node.\n- Open its editor.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "github-repo-smoke-expect-02",
+      "type": "markdown",
+      "label": "Expected 2",
+      "position": {
+        "x": -420,
+        "y": -100
+      },
+      "width": 520,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "### Expected\n\nThe editor should expose:\n- `Title`\n- `Owner`\n- `Repo`\n- `Branch`\n- `Home Ref`\n- `Notes`\n\nNo unrelated GitHub installation or commit controls should appear in v1."
+      }
+    },
+    {
+      "id": "github-repo-smoke-step-03",
+      "type": "markdown",
+      "label": "Step 3",
+      "position": {
+        "x": -980,
+        "y": 180
+      },
+      "width": 520,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 3: Change Repo Fields\n\nAction:\n- Change `branch` to something else.\n- Change `homeRef` to another plausible path.\n- Save/commit the edit in the panel.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "github-repo-smoke-expect-03",
+      "type": "markdown",
+      "label": "Expected 3",
+      "position": {
+        "x": -420,
+        "y": 180
+      },
+      "width": 520,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "### Expected\n\n- The node updates without crashing.\n- Branch and home-ref text update in the visible surface.\n- The node still reads as a stable repo object rather than a raw file URL."
+      }
+    },
+    {
+      "id": "github-repo-smoke-step-04",
+      "type": "markdown",
+      "label": "Step 4",
+      "position": {
+        "x": -980,
+        "y": 500
+      },
+      "width": 520,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 4: Switch Surfaces\n\nAction:\n- Use the view selector on the sample node.\n- Switch through `Detail`, `Summary`, and `Icon` surfaces.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "github-repo-smoke-expect-04",
+      "type": "markdown",
+      "label": "Expected 4",
+      "position": {
+        "x": -420,
+        "y": 500
+      },
+      "width": 520,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "### Expected\n\n- `Detail` shows the full repo card.\n- `Summary` shows the compact repo card.\n- `Icon` shows the compact icon treatment.\n- The selector should not expose unrelated class-graph overview surfaces."
+      }
+    },
+    {
+      "id": "github-repo-smoke-step-05",
+      "type": "markdown",
+      "label": "Step 5",
+      "position": {
+        "x": -980,
+        "y": 820
+      },
+      "width": 520,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Step 5: Create A Second Repo Node\n\nAction:\n- Select the `Import GitHub Repo Class` bridge.\n- Use it to create a new `github-repo` instance.\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+      }
+    },
+    {
+      "id": "github-repo-smoke-expect-05",
+      "type": "markdown",
+      "label": "Expected 5",
+      "position": {
+        "x": -420,
+        "y": 820
+      },
+      "width": 520,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "### Expected\n\n- A new repo node can be created from the bridge.\n- The new instance resolves as `github-repo` immediately.\n- No `Unknown node type` or missing-surface error appears."
+      }
+    },
+    {
+      "id": "github-repo-smoke-bridge",
+      "type": "bridge",
+      "label": "Import GitHub Repo Class",
+      "position": {
+        "x": 180,
+        "y": 180
+      },
+      "width": 520,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Import bridge for the GitHub repo node class. Use this to spawn a second repo instance during the smoke test.",
+        "bridge": {
+          "ref": "/library/classes/nodes/github-repo.node-class.node",
+          "role": "import",
+          "grants": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "id": "github-repo-smoke-sample",
+      "type": "github-repo",
+      "label": "GitHub Repo",
+      "position": {
+        "x": 760,
+        "y": 120
+      },
+      "width": 420,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Twilite LLC Public",
+        "owner": "twilitellc",
+        "repo": "public",
+        "branch": "main",
+        "homeRef": "/root.node",
+        "notes": "Known-good sample instance for validating the first-pass GitHub repo node class.",
+        "status": "active",
+        "_classBinding": {
+          "key": "github-repo",
+          "sourceRef": "/library/classes/nodes/github-repo.node-class.node",
+          "ref": "/library/classes/nodes/github-repo.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/github-repo.node-class.node",
+          "sourceBridgeNodeId": "github-repo-smoke-bridge",
+          "sourceBridgeLabel": "Import GitHub Repo Class",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "github-repo",
+          "classRef": "/library/classes/nodes/github-repo.node-class.node"
+        },
+        "definitionKey": "github-repo"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "github-repo-smoke-edge-bridge-sample",
+      "type": "reference",
+      "source": "github-repo-smoke-bridge",
+      "target": "github-repo-smoke-sample",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "creates",
+      "style": {},
+      "data": {}
+    }
+  ]
+}
