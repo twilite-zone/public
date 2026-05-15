@@ -29,7 +29,7 @@
           "version": "0.1.0",
           "description": "Task graph for defining the GitHub repo node, the home node, and the home-page template contract.",
           "createdAt": "2026-05-15T00:00:00.000Z",
-          "updatedAt": "2026-03-28T00:00:00.000Z"
+          "updatedAt": "2026-05-15T00:00:00.000Z"
         },
         "intent": {
           "kind": "graph",
@@ -43,7 +43,8 @@
             "task",
             "open-question",
             "task-summary-provider",
-            "port"
+            "port",
+            "markdown"
           ],
           "portContracts": [
             "core"
@@ -1006,8 +1007,8 @@
       "showLabel": true,
       "data": {
         "title": "Should repo home resolution be convention-driven or declaration-driven?",
-        "body": "Decide whether a GitHub repo node should assume a default home like /root.node, or whether the landing surface must be explicitly declared and surfaced through graph metadata.",
-        "status": "open",
+        "body": "Decide whether a GitHub repo node should assume a default home like /root.node, or whether the landing surface must be explicitly declared and surfaced through graph metadata. Current answer: declaration wins; convention bootstraps.",
+        "status": "answered",
         "owner": "Michael",
         "prominence": "high",
         "_classBinding": {
@@ -1133,7 +1134,8 @@
           "classKey": "open-question",
           "classRef": "/library/classes/nodes/task-planning/open-question.node-class.node"
         },
-        "definitionKey": "open-question"
+        "definitionKey": "open-question",
+        "resolutionPath": "Prefer declaration-driven repo home resolution, with `/root.node` as the bootstrap fallback when no landing surface is declared."
       }
     },
     {
@@ -1182,7 +1184,7 @@
           "total": 4
         },
         "questionProgress": {
-          "answered": 0,
+          "answered": 1,
           "total": 1
         },
         "taskTitles": [
@@ -1195,7 +1197,7 @@
           "Should repo home resolution be convention-driven or declaration-driven?"
         ],
         "taskListText": "1. Define GitHub repo node contract\n2. Define home node contract\n3. Define home-page template contract\n4. Define repo-home relationship",
-        "questionListText": "1. Should repo home resolution be convention-driven or declaration-driven?",
+        "questionListText": "1. Should repo home resolution be convention-driven or declaration-driven? Answered: declaration-driven, with `/root.node` as fallback.",
         "summarySource": "graph-updater",
         "_classBinding": {
           "key": "task-summary-provider",
@@ -1327,7 +1329,7 @@
       "showLabel": true,
       "data": {
         "title": "Define repo-home relationship",
-        "body": "Decide whether the repo node owns the home surface directly, points at a home graph by convention, or resolves a declared landing surface through a stronger contract.",
+        "body": "Turn the open-question answer into a concrete rule: declaration-driven repo home resolution, with `/root.node` as the fallback when no stronger landing surface is declared.",
         "status": "todo",
         "owner": "Michael",
         "priority": "high",
@@ -1470,6 +1472,382 @@
           "Future implementation has a clear starting point"
         ]
       }
+    },
+    {
+      "id": "github-repo-home-node-contract-repo",
+      "type": "markdown",
+      "label": "GitHub Repo Node Contract",
+      "position": {
+        "x": 320,
+        "y": 1040
+      },
+      "width": 420,
+      "height": 340,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# GitHub Repo Node Contract\n\nThe GitHub repo node should represent a repository as a first-class Twilite object.\n\nRequired identity:\n- owner\n- repo\n- branch\n- root path or graph path policy\n- optional installation/account context\n\nRequired behaviors:\n- open the repo's landing surface\n- expose repo identity clearly\n- preserve a stable repo address separate from any single file view\n\nRequired surfaces:\n- UI View\n- Icon View\n- Repo Home surface or equivalent named landing surface\n\nImplementation note:\nThe repo node is an integration primitive, not the home surface itself.",
+        "isRoot": false,
+        "root": false,
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown",
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1778803200000,
+          "reason": "task-contract-draft"
+        }
+      }
+    },
+    {
+      "id": "github-repo-home-node-contract-home",
+      "type": "markdown",
+      "label": "Home Node Contract",
+      "position": {
+        "x": 840,
+        "y": 1040
+      },
+      "width": 420,
+      "height": 340,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Home Node Contract\n\nThe home node should be a reusable landing primitive, not a GitHub-specific one.\n\nIt should answer:\n- what is this place?\n- what is it for?\n- where should I go first?\n\nRequired content:\n- title\n- subtitle or framing line\n- short description\n- primary destinations\n- optional supporting destinations\n\nRequired behavior:\n- expose one clear default host-facing surface\n- work for repo roots, product roots, public roots, and internal roots\n\nImplementation note:\nThe home node defines entry semantics. It does not own repo identity by itself.",
+        "isRoot": false,
+        "root": false,
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown",
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1778803200000,
+          "reason": "task-contract-draft"
+        }
+      }
+    },
+    {
+      "id": "github-repo-home-node-contract-template",
+      "type": "markdown",
+      "label": "Home-Page Template Contract",
+      "position": {
+        "x": 1360,
+        "y": 1040
+      },
+      "width": 420,
+      "height": 340,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Home-Page Template Contract\n\nThe home-page template should scaffold a first-pass landing graph.\n\nMinimum structure:\n- declaration or manifest authority\n- title\n- type-definition\n- UI View as the default page surface\n- one or more landing/content sections\n- ports or destination surfaces for major navigation targets\n\nGood defaults:\n- hero framing\n- primary destinations\n- supporting context\n- proof/example area\n- CTA or next-step path\n\nImplementation note:\nThis should stay page-first. Document View may exist later, but it should not be required for v1.",
+        "isRoot": false,
+        "root": false,
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown",
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1778803200000,
+          "reason": "task-contract-draft"
+        }
+      }
+    },
+    {
+      "id": "github-repo-home-node-contract-resolution",
+      "type": "markdown",
+      "label": "Repo / Home Resolution Contract",
+      "position": {
+        "x": 1880,
+        "y": 1040
+      },
+      "width": 420,
+      "height": 340,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Repo / Home Resolution Contract\n\nPreferred rule:\n- home resolution is declaration-driven\n\nBootstrap fallback:\n- if no landing surface is declared, resolve `/root.node`\n\nWhy:\n- declaration keeps publishing intentional\n- fallback keeps setup simple\n- the model supports richer repo shapes later without breaking bootstrap\n\nImplementation note:\nConvention should be the default path, not the source of truth, once a repo declares a stronger landing surface.",
+        "isRoot": false,
+        "root": false,
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown",
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1778803200000,
+          "reason": "task-contract-draft"
+        }
+      }
     }
   ],
   "edges": [
@@ -1560,6 +1938,76 @@
       "label": "summarizes",
       "style": {},
       "data": {}
+    },
+    {
+      "id": "github-repo-home-node-edge-task1-contract",
+      "type": "reference",
+      "source": "github-repo-home-node-task-1",
+      "target": "github-repo-home-node-contract-repo",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "draft",
+      "style": {
+        "route": "curved",
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "github-repo-home-node-edge-task2-contract",
+      "type": "reference",
+      "source": "github-repo-home-node-task-2",
+      "target": "github-repo-home-node-contract-home",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "draft",
+      "style": {
+        "route": "curved",
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "github-repo-home-node-edge-task3-contract",
+      "type": "reference",
+      "source": "github-repo-home-node-task-3",
+      "target": "github-repo-home-node-contract-template",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "draft",
+      "style": {
+        "route": "curved",
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "github-repo-home-node-edge-task4-contract",
+      "type": "reference",
+      "source": "github-repo-home-node-task-4",
+      "target": "github-repo-home-node-contract-resolution",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "draft",
+      "style": {
+        "route": "curved",
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "github-repo-home-node-edge-question-resolution",
+      "type": "reference",
+      "source": "github-repo-home-node-question",
+      "target": "github-repo-home-node-contract-resolution",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "resolution",
+      "style": {
+        "route": "curved",
+        "curved": true
+      },
+      "data": {}
     }
   ],
   "clusters": [],
@@ -1577,7 +2025,7 @@
       "tags": ""
     }
   ],
-  "edgeCount": 8,
-  "nodeCount": 15,
+  "edgeCount": 13,
+  "nodeCount": 19,
   "timestamp": "2026-05-15T00:00:00.000Z"
 }
