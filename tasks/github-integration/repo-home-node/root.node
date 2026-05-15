@@ -376,8 +376,8 @@
       "showLabel": true,
       "data": {
         "title": "Define the GitHub repo node, home node, and home-page template model",
-        "body": "Specify how a GitHub repo should become a Twilite object, how a reusable home node should behave, and how a home-page template should turn a repo or section into a clear landing surface.",
-        "status": "todo",
+        "body": "Define the GitHub repo node and the template model for generic home pages and repo-home pages. A separate reusable home node is deferred for now because the template layer is sufficient.",
+        "status": "done",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "4",
@@ -534,7 +534,7 @@
       "data": {
         "title": "Define GitHub repo node contract",
         "body": "Specify the GitHub repo node fields, identity, address model, and public surfaces so a repo can act like a first-class Twilite object.",
-        "status": "todo",
+        "status": "done",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "2",
@@ -691,8 +691,8 @@
       "showLabel": true,
       "data": {
         "title": "Define home node contract",
-        "body": "Specify the reusable home node as a landing primitive: title, framing copy, destination structure, and the default surface it should expose.",
-        "status": "todo",
+        "body": "A standalone reusable home node is not needed yet. The generic home-page template and repo-home specialization are sufficient for current use, so this contract is deferred until repeated pressure appears.",
+        "status": "deferred",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "2",
@@ -850,7 +850,7 @@
       "data": {
         "title": "Define home-page template contract",
         "body": "Describe the scaffold for a first-pass home page graph, including the default page surface, section structure, and which content/navigation primitives it requires.",
-        "status": "todo",
+        "status": "done",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "2",
@@ -1178,10 +1178,11 @@
       "showLabel": false,
       "data": {
         "goal": "Define the GitHub repo node, home node, and home-page template model",
-        "status": "todo",
+        "status": "done",
         "taskProgress": {
-          "completed": 0,
-          "total": 4
+          "completed": 4,
+          "total": 5,
+          "deferred": 1
         },
         "questionProgress": {
           "answered": 1,
@@ -1189,14 +1190,15 @@
         },
         "taskTitles": [
           "Define GitHub repo node contract",
-          "Define home node contract",
+          "Define home node contract (deferred)",
           "Define home-page template contract",
-          "Define repo-home relationship"
+          "Define repo-home relationship",
+          "Define repo-home template contract"
         ],
         "questionTitles": [
           "Should repo home resolution be convention-driven or declaration-driven?"
         ],
-        "taskListText": "1. Define GitHub repo node contract\n2. Define home node contract\n3. Define home-page template contract\n4. Define repo-home relationship",
+        "taskListText": "1. Define GitHub repo node contract — done\n2. Define home node contract — deferred; generic home-page and repo-home templates are sufficient for now.\n3. Define home-page template contract — done\n4. Define repo-home relationship — done\n5. Define repo-home template contract — done",
         "questionListText": "1. Should repo home resolution be convention-driven or declaration-driven? Answered: declaration-driven, with `/root.node` as fallback.",
         "summarySource": "graph-updater",
         "_classBinding": {
@@ -1330,7 +1332,7 @@
       "data": {
         "title": "Define repo-home relationship",
         "body": "Turn the open-question answer into a concrete rule: declaration-driven repo home resolution, with `/root.node` as the fallback when no stronger landing surface is declared.",
-        "status": "todo",
+        "status": "done",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "2",
@@ -1927,8 +1929,8 @@
       "data": {
         "title": "Define repo-home template contract",
         "summary": "Specialize the generic home-page template for a GitHub repository landing surface.",
-        "status": "draft",
-        "owner": "openai",
+        "status": "done",
+        "owner": "Michael",
         "priority": "medium",
         "definitionKey": "task",
         "_classBinding": {
@@ -1939,7 +1941,14 @@
         "_bridge": {
           "classKey": "task",
           "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
-        }
+        },
+        "estimateHours": "2",
+        "acceptanceCriteria": [
+          "Repo identity is visible immediately",
+          "A featured first destination is obvious",
+          "Supporting destinations remain clear without overcrowding the page",
+          "Repo context stays lightweight and markdown is sufficient for now"
+        ]
       }
     },
     {
