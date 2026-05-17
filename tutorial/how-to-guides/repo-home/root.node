@@ -1,0 +1,246 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "howto-repo-home-declaration",
+      "type": "declaration",
+      "label": "Declaration",
+      "root": false,
+      "position": {
+        "x": -920,
+        "y": -220
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "howto-repo-home",
+          "name": "How To Make A Repo Home",
+          "version": "0.1.0",
+          "description": "Draft guide for building repo-home graphs."
+        },
+        "declaration": {
+          "kind": "graph",
+          "graphViewRole": "authoring",
+          "targetMode": "artifact",
+          "artifactKind": "graph",
+          "defaultSurfaceId": "guide-home",
+          "surfaces": [
+            {
+              "id": "guide-home",
+              "kind": "view",
+              "label": "How To Make A Repo Home",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            }
+          ]
+        },
+        "name": "Graph Declaration",
+        "declaresKind": "graph",
+        "purpose": "Declare the How To Make A Repo Home how-to guide."
+      }
+    },
+    {
+      "id": "howto-repo-home-title",
+      "type": "title",
+      "label": "Title",
+      "root": true,
+      "position": {
+        "x": 120,
+        "y": 40
+      },
+      "width": 560,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "How To Make A Repo Home",
+        "subtitle": "Draft practical guide for turning a repo root into an intentional place with a repo card and supporting content.",
+        "intent": "headline",
+        "status": "draft"
+      }
+    },
+    {
+      "id": "howto-repo-home-type",
+      "type": "type-definition",
+      "label": "Type",
+      "root": false,
+      "position": {
+        "x": -320,
+        "y": 80
+      },
+      "width": 320,
+      "height": 200,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "name": "How To Make A Repo Home",
+        "key": "howto-repo-home",
+        "meaning": "Practical tutorial guide.",
+        "description": "Draft guide for building repo-home graphs.",
+        "category": "tutorial",
+        "status": "draft"
+      }
+    },
+    {
+      "id": "howto-repo-home-view",
+      "type": "ui-view",
+      "label": "Guide View",
+      "root": false,
+      "position": {
+        "x": -320,
+        "y": 380
+      },
+      "width": 420,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "How To Make A Repo Home",
+        "purpose": "Default landing surface for this how-to guide.",
+        "viewRole": "page",
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary",
+          "label": "UI View"
+        },
+        "titleSourceNodeId": "howto-repo-home-title",
+        "typeSourceNodeId": "howto-repo-home-type",
+        "audience": "Public",
+        "status": "draft"
+      }
+    },
+    {
+      "id": "howto-repo-home-back",
+      "type": "port",
+      "label": "Back to How-To Guides",
+      "root": false,
+      "position": {
+        "x": 920,
+        "y": 40
+      },
+      "width": 320,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/how-to-guides/root.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "portId": "root",
+          "ref": "github://twilite-zone/public/tutorial/how-to-guides/root.node",
+          "handleId": "root"
+        },
+        "sourceRef": "github://twilite-zone/public/tutorial/how-to-guides/root.node",
+        "sourceNodeId": "tutorial-howto-guides-view",
+        "sourcePayload": "node.web.summary",
+        "authority": "consume-view",
+        "security": "prompt",
+        "ref": "github://twilite-zone/public/tutorial/how-to-guides/root.node",
+        "src": "github://twilite-zone/public/tutorial/how-to-guides/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/how-to-guides/root.node:root"
+      }
+    },
+    {
+      "id": "howto-repo-home-notes",
+      "type": "markdown",
+      "label": "Draft Outline",
+      "root": false,
+      "position": {
+        "x": 920,
+        "y": 320
+      },
+      "width": 560,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Draft Outline\n\n- Start from the repo-home template\n- Add a `github-repo` node for the repo identity\n- Decide what content primitives belong beside it\n- Make the `ui-view` delegate to the repo card when that is the desired public surface"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "howto-repo-home-edge-title-type",
+      "type": "reference",
+      "source": "howto-repo-home-title",
+      "target": "howto-repo-home-type",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "declares type",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "howto-repo-home-edge-type-view",
+      "type": "reference",
+      "source": "howto-repo-home-type",
+      "target": "howto-repo-home-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "informs",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "howto-repo-home-edge-title-view",
+      "type": "reference",
+      "source": "howto-repo-home-title",
+      "target": "howto-repo-home-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "host view",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "howto-repo-home-edge-title-back",
+      "type": "reference",
+      "source": "howto-repo-home-title",
+      "target": "howto-repo-home-back",
+      "sourcePort": "right",
+      "targetPort": "root",
+      "label": "cluster",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "howto-repo-home-edge-title-notes",
+      "type": "reference",
+      "source": "howto-repo-home-title",
+      "target": "howto-repo-home-notes",
+      "sourcePort": "bottom",
+      "targetPort": "root",
+      "label": "outline",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    }
+  ],
+  "timestamp": "2026-05-17T12:00:00.000Z",
+  "nodeCount": 6,
+  "edgeCount": 5
+}
