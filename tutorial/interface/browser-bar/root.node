@@ -140,7 +140,11 @@
             "type-definition",
             "ui-view",
             "port",
-            "markdown"
+            "markdown",
+            "section",
+            "document-summary",
+            "document-view",
+            "bridge"
           ],
           "portContracts": [
             "core"
@@ -209,6 +213,21 @@
               "kind": "view",
               "label": "The Browser Bar",
               "memo": "Default landing surface for The Browser Bar.",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            },
+            {
+              "id": "chapter-document",
+              "kind": "view",
+              "label": "Document View",
+              "memo": "Readable document surface for the Browser Bar tutorial chapter.",
+              "nodeId": "browser-bar-document-view",
               "exposes": {
                 "views": {
                   "mode": "allow"
@@ -416,33 +435,6 @@
       }
     },
     {
-      "id": "browser-bar-notes",
-      "type": "markdown",
-      "label": "Draft Outline",
-      "root": false,
-      "position": {
-        "x": 980,
-        "y": 300
-      },
-      "width": 560,
-      "height": 300,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "# Draft Outline\n\n- Address field\n- Back / forward / home / refresh\n- Bookmarks\n- Browser menu\n- Location / position / zoom indicator\n- What a `github://...` URL means\n- When a graph is GitHub-backed versus locally loaded\n- Hosting is a related topic and should point to the GitHub/hosting material rather than be fully explained here",
-        "definitionKey": "markdown",
-        "_classBinding": {
-          "key": "markdown",
-          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
-          "ref": "/library/classes/nodes/markdown.node-class.node"
-        },
-        "_bridge": {
-          "classKey": "markdown",
-          "classRef": "/library/classes/nodes/markdown.node-class.node"
-        }
-      }
-    },
-    {
       "id": "browser-bar-hosting-link",
       "type": "port",
       "label": "GitHub + Hosting",
@@ -473,6 +465,350 @@
         "ref": "github://twilite-zone/public/github/root.node",
         "src": "github://twilite-zone/public/github/root.node",
         "endpoint": "github://twilite-zone/public/github/root.node:root"
+      }
+    },
+    {
+      "id": "browser-bar-bridge-section",
+      "type": "bridge",
+      "label": "Section",
+      "root": false,
+      "position": {
+        "x": -1220,
+        "y": 380
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Section class.",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"],
+          "label": "Section",
+          "key": "section"
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": ["create"],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"]
+        },
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "browser-bar-bridge-summary",
+      "type": "bridge",
+      "label": "Document Summary",
+      "root": false,
+      "position": {
+        "x": -1220,
+        "y": 540
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Document Summary class.",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/document-publishing/document-summary.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"],
+          "label": "Document Summary",
+          "key": "document-summary"
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": ["create"],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/document-publishing/document-summary.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"]
+        },
+        "_classBinding": {
+          "key": "document-summary",
+          "sourceRef": "/library/classes/nodes/document-publishing/document-summary.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/document-publishing/document-summary.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "document-summary",
+          "classRef": "/library/classes/nodes/document-publishing/document-summary.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "browser-bar-bridge-document-view",
+      "type": "bridge",
+      "label": "Document View",
+      "root": false,
+      "position": {
+        "x": -1220,
+        "y": 700
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Document View class.",
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"],
+          "label": "Document View",
+          "key": "document-view"
+        },
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": ["create"],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"]
+        },
+        "_classBinding": {
+          "key": "document-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/document-view.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "document-view",
+          "classRef": "/library/classes/nodes/ui-interaction/document-view.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "browser-bar-section-address",
+      "type": "section",
+      "label": "Address Field",
+      "root": false,
+      "position": {
+        "x": 980,
+        "y": 300
+      },
+      "width": 440,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Read the address before you act",
+        "summary": "The large field in the browser bar tells you what graph you are in. A `github://...` address means the graph is being read from a GitHub-backed repository path. A local or temporary graph will read differently, so the address is your first clue about where edits, saves, and refreshes are really happening.",
+        "level": "h2",
+        "anchor": "address-field",
+        "status": "draft",
+        "definitionKey": "section",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "browser-bar-section-controls",
+      "type": "section",
+      "label": "Controls + Indicator",
+      "root": false,
+      "position": {
+        "x": 980,
+        "y": 620
+      },
+      "width": 440,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Use the controls to stay oriented",
+        "summary": "Back, forward, home, and refresh are navigation and trust tools, not decoration. Bookmarks let you pin places you revisit often. The location / position / zoom indicator tells you where you are on the graph surface and how far in or out you are, which matters when a graph is larger than one screen.",
+        "level": "h2",
+        "anchor": "controls-and-indicator",
+        "status": "draft",
+        "definitionKey": "section",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "browser-bar-section-hosting",
+      "type": "section",
+      "label": "GitHub + Hosting",
+      "root": false,
+      "position": {
+        "x": 1600,
+        "y": 620
+      },
+      "width": 440,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Treat hosting as the next layer",
+        "summary": "The browser bar can tell you that a graph is GitHub-backed, but it does not by itself explain how that graph is hosted or published to outside users. That is a related topic. This chapter should point to the GitHub and hosting material so the reader can connect repository addresses with public delivery without mixing too many concepts into one page.",
+        "level": "h2",
+        "anchor": "github-and-hosting",
+        "status": "draft",
+        "definitionKey": "section",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "section",
+          "classRef": "/library/classes/nodes/document-publishing/section.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "browser-bar-summary",
+      "type": "document-summary",
+      "label": "Summary",
+      "root": false,
+      "position": {
+        "x": 2220,
+        "y": 300
+      },
+      "width": 380,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Summary",
+        "summary": "The browser bar answers three beginner questions at once: where am I, how do I move, and what kind of graph is this. The GitHub/hosting side belongs nearby, but not fully inside this chapter.",
+        "scope": "Interface tutorial chapter",
+        "definitionKey": "document-summary",
+        "_classBinding": {
+          "key": "document-summary",
+          "sourceRef": "/library/classes/nodes/document-publishing/document-summary.node-class.node",
+          "ref": "/library/classes/nodes/document-publishing/document-summary.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "document-summary",
+          "classRef": "/library/classes/nodes/document-publishing/document-summary.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "browser-bar-document-view",
+      "type": "document-view",
+      "label": "Document View",
+      "root": false,
+      "position": {
+        "x": 1600,
+        "y": 980
+      },
+      "width": 460,
+      "height": 340,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "The Browser Bar",
+        "localTitle": "The Browser Bar",
+        "publishedTitle": "The Browser Bar",
+        "purpose": "First-pass document chapter for the Twilite browser bar.",
+        "titleSourceNodeId": "browser-bar-title",
+        "typeSourceNodeId": "browser-bar-type",
+        "audience": "Reader",
+        "status": "draft",
+        "viewRole": "document",
+        "viewKind": "display",
+        "exposedAuthority": "consume-view",
+        "runtimeExposed": false,
+        "partNodeIds": [
+          "browser-bar-title",
+          "browser-bar-section-address",
+          "browser-bar-section-controls",
+          "browser-bar-section-hosting",
+          "browser-bar-summary"
+        ],
+        "documentOrder": [
+          "browser-bar-title",
+          "browser-bar-section-address",
+          "browser-bar-section-controls",
+          "browser-bar-section-hosting",
+          "browser-bar-summary"
+        ],
+        "documentHtml": "<section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;box-sizing:border-box;padding:22px;border-radius:22px;background:linear-gradient(180deg, rgba(246,245,255,0.99), rgba(238,233,255,0.96));border:1px solid rgba(91,33,182,0.18);box-shadow:0 14px 32px rgba(76,29,149,0.14);gap:14px;\"><div style=\"display:flex;align-items:flex-start;justify-content:space-between;gap:12px;\"><div style=\"display:flex;flex-direction:column;gap:6px;\"><div style=\"font:700 11px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#6d28d9;\">Title</div><div style=\"font:700 30px/1.08 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">The Browser Bar</div></div><div style=\"display:flex;flex-direction:column;align-items:flex-end;gap:6px;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(109,40,217,0.1);color:#6d28d9;font-size:11px;font-weight:700;\">headline</span><span style=\"font:600 10px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.12em;text-transform:uppercase;color:#5b21b6;opacity:0.72;\">active</span></div></div><div style=\"height:1px;background:linear-gradient(90deg, rgba(139,92,246,0.45), rgba(139,92,246,0));\"></div><div style=\"font:500 15px/1.65 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\">Learn what the address field, refresh, navigation controls, bookmarks, and browser actions are for.</div></div></section><section style=\"margin:0 0 18px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Read the address before you act</div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #7c3aed, #a78bfa);\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">The large field in the browser bar tells you what graph you are in. A <code>github://...</code> address means the graph is being read from a GitHub-backed repository path. A local or temporary graph will read differently, so the address is your first clue about where edits, saves, and refreshes are really happening.</div></div></section><section style=\"margin:0 0 18px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Use the controls to stay oriented</div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #7c3aed, #a78bfa);\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">Back, forward, home, and refresh are navigation and trust tools, not decoration. Bookmarks let you pin places you revisit often. The location / position / zoom indicator tells you where you are on the graph surface and how far in or out you are, which matters when a graph is larger than one screen.</div></div></section><section style=\"margin:0 0 18px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Treat hosting as the next layer</div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #7c3aed, #a78bfa);\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">The browser bar can tell you that a graph is GitHub-backed, but it does not by itself explain how that graph is hosted or published to outside users. That is a related topic. This chapter should point to the GitHub and hosting material so the reader can connect repository addresses with public delivery without mixing too many concepts into one page.</div></div></section><section style=\"margin:0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(255,245,250,0.97));border:1px solid rgba(219,39,119,0.12);box-shadow:0 12px 28px rgba(190,24,93,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Summary</div><span style=\"padding:4px 8px;border-radius:999px;background:rgba(219,39,119,0.14);color:#9d174d;font-size:11px;font-weight:600;\">Summary</span></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #db2777, #f472b6);\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">The browser bar answers three beginner questions at once: where am I, how do I move, and what kind of graph is this. The GitHub/hosting side belongs nearby, but not fully inside this chapter.</div></div></section>",
+        "definitionKey": "document-view",
+        "_classBinding": {
+          "key": "document-view",
+          "sourceRef": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "ref": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "nodeDef": {
+            "key": "document-view",
+            "ref": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "nodeView": {
+            "key": "document-view",
+            "intent": "node",
+            "payload": "node.web.document",
+            "ref": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "document-view",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/ui-interaction/document-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "classKey": "document-view",
+          "classRef": "/library/classes/nodes/ui-interaction/document-view.node-class.node"
+        }
       }
     }
   ],
@@ -534,20 +870,6 @@
       "data": {}
     },
     {
-      "id": "browser-bar-edge-title-notes",
-      "type": "reference",
-      "source": "browser-bar-title",
-      "target": "browser-bar-notes",
-      "sourcePort": "bottom",
-      "targetPort": "root",
-      "label": "outline",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
       "id": "browser-bar-edge-title-hosting",
       "type": "reference",
       "source": "browser-bar-title",
@@ -560,9 +882,79 @@
         "route": "curved"
       },
       "data": {}
+    },
+    {
+      "id": "browser-bar-edge-title-address",
+      "type": "reference",
+      "source": "browser-bar-title",
+      "target": "browser-bar-section-address",
+      "sourcePort": "bottom",
+      "targetPort": "root",
+      "label": "chapter",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "browser-bar-edge-title-controls",
+      "type": "reference",
+      "source": "browser-bar-title",
+      "target": "browser-bar-section-controls",
+      "sourcePort": "bottom",
+      "targetPort": "root",
+      "label": "chapter",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "browser-bar-edge-title-hosting-section",
+      "type": "reference",
+      "source": "browser-bar-title",
+      "target": "browser-bar-section-hosting",
+      "sourcePort": "right",
+      "targetPort": "root",
+      "label": "chapter",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "browser-bar-edge-title-summary",
+      "type": "reference",
+      "source": "browser-bar-title",
+      "target": "browser-bar-summary",
+      "sourcePort": "right",
+      "targetPort": "root",
+      "label": "summary",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "browser-bar-edge-title-document",
+      "type": "reference",
+      "source": "browser-bar-title",
+      "target": "browser-bar-document-view",
+      "sourcePort": "bottom",
+      "targetPort": "root",
+      "label": "document",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
     }
   ],
   "timestamp": "2026-05-17T13:00:00.000Z",
-  "nodeCount": 7,
-  "edgeCount": 6
+  "nodeCount": 13,
+  "edgeCount": 10
 }
