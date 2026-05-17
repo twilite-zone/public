@@ -1,5 +1,14 @@
 {
-  "type": "nodegraph-data",
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Untitled Project",
+    "description": "",
+    "created": "2026-05-17T23:43:33.191Z",
+    "modified": "2026-05-17T23:45:33.949Z",
+    "author": "",
+    "tags": [],
+    "preferredViewer": "https://twilite.zone"
+  },
   "nodes": [
     {
       "id": "tutorial-interface-declaration",
@@ -12,8 +21,6 @@
       },
       "width": 360,
       "height": 220,
-      "visible": true,
-      "showLabel": true,
       "ports": [
         {
           "id": "root",
@@ -120,6 +127,8 @@
           "type": "value"
         }
       ],
+      "visible": true,
+      "showLabel": true,
       "data": {
         "identity": {
           "graphId": "tutorial-interface",
@@ -183,15 +192,24 @@
           "gridSize": 20,
           "edgeRouting": "auto",
           "autoSave": false,
-          "github": {
-            "repo": "twilite-zone/public",
-            "path": "tutorial/interface/root.node",
-            "branch": "main",
-            "autoCreateRepo": true,
-            "repoVisibility": "private",
-            "seedOnCommit": false,
-            "enableGithubPages": false,
-            "installationId": "120403738"
+          "layout": {
+            "mode": "autoOnMissingPositions",
+            "defaultLayout": "layered",
+            "direction": "DOWN",
+            "edgeLaneGapPx": 10,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
           }
         },
         "name": "Graph Declaration",
@@ -243,8 +261,6 @@
       },
       "width": 560,
       "height": 240,
-      "visible": true,
-      "showLabel": true,
       "ports": [
         {
           "id": "root",
@@ -296,6 +312,8 @@
           "type": "any"
         }
       ],
+      "visible": true,
+      "showLabel": true,
       "data": {
         "title": "Interface Tutorial",
         "subtitle": "A practical guide to the Twilite browser bar, menus, panels, and editing controls.",
@@ -412,7 +430,8 @@
         "security": "prompt",
         "ref": "github://twilite-zone/public/tutorial/root.node",
         "src": "github://twilite-zone/public/tutorial/root.node",
-        "endpoint": "github://twilite-zone/public/tutorial/root.node:root"
+        "endpoint": "github://twilite-zone/public/tutorial/root.node:root",
+        "intent": "external"
       }
     },
     {
@@ -434,8 +453,18 @@
           "mode": "bridge",
           "kind": "node-class",
           "label": "Task",
-          "key": "task"
-        }
+          "key": "task",
+          "portId": "root",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "handleId": "root"
+        },
+        "authority": "consume-view",
+        "intent": "external",
+        "security": "prompt",
+        "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+        "src": "/library/classes/nodes/task-planning/task.node-class.node",
+        "endpoint": "/library/classes/nodes/task-planning/task.node-class.node:root",
+        "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node"
       }
     },
     {
@@ -500,11 +529,11 @@
       "label": "The Browser Bar",
       "root": false,
       "position": {
-        "x": 980,
-        "y": 660
+        "x": 996.9246429727792,
+        "y": 643.0753823457742
       },
-      "width": 460,
-      "height": 240,
+      "width": 383.199951171875,
+      "height": 399.1999816894531,
       "visible": true,
       "showLabel": true,
       "data": {
@@ -512,20 +541,29 @@
         "intent": "external",
         "target": {
           "endpoint": "github://twilite-zone/public/tutorial/interface/browser-bar/root.node:root",
-          "mode": "navigate",
+          "mode": "view",
           "label": "Open",
           "portId": "root",
           "ref": "github://twilite-zone/public/tutorial/interface/browser-bar/root.node",
-          "handleId": "root"
+          "handleId": "root",
+          "surfaceId": ""
         },
         "sourceRef": "github://twilite-zone/public/tutorial/interface/browser-bar/root.node",
-        "sourceNodeId": "tutorial-interface-browser-bar-view",
-        "sourcePayload": "node.web.summary",
+        "sourceNodeId": "browser-bar-document-view",
+        "sourcePayload": "node.web.document",
         "authority": "consume-view",
         "security": "prompt",
         "ref": "github://twilite-zone/public/tutorial/interface/browser-bar/root.node",
         "src": "github://twilite-zone/public/tutorial/interface/browser-bar/root.node",
-        "endpoint": "github://twilite-zone/public/tutorial/interface/browser-bar/root.node:root"
+        "endpoint": "github://twilite-zone/public/tutorial/interface/browser-bar/root.node:root",
+        "surfaceId": "",
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1779061505839,
+          "reason": "node-drag"
+        }
       }
     },
     {
@@ -602,8 +640,8 @@
       "label": "Editing Flow",
       "root": false,
       "position": {
-        "x": 1230,
-        "y": 1020
+        "x": 1289.0702619664937,
+        "y": 1146.1050320159966
       },
       "width": 460,
       "height": 240,
@@ -627,7 +665,14 @@
         "security": "prompt",
         "ref": "github://twilite-zone/public/tutorial/interface/editing-flow/root.node",
         "src": "github://twilite-zone/public/tutorial/interface/editing-flow/root.node",
-        "endpoint": "github://twilite-zone/public/tutorial/interface/editing-flow/root.node:root"
+        "endpoint": "github://twilite-zone/public/tutorial/interface/editing-flow/root.node:root",
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1779061501141,
+          "reason": "node-drag"
+        }
       }
     },
     {
@@ -821,7 +866,58 @@
       "data": {}
     }
   ],
-  "timestamp": "2026-05-17T13:00:00.000Z",
-  "nodeCount": 13,
-  "edgeCount": 11
+  "clusters": [],
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "#666666",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "layout": {
+      "mode": "autoOnMissingPositions",
+      "defaultLayout": "layered",
+      "direction": "DOWN",
+      "edgeLaneGapPx": 10,
+      "serpentine": {
+        "maxPerRow": 6
+      },
+      "cycleFallback": {
+        "enabled": true
+      },
+      "elk": {
+        "algorithm": "fixed",
+        "edgeRouting": "ORTHOGONAL",
+        "portConstraints": "FIXED_SIDE",
+        "nodeSpacing": 120,
+        "layeredEdgeSpacing": 80
+      }
+    },
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "tutorial/interface/root.node",
+      "branch": "main",
+      "autoCreateRepo": true,
+      "repoVisibility": "private",
+      "seedOnCommit": false,
+      "enableGithubPages": false,
+      "installationId": "117640936"
+    },
+    "autoSave": false
+  },
+  "scripts": [
+    {
+      "id": "script_1761684730975",
+      "name": "New Script",
+      "source": "// Write your script here\n// Available API:\n//   api.getNodes()\n//   api.getNode(id)\n//   api.getEdges()\n//   api.createNode(data)\n//   api.updateNode(id, patch)\n//   api.deleteNode(id)\n//   api.createEdge(data)\n//   api.updateEdge(id, patch)\n//   api.updateEdges(ids, patch)\n//   api.deleteEdge(id)\n//   api.log(level, message)\n\nconst nodes = await api.getNodes();\nreturn { count: nodes.length };",
+      "tags": ""
+    },
+    {
+      "id": "script_1761684295367",
+      "name": "Mike",
+      "source": "console.clear();\nconst nodes = await api.getNodes();\nconsole.log(\"Mike\");\nreturn { count: nodes.length };",
+      "tags": ""
+    }
+  ]
 }
