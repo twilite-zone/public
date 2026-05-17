@@ -1,10 +1,10 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Untitled Graph",
+    "title": "Untitled Project",
     "description": "",
-    "created": "2026-04-29T04:10:02.866Z",
-    "modified": "2026-04-29T04:10:02.866Z",
+    "created": "2026-05-17T01:16:04.115Z",
+    "modified": "2026-05-17T02:02:24.688Z",
     "author": "",
     "tags": [],
     "preferredViewer": "https://twilite.zone"
@@ -88,18 +88,27 @@
           "gridSize": 20,
           "edgeRouting": "auto",
           "autoSave": false,
-          "github": {
-            "repo": "",
-            "path": "",
-            "branch": "main",
-            "autoCreateRepo": true,
-            "repoVisibility": "private",
-            "seedOnCommit": false,
-            "enableGithubPages": false,
-            "installationId": ""
-          },
           "expansion": {
             "allowGraphEntry": true
+          },
+          "layout": {
+            "mode": "autoOnMissingPositions",
+            "defaultLayout": "layered",
+            "direction": "DOWN",
+            "edgeLaneGapPx": 10,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
           }
         },
         "summaryNodeId": "tutorial-view",
@@ -404,7 +413,8 @@
           "nodeId": "",
           "portId": "root",
           "label": "Open",
-          "ref": "github://twilite-zone/public/root.node"
+          "ref": "github://twilite-zone/public/root.node",
+          "handleId": "root"
         },
         "memo": "",
         "link": "",
@@ -422,20 +432,55 @@
         },
         "authority": "consume-view",
         "intent": "external",
-        "security": "prompt"
+        "security": "prompt",
+        "ref": "github://twilite-zone/public/root.node",
+        "src": "github://twilite-zone/public/root.node",
+        "endpoint": "github://twilite-zone/public/root.node:root"
       }
     },
     {
       "id": "tutorial-title",
       "type": "title",
       "label": "Title",
-      "root": false,
+      "root": true,
       "position": {
-        "x": 1788.4718354918932,
-        "y": -848.2133802310173
+        "x": 1830.7198159486431,
+        "y": -853.2089333527217
       },
       "width": 500,
       "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "output",
+          "dataType": "any",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "output",
+          "dataType": "any",
+          "position": {
+            "side": "bottom",
+            "offset": 0.5
+          }
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -554,14 +599,12 @@
           "sourceNodeId": "tutorial-title-port"
         },
         "definitionKey": "title",
-        "isRoot": true,
-        "root": true,
         "_placement": {
           "version": 1,
-          "state": "auto-placed",
-          "source": "layout",
-          "updatedAt": 1777435701703,
-          "reason": "auto-layout"
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1778983340630,
+          "reason": "node-drag"
         }
       }
     },
@@ -930,18 +973,18 @@
       }
     },
     {
-      "type": "port",
-      "root": false,
-      "width": 360,
-      "height": 220,
-      "visible": true,
-      "showLabel": true,
       "id": "tutorial-port-start-here",
+      "type": "port",
       "label": "Start Here",
+      "root": false,
       "position": {
         "x": 1788.4718354918932,
         "y": -488.21338023101725
       },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
       "data": {
         "memo": "Orientation and easiest first steps.",
         "intent": "external",
@@ -950,28 +993,32 @@
           "mode": "navigate",
           "label": "Open",
           "portId": "root",
-          "ref": "github://twilite-zone/public/tutorial/start-here/root.node"
+          "ref": "github://twilite-zone/public/tutorial/start-here/root.node",
+          "handleId": "root"
         },
         "sourceRef": "github://twilite-zone/public/tutorial/start-here/root.node",
         "sourceNodeId": "tutorial-start-here-view",
         "sourcePayload": "node.web.summary",
         "authority": "consume-view",
-        "security": "prompt"
+        "security": "prompt",
+        "ref": "github://twilite-zone/public/tutorial/start-here/root.node",
+        "src": "github://twilite-zone/public/tutorial/start-here/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/start-here/root.node:root"
       }
     },
     {
-      "type": "port",
-      "root": false,
-      "width": 360,
-      "height": 220,
-      "visible": true,
-      "showLabel": true,
       "id": "tutorial-port-core-concepts",
+      "type": "port",
       "label": "Core Concepts",
+      "root": false,
       "position": {
         "x": 2268.471835491893,
         "y": -488.21338023101725
       },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
       "data": {
         "memo": "Declaration, views, ports, bridges, and GitHub-backed graphs.",
         "intent": "external",
@@ -980,28 +1027,32 @@
           "mode": "navigate",
           "label": "Open",
           "portId": "root",
-          "ref": "github://twilite-zone/public/tutorial/core-concepts/root.node"
+          "ref": "github://twilite-zone/public/tutorial/core-concepts/root.node",
+          "handleId": "root"
         },
         "sourceRef": "github://twilite-zone/public/tutorial/core-concepts/root.node",
         "sourceNodeId": "tutorial-core-concepts-view",
         "sourcePayload": "node.web.summary",
         "authority": "consume-view",
-        "security": "prompt"
+        "security": "prompt",
+        "ref": "github://twilite-zone/public/tutorial/core-concepts/root.node",
+        "src": "github://twilite-zone/public/tutorial/core-concepts/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/core-concepts/root.node:root"
       }
     },
     {
-      "type": "port",
-      "root": false,
-      "width": 360,
-      "height": 220,
-      "visible": true,
-      "showLabel": true,
       "id": "tutorial-port-advanced-authoring",
+      "type": "port",
       "label": "Advanced Authoring",
+      "root": false,
       "position": {
         "x": 2748.471835491893,
         "y": -488.21338023101725
       },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
       "data": {
         "memo": "Edge classes, scripts, legend/type behavior, and denser reference material.",
         "intent": "external",
@@ -1010,13 +1061,17 @@
           "mode": "navigate",
           "label": "Open",
           "portId": "root",
-          "ref": "github://twilite-zone/public/tutorial/advanced-authoring/root.node"
+          "ref": "github://twilite-zone/public/tutorial/advanced-authoring/root.node",
+          "handleId": "root"
         },
         "sourceRef": "github://twilite-zone/public/tutorial/advanced-authoring/root.node",
         "sourceNodeId": "tutorial-advanced-authoring-view",
         "sourcePayload": "node.web.summary",
         "authority": "consume-view",
-        "security": "prompt"
+        "security": "prompt",
+        "ref": "github://twilite-zone/public/tutorial/advanced-authoring/root.node",
+        "src": "github://twilite-zone/public/tutorial/advanced-authoring/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/advanced-authoring/root.node:root"
       }
     }
   ],
@@ -1098,6 +1153,45 @@
     }
   ],
   "clusters": [],
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "#666666",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "layout": {
+      "mode": "autoOnMissingPositions",
+      "defaultLayout": "layered",
+      "direction": "DOWN",
+      "edgeLaneGapPx": 10,
+      "serpentine": {
+        "maxPerRow": 6
+      },
+      "cycleFallback": {
+        "enabled": true
+      },
+      "elk": {
+        "algorithm": "fixed",
+        "edgeRouting": "ORTHOGONAL",
+        "portConstraints": "FIXED_SIDE",
+        "nodeSpacing": 120,
+        "layeredEdgeSpacing": 80
+      }
+    },
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "tutorial/root.node",
+      "branch": "main",
+      "autoCreateRepo": true,
+      "repoVisibility": "private",
+      "seedOnCommit": false,
+      "enableGithubPages": false,
+      "installationId": "120403738"
+    },
+    "autoSave": false
+  },
   "scripts": [
     {
       "id": "script_1761684730975",
@@ -1111,8 +1205,5 @@
       "source": "console.clear();\nconst nodes = await api.getNodes();\nconsole.log(\"Mike\");\nreturn { count: nodes.length };",
       "tags": ""
     }
-  ],
-  "nodeCount": 16,
-  "edgeCount": 6,
-  "timestamp": "2026-05-17T01:54:29.095Z"
+  ]
 }
