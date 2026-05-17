@@ -123,8 +123,12 @@
               "memo": "Default host-facing surface for the Tutorial section.",
               "viewNodeId": "tutorial-view",
               "exposes": {
-                "views": { "mode": "allow" },
-                "declarations": { "mode": "allow" }
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
               }
             },
             {
@@ -134,8 +138,12 @@
               "memo": "Minimal semantic-zoom identity surface for the Tutorial section.",
               "viewNodeId": "tutorial-icon-view",
               "exposes": {
-                "views": { "mode": "allow" },
-                "declarations": { "mode": "allow" }
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
               }
             }
           ],
@@ -1364,6 +1372,32 @@
           "reason": "node-drag"
         }
       }
+    },
+    {
+      "id": "tutorial-port-howto-cluster-planning",
+      "type": "port",
+      "label": "How-To Cluster Planning",
+      "root": false,
+      "position": {
+        "x": 2828.471835491893,
+        "y": 243.78661976898275
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/tutorial-howto-cluster/root.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "portId": "root",
+          "ref": "github://twilite-zone/public/tasks/tutorial-howto-cluster/root.node"
+        },
+        "sourceRef": "github://twilite-zone/public/tasks/tutorial-howto-cluster/root.node",
+        "sourceNodeId": "tutorial-howto-cluster-summary",
+        "sourcePayload": "node.web"
+      }
     }
   ],
   "edges": [
@@ -1465,6 +1499,20 @@
       "label": "semantic zoom",
       "style": {},
       "data": {}
+    },
+    {
+      "id": "tutorial-edge-howto-cluster-planning",
+      "type": "reference",
+      "source": "tutorial-title",
+      "target": "tutorial-port-howto-cluster-planning",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "plan",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
     }
   ],
   "clusters": [],
@@ -1481,5 +1529,7 @@
       "source": "console.clear();\nconst nodes = await api.getNodes();\nconsole.log(\"Mike\");\nreturn { count: nodes.length };",
       "tags": ""
     }
-  ]
+  ],
+  "nodeCount": 26,
+  "edgeCount": 10
 }
