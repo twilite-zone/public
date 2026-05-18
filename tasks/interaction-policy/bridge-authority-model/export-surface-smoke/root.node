@@ -1,0 +1,362 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Bridge Export Surface Smoke Test",
+    "description": "Focused smoke graph for testing class-export and kit-export bridge surfaces.",
+    "created": "2026-05-18T20:55:00.000Z",
+    "modified": "2026-05-18T20:55:00.000Z",
+    "author": "",
+    "tags": [],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "bridge-export-smoke-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": { "x": -720, "y": -620 },
+      "width": 340,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "bridge_export_surface_smoke_test",
+          "name": "Bridge Export Surface Smoke Test",
+          "version": "0.1.0",
+          "description": "Focused smoke graph for testing class-export and kit-export bridge surfaces.",
+          "createdAt": "2026-05-18T20:55:00.000Z",
+          "updatedAt": "2026-05-18T20:55:00.000Z"
+        },
+        "intent": {
+          "kind": "documentation",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "port",
+            "title",
+            "markdown",
+            "bridge"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "bridge-export-smoke-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": { "x": -250, "y": -620 },
+      "width": 300,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "entries": []
+      }
+    },
+    {
+      "id": "bridge-export-smoke-back",
+      "type": "port",
+      "label": "Back to Bridge Authority Model",
+      "position": { "x": -1160, "y": -560 },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Return to the bridge authority model board.",
+        "intent": "external",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/root.node:root",
+          "mode": "navigate",
+          "label": "Open"
+        },
+        "sourceRef": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/root.node",
+        "sourceNodeId": "bridge-authority-model-summary",
+        "sourcePayload": "node.web.summary"
+      }
+    },
+    {
+      "id": "bridge-export-smoke-title",
+      "type": "title",
+      "label": "Title",
+      "position": { "x": -720, "y": -280 },
+      "width": 520,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Bridge Export Surface Smoke Test",
+        "subtitle": "Verify that one bridge can expose a class export or a kit export intentionally, and that the legend only reflects the declared export surface.",
+        "intent": "headline",
+        "status": "active"
+      }
+    },
+    {
+      "id": "bridge-export-smoke-instructions",
+      "type": "markdown",
+      "label": "Instructions",
+      "position": { "x": -720, "y": 80 },
+      "width": 520,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Procedure\n\n1. Select each bridge and turn on `Create` in the node face or Properties panel.\n2. Leave the surface blank unless you are intentionally testing a different surface.\n3. Open the legend.\n4. Confirm that the legend gains only the exported vocabulary for that bridge.\n5. Create at least one node from each bridge-backed export.\n\n## What This Tests\n\n- `github-repo` should behave as a **class export**.\n- the task template should behave as a **kit export**.\n- the document template should behave as a **kit export**.\n- presence in the target graph is not enough; only the declared export surface should count."
+      }
+    },
+    {
+      "id": "bridge-export-smoke-expected",
+      "type": "markdown",
+      "label": "Expected Results",
+      "position": { "x": -120, "y": 80 },
+      "width": 520,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Expected Results\n\n### GitHub Repo Class Export\n- legend should expose `github-repo`\n- it should not expose unrelated classes from the class graph\n\n### Task Template Kit Export\n- legend should expose planning vocabulary such as `goal`, `task`, `open-question`, `decision`, `summary`, and `script`\n- it should not expose every node merely because it exists in the template\n\n### Document Template Kit Export\n- legend should expose document vocabulary such as `title`, `section`, `document-summary`, `document-view`, `reference`, `figure`, `embed`, and `annotation`\n- it should not expose unrelated template internals\n\nIf any bridge resolves but yields no legend entries after `Create` is on, capture the bridge JSON and diagnostics."
+      }
+    },
+    {
+      "id": "bridge-export-smoke-github-class",
+      "type": "bridge",
+      "label": "GitHub Repo Class Export",
+      "position": { "x": 520, "y": -300 },
+      "width": 280,
+      "height": 140,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Class export smoke: should expose only the github-repo node class.",
+        "authority": "bridge",
+        "resourceKind": "node-class",
+        "bridge": {
+          "ref": "github://twilite/public/library/classes/nodes/github-repo.node-class.node",
+          "resourceKind": "node-class",
+          "role": "import",
+          "scope": "focused-graph",
+          "surfaceId": "class-export",
+          "grants": [],
+          "exposure": {
+            "nodeClasses": { "mode": "allow" },
+            "edgeClasses": { "mode": "deny" },
+            "views": { "mode": "deny" },
+            "scripts": { "mode": "deny" },
+            "declarations": { "mode": "deny" }
+          }
+        },
+        "target": {
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "role": "import",
+          "scope": "focused-graph",
+          "surfaceId": "class-export",
+          "grants": [],
+          "exposure": {
+            "nodeClasses": { "mode": "allow" },
+            "edgeClasses": { "mode": "deny" },
+            "views": { "mode": "deny" },
+            "scripts": { "mode": "deny" },
+            "declarations": { "mode": "deny" }
+          },
+          "label": "GitHub Repo Class Export",
+          "ref": "github://twilite/public/library/classes/nodes/github-repo.node-class.node",
+          "exportKind": "class"
+        }
+      }
+    },
+    {
+      "id": "bridge-export-smoke-task-kit",
+      "type": "bridge",
+      "label": "Task Template Kit Export",
+      "position": { "x": 520, "y": -60 },
+      "width": 280,
+      "height": 140,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Kit export smoke: should expose only the planning/task authoring vocabulary.",
+        "authority": "bridge",
+        "resourceKind": "library",
+        "bridge": {
+          "ref": "github://twilite/public/library/classes/nodes/task-planning/task-graph-template.node",
+          "resourceKind": "library",
+          "role": "import",
+          "scope": "focused-graph",
+          "surfaceId": "export",
+          "grants": [],
+          "exposure": {
+            "nodeClasses": { "mode": "allow" },
+            "edgeClasses": { "mode": "deny" },
+            "views": { "mode": "deny" },
+            "scripts": { "mode": "allow" },
+            "declarations": { "mode": "deny" }
+          }
+        },
+        "target": {
+          "mode": "bridge",
+          "kind": "library",
+          "resourceKind": "library",
+          "role": "import",
+          "scope": "focused-graph",
+          "surfaceId": "export",
+          "grants": [],
+          "exposure": {
+            "nodeClasses": { "mode": "allow" },
+            "edgeClasses": { "mode": "deny" },
+            "views": { "mode": "deny" },
+            "scripts": { "mode": "allow" },
+            "declarations": { "mode": "deny" }
+          },
+          "label": "Task Template Kit Export",
+          "ref": "github://twilite/public/library/classes/nodes/task-planning/task-graph-template.node",
+          "exportKind": "kit"
+        }
+      }
+    },
+    {
+      "id": "bridge-export-smoke-document-kit",
+      "type": "bridge",
+      "label": "Document Template Kit Export",
+      "position": { "x": 520, "y": 180 },
+      "width": 280,
+      "height": 140,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Kit export smoke: should expose only the document authoring vocabulary.",
+        "authority": "bridge",
+        "resourceKind": "library",
+        "bridge": {
+          "ref": "github://twilite/public/library/classes/nodes/document-publishing/document-publishing-template.node",
+          "resourceKind": "library",
+          "role": "import",
+          "scope": "focused-graph",
+          "surfaceId": "export",
+          "grants": [],
+          "exposure": {
+            "nodeClasses": { "mode": "allow" },
+            "edgeClasses": { "mode": "deny" },
+            "views": { "mode": "deny" },
+            "scripts": { "mode": "deny" },
+            "declarations": { "mode": "deny" }
+          }
+        },
+        "target": {
+          "mode": "bridge",
+          "kind": "library",
+          "resourceKind": "library",
+          "role": "import",
+          "scope": "focused-graph",
+          "surfaceId": "export",
+          "grants": [],
+          "exposure": {
+            "nodeClasses": { "mode": "allow" },
+            "edgeClasses": { "mode": "deny" },
+            "views": { "mode": "deny" },
+            "scripts": { "mode": "deny" },
+            "declarations": { "mode": "deny" }
+          },
+          "label": "Document Template Kit Export",
+          "ref": "github://twilite/public/library/classes/nodes/document-publishing/document-publishing-template.node",
+          "exportKind": "kit"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "bridge-export-smoke-edge-title-back",
+      "type": "edge",
+      "source": "bridge-export-smoke-title",
+      "target": "bridge-export-smoke-back",
+      "label": "back",
+      "animated": false
+    },
+    {
+      "id": "bridge-export-smoke-edge-title-instructions",
+      "type": "edge",
+      "source": "bridge-export-smoke-title",
+      "target": "bridge-export-smoke-instructions",
+      "label": "procedure",
+      "animated": false
+    },
+    {
+      "id": "bridge-export-smoke-edge-title-expected",
+      "type": "edge",
+      "source": "bridge-export-smoke-title",
+      "target": "bridge-export-smoke-expected",
+      "label": "expected",
+      "animated": false
+    },
+    {
+      "id": "bridge-export-smoke-edge-title-class",
+      "type": "edge",
+      "source": "bridge-export-smoke-title",
+      "target": "bridge-export-smoke-github-class",
+      "label": "class export",
+      "animated": false
+    },
+    {
+      "id": "bridge-export-smoke-edge-title-task-kit",
+      "type": "edge",
+      "source": "bridge-export-smoke-title",
+      "target": "bridge-export-smoke-task-kit",
+      "label": "kit export",
+      "animated": false
+    },
+    {
+      "id": "bridge-export-smoke-edge-title-document-kit",
+      "type": "edge",
+      "source": "bridge-export-smoke-title",
+      "target": "bridge-export-smoke-document-kit",
+      "label": "kit export",
+      "animated": false
+    }
+  ]
+}
