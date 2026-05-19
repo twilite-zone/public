@@ -1,17 +1,17 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Bridge Authority Model",
-    "description": "Task graph for defining bridge authority, bridge rendering, and runtime grants between graphs.",
-    "created": "2026-03-28T22:47:16.419Z",
-    "modified": "2026-03-28T22:47:16.419Z",
+    "title": "Bridge Capability Lanes",
+    "description": "Task graph for separating bridge create, consume, and execute lanes so classes, views, and scripts cannot be exported accidentally across the wrong boundary.",
+    "created": "2026-05-18T20:55:00.000Z",
+    "modified": "2026-05-18T20:55:00.000Z",
     "author": "",
     "tags": [],
     "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
     {
-      "id": "bridge-authority-model-manifest",
+      "id": "bridge-capability-lanes-manifest",
       "type": "manifest",
       "label": "Manifest",
       "position": {
@@ -24,12 +24,12 @@
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "bridge-authority-model-root",
-          "name": "Bridge Authority Model",
+          "graphId": "bridge-capability-lanes-root",
+          "name": "Bridge Capability Lanes",
           "version": "0.1.0",
-          "description": "Task graph for defining bridge authority, bridge rendering, and runtime grants between graphs.",
-          "createdAt": "2026-03-28T00:00:00.000Z",
-          "updatedAt": "2026-03-28T00:00:00.000Z"
+          "description": "Task graph for separating bridge create, consume, and execute lanes so classes, views, and scripts cannot be exported accidentally across the wrong boundary.",
+          "createdAt": "2026-05-18T00:00:00.000Z",
+          "updatedAt": "2026-05-18T00:00:00.000Z"
         },
         "intent": {
           "kind": "graph",
@@ -98,13 +98,13 @@
             "enableGithubPages": false
           }
         },
-        "summaryNodeId": "bridge-authority-model-summary",
+        "summaryNodeId": "bridge-capability-lanes-summary",
         "isRoot": false,
         "root": false
       }
     },
     {
-      "id": "bridge-authority-model-bridge-title",
+      "id": "bridge-capability-lanes-bridge-title",
       "type": "port",
       "label": "Title",
       "position": {
@@ -130,7 +130,7 @@
       }
     },
     {
-      "id": "bridge-authority-model-bridge-goal",
+      "id": "bridge-capability-lanes-bridge-goal",
       "type": "port",
       "label": "Goal",
       "position": {
@@ -156,7 +156,7 @@
       }
     },
     {
-      "id": "bridge-authority-model-bridge-task",
+      "id": "bridge-capability-lanes-bridge-task",
       "type": "port",
       "label": "Task",
       "position": {
@@ -182,7 +182,7 @@
       }
     },
     {
-      "id": "bridge-authority-model-bridge-open-question",
+      "id": "bridge-capability-lanes-bridge-open-question",
       "type": "port",
       "label": "Open Question",
       "position": {
@@ -208,7 +208,7 @@
       }
     },
     {
-      "id": "bridge-authority-model-bridge-task-summary-provider",
+      "id": "bridge-capability-lanes-bridge-task-summary-provider",
       "type": "port",
       "label": "Task Summary Provider",
       "position": {
@@ -234,9 +234,9 @@
       }
     },
     {
-      "id": "bridge-authority-model-title",
+      "id": "bridge-capability-lanes-title",
       "type": "title",
-      "label": "Bridge Authority Model",
+      "label": "Bridge Capability Lanes",
       "position": {
         "x": -260,
         "y": -40
@@ -246,8 +246,8 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Bridge Authority Model",
-        "subtitle": "Define bridge semantics as focused-graph authority surfaces: what they grant, how they render, and how runtime permission is formally checked across graph boundaries.",
+        "title": "Bridge Capability Lanes",
+        "subtitle": "Split bridge authority by destination lane: the legend gets classes, ports get views, runtime gets scripts, and declaration no longer silently grants cross-graph consumption.",
         "intent": "headline",
         "status": "active",
         "_classBinding": {
@@ -360,7 +360,7 @@
         },
         "_bridge": {
           "sourceNodeId": "",
-          "sourceBridgeNodeId": "bridge-authority-model-bridge-title",
+          "sourceBridgeNodeId": "bridge-capability-lanes-bridge-title",
           "sourceBridgeLabel": "Title",
           "sourceRef": "/library/classes/nodes/template-structure/title.node-class.node",
           "entryPort": "root",
@@ -375,24 +375,24 @@
       }
     },
     {
-      "id": "bridge-authority-model-goal",
+      "id": "bridge-capability-lanes-goal",
       "type": "goal",
-      "label": "Make bridge authority explicit",
+      "label": "Separate bridge capability lanes",
       "position": {
-        "x": 340,
-        "y": -20
+        "x": 160,
+        "y": 260
       },
       "width": 440,
       "height": 260,
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Make bridge authority explicit and enforceable",
-        "body": "Define bridges as focused-graph authority surfaces for create, runtime, and other formal grants, instead of treating them as ports with special behavior.",
+        "title": "Separate bridge capability lanes",
+        "body": "Make bridge export contracts lane-aware so classes, views, and scripts are granted through the right consumer path and cannot be confused with one another.",
         "status": "in-progress",
         "owner": "Michael",
         "priority": "high",
-        "estimateHours": "3",
+        "estimateHours": "6",
         "_classBinding": {
           "key": "goal",
           "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
@@ -513,7 +513,7 @@
         },
         "_bridge": {
           "sourceNodeId": "",
-          "sourceBridgeNodeId": "bridge-authority-model-bridge-goal",
+          "sourceBridgeNodeId": "bridge-capability-lanes-bridge-goal",
           "sourceBridgeLabel": "Goal",
           "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
           "entryPort": "root",
@@ -533,184 +533,206 @@
       }
     },
     {
-      "id": "bridge-authority-model-task-1",
+      "id": "bridge-capability-lanes-task-create-classes",
       "type": "task",
-      "label": "Write the bridge contract",
+      "label": "Limit legend imports to class exports",
       "position": {
-        "x": 320,
-        "y": 300
+        "x": 640,
+        "y": 120
       },
-      "width": 430,
-      "height": 260,
+      "width": 380,
+      "height": 220,
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Write the bridge contract",
-        "body": "Define what a bridge is, what it can grant, how it differs from a port, and what no bridge should ever imply automatically.",
-        "status": "done",
+        "body": "Teach bridge export contracts to expose only node classes to the legend path, and reject anything that is only a consumable view.",
+        "status": "todo",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "2",
-        "_classBinding": {
-          "key": "task",
-          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
-          "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
-            "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
-            "updatedAt": "2026-03-24T01:10:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
-          "defaults": {
-            "label": "Task",
-            "size": {
-              "width": 340,
-              "height": 260
-            },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
-            }
-          },
-          "nodeDef": {
-            "key": "task",
-            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Task",
-              "size": {
-                "width": 340,
-                "height": 260
-              },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "task",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "task",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "task",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "bridge-authority-model-bridge-task",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
-        },
-        "definitionKey": "task",
         "acceptanceCriteria": [
           "Bridge law is explicit",
           "Bridge grants are named"
         ],
-        "isRoot": false,
-        "root": false,
-        "description": "Bridge contract and bridge-renderer contract both exist and are wired to the board as the current law sources."
+        "title": "Limit legend imports to class exports",
+        "countAsTask": true,
+        "summarySource": "manual",
+        "taskProgress": {
+          "completed": 0,
+          "total": 0
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 0
+        },
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "bridge-capability-lanes-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        }
       }
     },
     {
-      "id": "bridge-authority-model-task-2",
+      "id": "bridge-capability-lanes-task-consume-views",
       "type": "task",
-      "label": "Define bridge node data shape",
+      "label": "Require bridge-granted views for remote ports",
       "position": {
-        "x": 800,
-        "y": 300
+        "x": 640,
+        "y": 420
       },
-      "width": 430,
-      "height": 260,
+      "width": 380,
+      "height": 220,
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Define bridge node data shape",
-        "body": "Specify the stored bridge fields for target resource, grants, scope, and any focused-graph runtime permission the bridge is allowed to expose.",
-        "status": "in-progress",
+        "body": "Make cross-graph port consumption depend on export-bridge view grants instead of declaration alone, while keeping local surfaces readable.",
+        "status": "todo",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "2",
+        "acceptanceCriteria": [
+          "Bridge law is explicit",
+          "Bridge grants are named"
+        ],
+        "title": "Require bridge-granted views for remote ports",
+        "countAsTask": true,
+        "summarySource": "manual",
+        "taskProgress": {
+          "completed": 0,
+          "total": 0
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 0
+        },
+        "definitionKey": "task",
         "_classBinding": {
           "key": "task",
           "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
@@ -833,7 +855,7 @@
         },
         "_bridge": {
           "sourceNodeId": "",
-          "sourceBridgeNodeId": "bridge-authority-model-bridge-task",
+          "sourceBridgeNodeId": "bridge-capability-lanes-bridge-task",
           "sourceBridgeLabel": "Task",
           "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
           "entryPort": "root",
@@ -841,36 +863,43 @@
           "targetKind": "node-class",
           "classKey": "task",
           "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
-        },
-        "definitionKey": "task",
-        "acceptanceCriteria": [
-          "Target, grants, and scope are explicit",
-          "Runtime grant shape is defined"
-        ],
-        "isRoot": false,
-        "root": false,
-        "description": "Bridge data-shape contract exists; next step is to align runtime storage to the canonical `data.bridge` shape everywhere."
+        }
       }
     },
     {
-      "id": "bridge-authority-model-task-3",
+      "id": "bridge-capability-lanes-task-execute-scripts",
       "type": "task",
-      "label": "Build a compact bridge renderer",
+      "label": "Reserve runtime execution for script exports",
       "position": {
-        "x": 1280,
-        "y": 300
+        "x": 640,
+        "y": 720
       },
-      "width": 430,
-      "height": 260,
+      "width": 380,
+      "height": 220,
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Build a compact bridge renderer",
-        "body": "Render bridges as compact authority surfaces with icon-first identity plus create/runtime affordances when those grants are present.",
-        "status": "done",
+        "body": "Keep execute/runtime capability separate from create and consume so scripts do not leak through the wrong bridge lane.",
+        "status": "todo",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "2",
+        "acceptanceCriteria": [
+          "Bridge law is explicit",
+          "Bridge grants are named"
+        ],
+        "title": "Reserve runtime execution for script exports",
+        "countAsTask": true,
+        "summarySource": "manual",
+        "taskProgress": {
+          "completed": 0,
+          "total": 0
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 0
+        },
+        "definitionKey": "task",
         "_classBinding": {
           "key": "task",
           "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
@@ -993,7 +1022,7 @@
         },
         "_bridge": {
           "sourceNodeId": "",
-          "sourceBridgeNodeId": "bridge-authority-model-bridge-task",
+          "sourceBridgeNodeId": "bridge-capability-lanes-bridge-task",
           "sourceBridgeLabel": "Task",
           "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
           "entryPort": "root",
@@ -1001,35 +1030,43 @@
           "targetKind": "node-class",
           "classKey": "task",
           "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
-        },
-        "definitionKey": "task",
-        "acceptanceCriteria": [
-          "Bridge is visually distinct from ports",
-          "Create affordance appears when granted"
-        ],
-        "isRoot": false,
-        "root": false
+        }
       }
     },
     {
-      "id": "bridge-authority-model-task-4",
+      "id": "bridge-capability-lanes-task-validate-lanes",
       "type": "task",
-      "label": "Enforce bridge runtime grants",
+      "label": "Block accidental cross-lane export",
       "position": {
-        "x": 1760,
-        "y": 300
+        "x": 1120,
+        "y": 120
       },
-      "width": 430,
-      "height": 260,
+      "width": 380,
+      "height": 220,
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Enforce bridge runtime grants",
-        "body": "Make host-side JavaScript and cross-graph runtime behavior check explicit bridge grants before using client-graph capability.",
-        "status": "done",
+        "body": "Validate that classes only appear in create lanes, views only appear in consume lanes, and scripts only appear in execute lanes.",
+        "status": "todo",
         "owner": "Michael",
         "priority": "high",
-        "estimateHours": "3",
+        "estimateHours": "2",
+        "acceptanceCriteria": [
+          "Bridge law is explicit",
+          "Bridge grants are named"
+        ],
+        "title": "Block accidental cross-lane export",
+        "countAsTask": true,
+        "summarySource": "manual",
+        "taskProgress": {
+          "completed": 0,
+          "total": 0
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 0
+        },
+        "definitionKey": "task",
         "_classBinding": {
           "key": "task",
           "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
@@ -1152,7 +1189,7 @@
         },
         "_bridge": {
           "sourceNodeId": "",
-          "sourceBridgeNodeId": "bridge-authority-model-bridge-task",
+          "sourceBridgeNodeId": "bridge-capability-lanes-bridge-task",
           "sourceBridgeLabel": "Task",
           "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
           "entryPort": "root",
@@ -1160,32 +1197,192 @@
           "targetKind": "node-class",
           "classKey": "task",
           "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
-        },
-        "definitionKey": "task",
-        "acceptanceCriteria": [
-          "Runtime path checks bridge grants",
-          "No implicit runtime authority from view exposure alone"
-        ],
-        "isRoot": false,
-        "root": false
+        }
       }
     },
     {
-      "id": "bridge-authority-model-question",
+      "id": "bridge-capability-lanes-task-ui",
+      "type": "task",
+      "label": "Make the bridge UI speak in capabilities",
+      "position": {
+        "x": 1120,
+        "y": 420
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Update export and import bridge authoring to talk about legend, ports, and runtime instead of generic families first.",
+        "status": "todo",
+        "owner": "Michael",
+        "priority": "high",
+        "estimateHours": "2",
+        "acceptanceCriteria": [
+          "Bridge law is explicit",
+          "Bridge grants are named"
+        ],
+        "title": "Make the bridge UI speak in capabilities",
+        "countAsTask": true,
+        "summarySource": "manual",
+        "taskProgress": {
+          "completed": 0,
+          "total": 0
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 0
+        },
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "bridge-capability-lanes-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "bridge-capability-lanes-open-question",
       "type": "open-question",
-      "label": "What grants should a bridge expose?",
+      "label": "How strict should same-graph view consumption be?",
       "position": {
-        "x": 940,
-        "y": 680
+        "x": 1120,
+        "y": 720
       },
       "width": 500,
       "height": 260,
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "What grants should a bridge expose?",
-        "body": "Is the first bridge grant set just create and runtime, or do we also need explicit view, mutate, or resource grants right away?",
-        "status": "answered",
+        "title": "How strict should same-graph view consumption be?",
+        "body": "Cross-graph consumption should require an export bridge. Should same-graph view consumption remain permissive, or should it follow the same lane rules for consistency?",
+        "status": "open",
         "owner": "Michael",
         "prominence": "high",
         "_classBinding": {
@@ -1302,7 +1499,7 @@
         },
         "_bridge": {
           "sourceNodeId": "",
-          "sourceBridgeNodeId": "bridge-authority-model-bridge-open-question",
+          "sourceBridgeNodeId": "bridge-capability-lanes-bridge-open-question",
           "sourceBridgeLabel": "Open Question",
           "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
           "entryPort": "root",
@@ -1313,67 +1510,46 @@
         },
         "definitionKey": "open-question",
         "isRoot": false,
-        "root": false
+        "root": false,
+        "priority": "medium",
+        "estimateHours": "1"
       }
     },
     {
-      "id": "bridge-authority-model-back",
-      "type": "port",
-      "label": "Back To Interaction Policy",
-      "position": {
-        "x": 1760,
-        "y": -40
-      },
-      "width": 340,
-      "height": 120,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Return to the Interaction Policy board.",
-        "intent": "external",
-        "target": {
-          "endpoint": "github://twilite-zone/public/tasks/interaction-policy/root.node:root",
-          "mode": "navigate",
-          "label": "Open"
-        },
-        "isRoot": false,
-        "root": false
-      }
-    },
-    {
-      "id": "bridge-authority-model-summary",
+      "id": "bridge-capability-lanes-summary",
       "type": "summary",
-      "label": "Bridge Authority Model",
+      "label": "Bridge Capability Lanes",
       "position": {
         "x": 1760,
-        "y": 680
+        "y": 700
       },
       "width": 420,
       "height": 260,
       "visible": true,
       "showLabel": false,
       "data": {
-        "goal": "Make bridge authority explicit",
+        "goal": "Separate bridge capability lanes",
         "status": "in-progress",
         "taskProgress": {
-          "completed": 3,
-          "total": 4
+          "completed": 0,
+          "total": 5
         },
         "questionProgress": {
-          "answered": 1,
+          "answered": 0,
           "total": 1
         },
         "taskTitles": [
-          "Write the bridge contract",
-          "Define bridge node data shape",
-          "Build a compact bridge renderer",
-          "Enforce bridge runtime grants"
+          "Limit legend imports to class exports",
+          "Require bridge-granted views for remote ports",
+          "Reserve runtime execution for script exports",
+          "Block accidental cross-lane export",
+          "Make the bridge UI speak in capabilities"
         ],
         "questionTitles": [
-          "What grants should a bridge expose?"
+          "How strict should same-graph view consumption be?"
         ],
-        "taskListText": "1. Write the bridge contract\n2. Define bridge node data shape\n3. Build a compact bridge renderer\n4. Enforce bridge runtime grants",
-        "questionListText": "1. What grants should a bridge expose?",
+        "taskListText": "1. Limit legend imports to class exports\n2. Require bridge-granted views for remote ports\n3. Reserve runtime execution for script exports\n4. Block accidental cross-lane export\n5. Make the bridge UI speak in capabilities",
+        "questionListText": "1. How strict should same-graph view consumption be?",
         "summarySource": "node-updater",
         "_classBinding": {
           "key": "summary",
@@ -1475,7 +1651,7 @@
         },
         "_bridge": {
           "sourceNodeId": "",
-          "sourceBridgeNodeId": "bridge-authority-model-bridge-task-summary-provider",
+          "sourceBridgeNodeId": "bridge-capability-lanes-bridge-task-summary-provider",
           "sourceBridgeLabel": "Summary",
           "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
           "entryPort": "root",
@@ -1485,177 +1661,46 @@
           "classRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
         },
         "definitionKey": "summary",
-        "updatedAt": "2026-04-04T18:14:54.426Z",
-        "title": "Bridge Authority Model",
-        "sourceGraphRef": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/root.node",
-        "sourceGraphId": "bridge-authority-model-root",
+        "updatedAt": "2026-05-18T20:55:00.000Z",
+        "title": "Bridge Capability Lanes",
+        "sourceGraphRef": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/bridge-capability-lanes/root.node",
+        "sourceGraphId": "bridge-capability-lanes-root",
         "isRoot": false,
         "root": false
       }
     },
     {
-      "id": "bridge-authority-model-contract",
-      "type": "port",
-      "label": "Bridge Contract",
-      "position": {
-        "x": 980,
-        "y": -40
-      },
-      "width": 420,
-      "height": 260,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Source-of-truth contract for bridge semantics, grants, and focused-graph authority.",
-        "intent": "navigate",
-        "target": {
-          "endpoint": "github://twilite-zone/public/library/documentation/contracts/bridges/bridge-contract.node:root",
-          "mode": "navigate",
-          "portId": "root",
-          "label": "Open"
-        },
-        "sourceRef": "github://twilite-zone/public/library/documentation/contracts/bridges/bridge-contract.node",
-        "sourceNodeId": "bridge-contract-view",
-        "sourcePayload": "node.web.summary"
-      }
-    },
-    {
-      "id": "bridge-authority-model-renderer-contract",
-      "type": "port",
-      "label": "Bridge Renderer Contract",
-      "position": {
-        "x": 1360,
-        "y": -40
-      },
-      "width": 420,
-      "height": 260,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Source-of-truth contract for bridge semantics, grants, and focused-graph authority.",
-        "intent": "navigate",
-        "target": {
-          "endpoint": "github://twilite-zone/public/library/documentation/contracts/bridges/bridge-contract.node:root",
-          "mode": "navigate",
-          "portId": "root",
-          "label": "Open"
-        },
-        "sourceRef": "github://twilite-zone/public/library/documentation/contracts/bridges/bridge-renderer-contract.node",
-        "sourceNodeId": "bridge-renderer-contract-view",
-        "sourcePayload": "node.web.summary",
-        "sourceBridgeLabel": "View"
-      }
-    },
-    {
-      "id": "bridge-authority-model-data-shape-contract",
-      "type": "port",
-      "label": "Bridge Data Shape Contract",
-      "position": {
-        "x": 1740,
-        "y": -40
-      },
-      "width": 420,
-      "height": 260,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Source-of-truth contract for bridge semantics, grants, and focused-graph authority.",
-        "intent": "navigate",
-        "target": {
-          "endpoint": "github://twilite-zone/public/library/documentation/contracts/bridges/bridge-contract.node:root",
-          "mode": "navigate",
-          "portId": "root",
-          "label": "Open"
-        },
-        "sourceRef": "github://twilite-zone/public/library/documentation/contracts/bridges/bridge-data-shape-contract.node",
-        "sourceNodeId": "bridge-data-shape-contract-view",
-        "sourcePayload": "node.web.summary",
-        "sourceBridgeLabel": "View"
-      }
-    },
-    {
-      "id": "bridge-authority-model-runtime-smoke",
-      "type": "port",
-      "label": "Runtime Grant Smoke Test",
-      "position": {
-        "x": 2120,
-        "y": 680
-      },
-      "width": 360,
-      "height": 240,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Smoke graph for testing create-only versus runtime-granted bridge behavior.",
-        "intent": "external",
-        "authority": "consume-view",
-        "target": {
-          "endpoint": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/runtime-grant-smoke/root.node:root",
-          "mode": "navigate",
-          "label": "Open"
-        },
-        "sourceRef": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/runtime-grant-smoke/root.node",
-        "sourceNodeId": "bridge-runtime-smoke-view",
-        "sourcePayload": "node.web.summary"
-      }
-    },
-    {
-      "id": "bridge-authority-model-export-smoke",
-      "type": "port",
-      "label": "Export Surface Smoke Test",
-      "position": {
-        "x": 2520,
-        "y": 680
-      },
-      "width": 360,
-      "height": 240,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Smoke graph for testing class-export and kit-export bridge surfaces.",
-        "intent": "external",
-        "authority": "consume-view",
-        "target": {
-          "endpoint": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/export-surface-smoke/root.node:root",
-          "mode": "navigate",
-          "label": "Open"
-        },
-        "sourceRef": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/export-surface-smoke/root.node",
-        "sourceNodeId": "bridge-export-smoke-title",
-        "sourcePayload": "node.web.summary"
-      }
-    },
-    {
-      "id": "bridge-authority-model-summary-task",
+      "id": "bridge-capability-lanes-summary-task",
       "type": "task",
-      "label": "Make bridge authority explicit",
+      "label": "Separate bridge capability lanes",
       "position": {
         "x": 1760,
-        "y": 1010
+        "y": 1020
       },
       "width": 380,
       "height": 220,
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Goal: Make bridge authority explicit\nStatus: in-progress\n\nTasks in scope:\n1. Write the bridge contract\n2. Define bridge node data shape\n3. Build a compact bridge renderer\n4. Enforce bridge runtime grants\n\nOpen questions:\n1. What grants should a bridge expose?",
+        "body": "Goal: Separate bridge capability lanes\nStatus: in-progress\n\nTasks in scope:\n1. Limit legend imports to class exports\n2. Require bridge-granted views for remote ports\n3. Reserve runtime execution for script exports\n4. Block accidental cross-lane export\n5. Make the bridge UI speak in capabilities\n\nOpen questions:\n1. How strict should same-graph view consumption be?",
         "status": "in-progress",
         "owner": "Michael",
         "priority": "high",
-        "estimateHours": "2",
+        "estimateHours": "6",
         "acceptanceCriteria": [
-          "Bridge law is explicit",
-          "Bridge grants are named"
+          "Legend imports only class exports",
+          "Remote ports only consume bridge-granted views",
+          "Cross-lane export mistakes are rejected"
         ],
-        "title": "Make bridge authority explicit",
+        "title": "Separate bridge capability lanes",
         "countAsTask": false,
         "summarySource": "node-updater",
         "taskProgress": {
-          "completed": 3,
-          "total": 4
+          "completed": 0,
+          "total": 5
         },
         "questionProgress": {
-          "answered": 1,
+          "answered": 0,
           "total": 1
         },
         "definitionKey": "task",
@@ -1781,7 +1826,7 @@
         },
         "_bridge": {
           "sourceNodeId": "",
-          "sourceBridgeNodeId": "bridge-authority-model-bridge-task",
+          "sourceBridgeNodeId": "bridge-capability-lanes-bridge-task",
           "sourceBridgeLabel": "Task",
           "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
           "entryPort": "root",
@@ -1793,202 +1838,138 @@
       }
     },
     {
-      "id": "bridge-authority-model-capability-lanes",
+      "id": "bridge-capability-lanes-back-parent",
       "type": "port",
-      "label": "Bridge Capability Lanes",
+      "label": "Back to Bridge Authority Model",
       "position": {
-        "x": 2920,
-        "y": 680
+        "x": 2160,
+        "y": -40
       },
-      "width": 380,
+      "width": 360,
       "height": 240,
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Track the follow-on work that separates create, consume, and execute authority lanes for bridges.",
+        "memo": "Return to the parent bridge-authority task board.",
         "intent": "external",
         "authority": "consume-view",
         "target": {
-          "endpoint": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/bridge-capability-lanes/root.node:root",
+          "endpoint": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/root.node:root",
           "mode": "navigate",
           "label": "Open"
         },
-        "sourceRef": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/bridge-capability-lanes/root.node",
-        "sourceNodeId": "bridge-capability-lanes-summary-task",
+        "sourceRef": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/root.node",
+        "sourceNodeId": "bridge-authority-model-summary-task",
         "sourcePayload": "node.web.detail"
+      }
+    },
+    {
+      "id": "bridge-capability-lanes-export-smoke",
+      "type": "port",
+      "label": "Export Surface Smoke Test",
+      "position": {
+        "x": 2160,
+        "y": 300
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Use the controlled smoke graph to verify bridge-driven class and view export lanes.",
+        "intent": "external",
+        "authority": "consume-view",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/export-surface-smoke/root.node:root",
+          "mode": "navigate",
+          "label": "Open"
+        },
+        "sourceRef": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/export-surface-smoke/root.node",
+        "sourceNodeId": "bridge-export-smoke-title",
+        "sourcePayload": "node.web.summary"
       }
     }
   ],
   "edges": [
     {
-      "id": "bridge-authority-model-edge-title-goal",
-      "type": "reference",
-      "source": "bridge-authority-model-title",
-      "target": "bridge-authority-model-goal",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "focus",
-      "style": {},
+      "id": "bridge-capability-lanes-edge-title-goal",
+      "type": "relationship",
+      "source": "bridge-capability-lanes-title",
+      "target": "bridge-capability-lanes-goal",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "frames",
       "data": {}
     },
     {
-      "id": "bridge-authority-model-edge-goal-task-1",
-      "type": "reference",
-      "source": "bridge-authority-model-goal",
-      "target": "bridge-authority-model-task-1",
-      "sourcePort": "root",
-      "targetPort": "root",
+      "id": "bridge-capability-lanes-edge-goal-task-1",
+      "type": "relationship",
+      "source": "bridge-capability-lanes-goal",
+      "target": "bridge-capability-lanes-task-create-classes",
+      "sourcePort": "bottom",
+      "targetPort": "top",
       "label": "task",
-      "style": {},
       "data": {}
     },
     {
-      "id": "bridge-authority-model-edge-goal-task-2",
-      "type": "reference",
-      "source": "bridge-authority-model-goal",
-      "target": "bridge-authority-model-task-2",
-      "sourcePort": "root",
-      "targetPort": "root",
+      "id": "bridge-capability-lanes-edge-goal-task-2",
+      "type": "relationship",
+      "source": "bridge-capability-lanes-goal",
+      "target": "bridge-capability-lanes-task-consume-views",
+      "sourcePort": "bottom",
+      "targetPort": "top",
       "label": "task",
-      "style": {},
       "data": {}
     },
     {
-      "id": "bridge-authority-model-edge-goal-task-3",
-      "type": "reference",
-      "source": "bridge-authority-model-goal",
-      "target": "bridge-authority-model-task-3",
-      "sourcePort": "root",
-      "targetPort": "root",
+      "id": "bridge-capability-lanes-edge-goal-task-3",
+      "type": "relationship",
+      "source": "bridge-capability-lanes-goal",
+      "target": "bridge-capability-lanes-task-execute-scripts",
+      "sourcePort": "right",
+      "targetPort": "left",
       "label": "task",
-      "style": {},
       "data": {}
     },
     {
-      "id": "bridge-authority-model-edge-goal-task-4",
-      "type": "reference",
-      "source": "bridge-authority-model-goal",
-      "target": "bridge-authority-model-task-4",
-      "sourcePort": "root",
-      "targetPort": "root",
+      "id": "bridge-capability-lanes-edge-goal-task-4",
+      "type": "relationship",
+      "source": "bridge-capability-lanes-goal",
+      "target": "bridge-capability-lanes-task-validate-lanes",
+      "sourcePort": "right",
+      "targetPort": "left",
       "label": "task",
-      "style": {},
       "data": {}
     },
     {
-      "id": "bridge-authority-model-edge-goal-question",
-      "type": "reference",
-      "source": "bridge-authority-model-goal",
-      "target": "bridge-authority-model-question",
-      "sourcePort": "root",
-      "targetPort": "root",
+      "id": "bridge-capability-lanes-edge-goal-task-5",
+      "type": "relationship",
+      "source": "bridge-capability-lanes-goal",
+      "target": "bridge-capability-lanes-task-ui",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "task",
+      "data": {}
+    },
+    {
+      "id": "bridge-capability-lanes-edge-goal-question",
+      "type": "relationship",
+      "source": "bridge-capability-lanes-goal",
+      "target": "bridge-capability-lanes-open-question",
+      "sourcePort": "right",
+      "targetPort": "left",
       "label": "question",
-      "style": {},
       "data": {}
     },
     {
-      "id": "bridge-authority-model-edge-title-back",
-      "type": "reference",
-      "source": "bridge-authority-model-title",
-      "target": "bridge-authority-model-back",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "back",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "bridge-authority-model-edge-summary-goal",
-      "type": "reference",
-      "source": "bridge-authority-model-summary",
-      "target": "bridge-authority-model-goal",
-      "sourcePort": "root",
-      "targetPort": "root",
+      "id": "bridge-capability-lanes-edge-summary-goal",
+      "type": "relationship",
+      "source": "bridge-capability-lanes-summary",
+      "target": "bridge-capability-lanes-goal",
+      "sourcePort": "left",
+      "targetPort": "right",
       "label": "summarizes",
-      "style": {},
       "data": {}
-    },
-    {
-      "id": "bridge-authority-model-edge-title-contract",
-      "type": "reference",
-      "source": "bridge-authority-model-title",
-      "target": "bridge-authority-model-contract",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "law",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "bridge-authority-model-renderer-law",
-      "type": "supports",
-      "source": "bridge-authority-model-title",
-      "target": "bridge-authority-model-renderer-contract",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "renderer law",
-      "style": {
-        "curved": true,
-        "width": 2
-      },
-      "data": {}
-    },
-    {
-      "id": "bridge-authority-model-data-shape-law",
-      "type": "supports",
-      "source": "bridge-authority-model-title",
-      "target": "bridge-authority-model-data-shape-contract",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "shape law",
-      "style": {
-        "curved": true,
-        "width": 2
-      },
-      "data": {}
-    },
-    {
-      "id": "bridge-authority-model-runtime-smoke-edge",
-      "type": "supports",
-      "source": "bridge-authority-model-title",
-      "target": "bridge-authority-model-runtime-smoke",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "smoke test",
-      "style": {
-        "curved": true,
-        "width": 2
-      },
-      "data": {}
-    },
-    {
-      "id": "bridge-authority-model-export-smoke-edge",
-      "type": "supports",
-      "source": "bridge-authority-model-title",
-      "target": "bridge-authority-model-export-smoke",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "smoke test",
-      "style": {
-        "curved": true,
-        "width": 2
-      },
-      "data": {}
-    }
-  ],
-  "clusters": [],
-  "scripts": [
-    {
-      "id": "script_1761684730975",
-      "name": "New Script",
-      "source": "// Write your script here\n// Available API:\n//   api.getNodes()\n//   api.getNode(id)\n//   api.getEdges()\n//   api.createNode(data)\n//   api.updateNode(id, patch)\n//   api.deleteNode(id)\n//   api.createEdge(data)\n//   api.deleteEdge(id)\n//   api.log(level, message)\n\nconst nodes = await api.getNodes();\nreturn { count: nodes.length };",
-      "tags": ""
-    },
-    {
-      "id": "script_1761684295367",
-      "name": "Mike",
-      "source": "console.clear();\nconst nodes = await api.getNodes();\nconsole.log(\"Mike\");\nreturn { count: nodes.length };",
-      "tags": ""
     }
   ]
 }
