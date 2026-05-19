@@ -4,7 +4,7 @@
     "title": "GitHub Document",
     "description": "Dedicated document graph for Twilite's current GitHub integration model.",
     "created": "2026-04-03T16:19:44.152Z",
-    "modified": "2026-05-08T22:50:01.980Z",
+    "modified": "2026-05-19T00:00:00.000Z",
     "author": "",
     "tags": [
       "github",
@@ -814,7 +814,8 @@
         "allowMutations": true,
         "dryRun": false,
         "source": "const DOCUMENT_VIEW_ID = 'github-document-view';\nconst ORDERED_IDS = [\n  'github-title',\n  'github-intro',\n  'github-hybrid',\n  'github-workflows',\n  'github-usage',\n  'github-boundaries',\n  'github-reference-migration',\n  'github-reference-beta',\n  'github-annotation',\n  'github-summary',\n  'github-reference-repo-setup'\n];\nconst isEqual = (a, b) => {\n  if (a === b) return true;\n  if (!a || !b || typeof a !== 'object' || typeof b !== 'object') return false;\n  const aKeys = Object.keys(a);\n  const bKeys = Object.keys(b);\n  if (aKeys.length != bKeys.length) return false;\n  for (const key of aKeys) {\n    if (!Object.prototype.hasOwnProperty.call(b, key)) return false;\n    const aVal = a[key];\n    const bVal = b[key];\n    if (Array.isArray(aVal) || Array.isArray(bVal)) {\n      if (JSON.stringify(aVal) != JSON.stringify(bVal)) return false;\n      continue;\n    }\n    if (aVal && typeof aVal === 'object') {\n      if (!isEqual(aVal, bVal)) return false;\n      continue;\n    }\n    if (aVal != bVal) return false;\n  }\n  return true;\n};\nconst escapeHtml = (value) => String(value || '')\n  .replace(/&/g, '&amp;')\n  .replace(/</g, '&lt;')\n  .replace(/>/g, '&gt;')\n  .replace(/\\\"/g, '&quot;')\n  .replace(/'/g, '&#39;');\nconst paragraphize = (value) => escapeHtml(value).replace(/\\n\\n+/g, '<br><br>').replace(/\\n/g, '<br>');\nconst renderErrorCard = (title, detail) => `<section style=\\\"padding:18px;border:1px solid rgba(220,38,38,0.22);border-radius:16px;background:linear-gradient(180deg, rgba(254,242,242,0.98), rgba(255,255,255,0.98));display:flex;flex-direction:column;gap:10px;\\\"><div style=\\\"font:700 18px/1.25 ui-sans-serif, system-ui, sans-serif;color:#991b1b;\\\">${escapeHtml(title)}</div><div style=\\\"font:500 14px/1.6 ui-sans-serif, system-ui, sans-serif;color:#7f1d1d;\\\">${escapeHtml(detail)}</div></section>`;\nconst renderGraphic = (data, fallbackImageAlt = '') => {\n  if (String(data.svg || '').trim()) {\n    return `<div style=\\\"padding:12px;border-radius:16px;background:rgba(248,250,252,0.95);border:1px solid rgba(15,23,42,0.08);display:flex;align-items:center;justify-content:center;overflow:hidden;\\\">${data.svg}</div>`;\n  }\n  if (String(data.assetRef || '').trim()) {\n    return `<div style=\\\"padding:0;overflow:hidden;border-radius:16px;border:1px solid rgba(15,23,42,0.12);background:white;\\\"><img src=\\\"${escapeHtml(data.assetRef)}\\\" alt=\\\"${escapeHtml(data.altText || fallbackImageAlt)}\\\" style=\\\"max-width:100%;display:block;\\\"/></div>`;\n  }\n  return '';\n};\nconst renderCardPart = ({ title, badge, badgeStyle, ruleStyle, body, graphic, meta, anchor }) => {\n  const safeTitle = escapeHtml(title || 'Untitled');\n  const bodyHtml = body ? `<div style=\\\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\\\">${body}</div>` : '';\n  const metaHtml = meta ? `<div style=\\\"font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#64748b;\\\">${meta}</div>` : '';\n  const anchorAttr = anchor ? ` id=\\\"${escapeHtml(anchor)}\\\"` : '';\n  return `<section style=\\\"margin:0 0 20px 0;\\\"><div style=\\\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\\\"><div style=\\\"display:flex;align-items:center;justify-content:space-between;gap:12px;\\\"><div${anchorAttr} style=\\\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\\\">${safeTitle}</div><div style=\\\"display:flex;gap:6px;flex-wrap:wrap;\\\"><span style=\\\"${badgeStyle}\\\">${escapeHtml(badge)}</span></div></div><div style=\\\"${ruleStyle}\\\"></div>${graphic || ''}${bodyHtml}${metaHtml}</div></section>`;\n};\nconst renderTitlePart = (data) => {\n  const safeTitle = escapeHtml(data.title || 'Untitled Title');\n  const safeSubtitle = escapeHtml(data.subtitle || 'Use this node to frame the document.');\n  return `<section style=\\\"margin:0 0 20px 0;\\\"><div style=\\\"display:flex;flex-direction:column;box-sizing:border-box;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,252,245,0.99), rgba(255,248,235,0.96));border:1px solid rgba(146,64,14,0.16);box-shadow:0 12px 28px rgba(180,83,9,0.10);gap:14px;\\\"><div style=\\\"display:flex;align-items:flex-start;justify-content:space-between;gap:12px;\\\"><div style=\\\"display:flex;flex-direction:column;gap:6px;min-width:0;\\\"><div style=\\\"font:700 11px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#b45309;\\\">Title</div><div style=\\\"font:700 28px/1.12 ui-sans-serif, system-ui, sans-serif;color:#1f2937;word-break:break-word;\\\">${safeTitle}</div></div><div style=\\\"display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;\\\"><span style=\\\"padding:4px 8px;border-radius:999px;background:rgba(180,83,9,0.1);color:#92400e;font-size:11px;font-weight:700;letter-spacing:0.04em;\\\">${escapeHtml(data.intent || 'headline')}</span><span style=\\\"font:600 10px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.12em;text-transform:uppercase;color:#9a3412;opacity:0.72;\\\">${escapeHtml(data.status || 'draft')}</span></div></div><div style=\\\"height:1px;background:linear-gradient(90deg, rgba(245,158,11,0.45), rgba(245,158,11,0));\\\"></div><div style=\\\"font:500 15px/1.65 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\\\">${safeSubtitle}</div></div></section>`;\n};\nconst renderNodePart = (node) => {\n  const data = node.data || {};\n  if (node.type === 'title') return renderTitlePart(data);\n  if (node.type === 'section') return renderCardPart({ title: data.title || node.label || 'Section', badge: 'Section', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Section graphic'), body: paragraphize(data.summary), anchor: data.anchor });\n  if (node.type === 'reference') return renderCardPart({ title: data.title || 'Reference', badge: 'Reference', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(124,58,237,0.14);color:#5b21b6;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #7c3aed, #8b5cf6);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Reference graphic'), body: paragraphize(data.citation), meta: data.locator ? `Locator: ${escapeHtml(data.locator)}` : '' });\n  if (node.type === 'annotation') { const meta = [data.anchorRef ? `Anchor: ${escapeHtml(data.anchorRef)}` : '', data.author ? `Author: ${escapeHtml(data.author)}` : ''].filter(Boolean).join(' • '); return renderCardPart({ title: data.title || 'Annotation', badge: 'Annotation', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(245,158,11,0.16);color:#92400e;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #d97706, #f59e0b);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Annotation graphic'), body: paragraphize(data.note), meta }); }\n  if (node.type === 'document-summary') return renderCardPart({ title: data.title || 'Summary', badge: 'Summary', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(219,39,119,0.14);color:#9d174d;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #db2777, #f472b6);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Summary graphic'), body: paragraphize(data.summary), meta: data.scope ? `Scope: ${escapeHtml(data.scope)}` : '' });\n  return '';\n};\nconst nodes = await api.getNodes();\nconst documentView = nodes.find((entry) => entry?.id === DOCUMENT_VIEW_ID);\nif (!documentView) return { success: false, error: 'Document view missing' };\nconst nodesById = new Map(nodes.map((entry) => [entry?.id, entry]));\nconst existingIds = new Set(nodes.map((entry) => entry?.id).filter(Boolean));\nconst missingOrderedIds = ORDERED_IDS.filter((id) => !existingIds.has(id));\nconst resolvedOrder = ORDERED_IDS.filter((id) => existingIds.has(id));\nconst renderedParts = resolvedOrder.map((id) => renderNodePart(nodesById.get(id))).filter(Boolean);\nconst invalidOrdering = missingOrderedIds.length > 0 || renderedParts.length !== resolvedOrder.length;\nconst documentHtml = invalidOrdering ? renderErrorCard('Document view contract error', `Document order is invalid or incomplete. Missing: ${missingOrderedIds.join(', ') || 'unknown part rendering failure'}.`) : (renderedParts.join('') || renderErrorCard('Document view contract error', 'Document content is missing. Add document parts or provide documentHtml/documentBlocks.'));\nconst nextData = { ...(documentView.data || {}), partNodeIds: resolvedOrder, documentOrder: resolvedOrder, documentHtml, summarySource: 'node-updater', updatedAt: new Date().toISOString() };\nif (!isEqual(documentView.data || {}, nextData)) await api.updateNode(DOCUMENT_VIEW_ID, { data: nextData });\nreturn { success: true, updated: resolvedOrder.length, invalidOrdering, missingOrderedIds };",
-        "_semanticLevel": "detail"
+        "_semanticLevel": "detail",
+        "key": "github-document-view-updater"
       }
     },
     {
@@ -1554,6 +1555,268 @@
         "sourceRef": "/tutorial/github-authoring-walkthrough.document.node",
         "sourceNodeId": "github-walkthrough-view"
       }
+    },
+    {
+      "id": "github-document-export-view",
+      "type": "bridge",
+      "label": "GitHub Document View Export",
+      "root": false,
+      "position": {
+        "x": 980,
+        "y": -180
+      },
+      "width": 320,
+      "height": 140,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Explicit view export for the GitHub document surface consumed from the GitHub root.",
+        "intent": "external",
+        "authority": "bridge",
+        "resourceKind": "library",
+        "grants": [],
+        "surfaceId": "",
+        "exportKind": "view",
+        "nodeViewPayload": "node.web.icon",
+        "bridge": {
+          "ref": "/github/document/root.node",
+          "resourceKind": "library",
+          "scope": "graph",
+          "role": "export",
+          "surfaceId": "",
+          "exportKind": "view",
+          "grants": [],
+          "exposure": {
+            "nodeClasses": {
+              "mode": "deny"
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "node.web.document"
+              ]
+            },
+            "scripts": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "allow"
+            }
+          }
+        },
+        "target": {
+          "mode": "bridge",
+          "ref": "/github/document/root.node",
+          "kind": "library",
+          "resourceKind": "library",
+          "scope": "graph",
+          "grants": [],
+          "label": "GitHub Document View Export",
+          "role": "export",
+          "surfaceId": "",
+          "exportKind": "view",
+          "exposure": {
+            "nodeClasses": {
+              "mode": "deny"
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "node.web.document"
+              ]
+            },
+            "scripts": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "allow"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "github-document-export-runtime",
+      "type": "bridge",
+      "label": "GitHub Document Runtime Export",
+      "root": false,
+      "position": {
+        "x": 1320,
+        "y": -180
+      },
+      "width": 320,
+      "height": 140,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Explicit runtime export for the local GitHub document updater script.",
+        "intent": "external",
+        "authority": "bridge",
+        "resourceKind": "library",
+        "grants": [],
+        "surfaceId": "",
+        "exportKind": "kit",
+        "nodeViewPayload": "node.web.icon",
+        "bridge": {
+          "ref": "/github/document/root.node",
+          "resourceKind": "library",
+          "scope": "graph",
+          "role": "export",
+          "surfaceId": "",
+          "exportKind": "kit",
+          "grants": [],
+          "exposure": {
+            "nodeClasses": {
+              "mode": "deny"
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "github-document-view-updater"
+              ]
+            },
+            "declarations": {
+              "mode": "allow"
+            }
+          }
+        },
+        "target": {
+          "mode": "bridge",
+          "ref": "/github/document/root.node",
+          "kind": "library",
+          "resourceKind": "library",
+          "scope": "graph",
+          "grants": [],
+          "label": "GitHub Document Runtime Export",
+          "role": "export",
+          "surfaceId": "",
+          "exportKind": "kit",
+          "exposure": {
+            "nodeClasses": {
+              "mode": "deny"
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "github-document-view-updater"
+              ]
+            },
+            "declarations": {
+              "mode": "allow"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "github-document-template-runtime-import",
+      "type": "bridge",
+      "label": "Template Runtime Import",
+      "root": false,
+      "position": {
+        "x": 660,
+        "y": -180
+      },
+      "width": 300,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Import the template updater script as the canonical bridge-runtime example for document graphs.",
+        "intent": "external",
+        "authority": "bridge",
+        "ref": "/library/classes/nodes/document-publishing/document-publishing-template.node",
+        "resourceKind": "library",
+        "grants": [
+          "execute"
+        ],
+        "surfaceId": "",
+        "exportKind": "kit",
+        "nodeViewPayload": "node.web.icon",
+        "bridge": {
+          "ref": "/library/classes/nodes/document-publishing/document-publishing-template.node",
+          "resourceKind": "library",
+          "scope": "focused-graph",
+          "grants": [
+            "execute"
+          ],
+          "role": "import",
+          "surfaceId": "",
+          "exportKind": "kit",
+          "exposure": {
+            "nodeClasses": {
+              "mode": "deny"
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "document-view-updater"
+              ]
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
+        },
+        "target": {
+          "mode": "bridge",
+          "ref": "/library/classes/nodes/document-publishing/document-publishing-template.node",
+          "kind": "library",
+          "resourceKind": "library",
+          "scope": "focused-graph",
+          "grants": [
+            "execute"
+          ],
+          "label": "Template Runtime Import",
+          "role": "import",
+          "surfaceId": "",
+          "exportKind": "kit",
+          "exposure": {
+            "nodeClasses": {
+              "mode": "deny"
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "document-view-updater"
+              ]
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
+        }
+      }
     }
   ],
   "edges": [
@@ -1796,6 +2059,50 @@
       "sourcePort": "root",
       "targetPort": "root",
       "label": "walkthrough",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "github-edge-title-template-runtime",
+      "type": "reference",
+      "source": "github-title",
+      "target": "github-document-template-runtime-import",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "runtime import",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "github-edge-title-export-view",
+      "type": "reference",
+      "source": "github-title",
+      "target": "github-document-export-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "exports view",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "github-edge-title-export-runtime",
+      "type": "reference",
+      "source": "github-title",
+      "target": "github-document-export-runtime",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "exports runtime",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "github-edge-updater-document",
+      "type": "reference",
+      "source": "github-document-updater",
+      "target": "github-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "updates",
       "style": {},
       "data": {}
     }
