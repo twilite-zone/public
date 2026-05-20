@@ -1,0 +1,1349 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Workflow Execution Template",
+    "description": "Canonical template graph for the workflow-execution nodeset.",
+    "created": "2026-03-24T00:00:00.000Z",
+    "modified": "2026-03-24T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "library",
+      "template",
+      "workflow-execution"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "workflow-execution-template-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -760,
+        "y": -260
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workflow-execution-template",
+          "name": "Workflow Execution Template",
+          "version": "0.1.0",
+          "description": "Canonical template graph for the workflow-execution nodeset.",
+          "createdAt": "2026-03-24T00:00:00.000Z",
+          "updatedAt": "2026-03-24T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "template",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "markdown",
+            "port",
+            "trigger",
+            "action",
+            "condition",
+            "input",
+            "output",
+            "branch"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "workflow-execution-template-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -360,
+        "y": -260
+      },
+      "width": 340,
+      "height": 200,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Legend\n- bridge cluster: local creation vocabulary for the workflow classes\n- left-to-right flow: entry, payload, work, gate, route, result"
+      }
+    },
+    {
+      "id": "workflow-execution-template-overview",
+      "type": "markdown",
+      "label": "Workflow / Execution Template",
+      "position": {
+        "x": -700,
+        "y": 40
+      },
+      "width": 500,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "color": "#1976d2",
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "data": {
+        "markdown": "# Workflow / Execution Template\n\nCanonical v1 execution loop:\n- begin at a `trigger`\n- declare an `input`\n- perform an `action`\n- evaluate a `condition`\n- route through a `branch`\n- emit an `output`\n\nThe bridge row below is the authoritative class surface for this template.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "workflow-execution-template-trigger",
+      "type": "trigger",
+      "label": "Workflow Trigger",
+      "position": {
+        "x": -100,
+        "y": 60
+      },
+      "width": 360,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "color": "linear-gradient(135deg, #a8f0d1, #1f9d73)",
+      "data": {
+        "title": "New request arrives",
+        "mode": "event",
+        "schedule": "request.created",
+        "payloadShape": "request payload",
+        "notes": "Entry event for the workflow.",
+        "definitionKey": "trigger",
+        "_classBinding": {
+          "key": "trigger",
+          "ref": "/library/classes/nodes/workflow-execution/trigger.node-class.node",
+          "identity": {
+            "graphId": "workflow-trigger-class",
+            "name": "Trigger Class",
+            "version": "0.1.0",
+            "description": "Node class for explicit workflow start conditions and entry events.",
+            "createdAt": "2026-03-24T00:00:00.000Z",
+            "updatedAt": "2026-03-24T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for explicit workflow start conditions and entry events.",
+          "description": "Node class for explicit workflow start conditions and entry events.",
+          "defaults": {
+            "label": "Trigger",
+            "size": {
+              "width": 360,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #a8f0d1, #1f9d73)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "mode": "manual",
+              "schedule": "",
+              "payloadShape": "",
+              "notes": ""
+            }
+          },
+          "nodeDef": {
+            "key": "trigger",
+            "ref": "/library/classes/nodes/workflow-execution/trigger.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Trigger",
+              "size": {
+                "width": 360,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #a8f0d1, #1f9d73)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "mode": "manual",
+                "schedule": "",
+                "payloadShape": "",
+                "notes": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "trigger",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/workflow-execution/trigger.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "trigger",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/workflow-execution/trigger.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "trigger",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/workflow-execution/trigger.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "trigger",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/workflow-execution/trigger.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "workflow-execution-template-bridge-trigger",
+          "sourceBridgeNodeId": "workflow-execution-template-bridge-trigger",
+          "sourceBridgeLabel": "Trigger",
+          "sourceRef": "/library/classes/nodes/workflow-execution/trigger.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "trigger",
+          "classRef": "/library/classes/nodes/workflow-execution/trigger.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "workflow-execution-template-input",
+      "type": "input",
+      "label": "Workflow Input",
+      "position": {
+        "x": 320,
+        "y": 60
+      },
+      "width": 340,
+      "height": 240,
+      "visible": true,
+      "showLabel": false,
+      "color": "linear-gradient(135deg, #b7e6ff, #2f80ed)",
+      "data": {
+        "title": "Request Payload",
+        "source": "trigger payload",
+        "payloadShape": "request fields",
+        "required": true,
+        "notes": "Input contract for the downstream action.",
+        "definitionKey": "input",
+        "_classBinding": {
+          "key": "input",
+          "ref": "/library/classes/nodes/workflow-execution/input.node-class.node",
+          "identity": {
+            "graphId": "workflow-input-class",
+            "name": "Input Class",
+            "version": "0.1.0",
+            "description": "Node class for inbound workflow payloads and required data surfaces.",
+            "createdAt": "2026-03-24T00:00:00.000Z",
+            "updatedAt": "2026-03-24T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for inbound workflow payloads and required data surfaces.",
+          "description": "Node class for inbound workflow payloads and required data surfaces.",
+          "defaults": {
+            "label": "Input",
+            "size": {
+              "width": 340,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #b7e6ff, #2f80ed)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "source": "",
+              "payloadShape": "",
+              "required": true,
+              "notes": ""
+            }
+          },
+          "nodeDef": {
+            "key": "input",
+            "ref": "/library/classes/nodes/workflow-execution/input.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Input",
+              "size": {
+                "width": 340,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #b7e6ff, #2f80ed)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "source": "",
+                "payloadShape": "",
+                "required": true,
+                "notes": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "input",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/workflow-execution/input.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "input",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/workflow-execution/input.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "input",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/workflow-execution/input.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "input",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/workflow-execution/input.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "workflow-execution-template-bridge-input",
+          "sourceBridgeNodeId": "workflow-execution-template-bridge-input",
+          "sourceBridgeLabel": "Input",
+          "sourceRef": "/library/classes/nodes/workflow-execution/input.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "input",
+          "classRef": "/library/classes/nodes/workflow-execution/input.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "workflow-execution-template-action",
+      "type": "action",
+      "label": "Primary Action",
+      "position": {
+        "x": 760,
+        "y": 60
+      },
+      "width": 380,
+      "height": 280,
+      "visible": true,
+      "showLabel": false,
+      "color": "linear-gradient(135deg, #ffd6a5, #f28c28)",
+      "data": {
+        "title": "Process Request",
+        "operation": "validate and enrich request",
+        "target": "runtime worker",
+        "status": "ready",
+        "notes": "Core execution step.",
+        "definitionKey": "action",
+        "_classBinding": {
+          "key": "action",
+          "ref": "/library/classes/nodes/workflow-execution/action.node-class.node",
+          "identity": {
+            "graphId": "workflow-action-class",
+            "name": "Action Class",
+            "version": "0.1.0",
+            "description": "Node class for executable workflow steps that perform work.",
+            "createdAt": "2026-03-24T00:00:00.000Z",
+            "updatedAt": "2026-03-24T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for executable workflow steps that perform work.",
+          "description": "Node class for executable workflow steps that perform work.",
+          "defaults": {
+            "label": "Action",
+            "size": {
+              "width": 380,
+              "height": 280
+            },
+            "color": "linear-gradient(135deg, #ffd6a5, #f28c28)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "operation": "",
+              "target": "",
+              "status": "idle",
+              "notes": ""
+            }
+          },
+          "nodeDef": {
+            "key": "action",
+            "ref": "/library/classes/nodes/workflow-execution/action.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Action",
+              "size": {
+                "width": 380,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #ffd6a5, #f28c28)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "operation": "",
+                "target": "",
+                "status": "idle",
+                "notes": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "action",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/workflow-execution/action.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "action",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/workflow-execution/action.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "action",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/workflow-execution/action.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "action",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/workflow-execution/action.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "workflow-execution-template-bridge-action",
+          "sourceBridgeNodeId": "workflow-execution-template-bridge-action",
+          "sourceBridgeLabel": "Action",
+          "sourceRef": "/library/classes/nodes/workflow-execution/action.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "action",
+          "classRef": "/library/classes/nodes/workflow-execution/action.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "workflow-execution-template-condition",
+      "type": "condition",
+      "label": "Ready To Continue?",
+      "position": {
+        "x": 1210,
+        "y": 60
+      },
+      "width": 360,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "color": "linear-gradient(135deg, #d6d4ff, #6c5ce7)",
+      "data": {
+        "title": "Validation Gate",
+        "expression": "request passes validation",
+        "truthPolicy": "boolean",
+        "notes": "If false, branch to failure path later.",
+        "definitionKey": "condition",
+        "_classBinding": {
+          "key": "condition",
+          "ref": "/library/classes/nodes/workflow-execution/condition.node-class.node",
+          "identity": {
+            "graphId": "workflow-condition-class",
+            "name": "Condition Class",
+            "version": "0.1.0",
+            "description": "Node class for gating logic and branch predicates in workflow graphs.",
+            "createdAt": "2026-03-24T00:00:00.000Z",
+            "updatedAt": "2026-03-24T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for gating logic and branch predicates in workflow graphs.",
+          "description": "Node class for gating logic and branch predicates in workflow graphs.",
+          "defaults": {
+            "label": "Condition",
+            "size": {
+              "width": 360,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #d6d4ff, #6c5ce7)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "expression": "",
+              "truthPolicy": "boolean",
+              "notes": ""
+            }
+          },
+          "nodeDef": {
+            "key": "condition",
+            "ref": "/library/classes/nodes/workflow-execution/condition.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Condition",
+              "size": {
+                "width": 360,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #d6d4ff, #6c5ce7)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "expression": "",
+                "truthPolicy": "boolean",
+                "notes": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "condition",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/workflow-execution/condition.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "condition",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/workflow-execution/condition.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "condition",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/workflow-execution/condition.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "condition",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/workflow-execution/condition.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "workflow-execution-template-bridge-condition",
+          "sourceBridgeNodeId": "workflow-execution-template-bridge-condition",
+          "sourceBridgeLabel": "Condition",
+          "sourceRef": "/library/classes/nodes/workflow-execution/condition.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "condition",
+          "classRef": "/library/classes/nodes/workflow-execution/condition.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "workflow-execution-template-branch",
+      "type": "branch",
+      "label": "Route Output",
+      "position": {
+        "x": 1660,
+        "y": 60
+      },
+      "width": 360,
+      "height": 250,
+      "visible": true,
+      "showLabel": false,
+      "color": "linear-gradient(135deg, #f7e9b5, #d4a017)",
+      "data": {
+        "title": "Select Route",
+        "strategy": "if-else",
+        "routes": [
+          "approved",
+          "rejected"
+        ],
+        "notes": "Explicit branch split.",
+        "definitionKey": "branch",
+        "_classBinding": {
+          "key": "branch",
+          "ref": "/library/classes/nodes/workflow-execution/branch.node-class.node",
+          "identity": {
+            "graphId": "workflow-branch-class",
+            "name": "Branch Class",
+            "version": "0.1.0",
+            "description": "Node class for explicit control-flow branching and route selection.",
+            "createdAt": "2026-03-24T00:00:00.000Z",
+            "updatedAt": "2026-03-24T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for explicit control-flow branching and route selection.",
+          "description": "Node class for explicit control-flow branching and route selection.",
+          "defaults": {
+            "label": "Branch",
+            "size": {
+              "width": 360,
+              "height": 250
+            },
+            "color": "linear-gradient(135deg, #f7e9b5, #d4a017)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "strategy": "if-else",
+              "routes": [
+                "true",
+                "false"
+              ],
+              "notes": ""
+            }
+          },
+          "nodeDef": {
+            "key": "branch",
+            "ref": "/library/classes/nodes/workflow-execution/branch.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Branch",
+              "size": {
+                "width": 360,
+                "height": 250
+              },
+              "color": "linear-gradient(135deg, #f7e9b5, #d4a017)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "strategy": "if-else",
+                "routes": [
+                  "true",
+                  "false"
+                ],
+                "notes": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "branch",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/workflow-execution/branch.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "branch",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/workflow-execution/branch.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "branch",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/workflow-execution/branch.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "branch",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/workflow-execution/branch.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "workflow-execution-template-bridge-branch",
+          "sourceBridgeNodeId": "workflow-execution-template-bridge-branch",
+          "sourceBridgeLabel": "Branch",
+          "sourceRef": "/library/classes/nodes/workflow-execution/branch.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "branch",
+          "classRef": "/library/classes/nodes/workflow-execution/branch.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "workflow-execution-template-output",
+      "type": "output",
+      "label": "Workflow Output",
+      "position": {
+        "x": 2110,
+        "y": 60
+      },
+      "width": 340,
+      "height": 240,
+      "visible": true,
+      "showLabel": false,
+      "color": "linear-gradient(135deg, #ffe3f1, #d63384)",
+      "data": {
+        "title": "Delivered Result",
+        "destination": "consumer surface",
+        "payloadShape": "response payload",
+        "status": "pending",
+        "notes": "Result emitted from the workflow.",
+        "definitionKey": "output",
+        "_classBinding": {
+          "key": "output",
+          "ref": "/library/classes/nodes/workflow-execution/output.node-class.node",
+          "identity": {
+            "graphId": "workflow-output-class",
+            "name": "Output Class",
+            "version": "0.1.0",
+            "description": "Node class for workflow outputs, result payloads, and delivery surfaces.",
+            "createdAt": "2026-03-24T00:00:00.000Z",
+            "updatedAt": "2026-03-24T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for workflow outputs, result payloads, and delivery surfaces.",
+          "description": "Node class for workflow outputs, result payloads, and delivery surfaces.",
+          "defaults": {
+            "label": "Output",
+            "size": {
+              "width": 340,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #ffe3f1, #d63384)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "destination": "",
+              "payloadShape": "",
+              "status": "pending",
+              "notes": ""
+            }
+          },
+          "nodeDef": {
+            "key": "output",
+            "ref": "/library/classes/nodes/workflow-execution/output.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Output",
+              "size": {
+                "width": 340,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #ffe3f1, #d63384)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "destination": "",
+                "payloadShape": "",
+                "status": "pending",
+                "notes": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "output",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/workflow-execution/output.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "output",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/workflow-execution/output.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "output",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/workflow-execution/output.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "output",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/workflow-execution/output.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "workflow-execution-template-bridge-output",
+          "sourceBridgeNodeId": "workflow-execution-template-bridge-output",
+          "sourceBridgeLabel": "Output",
+          "sourceRef": "/library/classes/nodes/workflow-execution/output.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "output",
+          "classRef": "/library/classes/nodes/workflow-execution/output.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "workflow-execution-template-back",
+      "type": "port",
+      "label": "Workflow Execution Library",
+      "position": {
+        "x": 60,
+        "y": 560
+      },
+      "width": 320,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Open the workflow-execution library root.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/workflow-execution/root.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Open"
+        }
+      }
+    },
+    {
+      "id": "workflow-execution-template-runtime-note",
+      "type": "markdown",
+      "label": "Runtime Note",
+      "position": {
+        "x": 1200,
+        "y": 420
+      },
+      "width": 520,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Runtime Note\n\nThis template is intentionally close to execution semantics. The nodeset only pays off if the runtime can expose:\n- active/complete/failed step status\n- visible branch outcomes\n- input/output payload surfaces\n- replay and inspection",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "workflow-execution-template-bridge-trigger",
+      "type": "port",
+      "label": "Trigger",
+      "position": {
+        "x": -700,
+        "y": 420
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Trigger.",
+        "target": {
+          "endpoint": "/library/classes/nodes/workflow-execution/trigger.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "trigger",
+          "ref": "/library/classes/nodes/workflow-execution/trigger.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "workflow-execution-template-bridge-input",
+      "type": "port",
+      "label": "Input",
+      "position": {
+        "x": -360,
+        "y": 420
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Input.",
+        "target": {
+          "endpoint": "/library/classes/nodes/workflow-execution/input.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "input",
+          "ref": "/library/classes/nodes/workflow-execution/input.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "workflow-execution-template-bridge-action",
+      "type": "port",
+      "label": "Action",
+      "position": {
+        "x": -20,
+        "y": 420
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Action.",
+        "target": {
+          "endpoint": "/library/classes/nodes/workflow-execution/action.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "action",
+          "ref": "/library/classes/nodes/workflow-execution/action.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "workflow-execution-template-bridge-condition",
+      "type": "port",
+      "label": "Condition",
+      "position": {
+        "x": 320,
+        "y": 420
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Condition.",
+        "target": {
+          "endpoint": "/library/classes/nodes/workflow-execution/condition.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "condition",
+          "ref": "/library/classes/nodes/workflow-execution/condition.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "workflow-execution-template-bridge-branch",
+      "type": "port",
+      "label": "Branch",
+      "position": {
+        "x": 660,
+        "y": 420
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Branch.",
+        "target": {
+          "endpoint": "/library/classes/nodes/workflow-execution/branch.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "branch",
+          "ref": "/library/classes/nodes/workflow-execution/branch.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "workflow-execution-template-bridge-output",
+      "type": "port",
+      "label": "Output",
+      "position": {
+        "x": 1000,
+        "y": 420
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Output.",
+        "target": {
+          "endpoint": "/library/classes/nodes/workflow-execution/output.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "output",
+          "ref": "/library/classes/nodes/workflow-execution/output.node-class.node"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "workflow-execution-template-edge-1",
+      "type": "reference",
+      "source": "workflow-execution-template-overview",
+      "target": "workflow-execution-template-trigger",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "entry"
+    },
+    {
+      "id": "workflow-execution-template-edge-2",
+      "type": "reference",
+      "source": "workflow-execution-template-trigger",
+      "target": "workflow-execution-template-input",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "payload"
+    },
+    {
+      "id": "workflow-execution-template-edge-3",
+      "type": "reference",
+      "source": "workflow-execution-template-input",
+      "target": "workflow-execution-template-action",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "feeds"
+    },
+    {
+      "id": "workflow-execution-template-edge-4",
+      "type": "reference",
+      "source": "workflow-execution-template-action",
+      "target": "workflow-execution-template-condition",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "checks"
+    },
+    {
+      "id": "workflow-execution-template-edge-5",
+      "type": "reference",
+      "source": "workflow-execution-template-condition",
+      "target": "workflow-execution-template-branch",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "routes"
+    },
+    {
+      "id": "workflow-execution-template-edge-6",
+      "type": "reference",
+      "source": "workflow-execution-template-branch",
+      "target": "workflow-execution-template-output",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "emits"
+    },
+    {
+      "id": "workflow-execution-template-edge-7",
+      "type": "reference",
+      "source": "workflow-execution-template-overview",
+      "target": "workflow-execution-template-runtime-note",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "runtime"
+    },
+    {
+      "id": "workflow-execution-template-edge-8",
+      "type": "reference",
+      "source": "workflow-execution-template-overview",
+      "target": "workflow-execution-template-back",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "library"
+    },
+    {
+      "id": "workflow-execution-template-edge-b1",
+      "type": "reference",
+      "source": "workflow-execution-template-overview",
+      "target": "workflow-execution-template-bridge-trigger",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge"
+    },
+    {
+      "id": "workflow-execution-template-edge-b2",
+      "type": "reference",
+      "source": "workflow-execution-template-bridge-trigger",
+      "target": "workflow-execution-template-bridge-input",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge"
+    },
+    {
+      "id": "workflow-execution-template-edge-b3",
+      "type": "reference",
+      "source": "workflow-execution-template-bridge-input",
+      "target": "workflow-execution-template-bridge-action",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge"
+    },
+    {
+      "id": "workflow-execution-template-edge-b4",
+      "type": "reference",
+      "source": "workflow-execution-template-bridge-action",
+      "target": "workflow-execution-template-bridge-condition",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge"
+    },
+    {
+      "id": "workflow-execution-template-edge-b5",
+      "type": "reference",
+      "source": "workflow-execution-template-bridge-condition",
+      "target": "workflow-execution-template-bridge-branch",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge"
+    },
+    {
+      "id": "workflow-execution-template-edge-b6",
+      "type": "reference",
+      "source": "workflow-execution-template-bridge-branch",
+      "target": "workflow-execution-template-bridge-output",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge"
+    }
+  ],
+  "clusters": [],
+  "nodeCount": 17,
+  "edgeCount": 14,
+  "timestamp": "2026-03-24T15:52:24.887Z"
+}

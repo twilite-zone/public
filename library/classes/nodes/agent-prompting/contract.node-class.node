@@ -1,0 +1,468 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Contract Class",
+    "description": "Node class for explicit execution bounds and required outputs.",
+    "created": "2026-03-23T00:00:00.000Z",
+    "modified": "2026-03-24T01:10:00.000Z",
+    "author": "",
+    "tags": [
+      "library",
+      "node-class",
+      "agent-prompting"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "contract-class-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -760,
+        "y": -300
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "contract-class",
+          "name": "Contract Class",
+          "version": "0.1.0",
+          "description": "Node class for explicit execution bounds and required outputs.",
+          "createdAt": "2026-03-23T00:00:00.000Z",
+          "updatedAt": "2026-03-24T01:10:00.000Z"
+        },
+        "intent": {
+          "kind": "node-class",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "view",
+            "markdown"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "nodeClass": {
+          "contractVersion": "1.0.0",
+          "key": "contract",
+          "nodeDef": {
+            "key": "contract",
+            "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Contract",
+              "size": {
+                "width": 360,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #f7ddc6, #bb7332)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "allowedActions": "",
+                "safetyLimits": "",
+                "requiredOutputs": "",
+                "escalationRule": "",
+                "approvalRequirement": "",
+                "terminationCondition": "",
+                "status": "active"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "contract-class-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -360,
+        "y": -300
+      },
+      "width": 320,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Legend\n- class views and notes"
+      }
+    },
+    {
+      "id": "contract-editor-view",
+      "type": "view",
+      "label": "Editor View (editor.web)",
+      "position": {
+        "x": -760,
+        "y": 20
+      },
+      "width": 380,
+      "height": 230,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "editor",
+          "payload": "editor.web"
+        },
+        "editor": {
+          "web": {
+            "fields": [
+              {
+                "key": "label",
+                "label": "Label",
+                "type": "text",
+                "path": "label",
+                "placeholder": "Contract"
+              },
+              {
+                "key": "title",
+                "label": "Title",
+                "type": "text",
+                "path": "data.title",
+                "placeholder": "Human-facing contract title"
+              },
+              {
+                "key": "allowedActions",
+                "label": "Allowed Actions",
+                "type": "markdown",
+                "path": "data.allowedActions",
+                "placeholder": "What is allowed?",
+                "multiline": true,
+                "rows": 6
+              },
+              {
+                "key": "safetyLimits",
+                "label": "Safety Limits",
+                "type": "markdown",
+                "path": "data.safetyLimits",
+                "placeholder": "What is not allowed?",
+                "multiline": true,
+                "rows": 5
+              },
+              {
+                "key": "requiredOutputs",
+                "label": "Required Outputs",
+                "type": "markdown",
+                "path": "data.requiredOutputs",
+                "placeholder": "What must be produced?",
+                "multiline": true,
+                "rows": 5
+              },
+              {
+                "key": "escalationRule",
+                "label": "Escalation Rule",
+                "type": "text",
+                "path": "data.escalationRule",
+                "placeholder": "when to escalate"
+              },
+              {
+                "key": "approvalRequirement",
+                "label": "Approval Requirement",
+                "type": "text",
+                "path": "data.approvalRequirement",
+                "placeholder": "who must approve?"
+              },
+              {
+                "key": "terminationCondition",
+                "label": "Termination Condition",
+                "type": "text",
+                "path": "data.terminationCondition",
+                "placeholder": "when the contract stops applying"
+              },
+              {
+                "key": "status",
+                "label": "Status",
+                "type": "select",
+                "path": "data.status",
+                "options": [
+                  {
+                    "label": "Active",
+                    "value": "active"
+                  },
+                  {
+                    "label": "Draft",
+                    "value": "draft"
+                  },
+                  {
+                    "label": "Superseded",
+                    "value": "superseded"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "contract-detail-view",
+      "type": "view",
+      "label": "Node View (node.web.detail)",
+      "position": {
+        "x": -340,
+        "y": 20
+      },
+      "width": 380,
+      "height": 230,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail",
+          "html": {
+            "chrome": true
+          }
+        },
+        "node": {
+          "web": {
+            "detail": {
+              "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;box-sizing:border-box;padding:0;overflow:hidden;border-radius:18px;background:linear-gradient(180deg, rgba(255,248,242,.98), rgba(251,238,226,.96));color:#331f10;position:relative;'>\n  <div style='display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:linear-gradient(135deg, #f7ddc6, #bb7332);color:#28160a;border-bottom:1px solid rgba(0,0,0,.08);'>\n    <div style='display:flex;align-items:center;gap:10px;min-width:0;'>\n      <div style='width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.32);border:1px solid rgba(0,0,0,.10);font:800 14px system-ui,sans-serif;flex:0 0 auto;'>C</div>\n      <div style='min-width:0;'>\n        <div style='font:700 10px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:.75;margin-bottom:2px;'>Contract</div>\n        <div style='font:800 18px/1.02 Georgia, \"Times New Roman\", serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'>{{label}}</div>\n        <div style='font:600 11px/1.2 system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.82;margin-top:4px;'>{{data.title}}</div>\n      </div>\n    </div>\n    <div style='display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.4);border:1px solid rgba(0,0,0,.08);font:700 10px system-ui,sans-serif;text-transform:uppercase;white-space:nowrap;'>{{data.status}}</div>\n  </div>\n  <div style='display:flex;flex-direction:column;gap:12px;padding:14px 16px;min-height:0;flex:1;'>\n    <div style='padding:12px 13px 11px 13px;border-radius:14px;background:rgba(255,255,255,.76);border:1px solid rgba(0,0,0,.06);'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.66;margin-bottom:6px;'>Allowed Actions</div>\n      <div style='font:500 14px/1.42 system-ui,sans-serif;max-height:4.8em;overflow:hidden;white-space:pre-wrap;'>{{data.allowedActions}}</div>\n    </div>\n    <div style='padding:12px 13px 11px 13px;border-radius:14px;background:rgba(255,255,255,.76);border:1px solid rgba(0,0,0,.06);'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.66;margin-bottom:6px;'>Safety Limits</div>\n      <div style='font:500 14px/1.42 system-ui,sans-serif;max-height:4.8em;overflow:hidden;white-space:pre-wrap;'>{{data.safetyLimits}}</div>\n    </div>\n  </div>\n</div>"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "contract-summary-view",
+      "type": "view",
+      "label": "Summary View (node.web.summary)",
+      "position": {
+        "x": 80,
+        "y": 20
+      },
+      "width": 340,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary",
+          "html": {
+            "chrome": true
+          }
+        },
+        "node": {
+          "web": {
+            "summary": {
+              "html": "<div style='width:100%;height:100%;display:flex;align-items:center;gap:10px;box-sizing:border-box;padding:8px 12px;border-radius:999px;background:linear-gradient(180deg, rgba(255,248,242,.98), rgba(251,238,226,.96));color:#331f10;border:1px solid rgba(0,0,0,.08);position:relative;overflow:hidden;'>\n  <div style='position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg, #f7ddc6, #bb7332);'></div>\n  <div style='width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(187,115,50,.12);color:#bb7332;font:800 13px system-ui,sans-serif;flex:0 0 auto;margin-left:4px;'>C</div>\n  <div style='min-width:0;display:flex;flex-direction:column;gap:2px;flex:1;'>\n    <div style='font:800 14px/1.05 Georgia, \"Times New Roman\", serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'>{{label}}</div>\n    <div style='font:600 10px/1.15 system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.78;'>{{data.title}}</div>\n    <div style='display:flex;gap:6px;align-items:center;font:700 10px system-ui,sans-serif;text-transform:uppercase;opacity:.74;white-space:nowrap;overflow:hidden;'>\n      <span>{{data.status}}</span><span>•</span><span>{{data.approvalRequirement}}</span>\n    </div>\n  </div>\n</div>"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "contract-icon-view",
+      "type": "view",
+      "label": "Icon View (node.web.icon)",
+      "position": {
+        "x": 460,
+        "y": 20
+      },
+      "width": 300,
+      "height": 160,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon",
+          "html": {
+            "chrome": true
+          }
+        },
+        "node": {
+          "web": {
+            "icon": {
+              "html": "<div style='width:100%;height:100%;display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:6px;'>\n  <div style='width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(187,115,50,.12);border:2px solid #bb7332;color:#bb7332;font:900 16px system-ui,sans-serif;'>C</div>\n</div>"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "contract-legacy-view",
+      "type": "view",
+      "label": "Legacy Node View (node.web)",
+      "position": {
+        "x": 800,
+        "y": 20
+      },
+      "width": 340,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web",
+          "html": {
+            "chrome": true
+          }
+        },
+        "node": {
+          "web": {
+            "html": {
+              "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;box-sizing:border-box;padding:0;overflow:hidden;border-radius:18px;background:linear-gradient(180deg, rgba(255,248,242,.98), rgba(251,238,226,.96));color:#331f10;position:relative;'>\n  <div style='display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:linear-gradient(135deg, #f7ddc6, #bb7332);color:#28160a;border-bottom:1px solid rgba(0,0,0,.08);'>\n    <div style='display:flex;align-items:center;gap:10px;min-width:0;'>\n      <div style='width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.32);border:1px solid rgba(0,0,0,.10);font:800 14px system-ui,sans-serif;flex:0 0 auto;'>C</div>\n      <div style='min-width:0;'>\n        <div style='font:700 10px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:.75;margin-bottom:2px;'>Contract</div>\n        <div style='font:800 18px/1.02 Georgia, \"Times New Roman\", serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'>{{label}}</div>\n        <div style='font:600 11px/1.2 system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.82;margin-top:4px;'>{{data.title}}</div>\n      </div>\n    </div>\n    <div style='display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.4);border:1px solid rgba(0,0,0,.08);font:700 10px system-ui,sans-serif;text-transform:uppercase;white-space:nowrap;'>{{data.status}}</div>\n  </div>\n  <div style='display:flex;flex-direction:column;gap:12px;padding:14px 16px;min-height:0;flex:1;'>\n    <div style='padding:12px 13px 11px 13px;border-radius:14px;background:rgba(255,255,255,.76);border:1px solid rgba(0,0,0,.06);'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.66;margin-bottom:6px;'>Allowed Actions</div>\n      <div style='font:500 14px/1.42 system-ui,sans-serif;max-height:4.8em;overflow:hidden;white-space:pre-wrap;'>{{data.allowedActions}}</div>\n    </div>\n  </div>\n</div>"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "contract-notes",
+      "type": "markdown",
+      "label": "Definition Notes",
+      "position": {
+        "x": -760,
+        "y": 300
+      },
+      "width": 760,
+      "height": 220,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "color": "#455a64",
+      "data": {
+        "markdown": "Contract makes execution bounds explicit. It should state what may happen, what must be produced, and when escalation is required.",
+        "isRoot": true,
+        "root": true,
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    }
+  ],
+  "edges": [],
+  "clusters": [],
+  "nodeCount": 8,
+  "edgeCount": 0,
+  "timestamp": "2026-03-24T15:44:08.369Z"
+}

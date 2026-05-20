@@ -1,0 +1,242 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "type-definition-root-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -760,
+        "y": -260
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "type-definition-root",
+          "name": "Type Definition Library",
+          "version": "0.1.0",
+          "description": "Bridge-first package root for legend-facing type definitions.",
+          "createdAt": "2026-03-26T21:30:00.000Z",
+          "updatedAt": "2026-03-26T21:30:00.000Z"
+        },
+        "intent": {
+          "kind": "graph",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "markdown",
+            "port"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "type-definition-root-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -760,
+        "y": 0
+      },
+      "width": 320,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {}
+    },
+    {
+      "id": "type-definition-root-overview",
+      "type": "markdown",
+      "label": "Type Definition Library",
+      "position": {
+        "x": -120,
+        "y": -180
+      },
+      "width": 560,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Type Definition Library\n\nA type definition declares what the legend should show and what consumers should trust.\n\nCommitted v1 fields:\n- `name`\n- `key`\n- `classRef`\n- `meaning`\n- `description`\n- `category`\n- `status`\n\nOpen the template to author one, or bridge the class directly when you need a reusable declared type node."
+      }
+    },
+    {
+      "id": "type-definition-root-template-port",
+      "type": "port",
+      "label": "Open Template",
+      "position": {
+        "x": 520,
+        "y": -200
+      },
+      "width": 300,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Open the reusable Type Definition template.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/type-definition/type-definition-template.node:root",
+          "mode": "navigate",
+          "label": "Open"
+        }
+      }
+    },
+    {
+      "id": "type-definition-root-contract-port",
+      "type": "port",
+      "label": "Official Contract",
+      "position": {
+        "x": 860,
+        "y": -200
+      },
+      "width": 300,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Open the official Type Definition contract graph.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/documentation/contracts/types/type-definition-contract.node:root",
+          "mode": "navigate",
+          "label": "Open"
+        }
+      }
+    },
+    {
+      "id": "type-definition-root-skill-port",
+      "type": "port",
+      "label": "Integrity Skill",
+      "position": {
+        "x": 1200,
+        "y": -200
+      },
+      "width": 300,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Validation skill contract for Type Definition graphs.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/documentation/contracts/skills/validation/skill-type_definition_integrity.node:root",
+          "mode": "navigate",
+          "label": "Open"
+        }
+      }
+    },
+    {
+      "id": "type-definition-root-type-port",
+      "type": "port",
+      "label": "Type Definition",
+      "position": {
+        "x": 520,
+        "y": 20
+      },
+      "width": 320,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Type Definition.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/type-definition/type-definition.node-class.node:root",
+          "mode": "bridge",
+          "label": "Bridge",
+          "kind": "node-class",
+          "ref": "/library/classes/nodes/type-definition/type-definition.node-class.node",
+          "key": "type-definition"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "type-definition-root-edge-template",
+      "type": "reference",
+      "source": "type-definition-root-overview",
+      "target": "type-definition-root-template-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "template"
+    },
+    {
+      "id": "type-definition-root-edge-contract",
+      "type": "reference",
+      "source": "type-definition-root-overview",
+      "target": "type-definition-root-contract-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "contract"
+    },
+    {
+      "id": "type-definition-root-edge-skill",
+      "type": "reference",
+      "source": "type-definition-root-overview",
+      "target": "type-definition-root-skill-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "skill"
+    },
+    {
+      "id": "type-definition-root-edge-type",
+      "type": "reference",
+      "source": "type-definition-root-overview",
+      "target": "type-definition-root-type-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge"
+    }
+  ],
+  "timestamp": "2026-03-26T21:30:00.000Z",
+  "nodeCount": 7,
+  "edgeCount": 4
+}

@@ -1,0 +1,274 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "bridge-class-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -760,
+        "y": -260
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 340,
+      "height": 220,
+      "data": {
+        "identity": {
+          "graphId": "bridge-node-class",
+          "name": "Bridge Node Class",
+          "version": "0.1.0",
+          "description": "Editor-facing plumbing primitive for exposing class authority and focused-graph grants.",
+          "createdAt": "2026-04-17T12:30:00.000Z",
+          "updatedAt": "2026-04-17T12:30:00.000Z"
+        },
+        "intent": {
+          "kind": "node-class",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "view",
+            "markdown",
+            "bridge"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "nodeClass": {
+          "contractVersion": "1.0.0",
+          "key": "bridge",
+          "nodeDef": {
+            "key": "bridge",
+            "ref": "/library/classes/nodes/bridge.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Bridge",
+              "size": {
+                "width": 260,
+                "height": 120
+              },
+              "color": "linear-gradient(135deg, #ecfeff, #cffafe)",
+              "showLabel": true,
+              "data": {
+                "memo": "Visible bridge for focused-graph authority.",
+                "intent": "external",
+                "authority": "bridge",
+                "resourceKind": "node-class",
+                "scope": "focused-graph",
+                "grants": [],
+                "role": "import",
+                "exposure": {
+                  "nodeClasses": { "mode": "deny" },
+                  "edgeClasses": { "mode": "deny" },
+                  "views": { "mode": "deny" },
+                  "scripts": { "mode": "deny" },
+                  "declarations": { "mode": "deny" }
+                },
+                "bridge": {
+                  "ref": "",
+                  "resourceKind": "node-class",
+                  "scope": "focused-graph",
+                  "role": "import",
+                  "surfaceId": "",
+                  "grants": [],
+                  "exposure": {
+                    "nodeClasses": { "mode": "deny" },
+                    "edgeClasses": { "mode": "deny" },
+                    "views": { "mode": "deny" },
+                    "scripts": { "mode": "deny" },
+                    "declarations": { "mode": "deny" }
+                  }
+                },
+                "target": {
+                  "mode": "bridge",
+                  "ref": "",
+                  "kind": "node-class",
+                  "resourceKind": "node-class",
+                  "scope": "focused-graph",
+                  "role": "import",
+                  "surfaceId": "",
+                  "grants": [],
+                  "exposure": {
+                    "nodeClasses": { "mode": "deny" },
+                    "edgeClasses": { "mode": "deny" },
+                    "views": { "mode": "deny" },
+                    "scripts": { "mode": "deny" },
+                    "declarations": { "mode": "deny" }
+                  },
+                  "label": "Bridge"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bridge-class-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -760,
+        "y": 0
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 320,
+      "height": 180,
+      "data": {}
+    },
+    {
+      "id": "bridge-editor-view",
+      "type": "view",
+      "label": "Bridge Editor",
+      "position": {
+        "x": -120,
+        "y": -180
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 560,
+      "height": 420,
+      "data": {
+        "key": "editor.web",
+        "intent": "editor",
+        "payload": "editor.web",
+        "editor": {
+          "web": {
+            "host": { "kind": "bridge-editor" },
+            "fields": [
+              { "key": "label", "label": "Label", "path": "label", "type": "text", "placeholder": "Bridge" },
+              { "key": "memo", "label": "Bridge Note", "path": "data.memo", "type": "multiline", "rows": 5, "placeholder": "Describe why this bridge exists and what it should expose." },
+              { "key": "surfaceId", "label": "Target Surface", "path": "data.bridge.surfaceId", "type": "select", "optionsSource": "bridgeTargetSurfaces", "helperText": "Choose which declaration surface this bridge should design against. Leave empty to use the target default." },
+
+              { "key": "exposeViews", "label": "Views Exposure", "path": "data.bridge.exposure.views.mode", "type": "checkbox", "trueValue": "allow", "falseValue": "deny" },
+              { "key": "viewsMode", "label": "Views Policy", "path": "data.bridge.exposure.views.mode", "type": "select", "options": ["allow", "deny", "allowlist", "denylist"] },
+              { "key": "viewsAllowKeys", "label": "Views List", "path": "data.bridge.exposure.views.allowKeys", "type": "multiselect", "optionsSource": "bridgeCandidateViews" },
+
+              { "key": "exposeNodeClasses", "label": "Node Classes Exposure", "path": "data.bridge.exposure.nodeClasses.mode", "type": "checkbox", "trueValue": "allow", "falseValue": "deny" },
+              { "key": "nodesMode", "label": "Node Classes Policy", "path": "data.bridge.exposure.nodeClasses.mode", "type": "select", "options": ["allow", "deny", "allowlist", "denylist"] },
+              { "key": "nodesAllowKeys", "label": "Node Class Keys", "path": "data.bridge.exposure.nodeClasses.allowKeys", "type": "multiline", "rows": 3, "placeholder": "markdown\nbridge" },
+
+              { "key": "exposeEdgeClasses", "label": "Edge Classes Exposure", "path": "data.bridge.exposure.edgeClasses.mode", "type": "checkbox", "trueValue": "allow", "falseValue": "deny" },
+              { "key": "edgesMode", "label": "Edge Classes Policy", "path": "data.bridge.exposure.edgeClasses.mode", "type": "select", "options": ["allow", "deny", "allowlist", "denylist"] },
+              { "key": "edgesAllowKeys", "label": "Edge Class Keys", "path": "data.bridge.exposure.edgeClasses.allowKeys", "type": "multiline", "rows": 3, "placeholder": "task.depends-on\nplanning.answers" },
+
+              { "key": "exposeScripts", "label": "Scripts Exposure", "path": "data.bridge.exposure.scripts.mode", "type": "checkbox", "trueValue": "allow", "falseValue": "deny" },
+              { "key": "scriptsMode", "label": "Scripts Policy", "path": "data.bridge.exposure.scripts.mode", "type": "select", "options": ["allow", "deny", "allowlist", "denylist"] },
+              { "key": "scriptsAllowKeys", "label": "Script Keys", "path": "data.bridge.exposure.scripts.allowKeys", "type": "multiline", "rows": 3, "placeholder": "layout.autoLayout" },
+
+              { "key": "exposeDeclarations", "label": "Declarations Exposure", "path": "data.bridge.exposure.declarations.mode", "type": "checkbox", "trueValue": "allow", "falseValue": "deny" },
+              { "key": "declarationsMode", "label": "Declarations Policy", "path": "data.bridge.exposure.declarations.mode", "type": "select", "options": ["allow", "deny", "allowlist", "denylist"] },
+              { "key": "declarationsAllowKeys", "label": "Declaration Keys", "path": "data.bridge.exposure.declarations.allowKeys", "type": "multiline", "rows": 3, "placeholder": "declaration" },
+
+              { "key": "scope", "label": "Bridge Scope", "path": "data.bridge.scope", "type": "select", "options": ["focused-graph", "global-graph"] }
+            ]
+          }
+        },
+        "semanticLevel": "detail"
+      }
+    },
+    {
+      "id": "bridge-summary-view",
+      "type": "view",
+      "label": "Bridge Summary",
+      "position": {
+        "x": 520,
+        "y": -180
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 420,
+      "height": 240,
+      "data": {
+        "key": "node.web.summary",
+        "intent": "node",
+        "payload": "node.web.summary",
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;border-radius:16px;background:white;border:1px solid rgba(8,145,178,0.14);\"><div style=\"font:700 18px/1.25 ui-sans-serif, system-ui, sans-serif;color:#164e63;\">{{label || 'Bridge'}}</div><div style=\"font:700 13px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace;color:#0f766e;\">{{data.bridge.resourceKind || 'resource'}} | {{data.bridge.scope || 'scope'}}</div><div style=\"font:500 13px/1.45 ui-sans-serif, system-ui, sans-serif;color:#475569;\">{{data.memo || 'Expose focused-graph authority and create-time affordances.'}}</div></div>",
+        "semanticLevel": "summary"
+      }
+    },
+    {
+      "id": "bridge-icon-view",
+      "type": "view",
+      "label": "Bridge Icon",
+      "position": {
+        "x": 1000,
+        "y": -180
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 280,
+      "height": 180,
+      "data": {
+        "key": "node.web.icon",
+        "intent": "node",
+        "payload": "node.web.icon",
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px;box-sizing:border-box;border-radius:16px;background:white;border:1px solid rgba(8,145,178,0.14);text-align:center;\"><div style=\"font:700 14px/1.2 ui-sans-serif, system-ui, sans-serif;color:#164e63;\">Bridge</div><div style=\"font:700 12px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace;color:#0f766e;\">{{data.bridge.resourceKind || 'resource'}}</div></div>",
+        "semanticLevel": "icon"
+      }
+    },
+    {
+      "id": "bridge-notes",
+      "type": "markdown",
+      "label": "Notes",
+      "position": {
+        "x": 520,
+        "y": 160
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 560,
+      "height": 220,
+      "data": {
+        "markdown": "## Bridge\n\nA bridge is an editor-facing capability object. Use the Properties panel for shallow operational control: target, kind, role, grants, and current exposure result. Use the editor drawer for deeper bridge design: target surface selection, exposure policy, key allowlists, scope, and explanatory notes.\n\nBridges should usually stay hidden in browser mode."
+      }
+    }
+  ],
+  "edges": [],
+  "timestamp": "2026-04-17T12:30:00.000Z",
+  "nodeCount": 6,
+  "edgeCount": 0
+}

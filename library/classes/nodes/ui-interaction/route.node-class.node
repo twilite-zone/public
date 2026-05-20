@@ -1,0 +1,335 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "route-class-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -760,
+        "y": -260
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 340,
+      "height": 220,
+      "data": {
+        "identity": {
+          "graphId": "route-node-class",
+          "name": "Route Node Class",
+          "version": "0.1.0",
+          "description": "A navigable path or route that lands on a particular view.",
+          "createdAt": "2026-03-24T00:00:00.000Z",
+          "updatedAt": "2026-03-24T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "node-class",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "view",
+            "markdown"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "nodeClass": {
+          "contractVersion": "1.0.0",
+          "key": "route",
+          "nodeDef": {
+            "key": "route",
+            "ref": "/library/classes/nodes/ui-interaction/route.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Route",
+              "size": {
+                "width": 380,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #fce7f3, #f472b6)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "path": "",
+                "transition": "",
+                "status": "draft"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "route-class-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -760,
+        "y": 0
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 320,
+      "height": 180,
+      "data": {}
+    },
+    {
+      "id": "route-editor-view",
+      "type": "view",
+      "label": "Route Editor",
+      "position": {
+        "x": -120,
+        "y": -160
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 520,
+      "height": 340,
+      "data": {
+        "key": "editor.web",
+        "intent": "editor",
+        "payload": "editor.web",
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;gap:12px;padding:16px;box-sizing:border-box;background:#f8fafc;overflow:auto;\"><label style=\"display:flex;flex-direction:column;gap:6px;font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\"><span>Title</span><input data-bind=\"data.title\" value=\"{{data.title}}\" placeholder=\"Enter title\" style=\"border:1px solid rgba(15,23,42,0.14);border-radius:10px;padding:10px 12px;font:500 13px/1.4 ui-sans-serif, system-ui, sans-serif;color:#111827;background:white;\" /></label><label style=\"display:flex;flex-direction:column;gap:6px;font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\"><span>Path</span><input data-bind=\"data.path\" value=\"{{data.path}}\" placeholder=\"/settings\" style=\"border:1px solid rgba(15,23,42,0.14);border-radius:10px;padding:10px 12px;font:500 13px/1.4 ui-sans-serif, system-ui, sans-serif;color:#111827;background:white;\" /></label><label style=\"display:flex;flex-direction:column;gap:6px;font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\"><span>Transition</span><input data-bind=\"data.transition\" value=\"{{data.transition}}\" placeholder=\"push | modal | replace\" style=\"border:1px solid rgba(15,23,42,0.14);border-radius:10px;padding:10px 12px;font:500 13px/1.4 ui-sans-serif, system-ui, sans-serif;color:#111827;background:white;\" /></label><label style=\"display:flex;flex-direction:column;gap:6px;font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#4b5563;flex:1;min-height:180px;\"><span>Body</span><textarea data-bind=\"data.path\" style=\"flex:1;min-height:180px;border:1px solid rgba(15,23,42,0.14);border-radius:12px;padding:12px;font:500 13px/1.5 ui-sans-serif, system-ui, sans-serif;color:#111827;background:white;resize:vertical;\">{{data.path}}</textarea></label></div>",
+        "semanticLevel": "detail"
+      }
+    },
+    {
+      "id": "route-detail-view",
+      "type": "view",
+      "label": "Route Detail",
+      "position": {
+        "x": 480,
+        "y": -160
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 520,
+      "height": 320,
+      "data": {
+        "key": "node.web.detail",
+        "intent": "node",
+        "payload": "node.web.detail",
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;box-sizing:border-box;padding:18px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.94));border:1px solid rgba(15,23,42,0.12);overflow:hidden;gap:12px;\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div style=\"font:700 22px/1.2 ui-sans-serif, system-ui, sans-serif;color:#111827;\">{{data.title}}</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(219,39,119,0.14);color:#9d174d;font-size:11px;font-weight:600;\">Route</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #db2777, #f472b6);opacity:0.9;\"></div><div style=\"font:500 14px/1.5 ui-sans-serif, system-ui, sans-serif;color:#374151;white-space:pre-wrap;overflow:auto;\">{{data.path}}</div></div>",
+        "semanticLevel": "detail"
+      }
+    },
+    {
+      "id": "route-summary-view",
+      "type": "view",
+      "label": "Route Summary",
+      "position": {
+        "x": 1080,
+        "y": -160
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 420,
+      "height": 240,
+      "data": {
+        "key": "node.web.summary",
+        "intent": "node",
+        "payload": "node.web.summary",
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;border-radius:16px;background:white;border:1px solid rgba(15,23,42,0.12);\"><div style=\"font:700 18px/1.25 ui-sans-serif, system-ui, sans-serif;color:#111827;\">{{data.title}}</div><div style=\"font:500 13px/1.45 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\">{{data.path}}</div></div>",
+        "semanticLevel": "summary"
+      }
+    },
+    {
+      "id": "route-icon-view",
+      "type": "view",
+      "label": "Route Icon",
+      "position": {
+        "x": 1560,
+        "y": -160
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 260,
+      "height": 180,
+      "data": {
+        "key": "node.web.icon",
+        "intent": "node",
+        "payload": "node.web.icon",
+        "html": "<div style=\"width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:16px;background:white;border:1px solid rgba(15,23,42,0.12);font:700 16px/1.2 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Route</div>",
+        "semanticLevel": "icon"
+      }
+    },
+    {
+      "id": "route-notes",
+      "type": "markdown",
+      "label": "Notes",
+      "position": {
+        "x": 480,
+        "y": 240
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 520,
+      "height": 220,
+      "data": {
+        "markdown": "## Route\n\nCaptures navigation semantics without forcing UI graphs into a full router implementation.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "route-edge-editor-detail",
+      "type": "reference",
+      "source": "route-editor-view",
+      "target": "route-detail-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "view",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "route-edge-detail-summary",
+      "type": "reference",
+      "source": "route-detail-view",
+      "target": "route-summary-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "summary",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "route-edge-summary-icon",
+      "type": "reference",
+      "source": "route-summary-view",
+      "target": "route-icon-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "icon",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "route-edge-detail-notes",
+      "type": "reference",
+      "source": "route-detail-view",
+      "target": "route-notes",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "notes",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "nodeCount": 7,
+  "edgeCount": 4,
+  "timestamp": "2026-03-24T15:44:10.282Z"
+}

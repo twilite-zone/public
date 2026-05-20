@@ -1,0 +1,366 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "title-class-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -760,
+        "y": -260
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 340,
+      "height": 220,
+      "data": {
+        "identity": {
+          "graphId": "title-node-class",
+          "name": "Title Node Class",
+          "version": "0.1.0",
+          "description": "Template heading or major framing node for reusable graph structures.",
+          "createdAt": "2026-03-26T02:30:00.000Z",
+          "updatedAt": "2026-03-26T02:30:00.000Z"
+        },
+        "intent": {
+          "kind": "node-class",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "view",
+            "markdown"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "nodeClass": {
+          "contractVersion": "1.0.0",
+          "key": "title",
+          "nodeDef": {
+            "key": "title",
+            "ref": "/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Title",
+              "size": {
+                "width": 420,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "subtitle": "",
+                "intent": "headline",
+                "status": "draft"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "title-class-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -760,
+        "y": 0
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 320,
+      "height": 180,
+      "data": {}
+    },
+    {
+      "id": "title-editor-view",
+      "type": "view",
+      "label": "Title Editor",
+      "position": {
+        "x": -120,
+        "y": -160
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 520,
+      "height": 340,
+      "data": {
+        "view": {
+          "intent": "editor",
+          "payload": "editor.web"
+        },
+        "key": "editor.web",
+        "intent": "editor",
+        "payload": "editor.web",
+        "editor": {
+          "web": {
+            "fields": [
+              {
+                "key": "title",
+                "label": "Title",
+                "type": "text",
+                "path": "data.title",
+                "placeholder": "Contract Title"
+              },
+              {
+                "key": "subtitle",
+                "label": "Subtitle",
+                "type": "text",
+                "path": "data.subtitle",
+                "placeholder": "Optional subtitle"
+              },
+              {
+                "key": "intent",
+                "label": "Intent",
+                "type": "select",
+                "path": "data.intent",
+                "options": [
+                  {
+                    "label": "Headline",
+                    "value": "headline"
+                  },
+                  {
+                    "label": "Section",
+                    "value": "section"
+                  },
+                  {
+                    "label": "Callout",
+                    "value": "callout"
+                  }
+                ]
+              },
+              {
+                "key": "status",
+                "label": "Status",
+                "type": "select",
+                "path": "data.status",
+                "options": [
+                  {
+                    "label": "Draft",
+                    "value": "draft"
+                  },
+                  {
+                    "label": "Active",
+                    "value": "active"
+                  },
+                  {
+                    "label": "Archived",
+                    "value": "archived"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;gap:12px;padding:16px;box-sizing:border-box;background:#f8fafc;overflow:auto;\"><label style=\"display:flex;flex-direction:column;gap:6px;font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\"><span>Title</span><input data-bind=\"data.title\" value=\"{{data.title}}\" placeholder=\"Enter title\" style=\"border:1px solid rgba(15,23,42,0.14);border-radius:10px;padding:10px 12px;font:500 13px/1.4 ui-sans-serif, system-ui, sans-serif;color:#111827;background:white;\" /></label><label style=\"display:flex;flex-direction:column;gap:6px;font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\"><span>Subtitle</span><input data-bind=\"data.subtitle\" value=\"{{data.subtitle}}\" placeholder=\"Optional subtitle\" style=\"border:1px solid rgba(15,23,42,0.14);border-radius:10px;padding:10px 12px;font:500 13px/1.4 ui-sans-serif, system-ui, sans-serif;color:#111827;background:white;\" /></label><label style=\"display:flex;flex-direction:column;gap:6px;font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\"><span>Intent</span><input data-bind=\"data.intent\" value=\"{{data.intent}}\" placeholder=\"headline | section | callout\" style=\"border:1px solid rgba(15,23,42,0.14);border-radius:10px;padding:10px 12px;font:500 13px/1.4 ui-sans-serif, system-ui, sans-serif;color:#111827;background:white;\" /></label></div>",
+        "semanticLevel": "detail"
+      }
+    },
+    {
+      "id": "title-detail-view",
+      "type": "view",
+      "label": "Title Detail",
+      "position": {
+        "x": 480,
+        "y": -160
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 520,
+      "height": 320,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "key": "node.web.detail",
+        "intent": "node",
+        "payload": "node.web.detail",
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;box-sizing:border-box;padding:18px;border-radius:18px;background:linear-gradient(180deg, rgba(255,252,245,0.98), rgba(255,248,235,0.94));border:1px solid rgba(146,64,14,0.16);overflow:hidden;gap:14px;\"><div style=\"display:flex;align-items:flex-start;justify-content:space-between;gap:12px;\"><div style=\"display:flex;flex-direction:column;gap:6px;min-width:0;\"><div style=\"font:700 11px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#b45309;\">Title</div><div style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#1f2937;word-break:break-word;\">{{data.title || 'Untitled Title'}}</div></div><div style=\"display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(180,83,9,0.1);color:#92400e;font-size:11px;font-weight:700;letter-spacing:0.04em;\">{{data.intent || 'headline'}}</span><span style=\"font:600 10px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.12em;text-transform:uppercase;color:#9a3412;opacity:0.72;\">{{data.status || 'draft'}}</span></div></div><div style=\"height:1px;background:linear-gradient(90deg, rgba(245,158,11,0.4), rgba(245,158,11,0));\"></div><div style=\"font:500 14px/1.55 ui-sans-serif, system-ui, sans-serif;color:#4b5563;white-space:pre-wrap;overflow:auto;\">{{data.subtitle || 'Use this node to frame a template or major section before the structured content begins.'}}</div></div>",
+        "semanticLevel": "detail"
+      }
+    },
+    {
+      "id": "title-summary-view",
+      "type": "view",
+      "label": "Title Summary",
+      "position": {
+        "x": 1080,
+        "y": -160
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 420,
+      "height": 240,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "key": "node.web.summary",
+        "intent": "node",
+        "payload": "node.web.summary",
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;border-radius:16px;background:rgba(255,252,245,0.98);border:1px solid rgba(146,64,14,0.14);\"><div style=\"font:700 10px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.16em;text-transform:uppercase;color:#b45309;\">Title</div><div style=\"font:700 18px/1.25 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">{{data.title || 'Untitled Title'}}</div><div style=\"font:500 13px/1.45 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\">{{data.subtitle || data.intent || 'Template framing element'}}</div></div>",
+        "semanticLevel": "summary"
+      }
+    },
+    {
+      "id": "title-icon-view",
+      "type": "view",
+      "label": "Title Icon",
+      "position": {
+        "x": 1560,
+        "y": -160
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 260,
+      "height": 180,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "key": "node.web.icon",
+        "intent": "node",
+        "payload": "node.web.icon",
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:16px;background:rgba(255,252,245,0.98);border:1px solid rgba(146,64,14,0.14);padding:12px;box-sizing:border-box;text-align:center;\"><div style=\"font:700 10px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.16em;text-transform:uppercase;color:#b45309;\">Title</div><div style=\"font:700 14px/1.2 ui-sans-serif, system-ui, sans-serif;color:#1f2937;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;\">{{data.title || 'Untitled Title'}}</div></div>",
+        "semanticLevel": "icon"
+      }
+    },
+    {
+      "id": "title-notes",
+      "type": "markdown",
+      "label": "Notes",
+      "position": {
+        "x": 480,
+        "y": 240
+      },
+      "visible": true,
+      "showLabel": true,
+      "width": 520,
+      "height": 220,
+      "data": {
+        "markdown": "## Title\n\nNames the template or a major template part. Use sparingly for framing and orientation.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    }
+  ],
+  "edges": [],
+  "timestamp": "2026-03-26T02:30:00.000Z",
+  "nodeCount": 7,
+  "edgeCount": 0
+}

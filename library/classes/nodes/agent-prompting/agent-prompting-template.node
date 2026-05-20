@@ -1,0 +1,2964 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Agent Prompting Template",
+    "description": "Canonical template graph for bounded agent-prompting runs.",
+    "created": "2026-03-23T00:00:00.000Z",
+    "modified": "2026-03-23T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "library",
+      "template",
+      "agent-prompting"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "agent-prompting-template-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -760,
+        "y": -260
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "agent-prompting-template",
+          "name": "Agent Prompting Template",
+          "version": "0.1.0",
+          "description": "Canonical template graph for bounded agent-prompting runs.",
+          "createdAt": "2026-03-23T00:00:00.000Z",
+          "updatedAt": "2026-03-23T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "template",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "markdown",
+            "goal",
+            "task",
+            "open-question",
+            "decision",
+            "agent",
+            "prompt",
+            "observation",
+            "result",
+            "handoff",
+            "tool",
+            "contract",
+            "task-summary-provider",
+            "script",
+            "port"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs",
+            "twilite-agent-prompting"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "summaryNodeId": "agent-prompting-template-summary",
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "agent-prompting-template-legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -760,
+        "y": 20
+      },
+      "width": 320,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Legend\n- bridge cluster: local creation vocabulary for planning and agent classes\n- run anchor: `task`\n- actor: `agent`\n- boundary: `contract`\n- instruction: `prompt`\n- capability: `tool`\n- evidence: `observation`\n- output: `result`\n- transfer: `handoff`\n- unresolved: `open-question`"
+      }
+    },
+    {
+      "id": "agent-prompting-template-overview",
+      "type": "markdown",
+      "label": "Agent Prompting Template",
+      "position": {
+        "x": -80,
+        "y": -120
+      },
+      "width": 520,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Agent Prompting Template\n\nThis is the canonical working template for a bounded agent run.\n\nMinimum contract:\n- a run has a `task` anchor\n- a bounded `agent`\n- an explicit `contract`\n- an authored `prompt`\n- a declared `tool` when capability use is involved\n- at least one `observation`\n- a visible `result`\n- and an explicit `handoff` when responsibility moves onward\n\nThe bridge rows are the authoritative class surfaces for this template.",
+        "isRoot": true,
+        "root": true,
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "agent-prompting-template-goal",
+      "type": "goal",
+      "label": "Execute a bounded agent run",
+      "position": {
+        "x": 560,
+        "y": -140
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "body": "Use an explicit task, agent, prompt, observation, and result to model a bounded piece of work without collapsing it back into freeform chat.",
+        "priority": "critical",
+        "status": "todo",
+        "owner": "Michael",
+        "targetDate": "",
+        "successMetrics": [
+          "Describe a measurable success signal"
+        ],
+        "estimateHours": "2",
+        "acceptanceCriteria": [
+          "The run has an explicit task anchor",
+          "The agent is bounded by role and authority",
+          "A contract makes execution bounds explicit",
+          "A tool is visible when capability use is required",
+          "The prompt is authored and inspectable",
+          "At least one observation and one result are visible",
+          "Responsibility can move onward through an explicit handoff"
+        ],
+        "definitionKey": "goal",
+        "_classBinding": {
+          "key": "goal",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "identity": {
+            "graphId": "goal-class",
+            "name": "Goal Class",
+            "version": "0.1.0",
+            "description": "Strategic or local outcome node for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-15T20:30:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Strategic or local outcome node for planning graphs.",
+          "description": "Strategic or local outcome node for planning graphs.",
+          "defaults": {
+            "label": "Goal",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+            "showLabel": false,
+            "data": {
+              "body": "Define the outcome this plan should achieve.",
+              "priority": "high",
+              "status": "open",
+              "owner": "",
+              "targetDate": "",
+              "successMetrics": [
+                "Describe a measurable success signal"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "goal",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Goal",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+              "showLabel": false,
+              "data": {
+                "body": "Define the outcome this plan should achieve.",
+                "priority": "high",
+                "status": "open",
+                "owner": "",
+                "targetDate": "",
+                "successMetrics": [
+                  "Describe a measurable success signal"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "goal",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "goal",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "goal",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "goal",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-goal-class-port",
+          "sourceBridgeNodeId": "agent-prompting-template-goal-class-port",
+          "sourceBridgeLabel": "Goal",
+          "sourceRef": "/library/classes/nodes/task-planning/goal.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "goal",
+          "classRef": "/library/classes/nodes/task-planning/goal.node-class.node"
+        }
+      },
+      "color": "linear-gradient(135deg, #f8e18a, #d19a00)"
+    },
+    {
+      "id": "agent-prompting-template-task",
+      "type": "task",
+      "label": "Prepare the bounded agent run",
+      "position": {
+        "x": 520,
+        "y": 220
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Prepare Run Context",
+        "body": "Set the task boundary, assign the agent, attach the authored prompt, and leave space for evidence and output so the run can be inspected later.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "1",
+        "acceptanceCriteria": [
+          "Describe what done looks like"
+        ],
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+          "identity": {
+            "graphId": "task-class",
+            "name": "Task Class",
+            "version": "0.1.0",
+            "description": "Atomic executable unit of work for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-15T20:30:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Atomic executable unit of work for planning graphs.",
+          "description": "Atomic executable unit of work for planning graphs.",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ]
+            }
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ]
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-task-class-port",
+          "sourceBridgeNodeId": "agent-prompting-template-task-class-port",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "/library/classes/nodes/task-planning/task.node-class.node"
+        }
+      },
+      "color": "linear-gradient(135deg, #9be7c4, #1f9d67)"
+    },
+    {
+      "id": "agent-prompting-template-contract",
+      "type": "contract",
+      "label": "Execution Contract",
+      "position": {
+        "x": 980,
+        "y": -180
+      },
+      "width": 360,
+      "height": 280,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Bounded Work Contract",
+        "allowedActions": "Read the relevant files, make the scoped change, and run validation needed to prove the result.",
+        "safetyLimits": "Do not exceed the declared write scope. Do not destroy existing work. Escalate when uncertainty is material.",
+        "requiredOutputs": "A visible result, traceable evidence, and a handoff package if review is needed.",
+        "escalationRule": "Escalate when the change would cross the current write boundary or when requirements conflict.",
+        "approvalRequirement": "Reviewer approval before merge or publish.",
+        "terminationCondition": "The task is complete or the run is blocked pending escalation.",
+        "status": "active",
+        "definitionKey": "contract",
+        "_classBinding": {
+          "key": "contract",
+          "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+          "identity": {
+            "graphId": "contract-class",
+            "name": "Contract Class",
+            "version": "0.1.0",
+            "description": "Node class for explicit execution bounds and required outputs.",
+            "createdAt": "2026-03-23T00:00:00.000Z",
+            "updatedAt": "2026-03-23T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for explicit execution bounds and required outputs.",
+          "description": "Node class for explicit execution bounds and required outputs.",
+          "defaults": {
+            "label": "Contract",
+            "size": {
+              "width": 360,
+              "height": 280
+            },
+            "color": "linear-gradient(135deg, #f7ddc6, #bb7332)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "allowedActions": "",
+              "safetyLimits": "",
+              "requiredOutputs": "",
+              "escalationRule": "",
+              "approvalRequirement": "",
+              "terminationCondition": "",
+              "status": "active"
+            }
+          },
+          "nodeDef": {
+            "key": "contract",
+            "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Contract",
+              "size": {
+                "width": 360,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #f7ddc6, #bb7332)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "allowedActions": "",
+                "safetyLimits": "",
+                "requiredOutputs": "",
+                "escalationRule": "",
+                "approvalRequirement": "",
+                "terminationCondition": "",
+                "status": "active"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "contract",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "contract",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "contract",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "contract",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "contract",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "contract",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "contract",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-contract-class-port",
+          "sourceBridgeNodeId": "agent-prompting-template-contract-class-port",
+          "sourceBridgeLabel": "Contract",
+          "sourceRef": "/library/classes/nodes/agent-prompting/contract.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "contract",
+          "classRef": "/library/classes/nodes/agent-prompting/contract.node-class.node"
+        }
+      },
+      "color": "linear-gradient(135deg, #f7ddc6, #bb7332)"
+    },
+    {
+      "id": "agent-prompting-template-agent",
+      "type": "agent",
+      "label": "Implementation Agent",
+      "position": {
+        "x": 980,
+        "y": 180
+      },
+      "width": 340,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Scoped Worker",
+        "role": "implementer",
+        "authority": "bounded write scope",
+        "availableTools": [
+          "read files",
+          "edit assigned files",
+          "run validation"
+        ],
+        "owner": "Michael",
+        "status": "idle",
+        "body": "This agent is responsible for executing the bounded task without exceeding its declared authority.",
+        "contractRef": "Execution Contract",
+        "definitionKey": "agent",
+        "_classBinding": {
+          "key": "agent",
+          "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+          "identity": {
+            "graphId": "agent-class",
+            "name": "Agent Class",
+            "version": "0.1.0",
+            "description": "Node class for bounded agent actors in the agent-prompting nodeset.",
+            "createdAt": "2026-03-23T00:00:00.000Z",
+            "updatedAt": "2026-03-23T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for bounded agent actors in the agent-prompting nodeset.",
+          "description": "Node class for bounded agent actors in the agent-prompting nodeset.",
+          "defaults": {
+            "label": "Agent",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #f6d88d, #c77d20)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "role": "generalist",
+              "authority": "bounded",
+              "availableTools": [],
+              "owner": "",
+              "status": "idle",
+              "body": "Describe what this agent is responsible for.",
+              "contractRef": ""
+            }
+          },
+          "nodeDef": {
+            "key": "agent",
+            "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Agent",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #f6d88d, #c77d20)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "role": "generalist",
+                "authority": "bounded",
+                "availableTools": [],
+                "owner": "",
+                "status": "idle",
+                "body": "Describe what this agent is responsible for.",
+                "contractRef": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "agent",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "agent",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "agent",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "agent",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "agent",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "agent",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "agent",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-agent-class-port",
+          "sourceBridgeNodeId": "agent-prompting-template-agent-class-port",
+          "sourceBridgeLabel": "Agent",
+          "sourceRef": "/library/classes/nodes/agent-prompting/agent.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "agent",
+          "classRef": "/library/classes/nodes/agent-prompting/agent.node-class.node"
+        }
+      },
+      "color": "linear-gradient(135deg, #f6d88d, #c77d20)"
+    },
+    {
+      "id": "agent-prompting-template-prompt",
+      "type": "prompt",
+      "label": "Execution Prompt",
+      "position": {
+        "x": 1380,
+        "y": 180
+      },
+      "width": 360,
+      "height": 280,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Bounded Execution Prompt",
+        "instructionBody": "Complete the assigned task within the declared write scope. Preserve existing work. Surface blockers instead of guessing.",
+        "scope": "task-local",
+        "inputs": [
+          "task context",
+          "allowed files",
+          "current graph state"
+        ],
+        "version": "v1",
+        "provenance": "agent-prompting template",
+        "expectedOutput": "A visible, attributable implementation result",
+        "status": "ready",
+        "definitionKey": "prompt",
+        "_classBinding": {
+          "key": "prompt",
+          "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+          "identity": {
+            "graphId": "prompt-class",
+            "name": "Prompt Class",
+            "version": "0.1.0",
+            "description": "Node class for authored prompts in the agent-prompting nodeset.",
+            "createdAt": "2026-03-23T00:00:00.000Z",
+            "updatedAt": "2026-03-23T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for authored prompts in the agent-prompting nodeset.",
+          "description": "Node class for authored prompts in the agent-prompting nodeset.",
+          "defaults": {
+            "label": "Prompt",
+            "size": {
+              "width": 360,
+              "height": 280
+            },
+            "color": "linear-gradient(135deg, #8ed8f6, #1769aa)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "instructionBody": "Describe the prompt instruction here.",
+              "scope": "task-local",
+              "inputs": [],
+              "version": "v1",
+              "provenance": "",
+              "expectedOutput": "",
+              "status": "draft"
+            }
+          },
+          "nodeDef": {
+            "key": "prompt",
+            "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Prompt",
+              "size": {
+                "width": 360,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #8ed8f6, #1769aa)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "instructionBody": "Describe the prompt instruction here.",
+                "scope": "task-local",
+                "inputs": [],
+                "version": "v1",
+                "provenance": "",
+                "expectedOutput": "",
+                "status": "draft"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "prompt",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "prompt",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "prompt",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "prompt",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "prompt",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "prompt",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "prompt",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-prompt-class-port",
+          "sourceBridgeNodeId": "agent-prompting-template-prompt-class-port",
+          "sourceBridgeLabel": "Prompt",
+          "sourceRef": "/library/classes/nodes/agent-prompting/prompt.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "prompt",
+          "classRef": "/library/classes/nodes/agent-prompting/prompt.node-class.node"
+        }
+      },
+      "color": "linear-gradient(135deg, #8ed8f6, #1769aa)"
+    },
+    {
+      "id": "agent-prompting-template-tool",
+      "type": "tool",
+      "label": "Repository Tooling",
+      "position": {
+        "x": 1380,
+        "y": 520
+      },
+      "width": 360,
+      "height": 280,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Workspace Operations",
+        "name": "workspace-tools",
+        "capability": "read, edit, validate",
+        "invocationBoundary": "Use only for the scoped task and preserve explicit attribution for tool-produced evidence.",
+        "failureMode": "Reads may be stale, edits may conflict, and validation may fail or be incomplete.",
+        "cost": "medium",
+        "latencyClass": "medium",
+        "status": "available",
+        "definitionKey": "tool",
+        "_classBinding": {
+          "key": "tool",
+          "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+          "identity": {
+            "graphId": "tool-class",
+            "name": "Tool Class",
+            "version": "0.1.0",
+            "description": "Node class for explicit tool capabilities used during an agent run.",
+            "createdAt": "2026-03-23T00:00:00.000Z",
+            "updatedAt": "2026-03-23T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for explicit tool capabilities used during an agent run.",
+          "description": "Node class for explicit tool capabilities used during an agent run.",
+          "defaults": {
+            "label": "Tool",
+            "size": {
+              "width": 360,
+              "height": 280
+            },
+            "color": "linear-gradient(135deg, #c7dcf6, #446ea8)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "name": "",
+              "capability": "",
+              "invocationBoundary": "",
+              "failureMode": "",
+              "cost": "",
+              "latencyClass": "",
+              "status": "available"
+            }
+          },
+          "nodeDef": {
+            "key": "tool",
+            "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Tool",
+              "size": {
+                "width": 360,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #c7dcf6, #446ea8)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "name": "",
+                "capability": "",
+                "invocationBoundary": "",
+                "failureMode": "",
+                "cost": "",
+                "latencyClass": "",
+                "status": "available"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "tool",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "tool",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "tool",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "tool",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "tool",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "tool",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "tool",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-tool-class-port",
+          "sourceBridgeNodeId": "agent-prompting-template-tool-class-port",
+          "sourceBridgeLabel": "Tool",
+          "sourceRef": "/library/classes/nodes/agent-prompting/tool.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "tool",
+          "classRef": "/library/classes/nodes/agent-prompting/tool.node-class.node"
+        }
+      },
+      "color": "linear-gradient(135deg, #c7dcf6, #446ea8)"
+    },
+    {
+      "id": "agent-prompting-template-observation",
+      "type": "observation",
+      "label": "Observed Repo State",
+      "position": {
+        "x": 1780,
+        "y": 180
+      },
+      "width": 360,
+      "height": 280,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Current Evidence",
+        "evidencePayload": "The repo contains the relevant files, current graph state, and any blocking constraints needed before execution continues.",
+        "source": "repo scan",
+        "timestamp": "run-start",
+        "toolRef": "workspace",
+        "confidence": "medium",
+        "artifactRef": "",
+        "definitionKey": "observation",
+        "_classBinding": {
+          "key": "observation",
+          "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+          "identity": {
+            "graphId": "observation-class",
+            "name": "Observation Class",
+            "version": "0.1.0",
+            "description": "Node class for evidence captured during an agent run.",
+            "createdAt": "2026-03-23T00:00:00.000Z",
+            "updatedAt": "2026-03-23T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for evidence captured during an agent run.",
+          "description": "Node class for evidence captured during an agent run.",
+          "defaults": {
+            "label": "Observation",
+            "size": {
+              "width": 360,
+              "height": 280
+            },
+            "color": "linear-gradient(135deg, #b8e6d2, #2f8f6b)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "evidencePayload": "Describe what was observed.",
+              "source": "",
+              "timestamp": "",
+              "toolRef": "",
+              "confidence": "medium",
+              "artifactRef": ""
+            }
+          },
+          "nodeDef": {
+            "key": "observation",
+            "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Observation",
+              "size": {
+                "width": 360,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #b8e6d2, #2f8f6b)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "evidencePayload": "Describe what was observed.",
+                "source": "",
+                "timestamp": "",
+                "toolRef": "",
+                "confidence": "medium",
+                "artifactRef": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "observation",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "observation",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "observation",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "observation",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "observation",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "observation",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "observation",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-observation-class-port",
+          "sourceBridgeNodeId": "agent-prompting-template-observation-class-port",
+          "sourceBridgeLabel": "Observation",
+          "sourceRef": "/library/classes/nodes/agent-prompting/observation.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "observation",
+          "classRef": "/library/classes/nodes/agent-prompting/observation.node-class.node"
+        }
+      },
+      "color": "linear-gradient(135deg, #b8e6d2, #2f8f6b)"
+    },
+    {
+      "id": "agent-prompting-template-result",
+      "type": "result",
+      "label": "Produced Output",
+      "position": {
+        "x": 1780,
+        "y": 520
+      },
+      "width": 360,
+      "height": 280,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Run Outcome",
+        "outputPayload": "The agent produces a visible implementation result that can be reviewed against the task and the evidence that supported it.",
+        "status": "partial",
+        "confidence": "medium",
+        "qualityNote": "Use this node to capture caveats, residual risk, or review notes.",
+        "artifactRef": "",
+        "definitionKey": "result",
+        "_classBinding": {
+          "key": "result",
+          "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+          "identity": {
+            "graphId": "result-class",
+            "name": "Result Class",
+            "version": "0.1.0",
+            "description": "Node class for outputs produced by an agent run.",
+            "createdAt": "2026-03-23T00:00:00.000Z",
+            "updatedAt": "2026-03-23T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for outputs produced by an agent run.",
+          "description": "Node class for outputs produced by an agent run.",
+          "defaults": {
+            "label": "Result",
+            "size": {
+              "width": 360,
+              "height": 280
+            },
+            "color": "linear-gradient(135deg, #f6c7c7, #c05656)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "outputPayload": "Describe the produced output.",
+              "status": "partial",
+              "confidence": "medium",
+              "qualityNote": "",
+              "artifactRef": ""
+            }
+          },
+          "nodeDef": {
+            "key": "result",
+            "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Result",
+              "size": {
+                "width": 360,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #f6c7c7, #c05656)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "outputPayload": "Describe the produced output.",
+                "status": "partial",
+                "confidence": "medium",
+                "qualityNote": "",
+                "artifactRef": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "result",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "result",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "result",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "result",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "result",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "result",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "result",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/agent-prompting/result.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-result-class-port",
+          "sourceBridgeNodeId": "agent-prompting-template-result-class-port",
+          "sourceBridgeLabel": "Result",
+          "sourceRef": "/library/classes/nodes/agent-prompting/result.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "result",
+          "classRef": "/library/classes/nodes/agent-prompting/result.node-class.node"
+        }
+      },
+      "color": "linear-gradient(135deg, #f6c7c7, #c05656)"
+    },
+    {
+      "id": "agent-prompting-template-handoff",
+      "type": "handoff",
+      "label": "Escalate to Reviewer",
+      "position": {
+        "x": 2220,
+        "y": 520
+      },
+      "width": 360,
+      "height": 280,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Reviewer Handoff",
+        "sender": "Implementation Agent",
+        "receiver": "Reviewer Agent",
+        "handoffPackage": "Pass the produced output, the supporting observation, and the remaining caveats to a downstream reviewer.",
+        "unresolvedRisks": "Output may still need review or validation before final acceptance.",
+        "expectedNextAction": "Review the result and either approve it or return it with requested changes.",
+        "deadline": "",
+        "status": "queued",
+        "definitionKey": "handoff",
+        "_classBinding": {
+          "key": "handoff",
+          "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+          "identity": {
+            "graphId": "handoff-class",
+            "name": "Handoff Class",
+            "version": "0.1.0",
+            "description": "Node class for transferring responsibility between agents.",
+            "createdAt": "2026-03-23T00:00:00.000Z",
+            "updatedAt": "2026-03-23T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Node class for transferring responsibility between agents.",
+          "description": "Node class for transferring responsibility between agents.",
+          "defaults": {
+            "label": "Handoff",
+            "size": {
+              "width": 360,
+              "height": 280
+            },
+            "color": "linear-gradient(135deg, #d7c6f7, #7551b6)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "sender": "",
+              "receiver": "",
+              "handoffPackage": "Describe what is being transferred.",
+              "unresolvedRisks": "",
+              "expectedNextAction": "",
+              "deadline": "",
+              "status": "queued"
+            }
+          },
+          "nodeDef": {
+            "key": "handoff",
+            "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Handoff",
+              "size": {
+                "width": 360,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #d7c6f7, #7551b6)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "sender": "",
+                "receiver": "",
+                "handoffPackage": "Describe what is being transferred.",
+                "unresolvedRisks": "",
+                "expectedNextAction": "",
+                "deadline": "",
+                "status": "queued"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "handoff",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "handoff",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "handoff",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "handoff",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "handoff",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "handoff",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "handoff",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-handoff-class-port",
+          "sourceBridgeNodeId": "agent-prompting-template-handoff-class-port",
+          "sourceBridgeLabel": "Handoff",
+          "sourceRef": "/library/classes/nodes/agent-prompting/handoff.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "handoff",
+          "classRef": "/library/classes/nodes/agent-prompting/handoff.node-class.node"
+        }
+      },
+      "color": "linear-gradient(135deg, #d7c6f7, #7551b6)"
+    },
+    {
+      "id": "agent-prompting-template-question",
+      "type": "open-question",
+      "label": "Where should execution trace live?",
+      "position": {
+        "x": 980,
+        "y": 520
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "body": "Decide how much execution trace should remain on-node versus move into later observation/result artifacts.",
+        "status": "open",
+        "owner": "",
+        "resolutionPath": "",
+        "prominence": "high",
+        "definitionKey": "open-question",
+        "_classBinding": {
+          "key": "open-question",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "identity": {
+            "graphId": "open-question-class",
+            "name": "Open Question Class",
+            "version": "0.1.0",
+            "description": "Unresolved question node for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-15T20:30:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Unresolved question node for planning graphs.",
+          "description": "Unresolved question node for planning graphs.",
+          "defaults": {
+            "label": "Open Question",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+            "showLabel": false,
+            "data": {
+              "body": "State what is still unclear.",
+              "status": "open",
+              "owner": "",
+              "resolutionPath": "",
+              "prominence": "high"
+            }
+          },
+          "nodeDef": {
+            "key": "open-question",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Open Question",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+              "showLabel": false,
+              "data": {
+                "body": "State what is still unclear.",
+                "status": "open",
+                "owner": "",
+                "resolutionPath": "",
+                "prominence": "high"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "open-question",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "open-question",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "open-question",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-question-class-port",
+          "sourceBridgeNodeId": "agent-prompting-template-question-class-port",
+          "sourceBridgeLabel": "Open Question",
+          "sourceRef": "/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        }
+      },
+      "color": "linear-gradient(135deg, #ead6ff, #8750c7)"
+    },
+    {
+      "id": "agent-prompting-template-summary",
+      "type": "task-summary-provider",
+      "label": "Agent Prompting Template Summary",
+      "position": {
+        "x": 1460,
+        "y": -140
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "goal": "Execute a bounded agent run",
+        "status": "todo",
+        "taskProgress": {
+          "completed": 0,
+          "total": 1
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 1
+        },
+        "summarySource": "graph-derived",
+        "taskTitles": [
+          "Prepare Run Context"
+        ],
+        "questionTitles": [
+          "Where should execution trace live?"
+        ],
+        "taskListText": "1. Prepare Run Context",
+        "questionListText": "1. Where should execution trace live?",
+        "definitionKey": "task-summary-provider",
+        "_classBinding": {
+          "key": "task-summary-provider",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-class",
+            "name": "Task Summary Provider Class",
+            "version": "0.1.0",
+            "description": "Provider surface for a planning task summary.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-22T00:00:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Provider surface for a planning task summary.",
+          "description": "Provider surface for a planning task summary.",
+          "defaults": {
+            "label": "Task Summary Provider",
+            "size": {
+              "width": 420,
+              "height": 250
+            },
+            "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+            "showLabel": false,
+            "data": {
+              "goal": "Summarize this task graph",
+              "status": "todo",
+              "taskProgress": {
+                "completed": 0,
+                "total": 0
+              },
+              "questionProgress": {
+                "answered": 0,
+                "total": 0
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "task-summary-provider",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary Provider",
+              "size": {
+                "width": 420,
+                "height": 250
+              },
+              "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+              "showLabel": false,
+              "data": {
+                "goal": "Summarize this task graph",
+                "status": "todo",
+                "taskProgress": {
+                  "completed": 0,
+                  "total": 0
+                },
+                "questionProgress": {
+                  "answered": 0,
+                  "total": 0
+                }
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task-summary-provider",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task-summary-provider",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task-summary-provider",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task-summary-provider",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-summary-class-port",
+          "sourceBridgeNodeId": "agent-prompting-template-summary-class-port",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task-summary-provider",
+          "classRef": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        }
+      },
+      "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)"
+    },
+    {
+      "id": "agent-prompting-template-decision",
+      "type": "decision",
+      "label": "Reuse planning task as the run anchor",
+      "position": {
+        "x": 1460,
+        "y": 240
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "rationale": "This avoids duplicating task semantics while still giving the agent-prompting nodeset a concrete runtime surface.",
+        "status": "decided",
+        "decidedAt": "",
+        "owner": "",
+        "supersededBy": "",
+        "body": "Treat the planning `task` node as the anchor for why the run exists, while `agent`, `contract`, `prompt`, `tool`, `observation`, `result`, and `handoff` describe who acts, under what bounds, how the work is framed, which capability was used, what evidence was seen, what was produced, and where responsibility moves next.",
+        "definitionKey": "decision",
+        "_classBinding": {
+          "key": "decision",
+          "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+          "identity": {
+            "graphId": "decision-class",
+            "name": "Decision Class",
+            "version": "0.1.0",
+            "description": "Recorded, timestamped choice for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-15T20:30:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Recorded, timestamped choice for planning graphs.",
+          "description": "Recorded, timestamped choice for planning graphs.",
+          "defaults": {
+            "label": "Decision",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+            "showLabel": false,
+            "data": {
+              "rationale": "State why this decision was made.",
+              "status": "decided",
+              "decidedAt": "",
+              "owner": "",
+              "supersededBy": ""
+            }
+          },
+          "nodeDef": {
+            "key": "decision",
+            "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Decision",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+              "showLabel": false,
+              "data": {
+                "rationale": "State why this decision was made.",
+                "status": "decided",
+                "decidedAt": "",
+                "owner": "",
+                "supersededBy": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "decision",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "decision",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "decision",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "decision",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "agent-prompting-template-decision-class-port",
+          "sourceBridgeNodeId": "agent-prompting-template-decision-class-port",
+          "sourceBridgeLabel": "Decision",
+          "sourceRef": "/library/classes/nodes/task-planning/decision.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "decision",
+          "classRef": "/library/classes/nodes/task-planning/decision.node-class.node"
+        }
+      },
+      "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)"
+    },
+    {
+      "id": "agent-prompting-template-updater-note",
+      "type": "markdown",
+      "label": "Updater Hook",
+      "position": {
+        "x": 1930,
+        "y": 180
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Updater Hook\n\nA graph-authored updater writes into the summary node data.\n\nThis template uses the same rollup contract as the planning task template, but now the task sits beside `agent`, `contract`, `prompt`, `tool`, `observation`, `result`, and `handoff` nodes.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "agent-prompting-template-skill-note",
+      "type": "markdown",
+      "label": "Maintenance Skills",
+      "position": {
+        "x": 1930,
+        "y": -120
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Maintenance Skills\n\nUse `twilite-agent-prompting` when embedding or revising bounded run structure in this template.\n\nUse `twilite-planning-graphs` when updating the surrounding summary surface, dictionary wiring, or connected planning artifacts.\n\nSkill folders:\n`~/.codex/skills/twilite-agent-prompting`\n`~/.codex/skills/twilite-planning-graphs`\n\nThis template is the concrete test surface for the first end-to-end `agent` / `contract` / `prompt` / `tool` / `observation` / `result` / `handoff` loop.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "agent-prompting-template-updater",
+      "type": "script",
+      "label": "Summary Updater",
+      "position": {
+        "x": 1460,
+        "y": 500
+      },
+      "width": 320,
+      "height": 190,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "scriptName": "Task Summary Provider Updater",
+        "summaryNodeId": "agent-prompting-template-summary",
+        "autoRun": true,
+        "autoRunOnGraphChange": true,
+        "allowMutations": true,
+        "dryRun": false,
+        "source": "const SUMMARY_NODE_ID = 'agent-prompting-template-summary';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel, maxItems = 4) => {\n  const visible = items.filter(Boolean).slice(0, maxItems);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\n\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nif (!summaryNode) {\n  return { success: false, error: 'Summary node missing' };\n}\n\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task');\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst taskTitles = tasks.map((entry) => toTitle(entry, 'Untitled task')).filter(Boolean);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\n\nconst nextData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: goalNode?.data?.status || (tasks.length > 0 && tasks.every((entry) => DONE_TASK_STATUSES.has(normalize(entry?.data?.status))) ? 'done' : (summaryNode?.data?.status || 'todo')),\n  taskProgress: {\n    completed: tasks.filter((entry) => DONE_TASK_STATUSES.has(normalize(entry?.data?.status))).length,\n    total: tasks.length\n  },\n  questionProgress: {\n    answered: questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length,\n    total: questions.length\n  },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.'),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'graph-updater',\n  updatedAt: new Date().toISOString()\n};\n\nawait api.updateNode(SUMMARY_NODE_ID, { data: nextData });\nreturn { success: true, summary: nextData };"
+      }
+    },
+    {
+      "id": "agent-prompting-template-agent-class-port",
+      "type": "bridge",
+      "label": "Agent",
+      "position": {
+        "x": 1930,
+        "y": 460
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Agent.",
+        "target": {
+          "endpoint": "/library/classes/nodes/agent-prompting/agent.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "agent",
+          "ref": "/library/classes/nodes/agent-prompting/agent.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-prompting-template-prompt-class-port",
+      "type": "bridge",
+      "label": "Prompt",
+      "position": {
+        "x": 1930,
+        "y": 600
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Prompt.",
+        "target": {
+          "endpoint": "/library/classes/nodes/agent-prompting/prompt.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "prompt",
+          "ref": "/library/classes/nodes/agent-prompting/prompt.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-prompting-template-observation-class-port",
+      "type": "bridge",
+      "label": "Observation",
+      "position": {
+        "x": 1930,
+        "y": 740
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Observation.",
+        "target": {
+          "endpoint": "/library/classes/nodes/agent-prompting/observation.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "observation",
+          "ref": "/library/classes/nodes/agent-prompting/observation.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-prompting-template-result-class-port",
+      "type": "bridge",
+      "label": "Result",
+      "position": {
+        "x": 1930,
+        "y": 880
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Result.",
+        "target": {
+          "endpoint": "/library/classes/nodes/agent-prompting/result.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "result",
+          "ref": "/library/classes/nodes/agent-prompting/result.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-prompting-template-handoff-class-port",
+      "type": "bridge",
+      "label": "Handoff",
+      "position": {
+        "x": 1930,
+        "y": 1020
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Handoff.",
+        "target": {
+          "endpoint": "/library/classes/nodes/agent-prompting/handoff.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "handoff",
+          "ref": "/library/classes/nodes/agent-prompting/handoff.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-prompting-template-tool-class-port",
+      "type": "bridge",
+      "label": "Tool",
+      "position": {
+        "x": 2250,
+        "y": 880
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Tool.",
+        "target": {
+          "endpoint": "/library/classes/nodes/agent-prompting/tool.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "tool",
+          "ref": "/library/classes/nodes/agent-prompting/tool.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-prompting-template-contract-class-port",
+      "type": "bridge",
+      "label": "Contract",
+      "position": {
+        "x": 2250,
+        "y": 1020
+      },
+      "width": 300,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Contract.",
+        "target": {
+          "endpoint": "/library/classes/nodes/agent-prompting/contract.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "contract",
+          "ref": "/library/classes/nodes/agent-prompting/contract.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-prompting-template-back",
+      "type": "port",
+      "label": "Agent Prompting Library",
+      "position": {
+        "x": 40,
+        "y": 560
+      },
+      "width": 320,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Open the agent-prompting library root from the canonical template graph.",
+        "intent": "external",
+        "target": {
+          "endpoint": "/library/classes/nodes/agent-prompting/root.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Open"
+        }
+      }
+    },
+    {
+      "id": "agent-prompting-template-goal-class-port",
+      "type": "bridge",
+      "label": "Goal",
+      "position": {
+        "x": 520,
+        "y": -480
+      },
+      "width": 260,
+      "height": 110,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Goal.",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/goal.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "goal",
+          "ref": "/library/classes/nodes/task-planning/goal.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-prompting-template-task-class-port",
+      "type": "bridge",
+      "label": "Task",
+      "position": {
+        "x": 820,
+        "y": -480
+      },
+      "width": 260,
+      "height": 110,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Task.",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "task",
+          "ref": "/library/classes/nodes/task-planning/task.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-prompting-template-question-class-port",
+      "type": "bridge",
+      "label": "Open Question",
+      "position": {
+        "x": 1120,
+        "y": -480
+      },
+      "width": 260,
+      "height": 110,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Open Question.",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/open-question.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "open-question",
+          "ref": "/library/classes/nodes/task-planning/open-question.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-prompting-template-decision-class-port",
+      "type": "bridge",
+      "label": "Decision",
+      "position": {
+        "x": 1420,
+        "y": -480
+      },
+      "width": 260,
+      "height": 110,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Decision.",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/decision.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "decision",
+          "ref": "/library/classes/nodes/task-planning/decision.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "agent-prompting-template-summary-class-port",
+      "type": "bridge",
+      "label": "Task Summary",
+      "position": {
+        "x": 1720,
+        "y": -480
+      },
+      "width": 260,
+      "height": 110,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Task Summary.",
+        "target": {
+          "endpoint": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node:root",
+          "mode": "bridge",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "task-summary-provider",
+          "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "agent-prompting-template-edge-001",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-goal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "goal"
+    },
+    {
+      "id": "agent-prompting-template-edge-002",
+      "type": "reference",
+      "source": "agent-prompting-template-goal",
+      "target": "agent-prompting-template-task",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "task"
+    },
+    {
+      "id": "agent-prompting-template-edge-003",
+      "type": "reference",
+      "source": "agent-prompting-template-task",
+      "target": "agent-prompting-template-agent",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "assigned to"
+    },
+    {
+      "id": "agent-prompting-template-edge-004",
+      "type": "reference",
+      "source": "agent-prompting-template-agent",
+      "target": "agent-prompting-template-contract",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bounded by"
+    },
+    {
+      "id": "agent-prompting-template-edge-004b",
+      "type": "reference",
+      "source": "agent-prompting-template-contract",
+      "target": "agent-prompting-template-tool",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "permits"
+    },
+    {
+      "id": "agent-prompting-template-edge-004c",
+      "type": "reference",
+      "source": "agent-prompting-template-agent",
+      "target": "agent-prompting-template-prompt",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "uses"
+    },
+    {
+      "id": "agent-prompting-template-edge-005",
+      "type": "reference",
+      "source": "agent-prompting-template-prompt",
+      "target": "agent-prompting-template-tool",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "invokes"
+    },
+    {
+      "id": "agent-prompting-template-edge-005b",
+      "type": "reference",
+      "source": "agent-prompting-template-tool",
+      "target": "agent-prompting-template-observation",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "produces evidence"
+    },
+    {
+      "id": "agent-prompting-template-edge-006",
+      "type": "reference",
+      "source": "agent-prompting-template-observation",
+      "target": "agent-prompting-template-result",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "supports"
+    },
+    {
+      "id": "agent-prompting-template-edge-006c",
+      "type": "reference",
+      "source": "agent-prompting-template-result",
+      "target": "agent-prompting-template-handoff",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "packages for"
+    },
+    {
+      "id": "agent-prompting-template-edge-006b",
+      "type": "reference",
+      "source": "agent-prompting-template-goal",
+      "target": "agent-prompting-template-question",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "question"
+    },
+    {
+      "id": "agent-prompting-template-edge-007",
+      "type": "reference",
+      "source": "agent-prompting-template-goal",
+      "target": "agent-prompting-template-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "summary"
+    },
+    {
+      "id": "agent-prompting-template-edge-008",
+      "type": "reference",
+      "source": "agent-prompting-template-summary",
+      "target": "agent-prompting-template-decision",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "structure"
+    },
+    {
+      "id": "agent-prompting-template-edge-009",
+      "type": "reference",
+      "source": "agent-prompting-template-summary",
+      "target": "agent-prompting-template-updater-note",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "updater"
+    },
+    {
+      "id": "agent-prompting-template-edge-010",
+      "type": "reference",
+      "source": "agent-prompting-template-summary",
+      "target": "agent-prompting-template-agent-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "agent class"
+    },
+    {
+      "id": "agent-prompting-template-edge-011",
+      "type": "reference",
+      "source": "agent-prompting-template-summary",
+      "target": "agent-prompting-template-prompt-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "prompt class"
+    },
+    {
+      "id": "agent-prompting-template-edge-012",
+      "type": "reference",
+      "source": "agent-prompting-template-summary",
+      "target": "agent-prompting-template-observation-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "observation class"
+    },
+    {
+      "id": "agent-prompting-template-edge-013",
+      "type": "reference",
+      "source": "agent-prompting-template-summary",
+      "target": "agent-prompting-template-result-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "result class"
+    },
+    {
+      "id": "agent-prompting-template-edge-013b",
+      "type": "reference",
+      "source": "agent-prompting-template-summary",
+      "target": "agent-prompting-template-handoff-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "handoff class"
+    },
+    {
+      "id": "agent-prompting-template-edge-013c",
+      "type": "reference",
+      "source": "agent-prompting-template-summary",
+      "target": "agent-prompting-template-tool-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "tool class"
+    },
+    {
+      "id": "agent-prompting-template-edge-013d",
+      "type": "reference",
+      "source": "agent-prompting-template-summary",
+      "target": "agent-prompting-template-contract-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "contract class"
+    },
+    {
+      "id": "agent-prompting-template-edge-014",
+      "type": "reference",
+      "source": "agent-prompting-template-updater",
+      "target": "agent-prompting-template-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "updates"
+    },
+    {
+      "id": "agent-prompting-template-edge-015",
+      "type": "reference",
+      "source": "agent-prompting-template-updater-note",
+      "target": "agent-prompting-template-updater",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "script"
+    },
+    {
+      "id": "agent-prompting-template-edge-016",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-skill-note",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "maintenance"
+    },
+    {
+      "id": "agent-prompting-template-edge-017",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-back",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "library"
+    },
+    {
+      "id": "agent-prompting-template-edge-bridge-goal",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-goal-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-prompting-template-edge-bridge-task",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-task-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-prompting-template-edge-bridge-question",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-question-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-prompting-template-edge-bridge-decision",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-decision-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-prompting-template-edge-bridge-summary",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-summary-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-prompting-template-edge-bridge-agent",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-agent-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-prompting-template-edge-bridge-prompt",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-prompt-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-prompting-template-edge-bridge-observation",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-observation-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-prompting-template-edge-bridge-result",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-result-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-prompting-template-edge-bridge-handoff",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-handoff-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-prompting-template-edge-bridge-tool",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-tool-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "agent-prompting-template-edge-bridge-contract",
+      "type": "reference",
+      "source": "agent-prompting-template-overview",
+      "target": "agent-prompting-template-contract-class-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "bridge",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "clusters": [],
+  "nodeCount": 31,
+  "edgeCount": 37,
+  "timestamp": "2026-03-24T15:52:27.672Z"
+}

@@ -1,0 +1,364 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Task Summary Class",
+    "description": "Summary surface for a planning task graph.",
+    "created": "2026-03-22T00:00:00.000Z",
+    "modified": "2026-03-24T01:10:00.000Z",
+    "author": "",
+    "tags": [
+      "library",
+      "node-class",
+      "task-planning",
+      "summary",
+      "document"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "task-graph-summary-class-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -760,
+        "y": -300
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "task-graph-summary-class",
+          "name": "Task Summary Class",
+          "version": "0.1.0",
+          "description": "Summary surface for a planning task graph.",
+          "createdAt": "2026-03-22T00:00:00.000Z",
+          "updatedAt": "2026-03-24T01:10:00.000Z"
+        },
+        "intent": {
+          "kind": "node-class",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "legend",
+            "view",
+            "markdown"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "github": {
+            "repo": "",
+            "path": "",
+            "branch": "main",
+            "autoCreateRepo": true,
+            "repoVisibility": "private",
+            "seedOnCommit": false,
+            "enableGithubPages": false
+          },
+          "autoSave": false
+        },
+        "isRoot": false,
+        "root": false,
+        "nodeClass": {
+          "contractVersion": "1.0.0",
+          "key": "summary",
+          "nodeDef": {
+            "key": "summary",
+            "ref": "/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Summary",
+              "size": {
+                "width": 420,
+                "height": 250
+              },
+              "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+              "showLabel": false,
+              "data": {
+                "goal": "Compose this task graph as a readable document",
+                "viewRole": "document",
+                "status": "todo",
+                "taskProgress": {
+                  "completed": 0,
+                  "total": 0
+                },
+                "questionProgress": {
+                  "answered": 0,
+                  "total": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "legend",
+      "type": "legend",
+      "label": "Legend",
+      "position": {
+        "x": -360,
+        "y": -300
+      },
+      "width": 320,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "entries": [
+          {
+            "key": "summary",
+            "intent": "class",
+            "implementation": "node class"
+          }
+        ],
+        "markdown": "## Legend\n- class views and notes",
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "task-graph-summary-editor-view",
+      "type": "view",
+      "label": "Editor View (editor.web)",
+      "position": {
+        "x": -760,
+        "y": 20
+      },
+      "width": 380,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "editor",
+          "payload": "editor.web"
+        },
+        "editor": {
+          "web": {
+            "fields": [
+              {
+                "key": "label",
+                "label": "Label",
+                "type": "text",
+                "path": "label",
+                "placeholder": "Summary"
+              },
+              {
+                "key": "goal",
+                "label": "Goal",
+                "type": "text",
+                "path": "data.goal",
+                "placeholder": "Describe the document's current read"
+              },
+              {
+                "key": "status",
+                "label": "Status",
+                "type": "select",
+                "path": "data.status",
+                "options": [
+                  {
+                    "label": "Todo",
+                    "value": "todo"
+                  },
+                  {
+                    "label": "In Progress",
+                    "value": "in-progress"
+                  },
+                  {
+                    "label": "Done",
+                    "value": "done"
+                  },
+                  {
+                    "label": "Blocked",
+                    "value": "blocked"
+                  }
+                ]
+              },
+              {
+                "key": "taskProgress",
+                "label": "Task Progress",
+                "type": "json",
+                "path": "data.taskProgress",
+                "placeholder": "{\"completed\":0,\"total\":0}"
+              },
+              {
+                "key": "questionProgress",
+                "label": "Question Progress",
+                "type": "json",
+                "path": "data.questionProgress",
+                "placeholder": "{\"answered\":0,\"total\":0}"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "task-graph-summary-node-view",
+      "type": "view",
+      "label": "Node View (node.web)",
+      "position": {
+        "x": -320,
+        "y": 20
+      },
+      "width": 460,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web",
+          "html": {
+            "chrome": true
+          }
+        },
+        "node": {
+          "web": {
+            "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;box-sizing:border-box;padding:0;overflow:hidden;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(228,247,239,.94));color:#23160a;position:relative;'>\n  <div style='padding:8px 10px 6px 10px;background:linear-gradient(135deg, #9be7c4, #1f9d67);color:#082618;border-bottom:1px solid rgba(0,0,0,.08);'>\n    <div style='display:flex;align-items:flex-start;justify-content:space-between;gap:6px;'>\n      <div style='min-width:0;flex:1 1 auto;'>\n        <div style='font:700 8px system-ui,sans-serif;letter-spacing:.15em;text-transform:uppercase;opacity:.7;margin-bottom:2px;'>Task summary provider</div>\n        <div style='font:800 15px/1.02 Georgia, \"Times New Roman\", serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;'>{{data.goal}}</div>\n      </div>\n      <div style='display:inline-flex;align-items:center;justify-content:center;padding:3px 7px;border-radius:999px;background:rgba(255,255,255,.38);border:1px solid rgba(0,0,0,.08);font:700 8px system-ui,sans-serif;text-transform:uppercase;white-space:nowrap;flex:0 0 auto;'>{{data.status}}</div>\n    </div>\n    <div style='display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:6px;'>\n      <div style='padding:6px 7px;border-radius:10px;background:rgba(255,255,255,.58);border:1px solid rgba(0,0,0,.06);min-width:0;'>\n        <div style='font:700 8px system-ui,sans-serif;letter-spacing:.13em;text-transform:uppercase;opacity:.72;color:#3b5b47;'>Tasks</div>\n        <div style='font:800 16px/1 Georgia, \"Times New Roman\", serif;color:#23160a;margin-top:2px;'>{{data.taskProgress.completed}}/{{data.taskProgress.total}}</div>\n      </div>\n      <div style='padding:6px 7px;border-radius:10px;background:rgba(255,255,255,.58);border:1px solid rgba(0,0,0,.06);min-width:0;'>\n        <div style='font:700 8px system-ui,sans-serif;letter-spacing:.13em;text-transform:uppercase;opacity:.72;color:#3b5b47;'>Questions</div>\n        <div style='font:800 16px/1 Georgia, \"Times New Roman\", serif;color:#23160a;margin-top:2px;'>{{data.questionProgress.answered}}/{{data.questionProgress.total}}</div>\n      </div>\n    </div>\n  </div>\n  <div style='display:flex;flex-direction:column;gap:6px;padding:8px 10px 10px 10px;min-height:0;flex:1;color:#23160a;'>\n    <div style='display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;min-height:0;'>\n      <div style='padding:6px 7px;border-radius:10px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.06);min-width:0;min-height:0;'>\n        <div style='font:700 8px system-ui,sans-serif;letter-spacing:.13em;text-transform:uppercase;opacity:.66;color:#3b5b47;margin-bottom:3px;'>Tasks in scope</div>\n        <div style='font:600 9px/1.22 system-ui,sans-serif;color:#23160a;white-space:pre-wrap;max-height:7.4em;overflow:auto;padding-right:2px;'>{{data.taskListText}}</div>\n      </div>\n      <div style='padding:6px 7px;border-radius:10px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.06);min-width:0;min-height:0;'>\n        <div style='font:700 8px system-ui,sans-serif;letter-spacing:.13em;text-transform:uppercase;opacity:.66;color:#3b5b47;margin-bottom:3px;'>Open questions</div>\n        <div style='font:600 9px/1.22 system-ui,sans-serif;color:#23160a;white-space:pre-wrap;max-height:7.4em;overflow:auto;padding-right:2px;'>{{data.questionListText}}</div>\n      </div>\n    </div>\n    <div style='padding:7px 8px;border-radius:10px;background:rgba(255,255,255,.76);border:1px solid rgba(0,0,0,.06);margin-top:auto;'>\n      <div style='font:700 8px system-ui,sans-serif;letter-spacing:.13em;text-transform:uppercase;opacity:.66;margin-bottom:3px;color:#3b5b47;'>Current read</div>\n      <div style='font:600 10px/1.28 system-ui,sans-serif;color:#23160a;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;'>{{data.goal}}</div>\n    </div>\n  </div>\n</div>"
+          }
+        }
+      }
+    },
+    {
+      "id": "task-graph-summary-notes",
+      "type": "markdown",
+      "label": "Definition Notes",
+      "position": {
+        "x": 180,
+        "y": 20
+      },
+      "width": 560,
+      "height": 220,
+      "color": "#455a64",
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "This class is the summary surface for a task graph. A real task graph has a `goal` plus at least one associated `task` or `open-question`. A local graph-authored updater writes goal, status, and progress counts into this node's data.",
+        "memo": "",
+        "link": "",
+        "html": "",
+        "svg": "",
+        "isRoot": false,
+        "root": false,
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "ref": "/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    }
+  ],
+  "edges": [],
+  "clusters": [],
+  "nodeCount": 5,
+  "edgeCount": 0,
+  "timestamp": "2026-03-24T15:44:09.470Z"
+}
