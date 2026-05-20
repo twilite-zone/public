@@ -80,7 +80,7 @@
           "key": "bridge",
           "nodeDef": {
             "key": "bridge",
-            "ref": "/library/classes/nodes/bridge.node-class.node",
+            "ref": "github://twilite-zone/public/library/classes/nodes/bridge.node-class.node",
             "source": "local",
             "version": ">=0.1.0",
             "defaults": {
@@ -100,11 +100,21 @@
                 "grants": [],
                 "role": "import",
                 "exposure": {
-                  "nodeClasses": { "mode": "deny" },
-                  "edgeClasses": { "mode": "deny" },
-                  "views": { "mode": "deny" },
-                  "scripts": { "mode": "deny" },
-                  "declarations": { "mode": "deny" }
+                  "nodeClasses": {
+                    "mode": "deny"
+                  },
+                  "edgeClasses": {
+                    "mode": "deny"
+                  },
+                  "views": {
+                    "mode": "deny"
+                  },
+                  "scripts": {
+                    "mode": "deny"
+                  },
+                  "declarations": {
+                    "mode": "deny"
+                  }
                 },
                 "bridge": {
                   "ref": "",
@@ -114,11 +124,21 @@
                   "surfaceId": "",
                   "grants": [],
                   "exposure": {
-                    "nodeClasses": { "mode": "deny" },
-                    "edgeClasses": { "mode": "deny" },
-                    "views": { "mode": "deny" },
-                    "scripts": { "mode": "deny" },
-                    "declarations": { "mode": "deny" }
+                    "nodeClasses": {
+                      "mode": "deny"
+                    },
+                    "edgeClasses": {
+                      "mode": "deny"
+                    },
+                    "views": {
+                      "mode": "deny"
+                    },
+                    "scripts": {
+                      "mode": "deny"
+                    },
+                    "declarations": {
+                      "mode": "deny"
+                    }
                   }
                 },
                 "target": {
@@ -131,11 +151,21 @@
                   "surfaceId": "",
                   "grants": [],
                   "exposure": {
-                    "nodeClasses": { "mode": "deny" },
-                    "edgeClasses": { "mode": "deny" },
-                    "views": { "mode": "deny" },
-                    "scripts": { "mode": "deny" },
-                    "declarations": { "mode": "deny" }
+                    "nodeClasses": {
+                      "mode": "deny"
+                    },
+                    "edgeClasses": {
+                      "mode": "deny"
+                    },
+                    "views": {
+                      "mode": "deny"
+                    },
+                    "scripts": {
+                      "mode": "deny"
+                    },
+                    "declarations": {
+                      "mode": "deny"
+                    }
                   },
                   "label": "Bridge"
                 }
@@ -177,33 +207,182 @@
         "payload": "editor.web",
         "editor": {
           "web": {
-            "host": { "kind": "bridge-editor" },
+            "host": {
+              "kind": "bridge-editor"
+            },
             "fields": [
-              { "key": "label", "label": "Label", "path": "label", "type": "text", "placeholder": "Bridge" },
-              { "key": "memo", "label": "Bridge Note", "path": "data.memo", "type": "multiline", "rows": 5, "placeholder": "Describe why this bridge exists and what it should expose." },
-              { "key": "surfaceId", "label": "Target Surface", "path": "data.bridge.surfaceId", "type": "select", "optionsSource": "bridgeTargetSurfaces", "helperText": "Choose which declaration surface this bridge should design against. Leave empty to use the target default." },
-
-              { "key": "exposeViews", "label": "Views Exposure", "path": "data.bridge.exposure.views.mode", "type": "checkbox", "trueValue": "allow", "falseValue": "deny" },
-              { "key": "viewsMode", "label": "Views Policy", "path": "data.bridge.exposure.views.mode", "type": "select", "options": ["allow", "deny", "allowlist", "denylist"] },
-              { "key": "viewsAllowKeys", "label": "Views List", "path": "data.bridge.exposure.views.allowKeys", "type": "multiselect", "optionsSource": "bridgeCandidateViews" },
-
-              { "key": "exposeNodeClasses", "label": "Node Classes Exposure", "path": "data.bridge.exposure.nodeClasses.mode", "type": "checkbox", "trueValue": "allow", "falseValue": "deny" },
-              { "key": "nodesMode", "label": "Node Classes Policy", "path": "data.bridge.exposure.nodeClasses.mode", "type": "select", "options": ["allow", "deny", "allowlist", "denylist"] },
-              { "key": "nodesAllowKeys", "label": "Node Class Keys", "path": "data.bridge.exposure.nodeClasses.allowKeys", "type": "multiline", "rows": 3, "placeholder": "markdown\nbridge" },
-
-              { "key": "exposeEdgeClasses", "label": "Edge Classes Exposure", "path": "data.bridge.exposure.edgeClasses.mode", "type": "checkbox", "trueValue": "allow", "falseValue": "deny" },
-              { "key": "edgesMode", "label": "Edge Classes Policy", "path": "data.bridge.exposure.edgeClasses.mode", "type": "select", "options": ["allow", "deny", "allowlist", "denylist"] },
-              { "key": "edgesAllowKeys", "label": "Edge Class Keys", "path": "data.bridge.exposure.edgeClasses.allowKeys", "type": "multiline", "rows": 3, "placeholder": "task.depends-on\nplanning.answers" },
-
-              { "key": "exposeScripts", "label": "Scripts Exposure", "path": "data.bridge.exposure.scripts.mode", "type": "checkbox", "trueValue": "allow", "falseValue": "deny" },
-              { "key": "scriptsMode", "label": "Scripts Policy", "path": "data.bridge.exposure.scripts.mode", "type": "select", "options": ["allow", "deny", "allowlist", "denylist"] },
-              { "key": "scriptsAllowKeys", "label": "Script Keys", "path": "data.bridge.exposure.scripts.allowKeys", "type": "multiline", "rows": 3, "placeholder": "layout.autoLayout" },
-
-              { "key": "exposeDeclarations", "label": "Declarations Exposure", "path": "data.bridge.exposure.declarations.mode", "type": "checkbox", "trueValue": "allow", "falseValue": "deny" },
-              { "key": "declarationsMode", "label": "Declarations Policy", "path": "data.bridge.exposure.declarations.mode", "type": "select", "options": ["allow", "deny", "allowlist", "denylist"] },
-              { "key": "declarationsAllowKeys", "label": "Declaration Keys", "path": "data.bridge.exposure.declarations.allowKeys", "type": "multiline", "rows": 3, "placeholder": "declaration" },
-
-              { "key": "scope", "label": "Bridge Scope", "path": "data.bridge.scope", "type": "select", "options": ["focused-graph", "global-graph"] }
+              {
+                "key": "label",
+                "label": "Label",
+                "path": "label",
+                "type": "text",
+                "placeholder": "Bridge"
+              },
+              {
+                "key": "memo",
+                "label": "Bridge Note",
+                "path": "data.memo",
+                "type": "multiline",
+                "rows": 5,
+                "placeholder": "Describe why this bridge exists and what it should expose."
+              },
+              {
+                "key": "surfaceId",
+                "label": "Target Surface",
+                "path": "data.bridge.surfaceId",
+                "type": "select",
+                "optionsSource": "bridgeTargetSurfaces",
+                "helperText": "Choose which declaration surface this bridge should design against. Leave empty to use the target default."
+              },
+              {
+                "key": "exposeViews",
+                "label": "Views Exposure",
+                "path": "data.bridge.exposure.views.mode",
+                "type": "checkbox",
+                "trueValue": "allow",
+                "falseValue": "deny"
+              },
+              {
+                "key": "viewsMode",
+                "label": "Views Policy",
+                "path": "data.bridge.exposure.views.mode",
+                "type": "select",
+                "options": [
+                  "allow",
+                  "deny",
+                  "allowlist",
+                  "denylist"
+                ]
+              },
+              {
+                "key": "viewsAllowKeys",
+                "label": "Views List",
+                "path": "data.bridge.exposure.views.allowKeys",
+                "type": "multiselect",
+                "optionsSource": "bridgeCandidateViews"
+              },
+              {
+                "key": "exposeNodeClasses",
+                "label": "Node Classes Exposure",
+                "path": "data.bridge.exposure.nodeClasses.mode",
+                "type": "checkbox",
+                "trueValue": "allow",
+                "falseValue": "deny"
+              },
+              {
+                "key": "nodesMode",
+                "label": "Node Classes Policy",
+                "path": "data.bridge.exposure.nodeClasses.mode",
+                "type": "select",
+                "options": [
+                  "allow",
+                  "deny",
+                  "allowlist",
+                  "denylist"
+                ]
+              },
+              {
+                "key": "nodesAllowKeys",
+                "label": "Node Class Keys",
+                "path": "data.bridge.exposure.nodeClasses.allowKeys",
+                "type": "multiline",
+                "rows": 3,
+                "placeholder": "markdown\nbridge"
+              },
+              {
+                "key": "exposeEdgeClasses",
+                "label": "Edge Classes Exposure",
+                "path": "data.bridge.exposure.edgeClasses.mode",
+                "type": "checkbox",
+                "trueValue": "allow",
+                "falseValue": "deny"
+              },
+              {
+                "key": "edgesMode",
+                "label": "Edge Classes Policy",
+                "path": "data.bridge.exposure.edgeClasses.mode",
+                "type": "select",
+                "options": [
+                  "allow",
+                  "deny",
+                  "allowlist",
+                  "denylist"
+                ]
+              },
+              {
+                "key": "edgesAllowKeys",
+                "label": "Edge Class Keys",
+                "path": "data.bridge.exposure.edgeClasses.allowKeys",
+                "type": "multiline",
+                "rows": 3,
+                "placeholder": "task.depends-on\nplanning.answers"
+              },
+              {
+                "key": "exposeScripts",
+                "label": "Scripts Exposure",
+                "path": "data.bridge.exposure.scripts.mode",
+                "type": "checkbox",
+                "trueValue": "allow",
+                "falseValue": "deny"
+              },
+              {
+                "key": "scriptsMode",
+                "label": "Scripts Policy",
+                "path": "data.bridge.exposure.scripts.mode",
+                "type": "select",
+                "options": [
+                  "allow",
+                  "deny",
+                  "allowlist",
+                  "denylist"
+                ]
+              },
+              {
+                "key": "scriptsAllowKeys",
+                "label": "Script Keys",
+                "path": "data.bridge.exposure.scripts.allowKeys",
+                "type": "multiline",
+                "rows": 3,
+                "placeholder": "layout.autoLayout"
+              },
+              {
+                "key": "exposeDeclarations",
+                "label": "Declarations Exposure",
+                "path": "data.bridge.exposure.declarations.mode",
+                "type": "checkbox",
+                "trueValue": "allow",
+                "falseValue": "deny"
+              },
+              {
+                "key": "declarationsMode",
+                "label": "Declarations Policy",
+                "path": "data.bridge.exposure.declarations.mode",
+                "type": "select",
+                "options": [
+                  "allow",
+                  "deny",
+                  "allowlist",
+                  "denylist"
+                ]
+              },
+              {
+                "key": "declarationsAllowKeys",
+                "label": "Declaration Keys",
+                "path": "data.bridge.exposure.declarations.allowKeys",
+                "type": "multiline",
+                "rows": 3,
+                "placeholder": "declaration"
+              },
+              {
+                "key": "scope",
+                "label": "Bridge Scope",
+                "path": "data.bridge.scope",
+                "type": "select",
+                "options": [
+                  "focused-graph",
+                  "global-graph"
+                ]
+              }
             ]
           }
         },

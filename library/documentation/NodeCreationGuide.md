@@ -113,7 +113,7 @@ Do not ask the LLM to create class file + update host + create instances in one 
 Use one of these `ref` styles:
 
 - local absolute path in Twilite-hosted content:
-  - `"/library/classes/nodes/my.node-class.node"`
+  - `"github://twilite-zone/public/library/classes/nodes/my.node-class.node"`
 - fully qualified remote URL:
   - `"https://twilite.zone/library/classes/nodes/my.node-class.node"`
 
@@ -181,7 +181,7 @@ Then iterate:
 
 ```json
 {
-  "endpoint": "/library/classes/nodes/node.node-class.node:root",
+  "endpoint": "github://twilite-zone/public/library/classes/nodes/node.node-class.node:root",
   "mode": "bridge",
   "kind": "node-class",
   "key": "node"

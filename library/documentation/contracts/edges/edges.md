@@ -33,7 +33,7 @@ Every edge must include:
 {
   "label": "string",
   "data": {
-    "edgeClassRef": "/library/classes/edges/task-depends-on.edge-class.node",
+    "edgeClassRef": "github://twilite-zone/public/library/classes/edges/task-depends-on.edge-class.node",
     "edgeClassKey": "task.depends-on",
     "edgeClassMeaning": "target must happen before source can complete"
   },
@@ -92,7 +92,7 @@ When an edge is classified, the canonical structure is:
 ```json
 {
   "data": {
-    "edgeClassRef": "/library/classes/edges/task-depends-on.edge-class.node",
+    "edgeClassRef": "github://twilite-zone/public/library/classes/edges/task-depends-on.edge-class.node",
     "edgeClassKey": "task.depends-on",
     "edgeClassMeaning": "target must happen before source can complete"
   }
