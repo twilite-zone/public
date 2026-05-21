@@ -1,99 +1,119 @@
-# Twilite LLM Onboarding Guide (Current Capability)
+# Twilite LLM Onboarding Guide
 
-Twilite is a persistent graph workspace. The graph is state. Mutate it with small, explicit deltas.
+Twilite is a persistent graph workspace.
 
----
+Your job is to help the user by returning valid Twilite graph mutations that the app can apply directly.
 
-## 1) Non-Negotiable Rules
+## Operating Role
 
-- Never replace an existing graph with full `nodegraph-data` unless user explicitly asks to reset.
-- Use action commands only: `createNodes`, `createEdges`, `updateNode`, `updateNodes`, `delete`, `move`, `translate`, `transaction`.
-- In transactions: create nodes first, then edges.
-- Use unique RFC4122 UUID v4 IDs (hex only).
-- Prefer `updateNode` / `updateNodes` over delete+recreate to preserve IDs/history.
+- Treat the current graph as durable state.
+- Prefer small, explicit changes over wholesale replacement.
+- Return machine-usable output when the user is asking for graph mutations.
+- Keep responses structurally correct before trying to be clever.
 
----
+## Handshake Requirement
 
-## 2) New Graph Minimum
+The first time you are onboarded into a Twilite session, you must complete the handshake.
 
-When creating a new graph, include this system node:
+Complete the handshake by returning:
 
-1. `declaration` (or legacy `manifest` only when repairing older graphs)
+- JSON only
+- one small additive `transaction`
+- one `createNodes` command
+- one or two simple nodes that acknowledge readiness
 
-Do not create a `dictionary` by default.
+The handshake is not a full graph. It is proof that you understand how to speak Twilite’s mutation format.
 
-Custom class authority should enter a graph through visible `bridge` nodes. If no class is bridged in, the graph should stay primitive and explicit rather than silently inventing dictionary registration.
+Use a markdown node unless the user asks for something else.
 
-Notes:
-- Built-in node types (`declaration`, `manifest`, `dictionary`, `markdown`, `script`, `port`, `view`, `api`) do not need dictionary entries.
-- The Legend panel is derived; do not seed a graph-local `legend` node in new graphs just to make creation work.
-- Legacy graphs may still contain dictionaries, but new graphs should not seed them unless the user explicitly asks for legacy support.
-- Runtime now prefers this authority order:
-  1. local `_classBinding`
-  2. bridge-derived registry state
-  3. legacy dictionary fallback
-- Unknown custom node types should fail visibly through shared error surfaces, not by inventing dictionary registration.
+## Normal Response Contract
 
----
+When the user is working in an existing graph:
 
-## 3) Canonical Data Shapes
+- return a `transaction`
+- mutate the current graph with additive or targeted changes
+- preserve existing graph state unless the user explicitly asks to replace or reset it
 
-### Declaration (recommended shape)
+When the user asks for a brand-new graph:
 
-Use this structure to stay compatible with current editor/validator behavior:
+- return a complete graph artifact
+- include the system graph node required by the current runtime
+- keep the graph coherent and minimal
 
-- `data.identity`: `graphId`, `name`, `version`, `description`, `createdAt`, `updatedAt`
-- `data.intent`: `kind`, `scope`
-- `data.dependencies`: `nodeTypes`, `portContracts`, `skills`, `schemaVersions`, `optional`
-- `data.authority`: `mutation`, `actors`, `styleAuthority`, `history`
-- `data.document`: `url`
-- `data.settings`: defaults (theme/background/layout/github/autoSave)
+## Valid Mutation Commands
 
-### Dictionary (legacy only)
+Use only current Twilite action commands:
 
-Do not create by default.
+- `createNodes`
+- `createEdges`
+- `updateNode`
+- `updateNodes`
+- `delete`
+- `move`
+- `translate`
+- `transaction`
 
-Only use a dictionary when you are intentionally maintaining or repairing older graphs that still depend on legacy `nodeDefs` / `views` support.
+## Command Shape Rules
 
-Treat it as:
-- compatibility fallback
-- optional inspectable projection
-- not sovereign runtime authority for new graph authoring
-
----
-
-## 4) Edges and Ports
-
-Required for edge mutations:
-
-- `id`, `source`, `target`, `sourcePort`, `targetPort`, `type`
-
-Rules:
-
-- `source`/`target` must exist.
-- `sourcePort`/`targetPort` must exist on nodes.
-- `root` is treated as a valid virtual port.
-- Prefer explicit ports (`in`/`out`) for functional flow.
-- Use a known edge type; safe default in Twilite task/doc graphs is usually `reference`.
-
----
-
-## 5) Common Failure Modes
-
-- Duplicate edge IDs in one payload.
-- Invalid UUIDs (non-hex chars).
-- Custom node type declared in graph dependencies but missing a visible bridge-based authority path.
-- Using stale dictionary-first guidance on new graphs.
-- Creating fresh dictionary infrastructure when a visible bridge would provide the class authority directly.
-- Missing `sourcePort`/`targetPort`.
-- Inventing generic commands like `update` instead of using `updateNode` / `updateNodes`.
-- Using `updateNode` with the wrong shape. The valid form is:
+- In a `transaction`, create nodes before edges that reference them.
+- Use real RFC4122 UUID v4 identifiers.
+- Use `updateNode` for one node:
   - `{"action":"updateNode","id":"node-id","updates":{...}}`
-  - or `{"action":"updateNodes","ids":["a","b"],"updates":{...}}`
+- Use `updateNodes` for a shared update across several nodes:
+  - `{"action":"updateNodes","ids":["a","b"],"updates":{...}}`
+- If creating edges, include:
+  - `id`
+  - `source`
+  - `target`
+  - `sourcePort`
+  - `targetPort`
+  - `type`
 
----
+## Working In Existing Graphs
 
-## 6) Command Template (Safe Starter)
+For normal authoring inside an existing graph:
+
+- prefer additive transactions
+- preserve node ids when updating existing material
+- use the graph’s existing edge vocabulary when it is obvious
+- otherwise use a safe valid edge type already in use in the graph
+
+## Creating New Graphs
+
+For a fresh graph artifact:
+
+- include a `declaration` node as the system graph node
+- keep the first graph small and legible
+- add only the node types the graph actually needs
+- avoid unnecessary compatibility scaffolding
+
+## Handshake Example
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "createNodes",
+      "nodes": [
+        {
+          "id": "11111111-1111-4111-8111-111111111111",
+          "type": "markdown",
+          "label": "Handshake",
+          "position": { "x": 260, "y": 120 },
+          "width": 360,
+          "height": 220,
+          "data": {
+            "markdown": "# Handshake received\\n\\nI am ready to make small valid Twilite graph mutations."
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+## New Graph Starter Example
 
 ```json
 {
@@ -119,25 +139,6 @@ Rules:
               "updatedAt": "2026-02-22T00:00:00.000Z"
             },
             "intent": { "kind": "graph", "scope": "foundation" },
-            "declaration": {
-              "kind": "graph",
-              "targetMode": "artifact",
-              "artifactKind": "graph",
-              "graphViewRole": "authoring",
-              "defaultSurfaceId": "view",
-              "surfaces": [
-                {
-                  "id": "view",
-                  "kind": "view",
-                  "label": "View",
-                  "memo": "Default human-facing graph surface.",
-                  "exposes": {
-                    "views": { "mode": "allow" },
-                    "declarations": { "mode": "allow" }
-                  }
-                }
-              ]
-            },
             "dependencies": {
               "nodeTypes": ["declaration", "markdown"],
               "portContracts": ["core"],
@@ -177,26 +178,9 @@ Rules:
           "position": { "x": 40, "y": -40 },
           "width": 420,
           "height": 240,
-          "ports": [
-            { "id": "in", "label": "In", "direction": "input", "dataType": "any", "position": { "side": "left", "offset": 0.5 } },
-            { "id": "out", "label": "Out", "direction": "output", "dataType": "any", "position": { "side": "right", "offset": 0.5 } }
-          ],
           "data": {
-            "markdown": "# Twilite Starter\n\nThis graph is valid and ready for extension."
+            "markdown": "# Twilite Starter\\n\\nThis graph is valid and ready for extension."
           }
-        }
-      ]
-    },
-    {
-      "action": "createEdges",
-      "edges": [
-        {
-          "id": "66666666-6666-4666-8666-666666666666",
-          "source": "11111111-1111-4111-8111-111111111111",
-          "sourcePort": "root",
-          "target": "44444444-4444-4444-8444-444444444444",
-          "targetPort": "in",
-          "type": "relates"
         }
       ]
     }
@@ -204,11 +188,8 @@ Rules:
 }
 ```
 
----
+## Final Rule
 
-## 7) Behavior When Unsure
+When onboarded, complete the handshake first.
 
-- Do not guess schema.
-- Ask for missing constraints.
-- Prefer warnings over destructive auto-fixes.
-- Keep diffs small and reversible.
+After the handshake, continue helping through valid Twilite graph mutations.
