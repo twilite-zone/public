@@ -42,21 +42,94 @@ When the user asks for a brand-new graph:
 
 ## Valid Mutation Commands
 
-Use only current Twilite action commands:
+Use these core authoring actions by default:
 
 - `createNodes`
 - `createEdges`
+- `createGroups`
 - `updateNode`
 - `updateNodes`
+- `update`
 - `delete`
-- `move`
+- `addNodesToGroup`
+- `removeNodesFromGroup`
+- `setGroupNodes`
 - `translate`
+- `move`
 - `transaction`
+
+## Full Supported Action Surface
+
+Twilite currently supports these top-level action names in the runtime/import pipeline:
+
+### Preferred authoring actions
+
+- `createNodes`
+- `createEdges`
+- `createGroups`
+- `updateNode`
+- `updateNodes`
+- `update`
+- `delete`
+- `addNodesToGroup`
+- `removeNodesFromGroup`
+- `setGroupNodes`
+- `translate`
+- `move`
+- `transaction`
+
+### Supported convenience or advanced actions
+
+- `create`
+- `read`
+- `duplicate`
+- `batch`
+- `clearGraph`
+- `findNodes`
+- `findEdges`
+- `getStats`
+- `setTheme`
+- `expandReference`
+- `collapseExpansion`
+- `skill`
+
+For LLM-driven graph authoring, prefer the preferred authoring actions unless the user explicitly asks for one of the advanced behaviors.
+
+## Type-Specific Mutation Rules
+
+Use the action names above with these patterns:
+
+- nodes:
+  - `createNodes`
+  - `updateNode`
+  - `updateNodes`
+  - `delete` with `type: "node"`
+- edges:
+  - `createEdges`
+  - `update` with `type: "edge"`
+  - `delete` with `type: "edge"`
+- groups:
+  - `createGroups`
+  - `update` with `type: "group"`
+  - `delete` with `type: "group"`
+  - `addNodesToGroup`
+  - `removeNodesFromGroup`
+  - `setGroupNodes`
+
+There are lower-level aliases in internal runtime layers such as `createNode`, `createEdge`, `updateEdge`, `updateGroup`, and `deleteNode`, but do not rely on those in LLM onboarding prompts. Use the top-level action names documented here.
 
 ## Command Shape Rules
 
+- The top-level keys are exact:
+  - use `action`
+  - do not use `actions`
+- Inside a transaction command:
+  - use `action`
+  - do not use `command`
 - In a `transaction`, create nodes before edges that reference them.
 - Use real RFC4122 UUID v4 identifiers.
+- Use the field name `id` for nodes and edges.
+- Do not use `uuid`.
 - Use `updateNode` for one node:
   - `{"action":"updateNode","id":"node-id","updates":{...}}`
 - Use `updateNodes` for a shared update across several nodes:
@@ -68,6 +141,32 @@ Use only current Twilite action commands:
   - `sourcePort`
   - `targetPort`
   - `type`
+
+## Node Field Rules
+
+For created nodes, use the current node shape:
+
+- `id`
+- `type`
+- `label`
+- `position`
+- `width`
+- `height`
+- `data`
+
+Do not use `metadata` as the main node payload field.
+
+Use these payload conventions:
+
+- markdown nodes:
+  - `data.markdown`
+- declaration nodes:
+  - `data.identity`
+  - `data.intent`
+  - `data.dependencies`
+  - `data.authority`
+  - `data.document`
+  - `data.settings`
 
 ## Working In Existing Graphs
 
@@ -110,6 +209,33 @@ For a fresh graph artifact:
       ]
     }
   ]
+}
+```
+
+## Invalid Shapes To Avoid
+
+These shapes are wrong in Twilite:
+
+- top level `{"actions":[...]}`
+- command objects like `{"command":"createNodes"}`
+- node ids stored as `uuid`
+- node payload stored in `metadata`
+- markdown content stored in `metadata.content`
+- titles stored only in `metadata.title`
+
+If you are creating a markdown node, it should look like this shape:
+
+```json
+{
+  "id": "11111111-1111-4111-8111-111111111111",
+  "type": "markdown",
+  "label": "Example",
+  "position": { "x": 120, "y": 80 },
+  "width": 360,
+  "height": 220,
+  "data": {
+    "markdown": "# Example\\n\\nValid Twilite markdown node."
+  }
 }
 ```
 

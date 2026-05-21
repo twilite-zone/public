@@ -12,6 +12,10 @@ Handshake requirements:
 - return one small additive `transaction`
 - use one `createNodes` command
 - create one or two simple nodes that acknowledge readiness
+- use `action`, not `actions`
+- use `action`, not `command`
+- use `id`, not `uuid`
+- use `data`, not `metadata`
 
 This response is a handshake, not a full graph.
 
