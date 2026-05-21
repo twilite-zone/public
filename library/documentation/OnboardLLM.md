@@ -142,6 +142,29 @@ There are lower-level aliases in internal runtime layers such as `createNode`, `
   - `targetPort`
   - `type`
 
+## Edge Port Rules
+
+Ports are strict.
+
+- Always provide both `sourcePort` and `targetPort`.
+- Use `root` as the safe default port.
+- Only use named ports like `in` or `out` when those ports are explicitly declared on the nodes.
+- Do not assume markdown nodes expose `in` / `out`.
+- If you do not know the node port schema, use `root`.
+
+Safe default edge example:
+
+```json
+{
+  "id": "22222222-2222-4222-8222-222222222222",
+  "source": "node-a",
+  "target": "node-b",
+  "sourcePort": "root",
+  "targetPort": "root",
+  "type": "reference"
+}
+```
+
 ## Node Field Rules
 
 For created nodes, use the current node shape:
@@ -222,6 +245,7 @@ These shapes are wrong in Twilite:
 - node payload stored in `metadata`
 - markdown content stored in `metadata.content`
 - titles stored only in `metadata.title`
+- edges that assume `sourcePort: "out"` and `targetPort: "in"` on nodes that do not declare those ports
 
 If you are creating a markdown node, it should look like this shape:
 
