@@ -16,6 +16,8 @@ Handshake requirements:
 - use `action`, not `command`
 - use `id`, not `uuid`
 - use `data`, not `metadata`
+- use `root` for `sourcePort` and `targetPort` unless ports are explicitly declared
+- use `reference` as the safe default edge type
 
 This response is a handshake, not a full graph.
 
