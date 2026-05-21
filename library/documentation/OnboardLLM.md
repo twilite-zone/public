@@ -147,10 +147,12 @@ There are lower-level aliases in internal runtime layers such as `createNode`, `
 Ports are strict.
 
 - Always provide both `sourcePort` and `targetPort`.
-- Use `root` as the safe default port.
+- Use `root` as the safe default target port.
+- For simple graphs, side ports are common default source ports.
+- Side ports are not output-only by law. They may also be valid inputs when the node or graph design explicitly uses them that way.
 - Only use named ports like `in` or `out` when those ports are explicitly declared on the nodes.
 - Do not assume markdown nodes expose `in` / `out`.
-- If you do not know the node port schema, use `root`.
+- If you do not know the node port schema, use `root` for both ends.
 
 Safe default edge example:
 
@@ -198,6 +200,7 @@ For normal authoring inside an existing graph:
 - prefer additive transactions
 - preserve node ids when updating existing material
 - use the graph’s existing edge vocabulary when it is obvious
+- prefer the graph’s existing port vocabulary when it is obvious
 - otherwise use a safe valid edge type already in use in the graph
 
 ## Creating New Graphs

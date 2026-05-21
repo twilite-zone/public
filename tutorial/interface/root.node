@@ -1,10 +1,10 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Untitled Project",
-    "description": "",
+    "title": "Interface Tutorial",
+    "description": "Guide to the Twilite browser bar, menus, panels, and editing surfaces.",
     "created": "2026-05-17T23:43:33.191Z",
-    "modified": "2026-05-17T23:45:33.949Z",
+    "modified": "2026-05-21T20:25:51.794Z",
     "author": "",
     "tags": [],
     "preferredViewer": "https://twilite.zone"
@@ -327,7 +327,10 @@
         },
         "_bridge": {
           "classKey": "title",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
+          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "sourceBridgeNodeId": "tutorial-interface-title-bridge",
+          "sourceBridgeLabel": "Title",
+          "targetKind": "node-class"
         }
       }
     },
@@ -358,8 +361,12 @@
         },
         "_bridge": {
           "classKey": "type-definition",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-        }
+          "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
+          "sourceBridgeNodeId": "tutorial-interface-type-bridge",
+          "sourceBridgeLabel": "Type Definition",
+          "targetKind": "node-class"
+        },
+        "classRef": "github://twilite-zone/public/tutorial/interface/root.node"
       }
     },
     {
@@ -397,7 +404,10 @@
         },
         "_bridge": {
           "classKey": "ui-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "sourceBridgeNodeId": "tutorial-interface-view-bridge",
+          "sourceBridgeLabel": "View",
+          "targetKind": "node-class"
         }
       }
     },
@@ -436,7 +446,7 @@
     },
     {
       "id": "tutorial-interface-task-bridge",
-      "type": "port",
+      "type": "bridge",
       "label": "Task",
       "root": false,
       "position": {
@@ -448,23 +458,48 @@
       "visible": false,
       "showLabel": true,
       "data": {
+        "memo": "Bridge for the Task class.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+        },
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node:root",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
           "mode": "bridge",
           "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
           "label": "Task",
-          "key": "task",
-          "portId": "root",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "handleId": "root"
+          "key": "task"
         },
-        "authority": "consume-view",
-        "intent": "external",
-        "security": "prompt",
-        "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-        "src": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-        "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node:root",
-        "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+        "isRoot": false,
+        "root": false
       }
     },
     {
@@ -492,7 +527,10 @@
         },
         "_bridge": {
           "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceBridgeNodeId": "tutorial-interface-task-bridge",
+          "sourceBridgeLabel": "Task",
+          "targetKind": "node-class"
         }
       }
     },
@@ -707,6 +745,180 @@
         "ref": "github://twilite-zone/public/tutorial/interface/save-refresh-trust/root.node",
         "src": "github://twilite-zone/public/tutorial/interface/save-refresh-trust/root.node",
         "endpoint": "github://twilite-zone/public/tutorial/interface/save-refresh-trust/root.node:root"
+      }
+    },
+    {
+      "id": "tutorial-interface-title-bridge",
+      "type": "bridge",
+      "label": "Title",
+      "root": false,
+      "position": {
+        "x": -640,
+        "y": -220
+      },
+      "width": 220,
+      "height": 140,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Title class.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "title",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "title",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
+        },
+        "target": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Title",
+          "key": "title"
+        },
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "tutorial-interface-type-bridge",
+      "type": "bridge",
+      "label": "Type Definition",
+      "root": false,
+      "position": {
+        "x": -640,
+        "y": -60
+      },
+      "width": 220,
+      "height": 140,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the Type Definition class.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "type-definition",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "type-definition",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
+        },
+        "target": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Type Definition",
+          "key": "type-definition"
+        },
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "tutorial-interface-view-bridge",
+      "type": "bridge",
+      "label": "View",
+      "root": false,
+      "position": {
+        "x": -640,
+        "y": 100
+      },
+      "width": 220,
+      "height": 140,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the View class.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "ui-view",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "ui-view",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+        },
+        "target": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "View",
+          "key": "ui-view"
+        },
+        "isRoot": false,
+        "root": false
       }
     }
   ],
