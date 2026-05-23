@@ -119,7 +119,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Field-Driven Class Artifacts\n\nTwilite has outgrown the split where node classes are mostly ref/dictionary driven while edge classes are increasingly field driven. This task graph captures the plan to make both kinds of class artifact authorable through the same native language.\n\nWorking assumptions:\n- the larger graph ecosystem is revisable, not sacred\n- Twilite should set good examples instead of perpetuating legacy ones\n- classes should be ordinary graph artifacts, not exceptional runtime snowflakes\n- the baseline authoring language is `declaration`, `markdown`, `field`, `port`, and `view`",
+        "markdown": "# Field-Driven Class Artifacts\n\nTwilite has outgrown the split where node classes are mostly ref/dictionary driven while edge classes are increasingly field driven. This task graph captures the plan to make both kinds of class artifact authorable through the same native language.\n\nOrder of work:\n1. finish the minimal shared contract work\n2. finish the remaining content/control/port composition decision in node primitive consolidation\n3. then move class artifacts onto the field-driven contract without working backwards from legacy examples\n\nWorking assumptions:\n- the larger graph ecosystem is revisable, not sacred\n- Twilite should set good examples instead of perpetuating legacy ones\n- classes should be ordinary graph artifacts, not exceptional runtime snowflakes\n- the baseline authoring language is `declaration`, `markdown`, `field`, `port`, and `view`",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -206,7 +206,7 @@
       "data": {
         "body": "Define one canonical way to author node-class and edge-class artifacts so both use field-addressed functional data, keep human-readable documentation nearby, and preserve legacy loading only as a fallback.",
         "priority": "critical",
-        "status": "in-progress",
+        "status": "todo",
         "owner": "Michael",
         "estimateHours": "12",
         "acceptanceCriteria": [
@@ -359,8 +359,8 @@
       "visible": true,
       "showLabel": false,
       "data": {
-        "body": "Map the real runtime minimums and resolution paths for node classes and edge classes so the migration starts from facts, not assumptions.",
-        "status": "in-progress",
+        "body": "Map the real runtime minimums and resolution paths for node classes and edge classes so the migration starts from facts, not assumptions. This inventory is now complete enough to treat the remaining work as downstream contract work.",
+        "status": "done",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "2",
@@ -1274,9 +1274,9 @@
       "showLabel": true,
       "data": {
         "goal": "Unify class artifacts around field-driven authoring",
-        "status": "in-progress",
+        "status": "todo",
         "taskProgress": {
-          "completed": 0,
+          "completed": 1,
           "total": 4
         },
         "questionProgress": {
@@ -1414,7 +1414,7 @@
       "label": "Summary Updater",
       "position": {
         "x": -980,
-        "y": 200
+        "y": 820
       },
       "width": 420,
       "height": 240,
@@ -1438,7 +1438,7 @@
       "type": "port",
       "label": "Back to Node Primitive Consolidation",
       "position": {
-        "x": -980,
+        "x": -520,
         "y": 520
       },
       "width": 360,
@@ -1468,7 +1468,7 @@
       "label": "Task Summary Provider",
       "position": {
         "x": -980,
-        "y": 520
+        "y": 820
       },
       "width": 260,
       "height": 120,
@@ -1490,6 +1490,27 @@
           "key": "task-summary-provider",
           "meaning": "Provider surface for a planning task summary."
         }
+      }
+    },
+    {
+      "id": "field-driven-class-artifacts-upstream-minimal-contract",
+      "type": "task-summary",
+      "label": "Upstream: Minimal Shared Contract",
+      "position": {
+        "x": -980,
+        "y": 520
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "memo": "This class-artifact work should follow the minimal shared contract work.",
+        "intent": "external",
+        "sourceRef": "github://twilite-zone/public/tasks/node-primitive-consolidation/minimal-shared-contract/root.node",
+        "sourceNodeId": "node-primitive-minimal-contract-summary",
+        "sourcePayload": "node.web",
+        "countAsTask": false
       }
     }
   ],
@@ -1603,9 +1624,20 @@
       "label": "back",
       "style": {},
       "data": {}
+    },
+    {
+      "id": "field-driven-class-artifacts-edge-upstream",
+      "type": "reference",
+      "source": "field-driven-class-artifacts-upstream-minimal-contract",
+      "target": "field-driven-class-artifacts-goal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "prerequisite",
+      "style": {},
+      "data": {}
     }
   ],
-  "nodeCount": 14,
-  "edgeCount": 10,
+  "nodeCount": 15,
+  "edgeCount": 11,
   "timestamp": "2026-05-23T00:00:00.000Z"
 }
