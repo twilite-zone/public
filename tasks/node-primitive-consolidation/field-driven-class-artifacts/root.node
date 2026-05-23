@@ -206,7 +206,7 @@
       "data": {
         "body": "Define one canonical way to author node-class and edge-class artifacts so both use field-addressed functional data, keep human-readable documentation nearby, and preserve legacy loading only as a fallback.",
         "priority": "critical",
-        "status": "todo",
+        "status": "in-progress",
         "owner": "Michael",
         "estimateHours": "12",
         "acceptanceCriteria": [
@@ -516,8 +516,8 @@
       "visible": true,
       "showLabel": false,
       "data": {
-        "body": "Specify which functional keys live in field paths, which metadata stays artifact-level, and how node-class versus edge-class intent is declared without splitting the model again.",
-        "status": "todo",
+        "body": "Specify which facts live at artifact level, which live in addressable field paths, and how both node classes and edge classes use the same field-driven artifact contract without reviving manifest or legend as official doctrine.",
+        "status": "in-progress",
         "owner": "Michael",
         "priority": "critical",
         "estimateHours": "4",
@@ -988,9 +988,9 @@
       "showLabel": false,
       "data": {
         "body": "Which class facts should stay in declaration/manifest-style artifact metadata, and which should be represented exclusively as addressable field nodes?",
-        "status": "open",
+        "status": "answered",
         "owner": "Michael",
-        "resolutionPath": "Answer while writing the shared class contract",
+        "resolutionPath": "Answered: artifact level carries graph identity, authority, and framing; field nodes carry addressed functional contract data.",
         "_classBinding": {
           "key": "open-question",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
@@ -1131,9 +1131,9 @@
       "showLabel": false,
       "data": {
         "body": "Once field-driven contracts exist for both class families, what exact precedence order should the runtime follow before legacy manifest and dictionary paths can be removed?",
-        "status": "open",
+        "status": "answered",
         "owner": "Michael",
-        "resolutionPath": "Resolve during reader migration and class-library conversion",
+        "resolutionPath": "Answered: field-driven contract data is canonical; manifest is compatibility-only during migration; legend is never semantic authority.",
         "_classBinding": {
           "key": "open-question",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
@@ -1274,13 +1274,13 @@
       "showLabel": true,
       "data": {
         "goal": "Unify class artifacts around field-driven authoring",
-        "status": "todo",
+        "status": "in-progress",
         "taskProgress": {
           "completed": 1,
           "total": 4
         },
         "questionProgress": {
-          "answered": 0,
+          "answered": 2,
           "total": 2
         },
         "summarySource": "graph-updater",
@@ -1295,7 +1295,7 @@
           "What is the final fallback order?"
         ],
         "taskListText": "1. Inventory the current node/edge class split\n2. Define the shared field address grammar\n3. Teach node classes to load from fields first\n4. Replace bad examples with canonical class artifacts",
-        "questionListText": "1. What belongs at artifact level versus field level?\n2. What is the final fallback order?",
+        "questionListText": "1. Answered: artifact level vs field level\n2. Answered: field-first precedence, manifest compatibility only",
         "_classBinding": {
           "key": "task-summary-provider",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
@@ -1405,7 +1405,8 @@
           "classKey": "task-summary-provider",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
         },
-        "definitionKey": "task-summary-provider"
+        "definitionKey": "task-summary-provider",
+        "updatedAt": "2026-05-23T00:00:00.000Z"
       }
     },
     {
@@ -1511,6 +1512,91 @@
         "sourceNodeId": "node-primitive-minimal-contract-summary",
         "sourcePayload": "node.web",
         "countAsTask": false
+      }
+    },
+    {
+      "id": "field-driven-class-artifacts-contract-spec",
+      "type": "markdown",
+      "label": "Shared Field Address Grammar",
+      "position": {
+        "x": 1420,
+        "y": 540
+      },
+      "width": 620,
+      "height": 760,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Shared Field Address Grammar v0\n\n## Artifact level\nThese stay on the graph authority surface and identify or frame the artifact itself.\n\n- `identity.graphId`\n- `identity.name`\n- `identity.version`\n- `identity.description`\n- `intent.kind`\n- `intent.scope`\n- authorship / authority / timestamps\n\nRule: if it identifies the graph artifact or explains how the system should treat the whole artifact, it stays at artifact level.\n\n## Field level\nThese are addressed functional values that the runtime, editor, bridge, or validator should be able to read directly.\n\n### Shared class fields\n- `class.key`\n- `class.label`\n- `class.meaning`\n- `class.version`\n- `class.source`\n- `render.stroke`\n- `render.width`\n- `render.dash`\n- `render.routingHint`\n- `render.labelTone`\n- `compat.sourceKinds`\n- `compat.targetKinds`\n- `validation.requiredDataKeys`\n- `validation.rules`\n- `validation.onError`\n\n### Node-class leaning fields\n- `node.defaultLabel`\n- `node.defaultWidth`\n- `node.defaultHeight`\n- `node.defaultColor`\n- `node.defaultData`\n- `node.defaultPorts`\n- `node.dataSchema`\n- `node.allowLabel`\n- `node.allowSize`\n- `node.allowColor`\n- `node.allowPorts`\n- `node.allowData`\n- `node.dataMode`\n\n### Edge-class leaning fields\n- `edge.defaultEdgeType`\n- `edge.legendRole`\n- `edge.semanticAuthority`\n\n## Doctrine\n- `field` nodes are the canonical semantic contract surface.\n- `markdown` explains the contract to humans.\n- `manifest` may be read only as temporary migration compatibility.\n- `legend` is never semantic authority.\n\n## Next move\nUse this exact path table to migrate one canonical node class and one canonical edge class, then tighten the loaders around these paths.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "identity": {
+            "graphId": "markdown_class",
+            "name": "markdown Node Class",
+            "version": "0.1.0",
+            "description": "Canonical markdown content node.",
+            "createdAt": "2026-02-24T20:05:15Z",
+            "updatedAt": "2026-03-24T01:20:00.000Z"
+          },
+          "intent": "graph",
+          "meaning": "Canonical markdown content node.",
+          "description": "Canonical markdown content node.",
+          "defaults": {},
+          "nodeDef": {
+            "key": "markdown",
+            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "views": [
+            {
+              "key": "markdown",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "markdown",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "markdown",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "markdown",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "markdown",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
       }
     }
   ],
@@ -1635,9 +1721,20 @@
       "label": "prerequisite",
       "style": {},
       "data": {}
+    },
+    {
+      "id": "field-driven-class-artifacts-edge-contract-spec",
+      "type": "reference",
+      "source": "field-driven-class-artifacts-task-contract",
+      "target": "field-driven-class-artifacts-contract-spec",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "spec",
+      "style": {},
+      "data": {}
     }
   ],
-  "nodeCount": 15,
-  "edgeCount": 11,
+  "nodeCount": 16,
+  "edgeCount": 12,
   "timestamp": "2026-05-23T00:00:00.000Z"
 }
