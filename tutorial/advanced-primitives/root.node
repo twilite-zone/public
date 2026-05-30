@@ -1,0 +1,284 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "tutorial-advanced-primitives",
+      "type": "declaration",
+      "label": "Declaration",
+      "position": {
+        "x": -860,
+        "y": -220
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-advanced-primitives",
+          "name": "Advanced Primitives",
+          "version": "0.1.0",
+          "description": "Advanced primitive tutorial hub for bridge and script nodes."
+        },
+        "intent": {
+          "kind": "tutorial",
+          "scope": "local"
+        },
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "advanced-primitives-reader",
+          "surfaces": [
+            {
+              "id": "advanced-primitives-reader",
+              "kind": "view",
+              "label": "Reader",
+              "memo": "Primary reading surface for the advanced primitives tutorial.",
+              "viewNodeId": "advanced-primitives-reader"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "advanced-primitives-intro",
+      "type": "markdown",
+      "label": "Overview",
+      "position": {
+        "x": -380,
+        "y": -220
+      },
+      "width": 520,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-advanced-primitives"
+        },
+        "markdown": "# Advanced Primitives\n\nThese are real primitives, but not the normal starting point.\n\nAdvanced primitives:\n- `bridge`\n- `script`\n\nUse them when a graph needs boundary authority or executable behavior, not as default scaffolding."
+      }
+    },
+    {
+      "id": "advanced-primitives-reader",
+      "type": "view",
+      "label": "Reader View",
+      "position": {
+        "x": 180,
+        "y": -240
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-advanced-primitives"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "# Why Advanced?\n\n`bridge` and `script` are powerful enough to change what a graph can see or do.\n\nThat is why they stay visible and intentional in the graph instead of turning into hidden settings."
+      }
+    },
+    {
+      "id": "advanced-primitives-bridge-note",
+      "type": "markdown",
+      "label": "Bridge",
+      "position": {
+        "x": -380,
+        "y": 100
+      },
+      "width": 380,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-advanced-primitives"
+        },
+        "markdown": "## Bridge\n\nUse `bridge` when authority crosses a boundary.\n\nA bridge can:\n- import node classes\n- expose or constrain resources\n- make a remote graph consumable in a controlled way"
+      }
+    },
+    {
+      "id": "advanced-primitives-bridge-example",
+      "type": "bridge",
+      "label": "Example Bridge",
+      "position": {
+        "x": 80,
+        "y": 120
+      },
+      "width": 320,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-advanced-primitives"
+        },
+        "memo": "Example bridge to the field node class.",
+        "target": {
+          "endpoint": "/library/classes/nodes/data-schema/field.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "label": "Field",
+          "key": "field"
+        }
+      }
+    },
+    {
+      "id": "advanced-primitives-script-note",
+      "type": "markdown",
+      "label": "Script",
+      "position": {
+        "x": -380,
+        "y": 420
+      },
+      "width": 380,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-advanced-primitives"
+        },
+        "markdown": "## Script\n\nUse `script` for graph-visible executable behavior.\n\nA script should remain owned by a node.\nThe editor may be fancy, but the capability should still exist as a visible part of the graph."
+      }
+    },
+    {
+      "id": "advanced-primitives-script-example",
+      "type": "script",
+      "label": "Example Script",
+      "position": {
+        "x": 80,
+        "y": 420
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-advanced-primitives"
+        },
+        "scriptName": "Count Nodes",
+        "dryRun": true,
+        "allowMutations": false,
+        "autoRun": false,
+        "autoRunOnGraphChange": false,
+        "summaryNodeId": "",
+        "source": "const nodes = await api.getNodes();\nreturn { nodeCount: nodes.length, graphId: api.getGraphId?.() || null };"
+      }
+    },
+    {
+      "id": "advanced-primitives-back",
+      "type": "port",
+      "label": "Back to Tutorial",
+      "position": {
+        "x": 500,
+        "y": 420
+      },
+      "width": 260,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-advanced-primitives"
+        },
+        "memo": "Return to the tutorial root graph.",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/root.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "ref": "github://twilite-zone/public/tutorial/root.node",
+          "portId": "root"
+        },
+        "sourcePayload": "node.web.detail"
+      }
+    },
+    {
+      "id": "advanced-primitives-bridge-port",
+      "type": "port",
+      "label": "Bridge Walkthrough",
+      "position": {
+        "x": 820,
+        "y": 120
+      },
+      "width": 300,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-advanced-primitives"
+        },
+        "memo": "Open the bridge walkthrough.",
+        "target": {
+          "endpoint": "/tutorial/bridge-authoring-walkthrough.document.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "ref": "/tutorial/bridge-authoring-walkthrough.document.node",
+          "portId": "root"
+        },
+        "sourcePayload": "node.web.detail"
+      }
+    },
+    {
+      "id": "advanced-primitives-script-port",
+      "type": "port",
+      "label": "Script Walkthrough",
+      "position": {
+        "x": 820,
+        "y": 420
+      },
+      "width": 300,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-advanced-primitives"
+        },
+        "memo": "Open the script walkthrough.",
+        "target": {
+          "endpoint": "/tutorial/script-authoring-walkthrough.document.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "ref": "/tutorial/script-authoring-walkthrough.document.node",
+          "portId": "root"
+        },
+        "sourcePayload": "node.web.detail"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "advanced-primitives-edge-overview-bridge",
+      "source": "advanced-primitives-intro",
+      "sourcePort": "root",
+      "target": "advanced-primitives-bridge-note",
+      "targetPort": "root",
+      "type": "reference"
+    },
+    {
+      "id": "advanced-primitives-edge-overview-script",
+      "source": "advanced-primitives-intro",
+      "sourcePort": "root",
+      "target": "advanced-primitives-script-note",
+      "targetPort": "root",
+      "type": "reference"
+    },
+    {
+      "id": "advanced-primitives-edge-overview-reader",
+      "source": "advanced-primitives-intro",
+      "sourcePort": "root",
+      "target": "advanced-primitives-reader",
+      "targetPort": "root",
+      "type": "reference"
+    }
+  ]
+}
