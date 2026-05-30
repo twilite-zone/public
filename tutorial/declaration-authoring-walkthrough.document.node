@@ -2,7 +2,7 @@
   "fileVersion": "1.0",
   "metadata": {
     "title": "Declaration Walkthrough",
-    "description": "Manual golden path: author and edit a declaration node (identity, dependencies, authority, surfaces).",
+    "description": "Manual golden path: author and edit a declaration node using the current identity, intent, and surface contract.",
     "created": "2026-04-28T00:00:00.000Z",
     "modified": "2026-04-28T00:00:00.000Z",
     "author": "",
@@ -29,68 +29,34 @@
           "graphId": "declaration-authoring-walkthrough",
           "name": "Declaration Walkthrough.Document",
           "version": "0.1.0",
-          "description": "Manual steps for the declaration primitive.",
-          "createdAt": "2026-04-28T00:00:00.000Z",
-          "updatedAt": "2026-04-28T00:00:00.000Z"
+          "description": "Manual steps for the declaration primitive."
         },
         "intent": {
-          "kind": "graph",
-          "scope": "mixed"
+          "kind": "tutorial",
+          "scope": "local"
         },
-        "dependencies": {
-          "nodeTypes": [
-            "declaration",
-            "markdown",
-            "ui-view",
-            "port"
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "declaration-walkthrough-view",
+          "surfaces": [
+            {
+              "id": "declaration-walkthrough-view",
+              "kind": "view",
+              "label": "Reader",
+              "memo": "Primary reading surface for the declaration walkthrough.",
+              "viewNodeId": "declaration-walkthrough-view"
+            }
           ],
-          "portContracts": [
-            "core"
-          ],
-          "skills": [],
-          "schemaVersions": {
-            "nodes": ">=1.0.0",
-            "ports": ">=1.0.0"
-          },
-          "optional": []
-        },
-        "authority": {
-          "mutation": {
-            "allowCreate": true,
-            "allowUpdate": true,
-            "allowDelete": true,
-            "appendOnly": false
-          },
-          "actors": {
-            "humans": true,
-            "agents": true,
-            "tools": true
-          },
-          "styleAuthority": "descriptive",
-          "history": {
-            "rewriteAllowed": false,
-            "squashAllowed": false
+          "surfaceAssignments": {
+            "node": "declaration-walkthrough-view"
           }
-        },
-        "document": {
-          "url": ""
-        },
-        "settings": {
-          "theme": null,
-          "backgroundImage": null,
-          "defaultNodeColor": "#1976d2",
-          "defaultEdgeColor": "#666666",
-          "snapToGrid": false,
-          "gridSize": 20,
-          "edgeRouting": "auto",
-          "autoSave": false
         }
       }
     },
     {
       "id": "declaration-walkthrough-view",
-      "type": "ui-view",
-      "label": "node.web.summary",
+      "type": "view",
+      "label": "Reader View",
       "position": {
         "x": 140,
         "y": -220
@@ -100,20 +66,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "payload": "node.web.summary",
-        "title": "Declaration Walkthrough",
-        "purpose": "The declaration node is the graph's contract surface:\n- identity\n- dependencies\n- mutation/authority policy\n- export surfaces\n\nThis walkthrough validates that editing the declaration is stable and predictable (no phantom fields, no silent drops).",
-        "status": "active",
-        "viewRole": "summary",
-        "viewKind": "display",
-        "exposedAuthority": "consume-view",
-        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"18\" fill=\"#f5f3ff\" stroke=\"#7c3aed\" stroke-width=\"5\"/><rect x=\"48\" y=\"44\" width=\"124\" height=\"72\" rx=\"14\" fill=\"#ffffff\" stroke=\"#c4b5fd\" stroke-width=\"4\"/><path d=\"M62 64h96\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\"/><path d=\"M62 92h60\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\" opacity=\"0.6\"/></svg>",
-        "_classBinding": {
-          "key": "ui-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+        "identity": {
+          "graphId": "declaration-authoring-walkthrough"
         },
-        "definitionKey": "ui-view"
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "# Declaration Walkthrough\n\nThe declaration is the graph handshake.\n\nIt owns:\n- graph identity\n- graph intent\n- declared surfaces\n- default reading surface\n\nThis walkthrough checks that declaration editing is stable, legible, and declaration-first."
       }
     },
     {
@@ -129,7 +92,10 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Step 1: Identity + Dependencies\n\nOpen the declaration editor and set:\n- `identity.graphId`\n- `identity.name`\n- `identity.version`\n\nThen update `dependencies.nodeTypes` to include the primitives you intend to use.\n\nExpected:\n- [ ] Identity changes persist\n- [ ] Dependency warnings are sensible"
+        "identity": {
+          "graphId": "declaration-authoring-walkthrough"
+        },
+        "markdown": "## Step 1: Identity\n\nOpen the declaration editor and set:\n- `identity.graphId`\n- `identity.name`\n- `identity.version`\n- `identity.description`\n\nExpected:\n- [ ] Identity changes persist\n- [ ] Graph ID and declaration node id stay aligned\n- [ ] Save and reload preserve the new values"
       }
     },
     {
@@ -145,7 +111,10 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Step 2: Mutation Policy\n\nToggle:\n- `authority.mutation.appendOnly`\n\nExpected:\n- [ ] Edit affordances match policy (updates should be constrained when appendOnly is true)\n- [ ] No unexpected crashes or blank panels"
+        "identity": {
+          "graphId": "declaration-authoring-walkthrough"
+        },
+        "markdown": "## Step 2: Intent\n\nSet the declaration intent:\n- `intent.kind`\n- `intent.scope`\n\nExpected:\n- [ ] Kind and scope persist\n- [ ] Graph badges and labels reflect declaration intent\n- [ ] No stale type-node assumptions are required"
       }
     },
     {
@@ -161,7 +130,10 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Step 3: Export Surfaces\n\nAdd an export surface under:\n- `declaration.surfaces[]`\n\nUse it to define allowlists for:\n- views\n- node classes / edge classes\n- scripts\n- declarations\n\nExpected:\n- [ ] Surface edits persist\n- [ ] Downstream bridge exposure uses the surface policy (when configured)"
+        "identity": {
+          "graphId": "declaration-authoring-walkthrough"
+        },
+        "markdown": "## Step 3: Surfaces\n\nAdd or edit a declared surface under:\n- `declaration.surfaces[]`\n\nFor a readable graph surface:\n- create a `view` node\n- expose it in declaration\n- bind the surface with `viewNodeId`\n- set `defaultSurfaceId` when that surface should be the default\n\nExpected:\n- [ ] Surface edits persist\n- [ ] The declared surface appears to consumers\n- [ ] The default surface resolves predictably"
       }
     },
     {
@@ -177,6 +149,9 @@
       "visible": true,
       "showLabel": true,
       "data": {
+        "identity": {
+          "graphId": "declaration-authoring-walkthrough"
+        },
         "intent": "navigate",
         "authority": "consume-view",
         "sourcePayload": "node.web.summary",
