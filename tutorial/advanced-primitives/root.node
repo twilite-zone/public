@@ -18,7 +18,7 @@
           "graphId": "tutorial-advanced-primitives",
           "name": "Advanced Primitives",
           "version": "0.1.0",
-          "description": "Advanced primitive tutorial hub for bridge and script nodes."
+          "description": "Advanced primitive tutorial hub for bridge, script, and field."
         },
         "intent": {
           "kind": "tutorial",
@@ -55,7 +55,7 @@
         "identity": {
           "graphId": "tutorial-advanced-primitives"
         },
-        "markdown": "# Advanced Primitives\n\nThese are real primitives, but not the normal starting point.\n\nAdvanced primitives:\n- `bridge`\n- `script`\n\nUse them when a graph needs boundary authority or executable behavior, not as default scaffolding."
+        "markdown": "# Advanced Primitives\n\nThese are real primitives, but not the normal starting point.\n\nAdvanced primitives here:\n- `bridge`\n- `script`\n- `field`\n\nUse them when a graph needs boundary authority, executable behavior, or explicit authored graph data."
       }
     },
     {
@@ -149,6 +149,25 @@
       }
     },
     {
+      "id": "advanced-primitives-field-note",
+      "type": "markdown",
+      "label": "Field",
+      "position": {
+        "x": -380,
+        "y": 760
+      },
+      "width": 380,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-advanced-primitives"
+        },
+        "markdown": "## Field\n\nUse `field` for authored functional data.\n\nA field owns:\n- a `key`\n- a `fieldType`\n- a `value`\n- required/description metadata\n\nFields are how graphs carry real data without smearing that data into declaration or presentation."
+      }
+    },
+    {
       "id": "advanced-primitives-script-example",
       "type": "script",
       "label": "Example Script",
@@ -178,8 +197,8 @@
       "type": "field",
       "label": "script.result",
       "position": {
-        "x": 500,
-        "y": 740
+        "x": 80,
+        "y": 760
       },
       "width": 300,
       "height": 150,
@@ -195,7 +214,7 @@
           "nodeCount": 0
         },
         "required": false,
-        "description": "Advanced primitives still route into ordinary graph data. A script can compute, and a field can hold the resulting value."
+        "description": "Fields own graph data directly. They can also receive or represent results produced by advanced behavior like scripts."
       }
     },
     {
@@ -220,6 +239,33 @@
           "mode": "navigate",
           "label": "Open",
           "ref": "github://twilite-zone/public/tutorial/root.node",
+          "portId": "root"
+        },
+        "sourcePayload": "node.web.detail"
+      }
+    },
+    {
+      "id": "advanced-primitives-field-port",
+      "type": "port",
+      "label": "Back to Basic Primitives",
+      "position": {
+        "x": 500,
+        "y": 760
+      },
+      "width": 260,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-advanced-primitives"
+        },
+        "memo": "Return to the basic primitives hub.",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/root.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
           "portId": "root"
         },
         "sourcePayload": "node.web.detail"
@@ -294,6 +340,14 @@
       "source": "advanced-primitives-intro",
       "sourcePort": "root",
       "target": "advanced-primitives-script-note",
+      "targetPort": "root",
+      "type": "reference"
+    },
+    {
+      "id": "advanced-primitives-edge-overview-field",
+      "source": "advanced-primitives-intro",
+      "sourcePort": "root",
+      "target": "advanced-primitives-field-note",
       "targetPort": "root",
       "type": "reference"
     },
