@@ -3,8 +3,8 @@
   "nodes": [
     {
       "id": "agent-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "type": "declaration",
+      "label": "Declaration",
       "position": {
         "x": -1380,
         "y": -420
@@ -28,16 +28,14 @@
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
+            "declaration",
             "legend",
             "bridge",
-            "port",
+            "portal",
             "title",
             "type-definition",
             "field",
-            "port-view",
-            "icon-view",
-            "document-view",
+            "port",
             "task",
             "agent",
             "contract",
@@ -89,6 +87,57 @@
           "gridSize": 20,
           "edgeRouting": "auto",
           "autoSave": false
+        },
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "port",
+          "surfaces": [
+            {
+              "id": "port",
+              "kind": "port",
+              "label": "Port",
+              "viewNodeId": "agent-view",
+              "memo": "Default host-facing surface for the Agent section.",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            },
+            {
+              "id": "icon",
+              "kind": "icon",
+              "label": "Icon Port",
+              "viewNodeId": "agent-icon-view",
+              "memo": "Minimal semantic-zoom identity surface for the Agent section.",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            },
+            {
+              "id": "document",
+              "kind": "document",
+              "label": "Document Port",
+              "viewNodeId": "agent-document-view",
+              "memo": "Readable onboarding document surface for the Agent section.",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            }
+          ]
         }
       }
     },
@@ -276,7 +325,7 @@
     {
       "id": "agent-port-view-bridge",
       "type": "bridge",
-      "label": "Port View",
+      "label": "Port",
       "position": {
         "x": 360,
         "y": -420
@@ -297,7 +346,7 @@
           "grants": [
             "create"
           ],
-          "label": "Port View",
+          "label": "Port",
           "key": "port-view"
         },
         "resourceKind": "node-class",
@@ -331,7 +380,7 @@
     {
       "id": "agent-icon-view-bridge",
       "type": "bridge",
-      "label": "Icon View",
+      "label": "Icon Port",
       "position": {
         "x": 660,
         "y": -420
@@ -352,7 +401,7 @@
           "grants": [
             "create"
           ],
-          "label": "Icon View",
+          "label": "Icon Port",
           "key": "icon-view"
         },
         "resourceKind": "node-class",
@@ -386,7 +435,7 @@
     {
       "id": "agent-document-view-bridge",
       "type": "bridge",
-      "label": "Document View",
+      "label": "Document Port",
       "position": {
         "x": 960,
         "y": -420
@@ -407,7 +456,7 @@
           "grants": [
             "create"
           ],
-          "label": "Document View",
+          "label": "Document Port",
           "key": "document-view"
         },
         "resourceKind": "node-class",
@@ -1181,7 +1230,11 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node"
         },
         "definitionKey": "port-view",
-        "viewRole": "port"
+        "viewRole": "port",
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        }
       }
     },
     {
@@ -1239,7 +1292,11 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node"
         },
         "definitionKey": "icon-view",
-        "viewRole": "icon"
+        "viewRole": "icon",
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        }
       }
     },
     {
@@ -2549,7 +2606,11 @@
           "classKey": "document-view",
           "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/document-view.node-class.node"
         },
-        "definitionKey": "document-view"
+        "definitionKey": "document-view",
+        "view": {
+          "intent": "node",
+          "payload": "node.web.document"
+        }
       }
     }
   ],

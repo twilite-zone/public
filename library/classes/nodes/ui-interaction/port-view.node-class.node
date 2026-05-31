@@ -12,8 +12,8 @@
   "nodes": [
     {
       "id": "port-view-class-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "type": "declaration",
+      "label": "Declaration",
       "position": {
         "x": -190,
         "y": -460
@@ -25,9 +25,9 @@
       "data": {
         "identity": {
           "graphId": "port-view-node-class",
-          "name": "Port View Node Class",
+          "name": "Detail Port Node Class",
           "version": "0.1.0",
-          "description": "A host-facing destination surface rendered through a port.",
+          "description": "A host-facing detail-first surface node for richer destination cards and embedded port surfaces.",
           "createdAt": "2026-03-24T00:00:00.000Z",
           "updatedAt": "2026-03-26T19:45:00.000Z"
         },
@@ -37,9 +37,9 @@
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
+            "declaration",
             "legend",
-            "view",
+            "port",
             "markdown"
           ],
           "portContracts": [
@@ -106,7 +106,7 @@
             "source": "local",
             "version": ">=0.1.0",
             "defaults": {
-              "label": "Port View",
+              "label": "Detail Port",
               "size": {
                 "width": 420,
                 "height": 320
@@ -131,7 +131,10 @@
           }
         },
         "isRoot": false,
-        "root": false
+        "root": false,
+        "declaration": {
+          "targetMode": "artifact"
+        }
       }
     },
     {
@@ -153,8 +156,8 @@
     },
     {
       "id": "port-view-editor-view",
-      "type": "view",
-      "label": "Port View Editor",
+      "type": "port",
+      "label": "Detail Port Editor",
       "position": {
         "x": 710,
         "y": -460
@@ -175,8 +178,8 @@
     },
     {
       "id": "port-view-detail-view",
-      "type": "view",
-      "label": "Port View Detail",
+      "type": "port",
+      "label": "Detail Port",
       "position": {
         "x": -190,
         "y": 0
@@ -197,8 +200,8 @@
     },
     {
       "id": "port-view-summary-view",
-      "type": "view",
-      "label": "Port View Summary",
+      "type": "port",
+      "label": "Summary Port",
       "position": {
         "x": 450,
         "y": 0
@@ -219,8 +222,8 @@
     },
     {
       "id": "port-view-icon-view",
-      "type": "view",
-      "label": "Port View Icon",
+      "type": "port",
+      "label": "Icon Port",
       "position": {
         "x": 990,
         "y": 0
@@ -242,7 +245,7 @@
     {
       "id": "port-view-notes",
       "type": "markdown",
-      "label": "Port View Notes",
+      "label": "Detail Port Notes",
       "position": {
         "x": -190,
         "y": 440
@@ -252,7 +255,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Port View\n\nDedicated primitive for the host-facing destination surface another graph consumes through a port. Use this when the artifact needs a clear navigation card or shared destination surface instead of a generic ui-view with hidden role metadata.\n\nThis class should read as the outward card surface for a graph root or reusable artifact.",
+        "markdown": "## Detail Port\n\nDetail-first surface-node class for graphs that want a richer outward port surface. Use this when the default port should foreground title, body, and destination detail.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",

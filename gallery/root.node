@@ -12,8 +12,8 @@
   "nodes": [
     {
       "id": "gallery-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "type": "declaration",
+      "label": "Declaration",
       "isRoot": false,
       "position": {
         "x": -710,
@@ -38,13 +38,13 @@
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
+            "declaration",
             "legend",
             "title",
             "type-definition",
             "field",
-            "ui-view",
             "port",
+            "portal",
             "bridge"
           ],
           "portContracts": [
@@ -101,7 +101,28 @@
           }
         },
         "isRoot": false,
-        "root": false
+        "root": false,
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "port",
+          "surfaces": [
+            {
+              "id": "port",
+              "kind": "port",
+              "label": "Port",
+              "viewNodeId": "gallery-view",
+              "memo": "Default host-facing surface for the Gallery section.",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            }
+          ]
+        }
       }
     },
     {
@@ -300,7 +321,7 @@
     {
       "id": "gallery-view-port",
       "type": "bridge",
-      "label": "View",
+      "label": "Port",
       "isRoot": false,
       "position": {
         "x": -310,
@@ -348,7 +369,7 @@
           "grants": [
             "create"
           ],
-          "label": "View",
+          "label": "Port",
           "key": "ui-view"
         },
         "isRoot": false,
@@ -818,7 +839,11 @@
         "definitionKey": "ui-view",
         "isRoot": false,
         "root": false,
-        "viewRole": "summary"
+        "viewRole": "summary",
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        }
       }
     },
     {
