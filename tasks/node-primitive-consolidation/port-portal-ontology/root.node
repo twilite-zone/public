@@ -1,0 +1,359 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "port-portal-ontology",
+      "type": "declaration",
+      "label": "Declaration",
+      "position": {
+        "x": -980,
+        "y": -260
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "port-portal-ontology",
+          "name": "Port / Portal Ontology",
+          "version": "0.1.0",
+          "description": "Plan graph for renaming view to port, port to portal, and adding real handle authorship to the new port node."
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "local"
+        },
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "minimap",
+          "surfaces": []
+        }
+      }
+    },
+    {
+      "id": "port-portal-ontology-overview",
+      "type": "markdown",
+      "label": "Overview",
+      "position": {
+        "x": -420,
+        "y": -260
+      },
+      "width": 560,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "port-portal-ontology"
+        },
+        "markdown": "# Port / Portal Ontology\n\nThis graph keeps the rename and substrate work staged so we do not lose our place.\n\nCurrent target:\n- `declaration`\n- `markdown`\n- `port`\n- `portal`\n\nPlanned rename:\n- current `view` node -> `port`\n- current `port` node -> `portal`\n\nMissing substrate:\n- the new `port` must define real handles/ports, not just render a surface."
+      }
+    },
+    {
+      "id": "port-portal-ontology-goal",
+      "type": "goal",
+      "label": "Make the ontology honest",
+      "position": {
+        "x": 200,
+        "y": -260
+      },
+      "width": 380,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "port-portal-ontology"
+        },
+        "body": "Rename and re-ground the primitives so exposed surfaces are `ports`, opening/consuming nodes are `portals`, and the new port node actually authors real handles.",
+        "priority": "critical",
+        "status": "todo",
+        "owner": "Michael",
+        "estimateHours": "6",
+        "acceptanceCriteria": [
+          "The new port node authors at least a minimal handle schema",
+          "The new portal node keeps current navigate and consume behavior",
+          "Canonical docs and tutorials teach the renamed model"
+        ]
+      }
+    },
+    {
+      "id": "port-portal-ontology-decision",
+      "type": "decision",
+      "label": "Rename direction",
+      "position": {
+        "x": -420,
+        "y": 80
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "port-portal-ontology"
+        },
+        "question": "What are we renaming to what?",
+        "status": "decided",
+        "decision": "Current `view` becomes canonical `port`. Current `port` becomes canonical `portal`. Structural edge handles remain ports in the attachment sense.",
+        "rationale": "This matches what the nodes actually do. The surface-bearing node is closer to a port, and the opening/consumer node is closer to a portal.",
+        "consequences": [
+          "The new port node must own handle definitions",
+          "Portal remains a graph-visible opening, not a hidden setting",
+          "Docs and tutorials need a coordinated language pass"
+        ]
+      }
+    },
+    {
+      "id": "port-portal-ontology-open-question",
+      "type": "open-question",
+      "label": "Minimum handle authorship",
+      "position": {
+        "x": 60,
+        "y": 80
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "port-portal-ontology"
+        },
+        "question": "What is the minimum V1 handle schema the new port node must author?",
+        "status": "open",
+        "owner": "Michael",
+        "notes": "Likely minimum: one editable `root` handle, then optional additional handles with key, label, direction, dataType, and side/offset."
+      }
+    },
+    {
+      "id": "port-portal-ontology-task-inventory",
+      "type": "task",
+      "label": "Inventory current uses",
+      "position": {
+        "x": -900,
+        "y": 420
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "port-portal-ontology"
+        },
+        "body": "Audit where `view`, `port`, and structural `port` already appear in runtime types, editor labels, docs, and tutorial language.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Codex",
+        "estimateHours": "1.5",
+        "acceptanceCriteria": [
+          "Runtime type collisions are listed",
+          "User-facing copy that says port/view is listed",
+          "Migration order is grounded in actual files"
+        ]
+      }
+    },
+    {
+      "id": "port-portal-ontology-task-handles",
+      "type": "task",
+      "label": "Make the new port own handles",
+      "position": {
+        "x": -460,
+        "y": 420
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "port-portal-ontology"
+        },
+        "body": "Upgrade the current view node path so the renamed port can author real handles instead of only rendering payload and content.",
+        "priority": "critical",
+        "status": "todo",
+        "owner": "Codex",
+        "estimateHours": "2",
+        "acceptanceCriteria": [
+          "The editor exposes a minimal handle list",
+          "A default root handle exists and is editable",
+          "A tutorial or smoke graph proves authored handles persist"
+        ]
+      }
+    },
+    {
+      "id": "port-portal-ontology-task-runtime-aliases",
+      "type": "task",
+      "label": "Stage runtime aliases",
+      "position": {
+        "x": -20,
+        "y": 420
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "port-portal-ontology"
+        },
+        "body": "Introduce `portal` as the canonical node type for the current port node and keep compatibility aliases while the new `port` meaning lands.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Codex",
+        "estimateHours": "1.5",
+        "acceptanceCriteria": [
+          "Old graphs still load",
+          "New palette/editor language can prefer portal",
+          "No collision with structural edge ports"
+        ]
+      }
+    },
+    {
+      "id": "port-portal-ontology-task-docs",
+      "type": "task",
+      "label": "Rewrite docs and tutorials",
+      "position": {
+        "x": 420,
+        "y": 420
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "port-portal-ontology"
+        },
+        "body": "Update onboarding, node-creation docs, and canonical tutorial graphs so they teach port versus portal with the new declaration exposure language.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Codex",
+        "estimateHours": "2",
+        "acceptanceCriteria": [
+          "Basic and advanced tutorials use the new names",
+          "Onboarding explains how ports are exposed in declaration",
+          "Older conflicting language is retired or marked legacy"
+        ]
+      }
+    },
+    {
+      "id": "port-portal-ontology-task-canonical-graphs",
+      "type": "task",
+      "label": "Migrate canonical graphs",
+      "position": {
+        "x": 860,
+        "y": 420
+      },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "port-portal-ontology"
+        },
+        "body": "Update root specimens and canonical graphs to use the new naming and port/portal roles without breaking semantic zoom or declaration exposure.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Codex",
+        "estimateHours": "2",
+        "acceptanceCriteria": [
+          "At least one live graph uses the renamed primitives correctly",
+          "Surface exposure still works",
+          "Semantic zoom still resolves the right surfaces"
+        ]
+      }
+    },
+    {
+      "id": "port-portal-ontology-backlink",
+      "type": "port",
+      "label": "Primitive Consolidation Root",
+      "position": {
+        "x": 860,
+        "y": -260
+      },
+      "width": 280,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "port-portal-ontology"
+        },
+        "memo": "Return to the node primitive consolidation root graph.",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/node-primitive-consolidation/root.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "ref": "github://twilite-zone/public/tasks/node-primitive-consolidation/root.node",
+          "portId": "root"
+        },
+        "sourcePayload": "node.web.detail"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "port-portal-ontology-edge-goal-decision",
+      "source": "port-portal-ontology-goal",
+      "sourcePort": "root",
+      "target": "port-portal-ontology-decision",
+      "targetPort": "root",
+      "type": "reference"
+    },
+    {
+      "id": "port-portal-ontology-edge-goal-question",
+      "source": "port-portal-ontology-goal",
+      "sourcePort": "root",
+      "target": "port-portal-ontology-open-question",
+      "targetPort": "root",
+      "type": "reference"
+    },
+    {
+      "id": "port-portal-ontology-edge-goal-inventory",
+      "source": "port-portal-ontology-goal",
+      "sourcePort": "root",
+      "target": "port-portal-ontology-task-inventory",
+      "targetPort": "root",
+      "type": "reference"
+    },
+    {
+      "id": "port-portal-ontology-edge-goal-handles",
+      "source": "port-portal-ontology-goal",
+      "sourcePort": "root",
+      "target": "port-portal-ontology-task-handles",
+      "targetPort": "root",
+      "type": "reference"
+    },
+    {
+      "id": "port-portal-ontology-edge-goal-runtime",
+      "source": "port-portal-ontology-goal",
+      "sourcePort": "root",
+      "target": "port-portal-ontology-task-runtime-aliases",
+      "targetPort": "root",
+      "type": "reference"
+    },
+    {
+      "id": "port-portal-ontology-edge-goal-docs",
+      "source": "port-portal-ontology-goal",
+      "sourcePort": "root",
+      "target": "port-portal-ontology-task-docs",
+      "targetPort": "root",
+      "type": "reference"
+    },
+    {
+      "id": "port-portal-ontology-edge-goal-graphs",
+      "source": "port-portal-ontology-goal",
+      "sourcePort": "root",
+      "target": "port-portal-ontology-task-canonical-graphs",
+      "targetPort": "root",
+      "type": "reference"
+    }
+  ],
+  "timestamp": "2026-05-31T12:00:00.000Z",
+  "nodeCount": 10,
+  "edgeCount": 7
+}
