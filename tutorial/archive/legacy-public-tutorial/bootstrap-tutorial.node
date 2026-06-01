@@ -1,0 +1,195 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Bootstrap Tutorial",
+    "description": "Bundled minimal bootstrap tutorial fallback.",
+    "created": "2026-05-22T00:00:00.000Z",
+    "modified": "2026-05-22T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "tutorial",
+      "onboarding",
+      "bootstrap"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "bootstrap-tutorial-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -980,
+        "y": -520
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "bootstrap-tutorial",
+          "name": "Bootstrap Tutorial",
+          "version": "0.1.0",
+          "description": "Bundled minimal bootstrap tutorial fallback.",
+          "createdAt": "2026-05-22T00:00:00.000Z",
+          "updatedAt": "2026-05-22T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "graph",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "markdown",
+            "port"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        }
+      }
+    },
+    {
+      "id": "bootstrap-tutorial-title",
+      "type": "markdown",
+      "label": "Bootstrap Tutorial",
+      "root": true,
+      "position": {
+        "x": -220,
+        "y": -460
+      },
+      "width": 540,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Bootstrap Tutorial\n\nUse the onboarding guide and toolbar handoff to initialize your chatbot, then return to a clean graph.\n\n1. Open the onboarding guide.\n2. Use the toolbar onboarding button to copy the handoff.\n3. Paste the chatbot's JSON response back into Twilite.\n4. Start from a blank graph once the handshake succeeds."
+      }
+    },
+    {
+      "id": "bootstrap-tutorial-onboarding-port",
+      "type": "port",
+      "label": "Open Onboarding Guide",
+      "position": {
+        "x": -220,
+        "y": -120
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Open the canonical onboarding guide document.",
+        "intent": "external",
+        "authority": "consume-view",
+        "target": {
+          "endpoint": "/library/documentation/OnboardLLM.md:root",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open",
+          "ref": "/library/documentation/OnboardLLM.md",
+          "handleId": "root"
+        },
+        "ref": "/library/documentation/OnboardLLM.md",
+        "src": "/library/documentation/OnboardLLM.md",
+        "endpoint": "/library/documentation/OnboardLLM.md:root",
+        "security": "prompt",
+        "sourceRef": "/library/documentation/OnboardLLM.md"
+      }
+    },
+    {
+      "id": "bootstrap-tutorial-back-port",
+      "type": "port",
+      "label": "Back to Tutorial Start Here",
+      "position": {
+        "x": -220,
+        "y": 180
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Return to Tutorial Start Here.",
+        "intent": "external",
+        "authority": "consume-view",
+        "target": {
+          "endpoint": "/tutorial/archive/legacy-public-tutorial/start-here/root.node:root",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open",
+          "ref": "/tutorial/archive/legacy-public-tutorial/start-here/root.node",
+          "handleId": "root"
+        },
+        "ref": "/tutorial/archive/legacy-public-tutorial/start-here/root.node",
+        "src": "/tutorial/archive/legacy-public-tutorial/start-here/root.node",
+        "endpoint": "/tutorial/archive/legacy-public-tutorial/start-here/root.node:root",
+        "security": "prompt",
+        "sourceRef": "/tutorial/archive/legacy-public-tutorial/start-here/root.node"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "bootstrap-tutorial-edge-title-onboarding",
+      "type": "reference",
+      "source": "bootstrap-tutorial-title",
+      "target": "bootstrap-tutorial-onboarding-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "open guide",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "bootstrap-tutorial-edge-title-back",
+      "type": "reference",
+      "source": "bootstrap-tutorial-title",
+      "target": "bootstrap-tutorial-back-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "back",
+      "style": {},
+      "data": {}
+    }
+  ]
+}

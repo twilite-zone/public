@@ -867,6 +867,42 @@
         },
         "viewRole": "summary"
       }
+    },
+    {
+      "id": "tutorial-port-archive",
+      "type": "portal",
+      "label": "Tutorial Archive",
+      "root": false,
+      "position": {
+        "x": 2748.471835491893,
+        "y": -168.21338023101725
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Browse legacy tutorial material moved out of twilite/public/tutorial.",
+        "intent": "external",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/archive/root.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "portId": "root",
+          "ref": "github://twilite-zone/public/tutorial/archive/root.node",
+          "handleId": "root"
+        },
+        "sourceRef": "github://twilite-zone/public/tutorial/archive/root.node",
+        "sourcePayload": "node.web.detail",
+        "authority": "navigate",
+        "security": "prompt",
+        "ref": "github://twilite-zone/public/tutorial/archive/root.node",
+        "src": "github://twilite-zone/public/tutorial/archive/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/archive/root.node:root",
+        "identity": {
+          "graphId": "tutorial-manifest"
+        }
+      }
     }
   ],
   "edges": [
@@ -967,6 +1003,20 @@
         "route": "curved"
       },
       "data": {}
+    },
+    {
+      "id": "tutorial-edge-archive",
+      "type": "reference",
+      "source": "tutorial-title",
+      "target": "tutorial-port-archive",
+      "sourcePort": "bottom",
+      "targetPort": "root",
+      "label": "archive",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
     }
   ],
   "clusters": [],
@@ -1022,5 +1072,7 @@
       "source": "console.clear();\nconst nodes = await api.getNodes();\nconsole.log(\"Mike\");\nreturn { count: nodes.length };",
       "tags": ""
     }
-  ]
+  ],
+  "nodeCount": 14,
+  "edgeCount": 8
 }
