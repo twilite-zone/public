@@ -76,7 +76,7 @@
         "renderShape": {
           "kind": "markdown"
         },
-        "markdown": "# Declaration Walkthrough\n\nThe declaration is the graph handshake.\n\nIt owns:\n- graph identity\n- graph intent\n- declared surfaces\n- default reading surface\n\nThis walkthrough checks that declaration editing is stable, legible, and declaration-first."
+        "markdown": "# Declaration Walkthrough\n\nThe declaration is the graph handshake.\n\nThe declaration editor panel is organized into three jobs:\n- `identity` answers what this graph is called and how it stays identifiable\n- `intent` answers what kind of artifact this graph is\n- `declaration` answers which port surfaces the graph exposes to other graphs\n\nThis walkthrough explains each field in the panel and checks that declaration editing is stable, legible, and declaration-first."
       }
     },
     {
@@ -95,7 +95,7 @@
         "identity": {
           "graphId": "declaration-authoring-walkthrough"
         },
-        "markdown": "## Step 1: Identity\n\nOpen the declaration editor and set:\n- `identity.graphId`\n- `identity.name`\n- `identity.version`\n- `identity.description`\n\nExpected:\n- [ ] Identity changes persist\n- [ ] Graph ID and declaration node id stay aligned\n- [ ] Save and reload preserve the new values"
+        "markdown": "## Step 1: Identity\n\nOpen the declaration editor and work through the identity fields.\n\n### `identity.graphId`\nUse this as the durable artifact id for the graph.\n- it is the graph's canonical identity\n- it should stay stable enough for references and reuse\n- the declaration node id should track this value\n\n### `identity.name`\nUse this as the human-readable graph name.\n- this is what readers should recognize first\n- badges, cards, and library surfaces should prefer this over old title nodes\n\n### `identity.version`\nUse this when the graph itself needs a visible version.\n- useful for templates, contracts, and artifacts that evolve intentionally\n- not every scratch graph needs heavy versioning discipline, but the field exists for artifacts that do\n\n### `identity.description`\nUse this for the short artifact summary.\n- explain what the graph is for\n- keep it concise enough to work in cards and summaries\n\nExpected:\n- [ ] Identity changes persist\n- [ ] Graph ID and declaration node id stay aligned\n- [ ] Save and reload preserve the new values"
       }
     },
     {
@@ -114,7 +114,7 @@
         "identity": {
           "graphId": "declaration-authoring-walkthrough"
         },
-        "markdown": "## Step 2: Intent\n\nSet the declaration intent:\n- `intent.kind`\n- `intent.scope`\n\nExpected:\n- [ ] Kind and scope persist\n- [ ] Graph badges and labels reflect declaration intent\n- [ ] No stale type-node assumptions are required"
+        "markdown": "## Step 2: Intent\n\nNow set the declaration intent.\n\n### `intent.kind`\nUse this to say what kind of artifact this graph is.\n- examples: `tutorial`, `task`, `contract`, `root`, `library`\n- this is declaration-level artifact kind, not a free-floating field inside the graph\n- badges and graph summaries should read from here\n\n### `intent.scope`\nUse this to describe where the artifact is meant to live or operate.\n- `local` is the safe default for most authored graphs\n- keep the meaning small and practical\n- this is not a replacement for permissions or bridge policy\n\nExpected:\n- [ ] Kind and scope persist\n- [ ] Graph badges and labels reflect declaration intent\n- [ ] No stale type-node assumptions are required"
       }
     },
     {
@@ -133,7 +133,7 @@
         "identity": {
           "graphId": "declaration-authoring-walkthrough"
         },
-        "markdown": "## Step 3: Surfaces\n\nAdd or edit a declared surface under:\n- `declaration.surfaces[]`\n\nFor a readable graph surface:\n- create a `view` node\n- expose it in declaration\n- bind the surface with `viewNodeId`\n- set `defaultSurfaceId` when that surface should be the default\n\nExpected:\n- [ ] Surface edits persist\n- [ ] The declared surface appears to consumers\n- [ ] The default surface resolves predictably"
+        "markdown": "## Step 3: Surfaces\n\nThe declaration section answers what the graph exposes.\n\n### `declaration.targetMode`\nUse this to describe what the declaration is declaring.\n- `artifact` is the normal graph-level default\n- leave it simple unless the graph contract says otherwise\n\n### `declaration.defaultSurfaceId`\nUse this to choose which declared surface consumers should get first.\n- set `minimap` when the graph should fall back to the graph minimap\n- set a real surface id when a declared port should be the default reading surface\n\n### `declaration.surfaces[]`\nEach surface row declares one exposed graph-facing surface.\n\nFor each surface row:\n- `id`\n  - stable surface identifier used by `defaultSurfaceId` and portal selection\n- `kind`\n  - what sort of surface this is, such as `port`, `icon`, or `document`\n- `label`\n  - human-readable name shown to authors and consumers\n- `memo`\n  - short author-facing note explaining why this surface exists\n- `viewNodeId`\n  - the actual port node that renders the surface\n\nFor a readable graph surface:\n- create a `port` node\n- expose it in declaration\n- bind the surface with `viewNodeId`\n- set `defaultSurfaceId` when that surface should be the default\n\nExpected:\n- [ ] Surface edits persist\n- [ ] The declared surface appears to consumers\n- [ ] The default surface resolves predictably"
       }
     },
     {
