@@ -28,53 +28,29 @@
       "data": {
         "identity": {
           "graphId": "port-reference-authoring-walkthrough",
-          "name": "Port + Graph Reference Walkthrough.Document",
+          "name": "Portal + Graph Reference Walkthrough.Document",
           "version": "0.1.0",
-          "description": "Manual steps for port/graph-reference primitives.",
-          "createdAt": "2026-04-28T00:00:00.000Z",
-          "updatedAt": "2026-04-28T00:00:00.000Z"
+          "description": "Manual steps for portal and graph-reference primitives."
         },
         "intent": {
-          "kind": "graph",
-          "scope": "mixed"
+          "kind": "tutorial",
+          "scope": "local"
         },
-        "dependencies": {
-          "nodeTypes": [
-            "declaration",
-            "markdown",
-            "ui-view",
-            "port"
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "port-ref-walkthrough-view",
+          "surfaces": [
+            {
+              "id": "port-ref-walkthrough-view",
+              "kind": "view",
+              "label": "Reader",
+              "memo": "Primary reading surface for the portal walkthrough.",
+              "viewNodeId": "port-ref-walkthrough-view"
+            }
           ],
-          "portContracts": [
-            "core"
-          ],
-          "skills": [],
-          "schemaVersions": {
-            "nodes": ">=1.0.0",
-            "ports": ">=1.0.0"
-          },
-          "optional": []
-        },
-        "authority": {
-          "mutation": {
-            "allowCreate": true,
-            "allowUpdate": true,
-            "allowDelete": true,
-            "appendOnly": false
-          },
-          "actors": {
-            "humans": true,
-            "agents": true,
-            "tools": true
-          },
-          "styleAuthority": "descriptive",
-          "history": {
-            "rewriteAllowed": false,
-            "squashAllowed": false
+          "surfaceAssignments": {
+            "node": "port-ref-walkthrough-view"
           }
-        },
-        "document": {
-          "url": ""
         },
         "settings": {
           "theme": null,
@@ -90,7 +66,7 @@
     },
     {
       "id": "port-ref-walkthrough-view",
-      "type": "ui-view",
+      "type": "port",
       "label": "node.web.summary",
       "position": {
         "x": 140,
@@ -102,15 +78,18 @@
       "showLabel": true,
       "data": {
         "payload": "node.web.summary",
-        "title": "Port + Graph Reference Walkthrough",
-        "purpose": "Ports are the inside of an edge: they should generally look like an entrance to a node. They consume node.web.* surfaces that require no code. Graph Reference is for previewing/embed behavior.\n\nThis walkthrough focuses on determinism: view lists should not flicker and the selected view should remain hydrated.",
-        "status": "active",
-        "viewRole": "summary",
-        "viewKind": "display",
-        "exposedAuthority": "consume-view",
-        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"18\" fill=\"#f1f5f9\" stroke=\"#0f172a\" stroke-width=\"5\"/><path d=\"M56 64h74\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\"/><path d=\"M56 96h108\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\" opacity=\"0.55\"/><circle cx=\"164\" cy=\"64\" r=\"14\" fill=\"#22c55e\"/></svg>",
-        "_classBinding": {
-          "key": "ui-view",
+          "title": "Portal + Graph Reference Walkthrough",
+          "purpose": "Portals are graph-visible openings that navigate to or consume exposed ports. Graph Reference is for previewing and embed behavior.\n\nThis walkthrough focuses on determinism: surface lists should not flicker and the selected surface should remain hydrated.",
+          "status": "active",
+          "viewRole": "summary",
+          "viewKind": "display",
+          "view": {
+            "intent": "node",
+            "payload": "node.web.summary"
+          },
+          "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"18\" fill=\"#f1f5f9\" stroke=\"#0f172a\" stroke-width=\"5\"/><path d=\"M56 64h74\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\"/><path d=\"M56 96h108\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\" opacity=\"0.55\"/><circle cx=\"164\" cy=\"64\" r=\"14\" fill=\"#22c55e\"/></svg>",
+          "_classBinding": {
+            "key": "ui-view",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
           "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
         },
@@ -167,7 +146,7 @@
     },
     {
       "id": "port-ref-walkthrough-port-demo",
-      "type": "port",
+      "type": "portal",
       "label": "Port/Reference Demo",
       "position": {
         "x": 300,
