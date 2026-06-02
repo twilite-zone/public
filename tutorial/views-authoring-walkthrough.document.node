@@ -1,22 +1,25 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Views Authoring Walkthrough",
-    "description": "Manual golden path: define a view surface (node.web.summary), add an editor surface (editor.web), and consume it from a port.",
-    "created": "2026-04-26T00:00:00.000Z",
-    "modified": "2026-04-26T00:00:00.000Z",
+    "title": "Port Authoring Walkthrough.Document",
+    "description": "Manual golden path: define a node.web.* port surface, define an editor.web surface, and consume it from a portal.",
+    "graphId": "views-authoring-manifest",
+    "version": "0.1.0",
+    "kind": "tutorial",
+    "created": "2026-06-02T16:57:16.967Z",
+    "modified": "2026-06-02T16:59:38.039Z",
     "author": "",
     "tags": [
-      "tutorial",
-      "views",
-      "surfaces"
-    ]
+      "tutorial"
+    ],
+    "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
     {
       "id": "views-authoring-manifest",
       "type": "declaration",
       "label": "Declaration",
+      "root": false,
       "position": {
         "x": -260,
         "y": -220
@@ -27,7 +30,7 @@
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "views-authoring-walkthrough",
+          "graphId": "views-authoring-manifest",
           "name": "Port Authoring Walkthrough.Document",
           "version": "0.1.0",
           "description": "Manual golden path: define a node.web.* port surface, define an editor.web surface, and consume it from a portal."
@@ -46,6 +49,20 @@
               "label": "Reader",
               "memo": "Primary reading surface for the port authoring walkthrough.",
               "viewNodeId": "views-authoring-view"
+            },
+            {
+              "id": "viewviews-authoring-view",
+              "kind": "view",
+              "label": "node card",
+              "memo": "View surface for humans and embedding; not an export surface.",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
             }
           ],
           "surfaceAssignments": {
@@ -60,7 +77,29 @@
           "snapToGrid": false,
           "gridSize": 20,
           "edgeRouting": "auto",
-          "autoSave": false
+          "autoSave": false,
+          "layout": {
+            "mode": "autoOnMissingPositions",
+            "defaultLayout": "layered",
+            "direction": "DOWN",
+            "edgeLaneGapPx": 10,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
+          }
+        },
+        "document": {
+          "url": ""
         }
       }
     },
@@ -68,6 +107,7 @@
       "id": "views-authoring-view",
       "type": "port",
       "label": "Port",
+      "root": false,
       "position": {
         "x": 140,
         "y": -220
@@ -77,15 +117,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-          "title": "Port Authoring Walkthrough",
-          "purpose": "Manual steps from a stable port payload name (node.web.*) to an editor surface (editor.web) to portal consumption.",
-          "audience": "Author",
-          "status": "active",
-          "view": {
-            "intent": "node",
-            "payload": "node.web.summary"
-          },
-          "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"18\" fill=\"#eff6ff\" stroke=\"#1d4ed8\" stroke-width=\"5\"/><rect x=\"46\" y=\"44\" width=\"128\" height=\"28\" rx=\"10\" fill=\"#ffffff\" stroke=\"#93c5fd\" stroke-width=\"4\"/><rect x=\"46\" y=\"84\" width=\"128\" height=\"40\" rx=\"12\" fill=\"#ffffff\" stroke=\"#93c5fd\" stroke-width=\"4\"/><path d=\"M62 58h96\" stroke=\"#111827\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M62 100h64\" stroke=\"#111827\" stroke-width=\"6\" stroke-linecap=\"round\" opacity=\"0.75\"/><path d=\"M62 114h84\" stroke=\"#111827\" stroke-width=\"6\" stroke-linecap=\"round\" opacity=\"0.5\"/></svg>",
+        "title": "Port Authoring Walkthrough",
+        "purpose": "Manual steps from a stable port payload name (node.web.*) to an editor surface (editor.web) to portal consumption.",
+        "audience": "Author",
+        "status": "active",
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"18\" fill=\"#eff6ff\" stroke=\"#1d4ed8\" stroke-width=\"5\"/><rect x=\"46\" y=\"44\" width=\"128\" height=\"28\" rx=\"10\" fill=\"#ffffff\" stroke=\"#93c5fd\" stroke-width=\"4\"/><rect x=\"46\" y=\"84\" width=\"128\" height=\"40\" rx=\"12\" fill=\"#ffffff\" stroke=\"#93c5fd\" stroke-width=\"4\"/><path d=\"M62 58h96\" stroke=\"#111827\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M62 100h64\" stroke=\"#111827\" stroke-width=\"6\" stroke-linecap=\"round\" opacity=\"0.75\"/><path d=\"M62 114h84\" stroke=\"#111827\" stroke-width=\"6\" stroke-linecap=\"round\" opacity=\"0.5\"/></svg>",
         "_classBinding": {
           "key": "ui-view",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
@@ -100,13 +140,17 @@
             "version": ">=0.1.0"
           }
         },
-        "definitionKey": "ui-view"
+        "definitionKey": "ui-view",
+        "identity": {
+          "graphId": "views-authoring-manifest"
+        }
       }
     },
     {
       "id": "views-authoring-port-summary-view-class",
       "type": "portal",
       "label": "Summary Port Class",
+      "root": false,
       "position": {
         "x": 600,
         "y": -220
@@ -121,15 +165,26 @@
           "endpoint": "github://twilite-zone/public/library/classes/nodes/ui-interaction/summary-view.node-class.node:root",
           "mode": "navigate",
           "portId": "root",
-          "label": "Open"
+          "label": "Open",
+          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/summary-view.node-class.node",
+          "handleId": "root"
         },
-          "memo": "Reference implementation: summary port node class (node.web.summary + editor.web fields)."
+        "memo": "Reference implementation: summary port node class (node.web.summary + editor.web fields).",
+        "identity": {
+          "graphId": "views-authoring-manifest"
+        },
+        "authority": "navigate",
+        "security": "prompt",
+        "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/summary-view.node-class.node",
+        "src": "github://twilite-zone/public/library/classes/nodes/ui-interaction/summary-view.node-class.node",
+        "endpoint": "github://twilite-zone/public/library/classes/nodes/ui-interaction/summary-view.node-class.node:root"
       }
     },
     {
       "id": "views-authoring-port-demo-views",
       "type": "portal",
       "label": "Port Surface Demo",
+      "root": false,
       "position": {
         "x": 980,
         "y": -220
@@ -145,15 +200,25 @@
           "ref": "/tutorial/views-surface-demo.document.node",
           "mode": "navigate",
           "portId": "root",
-          "label": "Open"
+          "label": "Open",
+          "handleId": "root"
         },
-          "memo": "A small graph that exposes node.web.summary / node.web.detail / node.web.icon as port surfaces. Use it to test portal surface discovery and selection."
+        "memo": "A small graph that exposes node.web.summary / node.web.detail / node.web.icon as port surfaces. Use it to test portal surface discovery and selection.",
+        "identity": {
+          "graphId": "views-authoring-manifest"
+        },
+        "authority": "navigate",
+        "security": "prompt",
+        "ref": "/tutorial/views-surface-demo.document.node",
+        "src": "/tutorial/views-surface-demo.document.node",
+        "endpoint": "/tutorial/views-surface-demo.document.node:root"
       }
     },
     {
       "id": "views-authoring-step-1",
       "type": "markdown",
       "label": "Step 1",
+      "root": false,
       "position": {
         "x": -260,
         "y": 40
@@ -163,13 +228,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Step 1: Adopt Stable Port Payload Names\n\nWhy:\n- the `payload` string is the stable discovery and selection API for exposed port surfaces\n- portals should be able to recognize these surfaces predictably across graphs\n\nUse these payloads consistently:\n- `node.web.icon`\n- `node.web.summary`\n- `node.web.detail`\n- `node.web.document`\n- `editor.web` for editor surfaces only\n\nRule of thumb:\n- portals consume declared `node.web.*` surfaces\n- editor surfaces are for authors, not for ordinary portal consumption\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+        "markdown": "## Step 1: Adopt Stable Port Payload Names\n\nWhy:\n- the `payload` string is the stable discovery and selection API for exposed port surfaces\n- portals should be able to recognize these surfaces predictably across graphs\n\nUse these payloads consistently:\n- `node.web.icon`\n- `node.web.summary`\n- `node.web.detail`\n- `node.web.document`\n- `editor.web` for editor surfaces only\n\nRule of thumb:\n- portals consume declared `node.web.*` surfaces\n- editor surfaces are for authors, not for ordinary portal consumption\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:",
+        "identity": {
+          "graphId": "views-authoring-manifest"
+        }
       }
     },
     {
       "id": "views-authoring-step-2",
       "type": "markdown",
       "label": "Step 2",
+      "root": false,
       "position": {
         "x": 340,
         "y": 40
@@ -179,13 +248,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Step 2: Create A Port Surface\n\nIn a target graph or node-class graph, add a `port` node that can render without running code.\n\nMinimum requirements for a portal-consumable surface:\n- a `port` node with:\n  - `view.payload = node.web.summary`\n  - editable content fields such as `title`, `purpose`, and optionally `svg`\n- the port should then be exposed through the graph declaration before a portal can consume it\n\nSuggested shape:\n- use a summary-oriented port surface with:\n  - `payload`: `node.web.summary`\n  - `viewRole`: `summary`\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+        "markdown": "## Step 2: Create A Port Surface\n\nIn a target graph or node-class graph, add a `port` node that can render without running code.\n\nMinimum requirements for a portal-consumable surface:\n- a `port` node with:\n  - `view.payload = node.web.summary`\n  - editable content fields such as `title`, `purpose`, and optionally `svg`\n- the port should then be exposed through the graph declaration before a portal can consume it\n\nSuggested shape:\n- use a summary-oriented port surface with:\n  - `payload`: `node.web.summary`\n  - `viewRole`: `summary`\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:",
+        "identity": {
+          "graphId": "views-authoring-manifest"
+        }
       }
     },
     {
       "id": "views-authoring-step-3",
       "type": "markdown",
       "label": "Step 3",
+      "root": false,
       "position": {
         "x": -260,
         "y": 340
@@ -195,13 +268,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Step 3: Add An Editor Surface\n\nWhy:\n- authors need a consistent way to edit the port node data\n\nImplementation:\n- add an editor-facing surface with:\n  - `intent = editor`\n  - `payload = editor.web`\n- use structured fields (`editor.web.fields[]`) to map UI controls to node data paths\n\nMinimum editor fields worth having:\n- `data.title`\n- `data.purpose`\n- `data.svg`\n- `data.payload`\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+        "markdown": "## Step 3: Add An Editor Surface\n\nWhy:\n- authors need a consistent way to edit the port node data\n\nImplementation:\n- add an editor-facing surface with:\n  - `intent = editor`\n  - `payload = editor.web`\n- use structured fields (`editor.web.fields[]`) to map UI controls to node data paths\n\nMinimum editor fields worth having:\n- `data.title`\n- `data.purpose`\n- `data.svg`\n- `data.payload`\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:",
+        "identity": {
+          "graphId": "views-authoring-manifest"
+        }
       }
     },
     {
       "id": "views-authoring-step-4",
       "type": "markdown",
       "label": "Step 4",
+      "root": false,
       "position": {
         "x": 340,
         "y": 380
@@ -211,13 +288,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Step 4: Consume The Surface From A Portal\n\nOpen the demo graph:\n- `/tutorial/views-surface-demo.document.node#root`\n\nIn a separate consumer graph:\n1. Add a **Portal** node\n2. Set its target ref to the demo graph\n3. Set `Behavior = Consume`\n4. Use the surface selector to choose:\n   - `node.web.summary`\n   - `node.web.detail`\n   - `node.web.icon`\n\nExpected:\n- switching the consumed surface changes what the portal renders\n- the selector stays stable when reopened\n- declared surfaces come from the target graph instead of being invented locally\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:"
+        "markdown": "## Step 4: Consume The Surface From A Portal\n\nOpen the demo graph:\n- `/tutorial/views-surface-demo.document.node#root`\n\nIn a separate consumer graph:\n1. Add a **Portal** node\n2. Set its target ref to the demo graph\n3. Set `Behavior = Consume`\n4. Use the surface selector to choose:\n   - `node.web.summary`\n   - `node.web.detail`\n   - `node.web.icon`\n\nExpected:\n- switching the consumed surface changes what the portal renders\n- the selector stays stable when reopened\n- declared surfaces come from the target graph instead of being invented locally\n\nResult:\n- [ ] PASS\n- [ ] FAIL\n\nNotes:",
+        "identity": {
+          "graphId": "views-authoring-manifest"
+        }
       }
     },
     {
       "id": "views-authoring-step-5",
       "type": "markdown",
       "label": "Step 5",
+      "root": false,
       "position": {
         "x": -260,
         "y": 720
@@ -227,9 +308,66 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Expected Result\n\n- you can author a `node.web.summary` surface as a `port` node\n- the surface remains editable via `editor.web` fields\n- portals can discover and consume declared `node.web.*` surfaces\n- payload names stay standardized across graphs so surface discovery is predictable"
+        "markdown": "## Expected Result\n\n- you can author a `node.web.summary` surface as a `port` node\n- the surface remains editable via `editor.web` fields\n- portals can discover and consume declared `node.web.*` surfaces\n- payload names stay standardized across graphs so surface discovery is predictable",
+        "identity": {
+          "graphId": "views-authoring-manifest"
+        }
       }
     }
   ],
-  "edges": []
+  "edges": [],
+  "clusters": [],
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "#666666",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "layout": {
+      "mode": "autoOnMissingPositions",
+      "defaultLayout": "layered",
+      "direction": "DOWN",
+      "edgeLaneGapPx": 10,
+      "serpentine": {
+        "maxPerRow": 6
+      },
+      "cycleFallback": {
+        "enabled": true
+      },
+      "elk": {
+        "algorithm": "fixed",
+        "edgeRouting": "ORTHOGONAL",
+        "portConstraints": "FIXED_SIDE",
+        "nodeSpacing": 120,
+        "layeredEdgeSpacing": 80
+      }
+    },
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "tutorial/views-authoring-walkthrough.document.node",
+      "branch": "main",
+      "autoCreateRepo": true,
+      "repoVisibility": "private",
+      "seedOnCommit": false,
+      "enableGithubPages": false,
+      "installationId": "120403738"
+    },
+    "autoSave": false
+  },
+  "scripts": [
+    {
+      "id": "script_1761684730975",
+      "name": "New Script",
+      "source": "// Write your script here\n// Available API:\n//   api.getNodes()\n//   api.getNode(id)\n//   api.getEdges()\n//   api.createNode(data)\n//   api.updateNode(id, patch)\n//   api.deleteNode(id)\n//   api.createEdge(data)\n//   api.updateEdge(id, patch)\n//   api.updateEdges(ids, patch)\n//   api.deleteEdge(id)\n//   api.log(level, message)\n\nconst nodes = await api.getNodes();\nreturn { count: nodes.length };",
+      "tags": ""
+    },
+    {
+      "id": "script_1761684295367",
+      "name": "Mike",
+      "source": "console.clear();\nconst nodes = await api.getNodes();\nconsole.log(\"Mike\");\nreturn { count: nodes.length };",
+      "tags": ""
+    }
+  ]
 }
