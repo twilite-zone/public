@@ -1,22 +1,25 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Port + Graph Reference Walkthrough",
-    "description": "Manual golden path: ports consume node.web.* surfaces deterministically; graph-reference previews/embed graphs.",
-    "created": "2026-04-28T00:00:00.000Z",
-    "modified": "2026-04-28T00:00:00.000Z",
+    "title": "Portal + Graph Reference Walkthrough.Document",
+    "description": "Manual steps for portal and graph-reference primitives.",
+    "graphId": "port-ref-walkthrough-declaration",
+    "version": "0.1.0",
+    "kind": "tutorial",
+    "created": "2026-06-02T15:24:49.981Z",
+    "modified": "2026-06-02T15:39:12.142Z",
     "author": "",
     "tags": [
-      "tutorial",
-      "port",
-      "graph-reference"
-    ]
+      "tutorial"
+    ],
+    "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
     {
       "id": "port-ref-walkthrough-declaration",
       "type": "declaration",
       "label": "Declaration",
+      "root": false,
       "position": {
         "x": -260,
         "y": -220
@@ -27,7 +30,7 @@
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "port-reference-authoring-walkthrough",
+          "graphId": "port-ref-walkthrough-declaration",
           "name": "Portal + Graph Reference Walkthrough.Document",
           "version": "0.1.0",
           "description": "Manual steps for portal and graph-reference primitives."
@@ -46,6 +49,20 @@
               "label": "Reader",
               "memo": "Primary reading surface for the portal walkthrough.",
               "viewNodeId": "port-ref-walkthrough-view"
+            },
+            {
+              "id": "viewport-ref-walkthrough-view",
+              "kind": "entry",
+              "label": "View",
+              "memo": "View surface for humans and embedding; not an export surface.",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
             }
           ],
           "surfaceAssignments": {
@@ -60,7 +77,29 @@
           "snapToGrid": false,
           "gridSize": 20,
           "edgeRouting": "auto",
-          "autoSave": false
+          "autoSave": false,
+          "layout": {
+            "mode": "autoOnMissingPositions",
+            "defaultLayout": "layered",
+            "direction": "DOWN",
+            "edgeLaneGapPx": 10,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
+          }
+        },
+        "document": {
+          "url": ""
         }
       }
     },
@@ -68,9 +107,10 @@
       "id": "port-ref-walkthrough-view",
       "type": "port",
       "label": "node.web.summary",
+      "root": false,
       "position": {
-        "x": 140,
-        "y": -220
+        "x": 319.0756129499428,
+        "y": -269.4684013673875
       },
       "width": 480,
       "height": 280,
@@ -86,13 +126,24 @@
           "intent": "node",
           "payload": "node.web.summary"
         },
-        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"18\" fill=\"#f1f5f9\" stroke=\"#0f172a\" stroke-width=\"5\"/><path d=\"M56 64h74\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\"/><path d=\"M56 96h108\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\" opacity=\"0.55\"/><circle cx=\"164\" cy=\"64\" r=\"14\" fill=\"#22c55e\"/></svg>"
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"18\" fill=\"#f1f5f9\" stroke=\"#0f172a\" stroke-width=\"5\"/><path d=\"M56 64h74\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\"/><path d=\"M56 96h108\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\" opacity=\"0.55\"/><circle cx=\"164\" cy=\"64\" r=\"14\" fill=\"#22c55e\"/></svg>",
+        "identity": {
+          "graphId": "port-ref-walkthrough-declaration"
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1780414747489,
+          "reason": "node-drag"
+        }
       }
     },
     {
       "id": "port-ref-walkthrough-step-1",
       "type": "markdown",
       "label": "Step 1",
+      "root": false,
       "position": {
         "x": -260,
         "y": 40
@@ -102,13 +153,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Step 1: Address The Portal\n\nCreate a `portal` node and open its editor.\n\nThe portal editor starts with the addressing fields.\n\n### `Address`\nUse this as the primary destination for the portal.\n- this is the graph or document ref the portal opens toward\n- it can be a `github://...` ref or another supported address form\n- this is the most important field because nothing resolves without it\n\n### `Artifact Ref (optional)`\nUse this when you want to preserve a more explicit artifact reference separate from the direct address.\n- in many ordinary cases you can leave this empty\n- keep it for cases where the portal needs a stable artifact identity in addition to a resolved address\n\n### `Behavior`\nUse this to decide how the portal should interact with the target.\n- `Navigate` opens the destination\n- `Consume` embeds a declared surface from the target graph\n- `Expand` is for growth/expansion behavior when the graph contract allows it\n\nFor the first pass in this walkthrough:\n- set `Address`\n- set `Behavior = Consume`\n- leave the portal pointed at the demo graph\n\nExpected:\n- [ ] Address resolves cleanly\n- [ ] The portal keeps its target instead of drifting\n- [ ] The editor remains stable while you type and blur fields"
+        "markdown": "## Step 1: Address The Portal\n\nCreate a `portal` node and open its editor.\n\nThe portal editor starts with the addressing fields.\n\n### `Address`\nUse this as the primary destination for the portal.\n- this is the graph or document ref the portal opens toward\n- it can be a `github://...` ref or another supported address form\n- this is the most important field because nothing resolves without it\n\n### `Artifact Ref (optional)`\nUse this when you want to preserve a more explicit artifact reference separate from the direct address.\n- in many ordinary cases you can leave this empty\n- keep it for cases where the portal needs a stable artifact identity in addition to a resolved address\n\n### `Behavior`\nUse this to decide how the portal should interact with the target.\n- `Navigate` opens the destination\n- `Consume` embeds a declared surface from the target graph\n- `Expand` is for growth/expansion behavior when the graph contract allows it\n\nFor the first pass in this walkthrough:\n- set `Address`\n- set `Behavior = Consume`\n- leave the portal pointed at the demo graph\n\nExpected:\n- [ ] Address resolves cleanly\n- [ ] The portal keeps its target instead of drifting\n- [ ] The editor remains stable while you type and blur fields",
+        "identity": {
+          "graphId": "port-ref-walkthrough-declaration"
+        }
       }
     },
     {
       "id": "port-ref-walkthrough-step-2",
       "type": "markdown",
       "label": "Step 2",
+      "root": false,
       "position": {
         "x": -260,
         "y": 330
@@ -118,13 +173,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Step 2: Choose A Surface\n\nOnce the address is set, the portal should let you choose from the target graph's declared surfaces.\n\n### `Surface`\nUse this to choose what the portal consumes from the target.\n- the list should come from the target graph's declaration\n- if the target exposes a reader `port`, it should appear here\n- `Minimap` is the graph-level fallback when no richer declared surface is chosen\n\n### Surface meaning\nA portal does not invent its own reading surface.\n- the target graph declares surfaces in its declaration\n- the portal chooses among those declared surfaces\n- that is why declaration exposure matters before a portal can consume a custom surface\n\nFor this step:\n- switch between the available surfaces\n- confirm the current selection stays visible in the dropdown\n- confirm the portal render follows the selected surface instead of flickering or collapsing\n\nExpected:\n- [ ] Surface options load from the target graph\n- [ ] The current surface selection stays present\n- [ ] Render updates when the selected surface changes"
+        "markdown": "## Step 2: Choose A Surface\n\nOnce the address is set, the portal should let you choose from the target graph's declared surfaces.\n\n### `Surface`\nUse this to choose what the portal consumes from the target.\n- the list should come from the target graph's declaration\n- if the target exposes a reader `port`, it should appear here\n- `Minimap` is the graph-level fallback when no richer declared surface is chosen\n\n### Surface meaning\nA portal does not invent its own reading surface.\n- the target graph declares surfaces in its declaration\n- the portal chooses among those declared surfaces\n- that is why declaration exposure matters before a portal can consume a custom surface\n\nFor this step:\n- switch between the available surfaces\n- confirm the current selection stays visible in the dropdown\n- confirm the portal render follows the selected surface instead of flickering or collapsing\n\nExpected:\n- [ ] Surface options load from the target graph\n- [ ] The current surface selection stays present\n- [ ] Render updates when the selected surface changes",
+        "identity": {
+          "graphId": "port-ref-walkthrough-declaration"
+        }
       }
     },
     {
       "id": "port-ref-walkthrough-step-3",
       "type": "markdown",
       "label": "Step 3",
+      "root": false,
       "position": {
         "x": -260,
         "y": 620
@@ -134,13 +193,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Step 3: Navigate Vs Consume\n\nA portal can either open a destination or consume a declared surface from it. This step makes that distinction explicit.\n\n### `Behavior = Navigate`\nUse this when the portal should act like an opening or link.\n- clicking the portal should open the target graph or document\n- no consumed surface needs to remain embedded on the node\n\n### `Behavior = Consume`\nUse this when the portal should embed a declared surface from the target.\n- this is the graph-native way to show a target surface in place\n- the selected `Surface` should control what appears on the node\n\n### `Minimap`\nUse `Minimap` when you want a graph-level preview and the target does not need a richer declared surface.\n- this is the safe fallback\n- it should still work from address alone\n\nFor this step:\n- switch between `Navigate` and `Consume`\n- test the same target with a declared surface and with `Minimap`\n- confirm the portal stays coherent when the mode changes\n\nExpected:\n- [ ] Navigate opens the destination\n- [ ] Consume embeds the selected surface\n- [ ] Minimap remains available as the fallback preview"
+        "markdown": "## Step 3: Navigate Vs Consume\n\nA portal can either open a destination or consume a declared surface from it. This step makes that distinction explicit.\n\n### `Behavior = Navigate`\nUse this when the portal should act like an opening or link.\n- clicking the portal should open the target graph or document\n- no consumed surface needs to remain embedded on the node\n\n### `Behavior = Consume`\nUse this when the portal should embed a declared surface from the target.\n- this is the graph-native way to show a target surface in place\n- the selected `Surface` should control what appears on the node\n\n### `Minimap`\nUse `Minimap` when you want a graph-level preview and the target does not need a richer declared surface.\n- this is the safe fallback\n- it should still work from address alone\n\nFor this step:\n- switch between `Navigate` and `Consume`\n- test the same target with a declared surface and with `Minimap`\n- confirm the portal stays coherent when the mode changes\n\nExpected:\n- [ ] Navigate opens the destination\n- [ ] Consume embeds the selected surface\n- [ ] Minimap remains available as the fallback preview",
+        "identity": {
+          "graphId": "port-ref-walkthrough-declaration"
+        }
       }
     },
     {
       "id": "port-ref-walkthrough-port-demo",
       "type": "portal",
       "label": "Port/Reference Demo",
+      "root": false,
       "position": {
         "x": 300,
         "y": 90
@@ -157,14 +220,24 @@
           "mode": "navigate",
           "label": "Open",
           "ref": "/tutorial/port-reference-surface-demo.document.node",
-          "portId": "root"
-        }
+          "portId": "root",
+          "handleId": "root"
+        },
+        "identity": {
+          "graphId": "port-ref-walkthrough-declaration"
+        },
+        "authority": "navigate",
+        "security": "prompt",
+        "ref": "/tutorial/port-reference-surface-demo.document.node",
+        "src": "/tutorial/port-reference-surface-demo.document.node",
+        "endpoint": "/tutorial/port-reference-surface-demo.document.node:root"
       }
     },
     {
       "id": "port-ref-walkthrough-editor-screenshot",
       "type": "markdown",
       "label": "Portal Editor Screenshot",
+      "root": false,
       "position": {
         "x": 300,
         "y": 360
@@ -182,7 +255,58 @@
     }
   ],
   "edges": [],
-  "timestamp": "2026-04-28T00:00:00.000Z",
-  "nodeCount": 7,
-  "edgeCount": 0
+  "clusters": [],
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "#666666",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "layout": {
+      "mode": "autoOnMissingPositions",
+      "defaultLayout": "layered",
+      "direction": "DOWN",
+      "edgeLaneGapPx": 10,
+      "serpentine": {
+        "maxPerRow": 6
+      },
+      "cycleFallback": {
+        "enabled": true
+      },
+      "elk": {
+        "algorithm": "fixed",
+        "edgeRouting": "ORTHOGONAL",
+        "portConstraints": "FIXED_SIDE",
+        "nodeSpacing": 120,
+        "layeredEdgeSpacing": 80
+      }
+    },
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "tutorial/port-reference-authoring-walkthrough.document.node",
+      "branch": "main",
+      "autoCreateRepo": true,
+      "repoVisibility": "private",
+      "seedOnCommit": false,
+      "enableGithubPages": false,
+      "installationId": "120403738"
+    },
+    "autoSave": false
+  },
+  "scripts": [
+    {
+      "id": "script_1761684730975",
+      "name": "New Script",
+      "source": "// Write your script here\n// Available API:\n//   api.getNodes()\n//   api.getNode(id)\n//   api.getEdges()\n//   api.createNode(data)\n//   api.updateNode(id, patch)\n//   api.deleteNode(id)\n//   api.createEdge(data)\n//   api.updateEdge(id, patch)\n//   api.updateEdges(ids, patch)\n//   api.deleteEdge(id)\n//   api.log(level, message)\n\nconst nodes = await api.getNodes();\nreturn { count: nodes.length };",
+      "tags": ""
+    },
+    {
+      "id": "script_1761684295367",
+      "name": "Mike",
+      "source": "console.clear();\nconst nodes = await api.getNodes();\nconsole.log(\"Mike\");\nreturn { count: nodes.length };",
+      "tags": ""
+    }
+  ]
 }
