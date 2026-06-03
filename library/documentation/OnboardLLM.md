@@ -134,6 +134,7 @@ There are lower-level aliases in internal runtime layers such as `createNode`, `
   - `{"action":"updateNode","id":"node-id","updates":{...}}`
 - Use `updateNodes` for a shared update across several nodes:
   - `{"action":"updateNodes","ids":["a","b"],"updates":{...}}`
+- `updates` is a patch object, not a full node replacement.
 - If creating edges, include:
   - `id`
   - `source`
@@ -141,6 +142,63 @@ There are lower-level aliases in internal runtime layers such as `createNode`, `
   - `sourcePort`
   - `targetPort`
   - `type`
+
+## Updating Existing Nodes
+
+When editing a node that already exists:
+
+- use `updateNode` for one node id
+- use `updateNodes` only when the exact same patch should apply to several nodes
+- preserve the existing node id
+- patch only the fields you intend to change
+
+Current runtime behavior:
+
+- `data` merges shallowly by default
+- `position` merges with the current position
+- `style` merges with the current style
+- `state` merges with the current state
+- `ports`, `inputs`, and `outputs` should be treated as full replacement arrays for the handle schema you want after the edit
+
+Simple edit example:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNode",
+      "id": "existing-markdown-node",
+      "updates": {
+        "label": "Updated Note",
+        "data": {
+          "markdown": "## Updated copy\\n\\nThis node was edited in place."
+        }
+      }
+    }
+  ]
+}
+```
+
+Shared edit example:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNodes",
+      "ids": ["node-a", "node-b"],
+      "updates": {
+        "visible": true,
+        "data": {
+          "memo": "Reviewed by onboarding example"
+        }
+      }
+    }
+  ]
+}
+```
 
 ## Edge Port Rules
 
@@ -179,6 +237,12 @@ For created nodes, use the current node shape:
 - `height`
 - `data`
 
+Nodes may also carry these top-level handle fields when needed:
+
+- `ports`
+- `inputs`
+- `outputs`
+
 Do not use `metadata` as the main node payload field.
 
 Use these payload conventions:
@@ -192,6 +256,87 @@ Use these payload conventions:
   - `data.authority`
   - `data.document`
   - `data.settings`
+
+## Port And Handle Schema
+
+When a node has explicit handles, the current shape is:
+
+- `ports`: normalized render-facing handle list
+- `inputs`: legacy input handle list
+- `outputs`: legacy output handle list
+
+Safe explicit handle example:
+
+```json
+{
+  "ports": [
+    {
+      "id": "root",
+      "label": "root",
+      "direction": "bidirectional",
+      "dataType": "value",
+      "position": { "side": "left", "offset": 0.5 }
+    },
+    {
+      "id": "right",
+      "label": "right",
+      "direction": "output",
+      "dataType": "value",
+      "position": { "side": "right", "offset": 0.5 }
+    }
+  ],
+  "inputs": [
+    { "key": "root", "label": "root", "type": "value" }
+  ],
+  "outputs": [
+    { "key": "root", "label": "root", "type": "value" },
+    { "key": "right", "label": "right", "type": "value" }
+  ]
+}
+```
+
+If the user asks to add ports to an existing node, return an `updateNode` mutation that sets the full intended `ports`, `inputs`, and `outputs` arrays together.
+
+Example: add right-side output to an existing markdown node
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNode",
+      "id": "existing-markdown-node",
+      "updates": {
+        "ports": [
+          {
+            "id": "root",
+            "label": "root",
+            "direction": "bidirectional",
+            "dataType": "value",
+            "position": { "side": "left", "offset": 0.5 }
+          },
+          {
+            "id": "right",
+            "label": "right",
+            "direction": "output",
+            "dataType": "value",
+            "position": { "side": "right", "offset": 0.5 }
+          }
+        ],
+        "inputs": [
+          { "key": "root", "label": "root", "type": "value" }
+        ],
+        "outputs": [
+          { "key": "root", "label": "root", "type": "value" },
+          { "key": "right", "label": "right", "type": "value" }
+        ]
+      }
+    }
+  ]
+}
+```
+
+If you do not know the current handle schema on the target node, say so and ask for the node JSON or inspect the current graph before inventing ports.
 
 ## Working In Existing Graphs
 
