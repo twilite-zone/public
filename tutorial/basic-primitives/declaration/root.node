@@ -1,0 +1,221 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Declaration Primitive",
+    "description": "Basic primitive tutorial graph for declaration.",
+    "graphId": "tutorial-basic-primitives-declaration",
+    "version": "0.1.0",
+    "kind": "tutorial",
+    "created": "2026-06-02T00:00:00.000Z",
+    "modified": "2026-06-02T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "tutorial",
+      "primitive",
+      "declaration"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "declaration-primitive-graph",
+      "type": "declaration",
+      "label": "Declaration",
+      "root": false,
+      "position": {
+        "x": -780,
+        "y": -220
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-declaration",
+          "name": "Declaration Primitive",
+          "version": "0.1.0",
+          "description": "Basic primitive tutorial graph for declaration."
+        },
+        "intent": {
+          "kind": "tutorial",
+          "scope": "local"
+        },
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "declaration-primitive-reader",
+          "surfaces": [
+            {
+              "id": "declaration-primitive-reader",
+              "kind": "view",
+              "label": "Declaration Reader",
+              "memo": "Primary surface for the declaration primitive tutorial.",
+              "viewNodeId": "declaration-primitive-reader"
+            }
+          ]
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "document": {
+          "url": ""
+        }
+      }
+    },
+    {
+      "id": "declaration-primitive-reader",
+      "type": "view",
+      "label": "Declaration Reader",
+      "root": false,
+      "position": {
+        "x": -280,
+        "y": -220
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-declaration"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "# Declaration Primitive\n\nThe declaration is the graph handshake. It names the graph, states what it is, and exposes the surfaces that other nodes can consume."
+      }
+    },
+    {
+      "id": "declaration-primitive-note",
+      "type": "markdown",
+      "label": "What Declaration Owns",
+      "root": true,
+      "position": {
+        "x": 180,
+        "y": -220
+      },
+      "width": 560,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-declaration"
+        },
+        "markdown": "## What declaration does\n\nUse `declaration` when a graph needs an identity and an addressable surface contract.\n\nIt owns:\n- `identity`\n- `intent`\n- `declaration`\n\nThose fields tell Twilite and every consuming portal what this graph is and which surfaces it exposes."
+      }
+    },
+    {
+      "id": "declaration-primitive-back",
+      "type": "port",
+      "label": "Back To Basic Primitives",
+      "root": false,
+      "position": {
+        "x": 180,
+        "y": 180
+      },
+      "width": 300,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-declaration"
+        },
+        "memo": "Return to the basic primitives tutorial hub.",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/root.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
+          "portId": "root",
+          "handleId": "root"
+        },
+        "sourcePayload": "node.web.detail",
+        "authority": "consume-view",
+        "intent": "external",
+        "security": "prompt",
+        "ref": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
+        "src": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/root.node:root",
+        "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/root.node"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "declaration-primitive-edge-reader-note",
+      "type": "reference",
+      "source": "declaration-primitive-reader",
+      "target": "declaration-primitive-note",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "declaration-primitive-edge-note-back",
+      "type": "reference",
+      "source": "declaration-primitive-note",
+      "target": "declaration-primitive-back",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "back",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "clusters": [],
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "#666666",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "layout": {
+      "mode": "autoOnMissingPositions",
+      "defaultLayout": "layered",
+      "direction": "DOWN",
+      "edgeLaneGapPx": 10,
+      "serpentine": {
+        "maxPerRow": 6
+      },
+      "cycleFallback": {
+        "enabled": true
+      },
+      "elk": {
+        "algorithm": "fixed",
+        "edgeRouting": "ORTHOGONAL",
+        "portConstraints": "FIXED_SIDE",
+        "nodeSpacing": 120,
+        "layeredEdgeSpacing": 80
+      }
+    },
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "tutorial/basic-primitives/declaration/root.node",
+      "branch": "main",
+      "autoCreateRepo": true,
+      "repoVisibility": "private",
+      "seedOnCommit": false,
+      "enableGithubPages": false,
+      "installationId": "120403738"
+    },
+    "autoSave": false
+  },
+  "scripts": []
+}

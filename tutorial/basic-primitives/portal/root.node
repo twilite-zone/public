@@ -1,0 +1,270 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Portal Primitive",
+    "description": "Basic primitive tutorial graph for portal.",
+    "graphId": "tutorial-basic-primitives-portal",
+    "version": "0.1.0",
+    "kind": "tutorial",
+    "created": "2026-06-02T00:00:00.000Z",
+    "modified": "2026-06-02T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "tutorial",
+      "primitive",
+      "portal"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "portal-primitive-graph",
+      "type": "declaration",
+      "label": "Declaration",
+      "root": false,
+      "position": {
+        "x": -860,
+        "y": -220
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-portal",
+          "name": "Portal Primitive",
+          "version": "0.1.0",
+          "description": "Basic primitive tutorial graph for portal."
+        },
+        "intent": {
+          "kind": "tutorial",
+          "scope": "local"
+        },
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "portal-primitive-reader",
+          "surfaces": [
+            {
+              "id": "portal-primitive-reader",
+              "kind": "view",
+              "label": "Portal Reader",
+              "memo": "Primary surface for the portal primitive tutorial.",
+              "viewNodeId": "portal-primitive-reader"
+            }
+          ]
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "document": {
+          "url": ""
+        }
+      }
+    },
+    {
+      "id": "portal-primitive-reader",
+      "type": "view",
+      "label": "Portal Reader",
+      "root": false,
+      "position": {
+        "x": -380,
+        "y": -220
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-portal"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "# Portal Primitive\n\nThe portal is an addressed node that points at another graph or document. It can navigate there and, when configured, render a declared surface in place."
+      }
+    },
+    {
+      "id": "portal-primitive-note",
+      "type": "markdown",
+      "label": "What Portal Owns",
+      "root": true,
+      "position": {
+        "x": 100,
+        "y": -220
+      },
+      "width": 520,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-portal"
+        },
+        "markdown": "## What portal does\n\nUse `portal` when a node should point at another graph or document by address.\n\nA portal combines:\n- target address\n- navigation behavior\n- optional surface selection\n\nThat makes it the primitive that turns declared surfaces into reusable in-graph windows."
+      }
+    },
+    {
+      "id": "portal-primitive-example",
+      "type": "portal",
+      "label": "Open Tutorial Root",
+      "root": false,
+      "position": {
+        "x": 100,
+        "y": 180
+      },
+      "width": 320,
+      "height": 200,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Example portal that opens the tutorial root.",
+        "intent": "external",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/root.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "portId": "root",
+          "ref": "github://twilite-zone/public/tutorial/root.node",
+          "handleId": "root",
+          "surfaceId": ""
+        },
+        "security": "prompt",
+        "identity": {
+          "graphId": "tutorial-basic-primitives-portal"
+        },
+        "authority": "consume-view",
+        "ref": "github://twilite-zone/public/tutorial/root.node",
+        "src": "github://twilite-zone/public/tutorial/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/root.node:root",
+        "sourcePayload": "node.web.summary",
+        "surfaceId": "",
+        "sourceRef": "github://twilite-zone/public/tutorial/root.node"
+      }
+    },
+    {
+      "id": "portal-primitive-back",
+      "type": "port",
+      "label": "Back To Basic Primitives",
+      "root": false,
+      "position": {
+        "x": 500,
+        "y": 180
+      },
+      "width": 300,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-portal"
+        },
+        "memo": "Return to the basic primitives tutorial hub.",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/root.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
+          "portId": "root",
+          "handleId": "root"
+        },
+        "sourcePayload": "node.web.detail",
+        "authority": "consume-view",
+        "intent": "external",
+        "security": "prompt",
+        "ref": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
+        "src": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/root.node:root",
+        "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/root.node"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "portal-primitive-edge-reader-note",
+      "type": "reference",
+      "source": "portal-primitive-reader",
+      "target": "portal-primitive-note",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "portal-primitive-edge-note-example",
+      "type": "reference",
+      "source": "portal-primitive-note",
+      "target": "portal-primitive-example",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "example",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "portal-primitive-edge-example-back",
+      "type": "reference",
+      "source": "portal-primitive-example",
+      "target": "portal-primitive-back",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "back",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "clusters": [],
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "#666666",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "layout": {
+      "mode": "autoOnMissingPositions",
+      "defaultLayout": "layered",
+      "direction": "DOWN",
+      "edgeLaneGapPx": 10,
+      "serpentine": {
+        "maxPerRow": 6
+      },
+      "cycleFallback": {
+        "enabled": true
+      },
+      "elk": {
+        "algorithm": "fixed",
+        "edgeRouting": "ORTHOGONAL",
+        "portConstraints": "FIXED_SIDE",
+        "nodeSpacing": 120,
+        "layeredEdgeSpacing": 80
+      }
+    },
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "tutorial/basic-primitives/portal/root.node",
+      "branch": "main",
+      "autoCreateRepo": true,
+      "repoVisibility": "private",
+      "seedOnCommit": false,
+      "enableGithubPages": false,
+      "installationId": "120403738"
+    },
+    "autoSave": false
+  },
+  "scripts": []
+}

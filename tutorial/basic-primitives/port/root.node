@@ -1,0 +1,221 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Port Primitive",
+    "description": "Basic primitive tutorial graph for port.",
+    "graphId": "tutorial-basic-primitives-port",
+    "version": "0.1.0",
+    "kind": "tutorial",
+    "created": "2026-06-02T00:00:00.000Z",
+    "modified": "2026-06-02T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "tutorial",
+      "primitive",
+      "port"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "port-primitive-graph",
+      "type": "declaration",
+      "label": "Declaration",
+      "root": false,
+      "position": {
+        "x": -780,
+        "y": -220
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-port",
+          "name": "Port Primitive",
+          "version": "0.1.0",
+          "description": "Basic primitive tutorial graph for port."
+        },
+        "intent": {
+          "kind": "tutorial",
+          "scope": "local"
+        },
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "port-primitive-reader",
+          "surfaces": [
+            {
+              "id": "port-primitive-reader",
+              "kind": "view",
+              "label": "Port Reader",
+              "memo": "Primary surface for the port primitive tutorial.",
+              "viewNodeId": "port-primitive-reader"
+            }
+          ]
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "document": {
+          "url": ""
+        }
+      }
+    },
+    {
+      "id": "port-primitive-reader",
+      "type": "view",
+      "label": "Port Reader",
+      "root": false,
+      "position": {
+        "x": -280,
+        "y": -220
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-port"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "# Port Primitive\n\nThe port is a rendered surface and navigation handle. It is how a graph exposes something another node can open or consume."
+      }
+    },
+    {
+      "id": "port-primitive-note",
+      "type": "markdown",
+      "label": "What Port Owns",
+      "root": true,
+      "position": {
+        "x": 180,
+        "y": -220
+      },
+      "width": 560,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-port"
+        },
+        "markdown": "## What port does\n\nUse `port` when you need a graph node that opens something or presents a declared surface.\n\nA port usually cares about:\n- target address\n- payload or surface choice\n- authority and intent\n\nPorts are graph-native entry points for navigation and presentation."
+      }
+    },
+    {
+      "id": "port-primitive-back",
+      "type": "port",
+      "label": "Back To Basic Primitives",
+      "root": false,
+      "position": {
+        "x": 180,
+        "y": 180
+      },
+      "width": 300,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-port"
+        },
+        "memo": "Return to the basic primitives tutorial hub.",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/root.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
+          "portId": "root",
+          "handleId": "root"
+        },
+        "sourcePayload": "node.web.detail",
+        "authority": "consume-view",
+        "intent": "external",
+        "security": "prompt",
+        "ref": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
+        "src": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/root.node:root",
+        "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/root.node"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "port-primitive-edge-reader-note",
+      "type": "reference",
+      "source": "port-primitive-reader",
+      "target": "port-primitive-note",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "port-primitive-edge-note-back",
+      "type": "reference",
+      "source": "port-primitive-note",
+      "target": "port-primitive-back",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "back",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "clusters": [],
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "#666666",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "layout": {
+      "mode": "autoOnMissingPositions",
+      "defaultLayout": "layered",
+      "direction": "DOWN",
+      "edgeLaneGapPx": 10,
+      "serpentine": {
+        "maxPerRow": 6
+      },
+      "cycleFallback": {
+        "enabled": true
+      },
+      "elk": {
+        "algorithm": "fixed",
+        "edgeRouting": "ORTHOGONAL",
+        "portConstraints": "FIXED_SIDE",
+        "nodeSpacing": 120,
+        "layeredEdgeSpacing": 80
+      }
+    },
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "tutorial/basic-primitives/port/root.node",
+      "branch": "main",
+      "autoCreateRepo": true,
+      "repoVisibility": "private",
+      "seedOnCommit": false,
+      "enableGithubPages": false,
+      "installationId": "120403738"
+    },
+    "autoSave": false
+  },
+  "scripts": []
+}
