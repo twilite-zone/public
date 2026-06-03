@@ -158,7 +158,8 @@ Current runtime behavior:
 - `position` merges with the current position
 - `style` merges with the current style
 - `state` merges with the current state
-- `ports`, `inputs`, and `outputs` should be treated as full replacement arrays for the handle schema you want after the edit
+- `ports`, `inputs`, and `outputs` should be treated as full replacement arrays for the semantic port contract you want after the edit
+- `handles` should be treated as a full replacement array for UI handle affordances when you edit them
 
 Simple edit example:
 
@@ -237,11 +238,12 @@ For created nodes, use the current node shape:
 - `height`
 - `data`
 
-Nodes may also carry these top-level handle fields when needed:
+Nodes may also carry these top-level connector fields when needed:
 
 - `ports`
 - `inputs`
 - `outputs`
+- `handles`
 
 Do not use `metadata` as the main node payload field.
 
@@ -259,13 +261,24 @@ Use these payload conventions:
 
 ## Port And Handle Schema
 
-When a node has explicit handles, the current shape is:
+Twilite now separates semantic ports from UI handles:
 
-- `ports`: normalized render-facing handle list
-- `inputs`: legacy input handle list
-- `outputs`: legacy output handle list
+- `ports`: the semantic interface contract used by `sourcePort` and `targetPort`
+- `inputs`: legacy semantic input list
+- `outputs`: legacy semantic output list
+- `handles`: optional UI affordances that may bind to ports
 
-Safe explicit handle example:
+Rules:
+
+- Edges connect to ports, not directly to handles.
+- A handle may bind to one semantic port using `portId`.
+- Multiple handles may bind to the same port.
+- A handle with no `portId` is visual-only.
+- Ports may define default placement.
+- Handles may override that placement with their own `angle`.
+- If a handle selects a referenced-graph surface, use `surfaceId`.
+
+Safe explicit port-plus-handle example:
 
 ```json
 {
@@ -275,14 +288,39 @@ Safe explicit handle example:
       "label": "root",
       "direction": "bidirectional",
       "dataType": "value",
-      "position": { "side": "left", "offset": 0.5 }
+      "angle": 210
     },
     {
-      "id": "right",
-      "label": "right",
+      "id": "message",
+      "label": "message",
       "direction": "output",
       "dataType": "value",
-      "position": { "side": "right", "offset": 0.5 }
+      "angle": 0
+    }
+  ],
+  "handles": [
+    {
+      "id": "message-east",
+      "label": "message east",
+      "direction": "output",
+      "dataType": "value",
+      "portId": "message",
+      "angle": 0
+    },
+    {
+      "id": "message-south",
+      "label": "message south",
+      "direction": "output",
+      "dataType": "value",
+      "portId": "message",
+      "angle": 90
+    },
+    {
+      "id": "decoy",
+      "label": "decoy",
+      "direction": "output",
+      "dataType": "value",
+      "angle": 180
     }
   ],
   "inputs": [
@@ -290,14 +328,16 @@ Safe explicit handle example:
   ],
   "outputs": [
     { "key": "root", "label": "root", "type": "value" },
-    { "key": "right", "label": "right", "type": "value" }
+    { "key": "message", "label": "message", "type": "value" }
   ]
 }
 ```
 
-If the user asks to add ports to an existing node, return an `updateNode` mutation that sets the full intended `ports`, `inputs`, and `outputs` arrays together.
+If the user asks to add or change semantic ports on an existing node, return an `updateNode` mutation that sets the full intended `ports`, `inputs`, and `outputs` arrays together.
 
-Example: add right-side output to an existing markdown node
+If the user asks to add or change handles on an existing node, return an `updateNode` mutation that sets the full intended `handles` array.
+
+Example: add a new semantic output port and two bound handles to an existing markdown node
 
 ```json
 {
@@ -313,14 +353,40 @@ Example: add right-side output to an existing markdown node
             "label": "root",
             "direction": "bidirectional",
             "dataType": "value",
-            "position": { "side": "left", "offset": 0.5 }
+            "angle": 210
           },
           {
-            "id": "right",
-            "label": "right",
+            "id": "message",
+            "label": "message",
             "direction": "output",
             "dataType": "value",
-            "position": { "side": "right", "offset": 0.5 }
+            "angle": 0
+          }
+        ],
+        "handles": [
+          {
+            "id": "root",
+            "label": "root",
+            "direction": "bidirectional",
+            "dataType": "any",
+            "portId": "root",
+            "angle": 210
+          },
+          {
+            "id": "message-east",
+            "label": "message east",
+            "direction": "output",
+            "dataType": "value",
+            "portId": "message",
+            "angle": 0
+          },
+          {
+            "id": "message-south",
+            "label": "message south",
+            "direction": "output",
+            "dataType": "value",
+            "portId": "message",
+            "angle": 90
           }
         ],
         "inputs": [
@@ -328,7 +394,7 @@ Example: add right-side output to an existing markdown node
         ],
         "outputs": [
           { "key": "root", "label": "root", "type": "value" },
-          { "key": "right", "label": "right", "type": "value" }
+          { "key": "message", "label": "message", "type": "value" }
         ]
       }
     }
@@ -336,7 +402,7 @@ Example: add right-side output to an existing markdown node
 }
 ```
 
-If you do not know the current handle schema on the target node, say so and ask for the node JSON or inspect the current graph before inventing ports.
+If you do not know the current semantic port contract on the target node, say so and ask for the node JSON or inspect the current graph before inventing ports.
 
 ## Working In Existing Graphs
 
