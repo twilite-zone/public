@@ -1,0 +1,467 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Handle Port Binding Smoke",
+    "description": "Tutorial smoke graph for semantic ports, bound handles, and visual-only handles.",
+    "graphId": "tutorial-basic-primitives-handle-port-binding-smoke",
+    "version": "0.1.0",
+    "kind": "tutorial",
+    "created": "2026-06-03T00:00:00.000Z",
+    "modified": "2026-06-03T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "tutorial",
+      "smoke-test",
+      "handles",
+      "ports"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "handle-port-binding-smoke-graph",
+      "type": "declaration",
+      "label": "Declaration",
+      "root": false,
+      "position": {
+        "x": -900,
+        "y": -240
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-handle-port-binding-smoke",
+          "name": "Handle Port Binding Smoke",
+          "version": "0.1.0",
+          "description": "Tutorial smoke graph for semantic ports, bound handles, and visual-only handles."
+        },
+        "intent": {
+          "kind": "tutorial",
+          "scope": "local"
+        },
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "handle-port-binding-smoke-reader",
+          "surfaces": [
+            {
+              "id": "handle-port-binding-smoke-reader",
+              "kind": "view",
+              "label": "Handle Binding Reader",
+              "memo": "Primary reader surface for the handle binding smoke graph.",
+              "viewNodeId": "handle-port-binding-smoke-reader"
+            }
+          ]
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "document": {
+          "url": ""
+        }
+      }
+    },
+    {
+      "id": "handle-port-binding-smoke-reader",
+      "type": "view",
+      "label": "Reader",
+      "root": false,
+      "position": {
+        "x": -420,
+        "y": -240
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-handle-port-binding-smoke"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "# Handle / Port Binding Smoke\n\nUse this graph to verify that ports remain semantic while handles remain editor affordances."
+      }
+    },
+    {
+      "id": "handle-port-binding-smoke-guide",
+      "type": "markdown",
+      "label": "How To Test",
+      "root": true,
+      "position": {
+        "x": 40,
+        "y": -260
+      },
+      "width": 760,
+      "height": 360,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-handle-port-binding-smoke"
+        },
+        "markdown": "# Handle / Port Binding Smoke Test\n\nThis graph demonstrates the current contract:\n- `ports` are the semantic interface\n- `handles` are UI affordances\n- multiple handles may bind to the same port\n- a visual-only handle should not create a connection\n\n## What is wired here\n- `Source Node` exposes semantic ports `root` and `message`\n- `Source Node` has **two bound handles** for the `message` port: `message-east` and `message-south`\n- `Source Node` also has one **visual-only** handle: `decoy`\n- `Receiver Node` exposes semantic ports `root` and `message`\n\n## Smoke checks\n1. Select `Source Node` and inspect **Handles**.\n2. Confirm `message-east` and `message-south` both bind to port `message`.\n3. Confirm `decoy` is `visual only`.\n4. Notice the existing edge from `Source Node` to `Receiver Node` uses `sourcePort = message` and `targetPort = message`.\n5. Verify both bound source handles look connected, while `decoy` does not.\n6. Delete the edge and recreate it by dragging from either bound source handle to the receiver handle.\n7. Confirm the recreated edge still uses the semantic port id `message`.\n8. Try dragging from `decoy`. It should not create a connection."
+      }
+    },
+    {
+      "id": "handle-port-binding-smoke-source",
+      "type": "markdown",
+      "label": "Source Node",
+      "root": false,
+      "position": {
+        "x": -60,
+        "y": 180
+      },
+      "width": 320,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-handle-port-binding-smoke"
+        },
+        "markdown": "## Source Node\n\nSemantic output port: `message`\n\nVisual handles:\n- `message-east` -> port `message`\n- `message-south` -> port `message`\n- `decoy` -> visual only"
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "side": "left",
+          "offset": 0.2,
+          "position": {
+            "side": "left",
+            "offset": 0.2
+          }
+        },
+        {
+          "id": "message",
+          "label": "message",
+          "direction": "output",
+          "dataType": "string",
+          "side": "right",
+          "offset": 0.5,
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "value",
+          "position": {
+            "side": "left",
+            "offset": 0.2
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "value",
+          "position": {
+            "side": "left",
+            "offset": 0.2
+          }
+        },
+        {
+          "key": "message",
+          "label": "message",
+          "type": "string",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "portId": "root",
+          "angle": 210
+        },
+        {
+          "id": "message-east",
+          "label": "message east",
+          "direction": "output",
+          "dataType": "string",
+          "portId": "message",
+          "angle": 0
+        },
+        {
+          "id": "message-south",
+          "label": "message south",
+          "direction": "output",
+          "dataType": "string",
+          "portId": "message",
+          "angle": 90
+        },
+        {
+          "id": "decoy",
+          "label": "visual only",
+          "direction": "output",
+          "dataType": "string",
+          "angle": 180
+        }
+      ]
+    },
+    {
+      "id": "handle-port-binding-smoke-target",
+      "type": "markdown",
+      "label": "Receiver Node",
+      "root": false,
+      "position": {
+        "x": 420,
+        "y": 180
+      },
+      "width": 320,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-handle-port-binding-smoke"
+        },
+        "markdown": "## Receiver Node\n\nSemantic input port: `message`\n\nDrop either bound source handle here."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "side": "left",
+          "offset": 0.2,
+          "position": {
+            "side": "left",
+            "offset": 0.2
+          }
+        },
+        {
+          "id": "message",
+          "label": "message",
+          "direction": "input",
+          "dataType": "string",
+          "side": "left",
+          "offset": 0.5,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "value",
+          "position": {
+            "side": "left",
+            "offset": 0.2
+          }
+        },
+        {
+          "key": "message",
+          "label": "message",
+          "type": "string",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "value",
+          "position": {
+            "side": "left",
+            "offset": 0.2
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "portId": "root",
+          "angle": 150
+        },
+        {
+          "id": "message-in",
+          "label": "message in",
+          "direction": "input",
+          "dataType": "string",
+          "portId": "message",
+          "angle": 180
+        },
+        {
+          "id": "badge",
+          "label": "visual only",
+          "direction": "input",
+          "dataType": "string",
+          "angle": 315
+        }
+      ]
+    },
+    {
+      "id": "handle-port-binding-smoke-back",
+      "type": "port",
+      "label": "Back To Basic Primitives",
+      "root": false,
+      "position": {
+        "x": 820,
+        "y": -40
+      },
+      "width": 300,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-handle-port-binding-smoke"
+        },
+        "memo": "Return to the basic primitives tutorial hub.",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/root.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
+          "portId": "root",
+          "handleId": "root"
+        },
+        "sourcePayload": "node.web.detail",
+        "authority": "consume-view",
+        "intent": "external",
+        "security": "prompt",
+        "ref": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
+        "src": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/root.node:root",
+        "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/root.node"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "handle-port-binding-smoke-edge-reader-guide",
+      "type": "reference",
+      "source": "handle-port-binding-smoke-reader",
+      "target": "handle-port-binding-smoke-guide",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "handle-port-binding-smoke-edge-guide-source",
+      "type": "reference",
+      "source": "handle-port-binding-smoke-guide",
+      "target": "handle-port-binding-smoke-source",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "inspect source",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "handle-port-binding-smoke-edge-guide-target",
+      "type": "reference",
+      "source": "handle-port-binding-smoke-guide",
+      "target": "handle-port-binding-smoke-target",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "inspect receiver",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "handle-port-binding-smoke-edge-message",
+      "type": "reference",
+      "source": "handle-port-binding-smoke-source",
+      "target": "handle-port-binding-smoke-target",
+      "sourcePort": "message",
+      "targetPort": "message",
+      "label": "message",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "handle-port-binding-smoke-edge-guide-back",
+      "type": "reference",
+      "source": "handle-port-binding-smoke-guide",
+      "target": "handle-port-binding-smoke-back",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "back",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "clusters": [],
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "#666666",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "layout": {
+      "mode": "autoOnMissingPositions",
+      "defaultLayout": "layered",
+      "direction": "DOWN",
+      "edgeLaneGapPx": 10,
+      "serpentine": {
+        "maxPerRow": 6
+      },
+      "cycleFallback": {
+        "enabled": true
+      },
+      "elk": {
+        "algorithm": "fixed",
+        "edgeRouting": "ORTHOGONAL",
+        "portConstraints": "FIXED_SIDE",
+        "nodeSpacing": 120,
+        "layeredEdgeSpacing": 80
+      }
+    },
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "tutorial/basic-primitives/handle-port-binding-smoke/root.node",
+      "branch": "main",
+      "autoCreateRepo": true,
+      "repoVisibility": "private",
+      "seedOnCommit": false,
+      "enableGithubPages": false,
+      "installationId": "120403738"
+    },
+    "autoSave": false
+  },
+  "scripts": []
+}
