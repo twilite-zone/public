@@ -2,7 +2,7 @@
   "fileVersion": "1.0",
   "metadata": {
     "title": "Tutorial Lesson Template",
-    "description": "Reusable Twilite lesson template with declaration, concept, example, challenge, checkpoint, and lesson transition edges.",
+    "description": "Reusable Twilite lesson template with gallery-style tutorial cards, local node classes, and prewired lesson flow edges.",
     "graphId": "tutorial-lesson-template",
     "version": "0.1.0",
     "kind": "tutorial",
@@ -11,7 +11,8 @@
     "author": "",
     "tags": [
       "tutorial",
-      "template"
+      "template",
+      "gallery-style"
     ],
     "preferredViewer": "https://twilite.zone"
   },
@@ -84,12 +85,12 @@
       }
     },
     {
-      "id": "tutorial-template-welcome",
-      "type": "markdown",
-      "label": "Welcome",
-      "position": { "x": -280, "y": -220 },
-      "width": 420,
-      "height": 260,
+      "id": "tutorial-template-title",
+      "type": "tutorial-title",
+      "label": "Lesson Hero",
+      "position": { "x": -300, "y": -240 },
+      "width": 560,
+      "height": 280,
       "visible": true,
       "showLabel": true,
       "ports": [
@@ -114,12 +115,23 @@
         { "key": "challenge", "label": "challenge", "type": "any" }
       ],
       "data": {
-        "markdown": "# Welcome\n\nExplain what this lesson teaches, why it matters, and what the learner should be able to do when they finish.\n\n## Suggested rhythm\n- introduce the idea\n- point to one concept node per idea\n- give one inspectable example\n- end with a challenge and checkpoint"
+        "title": "Tutorial Lesson Template",
+        "subtitle": "A reusable, gallery-style lesson scaffold with a hero card, concept cards, example card, challenge, checkpoint, and portal-based continuation.",
+        "_classBinding": {
+          "key": "tutorial-title",
+          "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-title",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node"
+        },
+        "definitionKey": "tutorial-title"
       }
     },
     {
       "id": "tutorial-template-concept-a",
-      "type": "markdown",
+      "type": "tutorial-concept",
       "label": "Concept A",
       "position": { "x": 220, "y": -420 },
       "width": 320,
@@ -142,12 +154,24 @@
         { "key": "example", "label": "example", "type": "any" }
       ],
       "data": {
-        "markdown": "# Concept A\n\nUse one node per idea.\n\nGood concept nodes stay narrow, concrete, and inspectable."
+        "title": "Concept A",
+        "body": "Use one node per idea.\n\nGood concept cards stay narrow, concrete, and inspectable.",
+        "tag": "Concept",
+        "_classBinding": {
+          "key": "tutorial-concept",
+          "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-concept",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        },
+        "definitionKey": "tutorial-concept"
       }
     },
     {
       "id": "tutorial-template-concept-b",
-      "type": "markdown",
+      "type": "tutorial-concept",
       "label": "Concept B",
       "position": { "x": 220, "y": -140 },
       "width": 320,
@@ -170,12 +194,24 @@
         { "key": "example", "label": "example", "type": "any" }
       ],
       "data": {
-        "markdown": "# Concept B\n\nA second concept node keeps the template from feeling linear only. Fan out here when you want comparison."
+        "title": "Concept B",
+        "body": "A second concept card keeps the template from feeling linear only. Fan out here when you want comparison.",
+        "tag": "Concept",
+        "_classBinding": {
+          "key": "tutorial-concept",
+          "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-concept",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        },
+        "definitionKey": "tutorial-concept"
       }
     },
     {
       "id": "tutorial-template-example",
-      "type": "markdown",
+      "type": "tutorial-example",
       "label": "Example",
       "position": { "x": 700, "y": -260 },
       "width": 360,
@@ -198,12 +234,24 @@
         { "key": "challenge", "label": "challenge", "type": "any" }
       ],
       "data": {
-        "markdown": "# Example\n\nPut a working node, pattern, or miniature graph here so the learner can inspect the shape directly."
+        "title": "Example",
+        "body": "Put a working node, pattern, or miniature graph here so the learner can inspect the shape directly.",
+        "cta": "Inspect",
+        "_classBinding": {
+          "key": "tutorial-example",
+          "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-example.node-class.node",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-example.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-example",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-example.node-class.node"
+        },
+        "definitionKey": "tutorial-example"
       }
     },
     {
       "id": "tutorial-template-challenge",
-      "type": "markdown",
+      "type": "tutorial-challenge",
       "label": "Challenge",
       "position": { "x": 700, "y": 80 },
       "width": 360,
@@ -226,12 +274,24 @@
         { "key": "checkpoint", "label": "checkpoint", "type": "any" }
       ],
       "data": {
-        "markdown": "# Challenge\n\nGive the learner one small task.\n\nExamples:\n- add a handle at `90` degrees\n- expose one surface\n- connect two nodes with a `reference` edge"
+        "title": "Challenge",
+        "body": "Give the learner one small task.\n\nExamples:\n- add a handle at `90` degrees\n- expose one surface\n- connect two nodes with a `reference` edge",
+        "difficulty": "starter",
+        "_classBinding": {
+          "key": "tutorial-challenge",
+          "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-challenge.node-class.node",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-challenge.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-challenge",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-challenge.node-class.node"
+        },
+        "definitionKey": "tutorial-challenge"
       }
     },
     {
       "id": "tutorial-template-checkpoint",
-      "type": "markdown",
+      "type": "tutorial-checkpoint",
       "label": "Checkpoint",
       "position": { "x": 1180, "y": 80 },
       "width": 360,
@@ -254,7 +314,19 @@
         { "key": "next", "label": "next", "type": "any" }
       ],
       "data": {
-        "markdown": "# Checkpoint\n\nDescribe what success looks like.\n\nGood checkpoints tell the learner what to inspect, not just what to click."
+        "title": "Checkpoint",
+        "body": "Describe what success looks like.\n\nGood checkpoints tell the learner what to inspect, not just what to click.",
+        "status": "verify",
+        "_classBinding": {
+          "key": "tutorial-checkpoint",
+          "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-checkpoint.node-class.node",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-checkpoint.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-checkpoint",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-checkpoint.node-class.node"
+        },
+        "definitionKey": "tutorial-checkpoint"
       }
     },
     {
@@ -304,7 +376,7 @@
       "id": "tutorial-template-edge-reader-welcome",
       "type": "reference",
       "source": "tutorial-template-reader",
-      "target": "tutorial-template-welcome",
+      "target": "tutorial-template-title",
       "sourcePort": "root",
       "targetPort": "root",
       "label": "enter lesson",
@@ -314,7 +386,7 @@
     {
       "id": "tutorial-template-edge-welcome-concept-a",
       "type": "reference",
-      "source": "tutorial-template-welcome",
+      "source": "tutorial-template-title",
       "target": "tutorial-template-concept-a",
       "sourcePort": "concepts",
       "targetPort": "root",
@@ -325,7 +397,7 @@
     {
       "id": "tutorial-template-edge-welcome-concept-b",
       "type": "reference",
-      "source": "tutorial-template-welcome",
+      "source": "tutorial-template-title",
       "target": "tutorial-template-concept-b",
       "sourcePort": "concepts",
       "targetPort": "root",

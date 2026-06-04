@@ -1,0 +1,134 @@
+{
+  "type": "nodegraph-data",
+  "nodes": [
+    {
+      "id": "tutorial-concept-class-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": { "x": -760, "y": -260 },
+      "visible": true,
+      "showLabel": true,
+      "width": 340,
+      "height": 220,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-concept-node-class",
+          "name": "Tutorial Concept Node Class",
+          "version": "0.1.0",
+          "description": "Single-idea teaching card for tutorial concept nodes.",
+          "createdAt": "2026-06-04T00:00:00.000Z",
+          "updatedAt": "2026-06-04T00:00:00.000Z"
+        },
+        "intent": { "kind": "node-class", "scope": "local" },
+        "dependencies": {
+          "nodeTypes": ["manifest", "legend", "view", "markdown"],
+          "portContracts": ["core"],
+          "skills": [],
+          "schemaVersions": { "nodes": ">=1.0.0", "ports": ">=1.0.0" },
+          "optional": []
+        },
+        "authority": {
+          "mutation": { "allowCreate": true, "allowUpdate": true, "allowDelete": true, "appendOnly": false },
+          "actors": { "humans": true, "agents": true, "tools": true },
+          "styleAuthority": "descriptive",
+          "history": { "rewriteAllowed": false, "squashAllowed": false }
+        },
+        "document": { "url": "" },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "nodeClass": {
+          "contractVersion": "1.0.0",
+          "key": "tutorial-concept",
+          "nodeDef": {
+            "key": "tutorial-concept",
+            "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Concept",
+              "size": { "width": 340, "height": 240 },
+              "color": "linear-gradient(135deg, #dbeafe, #38bdf8)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "",
+                "tag": "Concept"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "tutorial-concept-detail-view",
+      "type": "view",
+      "label": "Tutorial Concept Detail",
+      "position": { "x": 480, "y": -160 },
+      "visible": true,
+      "showLabel": true,
+      "width": 520,
+      "height": 320,
+      "data": {
+        "key": "node.web.detail",
+        "intent": "node",
+        "payload": "node.web.detail",
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;gap:14px;padding:18px;border-radius:20px;box-sizing:border-box;background:linear-gradient(180deg, rgba(239,246,255,0.98), rgba(224,242,254,0.96));border:1px solid rgba(2,132,199,0.14);overflow:hidden;\"><div style=\"display:flex;justify-content:space-between;gap:12px;align-items:center;\"><div style=\"font:800 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#0f172a;\">{{data.title}}</div><div style=\"padding:4px 8px;border-radius:999px;background:rgba(2,132,199,0.12);color:#075985;font:700 11px/1 ui-sans-serif, system-ui, sans-serif;\">{{data.tag}}</div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #38bdf8, #0ea5e9);\"></div><div style=\"font:500 14px/1.55 ui-sans-serif, system-ui, sans-serif;color:#334155;white-space:pre-wrap;overflow:auto;\">{{data.body}}</div></div>",
+        "semanticLevel": "detail"
+      }
+    },
+    {
+      "id": "tutorial-concept-summary-view",
+      "type": "view",
+      "label": "Tutorial Concept Summary",
+      "position": { "x": 1080, "y": -160 },
+      "visible": true,
+      "showLabel": true,
+      "width": 420,
+      "height": 240,
+      "data": {
+        "key": "node.web.summary",
+        "intent": "node",
+        "payload": "node.web.summary",
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;border-radius:16px;background:white;border:1px solid rgba(2,132,199,0.14);\"><div style=\"font:800 20px/1.2 ui-sans-serif, system-ui, sans-serif;color:#0f172a;\">{{data.title}}</div><div style=\"font:500 13px/1.45 ui-sans-serif, system-ui, sans-serif;color:#475569;\">{{data.body}}</div></div>",
+        "semanticLevel": "summary"
+      }
+    },
+    {
+      "id": "tutorial-concept-editor-view",
+      "type": "view",
+      "label": "Tutorial Concept Editor",
+      "position": { "x": -120, "y": -160 },
+      "visible": true,
+      "showLabel": true,
+      "width": 520,
+      "height": 320,
+      "data": {
+        "key": "editor.web",
+        "intent": "editor",
+        "payload": "editor.web",
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;gap:12px;padding:16px;box-sizing:border-box;background:#f0f9ff;overflow:auto;\"><label style=\"display:flex;flex-direction:column;gap:6px;font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#075985;\"><span>Title</span><input data-bind=\"data.title\" value=\"{{data.title}}\" placeholder=\"Concept title\" style=\"border:1px solid rgba(2,132,199,0.16);border-radius:10px;padding:10px 12px;font:600 13px/1.4 ui-sans-serif, system-ui, sans-serif;color:#111827;background:white;\" /></label><label style=\"display:flex;flex-direction:column;gap:6px;font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#075985;flex:1;\"><span>Body</span><textarea data-bind=\"data.body\" style=\"flex:1;min-height:180px;border:1px solid rgba(2,132,199,0.16);border-radius:12px;padding:12px;font:500 13px/1.5 ui-sans-serif, system-ui, sans-serif;color:#111827;background:white;resize:vertical;\">{{data.body}}</textarea></label></div>",
+        "semanticLevel": "detail"
+      }
+    }
+  ],
+  "edges": [],
+  "clusters": [],
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "#666666",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "autoSave": false
+  }
+}
