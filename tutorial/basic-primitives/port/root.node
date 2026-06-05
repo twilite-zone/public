@@ -71,7 +71,7 @@
     },
     {
       "id": "port-primitive-reader",
-      "type": "view",
+      "type": "port",
       "label": "Port Reader",
       "root": false,
       "position": {
@@ -93,7 +93,7 @@
         "renderShape": {
           "kind": "markdown"
         },
-        "markdown": "# Port Primitive\n\nThe port is a rendered surface and navigation handle. It is how a graph exposes something another node can open or consume."
+        "markdown": "# Port Primitive\n\nA port is the graph-native exposure point for a surface or entry contract. It tells other nodes what this graph makes available and how that exposure should be addressed."
       }
     },
     {
@@ -113,12 +113,12 @@
         "identity": {
           "graphId": "tutorial-basic-primitives-port"
         },
-        "markdown": "## What port does\n\nUse `port` when you need a graph node that opens something or presents a declared surface.\n\nA port usually cares about:\n- target address\n- payload or surface choice\n- authority and intent\n\nPorts are graph-native entry points for navigation and presentation."
+        "markdown": "## What port does\n\nUse `port` when a graph needs to expose a semantic entry point or a consumable surface contract.\n\nA port usually cares about:\n- which surface or payload is being exposed\n- how another node can address it\n- what kind of consumption the exposure supports\n\nPorts expose. They do not do the opening themselves.\n\nThat last step belongs to a `portal`."
       }
     },
     {
       "id": "port-primitive-back",
-      "type": "port",
+      "type": "portal",
       "label": "Back To Basic Primitives",
       "root": false,
       "position": {
@@ -143,7 +143,7 @@
           "handleId": "root"
         },
         "sourcePayload": "node.web.detail",
-        "authority": "consume-view",
+        "authority": "navigate",
         "intent": "external",
         "security": "prompt",
         "ref": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
