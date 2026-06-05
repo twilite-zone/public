@@ -2,7 +2,7 @@
   "fileVersion": "1.0",
   "metadata": {
     "title": "Handle Port Binding Smoke",
-    "description": "Tutorial smoke graph for semantic ports, bound handles, and visual-only handles.",
+    "description": "Tutorial smoke graph for semantic ports, multiple bound handles, and visual-only handles.",
     "graphId": "tutorial-basic-primitives-handle-port-binding-smoke",
     "version": "0.1.0",
     "kind": "tutorial",
@@ -94,7 +94,7 @@
         "renderShape": {
           "kind": "markdown"
         },
-        "markdown": "# Handle / Port Binding Smoke\n\nUse this graph to verify that ports remain semantic while handles remain editor affordances."
+        "markdown": "# Handle / Port Binding Smoke\n\nUse this graph to verify that semantic ports drive edges, while handles remain the visible interaction points around those ports."
       }
     },
     {
@@ -114,7 +114,7 @@
         "identity": {
           "graphId": "tutorial-basic-primitives-handle-port-binding-smoke"
         },
-        "markdown": "# Handle / Port Binding Smoke Test\n\nThis graph demonstrates the current contract:\n- `ports` are the semantic interface\n- `handles` are UI affordances\n- multiple handles may bind to the same port\n- a visual-only handle should not create a connection\n\n## What is wired here\n- `Source Node` exposes semantic ports `root` and `message`\n- `Source Node` has **two bound handles** for the `message` port: `message-east` and `message-south`\n- `Source Node` also has one **visual-only** handle: `decoy`\n- `Receiver Node` exposes semantic ports `root` and `message`\n\n## Smoke checks\n1. Select `Source Node` and inspect **Handles**.\n2. Confirm `message-east` and `message-south` both bind to port `message`.\n3. Confirm `decoy` is `visual only`.\n4. Notice the existing edge from `Source Node` to `Receiver Node` uses `sourcePort = message` and `targetPort = message`.\n5. Verify both bound source handles look connected, while `decoy` does not.\n6. Delete the edge and recreate it by dragging from either bound source handle to the receiver handle.\n7. Confirm the recreated edge still uses the semantic port id `message`.\n8. Try dragging from `decoy`. It should not create a connection."
+        "markdown": "# Handle / Port Binding Smoke Test\n\nThis graph demonstrates the current contract:\n- `ports` are the semantic interface\n- `sourcePort` and `targetPort` stay canonical on edges\n- multiple handles may bind to the same semantic port\n- a handle with no `portId` remains visual-only and should not create a connection\n\n## Authoring note\nIn the current properties-panel flow, adding a new handle usually creates a matching semantic port at the same time.\n\nThis smoke graph goes one level deeper than that authoring shortcut so you can inspect the underlying binding model directly.\n\n## What is wired here\n- `Source Node` exposes semantic ports `root` and `message`\n- `Source Node` has **two bound handles** for the `message` port: `message-east` and `message-south`\n- `Source Node` also has one **visual-only** handle: `decoy`\n- `Receiver Node` exposes semantic ports `root` and `message`\n- `Receiver Node` has one bound input handle and one visual-only badge handle\n\n## Smoke checks\n1. Select `Source Node` and inspect **Handles**.\n2. Confirm `message-east` and `message-south` both bind to port `message`.\n3. Confirm `decoy` is visual-only.\n4. Notice the existing edge from `Source Node` to `Receiver Node` uses `sourcePort = message` and `targetPort = message`.\n5. Verify both bound source handles look connected, while `decoy` does not.\n6. Delete the edge and recreate it by dragging from either bound source handle to the receiver handle.\n7. Confirm the recreated edge still uses the semantic port id `message`.\n8. Try dragging from `decoy` or the receiver `badge`. They should not create a connection."
       }
     },
     {
@@ -134,7 +134,7 @@
         "identity": {
           "graphId": "tutorial-basic-primitives-handle-port-binding-smoke"
         },
-        "markdown": "## Source Node\n\nSemantic output port: `message`\n\nVisual handles:\n- `message-east` -> port `message`\n- `message-south` -> port `message`\n- `decoy` -> visual only"
+        "markdown": "## Source Node\n\nSemantic output port: `message`\n\nHandles:\n- `message-east` -> port `message`\n- `message-south` -> port `message`\n- `decoy` -> visual only"
       },
       "ports": [
         {
@@ -244,7 +244,7 @@
         "identity": {
           "graphId": "tutorial-basic-primitives-handle-port-binding-smoke"
         },
-        "markdown": "## Receiver Node\n\nSemantic input port: `message`\n\nDrop either bound source handle here."
+        "markdown": "## Receiver Node\n\nSemantic input port: `message`\n\nDrop either bound source handle here.\n\nThe `badge` handle is visual-only and should never become an edge endpoint."
       },
       "ports": [
         {
@@ -331,7 +331,7 @@
     },
     {
       "id": "handle-port-binding-smoke-back",
-      "type": "port",
+      "type": "portal",
       "label": "Back To Basic Primitives",
       "root": false,
       "position": {
@@ -356,7 +356,7 @@
           "handleId": "root"
         },
         "sourcePayload": "node.web.detail",
-        "authority": "consume-view",
+        "authority": "navigate",
         "intent": "external",
         "security": "prompt",
         "ref": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
