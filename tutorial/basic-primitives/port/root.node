@@ -2,12 +2,12 @@
   "fileVersion": "1.0",
   "metadata": {
     "title": "Port Primitive",
-    "description": "Basic primitive tutorial graph for port.",
+    "description": "Lesson graph for the port primitive using the current tutorial template.",
     "graphId": "tutorial-basic-primitives-port",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "kind": "tutorial",
     "created": "2026-06-02T00:00:00.000Z",
-    "modified": "2026-06-02T00:00:00.000Z",
+    "modified": "2026-06-10T00:00:00.000Z",
     "author": "",
     "tags": [
       "tutorial",
@@ -21,11 +21,7 @@
       "id": "port-primitive-graph",
       "type": "declaration",
       "label": "Declaration",
-      "root": false,
-      "position": {
-        "x": -780,
-        "y": -220
-      },
+      "position": { "x": -920, "y": -1400 },
       "width": 360,
       "height": 220,
       "visible": true,
@@ -34,8 +30,8 @@
         "identity": {
           "graphId": "tutorial-basic-primitives-port",
           "name": "Port Primitive",
-          "version": "0.1.0",
-          "description": "Basic primitive tutorial graph for port."
+          "version": "0.2.0",
+          "description": "Lesson graph for the port primitive using the current tutorial template."
         },
         "intent": {
           "kind": "tutorial",
@@ -49,7 +45,7 @@
               "id": "port-primitive-reader",
               "kind": "view",
               "label": "Port Reader",
-              "memo": "Primary surface for the port primitive tutorial.",
+              "memo": "Primary declared reader surface for the port primitive lesson.",
               "viewNodeId": "port-primitive-reader"
             }
           ]
@@ -62,6 +58,25 @@
           "snapToGrid": false,
           "gridSize": 20,
           "edgeRouting": "auto",
+          "layout": {
+            "mode": "autoOnMissingPositions",
+            "defaultLayout": "layered",
+            "direction": "DOWN",
+            "edgeLaneGapPx": 10,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
+          },
           "autoSave": false
         },
         "document": {
@@ -70,18 +85,211 @@
       }
     },
     {
+      "id": "port-title-bridge",
+      "type": "bridge",
+      "label": "Tutorial Title",
+      "position": { "x": -2440, "y": -1400 },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the tutorial title class.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": ["create"],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"]
+        },
+        "target": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"],
+          "label": "Tutorial Title",
+          "key": "tutorial-title"
+        },
+        "identity": {
+          "graphId": "tutorial-basic-primitives-port"
+        }
+      }
+    },
+    {
+      "id": "port-concept-bridge",
+      "type": "bridge",
+      "label": "Tutorial Concept",
+      "position": { "x": -2140, "y": -1400 },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the tutorial concept class.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": ["create"],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"]
+        },
+        "target": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"],
+          "label": "Tutorial Concept",
+          "key": "tutorial-concept"
+        },
+        "identity": {
+          "graphId": "tutorial-basic-primitives-port"
+        }
+      }
+    },
+    {
+      "id": "port-example-bridge",
+      "type": "bridge",
+      "label": "Tutorial Example",
+      "position": { "x": -1840, "y": -1400 },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the tutorial example class.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": ["create"],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-example.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"]
+        },
+        "target": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-example.node-class.node",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"],
+          "label": "Tutorial Example",
+          "key": "tutorial-example"
+        },
+        "identity": {
+          "graphId": "tutorial-basic-primitives-port"
+        }
+      }
+    },
+    {
+      "id": "port-challenge-bridge",
+      "type": "bridge",
+      "label": "Tutorial Challenge",
+      "position": { "x": -1540, "y": -1400 },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the tutorial challenge class.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": ["create"],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-challenge.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"]
+        },
+        "target": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-challenge.node-class.node",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"],
+          "label": "Tutorial Challenge",
+          "key": "tutorial-challenge"
+        },
+        "identity": {
+          "graphId": "tutorial-basic-primitives-port"
+        }
+      }
+    },
+    {
+      "id": "port-checkpoint-bridge",
+      "type": "bridge",
+      "label": "Tutorial Checkpoint",
+      "position": { "x": -1240, "y": -1400 },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the tutorial checkpoint class.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": ["create"],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-checkpoint.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"]
+        },
+        "target": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-checkpoint.node-class.node",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"],
+          "label": "Tutorial Checkpoint",
+          "key": "tutorial-checkpoint"
+        },
+        "identity": {
+          "graphId": "tutorial-basic-primitives-port"
+        }
+      }
+    },
+    {
       "id": "port-primitive-reader",
       "type": "port",
       "label": "Port Reader",
-      "root": false,
-      "position": {
-        "x": -280,
-        "y": -220
-      },
-      "width": 360,
-      "height": 220,
+      "position": { "x": -420, "y": -1380 },
+      "width": 320,
+      "height": 200,
       "visible": true,
       "showLabel": true,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 0 }
+      ],
+      "handles": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 0 }
+      ],
+      "inputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
+      "outputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
       "data": {
         "identity": {
           "graphId": "tutorial-basic-primitives-port"
@@ -93,51 +301,401 @@
         "renderShape": {
           "kind": "markdown"
         },
-        "markdown": "# Port Primitive\n\nA port is the graph-native exposure point for a surface or entry contract. It tells other nodes what this graph makes available and how that exposure should be addressed."
+        "markdown": "# Port Primitive\n\nPorts expose graph-native entry points. They define what a graph makes available so another node can address, open, or consume it."
       }
     },
     {
-      "id": "port-primitive-note",
-      "type": "markdown",
-      "label": "What Port Owns",
-      "root": true,
-      "position": {
-        "x": 180,
-        "y": -220
-      },
+      "id": "port-primitive-intro",
+      "type": "tutorial-title",
+      "label": "Port Primitive",
+      "position": { "x": 60, "y": -1460 },
       "width": 560,
-      "height": 320,
+      "height": 280,
       "visible": true,
       "showLabel": true,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 210 },
+        { "id": "concepts", "label": "concepts", "direction": "output", "dataType": "any", "angle": 0 },
+        { "id": "example", "label": "example", "direction": "output", "dataType": "any", "angle": 45 },
+        { "id": "challenge", "label": "challenge", "direction": "output", "dataType": "any", "angle": 90 }
+      ],
+      "handles": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 210 },
+        { "id": "concepts", "label": "concepts", "direction": "output", "dataType": "any", "angle": 0 },
+        { "id": "example", "label": "example", "direction": "output", "dataType": "any", "angle": 45 },
+        { "id": "challenge", "label": "challenge", "direction": "output", "dataType": "any", "angle": 90 }
+      ],
+      "inputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
+      "outputs": [
+        { "key": "root", "label": "root", "type": "any" },
+        { "key": "concepts", "label": "concepts", "type": "any" },
+        { "key": "example", "label": "example", "type": "any" },
+        { "key": "challenge", "label": "challenge", "type": "any" }
+      ],
+      "data": {
+        "title": "Port Primitive",
+        "subtitle": "Learn how a graph exposes a surface or semantic entry point so another node can address it without guessing.",
+        "_classBinding": {
+          "key": "tutorial-title",
+          "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-title",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node"
+        },
+        "definitionKey": "tutorial-title"
+      }
+    },
+    {
+      "id": "port-primitive-exposes",
+      "type": "tutorial-concept",
+      "label": "Ports Expose",
+      "position": { "x": 720, "y": -1580 },
+      "width": 320,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 },
+        { "id": "example", "label": "example", "direction": "output", "dataType": "any", "angle": 45 }
+      ],
+      "handles": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 },
+        { "id": "example", "label": "example", "direction": "output", "dataType": "any", "angle": 45 }
+      ],
+      "inputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
+      "outputs": [
+        { "key": "root", "label": "root", "type": "any" },
+        { "key": "example", "label": "example", "type": "any" }
+      ],
+      "data": {
+        "title": "Ports Expose",
+        "body": "A port tells the outside world what this graph makes available.\n\nIt is an addressable contract, not the thing doing the navigation.",
+        "tag": "Concept",
+        "_classBinding": {
+          "key": "tutorial-concept",
+          "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-concept",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        },
+        "definitionKey": "tutorial-concept"
+      }
+    },
+    {
+      "id": "port-primitive-address",
+      "type": "tutorial-concept",
+      "label": "Ports Are Addressed",
+      "position": { "x": 720, "y": -1280 },
+      "width": 320,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 },
+        { "id": "example", "label": "example", "direction": "output", "dataType": "any", "angle": 0 }
+      ],
+      "handles": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 },
+        { "id": "example", "label": "example", "direction": "output", "dataType": "any", "angle": 0 }
+      ],
+      "inputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
+      "outputs": [
+        { "key": "root", "label": "root", "type": "any" },
+        { "key": "example", "label": "example", "type": "any" }
+      ],
+      "data": {
+        "title": "Ports Are Addressed",
+        "body": "A portal or another graph artifact targets a port by identity.\n\nThat is what lets a graph expose multiple meaningful surfaces without ambiguity.",
+        "tag": "Concept",
+        "_classBinding": {
+          "key": "tutorial-concept",
+          "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-concept",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        },
+        "definitionKey": "tutorial-concept"
+      }
+    },
+    {
+      "id": "port-primitive-example",
+      "type": "tutorial-example",
+      "label": "Port Example",
+      "position": { "x": 1200, "y": -1420 },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 },
+        { "id": "challenge", "label": "challenge", "direction": "output", "dataType": "any", "angle": 90 }
+      ],
+      "handles": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 },
+        { "id": "challenge", "label": "challenge", "direction": "output", "dataType": "any", "angle": 90 }
+      ],
+      "inputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
+      "outputs": [
+        { "key": "root", "label": "root", "type": "any" },
+        { "key": "challenge", "label": "challenge", "type": "any" }
+      ],
+      "data": {
+        "title": "Example Exposure",
+        "body": "Inspect the sample nodes to see a `port` exposing a reader surface and a `portal` targeting it as a semantic entry point.",
+        "cta": "Inspect",
+        "_classBinding": {
+          "key": "tutorial-example",
+          "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-example.node-class.node",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-example.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-example",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-example.node-class.node"
+        },
+        "definitionKey": "tutorial-example"
+      }
+    },
+    {
+      "id": "port-primitive-sample-port",
+      "type": "port",
+      "label": "Sample Reader Port",
+      "position": { "x": 1680, "y": -1560 },
+      "width": 320,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 }
+      ],
+      "handles": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 }
+      ],
+      "inputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
+      "outputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
       "data": {
         "identity": {
           "graphId": "tutorial-basic-primitives-port"
         },
-        "markdown": "## What port does\n\nUse `port` when a graph needs to expose a semantic entry point or a consumable surface contract.\n\nA port usually cares about:\n- which surface or payload is being exposed\n- how another node can address it\n- what kind of consumption the exposure supports\n\nPorts expose. They do not do the opening themselves.\n\nThat last step belongs to a `portal`."
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "## Reader Surface\n\nThis sample port represents a graph-native reader surface another node can address."
+      }
+    },
+    {
+      "id": "port-primitive-sample-portal",
+      "type": "portal",
+      "label": "Sample Consumer Portal",
+      "position": { "x": 1680, "y": -1240 },
+      "width": 320,
+      "height": 200,
+      "visible": true,
+      "showLabel": true,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 }
+      ],
+      "handles": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 }
+      ],
+      "inputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
+      "outputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-port"
+        },
+        "memo": "Example portal targeting the sample reader port.",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node:port-primitive-reader",
+          "mode": "consume",
+          "label": "Consume Reader",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node",
+          "portId": "port-primitive-reader",
+          "handleId": "root"
+        },
+        "sourcePayload": "node.web.detail",
+        "authority": "consume",
+        "intent": "external",
+        "security": "prompt",
+        "ref": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node",
+        "src": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node:port-primitive-reader",
+        "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node"
+      }
+    },
+    {
+      "id": "port-primitive-challenge",
+      "type": "tutorial-challenge",
+      "label": "Challenge",
+      "position": { "x": 1220, "y": -980 },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 },
+        { "id": "checkpoint", "label": "checkpoint", "direction": "output", "dataType": "any", "angle": 90 }
+      ],
+      "handles": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 },
+        { "id": "checkpoint", "label": "checkpoint", "direction": "output", "dataType": "any", "angle": 90 }
+      ],
+      "inputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
+      "outputs": [
+        { "key": "root", "label": "root", "type": "any" },
+        { "key": "checkpoint", "label": "checkpoint", "type": "any" }
+      ],
+      "data": {
+        "title": "Model A Port",
+        "body": "Create one `port` node in a scratch graph.\n\nGive it a reader surface and describe what another node is allowed to open or consume through it.",
+        "difficulty": "starter",
+        "_classBinding": {
+          "key": "tutorial-challenge",
+          "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-challenge.node-class.node",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-challenge.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-challenge",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-challenge.node-class.node"
+        },
+        "definitionKey": "tutorial-challenge"
+      }
+    },
+    {
+      "id": "port-primitive-checkpoint",
+      "type": "tutorial-checkpoint",
+      "label": "Checkpoint",
+      "position": { "x": 1700, "y": -980 },
+      "width": 360,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 },
+        { "id": "next", "label": "next", "direction": "output", "dataType": "any", "angle": 0 }
+      ],
+      "handles": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 },
+        { "id": "next", "label": "next", "direction": "output", "dataType": "any", "angle": 0 }
+      ],
+      "inputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
+      "outputs": [
+        { "key": "root", "label": "root", "type": "any" },
+        { "key": "next", "label": "next", "type": "any" }
+      ],
+      "data": {
+        "title": "What Success Looks Like",
+        "body": "A correct port lesson outcome has a named exposure point, a declared reader surface, and a clear distinction between what is exposed and what opens it.",
+        "status": "verify",
+        "_classBinding": {
+          "key": "tutorial-checkpoint",
+          "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-checkpoint.node-class.node",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-checkpoint.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-checkpoint",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-checkpoint.node-class.node"
+        },
+        "definitionKey": "tutorial-checkpoint"
+      }
+    },
+    {
+      "id": "port-primitive-next",
+      "type": "portal",
+      "label": "Next: Portal Primitive",
+      "position": { "x": 2160, "y": -1080 },
+      "width": 300,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 }
+      ],
+      "handles": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 }
+      ],
+      "inputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
+      "outputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
+      "data": {
+        "memo": "Continue to the portal primitive lesson.",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/portal/root.node:root",
+          "mode": "navigate",
+          "label": "Open Portal Lesson",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/portal/root.node",
+          "portId": "root",
+          "handleId": "root"
+        },
+        "sourcePayload": "node.web.detail",
+        "authority": "navigate",
+        "intent": "external",
+        "security": "prompt",
+        "ref": "github://twilite-zone/public/tutorial/basic-primitives/portal/root.node",
+        "src": "github://twilite-zone/public/tutorial/basic-primitives/portal/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/portal/root.node:root",
+        "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/portal/root.node"
       }
     },
     {
       "id": "port-primitive-back",
       "type": "portal",
-      "label": "Back To Basic Primitives",
-      "root": false,
-      "position": {
-        "x": 180,
-        "y": 180
-      },
+      "label": "Back To Hub",
+      "position": { "x": 2160, "y": -820 },
       "width": 300,
       "height": 180,
       "visible": true,
       "showLabel": true,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 }
+      ],
+      "handles": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 180 }
+      ],
+      "inputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
+      "outputs": [
+        { "key": "root", "label": "root", "type": "any" }
+      ],
       "data": {
-        "identity": {
-          "graphId": "tutorial-basic-primitives-port"
-        },
         "memo": "Return to the basic primitives tutorial hub.",
         "target": {
           "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/root.node:root",
           "mode": "navigate",
-          "label": "Open",
+          "label": "Back To Hub",
           "ref": "github://twilite-zone/public/tutorial/basic-primitives/root.node",
           "portId": "root",
           "handleId": "root"
@@ -155,24 +713,123 @@
   ],
   "edges": [
     {
-      "id": "port-primitive-edge-reader-note",
+      "id": "port-primitive-edge-reader-intro",
       "type": "reference",
       "source": "port-primitive-reader",
-      "target": "port-primitive-note",
+      "target": "port-primitive-intro",
       "sourcePort": "root",
+      "targetPort": "root",
+      "label": "enter lesson",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "port-primitive-edge-intro-exposes",
+      "type": "reference",
+      "source": "port-primitive-intro",
+      "target": "port-primitive-exposes",
+      "sourcePort": "concepts",
       "targetPort": "root",
       "label": "",
       "style": {},
       "data": {}
     },
     {
-      "id": "port-primitive-edge-note-back",
+      "id": "port-primitive-edge-intro-address",
       "type": "reference",
-      "source": "port-primitive-note",
+      "source": "port-primitive-intro",
+      "target": "port-primitive-address",
+      "sourcePort": "concepts",
+      "targetPort": "root",
+      "label": "",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "port-primitive-edge-exposes-example",
+      "type": "reference",
+      "source": "port-primitive-exposes",
+      "target": "port-primitive-example",
+      "sourcePort": "example",
+      "targetPort": "root",
+      "label": "inspect",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "port-primitive-edge-address-sample-port",
+      "type": "reference",
+      "source": "port-primitive-address",
+      "target": "port-primitive-sample-port",
+      "sourcePort": "example",
+      "targetPort": "root",
+      "label": "exposed surface",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "port-primitive-edge-example-sample-portal",
+      "type": "reference",
+      "source": "port-primitive-example",
+      "target": "port-primitive-sample-portal",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "consumer",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "port-primitive-edge-sample-portal-sample-port",
+      "type": "reference",
+      "source": "port-primitive-sample-portal",
+      "target": "port-primitive-sample-port",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "targets",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "port-primitive-edge-example-challenge",
+      "type": "reference",
+      "source": "port-primitive-example",
+      "target": "port-primitive-challenge",
+      "sourcePort": "challenge",
+      "targetPort": "root",
+      "label": "try it",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "port-primitive-edge-challenge-checkpoint",
+      "type": "reference",
+      "source": "port-primitive-challenge",
+      "target": "port-primitive-checkpoint",
+      "sourcePort": "checkpoint",
+      "targetPort": "root",
+      "label": "done looks like",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "port-primitive-edge-checkpoint-next",
+      "type": "reference",
+      "source": "port-primitive-checkpoint",
+      "target": "port-primitive-next",
+      "sourcePort": "next",
+      "targetPort": "root",
+      "label": "continue",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "port-primitive-edge-checkpoint-back",
+      "type": "reference",
+      "source": "port-primitive-checkpoint",
       "target": "port-primitive-back",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "back",
+      "label": "hub",
       "style": {},
       "data": {}
     }
