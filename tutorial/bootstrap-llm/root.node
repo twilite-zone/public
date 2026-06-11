@@ -7,7 +7,7 @@
     "version": "0.1.0",
     "kind": "tutorial",
     "created": "2026-06-10T22:18:19.403Z",
-    "modified": "2026-06-11T15:13:43.892Z",
+    "modified": "2026-06-11T16:09:05.491Z",
     "author": "",
     "tags": [
       "tutorial"
@@ -1102,7 +1102,7 @@
         "identity": {
           "graphId": "tutorial-bootstrap-llm"
         },
-        "markdown": "## Example handshake request\\n\\nAsk your model for **JSON only** and one tiny additive transaction. For example:\\n\\n```text\\nYou are being onboarded into a Twilite session.\\nComplete the handshake with JSON only, one additive transaction, one createNodes command, and one or two simple nodes that acknowledge readiness.\\n```\\n\\nA good handshake is small and boring. It proves the model can speak Twilite before you ask for anything bigger.",
+        "markdown": "# Twilite Bootstrap Handshake\n---\n\n## You can copy this node into your chatbot directly to get started.\n\nThis handshake is the same contract taught in:\n\n- `https://twilite.zone/library/documentation/contracts/onboarding.md`\n\nUse that onboarding guide as the canonical source.\n\n### What The Handshake Proves\nThe handshake proves that an agent can:\n- read a declaration-first graph\n- create valid nodes with the current JSON shape\n- place them on the graph legibly\n- continue working without reintroducing old title/type identity scaffolding\n\n### Required Response Shape\n- return JSON only\n- return one additive `transaction`\n- use one `createNodes` command\n- create one or two simple nodes only\n- use `action`, not `actions`\n- use `action`, not `command`\n- use `id`, not `uuid`\n- use `data`, not `metadata`\n- use explicit `position`, `width`, and `height`\n- include `visible: true` and `showLabel: true`\n- use `root` as the safe default port when unsure\n- use `reference` as the safe default edge type\n\n### Bootstrap Context\n- a new graph may start blank\n- declaration becomes required when the graph is becoming a real saved artifact\n- graph title belongs in `declaration.identity.name`\n- graph kind belongs in `declaration.intent.kind`\n- after the handshake, new authored structure should use:\n  - `markdown`\n  - `field`\n  - `port`\n  - `portal`\n- `bridge` and `script` are advanced primitives, not the normal starting point\n- if declaration already exists, persistent local nodes should carry `data.identity.graphId`\n- if declaration does not exist yet, exploratory handshake nodes may be provisional\n\n### Placement Guidance\nFor a simple handshake:\n- place the declaration at the left or upper-left\n- place the handshake markdown nearby\n- keep the graph small and readable\n\nSafe starter sizes:\n- declaration: `360 x 220`\n- markdown: `260 x 220`\n\n### Example\n```json\n{\n  \"action\": \"transaction\",\n  \"commands\": [\n    {\n      \"action\": \"createNodes\",\n      \"nodes\": [\n        {\n          \"id\": \"handshake-note\",\n          \"type\": \"markdown\",\n          \"label\": \"Handshake\",\n          \"position\": { \"x\": 140, \"y\": -40 },\n          \"width\": 260,\n          \"height\": 220,\n          \"visible\": true,\n          \"showLabel\": true,\n          \"data\": {\n            \"markdown\": \"# Handshake received\\n\\nI am ready to make small valid Twilite graph mutations.\"\n          }\n        }\n      ]\n    }\n  ]\n}\n```",
         "_placement": {
           "version": 1,
           "state": "manually-shaped",
