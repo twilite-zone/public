@@ -466,7 +466,7 @@
       "showLabel": true,
       "data": {
         "title": "Bootstrap Your LLM",
-        "subtitle": "Start a fresh LLM chat, teach it the Twilite mutation contract, complete the handshake, then ask for a tiny declaration-first graph.",
+        "subtitle": "Start a fresh LLM chat, teach it the Twilite primitive model and mutation contract, complete the handshake, then ask for a tiny declaration-first graph.",
         "_classBinding": {
           "key": "tutorial-title",
           "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node",
@@ -645,7 +645,7 @@
       "showLabel": true,
       "data": {
         "title": "Onboard The Model",
-        "body": "The third button from the right on the toolbar looks like a lightbulb in a cycle.  Click that button to copy the instructions to the LLM to you windows clipboard.  Paste it into the chat field in your chatbot and press enter.",
+        "body": "The third button from the right on the toolbar looks like a lightbulb in a cycle. Click that button to copy the onboarding contract to your clipboard. Paste it into the chat field in your chatbot and press enter. That contract teaches the LLM what declaration, markdown, port, and portal mean before you ask it for mutations.",
         "tag": "Concept",
         "_classBinding": {
           "key": "tutorial-concept",
@@ -754,7 +754,7 @@
       "showLabel": true,
       "data": {
         "title": "Complete The Handshake",
-        "body": "The chatbot will respond with a block of code that will produce a node on your graph.  Copy and paste it into Twilite.",
+        "body": "The chatbot will respond with a small JSON transaction that produces one or two safe nodes on your graph. Copy and paste it into Twilite. The handshake proves the model can use the current Twilite structure before it starts authoring real primitives.",
         "tag": "Concept",
         "_classBinding": {
           "key": "tutorial-concept",
@@ -863,7 +863,7 @@
       "showLabel": true,
       "data": {
         "title": "Start A Tiny Graph",
-        "body": "Now you can ask for a graph about whatever.  The chatbot will produce a graph, and then you can talk about it or ask for changes.  You can copy and paste nodes back and forth, ask for new edges, change colors, whatever you like, until it's right.  Iterative improvement is the name of the game.",
+        "body": "Now ask for a tiny graph on a simple topic. The safest first request is: declaration for identity, one reader port exposed by the declaration, one markdown node for content, and optional portal behavior only if something needs to target an exposed surface. Then iterate from there.",
         "tag": "Concept",
         "_classBinding": {
           "key": "tutorial-concept",
@@ -1102,7 +1102,7 @@
         "identity": {
           "graphId": "tutorial-bootstrap-llm"
         },
-        "markdown": "# Twilite Bootstrap Handshake\n---\n\n## You can copy this node into your chatbot directly to get started.\n\nThis handshake is the same contract taught in:\n\n- `https://twilite.zone/library/documentation/contracts/onboarding.md`\n\nUse that onboarding guide as the canonical source.\n\n### What The Handshake Proves\nThe handshake proves that an agent can:\n- read a declaration-first graph\n- create valid nodes with the current JSON shape\n- place them on the graph legibly\n- continue working without reintroducing old title/type identity scaffolding\n\n### Required Response Shape\n- return JSON only\n- return one additive `transaction`\n- use one `createNodes` command\n- create one or two simple nodes only\n- use `action`, not `actions`\n- use `action`, not `command`\n- use `id`, not `uuid`\n- use `data`, not `metadata`\n- use explicit `position`, `width`, and `height`\n- include `visible: true` and `showLabel: true`\n- use `root` as the safe default port when unsure\n- use `reference` as the safe default edge type\n\n### Bootstrap Context\n- a new graph may start blank\n- declaration becomes required when the graph is becoming a real saved artifact\n- graph title belongs in `declaration.identity.name`\n- graph kind belongs in `declaration.intent.kind`\n- after the handshake, new authored structure should use:\n  - `markdown`\n  - `field`\n  - `port`\n  - `portal`\n- `bridge` and `script` are advanced primitives, not the normal starting point\n- if declaration already exists, persistent local nodes should carry `data.identity.graphId`\n- if declaration does not exist yet, exploratory handshake nodes may be provisional\n\n### Placement Guidance\nFor a simple handshake:\n- place the declaration at the left or upper-left\n- place the handshake markdown nearby\n- keep the graph small and readable\n\nSafe starter sizes:\n- declaration: `360 x 220`\n- markdown: `260 x 220`\n\n### Example\n```json\n{\n  \"action\": \"transaction\",\n  \"commands\": [\n    {\n      \"action\": \"createNodes\",\n      \"nodes\": [\n        {\n          \"id\": \"handshake-note\",\n          \"type\": \"markdown\",\n          \"label\": \"Handshake\",\n          \"position\": { \"x\": 140, \"y\": -40 },\n          \"width\": 260,\n          \"height\": 220,\n          \"visible\": true,\n          \"showLabel\": true,\n          \"data\": {\n            \"markdown\": \"# Handshake received\\n\\nI am ready to make small valid Twilite graph mutations.\"\n          }\n        }\n      ]\n    }\n  ]\n}\n```",
+        "markdown": "# Twilite Bootstrap Handshake\n---\n\n## You can copy this node into your chatbot directly to get started.\n\nThis handshake is the same contract taught in:\n\n- `https://twilite.zone/library/documentation/contracts/onboarding.md`\n\nUse that onboarding guide as the canonical source.\n\n### What The Handshake Proves\nThe handshake proves that an agent can:\n- read the declaration-first model\n- distinguish declaration, markdown, port, and portal\n- create valid nodes with the current JSON shape\n- continue working without reintroducing old title/type/view scaffolding\n\n### Primitive Survival Model\nBefore asking for larger mutations, the model should understand:\n- `declaration` gives the graph identity and exposure contract\n- `markdown` is the safest default content primitive\n- `port` exposes a surface or semantic entry point\n- `portal` targets an exposed thing and chooses behavior\n\n### Required Response Shape\n- return JSON only\n- return one additive `transaction`\n- use one `createNodes` command\n- create one or two simple nodes only\n- use `action`, not `actions`\n- use `action`, not `command`\n- use `id`, not `uuid`\n- use `data`, not `metadata`\n- use explicit `position`, `width`, and `height`\n- include `visible: true` and `showLabel: true`\n- use `root` as the safe default port when unsure\n- use `reference` as the safe default edge type\n\n### Bootstrap Context\n- a new graph may start blank\n- declaration becomes required when the graph is becoming a real saved artifact\n- graph title belongs in `declaration.identity.name`\n- graph kind belongs in `declaration.intent.kind`\n- `port` exposes and `portal` acts on that exposure\n- `bridge` and `script` are advanced primitives, not the normal starting point\n- if declaration already exists, persistent local nodes should carry `data.identity.graphId`\n- if declaration does not exist yet, exploratory handshake nodes may be provisional\n\n### Placement Guidance\nFor a simple handshake:\n- place the declaration at the left or upper-left\n- place the handshake markdown nearby\n- keep the graph small and readable\n\nSafe starter sizes:\n- declaration: `360 x 220`\n- markdown: `260 x 220`\n\n### Example\n```json\n{\n  \"action\": \"transaction\",\n  \"commands\": [\n    {\n      \"action\": \"createNodes\",\n      \"nodes\": [\n        {\n          \"id\": \"handshake-note\",\n          \"type\": \"markdown\",\n          \"label\": \"Handshake\",\n          \"position\": { \"x\": 140, \"y\": -40 },\n          \"width\": 260,\n          \"height\": 220,\n          \"visible\": true,\n          \"showLabel\": true,\n          \"data\": {\n            \"markdown\": \"# Handshake received\\n\\nI am ready to make small valid Twilite graph mutations.\"\n          }\n        }\n      ]\n    }\n  ]\n}\n```",
         "_placement": {
           "version": 1,
           "state": "manually-shaped",
@@ -1161,7 +1161,7 @@
         "identity": {
           "graphId": "tutorial-bootstrap-llm"
         },
-        "markdown": "## Example first graph request\n\nAfter the handshake, ask for a graph about anything you like. For example:\n\n```text\nCreate a graph explaining how a pirate might accidentally become king.\nUse lots of colors and emojis.\n```\n\nThe important part is the order: declaration first, then the exposed reader surface, then the content.",
+        "markdown": "## Example first graph request\n\nAfter the handshake, ask for a very small declaration-first graph. For example:\n\n```text\nCreate a very small Twilite graph in the current session.\nAdd a declaration node, one reader port exposed by the declaration, one markdown node with a short explanation, and one reference edge.\nDo not add advanced primitives unless necessary.\nKeep it minimal and valid.\n```\n\nThe important part is the order: declaration first, then the exposed reader surface, then the content. Add a portal only when something needs to target an exposed surface.",
         "_placement": {
           "version": 1,
           "state": "manually-shaped",
@@ -1237,7 +1237,7 @@
       "showLabel": true,
       "data": {
         "title": "Challenge",
-        "body": "1. Open your LLM in a fresh chat.\n2. Give it the Twilite onboarding contract.\n3. Ask for the JSON-only handshake.\n4. Ask for a tiny declaration-first graph in the current session.\n5. Apply the result and confirm the graph loads.",
+        "body": "1. Open your LLM in a fresh chat.\n2. Give it the Twilite onboarding contract.\n3. Ask for the JSON-only handshake.\n4. Ask for a tiny declaration-first graph in the current session.\n5. Confirm the result includes declaration, markdown, and an exposed reader port.\n6. Apply the result and confirm the graph loads.",
         "difficulty": "starter",
         "_classBinding": {
           "key": "tutorial-challenge",
@@ -1346,7 +1346,7 @@
       "showLabel": true,
       "data": {
         "title": "Checkpoint",
-        "body": "You are done when you can say:\n- the model returned a valid JSON-only handshake\n- your first working graph included a declaration\n- the declaration exposed a reader surface\n- the graph had at least one content node\n- you are ready to move into Basic Primitives",
+        "body": "You are done when you can say:\n- the model returned a valid JSON-only handshake\n- the model understood declaration, markdown, port, and portal at a basic level\n- your first working graph included a declaration\n- the declaration exposed a reader surface through a port\n- the graph had at least one markdown content node\n- you are ready to move into Basic Primitives",
         "status": "verify",
         "_classBinding": {
           "key": "tutorial-checkpoint",
