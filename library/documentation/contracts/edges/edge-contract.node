@@ -1,10 +1,10 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Untitled Project",
-    "description": "",
+    "title": "Edge Contract",
+    "description": "Normative contract for edge instances, mutation rules, and edge class assignment.",
     "created": "2026-02-13T00:12:38.020Z",
-    "modified": "2026-02-13T00:12:48.302Z",
+    "modified": "2026-06-16T23:30:00.000Z",
     "author": "",
     "tags": []
   },
@@ -14,8 +14,8 @@
       "type": "manifest",
       "label": "Manifest",
       "position": {
-        "x": -260,
-        "y": -160
+        "x": -1500,
+        "y": -900
       },
       "width": 360,
       "height": 220,
@@ -113,8 +113,8 @@
       "type": "declaration",
       "label": "Declaration",
       "position": {
-        "x": -260,
-        "y": -440
+        "x": -980,
+        "y": -520
       },
       "width": 420,
       "height": 260,
@@ -124,10 +124,10 @@
         "identity": {
           "graphId": "edge-contract",
           "name": "Edge Contract",
-          "version": "0.2.0",
+          "version": "0.3.0",
           "description": "Normative contract for edge instances, mutation rules, and edge class assignment.",
           "createdAt": "2026-02-12T17:26:05.630Z",
-          "updatedAt": "2026-04-25T00:00:00.000Z"
+          "updatedAt": "2026-06-16T23:30:00.000Z"
         },
         "intent": {
           "kind": "artifact",
@@ -138,9 +138,10 @@
             "declaration",
             "title",
             "type-definition",
-            "port-view",
+            "summary-view",
             "node-view",
             "icon-view",
+            "editor-view",
             "markdown"
           ],
           "portContracts": [
@@ -184,40 +185,46 @@
           "edgeRouting": "auto",
           "autoSave": false
         },
-        "summaryNodeId": "edge-contract-node-view",
+        "summaryNodeId": "edge-contract-card",
         "name": "Edge Contract Declaration",
         "declaresKind": "artifact",
-        "purpose": "Declare stable consumable view surfaces for this contract so other graphs can link to it without missing-view errors.",
-        "primaryNodeViewId": "edge-contract-node-view",
+        "purpose": "Declare the normative edge law with named public surfaces for reading, previewing, semantic zoom, and editing.",
+        "primaryNodeViewId": "edge-contract-surface",
         "declaration": {
           "kind": "artifact",
           "targetMode": "artifact",
-          "primaryNodeViewId": "edge-contract-node-view",
+          "primaryNodeViewId": "edge-contract-surface",
+          "primaryEditorViewId": "edge-contract-editor-view",
           "graphViewRole": "documentation",
-          "defaultSurfaceId": "view",
+          "defaultSurfaceId": "surface",
           "surfaces": [
             {
-              "id": "view",
+              "id": "surface",
               "kind": "view",
-              "label": "View",
-              "memo": "Human-facing view surface for reading this contract. Views only.",
-              "exposes": {
-                "views": {
-                  "mode": "allow"
-                },
-                "declarations": {
-                  "mode": "allow"
-                },
-                "nodeClasses": {
-                  "mode": "deny"
-                },
-                "edgeClasses": {
-                  "mode": "deny"
-                },
-                "scripts": {
-                  "mode": "deny"
-                }
-              }
+              "label": "Surface",
+              "memo": "Primary reading surface for the full edge contract.",
+              "viewNodeId": "edge-contract-surface"
+            },
+            {
+              "id": "card",
+              "kind": "view",
+              "label": "Card",
+              "memo": "Compact shelf and portal preview surface for the edge contract.",
+              "viewNodeId": "edge-contract-card"
+            },
+            {
+              "id": "icon",
+              "kind": "view",
+              "label": "Icon",
+              "memo": "Semantic-zoom icon surface for the edge contract.",
+              "viewNodeId": "edge-contract-icon"
+            },
+            {
+              "id": "editor",
+              "kind": "view",
+              "label": "Editor",
+              "memo": "Editor-facing surface for curating the contract artifact.",
+              "viewNodeId": "edge-contract-editor-view"
             }
           ]
         },
@@ -230,7 +237,8 @@
           "classKey": "declaration",
           "classRef": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node"
         },
-        "definitionKey": "declaration"
+        "definitionKey": "declaration",
+        "primaryEditorViewId": "edge-contract-editor-view"
       }
     },
     {
@@ -238,12 +246,12 @@
       "type": "title",
       "label": "Title",
       "position": {
-        "x": 220,
-        "y": -440
+        "x": -420,
+        "y": -520
       },
       "width": 560,
       "height": 240,
-      "visible": false,
+      "visible": true,
       "showLabel": true,
       "data": {
         "title": "Edge Contract",
@@ -256,19 +264,20 @@
           "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
         },
         "definitionKey": "title"
-      }
+      },
+      "root": true
     },
     {
       "id": "edge-contract-type",
       "type": "type-definition",
       "label": "Type Definition",
       "position": {
-        "x": 220,
-        "y": -180
+        "x": -420,
+        "y": -220
       },
       "width": 560,
-      "height": 240,
-      "visible": false,
+      "height": 220,
+      "visible": true,
       "showLabel": true,
       "data": {
         "type": "edge-contract",
@@ -285,53 +294,54 @@
       }
     },
     {
-      "id": "edge-contract-port-view",
-      "type": "port-view",
-      "label": "Port View",
+      "id": "edge-contract-card",
+      "type": "summary-view",
+      "label": "Card",
       "position": {
-        "x": 820,
-        "y": -440
+        "x": 220,
+        "y": -560
       },
-      "width": 420,
-      "height": 250,
+      "width": 360,
+      "height": 220,
       "visible": true,
       "showLabel": true,
       "data": {
-        "payload": "node.web.summary",
+        "payload": "card",
         "title": "Edge Contract",
-        "purpose": "Compact host-facing port view for the Edge Contract.",
+        "purpose": "Compact preview surface for shelves, portals, and browser cards.",
         "titleSourceNodeId": "edge-contract-title",
         "typeSourceNodeId": "edge-contract-type",
-        "viewRole": "port",
+        "viewRole": "summary",
         "viewKind": "display",
         "exposedAuthority": "consume-view",
         "audience": "Author",
         "status": "active",
         "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"22\" fill=\"#fff7ed\" stroke=\"#7c2d12\" stroke-width=\"5\"/><path d=\"M44 78h132\" stroke=\"#111827\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M144 66l22 12-22 12\" fill=\"none\" stroke=\"#111827\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"44\" y=\"44\" width=\"92\" height=\"12\" rx=\"6\" fill=\"#7c2d12\" opacity=\"0.18\"/><rect x=\"44\" y=\"102\" width=\"110\" height=\"10\" rx=\"5\" fill=\"#ef4444\" opacity=\"0.25\"/></svg>",
         "_classBinding": {
-          "key": "port-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node"
+          "key": "summary-view",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/summary-view.node-class.node"
         },
-        "definitionKey": "port-view"
+        "definitionKey": "summary-view",
+        "summary": "Normative edge law for persisted endpoint ids, class assignment, validation, and portability."
       }
     },
     {
-      "id": "edge-contract-node-view",
+      "id": "edge-contract-surface",
       "type": "node-view",
-      "label": "Node View",
+      "label": "Surface",
       "position": {
-        "x": 820,
-        "y": -140
+        "x": 620,
+        "y": -560
       },
-      "width": 420,
-      "height": 250,
-      "visible": false,
+      "width": 520,
+      "height": 260,
+      "visible": true,
       "showLabel": true,
       "data": {
-        "payload": "node.web.detail",
+        "payload": "surface",
         "title": "Edge Contract",
-        "purpose": "Shared host-facing node view for the Edge Contract.",
+        "purpose": "Primary full contract surface for reading the complete edge law.",
         "titleSourceNodeId": "edge-contract-title",
         "typeSourceNodeId": "edge-contract-type",
         "viewRole": "node",
@@ -345,25 +355,30 @@
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
           "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node"
         },
-        "definitionKey": "node-view"
+        "definitionKey": "node-view",
+        "summary": "Full readable contract surface for the edge contract.",
+        "view": {
+          "intent": "node",
+          "payload": "surface"
+        }
       }
     },
     {
-      "id": "edge-contract-icon-view",
+      "id": "edge-contract-icon",
       "type": "icon-view",
-      "label": "Icon View",
+      "label": "Icon",
       "position": {
-        "x": 820,
-        "y": 160
+        "x": 1180,
+        "y": -560
       },
-      "width": 320,
-      "height": 220,
-      "visible": false,
+      "width": 260,
+      "height": 200,
+      "visible": true,
       "showLabel": true,
       "data": {
-        "payload": "node.web.icon",
+        "payload": "icon",
         "title": "Edge Contract",
-        "purpose": "Minimal semantic-zoom icon surface for the Edge Contract.",
+        "purpose": "Semantic-zoom and minimap surface for the edge contract.",
         "titleSourceNodeId": "edge-contract-title",
         "typeSourceNodeId": "edge-contract-type",
         "viewRole": "icon",
@@ -377,23 +392,94 @@
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
           "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node"
         },
-        "definitionKey": "icon-view"
+        "definitionKey": "icon-view",
+        "view": {
+          "intent": "node",
+          "payload": "icon"
+        }
+      }
+    },
+    {
+      "id": "edge-contract-editor-view",
+      "type": "editor-view",
+      "label": "Editor",
+      "position": {
+        "x": 1120,
+        "y": -280
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Edge Contract Editor",
+        "purpose": "Editor-facing surface for curating this contract artifact.",
+        "titleSourceNodeId": "edge-contract-title",
+        "typeSourceNodeId": "edge-contract-type",
+        "view": {
+          "intent": "editor",
+          "payload": "editor"
+        },
+        "payload": "editor",
+        "viewRole": "editor",
+        "viewKind": "form",
+        "exposedAuthority": "consume-view",
+        "audience": "Author",
+        "status": "active",
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"16\" y=\"18\" width=\"188\" height=\"124\" rx=\"22\" fill=\"#f8fbff\" stroke=\"#24364b\" stroke-width=\"5\"/><rect x=\"34\" y=\"36\" width=\"68\" height=\"12\" rx=\"6\" fill=\"#93c5fd\" opacity=\"0.9\"/><rect x=\"34\" y=\"60\" width=\"152\" height=\"18\" rx=\"7\" fill=\"#e2e8f0\"/><rect x=\"34\" y=\"88\" width=\"152\" height=\"34\" rx=\"10\" fill=\"#dbeafe\" opacity=\"0.95\"/><rect x=\"146\" y=\"128\" width=\"40\" height=\"10\" rx=\"5\" fill=\"#60a5fa\" opacity=\"0.9\"/></svg>",
+        "editor": {
+          "web": {
+            "fields": [
+              {
+                "key": "title",
+                "label": "Title",
+                "type": "text",
+                "path": "data.title"
+              },
+              {
+                "key": "purpose",
+                "label": "Purpose",
+                "type": "textarea",
+                "path": "data.purpose",
+                "rows": 3
+              },
+              {
+                "key": "summary",
+                "label": "Summary",
+                "type": "textarea",
+                "path": "data.summary",
+                "rows": 5
+              }
+            ]
+          }
+        },
+        "_classBinding": {
+          "key": "editor-view",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node"
+        },
+        "_bridge": {
+          "targetKind": "node-class",
+          "classKey": "editor-view",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node"
+        },
+        "definitionKey": "editor-view"
       }
     },
     {
       "id": "edge-contract-root",
       "type": "markdown",
-      "label": "🔗 Edge Contract (Normative)",
+      "label": "Overview",
       "position": {
-        "x": 102,
-        "y": 16
+        "x": -980,
+        "y": -120
       },
-      "width": 560,
+      "width": 520,
       "height": 280,
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Edge Contract\n\n**Authority:** Normative\n\nEvery edge created, mutated, rendered, or interpreted by humans, agents, or tools **MUST** conform to this contract.\n\nEdges express relationships.\n\nPlain edges remain valid without classes. Edge classes are the canonical semantic upgrade path.\n\nThis graph is the contract.",
+        "markdown": "# Edge Contract\n\n**Authority:** Normative\n\nThis contract defines the durable stored shape for Twilite edges. It governs endpoint identity, optional metadata, class assignment, validation, mutation policy, and transport portability.\n\nPlain edges remain valid without classes. Edge classes are the canonical semantic upgrade path.\n\nThis graph is the contract.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -463,18 +549,19 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
         },
         "definitionKey": "markdown"
-      }
+      },
+      "root": false
     },
     {
       "id": "edge-meta",
       "type": "markdown",
       "label": "0. Metadata",
       "position": {
-        "x": -720,
-        "y": 360
+        "x": -380,
+        "y": -120
       },
-      "width": 440,
-      "height": 260,
+      "width": 420,
+      "height": 240,
       "visible": true,
       "showLabel": true,
       "data": {
@@ -555,8 +642,8 @@
       "type": "markdown",
       "label": "1. Required Fields",
       "position": {
-        "x": -360,
-        "y": 360
+        "x": 80,
+        "y": -120
       },
       "width": 460,
       "height": 320,
@@ -640,11 +727,11 @@
       "type": "markdown",
       "label": "2. Optional Fields",
       "position": {
-        "x": 140,
-        "y": 360
+        "x": 580,
+        "y": -120
       },
       "width": 460,
-      "height": 340,
+      "height": 320,
       "visible": true,
       "showLabel": true,
       "data": {
@@ -725,8 +812,8 @@
       "type": "markdown",
       "label": "3. Port Policy",
       "position": {
-        "x": 640,
-        "y": 360
+        "x": 1080,
+        "y": -120
       },
       "width": 440,
       "height": 280,
@@ -810,11 +897,11 @@
       "type": "markdown",
       "label": "4. Edge Type Contract",
       "position": {
-        "x": -720,
-        "y": 760
+        "x": -380,
+        "y": 260
       },
-      "width": 480,
-      "height": 300,
+      "width": 460,
+      "height": 340,
       "visible": true,
       "showLabel": true,
       "data": {
@@ -895,11 +982,11 @@
       "type": "markdown",
       "label": "4b. Edge Class Assignment",
       "position": {
-        "x": 1220,
-        "y": 920
+        "x": 120,
+        "y": 260
       },
-      "width": 560,
-      "height": 340,
+      "width": 500,
+      "height": 360,
       "visible": true,
       "showLabel": true,
       "data": {
@@ -980,10 +1067,10 @@
       "type": "markdown",
       "label": "5. Forbidden States",
       "position": {
-        "x": -160,
-        "y": 760
+        "x": 660,
+        "y": 260
       },
-      "width": 460,
+      "width": 420,
       "height": 260,
       "visible": true,
       "showLabel": true,
@@ -1065,10 +1152,10 @@
       "type": "markdown",
       "label": "6. Validation Rules",
       "position": {
-        "x": 360,
-        "y": 760
+        "x": 1120,
+        "y": 260
       },
-      "width": 480,
+      "width": 460,
       "height": 320,
       "visible": true,
       "showLabel": true,
@@ -1150,8 +1237,8 @@
       "type": "markdown",
       "label": "7. Allowed Mutations",
       "position": {
-        "x": 900,
-        "y": 760
+        "x": -220,
+        "y": 700
       },
       "width": 460,
       "height": 300,
@@ -1235,11 +1322,11 @@
       "type": "markdown",
       "label": "8. Agent Rules",
       "position": {
-        "x": 0,
-        "y": 1160
+        "x": 320,
+        "y": 700
       },
-      "width": 520,
-      "height": 320,
+      "width": 500,
+      "height": 300,
       "visible": true,
       "showLabel": true,
       "data": {
@@ -1320,10 +1407,10 @@
       "type": "markdown",
       "label": "9. Portability Guarantee",
       "position": {
-        "x": 600,
-        "y": 1160
+        "x": 900,
+        "y": 700
       },
-      "width": 520,
+      "width": 500,
       "height": 260,
       "visible": true,
       "showLabel": true,
@@ -1403,129 +1490,140 @@
   ],
   "edges": [
     {
-      "id": "e-root-meta",
+      "id": "edge-contract-overview-meta",
       "type": "governs",
       "source": "edge-contract-root",
       "target": "edge-meta",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "",
+      "label": "metadata",
       "style": {},
       "data": {}
     },
     {
-      "id": "e-root-required",
+      "id": "edge-contract-overview-required",
       "type": "governs",
       "source": "edge-contract-root",
       "target": "edge-required",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "",
+      "label": "required",
       "style": {},
       "data": {}
     },
     {
-      "id": "e-root-optional",
+      "id": "edge-contract-overview-optional",
       "type": "governs",
       "source": "edge-contract-root",
       "target": "edge-optional",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "",
+      "label": "optional",
       "style": {},
       "data": {}
     },
     {
-      "id": "e-root-port",
+      "id": "edge-contract-overview-port-policy",
       "type": "governs",
       "source": "edge-contract-root",
       "target": "edge-port-policy",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "",
+      "label": "ports",
       "style": {},
       "data": {}
     },
     {
-      "id": "e-root-types",
+      "id": "edge-contract-required-types",
       "type": "governs",
-      "source": "edge-contract-root",
+      "source": "edge-required",
       "target": "edge-types",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "",
+      "label": "types",
       "style": {},
       "data": {}
     },
     {
-      "id": "e-root-forbidden",
+      "id": "edge-contract-optional-assignment",
       "type": "governs",
-      "source": "edge-contract-root",
-      "target": "edge-forbidden",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "e-root-validate",
-      "type": "governs",
-      "source": "edge-contract-root",
-      "target": "edge-validation",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "e-root-mutations",
-      "type": "governs",
-      "source": "edge-contract-root",
-      "target": "edge-mutations",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "e-root-agents",
-      "type": "governs",
-      "source": "edge-contract-root",
-      "target": "edge-agent-rules",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "e-root-portable",
-      "type": "governs",
-      "source": "edge-contract-root",
-      "target": "edge-portability",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "e-root-edge-class-assignment",
-      "type": "governs",
-      "source": "edge-contract-root",
+      "source": "edge-optional",
       "target": "edge-class-assignment",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "",
+      "label": "classing",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "edge-contract-types-forbidden",
+      "type": "governs",
+      "source": "edge-types",
+      "target": "edge-forbidden",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "reject",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "edge-contract-assignment-validation",
+      "type": "governs",
+      "source": "edge-class-assignment",
+      "target": "edge-validation",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "validate",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "edge-contract-forbidden-validation",
+      "type": "governs",
+      "source": "edge-forbidden",
+      "target": "edge-validation",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "enforce",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "edge-contract-validation-mutations",
+      "type": "governs",
+      "source": "edge-validation",
+      "target": "edge-mutations",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "mutate",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "edge-contract-validation-agents",
+      "type": "governs",
+      "source": "edge-validation",
+      "target": "edge-agent-rules",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "agents",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "edge-contract-mutations-portability",
+      "type": "governs",
+      "source": "edge-mutations",
+      "target": "edge-portability",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "portable",
       "style": {},
       "data": {}
     }
   ],
   "clusters": [],
-  "nodeCount": 19,
-  "edgeCount": 11,
-  "timestamp": "2026-04-25T00:00:00.000Z"
+  "nodeCount": 20,
+  "edgeCount": 12,
+  "timestamp": "2026-06-16T23:30:00.000Z"
 }
