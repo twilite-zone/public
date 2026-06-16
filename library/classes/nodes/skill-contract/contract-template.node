@@ -4,7 +4,7 @@
     "title": "Contract Template",
     "description": "Declaration-first reusable scaffold for normative contract artifacts.",
     "created": "2026-06-16T22:40:00.000Z",
-    "modified": "2026-06-16T22:40:00.000Z",
+    "modified": "2026-06-16T23:50:00.000Z",
     "author": "",
     "tags": [
       "library",
@@ -30,10 +30,10 @@
         "identity": {
           "graphId": "contract-template",
           "name": "Contract Template",
-          "version": "0.1.0",
+          "version": "0.2.0",
           "description": "Declaration-first reusable scaffold for normative contract artifacts.",
           "createdAt": "2026-06-16T22:40:00.000Z",
-          "updatedAt": "2026-06-16T22:40:00.000Z"
+          "updatedAt": "2026-06-16T23:50:00.000Z"
         },
         "intent": {
           "kind": "artifact",
@@ -52,7 +52,7 @@
           "edgeRouting": "auto",
           "autoSave": false
         },
-        "purpose": "Declare a contract artifact with named public surfaces for reading, previewing, semantic zoom, and editing.",
+        "purpose": "Declare a contract artifact with named public surfaces, shared contract sections, and semantic contract relationships.",
         "declaration": {
           "kind": "artifact",
           "targetMode": "artifact",
@@ -275,134 +275,6 @@
       }
     },
     {
-      "id": "contract-template-overview",
-      "type": "markdown",
-      "label": "Overview",
-      "position": {
-        "x": -420,
-        "y": -120
-      },
-      "width": 420,
-      "height": 240,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## Overview\n\nState what this contract governs, who should trust it, and what kind of graph behavior it is trying to stabilize."
-      }
-    },
-    {
-      "id": "contract-template-required",
-      "type": "markdown",
-      "label": "Required Structure",
-      "position": {
-        "x": 40,
-        "y": -120
-      },
-      "width": 420,
-      "height": 240,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## Required Structure\n\nList the fields, nodes, endpoints, or declarations that MUST exist for an artifact to satisfy this contract."
-      }
-    },
-    {
-      "id": "contract-template-optional",
-      "type": "markdown",
-      "label": "Optional Structure",
-      "position": {
-        "x": 500,
-        "y": -120
-      },
-      "width": 420,
-      "height": 240,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## Optional Structure\n\nCapture what MAY be present, including tolerated extensions, display metadata, or compatibility affordances."
-      }
-    },
-    {
-      "id": "contract-template-rules",
-      "type": "markdown",
-      "label": "Rules",
-      "position": {
-        "x": 270,
-        "y": 180
-      },
-      "width": 460,
-      "height": 250,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## Rules\n\nWrite the normative law here. Use clear MUST / SHOULD / MAY language. This is the behavioral center of the contract."
-      }
-    },
-    {
-      "id": "contract-template-forbidden",
-      "type": "markdown",
-      "label": "Forbidden States",
-      "position": {
-        "x": -10,
-        "y": 500
-      },
-      "width": 420,
-      "height": 230,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## Forbidden States\n\nList the invalid states that should fail hard or be rejected."
-      }
-    },
-    {
-      "id": "contract-template-validation",
-      "type": "markdown",
-      "label": "Validation",
-      "position": {
-        "x": 470,
-        "y": 500
-      },
-      "width": 420,
-      "height": 230,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## Validation\n\nState what a validator, agent, or runtime checker must enforce before trust is granted."
-      }
-    },
-    {
-      "id": "contract-template-mutation",
-      "type": "markdown",
-      "label": "Mutation Policy",
-      "position": {
-        "x": 470,
-        "y": 820
-      },
-      "width": 420,
-      "height": 230,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## Mutation Policy\n\nDescribe what may be changed, what should be discouraged, and what operations must preserve identity versus create something new."
-      }
-    },
-    {
-      "id": "contract-template-migration",
-      "type": "markdown",
-      "label": "Migration Notes",
-      "position": {
-        "x": 470,
-        "y": 1120
-      },
-      "width": 420,
-      "height": 230,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## Migration Notes\n\nCapture legacy tolerance, repair behavior, compatibility aliases, and what future saved data should converge toward."
-      }
-    },
-    {
       "id": "contract-template-related",
       "type": "port",
       "label": "Related Contracts",
@@ -443,7 +315,7 @@
         "memo": "Point at a real contract artifact to demonstrate the pattern in use.",
         "intent": "external",
         "sourceRef": "github://twilite-zone/public/library/documentation/contracts/edges/edge-contract.node",
-        "sourceNodeId": "edge-contract-node-view",
+        "sourceNodeId": "edge-contract-card",
         "sourcePayload": "card",
         "target": {
           "endpoint": "github://twilite-zone/public/library/documentation/contracts/edges/edge-contract.node:root",
@@ -476,17 +348,337 @@
           "label": "Open"
         }
       }
+    },
+    {
+      "id": "contract-template-authority",
+      "type": "field",
+      "label": "Authority",
+      "position": {
+        "x": -420,
+        "y": -120
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "contract.authority",
+        "fieldType": "string",
+        "value": "normative",
+        "_classBinding": {
+          "key": "field",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/field.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/field.node-class.node"
+        },
+        "definitionKey": "field"
+      }
+    },
+    {
+      "id": "contract-template-scope",
+      "type": "field",
+      "label": "Scope",
+      "position": {
+        "x": -120,
+        "y": -120
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "contract.scope",
+        "fieldType": "string",
+        "value": "artifact-local",
+        "_classBinding": {
+          "key": "field",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/field.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/field.node-class.node"
+        },
+        "definitionKey": "field"
+      }
+    },
+    {
+      "id": "contract-template-status",
+      "type": "field",
+      "label": "Status",
+      "position": {
+        "x": 180,
+        "y": -120
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "contract.status",
+        "fieldType": "string",
+        "value": "draft",
+        "_classBinding": {
+          "key": "field",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/field.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/field.node-class.node"
+        },
+        "definitionKey": "field"
+      }
+    },
+    {
+      "id": "contract-template-overview",
+      "type": "markdown",
+      "label": "Overview",
+      "position": {
+        "x": 500,
+        "y": -120
+      },
+      "width": 460,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Overview\n\nState what this contract governs, who should trust it, and what kind of graph behavior it is trying to stabilize.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "contract-template-required",
+      "type": "markdown",
+      "label": "Required Structure",
+      "position": {
+        "x": -420,
+        "y": 200
+      },
+      "width": 420,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Required Structure\n\nList the fields, nodes, endpoints, or declarations that MUST exist for an artifact to satisfy this contract.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "contract-template-optional",
+      "type": "markdown",
+      "label": "Optional Structure",
+      "position": {
+        "x": 40,
+        "y": 200
+      },
+      "width": 420,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Optional Structure\n\nCapture what MAY be present, including tolerated extensions, display metadata, or compatibility affordances.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "contract-template-forbidden",
+      "type": "markdown",
+      "label": "Forbidden States",
+      "position": {
+        "x": 500,
+        "y": 200
+      },
+      "width": 420,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Forbidden States\n\nList the invalid states that should fail hard or be rejected.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "contract-template-validation",
+      "type": "markdown",
+      "label": "Validation",
+      "position": {
+        "x": 960,
+        "y": 200
+      },
+      "width": 420,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Validation\n\nState what a validator, agent, or runtime checker must enforce before trust is granted.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "contract-template-mutation",
+      "type": "markdown",
+      "label": "Mutation Policy",
+      "position": {
+        "x": -190,
+        "y": 530
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Mutation Policy\n\nDescribe what may be changed, what should be discouraged, and what operations must preserve identity versus create something new.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "contract-template-compatibility",
+      "type": "markdown",
+      "label": "Compatibility",
+      "position": {
+        "x": 270,
+        "y": 530
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Compatibility\n\nCapture tolerated legacy shapes, migration aliases, and what old readers or writers may still accept during repair.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "contract-template-portability",
+      "type": "markdown",
+      "label": "Portability",
+      "position": {
+        "x": 730,
+        "y": 530
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Portability\n\nState what meaning and structure must survive transport between runtimes, renderers, editors, and storage layers.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "contract-template-agent-rules",
+      "type": "markdown",
+      "label": "Agent Rules",
+      "position": {
+        "x": 1190,
+        "y": 530
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Agent Rules\n\nDescribe what tools and agents MUST do when reading, validating, mutating, or generating artifacts under this contract.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "contract-template-examples-note",
+      "type": "markdown",
+      "label": "Examples",
+      "position": {
+        "x": 180,
+        "y": 860
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Examples\n\nLink one or more valid specimen artifacts that demonstrate the contract in practice.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "contract-template-references-note",
+      "type": "markdown",
+      "label": "References",
+      "position": {
+        "x": 670,
+        "y": 860
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## References\n\nLink neighboring contracts, implementation artifacts, and authoritative supporting material.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
     }
   ],
   "edges": [
     {
-      "id": "contract-template-edge-surface-title",
+      "id": "contract-template-edge-surface-overview",
       "type": "reference",
       "source": "contract-template-surface",
-      "target": "contract-template-title",
+      "target": "contract-template-overview",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "read"
+      "label": "surface",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-governs.edge-class.node",
+        "edgeClassKey": "contract.governs",
+        "edgeClassMeaning": "source frames, organizes, or governs the target as part of a contract structure"
+      }
     },
     {
       "id": "contract-template-edge-title-overview",
@@ -495,7 +687,58 @@
       "target": "contract-template-overview",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "purpose"
+      "label": "overview",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-governs.edge-class.node",
+        "edgeClassKey": "contract.governs",
+        "edgeClassMeaning": "source frames, organizes, or governs the target as part of a contract structure"
+      }
+    },
+    {
+      "id": "contract-template-edge-overview-authority",
+      "type": "reference",
+      "source": "contract-template-overview",
+      "target": "contract-template-authority",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "authority",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-governs.edge-class.node",
+        "edgeClassKey": "contract.governs",
+        "edgeClassMeaning": "source frames, organizes, or governs the target as part of a contract structure"
+      }
+    },
+    {
+      "id": "contract-template-edge-overview-scope",
+      "type": "reference",
+      "source": "contract-template-overview",
+      "target": "contract-template-scope",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "scope",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-governs.edge-class.node",
+        "edgeClassKey": "contract.governs",
+        "edgeClassMeaning": "source frames, organizes, or governs the target as part of a contract structure"
+      }
+    },
+    {
+      "id": "contract-template-edge-overview-status",
+      "type": "reference",
+      "source": "contract-template-overview",
+      "target": "contract-template-status",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "status",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-governs.edge-class.node",
+        "edgeClassKey": "contract.governs",
+        "edgeClassMeaning": "source frames, organizes, or governs the target as part of a contract structure"
+      }
     },
     {
       "id": "contract-template-edge-overview-required",
@@ -504,7 +747,13 @@
       "target": "contract-template-required",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "must include"
+      "label": "requires",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-requires.edge-class.node",
+        "edgeClassKey": "contract.requires",
+        "edgeClassMeaning": "source states that the target structure, behavior, or condition is required by the contract"
+      }
     },
     {
       "id": "contract-template-edge-overview-optional",
@@ -513,88 +762,226 @@
       "target": "contract-template-optional",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "may include"
+      "label": "permits",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-permits.edge-class.node",
+        "edgeClassKey": "contract.permits",
+        "edgeClassMeaning": "source allows the target as an optional or tolerated part of the contract"
+      }
     },
     {
-      "id": "contract-template-edge-required-rules",
+      "id": "contract-template-edge-required-forbidden",
       "type": "reference",
       "source": "contract-template-required",
-      "target": "contract-template-rules",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "structure drives law"
-    },
-    {
-      "id": "contract-template-edge-optional-rules",
-      "type": "reference",
-      "source": "contract-template-optional",
-      "target": "contract-template-rules",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "tolerance"
-    },
-    {
-      "id": "contract-template-edge-rules-forbidden",
-      "type": "reference",
-      "source": "contract-template-rules",
       "target": "contract-template-forbidden",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "reject"
+      "label": "forbids",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-forbids.edge-class.node",
+        "edgeClassKey": "contract.forbids",
+        "edgeClassMeaning": "source rejects the target as an invalid, forbidden, or trust-breaking state"
+      }
     },
     {
-      "id": "contract-template-edge-rules-validation",
+      "id": "contract-template-edge-required-validation",
       "type": "reference",
-      "source": "contract-template-rules",
+      "source": "contract-template-required",
       "target": "contract-template-validation",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "enforce"
+      "label": "validates",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-validates.edge-class.node",
+        "edgeClassKey": "contract.validates",
+        "edgeClassMeaning": "source defines or drives the validation behavior that enforces the target contract condition"
+      }
     },
     {
-      "id": "contract-template-edge-validation-mutation",
+      "id": "contract-template-edge-validation-agent-rules",
       "type": "reference",
       "source": "contract-template-validation",
-      "target": "contract-template-mutation",
+      "target": "contract-template-agent-rules",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "updates"
+      "label": "agents",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-validates.edge-class.node",
+        "edgeClassKey": "contract.validates",
+        "edgeClassMeaning": "source defines or drives the validation behavior that enforces the target contract condition"
+      }
     },
     {
-      "id": "contract-template-edge-mutation-migration",
+      "id": "contract-template-edge-mutation-compatibility",
       "type": "reference",
       "source": "contract-template-mutation",
-      "target": "contract-template-migration",
+      "target": "contract-template-compatibility",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "compatibility"
+      "label": "compatibility",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-references.edge-class.node",
+        "edgeClassKey": "contract.references",
+        "edgeClassMeaning": "source points at the target as a related contract, authority, compatibility note, or supporting reference"
+      }
     },
     {
-      "id": "contract-template-edge-migration-related",
+      "id": "contract-template-edge-compatibility-portability",
       "type": "reference",
-      "source": "contract-template-migration",
-      "target": "contract-template-related",
+      "source": "contract-template-compatibility",
+      "target": "contract-template-portability",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "neighbors"
+      "label": "portability",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-references.edge-class.node",
+        "edgeClassKey": "contract.references",
+        "edgeClassMeaning": "source points at the target as a related contract, authority, compatibility note, or supporting reference"
+      }
     },
     {
-      "id": "contract-template-edge-migration-example",
+      "id": "contract-template-edge-examples-example-port",
       "type": "reference",
-      "source": "contract-template-migration",
+      "source": "contract-template-examples-note",
       "target": "contract-template-example",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "example"
+      "label": "example",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-examples.edge-class.node",
+        "edgeClassKey": "contract.examples",
+        "edgeClassMeaning": "source presents the target as a worked example or specimen that demonstrates the contract in practice"
+      }
     },
     {
-      "id": "contract-template-edge-migration-back",
+      "id": "contract-template-edge-references-related",
       "type": "reference",
-      "source": "contract-template-migration",
+      "source": "contract-template-references-note",
+      "target": "contract-template-related",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "related",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-references.edge-class.node",
+        "edgeClassKey": "contract.references",
+        "edgeClassMeaning": "source points at the target as a related contract, authority, compatibility note, or supporting reference"
+      }
+    },
+    {
+      "id": "contract-template-edge-references-back",
+      "type": "reference",
+      "source": "contract-template-references-note",
       "target": "contract-template-back",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "gallery"
+      "label": "gallery",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-references.edge-class.node",
+        "edgeClassKey": "contract.references",
+        "edgeClassMeaning": "source points at the target as a related contract, authority, compatibility note, or supporting reference"
+      }
+    },
+    {
+      "id": "contract-template-edge-overview-mutation",
+      "type": "reference",
+      "source": "contract-template-overview",
+      "target": "contract-template-mutation",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "mutation",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-governs.edge-class.node",
+        "edgeClassKey": "contract.governs",
+        "edgeClassMeaning": "source frames, organizes, or governs the target as part of a contract structure"
+      }
+    },
+    {
+      "id": "contract-template-edge-overview-compatibility",
+      "type": "reference",
+      "source": "contract-template-overview",
+      "target": "contract-template-compatibility",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "compatibility",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-governs.edge-class.node",
+        "edgeClassKey": "contract.governs",
+        "edgeClassMeaning": "source frames, organizes, or governs the target as part of a contract structure"
+      }
+    },
+    {
+      "id": "contract-template-edge-overview-portability",
+      "type": "reference",
+      "source": "contract-template-overview",
+      "target": "contract-template-portability",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "portability",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-governs.edge-class.node",
+        "edgeClassKey": "contract.governs",
+        "edgeClassMeaning": "source frames, organizes, or governs the target as part of a contract structure"
+      }
+    },
+    {
+      "id": "contract-template-edge-overview-agent-rules",
+      "type": "reference",
+      "source": "contract-template-overview",
+      "target": "contract-template-agent-rules",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "agent rules",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-governs.edge-class.node",
+        "edgeClassKey": "contract.governs",
+        "edgeClassMeaning": "source frames, organizes, or governs the target as part of a contract structure"
+      }
+    },
+    {
+      "id": "contract-template-edge-overview-examples",
+      "type": "reference",
+      "source": "contract-template-overview",
+      "target": "contract-template-examples-note",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "examples",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-examples.edge-class.node",
+        "edgeClassKey": "contract.examples",
+        "edgeClassMeaning": "source presents the target as a worked example or specimen that demonstrates the contract in practice"
+      }
+    },
+    {
+      "id": "contract-template-edge-overview-references",
+      "type": "reference",
+      "source": "contract-template-overview",
+      "target": "contract-template-references-note",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "references",
+      "style": {},
+      "data": {
+        "edgeClassRef": "github://twilite-zone/public/library/classes/edges/contract-references.edge-class.node",
+        "edgeClassKey": "contract.references",
+        "edgeClassMeaning": "source points at the target as a related contract, authority, compatibility note, or supporting reference"
+      }
     }
-  ]
+  ],
+  "nodeCount": 23,
+  "edgeCount": 21,
+  "timestamp": "2026-06-16T23:50:00.000Z"
 }
