@@ -1,48 +1,53 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "markdown Node Class",
-    "description": "Canonical markdown content node.",
-    "created": "2026-02-24T20:05:15Z",
-    "modified": "2026-03-24T01:20:00.000Z",
+    "title": "Markdown Node Class",
+    "description": "Canonical markdown content node class artifact.",
+    "graphId": "markdown-class",
+    "version": "0.2.0",
+    "kind": "node-class",
+    "created": "2026-02-24T20:05:15.000Z",
+    "modified": "2026-06-17T22:35:00.000Z",
     "author": "",
     "tags": [
       "node-class",
-      "markdown"
-    ]
+      "markdown",
+      "canonical"
+    ],
+    "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
     {
-      "id": "markdown-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "id": "markdown-class-declaration",
+      "type": "declaration",
+      "label": "Declaration",
+      "root": false,
       "position": {
-        "x": -520,
-        "y": -80
+        "x": -900,
+        "y": -520
       },
-      "width": 420,
-      "height": 260,
+      "width": 380,
+      "height": 240,
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "markdown_class",
-          "name": "markdown Node Class",
-          "version": "0.1.0",
-          "description": "Canonical markdown content node.",
-          "createdAt": "2026-02-24T20:05:15Z",
-          "updatedAt": "2026-03-24T01:20:00.000Z"
+          "graphId": "markdown-class",
+          "name": "Markdown Node Class",
+          "version": "0.2.0",
+          "description": "Canonical markdown content node class artifact.",
+          "createdAt": "2026-02-24T20:05:15.000Z",
+          "updatedAt": "2026-06-17T22:35:00.000Z"
         },
         "intent": {
-          "kind": "graph",
-          "scope": "foundation"
+          "kind": "node-class",
+          "scope": "local"
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
-            "legend",
-            "view",
-            "markdown"
+            "declaration",
+            "markdown",
+            "port"
           ],
           "portContracts": [
             "core"
@@ -75,6 +80,43 @@
         "document": {
           "url": ""
         },
+        "declaration": {
+          "kind": "node-class",
+          "artifactKind": "class-artifact",
+          "graphViewRole": "artifact",
+          "defaultSurfaceId": "markdown-detail-view",
+          "surfaces": [
+            {
+              "id": "markdown-detail-view",
+              "kind": "view",
+              "label": "Surface",
+              "memo": "Primary markdown reader surface.",
+              "viewNodeId": "markdown-detail-view"
+            },
+            {
+              "id": "markdown-summary-view",
+              "kind": "view",
+              "label": "Card",
+              "memo": "Compact markdown summary surface.",
+              "viewNodeId": "markdown-summary-view"
+            },
+            {
+              "id": "markdown-icon-view",
+              "kind": "view",
+              "label": "Icon",
+              "memo": "Icon surface for markdown instances.",
+              "viewNodeId": "markdown-icon-view"
+            },
+            {
+              "id": "markdown-editor-view",
+              "kind": "view",
+              "label": "Editor",
+              "memo": "Editor surface for markdown instances.",
+              "viewNodeId": "markdown-editor-view"
+            }
+          ],
+          "targetMode": "artifact"
+        },
         "settings": {
           "theme": null,
           "backgroundImage": null,
@@ -83,60 +125,102 @@
           "snapToGrid": false,
           "gridSize": 20,
           "edgeRouting": "auto",
-          "github": {
-            "repo": "",
-            "path": "",
-            "branch": "main"
-          },
-          "autoSave": false
+          "autoSave": false,
+          "layout": {
+            "mode": "autoOnMissingPositions",
+            "defaultLayout": "layered",
+            "direction": "DOWN",
+            "edgeLaneGapPx": 10,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
+          }
         },
         "nodeClass": {
           "contractVersion": "1.0.0",
           "key": "markdown",
+          "label": "Markdown",
+          "meaning": "Canonical markdown content node.",
+          "description": "Defines a markdown-first content node with detail, card, icon, and editor surfaces.",
+          "requiredDataKeys": [
+            "content"
+          ],
           "nodeDef": {
             "key": "markdown",
             "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
             "source": "local",
-            "version": ">=0.1.0"
+            "version": ">=0.2.0",
+            "defaults": {
+              "label": "Markdown",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "showLabel": false,
+              "data": {
+                "content": "# Markdown\n\nWrite here."
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 210
+                }
+              ]
+            }
           }
         }
       }
     },
     {
-      "id": "markdown-legend",
-      "type": "legend",
-      "label": "Legend",
+      "id": "markdown-class-notes",
+      "type": "markdown",
+      "label": "Class Notes",
+      "root": false,
       "position": {
-        "x": -520,
-        "y": 210
+        "x": -420,
+        "y": -520
       },
-      "width": 360,
-      "height": 220,
+      "width": 520,
+      "height": 240,
       "visible": true,
       "showLabel": true,
       "data": {
-        "entries": [
-          {
-            "key": "markdown",
-            "intent": "Canonical markdown content node.",
-            "implementation": "editor.web + node.web"
-          }
-        ]
+        "identity": {
+          "graphId": "markdown-class"
+        },
+        "markdown": "## Markdown class\n\nThis is the canonical class artifact for markdown-driven content nodes.\n\nUse this graph when you want to:\n- create instances as `type: \"markdown\"`\n- edit a single markdown body in the properties/editor surface\n- render the node as a readable markdown surface, card, or icon\n\nThis graph is declaration-first: the class contract lives on the declaration, and the exposed surfaces are listed in `declaration.surfaces`."
       }
     },
     {
       "id": "markdown-editor-view",
-      "type": "view",
-      "label": "Editor View (editor.web)",
+      "type": "port",
+      "label": "Editor View",
+      "root": false,
       "position": {
-        "x": 20,
-        "y": -80
+        "x": 120,
+        "y": -520
       },
       "width": 420,
       "height": 260,
       "visible": true,
       "showLabel": true,
       "data": {
+        "identity": {
+          "graphId": "markdown-class"
+        },
         "view": {
           "intent": "editor",
           "payload": "editor.web"
@@ -159,129 +243,84 @@
       }
     },
     {
-      "id": "markdown-node-view",
-      "type": "view",
-      "label": "Node View (node.web)",
+      "id": "markdown-detail-view",
+      "type": "port",
+      "label": "Detail View",
+      "root": false,
       "position": {
-        "x": 470,
-        "y": -80
+        "x": 620,
+        "y": -520
       },
       "width": 430,
       "height": 260,
       "visible": true,
       "showLabel": true,
       "data": {
+        "identity": {
+          "graphId": "markdown-class"
+        },
         "view": {
           "intent": "node",
-          "payload": "node.web",
-          "controls": [
-            {
-              "id": "markdown-edit",
-              "type": "button",
-              "label": "Edit",
-              "icon": "edit",
-              "variant": "outlined",
-              "priority": "high",
-              "action": "openEditor"
-            }
-          ]
+          "payload": "node.web.detail"
         },
-        "node": {
-          "web": {
-            "markdown": "{{data.content}}"
-          }
-        }
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "{{data.content}}"
       }
     },
     {
-      "id": "markdown-notes",
-      "type": "markdown",
-      "label": "Definition Notes",
+      "id": "markdown-summary-view",
+      "type": "port",
+      "label": "Summary View",
+      "root": false,
       "position": {
-        "x": 20,
-        "y": 220
+        "x": 620,
+        "y": -220
       },
-      "width": 880,
+      "width": 360,
       "height": 220,
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## markdown\n\nImport this class through a visible bridge when explicit class authority is needed:\n\n- `ref`: `/library/classes/nodes/markdown.node-class.node`\n- create instances as `type: \"markdown\"`\n\nThis is the canonical class graph for `markdown`. New graphs should not rely on dictionary registration as the primary authority path.",
-        "_classBinding": {
-          "key": "markdown",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "identity": {
-            "graphId": "markdown_class",
-            "name": "markdown Node Class",
-            "version": "0.1.0",
-            "description": "Canonical markdown content node.",
-            "createdAt": "2026-02-24T20:05:15Z",
-            "updatedAt": "2026-03-24T01:20:00.000Z"
-          },
-          "intent": "graph",
-          "meaning": "Canonical markdown content node.",
-          "description": "Canonical markdown content node.",
-          "defaults": {},
-          "nodeDef": {
-            "key": "markdown",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "views": [
-            {
-              "key": "markdown",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "markdown",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "markdown",
-            "intent": "node",
-            "payload": "node.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "markdown",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
+        "identity": {
+          "graphId": "markdown-class"
         },
-        "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "markdown",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
         },
-        "definitionKey": "markdown"
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;gap:10px;padding:18px;box-sizing:border-box;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(241,245,249,0.96));border:1px solid rgba(100,116,139,0.16);color:#0f172a;font-family:ui-sans-serif,system-ui,sans-serif;overflow:hidden;\"><div style=\"font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#475569;\">Markdown</div><div style=\"font-size:14px;line-height:1.6;color:#334155;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;white-space:pre-wrap;\">{{data.content}}</div></div>"
+      }
+    },
+    {
+      "id": "markdown-icon-view",
+      "type": "port",
+      "label": "Icon View",
+      "root": false,
+      "position": {
+        "x": 1020,
+        "y": -220
+      },
+      "width": 280,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "markdown-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:16px;box-sizing:border-box;border-radius:16px;background:linear-gradient(135deg, #f8fafc, #e2e8f0);border:1px solid rgba(100,116,139,0.18);overflow:hidden;\"><div style=\"display:flex;justify-content:space-between;align-items:center;\"><div style=\"width:42px;height:42px;border-radius:12px;background:rgba(148,163,184,0.18);display:flex;align-items:center;justify-content:center;color:#334155;font:800 18px/1 ui-sans-serif,system-ui,sans-serif;\">M</div><div style=\"font:700 10px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:0.12em;text-transform:uppercase;color:#64748b;\">Node</div></div><div style=\"font:600 13px/1.45 ui-sans-serif,system-ui,sans-serif;color:#334155;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;white-space:pre-wrap;\">{{data.content}}</div></div>"
       }
     }
   ],
   "edges": [],
   "clusters": [],
-  "nodeCount": 5,
+  "nodeCount": 6,
   "edgeCount": 0,
-  "timestamp": "2026-03-24T15:44:08.007Z"
+  "timestamp": "2026-06-17T22:35:00.000Z"
 }
