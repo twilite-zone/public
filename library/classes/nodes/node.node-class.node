@@ -1,34 +1,26 @@
 {
-  "fileVersion": "1.0",
-  "metadata": {
-    "title": "Node Class Definition",
-    "description": "Canonical template for graph-native node classes.",
-    "created": "2026-02-18T14:43:54.824Z",
-    "modified": "2026-03-28T20:16:22.839Z",
-    "author": "",
-    "tags": []
-  },
+  "type": "nodegraph-data",
   "nodes": [
     {
-      "id": "node-class-manifest",
+      "id": "node-class-demo-manifest",
       "type": "manifest",
       "label": "Manifest",
       "position": {
-        "x": -620,
-        "y": -240
+        "x": -980,
+        "y": -1380
       },
-      "width": 360,
-      "height": 220,
+      "width": 380,
+      "height": 240,
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "node-class",
-          "name": "Node Class Definition",
-          "version": "0.1.0",
-          "description": "Canonical template for graph-native node classes.",
-          "createdAt": "2026-01-28T00:00:00.000Z",
-          "updatedAt": "2026-03-28T20:16:22.842Z"
+          "graphId": "node-class-demo",
+          "name": "Node Class Demo",
+          "version": "0.2.0",
+          "description": "Hybrid tutorial and node-class artifact proving that a class graph can define and immediately render reusable node instances.",
+          "createdAt": "2026-06-17T00:00:00.000Z",
+          "updatedAt": "2026-06-17T00:00:00.000Z"
         },
         "intent": {
           "kind": "node-class",
@@ -37,14 +29,16 @@
         "dependencies": {
           "nodeTypes": [
             "manifest",
-            "markdown",
             "bridge",
-            "title",
-            "type-definition",
-            "port-view",
-            "icon-view",
-            "node-view",
-            "editor-view"
+            "view",
+            "field",
+            "markdown",
+            "portal",
+            "tutorial-title",
+            "tutorial-concept",
+            "tutorial-example",
+            "tutorial-challenge",
+            "tutorial-checkpoint"
           ],
           "portContracts": [
             "core"
@@ -94,932 +88,1524 @@
             "key": "node",
             "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
             "source": "local",
-            "version": ">=0.1.0",
+            "version": ">=0.2.0",
             "defaults": {
               "label": "Node",
-              "size": {
-                "width": 360,
-                "height": 220
-              },
-              "showLabel": true,
-              "data": {
-                "content": ""
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "id": "node-class-title-port",
-      "type": "bridge",
-      "label": "Title",
-      "position": {
-        "x": -520,
-        "y": -260
-      },
-      "width": 180,
-      "height": 64,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "mode": "bridge",
-          "label": "Bridge",
-          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        },
-        "authority": "bridge",
-        "_classBinding": {
-          "key": "title",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "title",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      }
-    },
-    {
-      "id": "node-class-type-port",
-      "type": "bridge",
-      "label": "Type Definition",
-      "position": {
-        "x": -520,
-        "y": -170
-      },
-      "width": 180,
-      "height": 64,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "mode": "bridge",
-          "label": "Bridge",
-          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        },
-        "authority": "bridge",
-        "_classBinding": {
-          "key": "type-definition",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "type-definition",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      }
-    },
-    {
-      "id": "node-class-port-view-port",
-      "type": "bridge",
-      "label": "Port View",
-      "position": {
-        "x": -520,
-        "y": -80
-      },
-      "width": 180,
-      "height": 64,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "mode": "bridge",
-          "label": "Bridge",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        },
-        "authority": "bridge",
-        "_classBinding": {
-          "key": "port-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "port-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      }
-    },
-    {
-      "id": "node-class-icon-view-port",
-      "type": "bridge",
-      "label": "Icon View",
-      "position": {
-        "x": -520,
-        "y": 10
-      },
-      "width": 180,
-      "height": 64,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "mode": "bridge",
-          "label": "Bridge",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        },
-        "authority": "bridge",
-        "_classBinding": {
-          "key": "icon-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "icon-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      }
-    },
-    {
-      "id": "node-class-node-view-port",
-      "type": "bridge",
-      "label": "Node View",
-      "position": {
-        "x": -520,
-        "y": 100
-      },
-      "width": 180,
-      "height": 64,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "mode": "bridge",
-          "label": "Bridge",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        },
-        "authority": "bridge",
-        "_classBinding": {
-          "key": "node-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "node-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      }
-    },
-    {
-      "id": "node-class-editor-view-port",
-      "type": "bridge",
-      "label": "Editor View",
-      "position": {
-        "x": -520,
-        "y": 190
-      },
-      "width": 180,
-      "height": 64,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "mode": "bridge",
-          "label": "Bridge",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        },
-        "authority": "bridge",
-        "_classBinding": {
-          "key": "editor-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "editor-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      }
-    },
-    {
-      "id": "node-class-title",
-      "type": "title",
-      "label": "Title",
-      "position": {
-        "x": -220,
-        "y": -260
-      },
-      "width": 380,
-      "height": 220,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "Node Class Definition",
-        "subtitle": "Canonical template for graph-native node classes with explicit port, icon, node, and editor surfaces.",
-        "status": "active",
-        "_classBinding": {
-          "key": "title",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "identity": {
-            "graphId": "title-node-class",
-            "name": "Title Node Class",
-            "version": "0.1.0",
-            "description": "Template heading or major framing node for reusable graph structures.",
-            "createdAt": "2026-03-26T02:30:00.000Z",
-            "updatedAt": "2026-03-26T02:30:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "Template heading or major framing node for reusable graph structures.",
-          "description": "Template heading or major framing node for reusable graph structures.",
-          "defaults": {
-            "label": "Title",
-            "size": {
-              "width": 420,
-              "height": 240
-            },
-            "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "subtitle": "",
-              "intent": "headline",
-              "status": "draft"
-            }
-          },
-          "nodeDef": {
-            "key": "title",
-            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Title",
-              "size": {
-                "width": 420,
-                "height": 240
-              },
-              "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "subtitle": "",
-                "intent": "headline",
-                "status": "draft"
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "title",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "title",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "title",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "title",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "title",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "title",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceBridgeNodeId": "node-class-title-port",
-          "sourceBridgeLabel": "Title",
-          "targetKind": "node-class",
-          "classKey": "title",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
-        },
-        "definitionKey": "title",
-        "intent": "headline",
-        "isRoot": true,
-        "root": true
-      }
-    },
-    {
-      "id": "node-class-type",
-      "type": "type-definition",
-      "label": "Type",
-      "position": {
-        "x": 220,
-        "y": -250
-      },
-      "width": 320,
-      "height": 200,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "name": "Node Class Definition",
-        "key": "node",
-        "meaning": "Canonical reusable content node with markdown-backed node and editor surfaces.",
-        "status": "active",
-        "_classBinding": {
-          "key": "type-definition",
-          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "identity": {
-            "key": "type-definition",
-            "label": "Type Definition"
-          },
-          "meaning": "Declares a legend-facing type with its name, node class authority, and semantic meaning.",
-          "description": "Declares a legend-facing type with its name, node class authority, and semantic meaning.",
-          "defaults": {
-            "label": "Type Definition",
-            "size": {
-              "width": 420,
-              "height": 320
-            }
-          },
-          "views": [
-            {
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-            },
-            {
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-            },
-            {
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-            },
-            {
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-            }
-          ],
-          "nodeView": {
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-          },
-          "editorView": {
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-          }
-        },
-        "_bridge": {
-          "sourceBridgeNodeId": "node-class-type-port",
-          "sourceBridgeLabel": "Type Definition",
-          "targetKind": "node-class",
-          "classKey": "type-definition",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-        },
-        "definitionKey": "type-definition",
-        "classRef": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
-        "description": "Use this type as the base template when defining a new graph-native node class.",
-        "category": "library",
-        "isRoot": false,
-        "root": false
-      }
-    },
-    {
-      "id": "node-class-port-view",
-      "type": "port-view",
-      "label": "Port View",
-      "position": {
-        "x": 620,
-        "y": -270
-      },
-      "width": 360,
-      "height": 220,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "Node Class Definition",
-        "body": "Canonical node-class template with explicit port, icon, node, and editor surfaces.",
-        "titleSourceNodeId": "node-class-title",
-        "typeSourceNodeId": "node-class-type",
-        "viewRole": "port",
-        "viewKind": "display",
-        "exposedAuthority": "consume-view",
-        "_classBinding": {
-          "key": "port-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-          "identity": {
-            "graphId": "port-view-node-class",
-            "name": "Port View Node Class",
-            "version": "0.1.0",
-            "description": "A host-facing destination card surface for a graph or artifact.",
-            "createdAt": "2026-03-24T00:00:00.000Z",
-            "updatedAt": "2026-03-26T19:45:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "A host-facing destination card surface for a graph or artifact.",
-          "description": "A host-facing destination card surface for a graph or artifact.",
-          "defaults": {
-            "label": "Port View",
-            "size": {
-              "width": 420,
-              "height": 320
-            },
-            "color": "linear-gradient(135deg, #dcfce7, #34d399)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "purpose": "",
-              "audience": "",
-              "status": "draft"
-            }
-          },
-          "nodeDef": {
-            "key": "port-view",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Port View",
-              "size": {
-                "width": 420,
-                "height": 320
-              },
-              "color": "linear-gradient(135deg, #dcfce7, #34d399)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "purpose": "",
-                "audience": "",
-                "status": "draft"
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "port-view",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "port-view",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "port-view",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "port-view",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "port-view",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "port-view",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceBridgeNodeId": "node-class-port-view-port",
-          "sourceBridgeLabel": "Port View",
-          "targetKind": "node-class",
-          "classKey": "port-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node"
-        },
-        "definitionKey": "port-view",
-        "purpose": "Canonical node-class template with explicit port, icon, node, and editor surfaces.",
-        "audience": "Author",
-        "status": "active",
-        "isRoot": false,
-        "root": false
-      }
-    },
-    {
-      "id": "node-class-node-surface",
-      "type": "node-view",
-      "label": "Node View",
-      "position": {
-        "x": 620,
-        "y": -10
-      },
-      "width": 360,
-      "height": 220,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "Node View",
-        "purpose": "Primary on-graph node surface for instances of the canonical content node class.",
-        "titleSourceNodeId": "node-class-title",
-        "typeSourceNodeId": "node-class-type",
-        "viewRole": "node",
-        "viewKind": "interactive",
-        "exposedAuthority": "consume-view",
-        "audience": "Author",
-        "status": "active",
-        "_classBinding": {
-          "key": "node-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
-          "identity": {
-            "graphId": "node-view-node-class",
-            "name": "Node View Node Class",
-            "version": "0.1.0",
-            "description": "The ordinary on-graph instance surface for a node or artifact summary.",
-            "createdAt": "2026-03-28T00:00:00.000Z",
-            "updatedAt": "2026-03-28T00:00:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "The ordinary on-graph instance surface for a node or artifact summary.",
-          "description": "The ordinary on-graph instance surface for a node or artifact summary.",
-          "defaults": {
-            "label": "Node View",
-            "size": {
-              "width": 420,
-              "height": 320
-            },
-            "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "purpose": "",
-              "audience": "",
-              "status": "draft"
-            }
-          },
-          "nodeDef": {
-            "key": "node-view",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Node View",
-              "size": {
-                "width": 420,
-                "height": 320
-              },
-              "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "purpose": "",
-                "audience": "",
-                "status": "draft"
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "node-view",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "node-view",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "node-view",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "node-view",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "node-view",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "node-view",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceBridgeNodeId": "node-class-node-view-port",
-          "sourceBridgeLabel": "Node View",
-          "targetKind": "node-class",
-          "classKey": "node-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node"
-        },
-        "definitionKey": "node-view",
-        "isRoot": false,
-        "root": false,
-        "view": {
-          "intent": "node",
-          "payload": "node.web"
-        },
-        "node": {
-          "web": {
-            "markdown": "# {{label}}\n\n{{data.content}}"
-          }
-        }
-      }
-    },
-    {
-      "id": "node-class-editor-surface",
-      "type": "editor-view",
-      "label": "Editor View",
-      "position": {
-        "x": 1020,
-        "y": -10
-      },
-      "width": 360,
-      "height": 220,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "Editor View",
-        "purpose": "Structured interaction surface for editing the canonical content node.",
-        "titleSourceNodeId": "node-class-title",
-        "typeSourceNodeId": "node-class-type",
-        "viewRole": "editor",
-        "viewKind": "interactive",
-        "exposedAuthority": "consume-view",
-        "audience": "Author",
-        "status": "active",
-        "_classBinding": {
-          "key": "editor-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node",
-          "identity": {
-            "graphId": "editor-view-node-class",
-            "name": "Editor View Node Class",
-            "version": "0.1.0",
-            "description": "A structured editing surface for authoring and modifying graph artifacts.",
-            "createdAt": "2026-03-28T00:00:00.000Z",
-            "updatedAt": "2026-03-28T00:00:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "A structured editing surface for authoring and modifying graph artifacts.",
-          "description": "A structured editing surface for authoring and modifying graph artifacts.",
-          "defaults": {
-            "label": "Editor View",
-            "size": {
-              "width": 420,
-              "height": 260
-            },
-            "color": "linear-gradient(135deg, #ede9fe, #8b5cf6)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "purpose": "",
-              "audience": "",
-              "status": "draft"
-            }
-          },
-          "nodeDef": {
-            "key": "editor-view",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Editor View",
               "size": {
                 "width": 420,
                 "height": 260
               },
-              "color": "linear-gradient(135deg, #ede9fe, #8b5cf6)",
+              "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
               "showLabel": false,
               "data": {
-                "title": "",
-                "purpose": "",
-                "audience": "",
+                "title": "New Node",
+                "body": "Describe what this node means.",
                 "status": "draft"
-              }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "position": {
+                    "side": "right",
+                    "offset": 0.5
+                  }
+                }
+              ]
             }
-          },
-          "views": [
-            {
-              "key": "editor-view",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "editor-view",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "editor-view",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "editor-view",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "editor-view",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "editor-view",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
           }
+        }
+      }
+    },
+    {
+      "id": "tutorial-title-bridge",
+      "type": "bridge",
+      "label": "Tutorial Title",
+      "position": {
+        "x": -2440,
+        "y": -1380
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the tutorial title class.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "target": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Tutorial Title",
+          "key": "tutorial-title"
+        },
+        "identity": {
+          "graphId": "node-class-demo"
+        }
+      }
+    },
+    {
+      "id": "tutorial-concept-bridge",
+      "type": "bridge",
+      "label": "Tutorial Concept",
+      "position": {
+        "x": -2140,
+        "y": -1380
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the tutorial concept class.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "target": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Tutorial Concept",
+          "key": "tutorial-concept"
+        },
+        "identity": {
+          "graphId": "node-class-demo"
+        }
+      }
+    },
+    {
+      "id": "tutorial-example-bridge",
+      "type": "bridge",
+      "label": "Tutorial Example",
+      "position": {
+        "x": -1840,
+        "y": -1380
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the tutorial example class.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-example.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "target": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-example.node-class.node",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Tutorial Example",
+          "key": "tutorial-example"
+        },
+        "identity": {
+          "graphId": "node-class-demo"
+        }
+      }
+    },
+    {
+      "id": "tutorial-challenge-bridge",
+      "type": "bridge",
+      "label": "Tutorial Challenge",
+      "position": {
+        "x": -1540,
+        "y": -1380
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the tutorial challenge class.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-challenge.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "target": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-challenge.node-class.node",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Tutorial Challenge",
+          "key": "tutorial-challenge"
+        },
+        "identity": {
+          "graphId": "node-class-demo"
+        }
+      }
+    },
+    {
+      "id": "tutorial-checkpoint-bridge",
+      "type": "bridge",
+      "label": "Tutorial Checkpoint",
+      "position": {
+        "x": -1240,
+        "y": -1380
+      },
+      "width": 280,
+      "height": 120,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Bridge for the tutorial checkpoint class.",
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-checkpoint.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "target": {
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-checkpoint.node-class.node",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "label": "Tutorial Checkpoint",
+          "key": "tutorial-checkpoint"
+        },
+        "identity": {
+          "graphId": "node-class-demo"
+        }
+      }
+    },
+    {
+      "id": "node-class-demo-title",
+      "type": "tutorial-title",
+      "label": "Lesson Hero",
+      "root": true,
+      "position": {
+        "x": -330,
+        "y": -1060
+      },
+      "width": 640,
+      "height": 300,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Node Class Demo",
+        "body": "This graph is both the node class authority and the lesson. The fields and view nodes define the class, and the sample instances below prove that the class can immediately render real nodes.",
+        "_classBinding": {
+          "key": "tutorial-title",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node"
         },
         "_bridge": {
-          "sourceBridgeNodeId": "node-class-editor-view-port",
-          "sourceBridgeLabel": "Editor View",
-          "targetKind": "node-class",
-          "classKey": "editor-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/editor-view.node-class.node"
+          "classKey": "tutorial-title",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node"
         },
-        "definitionKey": "editor-view",
-        "isRoot": false,
-        "root": false,
+        "definitionKey": "tutorial-title",
+        "identity": {
+          "graphId": "node-class-demo"
+        }
+      }
+    },
+    {
+      "id": "node-class-demo-concept-authority",
+      "type": "tutorial-concept",
+      "label": "This Graph Is The Class",
+      "position": {
+        "x": -860,
+        "y": -600
+      },
+      "width": 360,
+      "height": 250,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "This Graph Is The Class",
+        "body": "The manifest says this graph is a `node-class` artifact. The field strip and view nodes are not commentary beside the class. They are the class payload that authors and renderers can resolve.",
+        "_classBinding": {
+          "key": "tutorial-concept",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-concept",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        },
+        "definitionKey": "tutorial-concept",
+        "identity": {
+          "graphId": "node-class-demo"
+        }
+      }
+    },
+    {
+      "id": "node-class-demo-concept-defaults",
+      "type": "tutorial-concept",
+      "label": "Defaults Shape The Spawn",
+      "position": {
+        "x": -410,
+        "y": -600
+      },
+      "width": 360,
+      "height": 250,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Defaults Shape The Spawn",
+        "body": "A node class is most useful when it gives new instances a good starting shape: size, color, starter data, and a readable surface. Reuse should feel intentional, not generic.",
+        "_classBinding": {
+          "key": "tutorial-concept",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-concept",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        },
+        "definitionKey": "tutorial-concept",
+        "identity": {
+          "graphId": "node-class-demo"
+        }
+      }
+    },
+    {
+      "id": "node-class-demo-concept-instance",
+      "type": "tutorial-concept",
+      "label": "Instances Still Diverge",
+      "position": {
+        "x": 40,
+        "y": -600
+      },
+      "width": 360,
+      "height": 250,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Instances Still Diverge",
+        "body": "A node instance still owns its current content. The class gives it a starting contract and rendering surfaces, but authors can still fill in different titles, bodies, and statuses.",
+        "_classBinding": {
+          "key": "tutorial-concept",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-concept",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        },
+        "definitionKey": "tutorial-concept",
+        "identity": {
+          "graphId": "node-class-demo"
+        }
+      }
+    },
+    {
+      "id": "node-class-demo-example",
+      "type": "tutorial-example",
+      "label": "Live Demo",
+      "position": {
+        "x": -960,
+        "y": 220
+      },
+      "width": 500,
+      "height": 280,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Live Demo",
+        "body": "Inspect the two sample nodes below. Both point back to this graph as their class authority. One stays close to the starter defaults, and the other shows how an instance can diverge while still staying inside the same node class.",
+        "_classBinding": {
+          "key": "tutorial-example",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-example.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-example",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-example.node-class.node"
+        },
+        "definitionKey": "tutorial-example",
+        "identity": {
+          "graphId": "node-class-demo"
+        }
+      }
+    },
+    {
+      "id": "node-class-demo-challenge",
+      "type": "tutorial-challenge",
+      "label": "Challenge",
+      "position": {
+        "x": 700,
+        "y": 220
+      },
+      "width": 420,
+      "height": 260,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Challenge",
+        "body": "Pick one useful node from your current graphs and turn it into a class. Give it a strong starter shape, define its editor surface, then prove it by binding at least one live instance back to the class artifact you authored.",
+        "_classBinding": {
+          "key": "tutorial-challenge",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-challenge.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-challenge",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-challenge.node-class.node"
+        },
+        "definitionKey": "tutorial-challenge",
+        "identity": {
+          "graphId": "node-class-demo"
+        }
+      }
+    },
+    {
+      "id": "node-class-demo-checkpoint",
+      "type": "tutorial-checkpoint",
+      "label": "Checkpoint",
+      "position": {
+        "x": -80,
+        "y": 620
+      },
+      "width": 560,
+      "height": 250,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Checkpoint",
+        "body": "You are done when you can say:\n- this graph is a real node-class artifact\n- the field nodes define the starter contract\n- the view nodes define how instances render and edit\n- the sample nodes are real instances whose authority points back here",
+        "_classBinding": {
+          "key": "tutorial-checkpoint",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-checkpoint.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "tutorial-checkpoint",
+          "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-checkpoint.node-class.node"
+        },
+        "definitionKey": "tutorial-checkpoint",
+        "identity": {
+          "graphId": "node-class-demo"
+        }
+      }
+    },
+    {
+      "id": "node-class-demo-field-key",
+      "type": "field",
+      "label": "",
+      "position": {
+        "x": -920,
+        "y": -170
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "nodeClass.key",
+        "fieldType": "string",
+        "value": "node"
+      }
+    },
+    {
+      "id": "node-class-demo-field-label",
+      "type": "field",
+      "label": "",
+      "position": {
+        "x": -640,
+        "y": -170
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "nodeClass.label",
+        "fieldType": "string",
+        "value": "Node"
+      }
+    },
+    {
+      "id": "node-class-demo-field-width",
+      "type": "field",
+      "label": "",
+      "position": {
+        "x": -360,
+        "y": -170
+      },
+      "width": 220,
+      "height": 120,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "nodeClass.width",
+        "fieldType": "number",
+        "value": 420
+      }
+    },
+    {
+      "id": "node-class-demo-field-height",
+      "type": "field",
+      "label": "",
+      "position": {
+        "x": -120,
+        "y": -170
+      },
+      "width": 220,
+      "height": 120,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "nodeClass.height",
+        "fieldType": "number",
+        "value": 260
+      }
+    },
+    {
+      "id": "node-class-demo-field-color",
+      "type": "field",
+      "label": "",
+      "position": {
+        "x": 120,
+        "y": -170
+      },
+      "width": 380,
+      "height": 120,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "nodeClass.color",
+        "fieldType": "string",
+        "value": "linear-gradient(135deg, #dbeafe, #60a5fa)"
+      }
+    },
+    {
+      "id": "node-class-demo-field-data",
+      "type": "field",
+      "label": "",
+      "position": {
+        "x": -760,
+        "y": -20
+      },
+      "width": 420,
+      "height": 120,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "nodeClass.data",
+        "fieldType": "json",
+        "value": "{\"title\": \"New Node\", \"body\": \"Describe what this node means.\", \"status\": \"draft\"}"
+      }
+    },
+    {
+      "id": "node-class-demo-field-required",
+      "type": "field",
+      "label": "",
+      "position": {
+        "x": -320,
+        "y": -20
+      },
+      "width": 260,
+      "height": 120,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "nodeClass.requiredDataKeys",
+        "fieldType": "json",
+        "value": "[\"title\"]"
+      }
+    },
+    {
+      "id": "node-class-demo-field-ports",
+      "type": "field",
+      "label": "",
+      "position": {
+        "x": -40,
+        "y": -20
+      },
+      "width": 420,
+      "height": 120,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "nodeClass.ports",
+        "fieldType": "json",
+        "value": "[{\"id\": \"root\", \"label\": \"root\", \"direction\": \"bidirectional\", \"dataType\": \"any\", \"position\": {\"side\": \"right\", \"offset\": 0.5}}]"
+      }
+    },
+    {
+      "id": "node-class-demo-editor-view",
+      "type": "view",
+      "label": "Editor View",
+      "position": {
+        "x": 560,
+        "y": -180
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
         "view": {
           "intent": "editor",
           "payload": "editor.web"
@@ -1028,13 +1614,40 @@
           "web": {
             "fields": [
               {
-                "key": "content",
-                "label": "Markdown",
+                "key": "title",
+                "label": "Title",
+                "type": "text",
+                "path": "data.title",
+                "placeholder": "Node title"
+              },
+              {
+                "key": "body",
+                "label": "Body",
                 "type": "markdown",
-                "path": "data.content",
-                "placeholder": "Enter markdown…",
+                "path": "data.body",
+                "placeholder": "Describe this node",
                 "multiline": true,
-                "rows": 10
+                "rows": 6
+              },
+              {
+                "key": "status",
+                "label": "Status",
+                "type": "select",
+                "path": "data.status",
+                "options": [
+                  {
+                    "label": "Draft",
+                    "value": "draft"
+                  },
+                  {
+                    "label": "Active",
+                    "value": "active"
+                  },
+                  {
+                    "label": "Archived",
+                    "value": "archived"
+                  }
+                ]
               }
             ]
           }
@@ -1042,289 +1655,916 @@
       }
     },
     {
-      "id": "node-class-icon-view",
-      "type": "icon-view",
-      "label": "Icon View",
+      "id": "node-class-demo-node-view",
+      "type": "view",
+      "label": "Detail View",
       "position": {
         "x": 1020,
-        "y": -270
+        "y": -180
       },
-      "width": 280,
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;gap:14px;padding:18px;box-sizing:border-box;background:linear-gradient(135deg,#eff6ff,#bfdbfe);border:1px solid rgba(37,99,235,0.18);border-radius:20px;color:#0f172a;font-family:ui-sans-serif,system-ui,sans-serif;overflow:auto;\"><div style=\"font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1d4ed8;\">Node</div><div style=\"font-size:28px;font-weight:800;line-height:1.1;\">{{data.title}}</div><div style=\"font-size:14px;line-height:1.6;color:#334155;white-space:pre-wrap;\">{{data.body}}</div><div style=\"margin-top:auto;display:inline-flex;align-self:flex-start;padding:6px 10px;border-radius:999px;background:rgba(29,78,216,0.1);font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1e3a8a;\">{{data.status}}</div></div>"
+      }
+    },
+    {
+      "id": "node-class-demo-summary-view",
+      "type": "view",
+      "label": "Summary View",
+      "position": {
+        "x": 1020,
+        "y": 120
+      },
+      "width": 360,
       "height": 220,
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Node Class",
-        "body": "Base node class",
-        "svg": "<svg viewBox=\"0 0 64 64\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"nodeClassG\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#fde68a\"/><stop offset=\"100%\" stop-color=\"#f59e0b\"/></linearGradient></defs><rect x=\"10\" y=\"12\" width=\"44\" height=\"40\" rx=\"12\" fill=\"url(#nodeClassG)\"/><rect x=\"18\" y=\"22\" width=\"28\" height=\"5\" rx=\"2.5\" fill=\"#3b2608\" opacity=\".9\"/><rect x=\"18\" y=\"33\" width=\"18\" height=\"5\" rx=\"2.5\" fill=\"#3b2608\" opacity=\".72\"/><circle cx=\"44\" cy=\"39\" r=\"5\" fill=\"#3b2608\" opacity=\".82\"/></svg>",
-        "titleSourceNodeId": "node-class-title",
-        "typeSourceNodeId": "node-class-type",
-        "viewRole": "icon",
-        "viewKind": "display",
-        "exposedAuthority": "consume-view",
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:18px;box-sizing:border-box;background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid rgba(37,99,235,0.14);border-radius:18px;color:#0f172a;font-family:ui-sans-serif,system-ui,sans-serif;\"><div style=\"font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2563eb;\">Node</div><div style=\"font-size:20px;font-weight:800;line-height:1.1;\">{{data.title}}</div><div style=\"font-size:13px;line-height:1.5;color:#475569;\">{{data.status}}</div></div>"
+      }
+    },
+    {
+      "id": "node-class-demo-icon-view",
+      "type": "view",
+      "label": "Icon View",
+      "position": {
+        "x": 1020,
+        "y": 380
+      },
+      "width": 320,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "svg": "<svg viewBox=\"0 0 160 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"124\" height=\"124\" rx=\"24\" fill=\"#eff6ff\" stroke=\"#2563eb\" stroke-width=\"7\"/><rect x=\"40\" y=\"46\" width=\"80\" height=\"12\" rx=\"6\" fill=\"#2563eb\" opacity=\"0.24\"/><rect x=\"40\" y=\"70\" width=\"64\" height=\"10\" rx=\"5\" fill=\"#60a5fa\" opacity=\"0.55\"/><rect x=\"40\" y=\"94\" width=\"52\" height=\"10\" rx=\"5\" fill=\"#93c5fd\" opacity=\"0.9\"/></svg>"
+      }
+    },
+    {
+      "id": "node-class-demo-instance-starter",
+      "type": "node",
+      "label": "Node",
+      "position": {
+        "x": -260,
+        "y": 260
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Starter Node",
+        "body": "This instance stays close to the class defaults and shows the baseline card the class wants to create.",
+        "status": "draft",
         "_classBinding": {
-          "key": "icon-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+          "key": "node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
           "identity": {
-            "graphId": "icon-view-node-class",
-            "name": "Icon View Node Class",
-            "version": "0.1.0",
-            "description": "A minimal semantic-zoom identity surface for a graph or artifact.",
-            "createdAt": "2026-03-24T00:00:00.000Z",
-            "updatedAt": "2026-03-26T19:45:00.000Z"
+            "graphId": "node-class-demo",
+            "name": "Node Class Demo",
+            "version": "0.2.0",
+            "description": "Hybrid tutorial and node-class artifact proving that a class graph can define and immediately render reusable node instances."
           },
           "intent": "node-class",
-          "meaning": "A minimal semantic-zoom identity surface for a graph or artifact.",
-          "description": "A minimal semantic-zoom identity surface for a graph or artifact.",
+          "meaning": "A reusable starter card for graph-native content nodes.",
+          "description": "Defines a general-purpose node class with starter data, a detail view, an icon view, and an editor surface.",
           "defaults": {
-            "label": "Icon View",
+            "label": "Node",
             "size": {
               "width": 420,
-              "height": 320
+              "height": 260
             },
             "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
             "showLabel": false,
             "data": {
-              "title": "",
-              "purpose": "",
-              "audience": "",
+              "title": "New Node",
+              "body": "Describe what this node means.",
               "status": "draft"
-            }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "position": {
+                  "side": "right",
+                  "offset": 0.5
+                }
+              }
+            ]
           },
           "nodeDef": {
-            "key": "icon-view",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+            "key": "node",
+            "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
             "source": "local",
-            "version": ">=0.1.0",
+            "version": ">=0.2.0",
             "defaults": {
-              "label": "Icon View",
+              "label": "Node",
               "size": {
                 "width": 420,
-                "height": 320
+                "height": 260
               },
               "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
               "showLabel": false,
               "data": {
-                "title": "",
-                "purpose": "",
-                "audience": "",
+                "title": "New Node",
+                "body": "Describe what this node means.",
                 "status": "draft"
-              }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "position": {
+                    "side": "right",
+                    "offset": 0.5
+                  }
+                }
+              ]
             }
           },
           "views": [
             {
-              "key": "icon-view",
+              "key": "node",
               "intent": "editor",
               "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
               "source": "local",
-              "version": ">=0.1.0"
+              "version": ">=0.2.0"
             },
             {
-              "key": "icon-view",
+              "key": "node",
               "intent": "node",
               "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
               "source": "local",
-              "version": ">=0.1.0"
+              "version": ">=0.2.0"
             },
             {
-              "key": "icon-view",
+              "key": "node",
               "intent": "node",
               "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
               "source": "local",
-              "version": ">=0.1.0"
+              "version": ">=0.2.0"
             },
             {
-              "key": "icon-view",
+              "key": "node",
               "intent": "node",
               "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
               "source": "local",
-              "version": ">=0.1.0"
+              "version": ">=0.2.0"
             }
           ],
           "nodeView": {
-            "key": "icon-view",
+            "key": "node",
             "intent": "node",
             "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+            "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
             "source": "local",
-            "version": ">=0.1.0"
+            "version": ">=0.2.0"
           },
           "editorView": {
-            "key": "icon-view",
+            "key": "node",
             "intent": "editor",
             "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+            "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
             "source": "local",
-            "version": ">=0.1.0"
+            "version": ">=0.2.0"
           }
         },
-        "_bridge": {
-          "sourceBridgeNodeId": "node-class-icon-view-port",
-          "sourceBridgeLabel": "Icon View",
-          "targetKind": "node-class",
-          "classKey": "icon-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node"
-        },
-        "definitionKey": "icon-view",
-        "purpose": "Minimal semantic-zoom identity surface for the canonical node class template.",
-        "audience": "Author",
-        "status": "active",
-        "isRoot": false,
-        "root": false
+        "definitionKey": "node"
       }
     },
     {
-      "id": "node-class-notes",
-      "type": "markdown",
-      "label": "Node Class Notes",
+      "id": "node-class-demo-instance-custom",
+      "type": "node",
+      "label": "Node",
       "position": {
-        "x": 560,
+        "x": 260,
         "y": 260
       },
-      "width": 520,
-      "height": 220,
+      "width": 420,
+      "height": 260,
       "visible": true,
-      "showLabel": true,
+      "showLabel": false,
       "data": {
-        "markdown": "# Node Class Definition\n\nThis graph is now the canonical template for graph-native node classes.\n\n- `Port View` exposes the class artifact to host graphs\n- `Icon View` gives semantic-zoom identity\n- `Node View` carries the ordinary `node.web` implementation\n- `Editor View` carries the ordinary `editor.web` implementation\n- the default base node still renders markdown from `data.content`",
+        "title": "Customized Node",
+        "body": "This instance overrides the text and status, but it still renders through the same class-defined surfaces.",
+        "status": "active",
         "_classBinding": {
-          "key": "markdown",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "key": "node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
           "identity": {
-            "graphId": "markdown_class",
-            "name": "markdown Node Class",
-            "version": "0.1.0",
-            "description": "Canonical markdown content node.",
-            "createdAt": "2026-02-24T20:05:15Z",
-            "updatedAt": "2026-03-24T01:20:00.000Z"
+            "graphId": "node-class-demo",
+            "name": "Node Class Demo",
+            "version": "0.2.0",
+            "description": "Hybrid tutorial and node-class artifact proving that a class graph can define and immediately render reusable node instances."
           },
-          "intent": "graph",
-          "meaning": "Canonical markdown content node.",
-          "description": "Canonical markdown content node.",
-          "defaults": {},
+          "intent": "node-class",
+          "meaning": "A reusable starter card for graph-native content nodes.",
+          "description": "Defines a general-purpose node class with starter data, a detail view, an icon view, and an editor surface.",
+          "defaults": {
+            "label": "Node",
+            "size": {
+              "width": 420,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
+            "showLabel": false,
+            "data": {
+              "title": "New Node",
+              "body": "Describe what this node means.",
+              "status": "draft"
+            },
+            "ports": [
+              {
+                "id": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "position": {
+                  "side": "right",
+                  "offset": 0.5
+                }
+              }
+            ]
+          },
           "nodeDef": {
-            "key": "markdown",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+            "key": "node",
+            "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
             "source": "local",
-            "version": ">=0.1.0"
+            "version": ">=0.2.0",
+            "defaults": {
+              "label": "Node",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
+              "showLabel": false,
+              "data": {
+                "title": "New Node",
+                "body": "Describe what this node means.",
+                "status": "draft"
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "position": {
+                    "side": "right",
+                    "offset": 0.5
+                  }
+                }
+              ]
+            }
           },
           "views": [
             {
-              "key": "markdown",
+              "key": "node",
               "intent": "editor",
               "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
               "source": "local",
-              "version": ">=0.1.0"
+              "version": ">=0.2.0"
             },
             {
-              "key": "markdown",
+              "key": "node",
               "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+              "payload": "node.web.detail",
+              "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
               "source": "local",
-              "version": ">=0.1.0"
+              "version": ">=0.2.0"
+            },
+            {
+              "key": "node",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
+              "source": "local",
+              "version": ">=0.2.0"
+            },
+            {
+              "key": "node",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
+              "source": "local",
+              "version": ">=0.2.0"
             }
           ],
           "nodeView": {
-            "key": "markdown",
+            "key": "node",
             "intent": "node",
-            "payload": "node.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+            "payload": "node.web.detail",
+            "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
             "source": "local",
-            "version": ">=0.1.0"
+            "version": ">=0.2.0"
           },
           "editorView": {
-            "key": "markdown",
+            "key": "node",
             "intent": "editor",
             "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+            "ref": "github://twilite-zone/public/library/classes/nodes/node.node-class.node",
             "source": "local",
-            "version": ">=0.1.0"
+            "version": ">=0.2.0"
           }
         },
-        "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "markdown",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        "definitionKey": "node"
+      }
+    },
+    {
+      "id": "node-class-demo-back",
+      "type": "portal",
+      "label": "Back To Node Class Authoring",
+      "position": {
+        "x": -320,
+        "y": 980
+      },
+      "width": 340,
+      "height": 190,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
         },
-        "definitionKey": "markdown"
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Return to the node-class authoring tutorial.",
+        "intent": "external",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/advanced-authoring/node-class/root.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "portId": "root",
+          "ref": "github://twilite-zone/public/tutorial/advanced-authoring/node-class/root.node",
+          "handleId": "root"
+        },
+        "security": "prompt",
+        "identity": {
+          "graphId": "node-class-demo"
+        },
+        "authority": "navigate",
+        "ref": "github://twilite-zone/public/tutorial/advanced-authoring/node-class/root.node",
+        "src": "github://twilite-zone/public/tutorial/advanced-authoring/node-class/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/advanced-authoring/node-class/root.node:root",
+        "sourceNodeId": "root",
+        "sourcePayload": "node.web.detail",
+        "sourceRef": "github://twilite-zone/public/tutorial/advanced-authoring/node-class/root.node"
+      }
+    },
+    {
+      "id": "node-class-demo-markdown-class",
+      "type": "portal",
+      "label": "See Markdown Class",
+      "position": {
+        "x": 100,
+        "y": 980
+      },
+      "width": 340,
+      "height": 190,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Open a concrete specialization of a node class.",
+        "intent": "external",
+        "target": {
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "portId": "root",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "handleId": "root"
+        },
+        "security": "prompt",
+        "identity": {
+          "graphId": "node-class-demo"
+        },
+        "authority": "navigate",
+        "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+        "src": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+        "endpoint": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node:root",
+        "sourceNodeId": "root",
+        "sourcePayload": "node.web.detail",
+        "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
       }
     }
   ],
   "edges": [
     {
-      "id": "node-class-edge-title-type",
-      "source": "node-class-title",
-      "target": "node-class-type",
-      "label": "declares type"
+      "id": "node-class-demo-edge-title-authority",
+      "type": "reference",
+      "source": "node-class-demo-title",
+      "target": "node-class-demo-concept-authority",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "authority",
+      "style": {},
+      "data": {}
     },
     {
-      "id": "node-class-edge-type-port-view",
-      "source": "node-class-type",
-      "target": "node-class-port-view",
-      "label": "host view"
+      "id": "node-class-demo-edge-title-defaults",
+      "type": "reference",
+      "source": "node-class-demo-title",
+      "target": "node-class-demo-concept-defaults",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "defaults",
+      "style": {},
+      "data": {}
     },
     {
-      "id": "node-class-edge-title-port-view",
-      "source": "node-class-title",
-      "target": "node-class-port-view",
-      "label": "host view"
+      "id": "node-class-demo-edge-title-instance",
+      "type": "reference",
+      "source": "node-class-demo-title",
+      "target": "node-class-demo-concept-instance",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "instances",
+      "style": {},
+      "data": {}
     },
     {
-      "id": "node-class-edge-type-icon-view",
-      "source": "node-class-type",
-      "target": "node-class-icon-view",
-      "label": "semantic zoom"
+      "id": "node-class-demo-edge-authority-key",
+      "type": "reference",
+      "source": "node-class-demo-concept-authority",
+      "target": "node-class-demo-field-key",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "key",
+      "style": {},
+      "data": {}
     },
     {
-      "id": "node-class-edge-title-icon-view",
-      "source": "node-class-title",
-      "target": "node-class-icon-view",
-      "label": "semantic zoom"
+      "id": "node-class-demo-edge-defaults-label",
+      "type": "reference",
+      "source": "node-class-demo-concept-defaults",
+      "target": "node-class-demo-field-label",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "label",
+      "style": {},
+      "data": {}
     },
     {
-      "id": "node-class-edge-title-notes",
-      "source": "node-class-title",
-      "target": "node-class-notes",
-      "label": "notes"
+      "id": "node-class-demo-edge-defaults-width",
+      "type": "reference",
+      "source": "node-class-demo-concept-defaults",
+      "target": "node-class-demo-field-width",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "width",
+      "style": {},
+      "data": {}
     },
     {
-      "id": "node-class-edge-type-node-view",
-      "source": "node-class-type",
-      "target": "node-class-node-surface",
-      "label": "instance surface"
+      "id": "node-class-demo-edge-defaults-height",
+      "type": "reference",
+      "source": "node-class-demo-concept-defaults",
+      "target": "node-class-demo-field-height",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "height",
+      "style": {},
+      "data": {}
     },
     {
-      "id": "node-class-edge-title-node-view",
-      "source": "node-class-title",
-      "target": "node-class-node-surface",
-      "label": "instance surface"
+      "id": "node-class-demo-edge-defaults-color",
+      "type": "reference",
+      "source": "node-class-demo-concept-defaults",
+      "target": "node-class-demo-field-color",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "color",
+      "style": {},
+      "data": {}
     },
     {
-      "id": "node-class-edge-type-editor-view",
-      "source": "node-class-type",
-      "target": "node-class-editor-surface",
-      "label": "interaction surface"
+      "id": "node-class-demo-edge-defaults-data",
+      "type": "reference",
+      "source": "node-class-demo-concept-defaults",
+      "target": "node-class-demo-field-data",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "data",
+      "style": {},
+      "data": {}
     },
     {
-      "id": "node-class-edge-title-editor-view",
-      "source": "node-class-title",
-      "target": "node-class-editor-surface",
-      "label": "interaction surface"
+      "id": "node-class-demo-edge-defaults-required",
+      "type": "reference",
+      "source": "node-class-demo-concept-defaults",
+      "target": "node-class-demo-field-required",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "required",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "node-class-demo-edge-defaults-ports",
+      "type": "reference",
+      "source": "node-class-demo-concept-defaults",
+      "target": "node-class-demo-field-ports",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "ports",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "node-class-demo-edge-defaults-editor",
+      "type": "reference",
+      "source": "node-class-demo-concept-defaults",
+      "target": "node-class-demo-editor-view",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "editor",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "node-class-demo-edge-defaults-detail",
+      "type": "reference",
+      "source": "node-class-demo-concept-defaults",
+      "target": "node-class-demo-node-view",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "detail",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "node-class-demo-edge-defaults-summary",
+      "type": "reference",
+      "source": "node-class-demo-concept-defaults",
+      "target": "node-class-demo-summary-view",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "summary",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "node-class-demo-edge-defaults-icon",
+      "type": "reference",
+      "source": "node-class-demo-concept-defaults",
+      "target": "node-class-demo-icon-view",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "icon",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "node-class-demo-edge-example-starter",
+      "type": "reference",
+      "source": "node-class-demo-example",
+      "target": "node-class-demo-instance-starter",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "spawn",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "node-class-demo-edge-example-custom",
+      "type": "reference",
+      "source": "node-class-demo-example",
+      "target": "node-class-demo-instance-custom",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "override",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "node-class-demo-edge-instance-challenge",
+      "type": "reference",
+      "source": "node-class-demo-concept-instance",
+      "target": "node-class-demo-challenge",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "apply",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "node-class-demo-edge-custom-checkpoint",
+      "type": "reference",
+      "source": "node-class-demo-instance-custom",
+      "target": "node-class-demo-checkpoint",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "verify",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "node-class-demo-edge-challenge-checkpoint",
+      "type": "reference",
+      "source": "node-class-demo-challenge",
+      "target": "node-class-demo-checkpoint",
+      "sourcePort": "left",
+      "targetPort": "right",
+      "label": "practice",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "node-class-demo-edge-checkpoint-back",
+      "type": "reference",
+      "source": "node-class-demo-checkpoint",
+      "target": "node-class-demo-back",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "authoring",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "node-class-demo-edge-checkpoint-markdown",
+      "type": "reference",
+      "source": "node-class-demo-checkpoint",
+      "target": "node-class-demo-markdown-class",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "specialize",
+      "style": {},
+      "data": {}
     }
   ]
 }
