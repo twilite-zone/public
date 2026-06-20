@@ -1,17 +1,20 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Legend + Type Demo",
-    "description": "A small consumer graph that imports a catalog via a bridge so the Legend tab becomes a real creation surface (node classes + meaning).",
-    "created": "2026-04-28T00:00:00.000Z",
-    "modified": "2026-04-28T00:00:00.000Z",
+    "title": "Bridge Import Demo",
+    "description": "Consumer graph demonstrating that imported bridge catalogs can populate creation affordances like the legend.",
+    "graphId": "tutorial-bridge-import-demo",
+    "version": "0.2.0",
+    "kind": "tutorial",
+    "created": "2026-06-20T00:00:00.000Z",
+    "modified": "2026-06-20T00:00:00.000Z",
     "author": "",
     "tags": [
       "tutorial",
-      "legend",
-      "type-definition",
+      "bridge",
       "demo"
-    ]
+    ],
+    "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
     {
@@ -19,8 +22,8 @@
       "type": "declaration",
       "label": "Declaration",
       "position": {
-        "x": -260,
-        "y": -220
+        "x": -900,
+        "y": -900
       },
       "width": 360,
       "height": 220,
@@ -28,54 +31,27 @@
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "legend-type-demo",
-          "name": "Legend + Type Demo.Document",
-          "version": "0.1.0",
-          "description": "Bridge-import a catalog so Legend entries are discoverable and spawnable.",
-          "createdAt": "2026-04-28T00:00:00.000Z",
-          "updatedAt": "2026-04-28T00:00:00.000Z"
+          "graphId": "tutorial-bridge-import-demo",
+          "name": "Bridge Import Demo",
+          "version": "0.2.0",
+          "description": "Consumer graph demonstrating that imported bridge catalogs can populate creation affordances like the legend."
         },
         "intent": {
-          "kind": "graph",
-          "scope": "mixed"
+          "kind": "tutorial",
+          "scope": "local"
         },
-        "dependencies": {
-          "nodeTypes": [
-            "declaration",
-            "ui-view",
-            "markdown",
-            "bridge"
-          ],
-          "portContracts": [
-            "core"
-          ],
-          "skills": [],
-          "schemaVersions": {
-            "nodes": ">=1.0.0",
-            "ports": ">=1.0.0"
-          },
-          "optional": []
-        },
-        "authority": {
-          "mutation": {
-            "allowCreate": true,
-            "allowUpdate": true,
-            "allowDelete": true,
-            "appendOnly": false
-          },
-          "actors": {
-            "humans": true,
-            "agents": true,
-            "tools": true
-          },
-          "styleAuthority": "descriptive",
-          "history": {
-            "rewriteAllowed": false,
-            "squashAllowed": false
-          }
-        },
-        "document": {
-          "url": ""
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "legend-type-demo-reader-surface",
+          "surfaces": [
+            {
+              "id": "legend-type-demo-reader-surface",
+              "kind": "view",
+              "label": "Reader",
+              "memo": "Primary reader surface for the bridge import demo.",
+              "viewNodeId": "legend-type-demo-view"
+            }
+          ]
         },
         "settings": {
           "theme": null,
@@ -86,36 +62,36 @@
           "gridSize": 20,
           "edgeRouting": "auto",
           "autoSave": false
+        },
+        "document": {
+          "url": ""
         }
       }
     },
     {
       "id": "legend-type-demo-view",
-      "type": "ui-view",
-      "label": "node.web.summary",
+      "type": "port",
+      "label": "Reader",
       "position": {
-        "x": 140,
-        "y": -220
+        "x": -420,
+        "y": -900
       },
       "width": 460,
-      "height": 280,
+      "height": 240,
       "visible": true,
       "showLabel": true,
       "data": {
-        "payload": "node.web.summary",
-        "title": "Legend + Type Demo",
-        "purpose": "This consumer graph imports a catalog via a bridge. The **Legend** tab is then able to list node classes (with meaning) and spawn them into the graph.\n\nGoal: make the Legend a real, deterministic creation surface (not a manual list).",
-        "status": "active",
-        "viewRole": "summary",
-        "viewKind": "display",
-        "exposedAuthority": "consume-view",
-        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"18\" fill=\"#eff6ff\" stroke=\"#2563eb\" stroke-width=\"5\"/><path d=\"M52 62h116\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\"/><path d=\"M52 98h72\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\" opacity=\"0.6\"/><circle cx=\"160\" cy=\"98\" r=\"14\" fill=\"#2563eb\"/></svg>",
-        "_classBinding": {
-          "key": "ui-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+        "identity": {
+          "graphId": "tutorial-bridge-import-demo"
         },
-        "definitionKey": "ui-view"
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "# Bridge Import Demo\n\nThis graph is the consumer.\n\nIt imports a catalog graph through a bridge. The legend can then derive real creation entries from what the catalog exposes."
       }
     },
     {
@@ -123,15 +99,18 @@
       "type": "markdown",
       "label": "Instructions",
       "position": {
-        "x": -260,
-        "y": 40
+        "x": 100,
+        "y": -900
       },
       "width": 520,
-      "height": 360,
+      "height": 300,
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Try it\n\n1) Click the **Legend** tab (left side).\n2) You should see entries for the catalog node classes (ex: `summary-view`, `field`).\n3) Click the **+** icon next to an entry to spawn a node.\n\nIf the list is empty:\n- Ensure the bridge has `create` grant.\n- Ensure the catalog graph is reachable.\n\nThis graph is the consumer; the catalog graph is where the entries are declared."
+        "identity": {
+          "graphId": "tutorial-bridge-import-demo"
+        },
+        "markdown": "## Try It\n\n1. Open the legend.\n2. Look for the imported class entries.\n3. Use the create affordance to spawn one.\n\nIf nothing appears:\n- make sure the bridge has `create`\n- make sure the target graph is reachable\n- make sure the catalog actually contains bridge targets"
       }
     },
     {
@@ -139,15 +118,15 @@
       "type": "bridge",
       "label": "Catalog Bridge",
       "position": {
-        "x": 140,
-        "y": 90
+        "x": 660,
+        "y": -900
       },
       "width": 420,
-      "height": 160,
+      "height": 170,
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Imports the legend/type catalog. Legend tab derives entries from the target graph's bridge/port structure.",
+        "memo": "Imports the bridge catalog so creation entries can be derived in this graph.",
         "authority": "bridge",
         "bridge": {
           "ref": "github://twilite-zone/public/tutorial/legend-type-catalog.document.node",
@@ -184,13 +163,81 @@
           "grants": [
             "create"
           ],
-          "label": "Legend/Type Catalog"
+          "label": "Bridge Import Catalog"
         }
+      }
+    },
+    {
+      "id": "legend-type-demo-open-catalog",
+      "type": "portal",
+      "label": "Open Catalog",
+      "position": {
+        "x": 1140,
+        "y": -900
+      },
+      "width": 320,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-bridge-import-demo"
+        },
+        "memo": "Open the catalog graph that supplies the imported class entries.",
+        "intent": "external",
+        "authority": "navigate",
+        "security": "prompt",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/legend-type-catalog.document.node:root",
+          "mode": "navigate",
+          "label": "Open",
+          "ref": "github://twilite-zone/public/tutorial/legend-type-catalog.document.node",
+          "portId": "root",
+          "handleId": "root"
+        },
+        "ref": "github://twilite-zone/public/tutorial/legend-type-catalog.document.node",
+        "src": "github://twilite-zone/public/tutorial/legend-type-catalog.document.node",
+        "endpoint": "github://twilite-zone/public/tutorial/legend-type-catalog.document.node:root",
+        "sourceRef": "github://twilite-zone/public/tutorial/legend-type-catalog.document.node"
       }
     }
   ],
-  "edges": [],
-  "timestamp": "2026-04-28T00:00:00.000Z",
-  "nodeCount": 4,
-  "edgeCount": 0
+  "edges": [
+    {
+      "id": "legend-type-demo-edge-reader-instructions",
+      "type": "reference",
+      "source": "legend-type-demo-view",
+      "target": "legend-type-demo-instructions",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "try it",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "legend-type-demo-edge-instructions-bridge",
+      "type": "reference",
+      "source": "legend-type-demo-instructions",
+      "target": "legend-type-demo-import-catalog",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "import",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "legend-type-demo-edge-bridge-catalog",
+      "type": "reference",
+      "source": "legend-type-demo-import-catalog",
+      "target": "legend-type-demo-open-catalog",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "inspect",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "timestamp": "2026-06-20T00:00:00.000Z",
+  "nodeCount": 5,
+  "edgeCount": 3
 }

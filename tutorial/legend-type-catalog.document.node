@@ -1,17 +1,20 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Legend/Type Catalog",
-    "description": "A small catalog graph that exposes node classes via bridge nodes. Consumers can point a bridge at this graph to populate the Legend tab.",
-    "created": "2026-04-28T00:00:00.000Z",
-    "modified": "2026-04-28T00:00:00.000Z",
+    "title": "Bridge Import Catalog",
+    "description": "Small catalog graph that exposes node classes through bridge nodes for legend discovery and creation demos.",
+    "graphId": "tutorial-bridge-import-catalog",
+    "version": "0.2.0",
+    "kind": "tutorial",
+    "created": "2026-06-20T00:00:00.000Z",
+    "modified": "2026-06-20T00:00:00.000Z",
     "author": "",
     "tags": [
       "tutorial",
-      "legend",
-      "type-definition",
+      "bridge",
       "catalog"
-    ]
+    ],
+    "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
     {
@@ -19,8 +22,8 @@
       "type": "declaration",
       "label": "Declaration",
       "position": {
-        "x": -260,
-        "y": -220
+        "x": -900,
+        "y": -900
       },
       "width": 360,
       "height": 220,
@@ -28,54 +31,27 @@
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "legend-type-catalog",
-          "name": "Legend/Type Catalog.Document",
-          "version": "0.1.0",
-          "description": "Catalog of node classes for legend population demos.",
-          "createdAt": "2026-04-28T00:00:00.000Z",
-          "updatedAt": "2026-04-28T00:00:00.000Z"
+          "graphId": "tutorial-bridge-import-catalog",
+          "name": "Bridge Import Catalog",
+          "version": "0.2.0",
+          "description": "Small catalog graph that exposes node classes through bridge nodes for legend discovery and creation demos."
         },
         "intent": {
-          "kind": "graph",
-          "scope": "mixed"
+          "kind": "tutorial",
+          "scope": "local"
         },
-        "dependencies": {
-          "nodeTypes": [
-            "declaration",
-            "ui-view",
-            "markdown",
-            "bridge"
-          ],
-          "portContracts": [
-            "core"
-          ],
-          "skills": [],
-          "schemaVersions": {
-            "nodes": ">=1.0.0",
-            "ports": ">=1.0.0"
-          },
-          "optional": []
-        },
-        "authority": {
-          "mutation": {
-            "allowCreate": true,
-            "allowUpdate": true,
-            "allowDelete": true,
-            "appendOnly": false
-          },
-          "actors": {
-            "humans": true,
-            "agents": true,
-            "tools": true
-          },
-          "styleAuthority": "descriptive",
-          "history": {
-            "rewriteAllowed": false,
-            "squashAllowed": false
-          }
-        },
-        "document": {
-          "url": ""
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "legend-type-catalog-reader-surface",
+          "surfaces": [
+            {
+              "id": "legend-type-catalog-reader-surface",
+              "kind": "view",
+              "label": "Reader",
+              "memo": "Primary reader surface for the bridge import catalog.",
+              "viewNodeId": "legend-type-catalog-view"
+            }
+          ]
         },
         "settings": {
           "theme": null,
@@ -86,36 +62,36 @@
           "gridSize": 20,
           "edgeRouting": "auto",
           "autoSave": false
+        },
+        "document": {
+          "url": ""
         }
       }
     },
     {
       "id": "legend-type-catalog-view",
-      "type": "ui-view",
-      "label": "node.web.summary",
+      "type": "port",
+      "label": "Reader",
       "position": {
-        "x": 140,
-        "y": -220
+        "x": -420,
+        "y": -900
       },
       "width": 460,
-      "height": 280,
+      "height": 240,
       "visible": true,
       "showLabel": true,
       "data": {
-        "payload": "node.web.summary",
-        "title": "Legend/Type Catalog",
-        "purpose": "This graph intentionally contains bridge nodes that point at node-class graphs. A consumer graph can point a bridge at this catalog to populate the Legend tab with node classes.",
-        "status": "active",
-        "viewRole": "summary",
-        "viewKind": "display",
-        "exposedAuthority": "consume-view",
-        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"18\" fill=\"#eef2ff\" stroke=\"#4338ca\" stroke-width=\"5\"/><path d=\"M52 62h116\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\"/><path d=\"M52 98h80\" stroke=\"#111827\" stroke-width=\"10\" stroke-linecap=\"round\" opacity=\"0.6\"/><circle cx=\"160\" cy=\"98\" r=\"14\" fill=\"#4338ca\"/></svg>",
-        "_classBinding": {
-          "key": "ui-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+        "identity": {
+          "graphId": "tutorial-bridge-import-catalog"
         },
-        "definitionKey": "ui-view"
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "# Bridge Import Catalog\n\nThis graph is not the consumer.\n\nIts job is to hold the bridge targets that another graph can import so the legend can offer real creation entries."
       }
     },
     {
@@ -123,40 +99,43 @@
       "type": "markdown",
       "label": "Notes",
       "position": {
-        "x": -260,
-        "y": 40
+        "x": 100,
+        "y": -900
       },
-      "width": 520,
-      "height": 260,
+      "width": 500,
+      "height": 220,
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Notes\n\n- This is not a consumer graph.\n- It exists to be referenced by a **consumer bridge** so the Legend tab can list node classes.\n- Each bridge node should set `target.kind = node-class` and `target.key` for a stable type key."
+        "identity": {
+          "graphId": "tutorial-bridge-import-catalog"
+        },
+        "markdown": "## Notes\n\n- A consumer bridge points at this graph.\n- The legend then derives create-able entries from the imported bridge targets.\n- This is starter data, not an always-visible dependency."
       }
     },
     {
-      "id": "legend-type-catalog-bridge-summary-view",
+      "id": "legend-type-catalog-bridge-markdown",
       "type": "bridge",
-      "label": "Summary View",
+      "label": "Markdown",
       "position": {
-        "x": 140,
-        "y": 70
+        "x": 100,
+        "y": -560
       },
       "width": 320,
       "height": 140,
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Node class: summary-view (port-consumable surfaces).",
+        "memo": "Node class: markdown.",
         "authority": "bridge",
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/ui-interaction/summary-view.node-class.node:root",
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node:root",
           "mode": "bridge",
           "kind": "node-class",
           "resourceKind": "node-class",
-          "label": "Summary View",
-          "key": "summary-view",
-          "meaning": "A card-style summary surface (node.web.summary) with a structured editor."
+          "label": "Markdown",
+          "key": "markdown",
+          "meaning": "Canonical content node for notes, headings, and documentation."
         }
       }
     },
@@ -165,15 +144,15 @@
       "type": "bridge",
       "label": "Field",
       "position": {
-        "x": 500,
-        "y": 70
+        "x": 470,
+        "y": -560
       },
       "width": 320,
       "height": 140,
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Node class: field (key/value primitive).",
+        "memo": "Node class: field.",
         "authority": "bridge",
         "target": {
           "endpoint": "github://twilite-zone/public/library/classes/nodes/data-schema/field.node-class.node:root",
@@ -182,13 +161,84 @@
           "resourceKind": "node-class",
           "label": "Field",
           "key": "field",
-          "meaning": "Key/value primitive for graph-native contracts and data."
+          "meaning": "Key/value primitive for contracts, configuration, and graph-native data."
+        }
+      }
+    },
+    {
+      "id": "legend-type-catalog-bridge-node",
+      "type": "bridge",
+      "label": "Node",
+      "position": {
+        "x": 840,
+        "y": -560
+      },
+      "width": 320,
+      "height": 140,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Node class: node.",
+        "authority": "bridge",
+        "target": {
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/node.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "label": "Node",
+          "key": "node",
+          "meaning": "General reusable node class for graph-native authored content."
         }
       }
     }
   ],
-  "edges": [],
-  "timestamp": "2026-04-28T00:00:00.000Z",
-  "nodeCount": 5,
-  "edgeCount": 0
+  "edges": [
+    {
+      "id": "legend-type-catalog-edge-reader-notes",
+      "type": "reference",
+      "source": "legend-type-catalog-view",
+      "target": "legend-type-catalog-notes",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "catalog",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "legend-type-catalog-edge-notes-markdown",
+      "type": "reference",
+      "source": "legend-type-catalog-notes",
+      "target": "legend-type-catalog-bridge-markdown",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "entry",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "legend-type-catalog-edge-notes-field",
+      "type": "reference",
+      "source": "legend-type-catalog-notes",
+      "target": "legend-type-catalog-bridge-field",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "entry",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "legend-type-catalog-edge-notes-node",
+      "type": "reference",
+      "source": "legend-type-catalog-notes",
+      "target": "legend-type-catalog-bridge-node",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "entry",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "timestamp": "2026-06-20T00:00:00.000Z",
+  "nodeCount": 6,
+  "edgeCount": 4
 }

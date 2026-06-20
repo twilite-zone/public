@@ -1,16 +1,20 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Views Surface Demo",
-    "description": "A small graph exposing node.web.summary / node.web.detail / node.web.icon as summary-view nodes for port consumption testing.",
-    "created": "2026-04-26T00:00:00.000Z",
-    "modified": "2026-04-26T00:00:00.000Z",
+    "title": "Surface Payload Demo",
+    "description": "Demo graph exposing reader, summary, detail, and icon surfaces through declaration surfaces.",
+    "graphId": "tutorial-views-surface-demo",
+    "version": "0.2.0",
+    "kind": "tutorial",
+    "created": "2026-06-20T00:00:00.000Z",
+    "modified": "2026-06-20T00:00:00.000Z",
     "author": "",
     "tags": [
       "tutorial",
-      "views",
+      "surface",
       "demo"
-    ]
+    ],
+    "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
     {
@@ -18,8 +22,8 @@
       "type": "declaration",
       "label": "Declaration",
       "position": {
-        "x": -260,
-        "y": -220
+        "x": -920,
+        "y": -900
       },
       "width": 360,
       "height": 220,
@@ -27,80 +31,48 @@
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "views-surface-demo",
-          "name": "Views Surface Demo.Document",
-          "version": "0.1.0",
-          "description": "Exposes node.web.summary/detail/icon surfaces as nodes.",
-          "createdAt": "2026-04-26T00:00:00.000Z",
-          "updatedAt": "2026-04-26T00:00:00.000Z"
+          "graphId": "tutorial-views-surface-demo",
+          "name": "Surface Payload Demo",
+          "version": "0.2.0",
+          "description": "Demo graph exposing reader, summary, detail, and icon surfaces through declaration surfaces."
         },
         "intent": {
-          "kind": "graph",
-          "scope": "mixed"
+          "kind": "tutorial",
+          "scope": "local"
         },
         "declaration": {
           "targetMode": "artifact",
-          "defaultSurfaceId": "views-surface-demo-summary",
+          "defaultSurfaceId": "views-surface-demo-reader-surface",
           "surfaces": [
             {
-              "id": "views-surface-demo-summary",
+              "id": "views-surface-demo-reader-surface",
+              "kind": "view",
+              "label": "Reader",
+              "memo": "Primary explanatory reader surface.",
+              "viewNodeId": "views-surface-demo-reader"
+            },
+            {
+              "id": "views-surface-demo-summary-surface",
               "kind": "view",
               "label": "Summary",
-              "memo": "Default summary surface for ordinary portal consumption.",
+              "memo": "Compact summary payload for consumers.",
               "viewNodeId": "views-surface-demo-summary"
             },
             {
-              "id": "views-surface-demo-detail",
+              "id": "views-surface-demo-detail-surface",
               "kind": "view",
-              "label": "node-card",
-              "memo": "Detail card surface for richer portal consumption.",
+              "label": "Detail",
+              "memo": "Larger detail payload for consumers.",
               "viewNodeId": "views-surface-demo-detail"
             },
             {
-              "id": "views-surface-demo-icon",
+              "id": "views-surface-demo-icon-surface",
               "kind": "view",
               "label": "Icon",
-              "memo": "Compact icon surface for semantic zoom and tight consumers.",
+              "memo": "Compact icon payload for semantic zoom and legends.",
               "viewNodeId": "views-surface-demo-icon"
             }
           ]
-        },
-        "dependencies": {
-          "nodeTypes": [
-            "declaration",
-            "summary-view",
-            "markdown"
-          ],
-          "portContracts": [
-            "core"
-          ],
-          "skills": [],
-          "schemaVersions": {
-            "nodes": ">=1.0.0",
-            "ports": ">=1.0.0"
-          },
-          "optional": []
-        },
-        "authority": {
-          "mutation": {
-            "allowCreate": true,
-            "allowUpdate": true,
-            "allowDelete": true,
-            "appendOnly": false
-          },
-          "actors": {
-            "humans": true,
-            "agents": true,
-            "tools": true
-          },
-          "styleAuthority": "descriptive",
-          "history": {
-            "rewriteAllowed": false,
-            "squashAllowed": false
-          }
-        },
-        "document": {
-          "url": ""
         },
         "settings": {
           "theme": null,
@@ -111,97 +83,111 @@
           "gridSize": 20,
           "edgeRouting": "auto",
           "autoSave": false
+        },
+        "document": {
+          "url": ""
         }
       }
     },
     {
+      "id": "views-surface-demo-reader",
+      "type": "port",
+      "label": "Reader",
+      "position": {
+        "x": -420,
+        "y": -900
+      },
+      "width": 460,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-views-surface-demo"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "# Surface Payload Demo\n\nThis graph exposes multiple declared surfaces.\n\nUse it to verify that a consumer can discover and select:\n- `node.web.summary`\n- `node.web.detail`\n- `node.web.icon`\n\nThe important idea is that these are declared surfaces, not ad-hoc local guesses."
+      }
+    },
+    {
       "id": "views-surface-demo-summary",
-      "type": "summary-view",
+      "type": "port",
       "label": "node.web.summary",
       "position": {
-        "x": 140,
-        "y": -220
+        "x": 120,
+        "y": -900
+      },
+      "width": 360,
+      "height": 200,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-views-surface-demo"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "## Summary Surface\n\nThis is the compact declared surface.\n\nUse it when a port or portal wants the safe everyday view."
+      }
+    },
+    {
+      "id": "views-surface-demo-detail",
+      "type": "port",
+      "label": "node.web.detail",
+      "position": {
+        "x": 540,
+        "y": -900
       },
       "width": 420,
       "height": 260,
       "visible": true,
       "showLabel": true,
       "data": {
-        "payload": "node.web.summary",
-        "title": "Demo Summary Surface",
-        "purpose": "This is the default port-consumable surface (`node.web.summary`). Edit me via the edit drawer.",
-        "viewRole": "summary",
-        "viewKind": "display",
-        "exposedAuthority": "consume-view",
-        "audience": "Author",
-        "status": "active",
-        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"18\" fill=\"#ffffff\" stroke=\"#0f172a\" stroke-width=\"5\"/><path d=\"M56 62h108\" stroke=\"#2563eb\" stroke-width=\"10\" stroke-linecap=\"round\"/><circle cx=\"56\" cy=\"62\" r=\"12\" fill=\"#0f172a\"/><circle cx=\"164\" cy=\"62\" r=\"12\" fill=\"#0f172a\"/></svg>",
-        "_classBinding": {
-          "key": "summary-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/summary-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/summary-view.node-class.node"
+        "identity": {
+          "graphId": "tutorial-views-surface-demo"
         },
-        "definitionKey": "summary-view"
-      }
-    },
-    {
-      "id": "views-surface-demo-detail",
-      "type": "summary-view",
-      "label": "node.web.detail",
-      "position": {
-        "x": 600,
-        "y": -220
-      },
-      "width": 520,
-      "height": 320,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "payload": "node.web.detail",
-        "title": "Demo Detail Surface",
-        "purpose": "A richer surface for ports to select when they need more content (`node.web.detail`).",
-        "viewRole": "detail",
-        "viewKind": "display",
-        "exposedAuthority": "consume-view",
-        "audience": "Author",
-        "status": "active",
-        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"18\" fill=\"#f8fafc\" stroke=\"#0f172a\" stroke-width=\"5\"/><rect x=\"44\" y=\"48\" width=\"132\" height=\"22\" rx=\"10\" fill=\"#ffffff\" stroke=\"#94a3b8\" stroke-width=\"4\"/><rect x=\"44\" y=\"84\" width=\"132\" height=\"38\" rx=\"12\" fill=\"#ffffff\" stroke=\"#94a3b8\" stroke-width=\"4\"/></svg>",
-        "_classBinding": {
-          "key": "summary-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/summary-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/summary-view.node-class.node"
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
         },
-        "definitionKey": "summary-view"
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "## Detail Surface\n\nThis is the larger declared surface.\n\nUse it when the consumer wants more room for explanation, instructions, or structured content."
       }
     },
     {
       "id": "views-surface-demo-icon",
-      "type": "summary-view",
+      "type": "port",
       "label": "node.web.icon",
       "position": {
-        "x": 1160,
-        "y": -220
+        "x": 1020,
+        "y": -900
       },
       "width": 260,
       "height": 200,
       "visible": true,
       "showLabel": true,
       "data": {
-        "payload": "node.web.icon",
-        "title": "Demo Icon Surface",
-        "purpose": "A compact surface intended for icon/badge contexts (`node.web.icon`).",
-        "viewRole": "icon",
-        "viewKind": "display",
-        "exposedAuthority": "consume-view",
-        "audience": "Author",
-        "status": "active",
-        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"38\" y=\"28\" width=\"144\" height=\"104\" rx=\"22\" fill=\"#fff7ed\" stroke=\"#9a3412\" stroke-width=\"6\"/><path d=\"M84 82h52\" stroke=\"#9a3412\" stroke-width=\"14\" stroke-linecap=\"round\"/></svg>",
-        "_classBinding": {
-          "key": "summary-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/summary-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/summary-view.node-class.node"
+        "identity": {
+          "graphId": "tutorial-views-surface-demo"
         },
-        "definitionKey": "summary-view"
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"38\" y=\"26\" width=\"144\" height=\"108\" rx=\"22\" fill=\"#eff6ff\" stroke=\"#2563eb\" stroke-width=\"6\"/><rect x=\"68\" y=\"52\" width=\"84\" height=\"18\" rx=\"9\" fill=\"#93c5fd\"/><rect x=\"68\" y=\"82\" width=\"60\" height=\"16\" rx=\"8\" fill=\"#bfdbfe\"/><rect x=\"68\" y=\"108\" width=\"46\" height=\"14\" rx=\"7\" fill=\"#dbeafe\"/></svg>"
       }
     },
     {
@@ -209,17 +195,68 @@
       "type": "markdown",
       "label": "Notes",
       "position": {
-        "x": 140,
-        "y": 80
+        "x": 120,
+        "y": -560
       },
-      "width": 1280,
+      "width": 1160,
       "height": 220,
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Notes\n\n- Each `summary-view` node is a **surface** identified by its `payload`.\n- Ports should discover and consume these by selecting `node.web.*` payloads.\n- Use the edit drawer on any surface node to change title/body/svg and see ports update after save/reload."
+        "identity": {
+          "graphId": "tutorial-views-surface-demo"
+        },
+        "markdown": "## Notes\n\n- The declaration is what makes these surfaces official.\n- Consumers should discover surfaces from the target graph.\n- `summary`, `detail`, and `icon` are consumer-facing payload choices.\n- This graph is intentionally small so it can act as a stable target for surface-selection tests."
       }
     }
   ],
-  "edges": []
+  "edges": [
+    {
+      "id": "views-surface-demo-edge-reader-summary",
+      "type": "reference",
+      "source": "views-surface-demo-reader",
+      "target": "views-surface-demo-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "summary",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "views-surface-demo-edge-reader-detail",
+      "type": "reference",
+      "source": "views-surface-demo-reader",
+      "target": "views-surface-demo-detail",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "detail",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "views-surface-demo-edge-reader-icon",
+      "type": "reference",
+      "source": "views-surface-demo-reader",
+      "target": "views-surface-demo-icon",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "icon",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "views-surface-demo-edge-reader-notes",
+      "type": "reference",
+      "source": "views-surface-demo-reader",
+      "target": "views-surface-demo-notes",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "notes",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "timestamp": "2026-06-20T00:00:00.000Z",
+  "nodeCount": 6,
+  "edgeCount": 4
 }
