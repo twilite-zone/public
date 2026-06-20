@@ -2,79 +2,56 @@
   "fileVersion": "1.0",
   "metadata": {
     "title": "Bootstrap Tutorial",
-    "description": "Minimal bootstrap tutorial compatible with the current app line.",
-    "created": "2026-05-22T00:00:00.000Z",
-    "modified": "2026-05-22T00:00:00.000Z",
+    "description": "Compatibility entry for the modern LLM bootstrap lesson.",
+    "graphId": "tutorial-bootstrap-compat",
+    "version": "0.2.0",
+    "kind": "tutorial",
+    "created": "2026-06-20T00:00:00.000Z",
+    "modified": "2026-06-20T00:00:00.000Z",
     "author": "",
     "tags": [
       "tutorial",
-      "onboarding",
-      "bootstrap"
+      "bootstrap",
+      "onboarding"
     ],
     "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
     {
-      "id": "bootstrap-tutorial-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "id": "tutorial-bootstrap-compat",
+      "type": "declaration",
+      "label": "Declaration",
       "position": {
-        "x": -980,
-        "y": -520
+        "x": -900,
+        "y": -1080
       },
       "width": 360,
-      "height": 220,
+        "height": 220,
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "bootstrap-tutorial",
+          "graphId": "tutorial-bootstrap-compat",
           "name": "Bootstrap Tutorial",
-          "version": "0.1.0",
-          "description": "Minimal bootstrap tutorial compatible with the current app line.",
-          "createdAt": "2026-05-22T00:00:00.000Z",
-          "updatedAt": "2026-05-22T00:00:00.000Z"
+          "version": "0.2.0",
+          "description": "Compatibility entry for the modern LLM bootstrap lesson."
         },
         "intent": {
-          "kind": "graph",
+          "kind": "tutorial",
           "scope": "local"
         },
-        "dependencies": {
-          "nodeTypes": [
-            "manifest",
-            "markdown",
-            "port"
-          ],
-          "portContracts": [
-            "core"
-          ],
-          "skills": [],
-          "schemaVersions": {
-            "nodes": ">=1.0.0",
-            "ports": ">=1.0.0"
-          },
-          "optional": []
-        },
-        "authority": {
-          "mutation": {
-            "allowCreate": true,
-            "allowUpdate": true,
-            "allowDelete": true,
-            "appendOnly": false
-          },
-          "actors": {
-            "humans": true,
-            "agents": true,
-            "tools": true
-          },
-          "styleAuthority": "descriptive",
-          "history": {
-            "rewriteAllowed": false,
-            "squashAllowed": false
-          }
-        },
-        "document": {
-          "url": ""
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "bootstrap-compat-reader",
+          "surfaces": [
+            {
+              "id": "bootstrap-compat-reader",
+              "kind": "view",
+              "label": "Bootstrap Compatibility Reader",
+              "memo": "Primary declared surface for the bootstrap compatibility graph.",
+              "viewNodeId": "bootstrap-compat-reader"
+            }
+          ]
         },
         "settings": {
           "theme": null,
@@ -85,111 +62,208 @@
           "gridSize": 20,
           "edgeRouting": "auto",
           "autoSave": false
+        },
+        "document": {
+          "url": ""
         }
       }
     },
     {
-      "id": "bootstrap-tutorial-title",
+      "id": "bootstrap-compat-reader",
+      "type": "port",
+      "label": "Bootstrap Tutorial Reader",
+      "position": {
+        "x": -400,
+        "y": -1080
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-bootstrap-compat"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "# Bootstrap Tutorial\n\nThis file now acts as a compatibility entry.\n\nThe canonical lesson is **Bootstrap Your LLM**.\n\nUse it when you want the full declaration-first handshake, the current primitive vocabulary, and the example JSON shape that Twilite expects today."
+      }
+    },
+    {
+      "id": "bootstrap-compat-note",
       "type": "markdown",
-      "label": "Bootstrap Tutorial",
+      "label": "What To Do",
       "root": true,
       "position": {
-        "x": -220,
-        "y": -460
+        "x": 120,
+        "y": -1080
       },
-      "width": 540,
-      "height": 260,
+      "width": 520,
+      "height": 300,
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Bootstrap Tutorial\n\nUse the onboarding guide and toolbar handoff to initialize your chatbot, then return to a clean graph.\n\n1. Open the onboarding guide.\n2. Use the toolbar onboarding button to copy the handoff.\n3. Paste the chatbot's JSON response back into Twilite.\n4. Start from a blank graph once the handshake succeeds."
+        "identity": {
+          "graphId": "tutorial-bootstrap-compat"
+        },
+        "markdown": "## What To Do\n\n1. Open **Bootstrap Your LLM** for the real lesson.\n2. Open the onboarding contract if you need the prose version.\n3. Return to **Start Here** if you want the larger tutorial map.\n\nThis graph stays here so older links still land somewhere truthful."
       }
     },
     {
-      "id": "bootstrap-tutorial-onboarding-port",
-      "type": "port",
-      "label": "Open Onboarding Guide",
+      "id": "bootstrap-compat-open-lesson",
+      "type": "portal",
+      "label": "Bootstrap Your LLM",
       "position": {
-        "x": -220,
-        "y": -120
+        "x": 120,
+        "y": -660
       },
-      "width": 360,
-      "height": 220,
+      "width": 320,
+      "height": 180,
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Open the canonical onboarding guide document.",
+        "identity": {
+          "graphId": "tutorial-bootstrap-compat"
+        },
+        "memo": "Open the canonical bootstrap tutorial.",
         "intent": "external",
-        "authority": "consume-view",
+        "authority": "navigate",
+        "security": "prompt",
         "target": {
-          "endpoint": "/library/documentation/OnboardLLM.md:root",
+          "endpoint": "github://twilite-zone/public/tutorial/bootstrap-llm/root.node:root",
           "mode": "navigate",
-          "portId": "root",
           "label": "Open",
-          "ref": "/library/documentation/OnboardLLM.md",
+          "ref": "github://twilite-zone/public/tutorial/bootstrap-llm/root.node",
+          "portId": "root",
           "handleId": "root"
         },
-        "ref": "/library/documentation/OnboardLLM.md",
-        "src": "/library/documentation/OnboardLLM.md",
-        "endpoint": "/library/documentation/OnboardLLM.md:root",
-        "security": "prompt",
-        "sourceRef": "/library/documentation/OnboardLLM.md"
+        "ref": "github://twilite-zone/public/tutorial/bootstrap-llm/root.node",
+        "src": "github://twilite-zone/public/tutorial/bootstrap-llm/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/bootstrap-llm/root.node:root",
+        "sourceRef": "github://twilite-zone/public/tutorial/bootstrap-llm/root.node"
       }
     },
     {
-      "id": "bootstrap-tutorial-back-port",
-      "type": "port",
-      "label": "Back to Tutorial Start Here",
+      "id": "bootstrap-compat-open-onboarding",
+      "type": "portal",
+      "label": "Onboarding Contract",
       "position": {
-        "x": -220,
-        "y": 180
+        "x": 500,
+        "y": -660
       },
-      "width": 360,
-      "height": 220,
+      "width": 320,
+      "height": 180,
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Return to Tutorial Start Here.",
+        "identity": {
+          "graphId": "tutorial-bootstrap-compat"
+        },
+        "memo": "Open the onboarding contract that explains the handshake in prose.",
         "intent": "external",
-        "authority": "consume-view",
+        "authority": "navigate",
+        "security": "prompt",
+        "target": {
+          "endpoint": "github://twilite-zone/public/library/documentation/contracts/onboarding.md:root",
+          "mode": "navigate",
+          "label": "Open",
+          "ref": "github://twilite-zone/public/library/documentation/contracts/onboarding.md",
+          "portId": "root",
+          "handleId": "root"
+        },
+        "ref": "github://twilite-zone/public/library/documentation/contracts/onboarding.md",
+        "src": "github://twilite-zone/public/library/documentation/contracts/onboarding.md",
+        "endpoint": "github://twilite-zone/public/library/documentation/contracts/onboarding.md:root",
+        "sourceRef": "github://twilite-zone/public/library/documentation/contracts/onboarding.md"
+      }
+    },
+    {
+      "id": "bootstrap-compat-back",
+      "type": "portal",
+      "label": "Back To Start Here",
+      "position": {
+        "x": 880,
+        "y": -660
+      },
+      "width": 320,
+      "height": 180,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-bootstrap-compat"
+        },
+        "memo": "Return to the start-here tutorial hub.",
+        "intent": "external",
+        "authority": "navigate",
+        "security": "prompt",
         "target": {
           "endpoint": "github://twilite-zone/public/tutorial/start-here/root.node:root",
           "mode": "navigate",
-          "portId": "root",
           "label": "Open",
           "ref": "github://twilite-zone/public/tutorial/start-here/root.node",
+          "portId": "root",
           "handleId": "root"
         },
         "ref": "github://twilite-zone/public/tutorial/start-here/root.node",
         "src": "github://twilite-zone/public/tutorial/start-here/root.node",
         "endpoint": "github://twilite-zone/public/tutorial/start-here/root.node:root",
-        "security": "prompt",
         "sourceRef": "github://twilite-zone/public/tutorial/start-here/root.node"
       }
     }
   ],
   "edges": [
     {
-      "id": "bootstrap-tutorial-edge-title-onboarding",
+      "id": "bootstrap-compat-edge-reader-note",
       "type": "reference",
-      "source": "bootstrap-tutorial-title",
-      "target": "bootstrap-tutorial-onboarding-port",
+      "source": "bootstrap-compat-reader",
+      "target": "bootstrap-compat-note",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "open guide",
+      "label": "context",
       "style": {},
       "data": {}
     },
     {
-      "id": "bootstrap-tutorial-edge-title-back",
+      "id": "bootstrap-compat-edge-note-lesson",
       "type": "reference",
-      "source": "bootstrap-tutorial-title",
-      "target": "bootstrap-tutorial-back-port",
+      "source": "bootstrap-compat-note",
+      "target": "bootstrap-compat-open-lesson",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "lesson",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "bootstrap-compat-edge-note-onboarding",
+      "type": "reference",
+      "source": "bootstrap-compat-note",
+      "target": "bootstrap-compat-open-onboarding",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "contract",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "bootstrap-compat-edge-note-back",
+      "type": "reference",
+      "source": "bootstrap-compat-note",
+      "target": "bootstrap-compat-back",
       "sourcePort": "root",
       "targetPort": "root",
       "label": "back",
       "style": {},
       "data": {}
     }
-  ]
+  ],
+  "timestamp": "2026-06-20T00:00:00.000Z",
+  "nodeCount": 6,
+  "edgeCount": 4
 }
