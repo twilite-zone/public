@@ -1,8 +1,8 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Portal + Graph Reference Walkthrough.Document",
-    "description": "Manual steps for portal and graph-reference primitives.",
+    "title": "Portal + Graph Reference Walkthrough",
+    "description": "Manual steps for portal authoring and graph-reference surface selection.",
     "graphId": "port-ref-walkthrough-declaration",
     "version": "0.1.0",
     "kind": "tutorial",
@@ -31,7 +31,7 @@
       "data": {
         "identity": {
           "graphId": "port-ref-walkthrough-declaration",
-          "name": "Portal + Graph Reference Walkthrough.Document",
+          "name": "Portal + Graph Reference Walkthrough",
           "version": "0.1.0",
           "description": "Manual steps for portal and graph-reference primitives."
         },
@@ -53,7 +53,7 @@
             {
               "id": "viewport-ref-walkthrough-view",
               "kind": "view",
-              "label": "node-card",
+              "label": "Node Card",
               "viewNodeId": "viewport-ref-walkthrough-view",
               "memo": "View surface for humans and embedding; not an export surface.",
               "exposes": {
@@ -119,7 +119,7 @@
       "showLabel": true,
       "data": {
         "title": "Portal + Graph Reference Walkthrough",
-        "purpose": "Portals are graph-visible openings that navigate to or consume exposed ports. Graph Reference is for previewing and embed behavior.\n\nThis walkthrough focuses on determinism: surface lists should not flicker and the selected surface should remain hydrated.",
+        "purpose": "Portals are graph-visible openings that navigate to or render exposed surfaces from a target graph. This walkthrough focuses on deterministic surface selection so the chosen surface stays hydrated and stable.",
         "status": "active",
         "viewRole": "summary",
         "viewKind": "display",
@@ -155,7 +155,7 @@
       "showLabel": true,
       "data": {
         "title": "Portal + Graph Reference Walkthrough",
-        "purpose": "This is the node-card surface for the portal walkthrough. Use it when a consumer graph wants the fuller on-canvas card instead of the compact reader summary.",
+        "purpose": "This is the node-card surface for the portal walkthrough. Use it when another graph wants the fuller on-canvas card instead of the compact reader summary.",
         "status": "active",
         "viewRole": "detail",
         "viewKind": "display",
@@ -183,7 +183,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Step 1: Address The Portal\n\nCreate a `portal` node and open its editor.\n\nThe portal editor starts with the addressing fields.\n\n### `Address`\nUse this as the primary destination for the portal.\n- this is the graph or document ref the portal opens toward\n- it can be a `github://...` ref or another supported address form\n- this is the most important field because nothing resolves without it\n\n### `Artifact Ref (optional)`\nUse this when you want to preserve a more explicit artifact reference separate from the direct address.\n- in many ordinary cases you can leave this empty\n- keep it for cases where the portal needs a stable artifact identity in addition to a resolved address\n\n### `Behavior`\nUse this to decide how the portal should interact with the target.\n- `Navigate` is the ordinary default\n- selecting a target `Surface` is enough to make the portal render that exposed surface\n- `Expand` is for growth/expansion behavior when the graph contract allows it\n\nFor the first pass in this walkthrough:\n- set `Address`\n- leave `Behavior = Navigate`\n- leave the portal pointed at the demo graph\n\nExpected:\n- [ ] Address resolves cleanly\n- [ ] The portal keeps its target instead of drifting\n- [ ] The editor remains stable while you type and blur fields",
+        "markdown": "## Step 1: Address The Portal\n\nCreate a `portal` node and open its editor.\n\nThe portal editor starts with the addressing fields.\n\n### `Address`\nUse this as the primary destination for the portal.\n- this is the graph or document ref the portal opens toward\n- it can be a `github://...` ref or another supported address form\n- nothing resolves until this points somewhere real\n\n### `Artifact Ref (optional)`\nUse this when you want a more explicit artifact identity separate from the direct address.\n- in common cases you can leave this empty\n- keep it for cases where the portal needs a stable artifact identity in addition to a resolved address\n\n### `Behavior`\nUse this to decide how the portal should interact with the target.\n- `Navigate` is the ordinary default\n- selecting a target `Surface` is enough to make the portal render that exposed surface\n- `Expand` is for growth behavior when the graph contract allows it\n\nFor the first pass in this walkthrough:\n- set `Address`\n- leave `Behavior = Navigate`\n- leave the portal pointed at the demo graph\n\nExpected:\n- [ ] Address resolves cleanly\n- [ ] The portal keeps its target instead of drifting\n- [ ] The editor remains stable while you type and blur fields",
         "identity": {
           "graphId": "port-ref-walkthrough-declaration"
         }
@@ -203,7 +203,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Step 2: Choose A Surface\n\nOnce the address is set, the portal should let you choose from the target graph's declared surfaces.\n\n### `Surface`\nUse this to choose what the portal renders from the target.\n- the list should come from the target graph's declaration\n- if the target exposes a reader `port`, it should appear here\n- `Minimap` is the graph-level fallback when no richer declared surface is chosen\n\n### Surface meaning\nA portal does not invent its own reading surface.\n- the target graph creates `port` nodes\n- the declaration exposes those ports as named surfaces\n- the portal chooses among those declared surfaces\n- that is why declaration exposure matters before a portal can render a custom surface\n\nFor this step:\n- switch between the available surfaces\n- confirm the current selection stays visible in the dropdown\n- confirm the portal render follows the selected surface instead of flickering or collapsing\n\nExpected:\n- [ ] Surface options load from the target graph\n- [ ] The current surface selection stays present\n- [ ] Render updates when the selected surface changes",
+        "markdown": "## Step 2: Choose A Surface\n\nOnce the address is set, the portal should let you choose from the target graph's declared surfaces.\n\n### `Surface`\nUse this to choose what the portal renders from the target.\n- the list should come from the target graph's declaration\n- if the target exposes a reader or card surface, it should appear here\n- `Minimap` is the graph-level fallback when no richer declared surface is chosen\n\n### Surface meaning\nA portal does not invent its own reading surface.\n- the target graph creates `port` nodes\n- the declaration exposes those ports as named surfaces\n- the portal chooses among those declared surfaces\n- declaration exposure is what makes custom rendering discoverable\n\nFor this step:\n- switch between the available surfaces\n- confirm the current selection stays visible in the dropdown\n- confirm the portal render follows the selected surface instead of flickering or collapsing\n\nExpected:\n- [ ] Surface options load from the target graph\n- [ ] The current surface selection stays present\n- [ ] Render updates when the selected surface changes",
         "identity": {
           "graphId": "port-ref-walkthrough-declaration"
         }
@@ -223,7 +223,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Step 3: Navigation And Rendered Surfaces\n\nA portal always opens a destination. When you also choose a declared surface, the portal should render that surface in place.\n\n### `Behavior = Navigate`\nUse this for the normal portal case.\n- clicking the portal should open the target graph or document\n- if a `Surface` is also selected, that same portal should render the selected target surface\n\n### `Surface`\nUse this when the portal should embed a declared surface from the target.\n- this is the graph-native way to show a target surface in place\n- the selected `Surface` should control what appears on the node\n- no second special authoring mode should be required\n\n### `Minimap`\nUse `Minimap` when you want a graph-level preview and the target does not need a richer declared surface.\n- this is the safe fallback\n- it should still work from address alone\n\nFor this step:\n- keep `Behavior = Navigate`\n- test the same target with a declared surface and with `Minimap`\n- confirm the portal stays coherent when the selected surface changes\n\nExpected:\n- [ ] Navigate still opens the destination\n- [ ] The selected surface renders on the portal\n- [ ] Minimap remains available as the fallback preview",
+        "markdown": "## Step 3: Navigation And Rendered Surfaces\n\nA portal always opens a destination. When you also choose a declared surface, the portal should render that surface in place.\n\n### `Behavior = Navigate`\nUse this for the normal portal case.\n- clicking the portal should open the target graph or document\n- if a `Surface` is also selected, that same portal should render the selected target surface\n\n### `Surface`\nUse this when the portal should render a declared surface from the target.\n- this is the graph-native way to show a target surface in place\n- the selected `Surface` should control what appears on the node\n- no second special authoring mode should be required\n\n### `Minimap`\nUse `Minimap` when you want a graph-level preview and the target does not need a richer declared surface.\n- this is the safe fallback\n- it should still work from address alone\n\nFor this step:\n- keep `Behavior = Navigate`\n- test the same target with a declared surface and with `Minimap`\n- confirm the portal stays coherent when the selected surface changes\n\nExpected:\n- [ ] Navigate still opens the destination\n- [ ] The selected surface renders on the portal\n- [ ] Minimap remains available as the fallback preview",
         "identity": {
           "graphId": "port-ref-walkthrough-declaration"
         }
@@ -264,9 +264,9 @@
       }
     },
     {
-      "id": "port-ref-walkthrough-editor-screenshot",
+      "id": "port-ref-walkthrough-editor-notes",
       "type": "markdown",
-      "label": "Portal Editor Screenshot",
+      "label": "Editor Notes",
       "root": false,
       "position": {
         "x": 300,
@@ -278,9 +278,9 @@
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "port-reference-authoring-walkthrough"
+          "graphId": "port-ref-walkthrough-declaration"
         },
-        "markdown": "# Portal Editor Screenshot\n\nThis reference image shows the portal editor panel while working through the field-by-field explanation.\n\n![Portal editor panel screenshot showing address, behavior, and surface fields.](https://raw.githubusercontent.com/twilite-zone/public/main/tutorial/basic-primitives/port-editor.png)"
+        "markdown": "# Editor Notes\n\nUse the live portal editor while you move through the walkthrough.\n\nCheck these fields in order:\n- `Address`\n- optional `Artifact Ref`\n- `Behavior`\n- `Surface`\n\nIf something looks wrong, prefer checking the target graph's declaration and exposed surfaces before assuming the portal model is broken."
       }
     }
   ],

@@ -1,8 +1,8 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Port + Graph Reference Demo",
-    "description": "Demo graph for port consumption + graph-reference modes (preview/interactive/expand).",
+    "title": "Portal Surface Selection Demo",
+    "description": "Demo graph for portal surface selection and graph-level preview behavior.",
     "created": "2026-04-28T00:00:00.000Z",
     "modified": "2026-04-28T00:00:00.000Z",
     "author": "",
@@ -29,9 +29,9 @@
       "data": {
         "identity": {
           "graphId": "port-reference-demo",
-          "name": "Port + Graph Reference Demo.Document",
+          "name": "Portal Surface Selection Demo",
           "version": "0.1.0",
-          "description": "Demonstrates port view consumption and graph-reference preview modes.",
+          "description": "Demonstrates portal surface selection and graph-level preview modes.",
           "createdAt": "2026-04-28T00:00:00.000Z",
           "updatedAt": "2026-04-28T00:00:00.000Z"
         },
@@ -103,8 +103,8 @@
       "showLabel": true,
       "data": {
         "payload": "node.web.summary",
-        "title": "Port + Graph Reference Demo",
-        "purpose": "Ports consume a view from a target graph (node.web.* surfaces only). Graph Reference nodes preview/embed a target graph.\n\nUse the edit drawer to switch the consumed view and ensure it stays hydrated and deterministic.",
+        "title": "Portal Surface Selection Demo",
+        "purpose": "Use this graph to test declared surface selection versus graph-level preview. The goal is to confirm the selected surface stays hydrated and the fallback preview remains stable.",
         "status": "active",
         "viewRole": "summary",
         "viewKind": "display",
@@ -131,13 +131,13 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Try it\n\n### Consuming port\n1) Click the port node.\n2) In the drawer, change **View** between `node.web.summary` and `node.web.detail`.\n3) Confirm the consumed rendering updates and the dropdown stays stable.\n\n### Preview port\n1) Click the preview port.\n2) Confirm it renders minimap from only the address.\n\nExpected:\n- Port view list is deterministic\n- Port renders minimap fallback when target has no matching surface\n- Preview rendering is stable"
+        "markdown": "## Try it\n\n### Render a declared surface\n1. Click the consumer node.\n2. In the drawer, change **View** between `node.web.summary` and `node.web.detail`.\n3. Confirm the rendered surface updates and the dropdown stays stable.\n\n### Check the fallback preview\n1. Click the preview node.\n2. Confirm it renders minimap from only the address.\n\nExpected:\n- The surface list is deterministic\n- Surface rendering updates without collapsing\n- Minimap fallback remains stable"
       }
     },
     {
       "id": "port-ref-demo-port",
       "type": "port",
-      "label": "Views Surface Demo (Port)",
+      "label": "Views Surface Demo (Consumer)",
       "position": {
         "x": 140,
         "y": 90
@@ -147,7 +147,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Port consuming a surface from views-surface-demo. Toggle view payload in the editor.",
+        "memo": "Consumer node rendering a surface from views-surface-demo. Toggle the selected surface in the editor.",
         "intent": "navigate",
         "authority": "consume-view",
         "sourcePayload": "node.web.summary",
@@ -165,7 +165,7 @@
     {
       "id": "port-ref-demo-preview-port",
       "type": "port",
-      "label": "Views Surface Demo (Preview)",
+      "label": "Views Surface Demo (Minimap Preview)",
       "position": {
         "x": 540,
         "y": 90
@@ -175,7 +175,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Port in preview mode (minimap default).",
+        "memo": "Graph-level preview using minimap as the fallback rendering.",
         "intent": "navigate",
         "authority": "consume-view",
         "sourcePayload": "minimap",
