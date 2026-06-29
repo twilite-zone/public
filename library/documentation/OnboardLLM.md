@@ -11,6 +11,16 @@ Your job is to help the user by returning valid Twilite graph mutations that the
 - Return machine-usable output when the user is asking for graph mutations.
 - Keep responses structurally correct before trying to be clever.
 
+## App Surface Expectations
+
+When you explain how to use Twilite, prefer the app surfaces that are durable for unsigned and free users:
+
+- treat the browser surface as the default starting point
+- prefer address-bar and browser-chrome actions over toolbar-only instructions
+- do not assume the editor toolbar is available
+- if the user only needs navigation, tutorials, bookmarks, gallery, handshake, or document actions, keep the guidance in browser mode
+- only steer the user toward editor-specific affordances when the task truly requires authoring
+
 ## Handshake Requirement
 
 The first time you are onboarded into a Twilite session, you must complete the handshake.
@@ -201,6 +211,29 @@ Shared edit example:
 }
 ```
 
+Shared appearance edit example:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNodes",
+      "ids": ["node-a", "node-b"],
+      "updates": {
+        "style": {
+          "background": "#fee2e2",
+          "color": "#7f1d1d",
+          "borderColor": "#ef4444",
+          "borderWidth": 2,
+          "borderStyle": "solid"
+        }
+      }
+    }
+  ]
+}
+```
+
 ## Edge Port Rules
 
 Ports are strict.
@@ -244,6 +277,9 @@ Nodes may also carry these top-level connector fields when needed:
 - `inputs`
 - `outputs`
 - `handles`
+- `visible`
+- `showLabel`
+- `style`
 
 Do not use `metadata` as the main node payload field.
 
@@ -258,6 +294,117 @@ Use these payload conventions:
   - `data.authority`
   - `data.document`
   - `data.settings`
+
+## Node Appearance Rules
+
+For node appearance, use the top-level `style` object.
+
+Preferred node style keys:
+
+- `background`
+- `color`
+- `borderColor`
+- `borderWidth`
+- `borderStyle`
+- `borderRadius`
+- `boxShadow`
+
+Important notes:
+
+- prefer `style.background` as the primary node fill key
+- `style.backgroundColor` is still honored in parts of the runtime, but use `background` in onboarding examples unless you are matching an existing graph
+- use `style.color` for text color
+- use `style.borderColor`, `style.borderWidth`, and `style.borderStyle` together when you want an explicit border treatment
+- style patches merge with the existing `style` object, so you only need to send the keys you intend to change
+- unsupported style keys should be treated as optional and non-authoritative; do not rely on them unless the current graph already uses them successfully
+
+Safe styled markdown node example:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "createNodes",
+      "nodes": [
+        {
+          "id": "8b6ef7a2-0d47-4f2d-915d-1e2f0ac2c123",
+          "type": "markdown",
+          "label": "Styled Note",
+          "position": { "x": 180, "y": 120 },
+          "width": 320,
+          "height": 220,
+          "visible": true,
+          "showLabel": true,
+          "style": {
+            "background": "#fee2e2",
+            "color": "#7f1d1d",
+            "borderColor": "#ef4444",
+            "borderWidth": 2,
+            "borderStyle": "solid"
+          },
+          "data": {
+            "markdown": "## Styled note\\n\\nThis example uses top-level node style."
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+Safe style-only patch example:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNode",
+      "id": "existing-markdown-node",
+      "updates": {
+        "style": {
+          "background": "#dbeafe",
+          "color": "#1e3a8a",
+          "borderColor": "#60a5fa"
+        }
+      }
+    }
+  ]
+}
+```
+
+Safe content-plus-style patch example:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNode",
+      "id": "existing-markdown-node",
+      "updates": {
+        "data": {
+          "markdown": "## Updated copy\\n\\nThe markdown changed and the node styling changed with it."
+        },
+        "style": {
+          "background": "#ecfccb",
+          "color": "#365314",
+          "borderColor": "#84cc16"
+        }
+      }
+    }
+  ]
+}
+```
+
+## Group And Edge Appearance
+
+Do not assume node style keys apply unchanged to every graph element.
+
+- groups commonly use `style.backgroundColor` and `style.borderColor`
+- edges commonly use `style.color`, `style.width`, `style.dash`, `style.curved`, `style.route`, and related edge-specific keys
+- if the user asks for visual changes across nodes, groups, and edges at once, inspect the current graph shape before inventing one shared style vocabulary
 
 ## Port And Handle Schema
 
