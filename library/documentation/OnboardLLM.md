@@ -318,6 +318,103 @@ Important notes:
 - style patches merge with the existing `style` object, so you only need to send the keys you intend to change
 - unsupported style keys should be treated as optional and non-authoritative; do not rely on them unless the current graph already uses them successfully
 
+## Visual Authoring
+
+Valid graphs are not automatically good-looking graphs.
+
+When the user is making something explanatory, presentational, navigational, or poster-like, you should treat visual styling as part of the authoring task rather than as optional decoration.
+
+Use styling to communicate meaning:
+
+- use color to distinguish roles, states, or emphasis
+- use borders to mark importance, grouping, warnings, or active status
+- use text color to preserve contrast and strengthen hierarchy
+- use size and spacing to separate headline nodes from supporting notes
+- use consistent palettes across related nodes instead of styling each node independently
+
+When to style aggressively:
+
+- poster-style landing graphs
+- tutorials and onboarding graphs
+- dashboards, summaries, and navigation hubs
+- user-facing presentation graphs where visual hierarchy matters
+
+When to style lightly:
+
+- handshake responses
+- tiny corrective edits
+- low-confidence mutations where the surrounding palette is unknown
+- graphs that are already visually quiet and should stay that way
+
+If the current graph already has a clear palette or design language, match it before inventing a new one.
+
+## Color And Emphasis Conventions
+
+Prefer semantically meaningful color choices over arbitrary rainbow styling.
+
+Good default patterns:
+
+- blue tones for structure, navigation, references, and informational nodes
+- green tones for success, completion, readiness, or positive status
+- amber or orange tones for caution, pending work, or attention
+- red tones for errors, blocked states, or destructive meaning
+- neutral creams, grays, and off-whites for documentation, prose, and low-drama supporting nodes
+
+Practical guidance:
+
+- prefer one accent family for a cluster of related nodes
+- avoid using too many saturated colors in the same local area
+- if a node background becomes darker or more saturated, adjust `style.color` for readable text
+- if you want emphasis without a new fill color, add or strengthen the border first
+- if a node is purely informational prose, neutral backgrounds are often better than loud accents
+
+## Labels And Text Treatment
+
+Labels are part of the visual hierarchy, not just metadata.
+
+- keep `label` short and scannable
+- use `showLabel: true` when the node title should be visible in the canvas composition
+- use the markdown body or node content for detail, not the label
+- if a label is doing no visual work, it is acceptable to hide it and let the node content carry the meaning
+- if the node is meant to read like a card, poster tile, or chapter block, make sure the label, size, and border treatment reinforce that role
+
+Use text color intentionally:
+
+- darker text on light fills
+- lighter text on dark or saturated fills
+- avoid weak contrast between `background` and `color`
+
+## Poster And Layout Conventions
+
+Twilite graphs often read more like posters, canvases, or curated maps than plain diagrams.
+
+For poster-style layouts:
+
+- give the main title or anchor node more space and stronger contrast
+- cluster supporting nodes around a visual center or reading path
+- leave breathing room between major sections
+- use repeated styling within a section so the graph feels authored as one composition
+- reserve the strongest accent color for the most important nodes, not every node
+
+For documentation-style layouts:
+
+- prefer calmer backgrounds
+- keep spacing regular
+- use styling to support readability rather than spectacle
+
+If the user asks for a polished or beautiful result, do not stop at structurally correct node placement. Use size, spacing, and style together.
+
+## Themes
+
+Twilite supports graph theming in addition to per-node styling.
+
+- use per-node `style` when the task is local emphasis or targeted visual differentiation
+- use theme-oriented guidance when the user wants the whole graph to share one visual language
+- a graph may rely on browser theme fallback, legacy document theme settings, or a dedicated theme node
+- if the user asks for a graph-wide visual refresh, inspect whether the graph already appears theme-authored before mixing local node overrides everywhere
+
+In onboarding examples, it is fine to demonstrate node-level styling without authoring a full theme. But you should still recognize that graph-wide theme control exists.
+
 Safe styled markdown node example:
 
 ```json
@@ -353,6 +450,43 @@ Safe styled markdown node example:
 }
 ```
 
+Styled poster-card example:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "createNodes",
+      "nodes": [
+        {
+          "id": "95f3b464-61c3-4c34-8fc4-891ee76f9d11",
+          "type": "markdown",
+          "label": "Launch Board",
+          "position": { "x": 120, "y": 80 },
+          "width": 420,
+          "height": 260,
+          "visible": true,
+          "showLabel": true,
+          "style": {
+            "background": "#fff7ed",
+            "color": "#7c2d12",
+            "borderColor": "#ea580c",
+            "borderWidth": 3,
+            "borderStyle": "solid",
+            "borderRadius": 18,
+            "boxShadow": "0 12px 30px rgba(124,45,18,0.12)"
+          },
+          "data": {
+            "markdown": "# Launch Board\\n\\nA strong headline card can anchor a poster-style graph and establish the palette for nearby nodes."
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
 Safe style-only patch example:
 
 ```json
@@ -367,6 +501,31 @@ Safe style-only patch example:
           "background": "#dbeafe",
           "color": "#1e3a8a",
           "borderColor": "#60a5fa"
+        }
+      }
+    }
+  ]
+}
+```
+
+Style emphasis patch example:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNode",
+      "id": "supporting-note",
+      "updates": {
+        "showLabel": true,
+        "style": {
+          "background": "#eff6ff",
+          "color": "#1e3a8a",
+          "borderColor": "#2563eb",
+          "borderWidth": 2,
+          "borderStyle": "solid",
+          "borderRadius": 14
         }
       }
     }
