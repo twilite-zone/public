@@ -14,12 +14,12 @@
   },
   "nodes": [
     {
-      "id": "github-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "id": "github-document-declaration",
+      "type": "declaration",
+      "label": "Declaration",
       "root": false,
       "position": {
-        "x": -840,
+        "x": -1120,
         "y": -320
       },
       "width": 360,
@@ -31,9 +31,9 @@
           "graphId": "github-document-root",
           "name": "GitHub Document",
           "version": "0.1.0",
-          "description": "Dedicated document graph for Twilite's current GitHub integration model.",
+          "description": "Dedicated document graph for Twilite's current GitHub browsing, authoring, and publish model.",
           "createdAt": "2026-03-27T05:13:50.978Z",
-          "updatedAt": "2026-05-08T22:50:01.988Z"
+          "updatedAt": "2026-07-02T00:00:00.000Z"
         },
         "intent": {
           "kind": "document",
@@ -41,13 +41,13 @@
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
-            "legend",
+            "declaration",
             "bridge",
             "port",
             "script",
             "title",
             "type-definition",
+            "ui-view",
             "document-view",
             "section",
             "reference",
@@ -106,24 +106,27 @@
             "seedOnCommit": false,
             "enableGithubPages": false
           }
+        },
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "github-document-reader-surface",
+          "surfaces": [
+            {
+              "id": "github-document-reader-surface",
+              "kind": "view",
+              "label": "Reader",
+              "memo": "Primary declared reader surface for the full GitHub document.",
+              "viewNodeId": "github-document-view"
+            },
+            {
+              "id": "github-document-overview-surface",
+              "kind": "view",
+              "label": "Overview",
+              "memo": "Lightweight declared overview surface for links, cards, and compact embeds.",
+              "viewNodeId": "github-summary-view"
+            }
+          ]
         }
-      }
-    },
-    {
-      "id": "github-legend",
-      "type": "legend",
-      "label": "Legend",
-      "root": false,
-      "position": {
-        "x": -1220,
-        "y": -320
-      },
-      "width": 300,
-      "height": 180,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "entries": []
       }
     },
     {
@@ -1591,6 +1594,17 @@
   ],
   "edges": [
     {
+      "id": "github-edge-title-declaration",
+      "type": "reference",
+      "source": "github-title",
+      "target": "github-document-declaration",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "declares",
+      "style": {},
+      "data": {}
+    },
+    {
       "id": "github-edge-title-type",
       "type": "reference",
       "source": "github-title",
@@ -1653,6 +1667,28 @@
       "sourcePort": "root",
       "targetPort": "root",
       "label": "declares summary view",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "github-edge-declaration-document-view",
+      "type": "reference",
+      "source": "github-document-declaration",
+      "target": "github-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "reader surface",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "github-edge-declaration-summary-view",
+      "type": "reference",
+      "source": "github-document-declaration",
+      "target": "github-summary-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "overview surface",
       "style": {},
       "data": {}
     },
