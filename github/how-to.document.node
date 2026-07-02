@@ -1,16 +1,18 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "GitHub How-To",
-    "description": "Practical guide for using Twilite's current GitHub integration.",
-    "created": "2026-05-11T00:00:00.000Z",
-    "modified": "2026-05-11T00:00:00.000Z",
+    "title": "GitHub How-To Document",
+    "description": "Practical guide for operating Twilite's current GitHub browsing, save, and publish flow.",
+    "graphId": "github-howto-declaration",
+    "version": "0.1.0",
+    "kind": "document",
+    "created": "2026-07-02T16:25:31.169Z",
+    "modified": "2026-07-02T16:39:04.886Z",
     "author": "",
     "tags": [
-      "github",
-      "how-to",
-      "guide"
-    ]
+      "document"
+    ],
+    "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
     {
@@ -28,7 +30,7 @@
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "github-howto-document-root",
+          "graphId": "github-howto-declaration",
           "name": "GitHub How-To Document",
           "version": "0.1.0",
           "description": "Practical guide for operating Twilite's current GitHub browsing, save, and publish flow.",
@@ -95,14 +97,24 @@
           "expansion": {
             "allowGraphEntry": true
           },
-          "github": {
-            "repo": "",
-            "path": "",
-            "branch": "main",
-            "autoCreateRepo": true,
-            "repoVisibility": "private",
-            "seedOnCommit": false,
-            "enableGithubPages": false
+          "layout": {
+            "mode": "autoOnMissingPositions",
+            "defaultLayout": "layered",
+            "direction": "DOWN",
+            "edgeLaneGapPx": 10,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
           }
         },
         "declaration": {
@@ -129,7 +141,7 @@
     },
     {
       "id": "github-howto-back",
-      "type": "port",
+      "type": "portal",
       "label": "Back to GitHub Root",
       "root": false,
       "position": {
@@ -148,7 +160,9 @@
           "graphId": "",
           "nodeId": "",
           "portId": "root",
-          "label": "Open root"
+          "label": "Open root",
+          "ref": "/github/root.node",
+          "handleId": "root"
         },
         "memo": "",
         "link": "",
@@ -156,19 +170,135 @@
         "svg": "",
         "sourceRef": "/github/root.node",
         "sourceNodeId": "github-view",
-        "sourcePayload": "node.web.summary"
+        "sourcePayload": "node.web.summary",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        },
+        "authority": "navigate",
+        "intent": "external",
+        "security": "prompt",
+        "ref": "/github/root.node",
+        "src": "/github/root.node",
+        "endpoint": "/github/root.node:root"
       }
     },
     {
       "id": "github-howto-document-template-import",
       "type": "bridge",
       "label": "Document Template Import",
+      "root": false,
       "position": {
         "x": -1220,
         "y": 0
       },
       "width": 260,
       "height": 120,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "top",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "bottom",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "left",
+            "offset": 0.2
+          }
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "value"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "value"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -263,8 +393,75 @@
           "create"
         ],
         "nodeViewPayload": "node.web.icon",
-        "surfaceId": "export"
+        "surfaceId": "export",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        }
+      }
+    },
+    {
+      "id": "github-howto-document-template-runtime-import",
+      "type": "bridge",
+      "label": "Template Runtime Import",
+      "root": false,
+      "position": {
+        "x": 660,
+        "y": -180
       },
+      "width": 260,
+      "height": 120,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "top",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "bottom",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "left",
+            "offset": 0.2
+          }
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
       "inputs": [
         {
           "key": "root",
@@ -319,72 +516,6 @@
           "type": "value"
         }
       ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.2
-          }
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
-        }
-      ],
-      "resizable": true,
-      "portPosition": "center",
-      "root": false
-    },
-    {
-      "id": "github-howto-document-template-runtime-import",
-      "type": "bridge",
-      "label": "Template Runtime Import",
-      "position": {
-        "x": 660,
-        "y": -180
-      },
-      "width": 260,
-      "height": 120,
       "visible": true,
       "showLabel": true,
       "data": {
@@ -460,8 +591,75 @@
         "grants": [
           "execute"
         ],
-        "nodeViewPayload": "node.web.icon"
+        "nodeViewPayload": "node.web.icon",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        }
+      }
+    },
+    {
+      "id": "github-howto-document-export-view",
+      "type": "bridge",
+      "label": "GitHub How-To Document View Export",
+      "root": false,
+      "position": {
+        "x": 980,
+        "y": -180
       },
+      "width": 260,
+      "height": 120,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "top",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "bottom",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "left",
+            "offset": 0.2
+          }
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
       "inputs": [
         {
           "key": "root",
@@ -516,72 +714,6 @@
           "type": "value"
         }
       ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.2
-          }
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
-        }
-      ],
-      "resizable": true,
-      "portPosition": "center",
-      "root": false
-    },
-    {
-      "id": "github-howto-document-export-view",
-      "type": "bridge",
-      "label": "GitHub How-To Document View Export",
-      "position": {
-        "x": 980,
-        "y": -180
-      },
-      "width": 260,
-      "height": 120,
       "visible": true,
       "showLabel": true,
       "data": {
@@ -653,117 +785,11 @@
         "ref": "/github/how-to.document.node",
         "resourceKind": "library",
         "grants": [],
-        "nodeViewPayload": "node.web.icon"
-      },
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "value"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
+        "nodeViewPayload": "node.web.icon",
+        "identity": {
+          "graphId": "github-howto-declaration"
         }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "value"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.2
-          }
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
-        }
-      ],
-      "resizable": true,
-      "portPosition": "center",
-      "root": false
+      }
     },
     {
       "id": "github-howto-title",
@@ -795,16 +821,10 @@
           "classKey": "title",
           "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
         },
-        "definitionKey": "title"
-      },
-      "_bridge": {
-        "sourceBridgeNodeId": "github-howto-document-template-import",
-        "sourceBridgeLabel": "Document Template Import",
-        "targetKind": "node-class",
-        "classKey": "title",
-        "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-        "sourceNodeId": "github-howto-document-template-import",
-        "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/document-publishing-template.node"
+        "definitionKey": "title",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        }
       }
     },
     {
@@ -839,16 +859,10 @@
           "classKey": "type-definition",
           "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
         },
-        "definitionKey": "type-definition"
-      },
-      "_bridge": {
-        "sourceBridgeNodeId": "github-howto-document-template-import",
-        "sourceBridgeLabel": "Document Template Import",
-        "targetKind": "node-class",
-        "classKey": "type-definition",
-        "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-        "sourceNodeId": "github-howto-document-template-import",
-        "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/document-publishing-template.node"
+        "definitionKey": "type-definition",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        }
       }
     },
     {
@@ -893,7 +907,10 @@
           "sourceNodeId": "github-howto-document-template-import",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/document-publishing-template.node"
         },
-        "definitionKey": "ui-view"
+        "definitionKey": "ui-view",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        }
       }
     },
     {
@@ -907,6 +924,8 @@
       },
       "width": 420,
       "height": 300,
+      "handles": [],
+      "ports": [],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -938,7 +957,7 @@
           "github-howto-mental-model",
           "github-howto-summary"
         ],
-        "documentHtml": "",
+        "documentHtml": "<section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;box-sizing:border-box;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,252,245,0.99), rgba(255,248,235,0.96));border:1px solid rgba(146,64,14,0.16);box-shadow:0 12px 28px rgba(180,83,9,0.10);gap:14px;\"><div style=\"display:flex;align-items:flex-start;justify-content:space-between;gap:12px;\"><div style=\"display:flex;flex-direction:column;gap:6px;min-width:0;\"><div style=\"font:700 11px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#b45309;\">Title</div><div style=\"font:700 28px/1.12 ui-sans-serif, system-ui, sans-serif;color:#1f2937;word-break:break-word;\">GitHub How-To</div></div><div style=\"display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(180,83,9,0.1);color:#92400e;font-size:11px;font-weight:700;letter-spacing:0.04em;\">headline</span><span style=\"font:600 10px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.12em;text-transform:uppercase;color:#9a3412;opacity:0.72;\">active</span></div></div><div style=\"height:1px;background:linear-gradient(90deg, rgba(245,158,11,0.45), rgba(245,158,11,0));\"></div><div style=\"font:500 15px/1.65 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\">Practical guide for connecting Twilite to GitHub: start in browser chrome, read the status surfaces, choose the right installation, and save intentionally when the task calls for a write.</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div id=\"status-strip\" style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Read the status strip first</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;\">Section</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">The status surfaces are the authoritative summary layer. `Document` tells you what graph is open, `Save target` tells you where the next write is pointed, and `Access` tells you which installation context Twilite is using. If `Document` and `Save target` disagree, resolve that before writing.</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div id=\"save-flow\" style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Save a graph to GitHub</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;\">Section</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">Open `Save to GitHub`, choose the installation that can actually see the destination repo, then choose repository, branch, and path. Read the capability pill next to the save button. `Writable` means high confidence for a direct write, `Accessible` means GitHub can reach the destination but Twilite cannot fully predict the final outcome, and `Blocked` means the selected installation cannot access that repo directly.</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div id=\"missing-repos\" style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">If a repo is missing</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;\">Section</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">Missing repos are usually an installation-scope issue on GitHub, not a local-folder issue. Local folders do not make a repo visible to Twilite, and workspace mappings are defaults rather than proof of GitHub authority. The repo picker only shows repos returned by the selected GitHub App installation.</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div id=\"mental-model\" style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Keep the model separate</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;\">Section</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">Twilite&#39;s current GitHub integration works best when five ideas stay separate: document identity, browse path, save target, installation access, and workspace defaults. The product is safer when those are exposed explicitly instead of being hidden behind one generic GitHub state.</div></div></section><section style=\"margin:0 0 20px 0;\"><div style=\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\"><div style=\"display:flex;align-items:center;justify-content:space-between;gap:12px;\"><div style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\">Summary</div><div style=\"display:flex;gap:6px;flex-wrap:wrap;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(219,39,119,0.14);color:#9d174d;font-size:11px;font-weight:600;\">Summary</span></div></div><div style=\"height:4px;border-radius:999px;background:linear-gradient(90deg, #db2777, #f472b6);opacity:0.95;\"></div><div style=\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\">The GitHub how-to is the practical operating surface: start in browser chrome, read the status surfaces, choose the installation that can actually see the destination repo, save intentionally, and interpret `Writable`, `Accessible`, and `Blocked` as save-time signals rather than as workspace-mapping state.</div><div style=\"font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#64748b;\">Scope: GitHub how-to</div></div></section>",
         "_classBinding": {
           "key": "document-view",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/document-view.node-class.node",
@@ -951,16 +970,12 @@
           "classKey": "document-view",
           "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/document-view.node-class.node"
         },
-        "definitionKey": "document-view"
-      },
-      "_bridge": {
-        "sourceBridgeNodeId": "github-howto-document-template-import",
-        "sourceBridgeLabel": "Document Template Import",
-        "targetKind": "node-class",
-        "classKey": "document-view",
-        "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/document-view.node-class.node",
-        "sourceNodeId": "github-howto-document-template-import",
-        "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/document-publishing-template.node"
+        "definitionKey": "document-view",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        },
+        "summarySource": "node-updater",
+        "updatedAt": "2026-07-02T16:38:36.779Z"
       }
     },
     {
@@ -993,16 +1008,10 @@
           "classKey": "section",
           "classRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node"
         },
-        "definitionKey": "section"
-      },
-      "_bridge": {
-        "sourceBridgeNodeId": "github-howto-document-template-import",
-        "sourceBridgeLabel": "Document Template Import",
-        "targetKind": "node-class",
-        "classKey": "section",
-        "classRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node",
-        "sourceNodeId": "github-howto-document-template-import",
-        "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/document-publishing-template.node"
+        "definitionKey": "section",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        }
       }
     },
     {
@@ -1035,16 +1044,10 @@
           "classKey": "section",
           "classRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node"
         },
-        "definitionKey": "section"
-      },
-      "_bridge": {
-        "sourceBridgeNodeId": "github-howto-document-template-import",
-        "sourceBridgeLabel": "Document Template Import",
-        "targetKind": "node-class",
-        "classKey": "section",
-        "classRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node",
-        "sourceNodeId": "github-howto-document-template-import",
-        "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/document-publishing-template.node"
+        "definitionKey": "section",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        }
       }
     },
     {
@@ -1077,16 +1080,10 @@
           "classKey": "section",
           "classRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node"
         },
-        "definitionKey": "section"
-      },
-      "_bridge": {
-        "sourceBridgeNodeId": "github-howto-document-template-import",
-        "sourceBridgeLabel": "Document Template Import",
-        "targetKind": "node-class",
-        "classKey": "section",
-        "classRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node",
-        "sourceNodeId": "github-howto-document-template-import",
-        "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/document-publishing-template.node"
+        "definitionKey": "section",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        }
       }
     },
     {
@@ -1119,16 +1116,10 @@
           "classKey": "section",
           "classRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node"
         },
-        "definitionKey": "section"
-      },
-      "_bridge": {
-        "sourceBridgeNodeId": "github-howto-document-template-import",
-        "sourceBridgeLabel": "Document Template Import",
-        "targetKind": "node-class",
-        "classKey": "section",
-        "classRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node",
-        "sourceNodeId": "github-howto-document-template-import",
-        "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/document-publishing-template.node"
+        "definitionKey": "section",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        }
       }
     },
     {
@@ -1161,21 +1152,15 @@
           "classKey": "document-summary",
           "classRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/document-summary.node-class.node"
         },
-        "definitionKey": "document-summary"
-      },
-      "_bridge": {
-        "sourceBridgeNodeId": "github-howto-document-template-import",
-        "sourceBridgeLabel": "Document Template Import",
-        "targetKind": "node-class",
-        "classKey": "document-summary",
-        "classRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/document-summary.node-class.node",
-        "sourceNodeId": "github-howto-document-template-import",
-        "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/document-publishing-template.node"
+        "definitionKey": "document-summary",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        }
       }
     },
     {
       "id": "github-howto-reference-port",
-      "type": "port",
+      "type": "portal",
       "label": "GitHub Reference",
       "root": false,
       "position": {
@@ -1188,7 +1173,7 @@
       "showLabel": true,
       "data": {
         "intent": "navigate",
-        "authority": "consume-view",
+        "authority": "navigate",
         "sourcePayload": "node.web.document",
         "memo": "Open the GitHub reference document.",
         "target": {
@@ -1196,16 +1181,24 @@
           "mode": "navigate",
           "label": "Open reference",
           "ref": "/github/document/root.node",
-          "nodeId": "github-document-view",
-          "portId": "root"
+          "nodeId": "",
+          "portId": "github-document-view",
+          "handleId": "github-document-view"
         },
         "sourceRef": "/github/document/root.node",
-        "sourceNodeId": "github-document-view"
+        "sourceNodeId": "github-document-view",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        },
+        "security": "prompt",
+        "ref": "/github/document/root.node",
+        "src": "/github/document/root.node",
+        "endpoint": "/github/document/root.node:github-document-view"
       }
     },
     {
       "id": "github-howto-tutorial-port",
-      "type": "port",
+      "type": "portal",
       "label": "GitHub Walkthrough",
       "root": false,
       "position": {
@@ -1218,7 +1211,7 @@
       "showLabel": true,
       "data": {
         "intent": "navigate",
-        "authority": "consume-view",
+        "authority": "navigate",
         "sourcePayload": "node.web.summary",
         "memo": "Open the GitHub tutorial walkthrough.",
         "target": {
@@ -1226,10 +1219,18 @@
           "mode": "navigate",
           "label": "Open walkthrough",
           "ref": "/tutorial/github-authoring-walkthrough.document.node",
-          "portId": "root"
+          "portId": "root",
+          "handleId": "root"
         },
         "sourceRef": "/tutorial/github-authoring-walkthrough.document.node",
-        "sourceNodeId": "github-walkthrough-view"
+        "sourceNodeId": "github-walkthrough-view",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        },
+        "security": "prompt",
+        "ref": "/tutorial/github-authoring-walkthrough.document.node",
+        "src": "/tutorial/github-authoring-walkthrough.document.node",
+        "endpoint": "/tutorial/github-authoring-walkthrough.document.node:root"
       }
     },
     {
@@ -1254,7 +1255,30 @@
         "allowMutations": true,
         "dryRun": false,
         "source": "const DOCUMENT_VIEW_ID = 'github-howto-document-view';\nconst ORDERED_IDS = [\n  'github-howto-title',\n  'github-howto-status-strip',\n  'github-howto-save-flow',\n  'github-howto-missing-repos',\n  'github-howto-mental-model',\n  'github-howto-summary'\n];\nconst isEqual = (a, b) => {\n  if (a === b) return true;\n  if (!a || !b || typeof a !== 'object' || typeof b !== 'object') return false;\n  const aKeys = Object.keys(a);\n  const bKeys = Object.keys(b);\n  if (aKeys.length !== bKeys.length) return false;\n  for (const key of aKeys) {\n    if (!Object.prototype.hasOwnProperty.call(b, key)) return false;\n    const aVal = a[key];\n    const bVal = b[key];\n    if (Array.isArray(aVal) || Array.isArray(bVal)) {\n      if (JSON.stringify(aVal) !== JSON.stringify(bVal)) return false;\n      continue;\n    }\n    if (aVal && typeof aVal === 'object') {\n      if (!isEqual(aVal, bVal)) return false;\n      continue;\n    }\n    if (aVal !== bVal) return false;\n  }\n  return true;\n};\nconst escapeHtml = (value) => String(value || '')\n  .replace(/&/g, '&amp;')\n  .replace(/</g, '&lt;')\n  .replace(/>/g, '&gt;')\n  .replace(/\\\"/g, '&quot;')\n  .replace(/'/g, '&#39;');\nconst paragraphize = (value) => escapeHtml(value).replace(/\\n\\n+/g, '<br><br>').replace(/\\n/g, '<br>');\nconst renderErrorCard = (title, detail) => `<section style=\\\"padding:18px;border:1px solid rgba(220,38,38,0.22);border-radius:16px;background:linear-gradient(180deg, rgba(254,242,242,0.98), rgba(255,255,255,0.98));display:flex;flex-direction:column;gap:10px;\\\"><div style=\\\"font:700 18px/1.25 ui-sans-serif, system-ui, sans-serif;color:#991b1b;\\\">${escapeHtml(title)}</div><div style=\\\"font:500 14px/1.6 ui-sans-serif, system-ui, sans-serif;color:#7f1d1d;\\\">${escapeHtml(detail)}</div></section>`;\nconst renderCardPart = ({ title, badge, badgeStyle, ruleStyle, body, meta, anchor }) => {\n  const safeTitle = escapeHtml(title || 'Untitled');\n  const bodyHtml = body ? `<div style=\\\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\\\">${body}</div>` : '';\n  const metaHtml = meta ? `<div style=\\\"font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#64748b;\\\">${meta}</div>` : '';\n  const anchorAttr = anchor ? ` id=\\\"${escapeHtml(anchor)}\\\"` : '';\n  return `<section style=\\\"margin:0 0 20px 0;\\\"><div style=\\\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\\\"><div style=\\\"display:flex;align-items:center;justify-content:space-between;gap:12px;\\\"><div${anchorAttr} style=\\\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\\\">${safeTitle}</div><div style=\\\"display:flex;gap:6px;flex-wrap:wrap;\\\"><span style=\\\"${badgeStyle}\\\">${escapeHtml(badge)}</span></div></div><div style=\\\"${ruleStyle}\\\"></div>${bodyHtml}${metaHtml}</div></section>`;\n};\nconst renderTitlePart = (data) => {\n  const safeTitle = escapeHtml(data.title || 'Untitled Title');\n  const safeSubtitle = escapeHtml(data.subtitle || 'Use this node to frame the document.');\n  return `<section style=\\\"margin:0 0 20px 0;\\\"><div style=\\\"display:flex;flex-direction:column;box-sizing:border-box;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,252,245,0.99), rgba(255,248,235,0.96));border:1px solid rgba(146,64,14,0.16);box-shadow:0 12px 28px rgba(180,83,9,0.10);gap:14px;\\\"><div style=\\\"display:flex;align-items:flex-start;justify-content:space-between;gap:12px;\\\"><div style=\\\"display:flex;flex-direction:column;gap:6px;min-width:0;\\\"><div style=\\\"font:700 11px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#b45309;\\\">Title</div><div style=\\\"font:700 28px/1.12 ui-sans-serif, system-ui, sans-serif;color:#1f2937;word-break:break-word;\\\">${safeTitle}</div></div><div style=\\\"display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;\\\"><span style=\\\"padding:4px 8px;border-radius:999px;background:rgba(180,83,9,0.1);color:#92400e;font-size:11px;font-weight:700;letter-spacing:0.04em;\\\">${escapeHtml(data.intent || 'headline')}</span><span style=\\\"font:600 10px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.12em;text-transform:uppercase;color:#9a3412;opacity:0.72;\\\">${escapeHtml(data.status || 'draft')}</span></div></div><div style=\\\"height:1px;background:linear-gradient(90deg, rgba(245,158,11,0.45), rgba(245,158,11,0));\\\"></div><div style=\\\"font:500 15px/1.65 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\\\">${safeSubtitle}</div></div></section>`;\n};\nconst renderNodePart = (node) => {\n  const data = node.data || {};\n  if (node.type === 'title') return renderTitlePart(data);\n  if (node.type === 'section') return renderCardPart({ title: data.title || node.label || 'Section', badge: 'Section', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;', body: paragraphize(data.summary), anchor: data.anchor });\n  if (node.type === 'document-summary') return renderCardPart({ title: data.title || 'Summary', badge: 'Summary', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(219,39,119,0.14);color:#9d174d;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #db2777, #f472b6);opacity:0.95;', body: paragraphize(data.summary), meta: data.scope ? `Scope: ${escapeHtml(data.scope)}` : '' });\n  return '';\n};\nconst nodes = await api.getNodes();\nconst documentView = nodes.find((entry) => entry?.id === DOCUMENT_VIEW_ID);\nif (!documentView) return { success: false, error: 'Document view missing' };\nconst nodesById = new Map(nodes.map((entry) => [entry?.id, entry]));\nconst existingIds = new Set(nodes.map((entry) => entry?.id).filter(Boolean));\nconst missingOrderedIds = ORDERED_IDS.filter((id) => !existingIds.has(id));\nconst resolvedOrder = ORDERED_IDS.filter((id) => existingIds.has(id));\nconst renderedParts = resolvedOrder.map((id) => renderNodePart(nodesById.get(id))).filter(Boolean);\nconst invalidOrdering = missingOrderedIds.length > 0 || renderedParts.length !== resolvedOrder.length;\nconst documentHtml = invalidOrdering ? renderErrorCard('Document view contract error', `Document order is invalid or incomplete. Missing: ${missingOrderedIds.join(', ') || 'unknown part rendering failure'}.`) : (renderedParts.join('') || renderErrorCard('Document view contract error', 'Document content is missing. Add document parts or provide documentHtml/documentBlocks.'));\nconst nextData = { ...(documentView.data || {}), partNodeIds: resolvedOrder, documentOrder: resolvedOrder, documentHtml, summarySource: 'node-updater', updatedAt: new Date().toISOString() };\nif (!isEqual(documentView.data || {}, nextData)) await api.updateNode(DOCUMENT_VIEW_ID, { data: nextData });\nreturn { success: true, updated: resolvedOrder.length, invalidOrdering, missingOrderedIds };",
-        "key": "github-howto-document-view-updater"
+        "key": "github-howto-document-view-updater",
+        "identity": {
+          "graphId": "github-howto-declaration"
+        },
+        "_semanticLevel": "detail",
+        "scriptId": "",
+        "lastResult": {
+          "type": "scriptResult",
+          "success": true,
+          "result": {
+            "success": true,
+            "updated": 6,
+            "invalidOrdering": false,
+            "missingOrderedIds": []
+          },
+          "runId": "1783010311422_m37b56cwthl",
+          "nodeId": "github-howto-document-updater",
+          "sourceNodeId": "github-howto-document-updater",
+          "hook": null,
+          "lifecycle": false,
+          "token": "jhkox7597momr3pziqp"
+        },
+        "lastRunAt": 1783010323594,
+        "scriptRef": ""
       }
     }
   ],
@@ -1459,38 +1483,71 @@
     },
     {
       "id": "github-howto-edge-title-template-runtime",
+      "type": "relationship",
       "source": "github-howto-title",
       "target": "github-howto-document-template-runtime-import",
-      "sourceHandle": "root",
-      "targetHandle": "root",
-      "type": "relationship",
+      "sourcePort": "root",
+      "targetPort": "root",
       "label": "runtime import",
-      "animated": false,
       "style": {
         "strokeDasharray": "8 6"
       },
-      "markerEnd": {
-        "type": "arrowclosed"
-      }
+      "data": {}
     },
     {
       "id": "github-howto-edge-title-export-view",
+      "type": "relationship",
       "source": "github-howto-title",
       "target": "github-howto-document-export-view",
-      "sourceHandle": "root",
-      "targetHandle": "root",
-      "type": "relationship",
+      "sourcePort": "root",
+      "targetPort": "root",
       "label": "exports view",
-      "animated": false,
       "style": {
         "strokeDasharray": "8 6"
       },
-      "markerEnd": {
-        "type": "arrowclosed"
-      }
+      "data": {}
     }
   ],
   "clusters": [],
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "#666666",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "layout": {
+      "mode": "autoOnMissingPositions",
+      "defaultLayout": "layered",
+      "direction": "DOWN",
+      "edgeLaneGapPx": 10,
+      "serpentine": {
+        "maxPerRow": 6
+      },
+      "cycleFallback": {
+        "enabled": true
+      },
+      "elk": {
+        "algorithm": "fixed",
+        "edgeRouting": "ORTHOGONAL",
+        "portConstraints": "FIXED_SIDE",
+        "nodeSpacing": 120,
+        "layeredEdgeSpacing": 80
+      }
+    },
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "github/how-to.document.node",
+      "branch": "main",
+      "autoCreateRepo": true,
+      "repoVisibility": "private",
+      "seedOnCommit": false,
+      "enableGithubPages": false,
+      "installationId": ""
+    },
+    "autoSave": false
+  },
   "scripts": [
     {
       "id": "script_1761684730975",
@@ -1498,7 +1555,5 @@
       "source": "// Write your script here\n// Available API:\n//   api.getNodes()\n//   api.getNode(id)\n//   api.getEdges()\n//   api.createNode(data)\n//   api.updateNode(id, patch)\n//   api.deleteNode(id)\n//   api.createEdge(data)\n//   api.deleteEdge(id)\n//   api.log(level, message)\n\nconst nodes = await api.getNodes();\nreturn { count: nodes.length };",
       "tags": ""
     }
-  ],
-  "nodeCount": 17,
-  "edgeCount": 14
+  ]
 }
