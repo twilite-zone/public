@@ -14,12 +14,12 @@
   },
   "nodes": [
     {
-      "id": "github-howto-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "id": "github-howto-declaration",
+      "type": "declaration",
+      "label": "Declaration",
       "root": false,
       "position": {
-        "x": -840,
+        "x": -1120,
         "y": -320
       },
       "width": 360,
@@ -31,9 +31,9 @@
           "graphId": "github-howto-document-root",
           "name": "GitHub How-To Document",
           "version": "0.1.0",
-          "description": "Practical guide for operating Twilite's current GitHub integration.",
+          "description": "Practical guide for operating Twilite's current GitHub browsing, save, and publish flow.",
           "createdAt": "2026-05-11T00:00:00.000Z",
-          "updatedAt": "2026-05-11T00:00:00.000Z"
+          "updatedAt": "2026-07-02T00:00:00.000Z"
         },
         "intent": {
           "kind": "document",
@@ -41,13 +41,13 @@
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
-            "legend",
+            "declaration",
             "bridge",
             "port",
             "script",
             "title",
             "type-definition",
+            "ui-view",
             "document-view",
             "section",
             "document-summary"
@@ -104,24 +104,27 @@
             "seedOnCommit": false,
             "enableGithubPages": false
           }
+        },
+        "declaration": {
+          "targetMode": "artifact",
+          "defaultSurfaceId": "github-howto-reader-surface",
+          "surfaces": [
+            {
+              "id": "github-howto-reader-surface",
+              "kind": "view",
+              "label": "Reader",
+              "memo": "Primary declared reader surface for the full GitHub how-to document.",
+              "viewNodeId": "github-howto-document-view"
+            },
+            {
+              "id": "github-howto-overview-surface",
+              "kind": "view",
+              "label": "Overview",
+              "memo": "Lightweight declared overview surface for cards, links, and compact embeds.",
+              "viewNodeId": "github-howto-summary-view"
+            }
+          ]
         }
-      }
-    },
-    {
-      "id": "github-howto-legend",
-      "type": "legend",
-      "label": "Legend",
-      "root": false,
-      "position": {
-        "x": -1220,
-        "y": -320
-      },
-      "width": 300,
-      "height": 180,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "entries": []
       }
     },
     {
@@ -602,7 +605,8 @@
             "views": {
               "mode": "allowlist",
               "allowKeys": [
-                "node.web.document"
+                "node.web.document",
+                "node.web.summary"
               ]
             },
             "scripts": {
@@ -629,7 +633,8 @@
             "views": {
               "mode": "allowlist",
               "allowKeys": [
-                "node.web.document"
+                "node.web.document",
+                "node.web.summary"
               ]
             },
             "scripts": {
@@ -775,7 +780,7 @@
       "showLabel": true,
       "data": {
         "title": "GitHub How-To",
-        "subtitle": "Practical guide for connecting Twilite to GitHub: read the status surfaces, choose the right installation, save intentionally, and understand what the write signals actually mean.",
+        "subtitle": "Practical guide for connecting Twilite to GitHub: start in browser chrome, read the status surfaces, choose the right installation, and save intentionally when the task calls for a write.",
         "intent": "headline",
         "status": "active",
         "_classBinding": {
@@ -819,8 +824,8 @@
         "name": "GitHub How-To Document",
         "key": "github-howto-document",
         "classRef": "/github/how-to.document.node",
-        "meaning": "Practical operating guide for Twilite's current GitHub integration.",
-        "description": "Use this type when a host should render the GitHub how-to as a full document surface.",
+        "meaning": "Practical operating guide for Twilite's current GitHub browsing, save, and publish flow.",
+        "description": "Use this type when a host should render the GitHub how-to as a full document or link to it as a lightweight overview surface.",
         "category": "guide",
         "status": "active",
         "_classBinding": {
@@ -844,6 +849,51 @@
         "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
         "sourceNodeId": "github-howto-document-template-import",
         "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/document-publishing-template.node"
+      }
+    },
+    {
+      "id": "github-howto-summary-view",
+      "type": "ui-view",
+      "label": "Overview View",
+      "root": false,
+      "position": {
+        "x": 860,
+        "y": 160
+      },
+      "width": 420,
+      "height": 280,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "GitHub How-To",
+        "localTitle": "GitHub How-To",
+        "publishedTitle": "GitHub How-To",
+        "purpose": "Lightweight summary surface for the GitHub how-to when another graph needs a compact card or link target instead of the full document.",
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary",
+          "label": "UI View"
+        },
+        "titleSourceNodeId": "github-howto-title",
+        "typeSourceNodeId": "github-howto-type",
+        "audience": "Public",
+        "status": "active",
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"16\" width=\"184\" height=\"128\" rx=\"22\" fill=\"#fffdf8\" stroke=\"#0f172a\" stroke-width=\"5\"/><rect x=\"34\" y=\"32\" width=\"88\" height=\"14\" rx=\"7\" fill=\"#111827\" opacity=\"0.92\"/><rect x=\"34\" y=\"60\" width=\"130\" height=\"12\" rx=\"6\" fill=\"#dbeafe\" stroke=\"#2563eb\" stroke-width=\"2.5\"/><rect x=\"34\" y=\"84\" width=\"142\" height=\"12\" rx=\"6\" fill=\"#e2e8f0\"/><rect x=\"34\" y=\"108\" width=\"114\" height=\"12\" rx=\"6\" fill=\"#fed7aa\"/><text x=\"110\" y=\"142\" text-anchor=\"middle\" font-family=\"ui-sans-serif, system-ui, sans-serif\" font-size=\"12\" font-weight=\"700\" letter-spacing=\"0.08em\" fill=\"#0f172a\">GITHUB HOW-TO</text></svg>",
+        "_classBinding": {
+          "key": "ui-view",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+        },
+        "_bridge": {
+          "sourceBridgeNodeId": "github-howto-document-template-import",
+          "sourceBridgeLabel": "Document Template Import",
+          "targetKind": "node-class",
+          "classKey": "ui-view",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "sourceNodeId": "github-howto-document-template-import",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/document-publishing-template.node"
+        },
+        "definitionKey": "ui-view"
       }
     },
     {
@@ -1054,7 +1104,7 @@
       "showLabel": true,
       "data": {
         "title": "Keep the model separate",
-        "summary": "Twilite's current GitHub integration works best when four ideas stay separate: document identity, save target, installation access, and workspace defaults. The product is safer when those are exposed explicitly instead of being hidden behind one generic GitHub state.",
+        "summary": "Twilite's current GitHub integration works best when five ideas stay separate: document identity, browse path, save target, installation access, and workspace defaults. The product is safer when those are exposed explicitly instead of being hidden behind one generic GitHub state.",
         "level": "h2",
         "anchor": "mental-model",
         "status": "active",
@@ -1096,7 +1146,7 @@
       "showLabel": true,
       "data": {
         "title": "Summary",
-        "summary": "The GitHub how-to is the practical operating surface: read the status surfaces, choose the installation that can actually see the destination repo, save intentionally, and interpret `Writable`, `Accessible`, and `Blocked` as save-time signals rather than as workspace-mapping state.",
+        "summary": "The GitHub how-to is the practical operating surface: start in browser chrome, read the status surfaces, choose the installation that can actually see the destination repo, save intentionally, and interpret `Writable`, `Accessible`, and `Blocked` as save-time signals rather than as workspace-mapping state.",
         "scope": "GitHub how-to",
         "audience": "Reader",
         "status": "active",
@@ -1210,6 +1260,17 @@
   ],
   "edges": [
     {
+      "id": "github-howto-edge-title-declaration",
+      "type": "reference",
+      "source": "github-howto-title",
+      "target": "github-howto-declaration",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "declares",
+      "style": {},
+      "data": {}
+    },
+    {
       "id": "github-howto-edge-title-type",
       "type": "reference",
       "source": "github-howto-title",
@@ -1243,6 +1304,17 @@
       "data": {}
     },
     {
+      "id": "github-howto-edge-title-summary-view",
+      "type": "reference",
+      "source": "github-howto-title",
+      "target": "github-howto-summary-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "summary view",
+      "style": {},
+      "data": {}
+    },
+    {
       "id": "github-howto-edge-type-document",
       "type": "reference",
       "source": "github-howto-type",
@@ -1250,6 +1322,50 @@
       "sourcePort": "root",
       "targetPort": "root",
       "label": "declares document",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "github-howto-edge-type-summary-view",
+      "type": "reference",
+      "source": "github-howto-type",
+      "target": "github-howto-summary-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "declares summary view",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "github-howto-edge-declaration-document-view",
+      "type": "reference",
+      "source": "github-howto-declaration",
+      "target": "github-howto-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "reader surface",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "github-howto-edge-declaration-summary-view",
+      "type": "reference",
+      "source": "github-howto-declaration",
+      "target": "github-howto-summary-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "overview surface",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "github-howto-edge-summary-view-document",
+      "type": "reference",
+      "source": "github-howto-summary-view",
+      "target": "github-howto-document-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "opens document",
       "style": {},
       "data": {}
     },
