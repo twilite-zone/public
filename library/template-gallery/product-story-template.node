@@ -1,31 +1,18 @@
 {
-  "fileVersion": "1.0",
-  "metadata": {
-    "title": "Product Story Template",
-    "description": "Twilite-native product landing template with a branded hero, proof, and CTA rhythm.",
-    "created": "2026-07-02T19:10:00.000Z",
-    "modified": "2026-07-02T19:10:00.000Z",
-    "author": "",
-    "tags": [
-      "template",
-      "landing",
-      "product",
-      "twilite"
-    ]
-  },
+  "type": "nodegraph-data",
   "nodes": [
     {
-      "id": "product-story-template-declaration",
+      "id": "product-story-smoke-declaration",
       "type": "declaration",
       "label": "Declaration",
       "root": false,
       "position": {
-        "x": -900,
-        "y": -220
+        "x": -980,
+        "y": -160
       },
       "width": 360,
       "height": 220,
-      "visible": false,
+      "visible": true,
       "showLabel": true,
       "ports": [
         {
@@ -37,30 +24,70 @@
             "side": "left",
             "offset": 0.5
           }
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "top",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "bottom",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "left",
+            "offset": 0.2
+          }
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
         }
       ],
       "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "value"
-        }
+        { "key": "root", "label": "root", "type": "value" },
+        { "key": "top", "label": "top", "type": "value" },
+        { "key": "bottom", "label": "bottom", "type": "value" },
+        { "key": "left", "label": "left", "type": "value" },
+        { "key": "right", "label": "right", "type": "value" }
       ],
       "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "value"
-        }
+        { "key": "root", "label": "root", "type": "value" },
+        { "key": "top", "label": "top", "type": "value" },
+        { "key": "bottom", "label": "bottom", "type": "value" },
+        { "key": "left", "label": "left", "type": "value" },
+        { "key": "right", "label": "right", "type": "value" }
       ],
       "data": {
         "identity": {
-          "graphId": "product-story-template",
+          "graphId": "library-product-story-template",
           "name": "Product Story Template",
           "version": "0.1.0",
-          "description": "Twilite-native landing graph template for product storytelling.",
-          "createdAt": "2026-07-02T19:10:00.000Z",
-          "updatedAt": "2026-07-02T19:10:00.000Z"
+          "description": "Product landing scaffold with a strong first click, a supporting proof surface, and lightweight story context.",
+          "createdAt": "2026-07-02T20:05:00.000Z",
+          "updatedAt": "2026-07-02T20:05:00.000Z"
         },
         "intent": {
           "kind": "graph",
@@ -107,55 +134,50 @@
           "url": ""
         },
         "settings": {
-          "theme": {
-            "mode": "dark",
-            "primary": {
-              "main": "#5b8cff"
-            },
-            "secondary": {
-              "main": "#fb923c"
-            },
-            "background": {
-              "default": "#0b1220",
-              "paper": "#111827"
-            },
-            "text": {
-              "primary": "#f8fafc",
-              "secondary": "rgba(226, 232, 240, 0.82)"
-            },
-            "divider": "rgba(91, 140, 255, 0.22)"
-          },
+          "theme": null,
           "backgroundImage": null,
           "uiDensity": "comfortable",
-          "defaultNodeColor": "#5b8cff",
-          "defaultEdgeColor": "#4b6cb7",
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
           "snapToGrid": false,
           "gridSize": 20,
           "edgeRouting": "auto",
           "layout": {
             "mode": "autoOnMissingPositions",
             "defaultLayout": "layered",
-            "direction": "DOWN"
+            "direction": "DOWN",
+            "edgeLaneGapPx": 10,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
           },
           "autoSave": false
         },
-        "name": "Product Story Template Declaration",
+        "name": "Graph Declaration",
         "declaresKind": "graph",
-        "purpose": "Declare a reusable Twilite-native product page pattern.",
-        "primaryNodeViewId": "product-story-template-view",
-        "portViewNodeId": "product-story-template-view",
+        "purpose": "Declare the primary authority and export surface for the product story template.",
         "declaration": {
           "kind": "graph",
-          "primaryNodeViewId": "product-story-template-view",
-          "portViewNodeId": "product-story-template-view",
-          "defaultSurfaceId": "landing",
+          "graphViewRole": "authoring",
+          "targetMode": "artifact",
+          "artifactKind": "graph",
+          "defaultSurfaceId": "product-story",
           "surfaces": [
             {
-              "id": "landing",
-              "kind": "port",
-              "label": "Landing Story",
-              "memo": "Default public landing surface for a product story.",
-              "viewNodeId": "product-story-template-view",
+              "id": "product-story",
+              "kind": "view",
+              "label": "Product Story",
+              "memo": "Default public product-story surface.",
               "exposes": {
                 "views": {
                   "mode": "allow"
@@ -165,388 +187,375 @@
                 }
               }
             }
-          ],
-          "graphViewRole": "authoring",
-          "targetMode": "artifact",
-          "artifactKind": "graph"
-        }
+          ]
+        },
+        "_classBinding": {
+          "key": "declaration",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "declaration",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node"
+        },
+        "definitionKey": "declaration"
       }
     },
     {
-      "id": "product-story-template-title",
+      "id": "product-story-smoke-title",
       "type": "title",
       "label": "Title",
       "root": true,
       "position": {
-        "x": -420,
-        "y": -60
+        "x": 380,
+        "y": 140
       },
       "width": 540,
-      "height": 260,
+      "height": 240,
       "visible": true,
       "showLabel": true,
-      "style": {
-        "background": "#111827",
-        "color": "#f8fafc",
-        "borderColor": "#5b8cff",
-        "borderWidth": 2,
-        "borderStyle": "solid",
-        "borderRadius": 24,
-        "boxShadow": "0 18px 44px rgba(15, 23, 42, 0.35)"
-      },
       "data": {
-        "title": "Product Name",
-        "subtitle": "A graph-native product story with a strong promise, clear proof, and obvious next steps.",
+        "title": "Product Story Template",
+        "subtitle": "A public-facing product graph with a featured first click, lightweight proof, and supporting story context.",
         "intent": "headline",
-        "status": "active"
+        "status": "active",
+        "definitionKey": "title",
+        "_classBinding": {
+          "key": "title",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "title",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
+        }
       }
     },
     {
-      "id": "product-story-template-type",
+      "id": "product-story-smoke-type",
       "type": "type-definition",
       "label": "Type",
       "root": false,
       "position": {
-        "x": -420,
-        "y": 260
+        "x": -500,
+        "y": 160
       },
-      "width": 320,
-      "height": 180,
-      "visible": false,
+      "width": 360,
+      "height": 220,
+      "visible": true,
       "showLabel": true,
       "data": {
         "name": "Product Story Template",
         "key": "product-story-template",
         "classRef": "github://twilite-zone/public/library/template-gallery/product-story-template.node",
-        "meaning": "Reusable Twilite-native product landing template.",
-        "description": "Use when a graph should behave like a public product page with editorial rhythm and obvious CTAs.",
+        "meaning": "Product landing scaffold with a strong first click, proof, and story support.",
+        "description": "Use when a graph should behave like a public product page with a featured entry point and concise supporting context.",
         "category": "template",
-        "status": "active"
+        "status": "draft",
+        "definitionKey": "type-definition",
+        "_classBinding": {
+          "key": "type-definition",
+          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "type-definition",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
+        }
       }
     },
     {
-      "id": "product-story-template-view",
+      "id": "product-story-smoke-sample-view",
       "type": "ui-view",
-      "label": "View",
+      "label": "Product Story",
       "root": false,
       "position": {
-        "x": 180,
-        "y": -40
+        "x": -500,
+        "y": 500
       },
-      "width": 400,
-      "height": 260,
+      "width": 420,
+      "height": 280,
       "visible": true,
       "showLabel": true,
-      "style": {
-        "background": "#0f172a",
-        "color": "#f8fafc",
-        "borderColor": "#334155",
-        "borderWidth": 2,
-        "borderStyle": "solid",
-        "borderRadius": 24
-      },
       "data": {
-        "title": "Product Story",
-        "purpose": "Default public-facing landing surface for a Twilite product graph.",
+        "title": "Product Story Template",
+        "purpose": "Default landing surface for a public product story graph.",
         "viewRole": "page",
         "view": {
           "intent": "node",
           "payload": "node.web.summary",
           "label": "UI View"
         },
-        "titleSourceNodeId": "product-story-template-title",
-        "typeSourceNodeId": "product-story-template-type",
+        "titleSourceNodeId": "product-story-smoke-title",
+        "typeSourceNodeId": "product-story-smoke-type",
         "audience": "Public",
         "status": "active",
-        "svg": "<svg viewBox=\"0 0 260 180\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect width=\"260\" height=\"180\" rx=\"26\" fill=\"#0f172a\" stroke=\"#5b8cff\" stroke-width=\"4\"/><rect x=\"18\" y=\"18\" width=\"224\" height=\"144\" rx=\"20\" fill=\"#111827\"/><circle cx=\"72\" cy=\"72\" r=\"28\" fill=\"#fb923c\" opacity=\"0.92\"/><rect x=\"112\" y=\"52\" width=\"92\" height=\"18\" rx=\"9\" fill=\"#5b8cff\"/><rect x=\"112\" y=\"82\" width=\"82\" height=\"12\" rx=\"6\" fill=\"#94a3b8\"/><rect x=\"112\" y=\"104\" width=\"70\" height=\"12\" rx=\"6\" fill=\"#475569\"/><rect x=\"36\" y=\"120\" width=\"168\" height=\"16\" rx=\"8\" fill=\"#1e293b\"/><text x=\"130\" y=\"152\" text-anchor=\"middle\" font-family=\"ui-sans-serif, system-ui, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"#f8fafc\">PRODUCT STORY</text></svg>"
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"10\" y=\"10\" width=\"200\" height=\"140\" rx=\"22\" fill=\"#fffaf2\" stroke=\"#1f2937\" stroke-width=\"4\"/><rect x=\"28\" y=\"28\" width=\"58\" height=\"58\" rx=\"16\" fill=\"#111827\"/><rect x=\"100\" y=\"30\" width=\"92\" height=\"18\" rx=\"9\" fill=\"#2563eb\" opacity=\"0.9\"/><rect x=\"100\" y=\"58\" width=\"82\" height=\"12\" rx=\"6\" fill=\"#94a3b8\" opacity=\"0.9\"/><rect x=\"100\" y=\"78\" width=\"72\" height=\"12\" rx=\"6\" fill=\"#cbd5e1\" opacity=\"0.95\"/><rect x=\"28\" y=\"102\" width=\"164\" height=\"18\" rx=\"9\" fill=\"#f59e0b\" opacity=\"0.25\"/><text x=\"110\" y=\"145\" text-anchor=\"middle\" font-family=\"ui-sans-serif, system-ui, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#1f2937\">PRODUCT STORY</text></svg>",
+        "definitionKey": "ui-view",
+        "_classBinding": {
+          "key": "ui-view",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "ui-view",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+        }
       }
     },
     {
-      "id": "product-story-template-start",
+      "id": "product-story-smoke-primary",
       "type": "port",
-      "label": "🚀 Primary CTA",
+      "label": "Featured Start",
       "root": false,
       "position": {
-        "x": -420,
-        "y": 280
+        "x": 1060,
+        "y": 180
       },
       "width": 360,
       "height": 220,
       "visible": true,
       "showLabel": true,
-      "style": {
-        "background": "#1d4ed8",
-        "color": "#eff6ff",
-        "borderColor": "#93c5fd",
-        "borderWidth": 2,
-        "borderStyle": "solid",
-        "borderRadius": 22,
-        "boxShadow": "0 14px 34px rgba(37, 99, 235, 0.25)"
-      },
       "data": {
-        "memo": "Primary action for a new visitor.",
-        "intent": "external"
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/root.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Open Tutorial",
+          "ref": "github://twilite-zone/public/tutorial/root.node"
+        },
+        "memo": "Primary destination for a new visitor who should experience the product directly.",
+        "authority": "consume-view",
+        "sourceRef": "github://twilite-zone/public/tutorial/root.node",
+        "sourceNodeId": "tutorial-icon-view",
+        "sourcePayload": "node.web.icon",
+        "intent": "external",
+        "security": "prompt"
       }
     },
     {
-      "id": "product-story-template-secondary",
+      "id": "product-story-smoke-proof",
       "type": "port",
-      "label": "📚 Secondary CTA",
+      "label": "Proof Surface",
       "root": false,
       "position": {
-        "x": 0,
-        "y": 280
+        "x": 1450,
+        "y": 180
       },
       "width": 360,
       "height": 220,
       "visible": true,
       "showLabel": true,
-      "style": {
-        "background": "#0f172a",
-        "color": "#f8fafc",
-        "borderColor": "#fb923c",
-        "borderWidth": 2,
-        "borderStyle": "solid",
-        "borderRadius": 22
-      },
       "data": {
-        "memo": "Secondary action for a new visitor.",
-        "intent": "external"
+        "target": {
+          "endpoint": "github://twilitellc/public/products/root.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Open Products",
+          "ref": "github://twilitellc/public/products/root.node"
+        },
+        "memo": "Supporting destination that grounds the product story in a broader product shelf or proof hub.",
+        "authority": "consume-view",
+        "sourceRef": "github://twilitellc/public/products/root.node",
+        "sourceNodeId": "products-view",
+        "sourcePayload": "node.web.summary",
+        "intent": "external",
+        "security": "prompt"
       }
     },
     {
-      "id": "product-story-template-promise",
-      "type": "markdown",
-      "label": "✨ Promise",
+      "id": "product-story-smoke-secondary",
+      "type": "port",
+      "label": "Supporting Destination",
       "root": false,
       "position": {
-        "x": 680,
-        "y": -80
+        "x": 1255,
+        "y": 500
       },
-      "width": 620,
-      "height": 250,
+      "width": 360,
+      "height": 220,
       "visible": true,
       "showLabel": true,
-      "style": {
-        "background": "#111827",
-        "color": "#f8fafc",
-        "borderColor": "#5b8cff",
-        "borderWidth": 2,
-        "borderStyle": "solid",
-        "borderRadius": 24
-      },
       "data": {
-        "markdown": "# ✨ Promise\n\nState the sharpest version of what the product changes.\n\nThis is where the product stops sounding like software and starts sounding like a shift in capability."
+        "target": {
+          "endpoint": "github://twilite-zone/public/root.node:root",
+          "mode": "navigate",
+          "url": "",
+          "graphId": "",
+          "nodeId": "",
+          "portId": "root",
+          "label": "Open Public Root",
+          "ref": "github://twilite-zone/public/root.node"
+        },
+        "memo": "Optional supporting destination for broader exploration.",
+        "authority": "consume-view",
+        "sourceRef": "github://twilite-zone/public/root.node",
+        "sourceNodeId": "public-root-view",
+        "sourcePayload": "node.web.summary",
+        "intent": "external",
+        "security": "prompt"
       }
     },
     {
-      "id": "product-story-template-difference",
+      "id": "product-story-smoke-context",
       "type": "markdown",
-      "label": "🧭 Why It Exists",
+      "label": "Story Context",
       "root": false,
       "position": {
-        "x": 1340,
-        "y": -80
+        "x": 1000,
+        "y": 820
       },
       "width": 540,
-      "height": 250,
+      "height": 280,
       "visible": true,
       "showLabel": true,
-      "style": {
-        "background": "#1f2937",
-        "color": "#f8fafc",
-        "borderColor": "#fb923c",
-        "borderWidth": 2,
-        "borderStyle": "solid",
-        "borderRadius": 24
-      },
       "data": {
-        "markdown": "# 🧭 Why It Exists\n\nExplain the fracture in the current tool landscape.\n\nWhat is scattered today? What becomes coherent here?"
-      }
-    },
-    {
-      "id": "product-story-template-proof",
-      "type": "markdown",
-      "label": "🧪 Proof",
-      "root": false,
-      "position": {
-        "x": 680,
-        "y": 240
-      },
-      "width": 620,
-      "height": 250,
-      "visible": true,
-      "showLabel": true,
-      "style": {
-        "background": "#0f1f17",
-        "color": "#ecfdf5",
-        "borderColor": "#34d399",
-        "borderWidth": 2,
-        "borderStyle": "solid",
-        "borderRadius": 24
-      },
-      "data": {
-        "markdown": "# 🧪 Proof\n\nList the parts that already work today.\n\nThis node should remove the feeling that the product is only a concept."
-      }
-    },
-    {
-      "id": "product-story-template-collaboration",
-      "type": "markdown",
-      "label": "🤝 Human + AI",
-      "root": false,
-      "position": {
-        "x": 1340,
-        "y": 240
-      },
-      "width": 540,
-      "height": 250,
-      "visible": true,
-      "showLabel": true,
-      "style": {
-        "background": "#1e1b3a",
-        "color": "#f5f3ff",
-        "borderColor": "#a78bfa",
-        "borderWidth": 2,
-        "borderStyle": "solid",
-        "borderRadius": 24
-      },
-      "data": {
-        "markdown": "# 🤝 Human + AI\n\nCall out how the product changes collaboration with intelligent tools.\n\nMake the interaction model concrete, not mystical."
+        "markdown": "## Story Context\n\nThis template is for product graphs that need to do three things quickly:\n\n- tell a newcomer what the product is\n- make the first click obvious\n- provide just enough proof or framing to keep the story grounded\n\nIt should stay lighter than a full document and more intentional than a loose collection of markdown nodes.",
+        "definitionKey": "markdown",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "markdown",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        }
       }
     }
   ],
   "edges": [
     {
-      "id": "product-story-template-edge-title-view",
+      "id": "product-story-smoke-edge-title-type",
       "type": "reference",
-      "source": "product-story-template-title",
-      "target": "product-story-template-view",
+      "source": "product-story-smoke-title",
+      "target": "product-story-smoke-type",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "declares type",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "product-story-smoke-edge-type-view",
+      "type": "reference",
+      "source": "product-story-smoke-type",
+      "target": "product-story-smoke-sample-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "drives view",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "product-story-smoke-edge-title-view",
+      "type": "reference",
+      "source": "product-story-smoke-title",
+      "target": "product-story-smoke-sample-view",
       "sourcePort": "root",
       "targetPort": "root",
       "label": "hosts",
       "style": {
-        "width": 2,
-        "curved": true
+        "curved": true,
+        "route": "curved"
       },
       "data": {}
     },
     {
-      "id": "product-story-template-edge-title-start",
+      "id": "product-story-smoke-edge-title-primary",
       "type": "reference",
-      "source": "product-story-template-title",
-      "target": "product-story-template-start",
-      "sourcePort": "root",
+      "source": "product-story-smoke-title",
+      "target": "product-story-smoke-primary",
+      "sourcePort": "right",
       "targetPort": "root",
-      "label": "starts",
+      "label": "starts here",
       "style": {
-        "width": 2,
-        "curved": true
+        "curved": true,
+        "route": "curved"
       },
       "data": {}
     },
     {
-      "id": "product-story-template-edge-title-secondary",
+      "id": "product-story-smoke-edge-title-proof",
       "type": "reference",
-      "source": "product-story-template-title",
-      "target": "product-story-template-secondary",
-      "sourcePort": "root",
+      "source": "product-story-smoke-title",
+      "target": "product-story-smoke-proof",
+      "sourcePort": "right",
       "targetPort": "root",
-      "label": "learns",
+      "label": "grounds",
       "style": {
-        "width": 2,
-        "curved": true
+        "curved": true,
+        "route": "curved"
       },
       "data": {}
     },
     {
-      "id": "product-story-template-edge-title-promise",
+      "id": "product-story-smoke-edge-title-secondary",
       "type": "reference",
-      "source": "product-story-template-title",
-      "target": "product-story-template-promise",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "promises",
-      "style": {
-        "width": 2,
-        "curved": true
-      },
-      "data": {}
-    },
-    {
-      "id": "product-story-template-edge-promise-difference",
-      "type": "reference",
-      "source": "product-story-template-promise",
-      "target": "product-story-template-difference",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "explains",
-      "style": {
-        "width": 2,
-        "curved": true
-      },
-      "data": {}
-    },
-    {
-      "id": "product-story-template-edge-promise-proof",
-      "type": "reference",
-      "source": "product-story-template-promise",
-      "target": "product-story-template-proof",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "proves",
-      "style": {
-        "width": 2,
-        "curved": true
-      },
-      "data": {}
-    },
-    {
-      "id": "product-story-template-edge-proof-collaboration",
-      "type": "reference",
-      "source": "product-story-template-proof",
-      "target": "product-story-template-collaboration",
-      "sourcePort": "root",
+      "source": "product-story-smoke-title",
+      "target": "product-story-smoke-secondary",
+      "sourcePort": "bottom",
       "targetPort": "root",
       "label": "extends",
       "style": {
-        "width": 2,
-        "curved": true
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "product-story-smoke-edge-title-context",
+      "type": "reference",
+      "source": "product-story-smoke-title",
+      "target": "product-story-smoke-context",
+      "sourcePort": "bottom",
+      "targetPort": "root",
+      "label": "supports",
+      "style": {
+        "curved": true,
+        "route": "curved"
       },
       "data": {}
     }
   ],
-  "clusters": [],
   "settings": {
-    "theme": {
-      "mode": "dark",
-      "primary": {
-        "main": "#5b8cff"
-      },
-      "secondary": {
-        "main": "#fb923c"
-      },
-      "background": {
-        "default": "#0b1220",
-        "paper": "#111827"
-      },
-      "text": {
-        "primary": "#f8fafc",
-        "secondary": "rgba(226, 232, 240, 0.82)"
-      },
-      "divider": "rgba(91, 140, 255, 0.22)"
-    },
+    "theme": null,
     "backgroundImage": null,
-    "defaultNodeColor": "#5b8cff",
-    "defaultEdgeColor": "#4b6cb7",
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "#666666",
     "snapToGrid": false,
     "gridSize": 20,
     "edgeRouting": "auto",
     "layout": {
       "mode": "autoOnMissingPositions",
       "defaultLayout": "layered",
-      "direction": "DOWN"
+      "direction": "DOWN",
+      "edgeLaneGapPx": 10,
+      "serpentine": {
+        "maxPerRow": 6
+      },
+      "cycleFallback": {
+        "enabled": true
+      },
+      "elk": {
+        "algorithm": "fixed",
+        "edgeRouting": "ORTHOGONAL",
+        "portConstraints": "FIXED_SIDE",
+        "nodeSpacing": 120,
+        "layeredEdgeSpacing": 80
+      }
     },
     "autoSave": false
-  },
-  "scripts": []
+  }
 }
