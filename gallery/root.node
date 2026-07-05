@@ -1,12 +1,18 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Untitled Graph",
-    "description": "",
+    "title": "Gallery",
+    "description": "Public gallery branch for curated example graphs, templates, and showcase artifacts.",
+    "graphId": "gallery-root",
+    "version": "0.2.0",
+    "kind": "gallery",
     "created": "2026-03-30T21:35:18.337Z",
-    "modified": "2026-03-30T21:35:18.337Z",
+    "modified": "2026-07-05T00:00:00.000Z",
     "author": "",
-    "tags": [],
+    "tags": [
+      "gallery",
+      "public"
+    ],
     "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
@@ -27,19 +33,18 @@
         "identity": {
           "graphId": "gallery-root",
           "name": "Gallery",
-          "version": "0.1.0",
+          "version": "0.2.0",
           "description": "Top-level Gallery section graph.",
           "createdAt": "2026-03-27T05:13:50.978Z",
-          "updatedAt": "2026-03-27T05:13:50.978Z"
+          "updatedAt": "2026-07-05T00:00:00.000Z"
         },
         "intent": {
-          "kind": "graph",
-          "scope": "local"
+          "kind": "gallery",
+          "scope": "public"
         },
         "dependencies": {
           "nodeTypes": [
             "declaration",
-            "legend",
             "title",
             "type-definition",
             "field",
@@ -102,7 +107,12 @@
         },
         "isRoot": false,
         "root": false,
+        "name": "Graph Declaration",
+        "declaresKind": "gallery",
+        "purpose": "Declare the Gallery section as a public branch for curated templates, showcases, and example graphs.",
         "declaration": {
+          "kind": "gallery",
+          "artifactKind": "gallery",
           "targetMode": "artifact",
           "defaultSurfaceId": "port",
           "surfaces": [
@@ -123,25 +133,6 @@
             }
           ]
         }
-      }
-    },
-    {
-      "id": "gallery-legend",
-      "type": "legend",
-      "label": "Legend",
-      "isRoot": false,
-      "position": {
-        "x": -230,
-        "y": -180
-      },
-      "width": 300,
-      "height": 180,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "entries": [],
-        "isRoot": false,
-        "root": false
       }
     },
     {
@@ -640,9 +631,9 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Collection",
-        "value": "Examples",
-        "description": "Quick identity signal for the Gallery section.",
+        "title": "Focus",
+        "value": "Curated graphs and templates",
+        "description": "A compact signal that this branch is for opening, studying, and reusing good graph examples.",
         "fieldType": "string",
         "required": true,
         "_classBinding": {
@@ -928,11 +919,11 @@
         "memo": "Open Breadboard Demo App.",
         "intent": "external",
         "target": {
-          "endpoint": "/tutorial/breadboard.demoapp.node:root",
+          "endpoint": "github://twilite-zone/public/tutorial/breadboard.demoapp.node:root",
           "mode": "navigate",
           "label": "Open"
         },
-        "sourceRef": "/tutorial/breadboard.demoapp.node",
+        "sourceRef": "github://twilite-zone/public/tutorial/breadboard.demoapp.node",
         "sourceNodeId": "breadboard-demoapp-view",
         "sourcePayload": "node.web.summary",
         "isRoot": false,
@@ -956,11 +947,11 @@
         "memo": "Open Solo Developer Workflow.",
         "intent": "external",
         "target": {
-          "endpoint": "/tutorial/solo-developer.workflow.node:root",
+          "endpoint": "github://twilite-zone/public/tutorial/solo-developer.workflow.node:root",
           "mode": "navigate",
           "label": "Open"
         },
-        "sourceRef": "/tutorial/solo-developer.workflow.node",
+        "sourceRef": "github://twilite-zone/public/tutorial/solo-developer.workflow.node",
         "sourceNodeId": "solo-developer-view",
         "sourcePayload": "node.web.summary",
         "isRoot": false,
@@ -1070,18 +1061,5 @@
     }
   ],
   "clusters": [],
-  "scripts": [
-    {
-      "id": "script_1761684730975",
-      "name": "New Script",
-      "source": "// Write your script here\n// Available API:\n//   api.getNodes()\n//   api.getNode(id)\n//   api.getEdges()\n//   api.createNode(data)\n//   api.updateNode(id, patch)\n//   api.deleteNode(id)\n//   api.createEdge(data)\n//   api.deleteEdge(id)\n//   api.log(level, message)\n\nconst nodes = await api.getNodes();\nreturn { count: nodes.length };",
-      "tags": ""
-    },
-    {
-      "id": "script_1761684295367",
-      "name": "Mike",
-      "source": "console.clear();\nconst nodes = await api.getNodes();\nconsole.log(\"Mike\");\nreturn { count: nodes.length };",
-      "tags": ""
-    }
-  ]
+  "scripts": []
 }
