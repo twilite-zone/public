@@ -1,54 +1,57 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Untitled Graph",
-    "description": "",
+    "title": "Task Graphs",
+    "description": "Public index of Twilite task graphs organized by execution horizon and priority.",
     "created": "2026-04-04T18:30:23.361Z",
-    "modified": "2026-04-04T18:30:23.361Z",
+    "modified": "2026-07-05T00:00:00.000Z",
     "author": "",
-    "tags": [],
+    "tags": [
+      "tasks",
+      "index",
+      "planning"
+    ],
     "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
     {
       "id": "tasks-root-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "type": "declaration",
+      "label": "Declaration",
       "root": false,
       "position": {
-        "x": -360,
-        "y": -105.47067442411344
+        "x": -820,
+        "y": -260
       },
       "width": 360,
       "height": 220,
-      "visible": true,
+      "visible": false,
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "tasks-root-root",
-          "name": "Task Graphs Root",
-          "version": "0.1.0",
-          "description": "Top-level index for task graph folders.",
+          "graphId": "tasks-root",
+          "name": "Task Graphs",
+          "version": "0.2.0",
+          "description": "Public index of Twilite task graphs organized by execution horizon and priority.",
           "createdAt": "2026-03-14T23:04:35.664Z",
-          "updatedAt": "2026-03-14T23:04:35.664Z"
+          "updatedAt": "2026-07-05T00:00:00.000Z"
         },
         "intent": {
-          "kind": "graph",
-          "scope": "mixed"
+          "kind": "tasks",
+          "scope": "public"
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
+            "declaration",
             "legend",
             "markdown",
             "bridge",
             "port",
+            "portal",
+            "task",
             "title",
             "type-definition",
-            "ui-view",
-            "task-summary",
-            "task-view",
-            "task"
+            "ui-view"
           ],
           "portContracts": [
             "core"
@@ -106,7 +109,26 @@
           }
         },
         "isRoot": false,
-        "root": false
+        "root": false,
+        "name": "Graph Declaration",
+        "declaresKind": "tasks",
+        "purpose": "Declare the public tasks branch as a horizon-organized index of active, background, strategic, and archived Twilite workstreams.",
+        "declaration": {
+          "kind": "tasks",
+          "artifactKind": "tasks",
+          "targetMode": "artifact",
+          "defaultSurfaceId": "task-index-view",
+          "graphViewRole": "browser",
+          "surfaces": [
+            {
+              "id": "task-index-view",
+              "kind": "view",
+              "label": "Task Index View",
+              "memo": "Default host-facing surface for the public task graph index.",
+              "viewNodeId": "tasks-root-view"
+            }
+          ]
+        }
       }
     },
     {
@@ -120,7 +142,7 @@
       },
       "width": 320,
       "height": 180,
-      "visible": true,
+      "visible": false,
       "showLabel": true,
       "data": {
         "entries": [
@@ -140,10 +162,10 @@
       "id": "tasks-root-title",
       "type": "title",
       "label": "Title",
-      "root": false,
+      "root": true,
       "position": {
-        "x": 683.2530214438636,
-        "y": -129.3829860846812
+        "x": 260,
+        "y": -220
       },
       "width": 460,
       "height": 220,
@@ -173,7 +195,7 @@
       "showLabel": true,
       "data": {
         "title": "Task Graphs",
-        "subtitle": "Top-level index for task work in /tasks. This board is organized by execution horizon; section headers anchor each track and the summary nodes below them are the actual work surfaces.",
+        "subtitle": "Top-level index for work in /tasks. The board is organized by execution horizon so active build work, supporting tracks, strategic bets, and archived references stay distinct.",
         "intent": "headline",
         "status": "active",
         "_classBinding": {
@@ -287,366 +309,6 @@
           "sourceNodeId": "tutorial-title-port"
         },
         "definitionKey": "title"
-      }
-    },
-    {
-      "id": "tasks-root-header-active",
-      "type": "markdown",
-      "label": "Active Build",
-      "root": false,
-      "position": {
-        "x": -360,
-        "y": 220
-      },
-      "width": 420,
-      "height": 120,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "# Active Build\n\nImmediate architecture and product stabilization work.",
-        "memo": "",
-        "link": "",
-        "html": "",
-        "svg": "",
-        "_classBinding": {
-          "key": "markdown",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "identity": {
-            "graphId": "markdown_class",
-            "name": "markdown Node Class",
-            "version": "0.1.0",
-            "description": "Canonical markdown content node.",
-            "createdAt": "2026-02-24T20:05:15Z",
-            "updatedAt": "2026-03-24T01:20:00.000Z"
-          },
-          "intent": "graph",
-          "meaning": "Canonical markdown content node.",
-          "description": "Canonical markdown content node.",
-          "defaults": {},
-          "nodeDef": {
-            "key": "markdown",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "views": [
-            {
-              "key": "markdown",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "markdown",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "markdown",
-            "intent": "node",
-            "payload": "node.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "markdown",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "markdown",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
-        },
-        "definitionKey": "markdown"
-      }
-    },
-    {
-      "id": "tasks-root-header-background",
-      "type": "markdown",
-      "label": "Supporting / Background",
-      "root": false,
-      "position": {
-        "x": -360,
-        "y": 680
-      },
-      "width": 460,
-      "height": 120,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "# Supporting / Background\n\nImportant, but not the current center of architectural gravity.",
-        "memo": "",
-        "link": "",
-        "html": "",
-        "svg": "",
-        "_classBinding": {
-          "key": "markdown",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "identity": {
-            "graphId": "markdown_class",
-            "name": "markdown Node Class",
-            "version": "0.1.0",
-            "description": "Canonical markdown content node.",
-            "createdAt": "2026-02-24T20:05:15Z",
-            "updatedAt": "2026-03-24T01:20:00.000Z"
-          },
-          "intent": "graph",
-          "meaning": "Canonical markdown content node.",
-          "description": "Canonical markdown content node.",
-          "defaults": {},
-          "nodeDef": {
-            "key": "markdown",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "views": [
-            {
-              "key": "markdown",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "markdown",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "markdown",
-            "intent": "node",
-            "payload": "node.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "markdown",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "markdown",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
-        },
-        "definitionKey": "markdown"
-      }
-    },
-    {
-      "id": "tasks-root-header-future",
-      "type": "markdown",
-      "label": "Strategic / Future",
-      "root": false,
-      "position": {
-        "x": -360,
-        "y": 1140
-      },
-      "width": 440,
-      "height": 120,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "# Strategic / Future\n\nExploratory or longer-horizon work that should stay visible without hijacking current execution.",
-        "memo": "",
-        "link": "",
-        "html": "",
-        "svg": "",
-        "_classBinding": {
-          "key": "markdown",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "identity": {
-            "graphId": "markdown_class",
-            "name": "markdown Node Class",
-            "version": "0.1.0",
-            "description": "Canonical markdown content node.",
-            "createdAt": "2026-02-24T20:05:15Z",
-            "updatedAt": "2026-03-24T01:20:00.000Z"
-          },
-          "intent": "graph",
-          "meaning": "Canonical markdown content node.",
-          "description": "Canonical markdown content node.",
-          "defaults": {},
-          "nodeDef": {
-            "key": "markdown",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "views": [
-            {
-              "key": "markdown",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "markdown",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "markdown",
-            "intent": "node",
-            "payload": "node.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "markdown",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "markdown",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
-        },
-        "definitionKey": "markdown"
-      }
-    },
-    {
-      "id": "tasks-root-header-archive",
-      "type": "markdown",
-      "label": "Archive / Reference",
-      "root": false,
-      "position": {
-        "x": -360,
-        "y": 1600
-      },
-      "width": 360,
-      "height": 120,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "# Archive / Reference\n\nCompleted major work and historical task graphs.",
-        "memo": "",
-        "link": "",
-        "html": "",
-        "svg": "",
-        "_classBinding": {
-          "key": "markdown",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "identity": {
-            "graphId": "markdown_class",
-            "name": "markdown Node Class",
-            "version": "0.1.0",
-            "description": "Canonical markdown content node.",
-            "createdAt": "2026-02-24T20:05:15Z",
-            "updatedAt": "2026-03-24T01:20:00.000Z"
-          },
-          "intent": "graph",
-          "meaning": "Canonical markdown content node.",
-          "description": "Canonical markdown content node.",
-          "defaults": {},
-          "nodeDef": {
-            "key": "markdown",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "views": [
-            {
-              "key": "markdown",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "markdown",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "markdown",
-            "intent": "node",
-            "payload": "node.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "markdown",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "markdown",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
-        },
-        "definitionKey": "markdown"
       }
     },
     {
@@ -1314,12 +976,12 @@
     },
     {
       "id": "tasks-root-port-archive",
-      "type": "port",
+      "type": "portal",
       "label": "Archive",
       "root": false,
       "position": {
-        "x": -360,
-        "y": 1800
+        "x": 120,
+        "y": 1620
       },
       "width": 300,
       "height": 150,
@@ -1336,7 +998,9 @@
           "nodeId": "",
           "portId": "root",
           "label": "Open"
-        }
+        },
+        "authority": "navigate",
+        "security": "prompt"
       }
     },
     {
@@ -2833,7 +2497,7 @@
       "label": "Candidate Node Sets",
       "root": false,
       "position": {
-        "x": 1800,
+        "x": 2880,
         "y": 880
       },
       "width": 420,
@@ -2998,7 +2662,7 @@
       },
       "width": 260,
       "height": 120,
-      "visible": true,
+      "visible": false,
       "showLabel": true,
       "data": {
         "memo": "Visible node-class bridge for Task Summary.",
@@ -3442,7 +3106,7 @@
       },
       "width": 260,
       "height": 120,
-      "visible": true,
+      "visible": false,
       "showLabel": true,
       "data": {
         "memo": "Bridge for the Title class.",
@@ -3498,7 +3162,7 @@
       },
       "width": 260,
       "height": 120,
-      "visible": true,
+      "visible": false,
       "showLabel": true,
       "data": {
         "memo": "Bridge for the Type Definition class.",
@@ -3554,7 +3218,7 @@
       },
       "width": 260,
       "height": 120,
-      "visible": true,
+      "visible": false,
       "showLabel": true,
       "data": {
         "memo": "Bridge for the UI View class.",
@@ -3610,7 +3274,7 @@
       },
       "width": 380,
       "height": 250,
-      "visible": true,
+      "visible": false,
       "showLabel": true,
       "data": {
         "name": "Task Graph Index",
@@ -3690,7 +3354,7 @@
       },
       "width": 420,
       "height": 280,
-      "visible": true,
+      "visible": false,
       "showLabel": true,
       "data": {
         "title": "Task Graphs",
@@ -3814,19 +3478,19 @@
     },
     {
       "id": "tasks-root-port-developer-area",
-      "type": "port",
+      "type": "portal",
       "label": "Developer Area",
       "root": false,
       "position": {
-        "x": 1425.2225296377983,
-        "y": -115.86015292133658
+        "x": 1180,
+        "y": -220
       },
       "width": 360,
       "height": 240,
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Open the Twilite LLC Developer Area.",
+        "memo": "Open the Twilite developer branch for internal operational and architecture work.",
         "intent": "external",
         "target": {
           "endpoint": "github://twilite-zone/public/twilite/developer-area/root.node:root",
@@ -3835,7 +3499,9 @@
         },
         "sourceRef": "github://twilite-zone/public/twilite/developer-area/root.node",
         "sourceNodeId": "developer-area-view",
-        "sourcePayload": "node.web.summary"
+        "sourcePayload": "node.web.summary",
+        "authority": "navigate",
+        "security": "prompt"
       }
     },
     {
@@ -3844,7 +3510,7 @@
       "label": "Load / Render Decoupling",
       "root": false,
       "position": {
-        "x": 1700,
+        "x": 1800,
         "y": 880
       },
       "width": 420,
@@ -4006,7 +3672,7 @@
       "label": "Icon Rendering",
       "root": false,
       "position": {
-        "x": 2140,
+        "x": 3420,
         "y": 880
       },
       "width": 420,
@@ -4403,7 +4069,7 @@
       },
       "width": 260,
       "height": 120,
-      "visible": true,
+      "visible": false,
       "showLabel": true,
       "data": {
         "memo": "Visible node-class bridge for the task-view consumer surface.",
@@ -4457,7 +4123,7 @@
       },
       "width": 260,
       "height": 120,
-      "visible": true,
+      "visible": false,
       "showLabel": true,
       "data": {
         "memo": "Visible node-class bridge for the task consumer surface.",
@@ -4736,12 +4402,12 @@
     },
     {
       "id": "tasks-root-port-tutorial-howto-cluster",
-      "type": "port",
-      "label": "Tutorial How-To Cluster",
+      "type": "portal",
+      "label": "Tutorial Task Cluster",
       "root": false,
       "position": {
-        "x": 1825.2225296377983,
-        "y": -115.86015292133658
+        "x": 1620,
+        "y": -220
       },
       "width": 340,
       "height": 220,
@@ -4757,7 +4423,11 @@
         },
         "sourceRef": "github://twilite-zone/public/tasks/tutorial-howto-cluster/root.node",
         "sourceNodeId": "tutorial-howto-cluster-summary",
-        "sourcePayload": "node.web"
+        "sourcePayload": "node.web",
+        "intent": "external",
+        "authority": "navigate",
+        "security": "prompt",
+        "memo": "Open the tutorial how-to cluster for documentation and tutorial task work."
       }
     },
     {
@@ -4882,7 +4552,7 @@
       "root": false,
       "position": {
         "x": 720,
-        "y": 880
+        "y": 1120
       },
       "width": 420,
       "height": 260,
@@ -4993,303 +4663,6 @@
   ],
   "edges": [
     {
-      "id": "tasks-root-edge-active-header",
-      "type": "reference",
-      "source": "tasks-root-title",
-      "target": "tasks-root-header-active",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "active",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-background-header",
-      "type": "reference",
-      "source": "tasks-root-title",
-      "target": "tasks-root-header-background",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "background",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-future-header",
-      "type": "reference",
-      "source": "tasks-root-title",
-      "target": "tasks-root-header-future",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "future",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-archive-header",
-      "type": "reference",
-      "source": "tasks-root-title",
-      "target": "tasks-root-header-archive",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "archive",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-active-1",
-      "type": "reference",
-      "source": "tasks-root-header-active",
-      "target": "tasks-root-port-beta-readiness",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-active-2",
-      "type": "reference",
-      "source": "tasks-root-header-active",
-      "target": "tasks-root-port-interaction-policy",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-active-3",
-      "type": "reference",
-      "source": "tasks-root-header-active",
-      "target": "tasks-root-port-node-primitive",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-active-4",
-      "type": "reference",
-      "source": "tasks-root-header-active",
-      "target": "tasks-root-port-local-runtime",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-active-5",
-      "type": "reference",
-      "source": "tasks-root-header-active",
-      "target": "tasks-root-port-graph-organization",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-background-1",
-      "type": "reference",
-      "source": "tasks-root-header-background",
-      "target": "tasks-root-port-core-loop-proof",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-background-2",
-      "type": "reference",
-      "source": "tasks-root-header-background",
-      "target": "tasks-root-port-edge-classes",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-background-3",
-      "type": "reference",
-      "source": "tasks-root-header-background",
-      "target": "tasks-root-port-3",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-background-5",
-      "type": "reference",
-      "source": "tasks-root-header-background",
-      "target": "tasks-root-port-chatgpt-app",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-background-load-render",
-      "type": "reference",
-      "source": "tasks-root-header-background",
-      "target": "tasks-root-port-load-render-decoupling",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-background-icon-rendering",
-      "type": "reference",
-      "source": "tasks-root-header-background",
-      "target": "tasks-root-port-icon-rendering",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-future-1",
-      "type": "reference",
-      "source": "tasks-root-header-future",
-      "target": "tasks-root-port-intent-first",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-future-2",
-      "type": "reference",
-      "source": "tasks-root-header-future",
-      "target": "tasks-root-port-mobile-graph",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-future-3",
-      "type": "reference",
-      "source": "tasks-root-header-future",
-      "target": "tasks-root-port-11",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-future-4",
-      "type": "reference",
-      "source": "tasks-root-header-future",
-      "target": "tasks-root-port-10",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-future-6",
-      "type": "reference",
-      "source": "tasks-root-header-future",
-      "target": "tasks-root-port-vscode-landing",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-archive-1",
-      "type": "reference",
-      "source": "tasks-root-header-archive",
-      "target": "tasks-root-port-archive",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-active-6",
-      "type": "reference",
-      "source": "tasks-root-header-active",
-      "target": "tasks-root-port-port-primitives",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-active-bridge-authority",
-      "type": "reference",
-      "source": "tasks-root-header-active",
-      "target": "tasks-root-port-bridge-authority-model",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-active-error-card",
-      "type": "reference",
-      "source": "tasks-root-header-active",
-      "target": "tasks-root-port-error-card-system",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-active-view-data-script-template",
-      "type": "reference",
-      "source": "tasks-root-header-active",
-      "target": "tasks-root-port-view-data-script-template",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-background-6",
-      "type": "reference",
-      "source": "tasks-root-header-background",
-      "target": "tasks-root-port-candidate-node-sets",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-background-template-contract-composition",
-      "type": "reference",
-      "source": "tasks-root-header-background",
-      "target": "tasks-root-port-template-contract-composition",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {},
-      "data": {}
-    },
-    {
       "id": "tasks-root-edge-title-type",
       "type": "reference",
       "source": "tasks-root-title",
@@ -5334,20 +4707,6 @@
       "data": {}
     },
     {
-      "id": "tasks-root-edge-active-github-repo-home-node",
-      "type": "reference",
-      "source": "tasks-root-header-active",
-      "target": "tasks-root-port-github-repo-home-node",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "",
-      "style": {
-        "route": "curved",
-        "curved": true
-      },
-      "data": {}
-    },
-    {
       "id": "tasks-root-edge-tutorial-howto-cluster",
       "type": "reference",
       "source": "tasks-root-title",
@@ -5362,13 +4721,310 @@
       "data": {}
     },
     {
-      "id": "tasks-root-edge-background-field-driven-class-artifacts",
+      "id": "tasks-root-edge-lane-active-start",
       "type": "reference",
-      "source": "tasks-root-header-background",
-      "target": "tasks-root-port-field-driven-class-artifacts",
+      "source": "tasks-root-title",
+      "target": "tasks-root-port-node-primitive",
+      "label": "active",
       "sourcePort": "root",
       "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-active-1",
+      "type": "reference",
+      "source": "tasks-root-port-node-primitive",
+      "target": "tasks-root-port-local-runtime",
       "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-active-2",
+      "type": "reference",
+      "source": "tasks-root-port-local-runtime",
+      "target": "tasks-root-port-graph-organization",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-active-3",
+      "type": "reference",
+      "source": "tasks-root-port-graph-organization",
+      "target": "tasks-root-port-port-primitives",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-active-4",
+      "type": "reference",
+      "source": "tasks-root-port-port-primitives",
+      "target": "tasks-root-port-beta-readiness",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-active-5",
+      "type": "reference",
+      "source": "tasks-root-port-beta-readiness",
+      "target": "tasks-root-port-interaction-policy",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-active-6",
+      "type": "reference",
+      "source": "tasks-root-port-interaction-policy",
+      "target": "tasks-root-port-bridge-authority-model",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-active-7",
+      "type": "reference",
+      "source": "tasks-root-port-bridge-authority-model",
+      "target": "tasks-root-port-bridge-capability-lanes",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-active-8",
+      "type": "reference",
+      "source": "tasks-root-port-bridge-capability-lanes",
+      "target": "tasks-root-port-view-data-script-template",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-active-9",
+      "type": "reference",
+      "source": "tasks-root-port-view-data-script-template",
+      "target": "tasks-root-port-error-card-system",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-active-10",
+      "type": "reference",
+      "source": "tasks-root-port-error-card-system",
+      "target": "tasks-root-port-revised-save-workflow",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-active-11",
+      "type": "reference",
+      "source": "tasks-root-port-revised-save-workflow",
+      "target": "tasks-root-port-github-repo-home-node",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-active-12",
+      "type": "reference",
+      "source": "tasks-root-port-github-repo-home-node",
+      "target": "tasks-root-port-content-app-separation",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-background-start",
+      "type": "reference",
+      "source": "tasks-root-title",
+      "target": "tasks-root-port-core-loop-proof",
+      "label": "supporting",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-background-1",
+      "type": "reference",
+      "source": "tasks-root-port-core-loop-proof",
+      "target": "tasks-root-port-edge-classes",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-background-2",
+      "type": "reference",
+      "source": "tasks-root-port-edge-classes",
+      "target": "tasks-root-port-template-contract-composition",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-background-3",
+      "type": "reference",
+      "source": "tasks-root-port-template-contract-composition",
+      "target": "tasks-root-port-3",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-background-4",
+      "type": "reference",
+      "source": "tasks-root-port-3",
+      "target": "tasks-root-port-load-render-decoupling",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-background-5",
+      "type": "reference",
+      "source": "tasks-root-port-load-render-decoupling",
+      "target": "tasks-root-port-chatgpt-app",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-background-6",
+      "type": "reference",
+      "source": "tasks-root-port-chatgpt-app",
+      "target": "tasks-root-port-candidate-node-sets",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-background-7",
+      "type": "reference",
+      "source": "tasks-root-port-candidate-node-sets",
+      "target": "tasks-root-port-icon-rendering",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-background-branch",
+      "type": "reference",
+      "source": "tasks-root-port-template-contract-composition",
+      "target": "tasks-root-port-field-driven-class-artifacts",
+      "label": "related",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-future-start",
+      "type": "reference",
+      "source": "tasks-root-title",
+      "target": "tasks-root-port-10",
+      "label": "future",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-future-1",
+      "type": "reference",
+      "source": "tasks-root-port-10",
+      "target": "tasks-root-port-11",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-future-2",
+      "type": "reference",
+      "source": "tasks-root-port-11",
+      "target": "tasks-root-port-mobile-graph",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-future-3",
+      "type": "reference",
+      "source": "tasks-root-port-mobile-graph",
+      "target": "tasks-root-port-intent-first",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-future-4",
+      "type": "reference",
+      "source": "tasks-root-port-intent-first",
+      "target": "tasks-root-port-vscode-landing",
+      "label": "",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "tasks-root-edge-lane-archive",
+      "type": "reference",
+      "source": "tasks-root-title",
+      "target": "tasks-root-port-archive",
+      "label": "archive",
+      "sourcePort": "root",
+      "targetPort": "root",
       "style": {},
       "data": {}
     }
@@ -5457,7 +5113,7 @@
     }
   ],
   "scripts": [],
-  "nodeCount": 45,
-  "edgeCount": 34,
-  "timestamp": "2026-05-15T00:00:00.000Z"
+  "nodeCount": 41,
+  "edgeCount": 33,
+  "timestamp": "2026-07-05T23:24:00.000Z"
 }
