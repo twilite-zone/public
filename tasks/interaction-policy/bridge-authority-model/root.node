@@ -4,7 +4,7 @@
     "title": "Bridge Authority Model",
     "description": "Task graph for defining bridge authority, bridge rendering, and runtime grants between graphs.",
     "created": "2026-03-28T22:47:16.419Z",
-    "modified": "2026-03-28T22:47:16.419Z",
+    "modified": "2026-07-06T22:30:00.000Z",
     "author": "",
     "tags": [],
     "preferredViewer": "https://twilite.zone"
@@ -12,8 +12,8 @@
   "nodes": [
     {
       "id": "bridge-authority-model-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "type": "declaration",
+      "label": "Declaration",
       "position": {
         "x": -1120,
         "y": -260
@@ -29,20 +29,21 @@
           "version": "0.1.0",
           "description": "Task graph for defining bridge authority, bridge rendering, and runtime grants between graphs.",
           "createdAt": "2026-03-28T00:00:00.000Z",
-          "updatedAt": "2026-03-28T00:00:00.000Z"
+          "updatedAt": "2026-07-06T22:30:00.000Z"
         },
         "intent": {
-          "kind": "graph",
+          "kind": "task",
           "scope": "local"
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
+            "declaration",
             "title",
             "goal",
             "task",
             "open-question",
             "task-summary-provider",
+            "bridge",
             "port"
           ],
           "portContracts": [
@@ -98,32 +99,110 @@
             "enableGithubPages": false
           }
         },
-        "summaryNodeId": "bridge-authority-model-summary",
         "isRoot": false,
-        "root": false
+        "root": false,
+        "declaration": {
+          "kind": "task",
+          "artifactKind": "task",
+          "targetMode": "artifact",
+          "defaultSurfaceId": "bridge-authority-model-summary-surface",
+          "graphViewRole": "browser",
+          "surfaces": [
+            {
+              "id": "bridge-authority-model-summary-surface",
+              "kind": "view",
+              "label": "Bridge Authority Summary",
+              "memo": "Default summary surface for the bridge authority model task graph.",
+              "viewNodeId": "bridge-authority-model-summary"
+            }
+          ]
+        }
       }
     },
     {
       "id": "bridge-authority-model-bridge-title",
-      "type": "port",
+      "type": "bridge",
       "label": "Title",
       "position": {
         "x": -1120,
         "y": 120
       },
-      "width": 260,
+      "width": 280,
       "height": 120,
       "visible": true,
       "showLabel": true,
       "data": {
         "memo": "Bridge for the Title class.",
         "intent": "external",
+        "authority": "bridge",
+        "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+        "resourceKind": "node-class",
+        "grants": [
+          "create"
+        ],
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "role": "import",
+          "surfaceId": "",
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "title"
+              ]
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
+        },
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node:root",
           "mode": "bridge",
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
           "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
           "label": "Title",
-          "key": "title"
+          "key": "title",
+          "role": "import",
+          "surfaceId": "",
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "title"
+              ]
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
         },
         "isRoot": false,
         "root": false
@@ -131,25 +210,88 @@
     },
     {
       "id": "bridge-authority-model-bridge-goal",
-      "type": "port",
+      "type": "bridge",
       "label": "Goal",
       "position": {
         "x": -1120,
         "y": 270
       },
-      "width": 260,
+      "width": 280,
       "height": 120,
       "visible": true,
       "showLabel": true,
       "data": {
         "memo": "Bridge for the Goal class.",
         "intent": "external",
+        "authority": "bridge",
+        "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+        "resourceKind": "node-class",
+        "grants": [
+          "create"
+        ],
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "role": "import",
+          "surfaceId": "",
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "goal"
+              ]
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
+        },
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node:root",
           "mode": "bridge",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
           "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
           "label": "Goal",
-          "key": "goal"
+          "key": "goal",
+          "role": "import",
+          "surfaceId": "",
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "goal"
+              ]
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
         },
         "isRoot": false,
         "root": false
@@ -157,25 +299,88 @@
     },
     {
       "id": "bridge-authority-model-bridge-task",
-      "type": "port",
+      "type": "bridge",
       "label": "Task",
       "position": {
         "x": -1120,
         "y": 420
       },
-      "width": 260,
+      "width": 280,
       "height": 120,
       "visible": true,
       "showLabel": true,
       "data": {
         "memo": "Bridge for the Task class.",
         "intent": "external",
+        "authority": "bridge",
+        "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+        "resourceKind": "node-class",
+        "grants": [
+          "create"
+        ],
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "role": "import",
+          "surfaceId": "",
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "task"
+              ]
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
+        },
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node:root",
           "mode": "bridge",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
           "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
           "label": "Task",
-          "key": "task"
+          "key": "task",
+          "role": "import",
+          "surfaceId": "",
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "task"
+              ]
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
         },
         "isRoot": false,
         "root": false
@@ -183,25 +388,88 @@
     },
     {
       "id": "bridge-authority-model-bridge-open-question",
-      "type": "port",
+      "type": "bridge",
       "label": "Open Question",
       "position": {
         "x": -1120,
         "y": 570
       },
-      "width": 260,
+      "width": 280,
       "height": 120,
       "visible": true,
       "showLabel": true,
       "data": {
         "memo": "Bridge for the Open Question class.",
         "intent": "external",
+        "authority": "bridge",
+        "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+        "resourceKind": "node-class",
+        "grants": [
+          "create"
+        ],
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "role": "import",
+          "surfaceId": "",
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "open-question"
+              ]
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
+        },
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node:root",
           "mode": "bridge",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
           "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
           "label": "Open Question",
-          "key": "open-question"
+          "key": "open-question",
+          "role": "import",
+          "surfaceId": "",
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "open-question"
+              ]
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
         },
         "isRoot": false,
         "root": false
@@ -209,25 +477,88 @@
     },
     {
       "id": "bridge-authority-model-bridge-task-summary-provider",
-      "type": "port",
+      "type": "bridge",
       "label": "Task Summary Provider",
       "position": {
         "x": -1120,
         "y": 720
       },
-      "width": 260,
+      "width": 280,
       "height": 120,
       "visible": true,
       "showLabel": true,
       "data": {
         "memo": "Bridge for the Task Summary Provider class.",
         "intent": "external",
+        "authority": "bridge",
+        "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+        "resourceKind": "node-class",
+        "grants": [
+          "create"
+        ],
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "role": "import",
+          "surfaceId": "",
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "summary"
+              ]
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
+        },
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node:root",
           "mode": "bridge",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
           "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
           "label": "Task Summary Provider",
-          "key": "task-summary-provider"
+          "key": "summary",
+          "role": "import",
+          "surfaceId": "",
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "summary"
+              ]
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
         },
         "isRoot": false,
         "root": false
@@ -388,8 +719,8 @@
       "showLabel": true,
       "data": {
         "title": "Make bridge authority explicit and enforceable",
-        "body": "Define bridges as focused-graph authority surfaces for create, runtime, and other formal grants, instead of treating them as ports with special behavior.",
-        "status": "in-progress",
+        "body": "Define bridges as focused-graph authority surfaces for create, runtime, export, and other formal grants, instead of treating them as ports with special behavior. Status: doctrinally settled; remaining work is maintenance and smoke coverage.",
+        "status": "done",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "3",
@@ -525,8 +856,8 @@
         "definitionKey": "goal",
         "acceptanceCriteria": [
           "Bridge semantics are documented separately from ports",
-          "Bridge nodes expose only focused-graph authority, not semantic-zoom content",
-          "Runtime behavior can check for bridge grants explicitly"
+          "Bridge nodes expose only declared focused-graph authority",
+          "Runtime and export behavior can check bridge grants explicitly"
         ],
         "isRoot": false,
         "root": false
@@ -706,8 +1037,8 @@
       "showLabel": true,
       "data": {
         "title": "Define bridge node data shape",
-        "body": "Specify the stored bridge fields for target resource, grants, scope, and any focused-graph runtime permission the bridge is allowed to expose.",
-        "status": "in-progress",
+        "body": "Specify the canonical stored bridge fields for target resource, grants, scope, role, exposure, and any focused-graph runtime permission the bridge is allowed to expose.",
+        "status": "done",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "2",
@@ -844,12 +1175,13 @@
         },
         "definitionKey": "task",
         "acceptanceCriteria": [
-          "Target, grants, and scope are explicit",
-          "Runtime grant shape is defined"
+          "Target, grants, scope, and role are explicit",
+          "Exposure rules are part of the canonical bridge shape",
+          "Runtime grant shape is defined in the bridge data contract"
         ],
         "isRoot": false,
         "root": false,
-        "description": "Bridge data-shape contract exists; next step is to align runtime storage to the canonical `data.bridge` shape everywhere."
+        "description": "Bridge data shape is now represented through the canonical `data.bridge` structure and refined further in the capability-lanes follow-on graph."
       }
     },
     {
@@ -1354,9 +1686,9 @@
       "showLabel": false,
       "data": {
         "goal": "Make bridge authority explicit",
-        "status": "in-progress",
+        "status": "done",
         "taskProgress": {
-          "completed": 3,
+          "completed": 4,
           "total": 4
         },
         "questionProgress": {
@@ -1485,7 +1817,7 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
         },
         "definitionKey": "summary",
-        "updatedAt": "2026-04-04T18:14:54.426Z",
+        "updatedAt": "2026-07-06T22:30:00.000Z",
         "title": "Bridge Authority Model",
         "sourceGraphRef": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/root.node",
         "sourceGraphId": "bridge-authority-model-root",
@@ -1535,7 +1867,7 @@
         "memo": "Source-of-truth contract for bridge semantics, grants, and focused-graph authority.",
         "intent": "navigate",
         "target": {
-          "endpoint": "github://twilite-zone/public/library/documentation/contracts/bridges/bridge-contract.node:root",
+          "endpoint": "github://twilite-zone/public/library/documentation/contracts/bridges/bridge-renderer-contract.node:root",
           "mode": "navigate",
           "portId": "root",
           "label": "Open"
@@ -1562,7 +1894,7 @@
         "memo": "Source-of-truth contract for bridge semantics, grants, and focused-graph authority.",
         "intent": "navigate",
         "target": {
-          "endpoint": "github://twilite-zone/public/library/documentation/contracts/bridges/bridge-contract.node:root",
+          "endpoint": "github://twilite-zone/public/library/documentation/contracts/bridges/bridge-data-shape-contract.node:root",
           "mode": "navigate",
           "portId": "root",
           "label": "Open"
@@ -1638,8 +1970,8 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Goal: Make bridge authority explicit\nStatus: in-progress\n\nTasks in scope:\n1. Write the bridge contract\n2. Define bridge node data shape\n3. Build a compact bridge renderer\n4. Enforce bridge runtime grants\n\nOpen questions:\n1. What grants should a bridge expose?",
-        "status": "in-progress",
+        "body": "Goal: Make bridge authority explicit\nStatus: done\n\nTasks in scope:\n1. Write the bridge contract\n2. Define bridge node data shape\n3. Build a compact bridge renderer\n4. Enforce bridge runtime grants\n\nOpen questions:\n1. What grants should a bridge expose?",
+        "status": "done",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "2",
@@ -1651,7 +1983,7 @@
         "countAsTask": false,
         "summarySource": "node-updater",
         "taskProgress": {
-          "completed": 3,
+          "completed": 4,
           "total": 4
         },
         "questionProgress": {
@@ -1990,5 +2322,6 @@
       "source": "console.clear();\nconst nodes = await api.getNodes();\nconsole.log(\"Mike\");\nreturn { count: nodes.length };",
       "tags": ""
     }
-  ]
+  ],
+  "timestamp": "2026-07-06T22:30:00.000Z"
 }
