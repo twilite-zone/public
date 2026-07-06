@@ -1,51 +1,57 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Untitled Graph",
-    "description": "",
+    "title": "Node Authoring Contract",
+    "description": "Normative authoring contract for how Twilite should separate declaration-owned identity, ordinary properties, node-owned editors, appearance controls, and diagnostics.",
     "created": "2026-04-12T00:00:00.000Z",
-    "modified": "2026-04-12T00:00:00.000Z",
+    "modified": "2026-07-06T00:00:00.000Z",
     "author": "",
-    "tags": [],
-    "preferredViewer": "https://twilite.zone"
+    "tags": [
+      "artifact",
+      "documentation",
+      "authoring"
+    ],
+    "preferredViewer": "https://twilite.zone",
+    "graphId": "node-authoring-contract-declaration",
+    "version": "0.2.0",
+    "kind": "artifact"
   },
   "nodes": [
     {
-      "id": "node-authoring-contract-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "id": "node-authoring-contract-declaration",
+      "type": "declaration",
+      "label": "Declaration",
       "root": false,
       "position": {
         "x": -1040,
         "y": -520
       },
-      "width": 360,
-      "height": 220,
+      "width": 420,
+      "height": 260,
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "node-authoring-contract",
+          "graphId": "node-authoring-contract-declaration",
           "name": "Node Authoring Contract",
-          "version": "0.1.0",
-          "description": "Product-level authoring contract for how Twilite nodes should be interpreted and edited.",
+          "version": "0.2.0",
+          "description": "Normative authoring contract for how Twilite should separate declaration-owned identity, ordinary properties, node-owned editors, appearance controls, and diagnostics.",
           "createdAt": "2026-04-12T00:00:00.000Z",
-          "updatedAt": "2026-04-12T00:00:00.000Z"
+          "updatedAt": "2026-07-06T00:00:00.000Z"
         },
         "intent": {
-          "kind": "graph",
+          "kind": "artifact",
           "scope": "documentation"
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
-            "legend",
+            "declaration",
             "title",
-            "port",
             "type-definition",
             "port-view",
             "node-view",
             "icon-view",
+            "port",
             "skill",
             "scope",
             "input",
@@ -63,7 +69,9 @@
             "nodes": ">=1.0.0",
             "ports": ">=1.0.0"
           },
-          "optional": []
+          "optional": [
+            "legend"
+          ]
         },
         "authority": {
           "mutation": {
@@ -105,13 +113,57 @@
             "enableGithubPages": false
           }
         },
-        "summaryNodeId": "node-authoring-contract-node-view"
+        "summaryNodeId": "node-authoring-contract-node-view",
+        "name": "Node Authoring Declaration",
+        "declaresKind": "artifact",
+        "purpose": "Declare the current authoring boundary for node identity, semantic meaning, editing surfaces, appearance controls, and diagnostics.",
+        "primaryNodeViewId": "node-authoring-contract-node-view",
+        "declaration": {
+          "kind": "artifact",
+          "targetMode": "artifact",
+          "primaryNodeViewId": "node-authoring-contract-node-view",
+          "graphViewRole": "documentation",
+          "defaultSurfaceId": "detail",
+          "surfaces": [
+            {
+              "id": "detail",
+              "kind": "view",
+              "label": "Detail",
+              "memo": "Primary contract-reading surface for the node authoring doctrine.",
+              "viewNodeId": "node-authoring-contract-node-view"
+            },
+            {
+              "id": "port",
+              "kind": "view",
+              "label": "Port",
+              "memo": "Host-facing contract preview surface for connected consumers.",
+              "viewNodeId": "node-authoring-contract-port-view"
+            },
+            {
+              "id": "icon",
+              "kind": "view",
+              "label": "Icon",
+              "memo": "Semantic-zoom icon surface for the node authoring contract.",
+              "viewNodeId": "node-authoring-contract-icon-view"
+            }
+          ]
+        },
+        "_classBinding": {
+          "key": "declaration",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "declaration",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node"
+        },
+        "definitionKey": "declaration"
       }
     },
     {
       "id": "node-authoring-contract-legend",
       "type": "legend",
-      "label": "Legend",
+      "label": "Legend (Legacy)",
       "root": false,
       "position": {
         "x": -560,
@@ -119,7 +171,7 @@
       },
       "width": 320,
       "height": 220,
-      "visible": true,
+      "visible": false,
       "showLabel": true,
       "data": {
         "entries": [
@@ -152,7 +204,7 @@
             "color": "#f2f4f7"
           }
         ],
-        "markdown": "## Node Authoring Contract\n- title: contract header and framing surface\n- type-definition: semantic identity for the contract\n- skill / scope / rule / guardrail / failure-mode / procedure: standard contract body\n- port-view / node-view / icon-view: standard TTV outward surfaces\n- port: navigation to related contracts"
+        "markdown": "## Legacy Legend\nRetained only as edit-time reference. The contract now teaches declaration-first identity, representation surfaces, and explicit authoring boundaries directly through the main body."
       }
     },
     {
@@ -170,9 +222,9 @@
       "showLabel": true,
       "data": {
         "title": "Node Authoring Contract",
-        "subtitle": "Defines the product-level authoring layers for Twilite nodes so properties, node-owned editors, and diagnostics can stop competing for the same concerns.",
+        "subtitle": "Defines how Twilite should separate declaration-owned identity, ordinary properties, node-owned editors, appearance controls, advanced payload, and diagnostics.",
         "intent": "headline",
-        "status": "draft",
+        "status": "active",
         "_classBinding": {
           "key": "title",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
@@ -264,9 +316,9 @@
         "key": "node-authoring-contract",
         "classRef": "github://twilite-zone/public/library/documentation/contracts/nodes/node-authoring-contract.node",
         "meaning": "Product-level authoring contract for how Twilite nodes should be interpreted and edited.",
-        "description": "Defines authoring layers, semantic type rules, and the editing boundary between ordinary properties and node-owned editors.",
+        "description": "Declares the contract as a documentation artifact about node authoring boundaries, not a renderer-first node taxonomy.",
         "category": "contracts",
-        "status": "draft",
+        "status": "active",
         "_classBinding": {
           "key": "type-definition",
           "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
@@ -335,14 +387,14 @@
       "showLabel": true,
       "data": {
         "title": "Node Authoring Contract",
-        "purpose": "Shared host-facing port view for the Node Authoring Contract.",
+        "purpose": "Shared host-facing preview surface for the Node Authoring Contract.",
         "titleSourceNodeId": "node-authoring-contract-title",
         "typeSourceNodeId": "node-authoring-contract-type",
         "viewRole": "port",
         "viewKind": "display",
         "exposedAuthority": "consume-view",
         "audience": "Author",
-        "status": "draft",
+        "status": "active",
         "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"22\" fill=\"#f8fafc\" stroke=\"#0f172a\" stroke-width=\"5\"/><rect x=\"34\" y=\"38\" width=\"86\" height=\"14\" rx=\"7\" fill=\"#f59e0b\" opacity=\"0.9\"/><rect x=\"128\" y=\"38\" width=\"58\" height=\"14\" rx=\"7\" fill=\"#3b82f6\" opacity=\"0.85\"/><rect x=\"34\" y=\"72\" width=\"54\" height=\"34\" rx=\"10\" fill=\"#fef3c7\" stroke=\"#f59e0b\" stroke-width=\"3\"/><rect x=\"98\" y=\"72\" width=\"54\" height=\"34\" rx=\"10\" fill=\"#dbeafe\" stroke=\"#3b82f6\" stroke-width=\"3\"/><rect x=\"162\" y=\"72\" width=\"24\" height=\"34\" rx=\"8\" fill=\"#eff6ff\" stroke=\"#60a5fa\" stroke-width=\"3\"/><rect x=\"34\" y=\"118\" width=\"96\" height=\"10\" rx=\"5\" fill=\"#cbd5e1\"/></svg>",
         "_classBinding": {
           "key": "port-view",
@@ -367,14 +419,14 @@
       "showLabel": true,
       "data": {
         "title": "Node Authoring Contract",
-        "purpose": "Shared host-facing node view for the Node Authoring Contract.",
+        "purpose": "Primary reading surface for the Node Authoring Contract.",
         "titleSourceNodeId": "node-authoring-contract-title",
         "typeSourceNodeId": "node-authoring-contract-type",
         "viewRole": "node",
         "viewKind": "interactive",
         "exposedAuthority": "consume-view",
         "audience": "Author",
-        "status": "draft",
+        "status": "active",
         "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"18\" width=\"184\" height=\"124\" rx=\"22\" fill=\"#f8fafc\" stroke=\"#0f172a\" stroke-width=\"5\"/><rect x=\"34\" y=\"38\" width=\"86\" height=\"14\" rx=\"7\" fill=\"#f59e0b\" opacity=\"0.9\"/><rect x=\"128\" y=\"38\" width=\"58\" height=\"14\" rx=\"7\" fill=\"#3b82f6\" opacity=\"0.85\"/><rect x=\"34\" y=\"72\" width=\"54\" height=\"34\" rx=\"10\" fill=\"#fef3c7\" stroke=\"#f59e0b\" stroke-width=\"3\"/><rect x=\"98\" y=\"72\" width=\"54\" height=\"34\" rx=\"10\" fill=\"#dbeafe\" stroke=\"#3b82f6\" stroke-width=\"3\"/><rect x=\"162\" y=\"72\" width=\"24\" height=\"34\" rx=\"8\" fill=\"#eff6ff\" stroke=\"#60a5fa\" stroke-width=\"3\"/><rect x=\"34\" y=\"118\" width=\"96\" height=\"10\" rx=\"5\" fill=\"#cbd5e1\"/></svg>",
         "_classBinding": {
           "key": "node-view",
@@ -399,14 +451,14 @@
       "showLabel": true,
       "data": {
         "title": "Node Authoring Contract",
-        "purpose": "Minimal semantic-zoom icon surface for the Node Authoring Contract.",
+        "purpose": "Semantic-zoom icon surface for the Node Authoring Contract.",
         "titleSourceNodeId": "node-authoring-contract-title",
         "typeSourceNodeId": "node-authoring-contract-type",
         "viewRole": "icon",
         "viewKind": "display",
         "exposedAuthority": "consume-view",
         "audience": "Author",
-        "status": "draft",
+        "status": "active",
         "svg": "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"16\" y=\"16\" width=\"88\" height=\"88\" rx=\"22\" fill=\"#f8fafc\" stroke=\"#0f172a\" stroke-width=\"6\"/><rect x=\"28\" y=\"34\" width=\"40\" height=\"10\" rx=\"5\" fill=\"#f59e0b\" opacity=\"0.95\"/><rect x=\"74\" y=\"34\" width=\"18\" height=\"10\" rx=\"5\" fill=\"#3b82f6\" opacity=\"0.9\"/><rect x=\"28\" y=\"56\" width=\"26\" height=\"24\" rx=\"8\" fill=\"#fef3c7\" stroke=\"#f59e0b\" stroke-width=\"3\"/><rect x=\"60\" y=\"56\" width=\"32\" height=\"24\" rx=\"8\" fill=\"#dbeafe\" stroke=\"#3b82f6\" stroke-width=\"3\"/></svg>",
         "_classBinding": {
           "key": "icon-view",
@@ -437,7 +489,7 @@
           "portId": "root",
           "label": "Open"
         },
-        "memo": "Schema-level node contract.",
+        "memo": "Core node contract for shared substrate, representation, and mutation rules.",
         "sourceRef": "github://twilite-zone/public/library/documentation/contracts/nodes/node-contract.node",
         "sourceNodeId": "node-contract-view",
         "sourcePayload": "node.web.summary"
@@ -464,7 +516,7 @@
           "portId": "root",
           "label": "Open"
         },
-        "memo": "Current instance-shape contract examples.",
+        "memo": "Instance-shape contract for persisted node data, optional content, and representation behavior.",
         "sourceRef": "github://twilite-zone/public/library/documentation/contracts/nodes/node-instance-contract.node",
         "sourceNodeId": "node-instance-contract-title",
         "sourcePayload": "node.web.summary"
@@ -484,7 +536,7 @@
       "showLabel": true,
       "data": {
         "title": "Node Authoring Contract",
-        "body": "Defines the product-level authoring layers for Twilite nodes so properties, node-owned editors, and diagnostics stop competing for the same concerns.",
+        "body": "Defines the product-level law for separating declaration-owned identity, ordinary properties, node-owned editors, appearance controls, advanced payload, and diagnostics so Twilite stays truthful as primitives and classes evolve.",
         "category": "contracts",
         "authority": "normative",
         "_classBinding": {
@@ -626,11 +678,11 @@
       "showLabel": true,
       "data": {
         "title": "Where This Applies",
-        "body": "Applies to ordinary properties, node-owned editors, appearance systems, advanced authoring controls, and diagnostics surfaces whenever Twilite presents node concerns to authors.",
+        "body": "Applies whenever Twilite presents node concerns to authors, especially in the properties panel, node-owned editors, appearance systems, advanced authoring controls, and diagnostics surfaces.",
         "conditions": [
           "Properties panel work",
           "Node-owned editor design",
-          "Semantic type reporting",
+          "Primitive and class reporting",
           "Appearance and diagnostics boundaries"
         ],
         "_classBinding": {
@@ -770,7 +822,7 @@
       "showLabel": true,
       "data": {
         "title": "Reads",
-        "body": "Read the semantic type authority, type-owned content, behavior-bearing fields, appearance overrides, advanced payload, and diagnostic provenance before deciding where a control belongs.",
+        "body": "Read declaration authority, primitive or class identity, ordinary authored data, explicit behavior-bearing fields, appearance overrides, advanced payload, and diagnostic provenance before deciding where a control belongs.",
         "required": true,
         "_classBinding": {
           "key": "input",
@@ -909,7 +961,7 @@
       "showLabel": true,
       "data": {
         "title": "Writes",
-        "body": "Produce a properties surface that is small, truthful, and type-sensitive. Prefer node-owned editors for rich workflows and keep diagnostics from masquerading as ordinary properties.",
+        "body": "Produce authoring surfaces that are small, truthful, declaration-aware, and type-sensitive. Prefer node-owned editors for rich workflows and keep diagnostics from masquerading as ordinary properties.",
         "reversible": true,
         "_classBinding": {
           "key": "output",
@@ -1047,8 +1099,8 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Semantic Type Over View Type",
-        "body": "A node's meaning comes from its semantic type, not from the consumer or renderer form currently presenting it. `port` and `graph-reference` are not semantic types.",
+        "title": "Semantic Identity Over Consumer Form",
+        "body": "A node's meaning comes from its declared primitive or class identity, not from the consumer or renderer form currently presenting it. Surfaces like `node.web.icon` or host affordances like `port` do not replace semantic identity.",
         "severity": "must",
         "_classBinding": {
           "key": "rule",
@@ -1187,7 +1239,7 @@
       "showLabel": true,
       "data": {
         "title": "Type Before Behavior",
-        "body": "Ordinary properties should surface `Type` before `Behavior`. `Name` remains prominent, but does not automatically replace the node's semantic primary field.",
+        "body": "Ordinary properties should surface primitive or class identity before specialized behavior. Name remains prominent, but it does not replace the node's semantic primary field or declaration-owned identity.",
         "severity": "must",
         "_classBinding": {
           "key": "rule",
@@ -1326,7 +1378,7 @@
       "showLabel": true,
       "data": {
         "title": "Appearance Is Authored Customization",
-        "body": "Appearance is explicit authoring, not baseline identity. Graph-wide defaults should not be edited through node instance appearance, and rich styling workflows may belong outside ordinary properties.",
+        "body": "Appearance is explicit authoring, not baseline identity. Graph-wide defaults should not be edited through instance appearance controls, and rich styling workflows may belong outside ordinary properties.",
         "severity": "should",
         "_classBinding": {
           "key": "rule",
@@ -1465,7 +1517,7 @@
       "showLabel": true,
       "data": {
         "title": "Do Not Turn Properties Into A Catch-All Editor",
-        "body": "Do not keep adding controls to ordinary properties when the node's real meaning needs a dedicated workflow. Prefer node-owned editors over stuffing specialized editing into the panel.",
+        "body": "Do not keep adding controls to ordinary properties when the node's real meaning needs a dedicated workflow. Prefer node-owned editors over stuffing specialized editing into one crowded panel.",
         "hardStop": true,
         "_classBinding": {
           "key": "guardrail",
@@ -1603,8 +1655,8 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Do Not Report Consumer Views As Semantic Types",
-        "body": "Do not report renderer or consumer kinds like `port` as the node's type in author-facing UI. When no semantic type exists, fall back to `graph`.",
+        "title": "Do Not Report Consumer Surfaces As Semantic Types",
+        "body": "Do not report renderer surfaces or host affordances as the node's semantic type in author-facing UI. If semantic identity is missing, surface that truthfully instead of inventing a fallback ontology.",
         "hardStop": true,
         "_classBinding": {
           "key": "guardrail",
@@ -1743,7 +1795,7 @@
       "showLabel": true,
       "data": {
         "title": "Vocabulary Outruns Standards",
-        "body": "When schema/runtime contracts exist but authoring standards are missing, the UI starts exposing implementation vocabulary as if it were product meaning. The properties panel becomes crowded and misleading.",
+        "body": "When schema and runtime capabilities outpace authoring standards, the UI starts exposing implementation vocabulary as if it were product meaning. The result is crowded properties, weak diagnostics boundaries, and confused authorship.",
         "response": "warn",
         "_classBinding": {
           "key": "failure-mode",
@@ -1882,11 +1934,12 @@
       "showLabel": true,
       "data": {
         "title": "Apply This Contract In UI Work",
-        "body": "Use this order: identify semantic type, separate structural identity from type-owned meaning, place ordinary content and behavior first, demote appearance, collapse advanced controls, and keep diagnostics explicit.",
+        "body": "Use this order: resolve declaration authority, identify primitive or class identity, separate structural identity from node-owned meaning, place ordinary content and behavior first, demote appearance, collapse advanced controls, and keep diagnostics explicit.",
         "steps": [
-          "Resolve semantic type authority",
-          "Identify common structural fields",
-          "Identify type-owned content and behavior",
+          "Resolve declaration authority",
+          "Identify primitive or class identity",
+          "Separate structural identity from node-owned meaning",
+          "Place ordinary content and behavior first",
           "Demote appearance to explicit authoring",
           "Collapse advanced controls",
           "Keep diagnostics named and bounded"

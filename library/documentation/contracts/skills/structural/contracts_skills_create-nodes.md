@@ -31,7 +31,7 @@ This skill adapts to graph maturity automatically.
 
 ### Bootstrap Mode (default)
 Applies when:
-- No Manifest node exists, or
+- No declaration node exists, or
 - Schema contracts are absent, or
 - Graph is explicitly exploratory
 
@@ -43,13 +43,13 @@ Behavior:
 
 ### Operational Mode
 Applies when:
-- A valid Manifest node exists, and
+- A valid declaration node exists, and
 - Schema contracts are available, and
 - Graph passes validation
 
 Behavior:
 - Full schema validation
-- Manifest invariants preserved
+- Declaration authority and graph invariants preserved
 - Version and timestamps updated
 - Strong failure semantics enforced
 
@@ -64,10 +64,10 @@ Behavior:
 
 ### Conditional (when context exists)
 - If schema contracts exist, node types must be valid
-- If a manifest exists, manifest authority rules must not be violated
+- If a declaration exists, declaration authority rules must not be violated
 - If running inside a transaction, transactional guarantees apply
 
-Failure of conditional checks MUST downgrade behavior, not block creation, unless explicitly forbidden by manifest policy.
+Failure of conditional checks MUST downgrade behavior, not block creation, unless explicitly forbidden by declaration policy.
 
 ---
 
@@ -81,7 +81,7 @@ Failure of conditional checks MUST downgrade behavior, not block creation, unles
 
 ### When Operational Mode is active
 - Graph remains schema-valid
-- Graph remains manifest-valid
+- Graph remains declaration-valid
 - Graph version is incremented
 - updatedAt timestamp is updated
 - Validation state is refreshed
@@ -169,7 +169,7 @@ Agents using this skill:
 
 - MUST supply explicit IDs
 - MUST read schema contracts if present
-- MUST respect manifest authority if present
+- MUST respect declaration authority if present
 - MUST tolerate downgrade to bootstrap mode
 - MUST NOT assume creation implies validity
 
@@ -181,7 +181,7 @@ Humans invoking this skill should:
 
 - Expect incomplete graphs to be allowed
 - Use validation skills to check readiness
-- Add manifests when graphs mature
+- Add declarations when graphs mature
 - Treat warnings as guidance, not errors
 
 ---
