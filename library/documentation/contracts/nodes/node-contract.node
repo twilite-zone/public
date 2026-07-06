@@ -4,7 +4,7 @@
     "title": "Untitled Graph",
     "description": "",
     "created": "2026-03-27T03:41:11.077Z",
-    "modified": "2026-03-27T03:41:11.077Z",
+    "modified": "2026-07-06T21:20:56.974Z",
     "author": "",
     "tags": [],
     "preferredViewer": "https://twilite.zone"
@@ -758,7 +758,7 @@
       "showLabel": true,
       "data": {
         "title": "NodeContract",
-        "body": "Define the normative law for what every Twilite node schema must declare, what semantic meaning remains invariant, how `root.node` and connected fragments form one on-disk node, when that node is single-file versus multi-file, how a file explicitly declares itself as a fragment through a type node of type `fragment`, how a non-`fragment` node may serve as the root, how a runtime-generated root may discover sibling `.node` files without converting them into declared fragments, what payload and port shape is allowed, what fragment connectivity is legal, what mutations are permitted, and what validators must enforce before rendering or mutation proceeds.",
+        "body": "Define the normative law for what every Twilite node schema must declare, what semantic meaning remains invariant, how the shared behavioral substrate is separated from optional composition, how declaration and connected fragments form one on-disk artifact, when that artifact is single-file versus multi-file, how a file explicitly declares itself as a fragment through a type node of type `fragment`, how a non-`fragment` node may serve as the root, how a runtime-generated root may discover sibling `.node` files without converting them into declared fragments, what payload and port shape is allowed, what mutations are permitted, and what validators must enforce before rendering or mutation proceeds. This contract does not assume every node is a content host or that one visual shell defines nodehood.",
         "category": "contracts",
         "authority": "normative",
         "_classBinding": {
@@ -874,7 +874,7 @@
       "showLabel": true,
       "data": {
         "title": "Where This Applies",
-        "body": "Use this contract whenever a Twilite node schema is defined or a Twilite node is created, mutated, rendered, loaded from disk, or validated. Every schema must declare type name, schema version, status, semantic meaning, required fields, allowed payload shape, fragment adjacency law, that fragment status is explicitly declared by a type node of type `fragment`, how runtime root discovery differs from declared fragments, whether the node is single-file or multi-file under that law, and any applicable root-only port law.",
+        "body": "Use this contract whenever a Twilite node schema is defined or a Twilite node is created, mutated, rendered, loaded from disk, or validated. Every schema must declare type name, schema version, status, semantic meaning, required fields, allowed payload shape, fragment adjacency law, that fragment status is explicitly declared by a type node of type `fragment`, how runtime root discovery differs from declared fragments, whether the artifact is single-file or multi-file under that law, and any applicable root-only port law. The contract should also make clear which capabilities belong to the shared substrate and which are optional composition such as content, controls, ports, or special behaviors.",
         "conditions": [
           "A node is being created or updated.",
           "A node type schema is being defined.",
@@ -995,7 +995,7 @@
       "showLabel": true,
       "data": {
         "title": "Reads Node Shape And Fragment Topology",
-        "body": "Read immutable identity (`id`, `type`), schema-defined `data`, optional presentation fields, declared ports, schema version and status, semantic meaning, the `root.node` boundary, connected fragments, whether connected files declare fragment status by carrying a type node of type `fragment`, whether runtime root discovery is projecting sibling `.node` files, whether the node is currently single-file or multi-file, and mutation intent before any operation proceeds. Payload shape must be explicit: documented keys only, defaults explicit, nullability explicit, no free-form blobs.",
+        "body": "Read immutable identity (`id`, `type`), schema-defined `data`, optional presentation fields, declared ports, schema version and status, semantic meaning, the declaration/root boundary, connected fragments, whether connected files declare fragment status by carrying a type node of type `fragment`, whether runtime root discovery is projecting sibling `.node` files, whether the artifact is currently single-file or multi-file, and mutation intent before any operation proceeds. Payload shape must be explicit: documented keys only, defaults explicit, nullability explicit, no free-form blobs. Do not assume every node hosts content, and do not treat zoom-level representation as a change in identity or ownership.",
         "required": true,
         "_classBinding": {
           "key": "input",
@@ -2661,8 +2661,8 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "View Requirement",
-        "rule": "Every node must resolve to at least one View for rendering. Definition graphs may be view-only; instance nodes must still resolve a valid view through their authority path.",
+        "title": "Representation Requirement",
+        "rule": "Every node must resolve to at least one representation surface for rendering. Definition graphs may be representation-first; instance nodes must still resolve a valid surface through their authority path.",
         "severity": "error",
         "status": "active",
         "_classBinding": {

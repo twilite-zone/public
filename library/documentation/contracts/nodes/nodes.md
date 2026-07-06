@@ -1,14 +1,14 @@
-# Node Type Schema Contract Template
+# Node Contract Template
 
 > **Authority:** This document is normative.
-> Any node created, mutated, rendered, or interpreted by humans, agents, or tools **MUST** conform to one of the schemas defined using this template.
+> Any node created, mutated, rendered, or interpreted by humans, agents, or tools **MUST** conform to one of the contracts defined using this template.
 > Editors and agents may not invent fields, infer structure, or guess missing data.
 
 ---
 
 ## 0. Metadata
 
-* **Type name:** `<type>`
+* **Primitive / class key:** `<type>`
 * **Schema version:** `MAJOR.MINOR.PATCH`
 * **Status:** `experimental | stable | deprecated`
 * **Defined in:** `contracts/nodes/<type>.md`
@@ -62,11 +62,20 @@ These fields MAY be present but MUST conform if used.
 
 ---
 
-## 3.1 View Requirement (REQUIRED)
+## 3.1 Representation Requirement (REQUIRED)
 
-Every node must resolve to **at least one View** for rendering.
+Every node must resolve to **at least one representation surface** for rendering.
 
-Definition graphs may be view-only; instance nodes must still resolve a view via dictionary lookup.
+Some nodes are content-bearing. Others are infrastructural, boundary-oriented, or view-oriented.
+
+The contract must document which representation surfaces exist, such as:
+
+* `node.web.detail`
+* `node.web.summary`
+* `node.web.icon`
+* `editor.web`
+
+Zoom or host selection may change which representation is shown, but it does not change what node the artifact is.
 
 ---
 
@@ -103,7 +112,7 @@ Rules:
 
 If this node exposes ports, each must be declared here.
 
-Every node also exposes a default port named **root** for portability.
+Do not assume every node exposes ports. If a default `root` port exists for this primitive or class, declare it explicitly here instead of treating it as an unwritten universal rule.
 
 ### Port definition
 
@@ -206,7 +215,7 @@ Migrations must be deterministic and reversible.
 
 Agents MUST:
 
-* Read this schema before creating nodes
+* Read this contract before creating nodes
 * Refuse unknown types
 * Refuse undocumented fields
 * Prefer update over recreate

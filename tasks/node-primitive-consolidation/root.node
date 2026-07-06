@@ -4,7 +4,7 @@
     "title": "Untitled Graph",
     "description": "",
     "created": "2026-03-22T04:02:09.619Z",
-    "modified": "2026-03-22T04:02:09.619Z",
+    "modified": "2026-07-06T21:09:26.996Z",
     "author": "",
     "tags": [],
     "preferredViewer": "https://twilite.zone"
@@ -217,9 +217,9 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Clarify what every node shares, what is optional composition, and which interaction/content/layout responsibilities belong to the primitive versus custom nodes.",
+        "body": "Clarify what every node shares, what is optional composition, and which interaction/content/layout responsibilities belong to the primitive versus custom nodes. Conclusion: the primitive is a shared behavioral substrate, while content, controls, ports, and special behaviors compose onto it.",
         "priority": "critical",
-        "status": "todo",
+        "status": "done",
         "owner": "Michael",
         "estimateHours": "10",
         "acceptanceCriteria": [
@@ -356,7 +356,8 @@
           "classKey": "goal",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node"
         },
-        "definitionKey": "goal"
+        "definitionKey": "goal",
+        "resolutionPath": "Nodehood is shared as substrate; content-hosting is optional composition; zoom changes representation rather than identity or location."
       }
     },
     {
@@ -512,7 +513,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "For example, should PortNode be capable of hosting arbitrary content, or are there node families with fundamentally different composition rules?",
+        "body": "Resolved: not every node hosts content. Infrastructure nodes such as bridges are better understood as authority or capability objects. Ports and portals may render or expose surfaces, but they are boundary/navigation primitives rather than content hosts by definition.",
         "_classBinding": {
           "key": "open-question",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
@@ -636,7 +637,9 @@
           "classKey": "open-question",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node"
         },
-        "definitionKey": "open-question"
+        "definitionKey": "open-question",
+        "status": "resolved",
+        "resolutionPath": "Treat content-hosting as optional composition, not a universal property of nodehood."
       }
     },
     {
@@ -652,7 +655,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Some nodes inherit shared behavior while others feel more custom. Decide whether that is temporary drift or a real architectural distinction.",
+        "body": "Resolved: yes, all nodes start from one primitive, but that primitive is behavioral rather than a shared visible card shell. Composition determines whether a node becomes content-bearing, navigational, infrastructural, interactive, or some mix of those roles.",
         "_classBinding": {
           "key": "open-question",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
@@ -776,7 +779,9 @@
           "classKey": "open-question",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node"
         },
-        "definitionKey": "open-question"
+        "definitionKey": "open-question",
+        "status": "resolved",
+        "resolutionPath": "Preserve one underlying nodehood while allowing different composed capabilities and presentations."
       }
     },
     {
@@ -1905,7 +1910,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "The node surface currently behaves like it has more than 100% of its visible area, revealing more information as you zoom. Decide how much of that belongs to the node itself versus the surrounding semantic-zoom environment.",
+        "body": "Resolved: zoom does not relocate meaning. A node or surface lives where it lives; semantic zoom can reveal a different representation or surface, but it does not change the node's identity or move ownership into the surrounding environment.",
         "_classBinding": {
           "key": "open-question",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
@@ -2029,7 +2034,9 @@
           "classKey": "open-question",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node"
         },
-        "definitionKey": "open-question"
+        "definitionKey": "open-question",
+        "status": "resolved",
+        "resolutionPath": "Zoom changes presentation, not ontology."
       }
     },
     {
@@ -2589,9 +2596,9 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Decide which node capabilities can coexist, including whether ports can host content, how controls compose with content, and where drag/resize affordances belong.",
+        "body": "Composition rules are now explicit: not every node is a content host; ports and portals are boundary primitives that may render or expose surfaces without being defined by content ownership; controls compose with content when needed; drag and resize affordances belong to the host node shell rather than to any one content surface.",
         "priority": "critical",
-        "status": "todo",
+        "status": "done",
         "owner": "Michael",
         "estimateHours": "5",
         "acceptanceCriteria": [
@@ -2730,7 +2737,8 @@
           "classKey": "task",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
-        "definitionKey": "task"
+        "definitionKey": "task",
+        "resolutionPath": "Closed by adopting a light shared primitive plus optional composition of content, controls, ports, and special behaviors."
       }
     },
     {
@@ -3604,16 +3612,16 @@
       "showLabel": true,
       "data": {
         "goal": "Make the node abstraction legible",
-        "status": "todo",
+        "status": "done",
         "taskProgress": {
-          "completed": 4,
+          "completed": 5,
           "total": 5
         },
         "questionProgress": {
-          "answered": 0,
+          "answered": 3,
           "total": 3
         },
-        "summarySource": "node-updater",
+        "summarySource": "manual-closure",
         "taskTitles": [
           "Inventory current node families",
           "Define the minimal node contract",
@@ -3989,8 +3997,8 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Goal: Make the node abstraction legible\nStatus: todo\n\nTasks in scope:\n1. Inventory current node families\n2. Define the minimal node contract\n3. Define content, control, and port composition\n4. Project declared ports onto node boundaries\n5. Plan gradual consolidation\n\nOpen questions:\n1. Can every node host content?\n2. Do all nodes actually start from one primitive?\n3. Where does zoom-revealed surface really live?",
-        "status": "todo",
+        "body": "Goal: Make the node abstraction legible\nStatus: done\n\nTasks in scope:\n1. Inventory current node families\n2. Define the minimal node contract\n3. Define content, control, and port composition\n4. Project declared ports onto node boundaries\n5. Plan gradual consolidation\n\nResolved conclusions:\n1. Not every node hosts content; infrastructure nodes like bridges are authority/capability objects.\n2. All nodes start from one primitive, understood as a shared behavioral substrate rather than one visual shell.\n3. Zoom changes representation, not identity or location.",
+        "status": "done",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "3",
@@ -4003,11 +4011,11 @@
         "countAsTask": false,
         "summarySource": "node-updater",
         "taskProgress": {
-          "completed": 4,
+          "completed": 5,
           "total": 5
         },
         "questionProgress": {
-          "answered": 0,
+          "answered": 3,
           "total": 3
         },
         "definitionKey": "task",
