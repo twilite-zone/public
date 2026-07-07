@@ -1,0 +1,661 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Payments Readiness",
+    "description": "Launch-readiness checklist for Twilite billing, subscriptions, and account state.",
+    "created": "2026-07-07T00:00:00.000Z",
+    "modified": "2026-07-07T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "billing",
+      "payments",
+      "stripe",
+      "task-graph",
+      "planning"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "payments-readiness-manifest",
+      "type": "manifest",
+      "label": "Manifest",
+      "position": {
+        "x": -860,
+        "y": -260
+      },
+      "width": 340,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "payments-readiness",
+          "name": "Payments Readiness",
+          "version": "0.1.0",
+          "description": "Launch-readiness checklist for Twilite billing, subscriptions, and account state.",
+          "createdAt": "2026-07-07T00:00:00.000Z",
+          "updatedAt": "2026-07-07T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "manifest",
+            "goal",
+            "task",
+            "open-question",
+            "script",
+            "task-summary-provider"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": ""
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "summaryNodeId": "payments-readiness-summary"
+      }
+    },
+    {
+      "id": "payments-readiness-summary",
+      "type": "task-summary-provider",
+      "label": "Payments Readiness Summary",
+      "position": {
+        "x": -860,
+        "y": -20
+      },
+      "width": 420,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "goal": "Make Twilite billing reliable enough for public beta",
+        "status": "in-progress",
+        "taskProgress": {
+          "completed": 2,
+          "total": 10
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 1
+        },
+        "summarySource": "graph-updater",
+        "taskTitles": [
+          "Prove successful checkout end to end",
+          "Confirm subscription activation unlocks the account",
+          "Handle failed payments cleanly",
+          "Verify cancellation through the Stripe customer portal",
+          "Define upgrade and downgrade behavior",
+          "Confirm webhook handling and duplicate-event safety",
+          "Confirm receipt email expectations",
+          "Verify account state after renewal",
+          "Verify account state after expiration",
+          "Define refund handling"
+        ],
+        "questionTitles": [
+          "Do we need more than one paid plan at beta?"
+        ],
+        "taskListText": "1. Prove successful checkout end to end\n2. Confirm subscription activation unlocks the account\n3. Handle failed payments cleanly\n4. Verify cancellation through the Stripe customer portal",
+        "questionListText": "1. Do we need more than one paid plan at beta?",
+        "_classBinding": {
+          "key": "task-summary-provider",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-class",
+            "name": "Task Summary Provider Class",
+            "version": "0.1.0",
+            "description": "Provider surface for a planning task summary.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Provider surface for a planning task summary.",
+          "description": "Provider surface for a planning task summary.",
+          "defaults": {
+            "label": "Task Summary Provider",
+            "size": {
+              "width": 420,
+              "height": 250
+            },
+            "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+            "showLabel": false,
+            "data": {
+              "goal": "Summarize this task graph",
+              "status": "todo",
+              "taskProgress": {
+                "completed": 0,
+                "total": 0
+              },
+              "questionProgress": {
+                "answered": 0,
+                "total": 0
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "task-summary-provider",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary Provider",
+              "size": {
+                "width": 420,
+                "height": 250
+              },
+              "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+              "showLabel": false,
+              "data": {
+                "goal": "Summarize this task graph",
+                "status": "todo",
+                "taskProgress": {
+                  "completed": 0,
+                  "total": 0
+                },
+                "questionProgress": {
+                  "answered": 0,
+                  "total": 0
+                }
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task-summary-provider",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task-summary-provider",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task-summary-provider",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task-summary-provider",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Migrated class binding",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task-summary-provider",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "definitionKey": "task-summary-provider"
+      }
+    },
+    {
+      "id": "payments-readiness-summary-updater",
+      "type": "script",
+      "label": "Summary Updater",
+      "position": {
+        "x": -860,
+        "y": 300
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "mode": "auto",
+        "status": "idle",
+        "scriptRef": "",
+        "summaryNodeId": "payments-readiness-summary",
+        "autoRun": true,
+        "description": "Keep the Payments Readiness summary node in sync with the task graph contents.",
+        "scriptName": "Task Summary Provider Updater",
+        "scriptId": "",
+        "autoRunOnGraphChange": true,
+        "source": "const SUMMARY_NODE_ID = 'payments-readiness-summary';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel, maxItems = 4) => {\n  const visible = items.filter(Boolean).slice(0, maxItems);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst fetchJson = async (ref) => {\n  const normalizedRef = String(ref || '').trim();\n  if (!normalizedRef) return null;\n  try {\n    const response = await fetch(normalizedRef, { cache: 'no-store' });\n    if (!response.ok) return null;\n    return await response.json();\n  } catch (error) {\n    return null;\n  }\n};\nconst summaryStatusCache = new Map();\nconst getExternalSummaryStatus = async (entry) => {\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  if (!sourceRef || !sourceNodeId || sourceNodeId === SUMMARY_NODE_ID) return '';\n  const cacheKey = sourceRef + '#' + sourceNodeId;\n  if (summaryStatusCache.has(cacheKey)) return summaryStatusCache.get(cacheKey);\n  const graphData = await fetchJson(sourceRef);\n  const sourceNode = Array.isArray(graphData?.nodes)\n    ? graphData.nodes.find((node) => node?.id === sourceNodeId)\n    : null;\n  const status = normalize(sourceNode?.data?.status);\n  summaryStatusCache.set(cacheKey, status);\n  return status;\n};\n\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nif (!summaryNode) {\n  return { success: false, error: 'Summary node missing' };\n}\n\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task');\nconst externalSummaryTasks = nodes.filter((entry) => {\n  if (entry?.type !== 'task-summary') return false;\n  if (entry?.data?.countAsTask === false) return false;\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  return Boolean(sourceRef && sourceNodeId && sourceNodeId !== SUMMARY_NODE_ID);\n});\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst literalTaskItems = tasks.map((entry) => ({\n  title: toTitle(entry, 'Untitled task'),\n  status: normalize(entry?.data?.status)\n}));\nconst externalTaskItems = await Promise.all(externalSummaryTasks.map(async (entry) => ({\n  title: toTitle(entry, 'Untitled task summary'),\n  status: await getExternalSummaryStatus(entry)\n})));\nconst taskItems = [...literalTaskItems, ...externalTaskItems].filter((entry) => entry?.title);\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalize(goalNode?.data?.status);\nconst derivedStatus = goalStatus\n  ? (goalStatus === 'done' && !allTasksDone ? 'in-progress' : goalNode?.data?.status)\n  : (allTasksDone ? 'done' : (completedTaskCount > 0 ? 'in-progress' : (summaryNode?.data?.status || 'todo')));\n\nconst nextData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  taskProgress: {\n    completed: completedTaskCount,\n    total: taskItems.length\n  },\n  questionProgress: {\n    answered: questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length,\n    total: questions.length\n  },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.', taskTitles.length || 4),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'graph-updater',\n  updatedAt: new Date().toISOString()\n};\n\nawait api.updateNode(SUMMARY_NODE_ID, { data: nextData });\nreturn { success: true, summary: nextData };"
+      }
+    },
+    {
+      "id": "payments-readiness-goal",
+      "type": "goal",
+      "label": "Make Twilite billing reliable enough for public beta",
+      "position": {
+        "x": -180,
+        "y": -120
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "The checkout path now works end to end. The remaining launch work is to make billing state trustworthy before, during, and after subscription changes so a paying user never ends up confused about access.",
+        "priority": "critical",
+        "status": "open",
+        "owner": "Michael",
+        "estimateHours": "8",
+        "acceptanceCriteria": [
+          "A new user can subscribe and unlock correctly",
+          "Billing state survives refresh, relogin, and renewal",
+          "Cancellation and expiration are predictable",
+          "Support has a clear story for failures and refunds"
+        ]
+      }
+    },
+    {
+      "id": "payments-readiness-question-plans",
+      "type": "open-question",
+      "label": "Do we need more than one paid plan at beta?",
+      "position": {
+        "x": 280,
+        "y": -120
+      },
+      "width": 420,
+      "height": 200,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Stripe can support tiers and plan changes later, but beta may only need one paid path. Decide whether upgrade and downgrade semantics are launch work or an explicitly deferred post-beta feature.",
+        "status": "open",
+        "resolutionPath": ""
+      }
+    },
+    {
+      "id": "payments-readiness-task-checkout",
+      "type": "task",
+      "label": "Prove successful checkout end to end",
+      "position": {
+        "x": -180,
+        "y": 320
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Create a fresh unpaid account, complete Stripe checkout, and verify the app returns to Twilite with a confirmed paid state.",
+        "priority": "high",
+        "status": "done",
+        "owner": "Michael",
+        "acceptanceCriteria": [
+          "Checkout session opens correctly",
+          "Stripe completes without manual repair",
+          "Twilite account upgrades on return"
+        ],
+        "resolutionPath": "Confirmed live checkout returns to Twilite and upgrades the account."
+      }
+    },
+    {
+      "id": "payments-readiness-task-activation",
+      "type": "task",
+      "label": "Confirm subscription activation unlocks the account",
+      "position": {
+        "x": 240,
+        "y": 320
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Verify that a newly paid user can refresh, sign out, and sign back in without losing edit authority or landing in a stale unpaid state.",
+        "priority": "high",
+        "status": "done",
+        "owner": "Michael",
+        "acceptanceCriteria": [
+          "Paid state survives reload",
+          "Paid state survives relogin",
+          "Editor permissions reflect the paid entitlement"
+        ],
+        "resolutionPath": "Activation now survives the normal return path and presents the paid account correctly."
+      }
+    },
+    {
+      "id": "payments-readiness-task-failed-payments",
+      "type": "task",
+      "label": "Handle failed payments cleanly",
+      "position": {
+        "x": 660,
+        "y": 320
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Exercise at least one declined or failed payment path and make sure the account returns to a truthful unpaid or past-due state with a clear next action.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "acceptanceCriteria": [
+          "Failure path is visible to the user",
+          "Account does not unlock incorrectly",
+          "The recovery path is obvious"
+        ]
+      }
+    },
+    {
+      "id": "payments-readiness-task-cancel",
+      "type": "task",
+      "label": "Verify cancellation through the Stripe customer portal",
+      "position": {
+        "x": 1080,
+        "y": 320
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Add the customer portal path, cancel through Stripe's managed UI, and confirm Twilite reflects the new subscription state at the right time.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "acceptanceCriteria": [
+          "Customer portal opens for signed-in paid users",
+          "Cancellation is reflected in account state",
+          "Access changes happen at the intended boundary"
+        ]
+      }
+    },
+    {
+      "id": "payments-readiness-task-webhooks",
+      "type": "task",
+      "label": "Confirm webhook handling and duplicate-event safety",
+      "position": {
+        "x": -180,
+        "y": 700
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Verify the webhook endpoint updates account state from Stripe events and remains safe if Stripe retries the same event more than once.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "acceptanceCriteria": [
+          "Webhook signature validation works",
+          "Duplicate deliveries do not corrupt account state",
+          "Missed browser redirects are recoverable through webhooks"
+        ]
+      }
+    },
+    {
+      "id": "payments-readiness-task-receipts",
+      "type": "task",
+      "label": "Confirm receipt email expectations",
+      "position": {
+        "x": 240,
+        "y": 700
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Decide whether Stripe's built-in receipts are enough for beta and make sure the current checkout and subscription setup matches that expectation.",
+        "priority": "medium",
+        "status": "todo",
+        "owner": "Michael",
+        "acceptanceCriteria": [
+          "Receipt ownership is explicit",
+          "No duplicate or contradictory email story exists",
+          "The beta path is documented"
+        ]
+      }
+    },
+    {
+      "id": "payments-readiness-task-renewal",
+      "type": "task",
+      "label": "Verify account state after renewal",
+      "position": {
+        "x": 660,
+        "y": 700
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Validate that a renewal event leaves the account in the expected paid state and does not regress permissions or billing metadata.",
+        "priority": "medium",
+        "status": "todo",
+        "owner": "Michael",
+        "acceptanceCriteria": [
+          "Renewal keeps the account paid",
+          "Metadata remains internally consistent",
+          "No manual repair is needed after renewal"
+        ]
+      }
+    },
+    {
+      "id": "payments-readiness-task-expiration",
+      "type": "task",
+      "label": "Verify account state after expiration",
+      "position": {
+        "x": 1080,
+        "y": 700
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Test what happens when access should lapse and make sure Twilite returns the user to the correct limited state without corrupting their account.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "acceptanceCriteria": [
+          "Expired accounts stop receiving paid permissions",
+          "The transition is understandable",
+          "The user can recover by paying again"
+        ]
+      }
+    },
+    {
+      "id": "payments-readiness-task-upgrade-downgrade",
+      "type": "task",
+      "label": "Define upgrade and downgrade behavior",
+      "position": {
+        "x": 240,
+        "y": 1080
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Either specify how plan changes should work or explicitly defer them from beta so support and UI do not imply a capability that is not actually there.",
+        "priority": "medium",
+        "status": "todo",
+        "owner": "Michael",
+        "acceptanceCriteria": [
+          "The beta story is unambiguous",
+          "UI wording matches actual capability",
+          "Deferred work is documented if omitted"
+        ]
+      }
+    },
+    {
+      "id": "payments-readiness-task-refunds",
+      "type": "task",
+      "label": "Define refund handling",
+      "position": {
+        "x": 660,
+        "y": 1080
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Decide whether refunds are handled entirely in Stripe for beta or whether Twilite needs explicit account-state logic after a refund or reversal.",
+        "priority": "medium",
+        "status": "todo",
+        "owner": "Michael",
+        "acceptanceCriteria": [
+          "Refund authority is explicit",
+          "Account state after refund is predictable",
+          "Support has a documented process"
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "payments-readiness-edge-summary",
+      "type": "reference",
+      "source": "payments-readiness-goal",
+      "target": "payments-readiness-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "summary"
+    },
+    {
+      "id": "payments-readiness-edge-updater",
+      "type": "reference",
+      "source": "payments-readiness-summary-updater",
+      "target": "payments-readiness-summary",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "updates"
+    },
+    {
+      "id": "payments-readiness-edge-checkout-activation",
+      "type": "reference",
+      "source": "payments-readiness-task-checkout",
+      "target": "payments-readiness-task-activation",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "returns"
+    },
+    {
+      "id": "payments-readiness-edge-activation-webhooks",
+      "type": "reference",
+      "source": "payments-readiness-task-activation",
+      "target": "payments-readiness-task-webhooks",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "confirms"
+    },
+    {
+      "id": "payments-readiness-edge-webhooks-failures",
+      "type": "reference",
+      "source": "payments-readiness-task-webhooks",
+      "target": "payments-readiness-task-failed-payments",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "guards"
+    },
+    {
+      "id": "payments-readiness-edge-failures-expiration",
+      "type": "reference",
+      "source": "payments-readiness-task-failed-payments",
+      "target": "payments-readiness-task-expiration",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "falls back"
+    },
+    {
+      "id": "payments-readiness-edge-cancel-expiration",
+      "type": "reference",
+      "source": "payments-readiness-task-cancel",
+      "target": "payments-readiness-task-expiration",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "ends at"
+    },
+    {
+      "id": "payments-readiness-edge-renewal-expiration",
+      "type": "reference",
+      "source": "payments-readiness-task-renewal",
+      "target": "payments-readiness-task-expiration",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "contrasts"
+    },
+    {
+      "id": "payments-readiness-edge-receipts-refunds",
+      "type": "reference",
+      "source": "payments-readiness-task-receipts",
+      "target": "payments-readiness-task-refunds",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "supports"
+    },
+    {
+      "id": "payments-readiness-edge-upgrades-question",
+      "type": "reference",
+      "source": "payments-readiness-task-upgrade-downgrade",
+      "target": "payments-readiness-question-plans",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "decides"
+    }
+  ],
+  "clusters": [],
+  "scripts": [],
+  "nodeCount": 15,
+  "edgeCount": 10,
+  "timestamp": "2026-07-07T00:00:00.000Z"
+}
