@@ -36,6 +36,81 @@ The handshake is not a full graph. It is proof that you understand how to speak 
 
 Use a markdown node unless the user asks for something else.
 
+## Handshake Shape That Must Be Used
+
+For the first handshake, use this exact structural pattern:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "createNodes",
+      "nodes": [
+        {
+          "id": "11111111-1111-4111-8111-111111111111",
+          "type": "markdown",
+          "label": "LLM Handshake",
+          "position": { "x": 0, "y": 0 },
+          "visible": true,
+          "showLabel": true,
+          "data": {
+            "markdown": "## LLM Handshake\\n\\nReady to collaborate through valid Twilite graph mutations."
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+For the handshake:
+
+- the top level must be `action`, not `transaction`
+- `transaction` is the value of `action`, not a wrapper key
+- `commands` must be an array
+- `createNodes` must contain `nodes`, not `edges`
+- each created node should include a real `type`
+- for markdown nodes, the content should go in `data.markdown`
+- `label` is a node field, not a `data` field
+- include a `position`
+
+## Invalid Handshake Patterns
+
+Do not return any of these shapes:
+
+- `{"transaction": { ... }}`
+- a `createNodes` command that also contains `edges`
+- a node with no `type`
+- a markdown node that uses `data.title` and `data.body` instead of `data.markdown`
+- a created node where `label` is only nested inside `data`
+
+Wrong:
+
+```json
+{
+  "transaction": {
+    "action": "createNodes",
+    "nodes": [
+      {
+        "id": "llm-handshake-node",
+        "data": {
+          "label": "LLM Readiness Acknowledged"
+        }
+      }
+    ]
+  }
+}
+```
+
+Why it is wrong:
+
+- the top-level wrapper is invalid
+- `createNodes` is in the wrong place
+- the node is missing `type`
+- the node label is placed in `data` instead of `label`
+- there is no `position`
+
 ## Normal Response Contract
 
 When the user is working in an existing graph:
@@ -133,6 +208,11 @@ There are lower-level aliases in internal runtime layers such as `createNode`, `
 - The top-level keys are exact:
   - use `action`
   - do not use `actions`
+- do not wrap the payload in a top-level `transaction` object
+- correct:
+  - `{"action":"transaction","commands":[...]}`
+- incorrect:
+  - `{"transaction":{"action":"createNodes","nodes":[...]}}`
 - Inside a transaction command:
   - use `action`
   - do not use `command`
@@ -152,6 +232,75 @@ There are lower-level aliases in internal runtime layers such as `createNode`, `
   - `sourcePort`
   - `targetPort`
   - `type`
+- Do not use:
+  - `sourceNodeId`
+  - `targetNodeId`
+  as edge endpoint keys in `createEdges` payloads.
+
+## Create Command Examples
+
+Create one markdown node:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "createNodes",
+      "nodes": [
+        {
+          "id": "11111111-1111-4111-8111-111111111111",
+          "type": "markdown",
+          "label": "Note",
+          "position": { "x": 120, "y": 180 },
+          "visible": true,
+          "showLabel": true,
+          "data": {
+            "markdown": "## Note\\n\\nCreated through a valid Twilite transaction."
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+Create a node and then an edge in the same transaction:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "createNodes",
+      "nodes": [
+        {
+          "id": "11111111-1111-4111-8111-111111111111",
+          "type": "markdown",
+          "label": "Source",
+          "position": { "x": 80, "y": 120 },
+          "data": {
+            "markdown": "## Source"
+          }
+        }
+      ]
+    },
+    {
+      "action": "createEdges",
+      "edges": [
+        {
+          "id": "22222222-2222-4222-8222-222222222222",
+          "type": "reference",
+          "source": "11111111-1111-4111-8111-111111111111",
+          "target": "existing-target-node",
+          "sourcePort": "root",
+          "targetPort": "root"
+        }
+      ]
+    }
+  ]
+}
+```
 
 ## Updating Existing Nodes
 
