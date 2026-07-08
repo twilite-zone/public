@@ -7,7 +7,7 @@
     "version": "0.1.0",
     "kind": "task",
     "created": "2026-07-08T15:37:50.646Z",
-    "modified": "2026-07-08T15:47:36.772Z",
+    "modified": "2026-07-08T16:36:00.000Z",
     "author": "",
     "tags": [
       "task"
@@ -420,7 +420,7 @@
           "total": 10
         },
         "questionProgress": {
-          "answered": 0,
+          "answered": 1,
           "total": 1
         },
         "summarySource": "graph-updater",
@@ -561,7 +561,7 @@
           "updatedAt": 1783525237027,
           "reason": "node-drag"
         },
-        "updatedAt": "2026-07-08T15:40:57.542Z"
+        "updatedAt": "2026-07-08T16:20:00.000Z"
       }
     },
     {
@@ -2210,9 +2210,9 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Stripe can support tiers and plan changes later, but beta may only need one paid path. Decide whether upgrade and downgrade semantics are launch work or an explicitly deferred post-beta feature.",
-        "status": "open",
-        "resolutionPath": "",
+        "body": "Resolved for beta: Twilite ships one paid plan. Stripe can support tiers and plan changes later, but upgrade and downgrade semantics are explicitly deferred until after public beta.",
+        "status": "answered",
+        "resolutionPath": "Ship one paid plan for beta, avoid upgrade or downgrade UI, and revisit multi-plan billing after the Stripe lifecycle paths are proven stable.",
         "_classBinding": {
           "key": "open-question",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
@@ -3364,7 +3364,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Add the customer portal path, cancel through Stripe's managed UI, and confirm Twilite reflects the new subscription state at the right time.",
+        "body": "Use Stripe's managed customer portal for cancellation, then confirm Twilite reflects the resulting subscription state and changes access at the intended boundary.",
         "priority": "high",
         "status": "todo",
         "owner": "Michael",
@@ -3652,7 +3652,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Verify the webhook endpoint updates account state from Stripe events and remains safe if Stripe retries the same event more than once.",
+        "body": "Treat Stripe webhooks as the entitlement backbone: verify the webhook endpoint updates account state from Stripe events, remains safe under duplicate delivery, and can repair missed browser return flows.",
         "priority": "high",
         "status": "todo",
         "owner": "Michael",
@@ -3940,7 +3940,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Decide whether Stripe's built-in receipts are enough for beta and make sure the current checkout and subscription setup matches that expectation.",
+        "body": "For beta, rely on Stripe's built-in receipts and invoice email story. Verify that Twilite is not sending contradictory billing email and document Stripe as the single receipt authority.",
         "priority": "medium",
         "status": "todo",
         "owner": "Michael",
@@ -4804,7 +4804,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Either specify how plan changes should work or explicitly defer them from beta so support and UI do not imply a capability that is not actually there.",
+        "body": "Beta ships one paid plan only. Make the deferred scope explicit so support, onboarding, and account UI do not imply upgrade or downgrade capability that does not yet exist.",
         "priority": "medium",
         "status": "todo",
         "owner": "Michael",
@@ -5092,7 +5092,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Decide whether refunds are handled entirely in Stripe for beta or whether Twilite needs explicit account-state logic after a refund or reversal.",
+        "body": "For beta, execute refunds manually in Stripe and define the Twilite support policy around them. Clarify whether refunded access remains until period end or is revoked early, without rebuilding refund machinery inside Twilite.",
         "priority": "medium",
         "status": "todo",
         "owner": "Michael",
@@ -5237,6 +5237,462 @@
           "graphId": "payments-readiness-declaration"
         }
       }
+    },
+    {
+      "id": "payments-readiness-webhooks-events",
+      "type": "markdown",
+      "label": "Webhook Events To Prove",
+      "root": false,
+      "position": {
+        "x": -1020,
+        "y": 1080
+      },
+      "width": 360,
+      "height": 260,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Events To Prove\n\nThe live Stripe webhook route currently handles:\n\n- `checkout.session.completed`\n- `customer.subscription.created`\n- `customer.subscription.updated`\n- `customer.subscription.deleted`\n\nTwo important notes:\n\n- browser return confirmation is a separate fast path, not the webhook itself\n- entitlement sync currently treats `active`, `trialing`, and `past_due` as active states",
+        "memo": "",
+        "link": "",
+        "html": "",
+        "svg": "",
+        "identity": {
+          "graphId": "payments-readiness-declaration"
+        }
+      }
+    },
+    {
+      "id": "payments-readiness-webhooks-procedure",
+      "type": "markdown",
+      "label": "Webhook Test Procedure",
+      "root": false,
+      "position": {
+        "x": -600,
+        "y": 1080
+      },
+      "width": 360,
+      "height": 320,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Test Procedure\n\n1. Start with a fresh unpaid account.\n2. Complete checkout and verify the browser return path unlocks immediately.\n3. Re-deliver `checkout.session.completed` and confirm nothing is double-granted or corrupted.\n4. Trigger a subscription update or cancellation in Stripe and verify account session reflects the change.\n5. Simulate a missed return flow by reloading or re-signing-in after webhook delivery and confirm the account repairs itself.",
+        "memo": "",
+        "link": "",
+        "html": "",
+        "svg": "",
+        "identity": {
+          "graphId": "payments-readiness-declaration"
+        }
+      }
+    },
+    {
+      "id": "payments-readiness-webhooks-states",
+      "type": "markdown",
+      "label": "Expected Account States",
+      "root": false,
+      "position": {
+        "x": -180,
+        "y": 1080
+      },
+      "width": 360,
+      "height": 300,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Expected States\n\n- paid checkout returns as active without manual repair\n- duplicate webhook delivery leaves billing rows and entitlements stable\n- `cancel_at_period_end` is preserved in billing metadata\n- deleted subscriptions remove paid entitlement cleanly\n- failed-payment and expiration behavior must be explicit because `past_due` is currently treated as active",
+        "memo": "",
+        "link": "",
+        "html": "",
+        "svg": "",
+        "identity": {
+          "graphId": "payments-readiness-declaration"
+        }
+      }
     }
   ],
   "edges": [
@@ -5347,6 +5803,50 @@
       "sourcePort": "left",
       "targetPort": "left",
       "label": "decides",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "payments-readiness-edge-webhooks-events",
+      "type": "reference",
+      "source": "payments-readiness-task-webhooks",
+      "target": "payments-readiness-webhooks-events",
+      "sourcePort": "left",
+      "targetPort": "top",
+      "label": "handles",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "payments-readiness-edge-events-procedure",
+      "type": "reference",
+      "source": "payments-readiness-webhooks-events",
+      "target": "payments-readiness-webhooks-procedure",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "exercise",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "payments-readiness-edge-procedure-states",
+      "type": "reference",
+      "source": "payments-readiness-webhooks-procedure",
+      "target": "payments-readiness-webhooks-states",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "expects",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "payments-readiness-edge-states-failures",
+      "type": "reference",
+      "source": "payments-readiness-webhooks-states",
+      "target": "payments-readiness-task-failed-payments",
+      "sourcePort": "top",
+      "targetPort": "bottom",
+      "label": "checks",
       "style": {},
       "data": {}
     }
