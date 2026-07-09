@@ -39,6 +39,10 @@ Handshake requirements:
   - a `nodes` array
   - an `updates` array
   - per-node `{ id, updates }` entries
+- if you edit one edge, use `updateEdge`
+- use `updateEdges` only for one shared patch across many ids
+- put visual edge styling in `updates.style`
+- do not use top-level `animated: true` for edge styling
 
 This response is a handshake, not a full graph.
 
