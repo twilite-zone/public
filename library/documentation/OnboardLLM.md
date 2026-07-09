@@ -308,6 +308,7 @@ When editing a node that already exists:
 
 - use `updateNode` for one node id
 - use `updateNodes` only when the exact same patch should apply to several nodes
+- do not use `updateNodes` with a `nodes` array of per-node changes
 - preserve the existing node id
 - patch only the fields you intend to change
 
@@ -353,6 +354,65 @@ Shared edit example:
         "visible": true,
         "data": {
           "memo": "Reviewed by onboarding example"
+        }
+      }
+    }
+  ]
+}
+```
+
+Invalid shared edit pattern:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNodes",
+      "nodes": [
+        {
+          "id": "node-a",
+          "label": "Wrong Shape"
+        },
+        {
+          "id": "node-b",
+          "label": "Also Wrong"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Why it is wrong:
+
+- `updateNodes` does not accept a `nodes` array
+- `updateNodes` is for one shared patch across many ids
+- if each node needs a different label, markdown body, or style, use separate `updateNode` commands
+
+Correct per-node update pattern:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNode",
+      "id": "node-a",
+      "updates": {
+        "label": "Node A",
+        "data": {
+          "markdown": "## Node A"
+        }
+      }
+    },
+    {
+      "action": "updateNode",
+      "id": "node-b",
+      "updates": {
+        "label": "Node B",
+        "data": {
+          "markdown": "## Node B"
         }
       }
     }
