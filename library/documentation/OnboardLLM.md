@@ -234,6 +234,8 @@ There are lower-level aliases in internal runtime layers such as `createNode`, `
   - `{"action":"updateEdge","id":"edge-id","updates":{...}}`
 - Use `updateEdges` for a shared update across several edges:
   - `{"action":"updateEdges","ids":["edge-a","edge-b"],"updates":{...}}`
+- For updates, the `id` or `ids` must be real existing graph ids.
+- Do not repeat placeholder example ids like `edge-id`, `node-id`, `edge-a`, or `edge-b` in a live mutation unless those exact ids already exist in the graph.
 - `updates` is a patch object, not a full node replacement.
 - In `updateNodes`, `updates` must be one object.
 - Do not make `updates` an array.
@@ -611,6 +613,7 @@ When editing an edge that already exists:
 - use `updateEdge` for one edge id
 - use `updateEdges` only when the exact same patch should apply to several edge ids
 - preserve the existing edge id
+- use a real existing edge id from the current graph
 - patch only the fields you intend to change
 - put visual edge styling inside `updates.style`
 - use top-level `label` when you are renaming the edge label itself
@@ -740,6 +743,7 @@ Concrete "do something fancy with the edges" example:
 
 Do not answer that request with:
 
+- placeholder ids copied literally from documentation examples
 - `updateEdge` plus top-level `animated: true`
 - `updateEdge` plus top-level `color` when the goal is visual styling
 - `updateEdges` with an `updates` array
