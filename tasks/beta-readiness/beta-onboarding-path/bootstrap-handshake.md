@@ -44,6 +44,7 @@ Handshake requirements:
 - use real existing ids for updates, not placeholder example ids
 - put visual edge styling in `updates.style`
 - do not use top-level `animated: true` for edge styling
+- do not use `updates.style.animated: true`; use `updates.style.animation` instead
 
 This response is a handshake, not a full graph.
 
