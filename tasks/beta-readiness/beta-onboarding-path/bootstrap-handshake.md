@@ -24,10 +24,11 @@ Handshake requirements:
 - put the node `label` on the node itself, not inside `data`
 - for markdown nodes, put the content in `data.markdown`
 - include a `position`
-- use `root` as the safe default target port
-- for simple graphs, side ports are common default source ports
-- side ports can also be inputs when the graph explicitly uses them that way
-- if you do not know the schema, use `root` for both `sourcePort` and `targetPort`
+- do not invent port names
+- only use port ids that are explicitly declared on the nodes
+- do not confuse handle placement like `side` with a port id
+- if you do not know the schema, inspect first
+- use `root` only when the nodes are known to expose `root`
 - use `reference` as the safe default edge type
 - if you create edges later, use `source` and `target`
 - do not use `sourceNodeId` and `targetNodeId` in `createEdges`
