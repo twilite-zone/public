@@ -807,12 +807,13 @@ Do not answer that request with:
 Ports are strict.
 
 - Always provide both `sourcePort` and `targetPort`.
-- Use `root` as the safe default target port.
-- For simple graphs, side ports are common default source ports.
-- Side ports are not output-only by law. They may also be valid inputs when the node or graph design explicitly uses them that way.
+- Do not invent port names.
+- Only use port ids that are explicitly declared on the nodes.
+- Do not confuse handle placement fields like `position.side` or `handle.side` with a port id.
 - Only use named ports like `in` or `out` when those ports are explicitly declared on the nodes.
 - Do not assume markdown nodes expose `in` / `out`.
-- If you do not know the node port schema, use `root` for both ends.
+- If you do not know the node port schema, inspect first.
+- Use `root` only when the nodes are known to expose `root`.
 
 Safe default edge example:
 
