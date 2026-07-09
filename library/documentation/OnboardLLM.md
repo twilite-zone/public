@@ -134,6 +134,8 @@ Use these core authoring actions by default:
 - `createGroups`
 - `updateNode`
 - `updateNodes`
+- `updateEdge`
+- `updateEdges`
 - `update`
 - `delete`
 - `addNodesToGroup`
@@ -154,6 +156,8 @@ Twilite currently supports these top-level action names in the runtime/import pi
 - `createGroups`
 - `updateNode`
 - `updateNodes`
+- `updateEdge`
+- `updateEdges`
 - `update`
 - `delete`
 - `addNodesToGroup`
@@ -191,7 +195,9 @@ Use the action names above with these patterns:
   - `delete` with `type: "node"`
 - edges:
   - `createEdges`
-  - `update` with `type: "edge"`
+  - `updateEdge`
+  - `updateEdges`
+  - `update` with `type: "edge"` when you are patching mixed resource types in a generic flow
   - `delete` with `type: "edge"`
 - groups:
   - `createGroups`
@@ -201,7 +207,7 @@ Use the action names above with these patterns:
   - `removeNodesFromGroup`
   - `setGroupNodes`
 
-There are lower-level aliases in internal runtime layers such as `createNode`, `createEdge`, `updateEdge`, `updateGroup`, and `deleteNode`, but do not rely on those in LLM onboarding prompts. Use the top-level action names documented here.
+There are lower-level aliases in internal runtime layers such as `createNode`, `createEdge`, `updateGroup`, and `deleteNode`, but for graph authoring you should prefer the documented top-level action names above. Edge edits are first-class and should use `updateEdge` or `updateEdges`.
 
 ## Command Shape Rules
 
@@ -224,10 +230,17 @@ There are lower-level aliases in internal runtime layers such as `createNode`, `
   - `{"action":"updateNode","id":"node-id","updates":{...}}`
 - Use `updateNodes` for a shared update across several nodes:
   - `{"action":"updateNodes","ids":["a","b"],"updates":{...}}`
+- Use `updateEdge` for one edge:
+  - `{"action":"updateEdge","id":"edge-id","updates":{...}}`
+- Use `updateEdges` for a shared update across several edges:
+  - `{"action":"updateEdges","ids":["edge-a","edge-b"],"updates":{...}}`
 - `updates` is a patch object, not a full node replacement.
 - In `updateNodes`, `updates` must be one object.
 - Do not make `updates` an array.
 - Do not put per-node entries inside `updateNodes`.
+- In `updateEdges`, `updates` must be one object.
+- Do not make `updates` an array in `updateEdges`.
+- Do not put per-edge entries inside `updateEdges`.
 - If creating edges, include:
   - `id`
   - `source`
@@ -590,6 +603,147 @@ Do not answer that request with:
 - one `updateNodes` command containing `updates: [...]`
 
 Use `updateNodes` only when every targeted node should receive the exact same style patch.
+
+## Updating Existing Edges
+
+When editing an edge that already exists:
+
+- use `updateEdge` for one edge id
+- use `updateEdges` only when the exact same patch should apply to several edge ids
+- preserve the existing edge id
+- patch only the fields you intend to change
+- put visual edge styling inside `updates.style`
+- use top-level `label` when you are renaming the edge label itself
+- do not use top-level `animated: true` as a visual styling shortcut
+- for animated edges, use `updates.style.animation`
+
+Current runtime behavior:
+
+- edge updates merge shallowly
+- `style` merges with the current edge style
+- `state` merges with the current edge state
+- `data` merges shallowly
+- top-level `color` may be tolerated by some render paths as a fallback, but the correct visual contract is `updates.style.color`
+
+Preferred visual edge style fields:
+
+- `color`
+- `width`
+- `dash`
+- `curved`
+- `route`
+- `orthogonal`
+- `opacity`
+- `arrowSize`
+- `showArrow`
+- `arrowPosition`
+- `animation`
+- `animationSpeed`
+- `gradient`
+
+Supported animation values in the live renderer include:
+
+- `dash`
+- `glow`
+- `pulse`
+- `flow`
+
+Simple edge edit example:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateEdge",
+      "id": "existing-edge",
+      "updates": {
+        "label": "supports",
+        "style": {
+          "color": "#2563eb",
+          "width": 3,
+          "showArrow": true,
+          "arrowPosition": "end"
+        }
+      }
+    }
+  ]
+}
+```
+
+Shared edge style update example:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateEdges",
+      "ids": ["edge-a", "edge-b"],
+      "updates": {
+        "style": {
+          "color": "#0f766e",
+          "width": 2,
+          "dash": [8, 4]
+        }
+      }
+    }
+  ]
+}
+```
+
+Concrete "do something fancy with the edges" example:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateEdge",
+      "id": "edge-indy-archaeologist",
+      "updates": {
+        "label": "studies",
+        "style": {
+          "color": "#d97706",
+          "animation": "dash",
+          "animationSpeed": 1.2
+        }
+      }
+    },
+    {
+      "action": "updateEdge",
+      "id": "edge-indy-gear",
+      "updates": {
+        "label": "carries",
+        "style": {
+          "color": "#92400e",
+          "animation": "dash",
+          "animationSpeed": 1.2
+        }
+      }
+    },
+    {
+      "action": "updateEdge",
+      "id": "edge-indy-rivals",
+      "updates": {
+        "label": "opposes",
+        "style": {
+          "color": "#7f1d1d",
+          "animation": "glow",
+          "animationSpeed": 1
+        }
+      }
+    }
+  ]
+}
+```
+
+Do not answer that request with:
+
+- `updateEdge` plus top-level `animated: true`
+- `updateEdge` plus top-level `color` when the goal is visual styling
+- `updateEdges` with an `updates` array
+- `updateEdges` with per-edge `{ id, updates }` records
 
 ## Edge Port Rules
 
