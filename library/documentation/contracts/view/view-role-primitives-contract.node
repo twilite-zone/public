@@ -32,7 +32,7 @@
             "legend",
             "title",
             "type-definition",
-            "ui-view",
+            "port",
             "skill",
             "scope",
             "input",
@@ -579,7 +579,7 @@
         "key": "view-role-primitives-contract",
         "classRef": "github://twilite-zone/public/library/documentation/contracts/view/view-role-primitives-contract.node",
         "meaning": "Contract graph for dedicated view-role primitives on multi-view artifacts.",
-        "description": "Use when a graph should expose explicit port, icon, document, browser, or editor view primitives instead of one generic ui-view with hidden role data.",
+        "description": "Use when a graph should expose explicit port, icon, document, browser, or editor view primitives instead of one generic port bound to the ui-view class with hidden role data.",
         "category": "contract",
         "status": "active",
         "_classBinding": {
@@ -643,7 +643,7 @@
     },
     {
       "id": "named-view-view",
-      "type": "ui-view",
+      "type": "port",
       "label": "View",
       "position": {
         "x": 720,
@@ -901,9 +901,9 @@
       "showLabel": true,
       "data": {
         "title": "When This Applies",
-        "body": "Use this contract when one generic ui-view no longer makes the graph legible enough by inspection. Prefer dedicated primitives for stable roles like port, icon, and document. Every graph root should expose a minimum cross-graph surface of port plus icon.",
+        "body": "Use this contract when one generic port bound to the ui-view class no longer makes the graph legible enough by inspection. Prefer dedicated primitives for stable roles like port, icon, and document. Every graph root should expose a minimum cross-graph surface of port plus icon.",
         "conditions": [
-          "An artifact exposes multiple ui-view nodes.",
+          "An artifact exposes multiple port nodes bound to the ui-view class.",
           "Consumers need a stable way to choose among them.",
           "Different surfaces should not be inferred from filenames or ad hoc node ids."
         ],
@@ -1241,7 +1241,7 @@
       "showLabel": true,
       "data": {
         "title": "Stable Roles Deserve Stable Primitives",
-        "body": "When a host-facing view role is common and semantically stable, prefer a dedicated primitive such as port-view, icon-view, document-view, or editor-view instead of one generic ui-view with hidden role data. Every graph root should expose at least port and icon surfaces; planning and status artifacts should also expose a document surface.",
+        "body": "When a host-facing view role is common and semantically stable, prefer a dedicated primitive such as port-view, icon-view, document-view, or editor-view instead of one generic port bound to the ui-view class with hidden role data. Every graph root should expose at least port and icon surfaces; planning and status artifacts should also expose a document surface.",
         "severity": "high",
         "_classBinding": {
           "key": "rule",
@@ -1353,7 +1353,7 @@
       "showLabel": true,
       "data": {
         "title": "No Role Ambiguity Hidden In Metadata",
-        "body": "Do not hide stable view intent only in ui-view metadata when a dedicated primitive would make the graph clearer. Do not infer bridge authority or consumer intent from a view existing at all. Do not treat a graph root as fully zoom-renderable if it lacks an explicit icon surface.",
+        "body": "Do not hide stable view intent only in ui-view class metadata when a dedicated primitive would make the graph clearer. Do not infer bridge authority or consumer intent from a view existing at all. Do not treat a graph root as fully zoom-renderable if it lacks an explicit icon surface.",
         "hardStop": true,
         "_classBinding": {
           "key": "guardrail",
@@ -1465,7 +1465,7 @@
       "showLabel": true,
       "data": {
         "title": "Ambiguous Surface Vocabulary",
-        "body": "If multiple generic ui-view nodes exist and their intent is only discoverable by inspecting metadata, the graph should be treated as unclear rather than guessed. If a graph root lacks its minimum required surfaces, the system should treat the artifact as incomplete instead of improvising one.",
+        "body": "If multiple generic port nodes bound to the ui-view class exist and their intent is only discoverable by inspecting metadata, the graph should be treated as unclear rather than guessed. If a graph root lacks its minimum required surfaces, the system should treat the artifact as incomplete instead of improvising one.",
         "response": "warn",
         "_classBinding": {
           "key": "failure-mode",
@@ -1577,13 +1577,13 @@
       "showLabel": true,
       "data": {
         "title": "Resolve Surfaces In Order",
-        "body": "Prefer an explicit source node first, then a dedicated primitive or requested stable role, and only then a generic ui-view fallback when the contract explicitly allows it. For graph roots, validate minimum surfaces before fallback.",
+        "body": "Prefer an explicit source node first, then a dedicated primitive or requested stable role, and only then a generic ui-view-classed port fallback when the contract explicitly allows it. For graph roots, validate minimum surfaces before fallback.",
         "steps": [
           "If a consumer names a source node, use it.",
           "Otherwise, resolve a dedicated primitive such as port-view, icon-view, document-view, or editor-view.",
           "For graph roots, require port and icon surfaces before treating the artifact as fully renderable across zoom.",
           "For planning or status artifacts, require a document surface in addition to port and icon.",
-          "Only fall back to a generic ui-view when the contract explicitly allows it and the role is still unambiguous.",
+          "Only fall back to a generic ui-view-classed port when the contract explicitly allows it and the role is still unambiguous.",
           "If no role matches, fail or fall back only where the contract explicitly allows it.",
           "Never upgrade a view into bridge authority."
         ],
