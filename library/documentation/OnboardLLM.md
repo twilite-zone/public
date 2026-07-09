@@ -225,6 +225,9 @@ There are lower-level aliases in internal runtime layers such as `createNode`, `
 - Use `updateNodes` for a shared update across several nodes:
   - `{"action":"updateNodes","ids":["a","b"],"updates":{...}}`
 - `updates` is a patch object, not a full node replacement.
+- In `updateNodes`, `updates` must be one object.
+- Do not make `updates` an array.
+- Do not put per-node entries inside `updateNodes`.
 - If creating edges, include:
   - `id`
   - `source`
@@ -309,6 +312,8 @@ When editing a node that already exists:
 - use `updateNode` for one node id
 - use `updateNodes` only when the exact same patch should apply to several nodes
 - do not use `updateNodes` with a `nodes` array of per-node changes
+- do not use `updateNodes` with an `updates` array
+- do not nest `{ id, updates }` entries inside `updateNodes`
 - preserve the existing node id
 - patch only the fields you intend to change
 
@@ -390,6 +395,63 @@ Why it is wrong:
 - `updateNodes` is for one shared patch across many ids
 - if each node needs a different label, markdown body, or style, use separate `updateNode` commands
 
+Also invalid:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNodes",
+      "updates": [
+        {
+          "id": "node-a",
+          "updates": {
+            "style": {
+              "backgroundColor": "#ffeeaa"
+            }
+          }
+        },
+        {
+          "id": "node-b",
+          "updates": {
+            "style": {
+              "backgroundColor": "#ddeeff"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+Why it is wrong:
+
+- `updateNodes.updates` must be one patch object
+- `updateNodes` does not support an array of per-node patch records
+- different styles per node require separate `updateNode` commands
+
+Correct shared style update pattern:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNodes",
+      "ids": ["node-a", "node-b"],
+      "updates": {
+        "style": {
+          "borderColor": "#334155",
+          "color": "#0f172a"
+        }
+      }
+    }
+  ]
+}
+```
+
 Correct per-node update pattern:
 
 ```json
@@ -436,6 +498,36 @@ Shared appearance edit example:
           "borderColor": "#ef4444",
           "borderWidth": 2,
           "borderStyle": "solid"
+        }
+      }
+    }
+  ]
+}
+```
+
+Per-node appearance edit example:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNode",
+      "id": "node-a",
+      "updates": {
+        "style": {
+          "backgroundColor": "#fee2e2",
+          "borderColor": "#ef4444"
+        }
+      }
+    },
+    {
+      "action": "updateNode",
+      "id": "node-b",
+      "updates": {
+        "style": {
+          "backgroundColor": "#dbeafe",
+          "borderColor": "#3b82f6"
         }
       }
     }
