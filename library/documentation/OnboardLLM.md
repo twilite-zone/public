@@ -618,6 +618,7 @@ When editing an edge that already exists:
 - put visual edge styling inside `updates.style`
 - use top-level `label` when you are renaming the edge label itself
 - do not use top-level `animated: true` as a visual styling shortcut
+- do not use `updates.style.animated: true` for normal edge animation
 - for animated edges, use `updates.style.animation`
 
 Current runtime behavior:
@@ -627,6 +628,8 @@ Current runtime behavior:
 - `state` merges with the current edge state
 - `data` merges shallowly
 - top-level `color` may be tolerated by some render paths as a fallback, but the correct visual contract is `updates.style.color`
+- `style.animated` is a legacy or selection-oriented flag and should not be used as the normal animation contract
+- visible edge animation in the live renderer should use `style.animation`
 
 Preferred visual edge style fields:
 
@@ -741,10 +744,60 @@ Concrete "do something fancy with the edges" example:
 }
 ```
 
+Invalid animation example:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateEdge",
+      "id": "real-existing-edge-id",
+      "updates": {
+        "label": "explores",
+        "style": {
+          "color": "#ca8a04",
+          "animated": true
+        }
+      }
+    }
+  ]
+}
+```
+
+Why it is wrong:
+
+- `style.animated` is not the preferred live animation contract
+- it may have no visible effect in normal edge rendering
+- use `style.animation` instead
+
+Correct animation example:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateEdge",
+      "id": "real-existing-edge-id",
+      "updates": {
+        "label": "explores",
+        "style": {
+          "color": "#ca8a04",
+          "animation": "dash",
+          "animationSpeed": 1.2
+        }
+      }
+    }
+  ]
+}
+```
+
 Do not answer that request with:
 
 - placeholder ids copied literally from documentation examples
 - `updateEdge` plus top-level `animated: true`
+- `updateEdge` plus `updates.style.animated: true`
 - `updateEdge` plus top-level `color` when the goal is visual styling
 - `updateEdges` with an `updates` array
 - `updateEdges` with per-edge `{ id, updates }` records
