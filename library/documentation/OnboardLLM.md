@@ -535,6 +535,62 @@ Per-node appearance edit example:
 }
 ```
 
+Concrete "make the graph more colorful" example:
+
+If the user asks:
+
+`can you make the graph more colorful?`
+
+and each node should receive a different color, answer with separate `updateNode` commands like this:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNode",
+      "id": "node-a",
+      "updates": {
+        "style": {
+          "backgroundColor": "#fee2e2",
+          "borderColor": "#ef4444",
+          "color": "#7f1d1d"
+        }
+      }
+    },
+    {
+      "action": "updateNode",
+      "id": "node-b",
+      "updates": {
+        "style": {
+          "backgroundColor": "#dbeafe",
+          "borderColor": "#3b82f6",
+          "color": "#1e3a8a"
+        }
+      }
+    },
+    {
+      "action": "updateNode",
+      "id": "node-c",
+      "updates": {
+        "style": {
+          "backgroundColor": "#dcfce7",
+          "borderColor": "#22c55e",
+          "color": "#14532d"
+        }
+      }
+    }
+  ]
+}
+```
+
+Do not answer that request with:
+
+- one `updateNodes` command containing `nodes: [...]`
+- one `updateNodes` command containing `updates: [...]`
+
+Use `updateNodes` only when every targeted node should receive the exact same style patch.
+
 ## Edge Port Rules
 
 Ports are strict.
