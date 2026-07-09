@@ -41,6 +41,7 @@ Handshake requirements:
   - per-node `{ id, updates }` entries
 - if you edit one edge, use `updateEdge`
 - use `updateEdges` only for one shared patch across many ids
+- use real existing ids for updates, not placeholder example ids
 - put visual edge styling in `updates.style`
 - do not use top-level `animated: true` for edge styling
 
