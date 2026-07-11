@@ -331,6 +331,8 @@ When editing a node that already exists:
 - do not nest `{ id, updates }` entries inside `updateNodes`
 - preserve the existing node id
 - patch only the fields you intend to change
+- if the user is editing an existing graph, prefer a `transaction` patch over a raw exported `nodegraph-data` wrapper
+- use `nodegraph-data` only when the user explicitly asks for a full graph artifact, export payload, or complete replace-style graph body
 
 Current runtime behavior:
 
@@ -496,6 +498,35 @@ Correct per-node update pattern:
   ]
 }
 ```
+
+Correct existing port-surface edit pattern:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNode",
+      "id": "products-view",
+      "updates": {
+        "data": {
+          "title": "Products",
+          "purpose": "Shared host-facing products page card.",
+          "svg": "<svg viewBox='0 0 220 160' xmlns='http://www.w3.org/2000/svg'><rect width='220' height='160' rx='24' fill='#0f172a'/></svg>"
+        }
+      }
+    }
+  ]
+}
+```
+
+Why this is the safe pattern:
+
+- the node already exists, so it should be patched in place
+- the top-level shape stays a `transaction`
+- only the changed `data` fields are sent
+- the SVG stays valid JSON because the XML attributes use single quotes inside the string
+- the SVG namespace stays a literal string, not a markdown link
 
 Shared appearance edit example:
 
@@ -886,6 +917,54 @@ Important notes:
 - use `style.borderColor`, `style.borderWidth`, and `style.borderStyle` together when you want an explicit border treatment
 - style patches merge with the existing `style` object, so you only need to send the keys you intend to change
 - unsupported style keys should be treated as optional and non-authoritative; do not rely on them unless the current graph already uses them successfully
+
+## SVG In JSON Rules
+
+When you place SVG markup inside a JSON string:
+
+- keep the outer JSON string in double quotes
+- prefer single quotes for SVG attribute values inside the string
+- keep `xmlns='http://www.w3.org/2000/svg'` literal
+- do not emit markdown links such as `[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)` inside SVG
+- do not leave unescaped double quotes inside the SVG string
+
+Safe example:
+
+```json
+{
+  "svg": "<svg viewBox='0 0 220 160' xmlns='http://www.w3.org/2000/svg'><rect width='220' height='160' rx='24' fill='#0f172a'/></svg>"
+}
+```
+
+Unsafe example:
+
+```json
+{
+  "svg": "<svg viewBox="0 0 220 160" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)">...</svg>"
+}
+```
+
+Why it is unsafe:
+
+- the inner double quotes break JSON parsing
+- the namespace is no longer valid SVG
+
+## Reusing Exported Node Data
+
+Exported graph fragments often contain runtime or bridge metadata such as:
+
+- `_classBinding`
+- `_bridge`
+- `definitionKey`
+- `_placement`
+
+Do not blindly carry those fields forward when changing the semantic role of a node.
+
+Examples:
+
+- if a node is now a plain authored `port`, do not re-emit stale `ui-view` bridge metadata just because the old export contained it
+- if the user only asked to recolor or restyle an existing node, patch the visible fields and preserve the existing node id
+- if you are not intentionally authoring a class-bound node, omit copied class-binding metadata from new mutations
 
 ## Visual Authoring
 
