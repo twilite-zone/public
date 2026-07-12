@@ -7,7 +7,7 @@
     "version": "0.1.0",
     "kind": "task",
     "created": "2026-07-08T15:37:50.646Z",
-    "modified": "2026-07-08T16:36:00.000Z",
+    "modified": "2026-07-12T00:00:00.000Z",
     "author": "",
     "tags": [
       "task"
@@ -416,7 +416,7 @@
         "goal": "Make Twilite billing reliable enough for public beta",
         "status": "open",
         "taskProgress": {
-          "completed": 2,
+          "completed": 3,
           "total": 10
         },
         "questionProgress": {
@@ -434,12 +434,12 @@
           "Verify account state after renewal",
           "Verify account state after expiration",
           "Define upgrade and downgrade behavior",
-          "Define refund handling"
+          "Keep refunds in Stripe for beta"
         ],
         "questionTitles": [
           "Do we need more than one paid plan at beta?"
         ],
-        "taskListText": "1. Prove successful checkout end to end\n2. Confirm subscription activation unlocks the account\n3. Handle failed payments cleanly\n4. Verify cancellation through the Stripe customer portal\n5. Confirm webhook handling and duplicate-event safety\n6. Confirm receipt email expectations\n7. Verify account state after renewal\n8. Verify account state after expiration\n9. Define upgrade and downgrade behavior\n10. Define refund handling",
+        "taskListText": "1. Prove successful checkout end to end\n2. Confirm subscription activation unlocks the account\n3. Handle failed payments cleanly\n4. Verify cancellation through the Stripe customer portal\n5. Confirm webhook handling and duplicate-event safety\n6. Confirm receipt email expectations\n7. Verify account state after renewal\n8. Verify account state after expiration\n9. Define upgrade and downgrade behavior\n10. Keep refunds in Stripe for beta",
         "questionListText": "1. Do we need more than one paid plan at beta?",
         "_classBinding": {
           "key": "task-summary-provider",
@@ -731,7 +731,7 @@
               "goal": "Make Twilite billing reliable enough for public beta",
               "status": "open",
               "taskProgress": {
-                "completed": 2,
+                "completed": 3,
                 "total": 10
               },
               "questionProgress": {
@@ -749,12 +749,12 @@
                 "Verify account state after renewal",
                 "Verify account state after expiration",
                 "Define upgrade and downgrade behavior",
-                "Define refund handling"
+                "Keep refunds in Stripe for beta"
               ],
               "questionTitles": [
                 "Do we need more than one paid plan at beta?"
               ],
-              "taskListText": "1. Prove successful checkout end to end\n2. Confirm subscription activation unlocks the account\n3. Handle failed payments cleanly\n4. Verify cancellation through the Stripe customer portal\n5. Confirm webhook handling and duplicate-event safety\n6. Confirm receipt email expectations\n7. Verify account state after renewal\n8. Verify account state after expiration\n9. Define upgrade and downgrade behavior\n10. Define refund handling",
+              "taskListText": "1. Prove successful checkout end to end\n2. Confirm subscription activation unlocks the account\n3. Handle failed payments cleanly\n4. Verify cancellation through the Stripe customer portal\n5. Confirm webhook handling and duplicate-event safety\n6. Confirm receipt email expectations\n7. Verify account state after renewal\n8. Verify account state after expiration\n9. Define upgrade and downgrade behavior\n10. Keep refunds in Stripe for beta",
               "questionListText": "1. Do we need more than one paid plan at beta?",
               "_classBinding": {
                 "key": "task-summary-provider",
@@ -1924,7 +1924,7 @@
           "A new user can subscribe and unlock correctly",
           "Billing state survives refresh, relogin, and renewal",
           "Cancellation and expiration are predictable",
-          "Support has a clear story for failures and refunds"
+          "Support has a clear story for failures, while refunds remain operational in Stripe"
         ],
         "_classBinding": {
           "key": "goal",
@@ -4953,7 +4953,7 @@
     {
       "id": "payments-readiness-task-refunds",
       "type": "task",
-      "label": "Define refund handling",
+      "label": "Keep refunds in Stripe for beta",
       "root": false,
       "position": {
         "x": 660,
@@ -5092,14 +5092,14 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "For beta, execute refunds manually in Stripe and define the Twilite support policy around them. Clarify whether refunded access remains until period end or is revoked early, without rebuilding refund machinery inside Twilite.",
+        "body": "For beta, let Stripe own refunds operationally. Twilite does not need special refund revocation logic for launch; support can handle refunds in Stripe while the app stays focused on cancellation, failed payment, renewal, and expiration behavior.",
         "priority": "medium",
-        "status": "todo",
+        "status": "done",
         "owner": "Michael",
         "acceptanceCriteria": [
-          "Refund authority is explicit",
-          "Account state after refund is predictable",
-          "Support has a documented process"
+          "Stripe is the explicit refund authority for beta",
+          "Twilite does not block launch on refund automation",
+          "Support has a documented Stripe-side refund process"
         ],
         "_classBinding": {
           "key": "task",
