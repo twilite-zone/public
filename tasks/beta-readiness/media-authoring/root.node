@@ -7,7 +7,7 @@
     "version": "0.1.0",
     "kind": "task",
     "created": "2026-07-14T00:00:00.000Z",
-    "modified": "2026-07-14T00:00:00.000Z",
+    "modified": "2026-07-14T21:14:44.713Z",
     "author": "",
     "tags": [
       "task",
@@ -2032,10 +2032,181 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Media Model\n\nTwilite needs four distinct concepts here:\n\n1. **Image asset**: a raster image the graph can store inline temporarily, download locally, or save into repo assets.\n2. **Video asset**: a direct video file or stable hosted video URL. This is media, not just generic text.\n3. **Embed ref**: a live reference to something rendered through an embed node, such as YouTube, Vimeo, or another iframe source.\n4. **SVG graphic**: authored vector presentation living directly in node data as `data.svg`.\n\nThe important split is **asset vs presentation**:\n\n- assets answer: \"what binary or reference do we have?\"\n- nodes answer: \"how should Twilite render and edit it here?\"\n\nThat keeps image, video, and embeds honest without pretending every pasted thing is already durable, published, or editor-ready.",
+        "markdown": "## Media Model\n\nTwilite needs four distinct concepts here:\n\n1. **Image asset**: a raster image the graph can store inline temporarily, download locally, or save into repo assets.\n2. **Video asset**: a direct video file or stable hosted video URL. This is media, not just generic text.\n3. **Embed ref**: a live reference to something rendered through an embed node, such as YouTube, Vimeo, or another iframe source.\n4. **SVG graphic**: authored vector presentation living directly in node data as `data.svg`.\n\nThe important split is **asset vs presentation**:\n\n- assets answer: \"what binary or reference do we have?\"\n- nodes answer: \"how should Twilite render and edit it here?\"\n\nThat keeps image, video, and embeds honest without pretending every pasted thing is already durable, published, or editor-ready.\n\nAdd one more distinction:\n\n- **Raw footage** should begin life as a temporary or local-first video asset, not as an embed. It only becomes a published video surface after an explicit conversion or upload step.",
         "identity": {
           "graphId": "media-authoring-declaration"
         }
+      }
+    },
+    {
+      "id": "media-authoring-task-raw-video-asset",
+      "type": "task",
+      "label": "Support raw footage as a first-class video asset",
+      "root": false,
+      "position": {
+        "x": 720,
+        "y": 700
+      },
+      "width": 360,
+      "height": 220,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Support raw footage without pretending it is already a published embed. A pasted or dropped video should enter the graph as a temporary asset first, with a clean path to local retention, repo storage, preview, and later publication.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "acceptanceCriteria": [
+          "A raw video file can exist as a graph-owned temporary asset",
+          "The UI names the difference between raw footage, durable asset, and published embed",
+          "Users can preview and intentionally convert video instead of silently publishing it"
+        ],
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "definitionKey": "task",
+        "identity": {
+          "graphId": "media-authoring-declaration"
+        },
+        "estimateHours": "8"
       }
     }
   ],
@@ -2215,6 +2386,86 @@
       "label": "constrains",
       "style": {},
       "data": {}
+    },
+    {
+      "id": "media-authoring-edge-goal-raw-video",
+      "type": "reference",
+      "source": "media-authoring-goal",
+      "target": "media-authoring-task-raw-video-asset",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "grounds",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "media-authoring-edge-model-raw-video",
+      "type": "reference",
+      "source": "media-authoring-task-model",
+      "target": "media-authoring-task-raw-video-asset",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "defines",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "media-authoring-edge-video-raw-video",
+      "type": "reference",
+      "source": "media-authoring-task-video-embed",
+      "target": "media-authoring-task-raw-video-asset",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "separates from",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "media-authoring-edge-raw-video-ui",
+      "type": "reference",
+      "source": "media-authoring-task-raw-video-asset",
+      "target": "media-authoring-task-properties-ui",
+      "sourcePort": "left",
+      "targetPort": "right",
+      "label": "requires",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "media-authoring-edge-raw-video-storage",
+      "type": "reference",
+      "source": "media-authoring-task-raw-video-asset",
+      "target": "media-authoring-task-storage-policy",
+      "sourcePort": "left",
+      "targetPort": "right",
+      "label": "forces",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "media-authoring-edge-raw-video-docs",
+      "type": "reference",
+      "source": "media-authoring-task-raw-video-asset",
+      "target": "media-authoring-task-docs",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "teaches",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "media-authoring-edge-note-raw-video",
+      "type": "reference",
+      "source": "media-authoring-model-note",
+      "target": "media-authoring-task-raw-video-asset",
+      "sourcePort": "right",
+      "targetPort": "bottom",
+      "label": "separates",
+      "style": {},
+      "data": {}
     }
-  ]
+  ],
+  "timestamp": "2026-07-14T21:14:44.713Z",
+  "nodeCount": 12,
+  "edgeCount": 23
 }
