@@ -908,6 +908,11 @@ Preferred node style keys:
 - `borderStyle`
 - `borderRadius`
 - `boxShadow`
+- `fontFamily`
+- `fontSize`
+- `fontWeight`
+- `lineHeight`
+- `letterSpacing`
 
 Important notes:
 
@@ -915,8 +920,54 @@ Important notes:
 - `style.backgroundColor` is still honored in parts of the runtime, but use `background` in onboarding examples unless you are matching an existing graph
 - use `style.color` for text color
 - use `style.borderColor`, `style.borderWidth`, and `style.borderStyle` together when you want an explicit border treatment
+- use `style.fontFamily` when the user wants a different typeface or font stack
+- use `style.fontSize`, `style.fontWeight`, `style.lineHeight`, and `style.letterSpacing` for typography tuning
+- font stacks should be emitted as normal JSON strings, for example: `"'Caveat', 'Segoe Print', cursive"`
 - style patches merge with the existing `style` object, so you only need to send the keys you intend to change
 - unsupported style keys should be treated as optional and non-authoritative; do not rely on them unless the current graph already uses them successfully
+
+Typography example:
+
+If the user wants the same font treatment on several existing nodes, `updateNodes` is appropriate because the patch is shared:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNodes",
+      "ids": ["node-a", "node-b", "node-c"],
+      "updates": {
+        "style": {
+          "fontFamily": "'Caveat', 'Segoe Print', 'Comic Sans MS', cursive"
+        }
+      }
+    }
+  ]
+}
+```
+
+If only one node needs a typography change, prefer `updateNode`:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNode",
+      "id": "node-a",
+      "updates": {
+        "style": {
+          "fontFamily": "'Alegreya Sans SC', 'Trebuchet MS', sans-serif",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "letterSpacing": "0.02em"
+        }
+      }
+    }
+  ]
+}
+```
 
 ## SVG In JSON Rules
 
