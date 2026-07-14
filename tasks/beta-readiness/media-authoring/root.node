@@ -1889,6 +1889,154 @@
         },
         "estimateHours": "5"
       }
+    },
+    {
+      "id": "media-authoring-model-note",
+      "type": "markdown",
+      "label": "Media Model",
+      "root": false,
+      "position": {
+        "x": -120,
+        "y": 1030
+      },
+      "width": 780,
+      "height": 320,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Media Model\n\nTwilite needs four distinct concepts here:\n\n1. **Image asset**: a raster image the graph can store inline temporarily, download locally, or save into repo assets.\n2. **Video asset**: a direct video file or stable hosted video URL. This is media, not just generic text.\n3. **Embed ref**: a live reference to something rendered through an embed node, such as YouTube, Vimeo, or another iframe source.\n4. **SVG graphic**: authored vector presentation living directly in node data as `data.svg`.\n\nThe important split is **asset vs presentation**:\n\n- assets answer: \"what binary or reference do we have?\"\n- nodes answer: \"how should Twilite render and edit it here?\"\n\nThat keeps image, video, and embeds honest without pretending every pasted thing is already durable, published, or editor-ready.",
+        "identity": {
+          "graphId": "media-authoring-declaration"
+        }
+      }
     }
   ],
   "edges": [
@@ -2032,6 +2180,39 @@
       "sourcePort": "root",
       "targetPort": "root",
       "label": "explains",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "media-authoring-edge-model-note",
+      "type": "reference",
+      "source": "media-authoring-task-model",
+      "target": "media-authoring-model-note",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "defines",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "media-authoring-edge-note-video",
+      "type": "reference",
+      "source": "media-authoring-model-note",
+      "target": "media-authoring-task-video-embed",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "shapes",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "media-authoring-edge-note-storage",
+      "type": "reference",
+      "source": "media-authoring-model-note",
+      "target": "media-authoring-task-storage-policy",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "constrains",
       "style": {},
       "data": {}
     }
