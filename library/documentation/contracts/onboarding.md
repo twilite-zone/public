@@ -31,5 +31,49 @@ When you open a graph, you become its steward.
 - Run validation
 - Make one small, reversible change
 
+## Ref Schemes
+Twilite uses two important address schemes and they do different jobs.
+
+### `github://` is the canonical graph identity
+- Use `github://owner/repo/path/to/file.node` when you mean the real graph asset
+- Prefer it for durable refs like `ref`, `sourceRef`, `classRef`, `src`, and `endpoint`
+- When someone asks for the graph address, return the exact `github://...` handle
+- Prefer explicit file paths like `root.node` instead of relying on folder inference
+
+### `tlz://` is Twilite navigation
+- Use `tlz://` for in-app navigation and markdown links
+- Treat it as browser-level navigation sugar, not the canonical storage identity
+- If a value tells Twilite where to navigate, `tlz://` is fine
+- If a value identifies where a graph lives in repo space, use `github://`
+
+## Practical Rule
+- Durable graph identity: `github://`
+- User-facing navigation inside Twilite: `tlz://`
+
+## Declaration-First Starter Pattern
+When creating a first real graph, prefer one `declaration` node and one `port` node.
+
+### Declaration guidance
+- Put graph identity in `data.identity`
+- Put graph kind and scope in `data.intent`
+- Put exposed surfaces in `data.declaration.surfaces`
+- Point `data.declaration.defaultSurfaceId` at a surface you actually create
+- Use `viewNodeId` to point at the port node that renders that surface
+- Do not invent edges from the declaration to the port unless the graph specifically needs them
+
+### Port guidance
+- Put the graph id on the port too: `data.identity.graphId`
+- Put the surface payload in `data.view`
+- Use `data.renderShape.kind` to declare how the port renders
+- If you use SVG, keep `data.svg` as raw SVG text only
+- Do not paste markdown links or prose into raw SVG markup
+- Do not invent `targetNodeId` or edges to nodes that do not exist
+
+### Safe starter shape
+- declaration surface kind: `view`
+- port `data.view.intent`: `node`
+- port `data.view.payload`: something like `node.web.summary` or `node.web.detail`
+- port render shape: `markdown` or `svg`
+
 You are now part of the graph’s memory.
 Care for it.
