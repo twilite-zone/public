@@ -35,6 +35,8 @@ Handshake requirements:
 - if a `portal` previews a remote surface, bind it through `sourceRef`, `sourceNodeId`, `sourcePayload`, and `target` instead of storing blank local payload fields
 - if you author a real `port`, put the graph id at `data.identity.graphId`, not `data.graphId`
 - if you author `renderShape`, use an object like `{"kind":"svg"}`, not a bare string like `"svg"`
+- do not use `{"kind":"card"}` for `renderShape`; `card` is a view role, not a render format
+- do not assume `title`, `description`, `icon`, or `cover` will paint a port card by themselves; provide a real payload such as `data.svg`, `data.markdown`, `data.html`, `data.image`, or `data.text`
 - if you author SVG, keep `xmlns="http://www.w3.org/2000/svg"` as raw XML, not a markdown link
 - if you create edges later, use `source` and `target`
 - do not use `sourceNodeId` and `targetNodeId` in `createEdges`

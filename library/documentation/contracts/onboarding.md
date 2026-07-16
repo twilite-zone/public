@@ -90,7 +90,9 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - Put the graph id on the port too: `data.identity.graphId`
 - Put the surface payload in `data.view`
 - Put the port role in `data.viewRole`
+- `card` is a good `data.viewRole`, but it is not a supported `data.renderShape.kind`
 - Use `data.renderShape.kind` to declare how the port renders
+- Supported authored render kinds are `markdown`, `html`, `svg`, `text`, `image`, and `canvas`
 - Do not use a bare string like `renderShape: "svg"`; use an object like `renderShape: { "kind": "svg" }`
 - If you use SVG, keep `data.svg` as raw SVG text only
 - For SVG roots, use a real XML namespace like `xmlns="http://www.w3.org/2000/svg"`
@@ -99,6 +101,7 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - Do not emit placeholder fields like `html: ""` or `svg: ""`
 - Do not paste markdown links or prose into raw SVG markup
 - Do not invent `targetNodeId` or edges to nodes that do not exist
+- Do not expect `title`, `description`, `icon`, or `cover` alone to render a port card body; they are metadata unless you also provide a real inline payload such as `data.svg` or `data.markdown`
 
 ### Portal guidance
 - A `portal` is a consumer/opening node, not the place to stash blank preview payloads
@@ -163,6 +166,8 @@ If this port is the graph's primary declared surface, point the declaration surf
 - Do not omit `targetMode`, `artifactKind`, `defaultSurfaceId`, or the declared `surfaces` array when authoring a real declaration
 - Do not emit empty inline payload placeholders such as `html: ""` or `svg: ""` on `port` or `portal` nodes
 - Do not put the graph id at `data.graphId` when authoring a real port; use `data.identity.graphId`
+- Do not set `data.renderShape.kind: "card"` on a `port`; use `data.viewRole: "card"` plus a real render payload such as `data.svg` or `data.markdown`
+- Do not assume `cover`, `icon`, and `description` will render a visual card body on their own
 - Do not author a normal graph declaration as:
   - `data.declaration.kind: "knowledge-graph"`
   - `data.declaration.targetMode: "graph"`
