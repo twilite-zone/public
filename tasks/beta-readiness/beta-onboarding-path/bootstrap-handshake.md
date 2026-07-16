@@ -2,7 +2,7 @@
 
 Read the onboarding guide first:
 
-- `https://twilite.zone/library/documentation/OnboardLLM.md`
+- `https://twilite.zone/library/documentation/contracts/onboarding.md`
 
 Then complete the handshake.
 
@@ -48,6 +48,22 @@ Handshake requirements:
 - do not use `updates.style.animated: true`; use `updates.style.animation` instead
 
 This response is a handshake, not a full graph.
+
+After the handshake, when creating a real graph declaration:
+
+- create a real `declaration` node, not a substitute primitive
+- include `data.identity`, `data.intent`, `data.dependencies`, `data.authority`, `data.settings`, and `data.declaration`
+- in `data.declaration`, include:
+  - `kind`
+  - `targetMode`
+  - `artifactKind`
+  - `defaultSurfaceId`
+  - `surfaces`
+- if the graph exposes a primary card or reader surface, point the declared surface at the real node with `viewNodeId`
+- keep `dependencies.nodeTypes` aligned with the node types actually present in the graph
+- keep `identity.graphId` consistent across the declaration and graph-owned nodes
+- do not rely on compatibility-only fields like `primaryNodeViewId` or `portViewNodeId` without also declaring real surfaces
+- a declaration that loads but omits `targetMode`, `artifactKind`, or real surfaces may still trigger saveability or interpretation problems
 
 Minimal valid handshake example:
 
