@@ -89,8 +89,12 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 ### Port guidance
 - Put the graph id on the port too: `data.identity.graphId`
 - Put the surface payload in `data.view`
+- Put the port role in `data.viewRole`
 - Use `data.renderShape.kind` to declare how the port renders
+- Do not use a bare string like `renderShape: "svg"`; use an object like `renderShape: { "kind": "svg" }`
 - If you use SVG, keep `data.svg` as raw SVG text only
+- For SVG roots, use a real XML namespace like `xmlns="http://www.w3.org/2000/svg"`
+- Do not paste markdownified links such as `[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)` into SVG attributes
 - Only include inline render fields like `data.svg` or `data.html` when they contain real authored content
 - Do not emit placeholder fields like `html: ""` or `svg: ""`
 - Do not paste markdown links or prose into raw SVG markup
@@ -139,6 +143,8 @@ If this port is the graph's primary declared surface, point the declaration surf
 - declaration surface kind: `view`
 - port `data.view.intent`: `node`
 - port `data.view.payload`: something like `node.web.summary` or `node.web.detail`
+- port `data.identity.graphId`: the graph's real id
+- port `data.viewRole`: something honest like `card`, `summary`, `port`, or `document`
 - port render shape: `markdown` or `svg`
 
 ### Do not substitute nearby primitives
@@ -148,6 +154,17 @@ If this port is the graph's primary declared surface, point the declaration surf
 - Do not satisfy a declaration-and-port request with only styling and a reference edge
 - Do not omit `targetMode`, `artifactKind`, `defaultSurfaceId`, or the declared `surfaces` array when authoring a real declaration
 - Do not emit empty inline payload placeholders such as `html: ""` or `svg: ""` on `port` or `portal` nodes
+- Do not put the graph id at `data.graphId` when authoring a real port; use `data.identity.graphId`
+- Do not author a normal graph declaration as:
+  - `data.declaration.kind: "knowledge-graph"`
+  - `data.declaration.targetMode: "graph"`
+  - `data.declaration.artifactKind: "educational"`
+  - surface `kind: "card"`
+- For a normal graph, prefer:
+  - `data.declaration.kind: "graph"`
+  - `data.declaration.targetMode: "artifact"`
+  - `data.declaration.artifactKind: "graph"`
+  - surface `kind: "view"`
 
 You are now part of the graph’s memory.
 Care for it.
