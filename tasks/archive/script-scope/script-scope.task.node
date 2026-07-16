@@ -181,8 +181,6 @@
         "markdown": "# Script Scope\n\nStatus: implemented and validated.\n\nScripts now see and mutate only the active fragment. The core script-scope boundary is real enough to support safer expansion and focus-scoped authority work.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": true,
         "root": true,
         "_classBinding": {
@@ -309,8 +307,6 @@
         "markdown": "# Why This Matters\n\nToday scripts can access the whole node/edge/cluster collection. That means expanded fragments can still affect unrelated neighbors. Fragment-local authority is not real until the script API is scoped.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -437,8 +433,6 @@
         "markdown": "# Default Rule\n\n- Scripts execute in fragment scope only.\n- `api.getNodes()` returns nodes in the active fragment only.\n- `api.getEdges()` returns only fragment-local edges.\n- Mutations outside the active fragment are denied by default.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -565,8 +559,6 @@
         "markdown": "# Implementation Plan\n\nCompleted:\n1. Identified the global script API surface.\n2. Added fragment-scoped selectors for nodes, edges, and groups.\n3. Built script APIs from `activeFragmentId`.\n4. Rejected foreign-fragment reads and mutations.\n5. Kept global storage while exposing only scoped facades to scripts.\n6. Validated the behavior with a dedicated script-scope test graph.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -693,8 +685,6 @@
         "markdown": "# Required Provenance\n\nEvery scripted node must carry enough provenance to answer:\n- which fragment owns it\n- which authority domain it belongs to\n- whether it is active\n\nWithout this, scope enforcement is guesswork.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -821,8 +811,6 @@
         "markdown": "# Scoped API Surface\n\nReplace ambient graph access with fragment-local API methods:\n- `getNodes()`\n- `getEdges()`\n- `getGroups()`\n- `getNode(id)`\n- scoped create/update/delete\n\nForeign access should throw a scope error, not fail silently.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -949,8 +937,6 @@
         "markdown": "# Open Questions\n\nResolved:\n- Do we ever allow opt-in cross-fragment capabilities? Not by default; only through an explicit future capability surface.\n- Script errors should surface on the shared diagnostics/validation surface.\n- Background tasks outside focused fragment scope are disallowed by default.\n\nFollow-up only:\n- tighten lifecycle/event subscription scope\n- improve diagnostics grouping and wording\n- add explicit delete-path coverage if needed",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -1210,8 +1196,6 @@
         "markdown": "# Follow-Up Notes\n\nCore scope behavior is complete for now.\n\nRemaining non-blockers:\n- scope event subscriptions and lifecycle hooks as tightly as script RPC\n- polish diagnostics presentation\n- add delete coverage if full CRUD proof becomes necessary",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {

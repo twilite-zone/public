@@ -5383,8 +5383,6 @@
         "markdown": "## Events To Prove\n\nThe live Stripe webhook route currently handles:\n\n- `checkout.session.completed`\n- `customer.subscription.created`\n- `customer.subscription.updated`\n- `customer.subscription.deleted`\n\nTwo important notes:\n\n- browser return confirmation is a separate fast path, not the webhook itself\n- entitlement sync currently treats `active`, `trialing`, and `past_due` as active states",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "identity": {
           "graphId": "payments-readiness-declaration"
         }
@@ -5535,8 +5533,6 @@
         "markdown": "## Test Procedure\n\n1. Start with a fresh unpaid account.\n2. Complete checkout and verify the browser return path unlocks immediately.\n3. Re-deliver `checkout.session.completed` and confirm nothing is double-granted or corrupted.\n4. Trigger a subscription update or cancellation in Stripe and verify account session reflects the change.\n5. Simulate a missed return flow by reloading or re-signing-in after webhook delivery and confirm the account repairs itself.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "identity": {
           "graphId": "payments-readiness-declaration"
         }
@@ -5687,8 +5683,6 @@
         "markdown": "## Expected States\n\n- paid checkout returns as active without manual repair\n- duplicate webhook delivery leaves billing rows and entitlements stable\n- `cancel_at_period_end` is preserved in billing metadata\n- deleted subscriptions remove paid entitlement cleanly\n- failed-payment and expiration behavior must be explicit because `past_due` is currently treated as active",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "identity": {
           "graphId": "payments-readiness-declaration"
         }
