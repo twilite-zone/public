@@ -50,6 +50,16 @@ Twilite uses two important address schemes and they do different jobs.
 - Durable graph identity: `github://`
 - User-facing navigation inside Twilite: `tlz://`
 
+## Primitive Chooser
+Use the primitive that matches the job directly. Do not substitute a nearby concept just because it feels related.
+
+- `declaration`: use for graph identity, intent, authority, and exposed surfaces
+- `port`: use for a declared renderable or navigable surface
+- `markdown`: use for text content only
+- `portal`: use for a consumer/opening node that targets another declared surface
+- `dictionary`: use only when the task is specifically about dictionary infrastructure or compatibility behavior, not as a substitute for `declaration` or `port`
+- `bridge`: use for import/export boundaries and explicit external authority
+
 ## Declaration-First Starter Pattern
 When creating a first real graph, prefer one `declaration` node and one `port` node.
 
