@@ -147,6 +147,14 @@ If this port is the graph's primary declared surface, point the declaration surf
 - port `data.viewRole`: something honest like `card`, `summary`, `port`, or `document`
 - port render shape: `markdown` or `svg`
 
+### Transaction syntax traps
+- A transaction must still be valid JSON even when it contains SVG or HTML strings
+- Keep the top-level shape exactly `{"action":"transaction","commands":[...]}`
+- Do not leave trailing commas after the last property in an object or array
+- Keep quotes inside `data.svg` or `data.html` escaped so the outer JSON string stays valid
+- If you paste fenced JSON from a chat response, make sure the payload inside the fence is complete and balanced
+- If the app reports a JSON syntax error, fix that first before debugging node contracts
+
 ### Do not substitute nearby primitives
 - If the user asks for a `declaration`, create a `declaration`, not a `dictionary`
 - If the user asks for a `port`, create a `port`, not a `markdown` node

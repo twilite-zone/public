@@ -42,6 +42,10 @@ Handshake requirements:
 - if you edit one node, use `updateNode`
 - use `updateNodes` only for one shared patch across many ids
 - in `updateNodes`, `updates` must be one object
+- the payload must remain valid JSON even when it contains SVG or HTML strings
+- do not leave trailing commas after the last property in an object or array
+- keep quotes inside `data.svg` or `data.html` escaped so the outer JSON string stays valid
+- if the app reports a JSON syntax error, fix that before debugging declaration or port contract details
 - do not use `updateNodes` with:
   - a `nodes` array
   - an `updates` array
