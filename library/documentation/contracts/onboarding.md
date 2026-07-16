@@ -87,7 +87,10 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - A graph with a partial declaration may load, but it can still trigger saveability or interpretation problems
 
 ### Port guidance
+- When a user says "create a port for this graph", interpret that as: create a graph-owned entry surface that can open or connect back to this graph
 - Put the graph id on the port too: `data.identity.graphId`
+- Give the port a real navigation target in `data.target`
+- For a graph-owned entry port, prefer `data.target.graphId` and `data.target.mode: "navigate"` unless the graph is using a more specific endpoint contract
 - Put the surface payload in `data.view`
 - Put the port role in `data.viewRole`
 - `card` is a good `data.viewRole`, but it is not a supported `data.renderShape.kind`
@@ -102,6 +105,29 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - Do not paste markdown links or prose into raw SVG markup
 - Do not invent `targetNodeId` or edges to nodes that do not exist
 - Do not expect `title`, `description`, `icon`, or `cover` alone to render a port card body; they are metadata unless you also provide a real inline payload such as `data.svg` or `data.markdown`
+
+### What "create a port" usually means
+- Create a real `port` node, not a `portal`, `markdown`, or `dictionary`
+- Make it graph-owned with `data.identity.graphId`
+- Give it a real target so it can open or connect back to the graph
+- Give it a real preview payload if you want it to render as a card
+- If the graph has a declaration, expose that same port through `data.declaration.surfaces` and `defaultSurfaceId`
+- Do not stop at metadata-only fields such as `title`, `icon`, `description`, or `cover`
+
+### Reference specimens in this repo
+- Visual card specimen: `github://mikemartinez1974/public/graphs/indiana-jones.node`
+  - Look at the `port` node labeled `Indiana Jones Portal Card`
+  - This is a good example of a real `data.viewRole`, `data.renderShape.kind: "svg"`, and valid raw SVG payload
+- Navigate-target specimen: `github://twilite/public/root.node`
+  - Look at the `portal` node `port-github-root`
+  - This is a good example of a real `data.target.endpoint` plus `data.target.mode: "navigate"`
+- Surface specimen: `github://twilite/public/root.node`
+  - Look at the `port` node `public-root-view`
+  - This is a good example of a graph-owned rendered surface with valid SVG
+- If you need a graph entry `port`, combine those lessons:
+  - use the real target shape from the navigate specimen
+  - use the real SVG/render-shape pattern from the visual specimen
+  - do not invent a third schema
 
 ### Portal guidance
 - A `portal` is a consumer/opening node, not the place to stash blank preview payloads
@@ -127,6 +153,10 @@ Use a port like this when you want a declared card-style surface that another gr
     "identity": {
       "graphId": "example-graph"
     },
+    "target": {
+      "graphId": "example-graph",
+      "mode": "navigate"
+    },
     "view": {
       "intent": "node",
       "payload": "node.web.summary"
@@ -142,11 +172,47 @@ Use a port like this when you want a declared card-style surface that another gr
 
 If this port is the graph's primary declared surface, point the declaration surface at this node with `viewNodeId`.
 
+### Minimal navigable port starter
+Use this shape when the user asks for "a port for this graph" and the main goal is a working graph entry surface:
+
+```json
+{
+  "id": "example-entry-port",
+  "type": "port",
+  "label": "Example Graph",
+  "position": { "x": 320, "y": 120 },
+  "width": 420,
+  "height": 240,
+  "visible": true,
+  "showLabel": true,
+  "data": {
+    "identity": {
+      "graphId": "example-graph"
+    },
+    "target": {
+      "graphId": "example-graph",
+      "mode": "navigate"
+    },
+    "view": {
+      "intent": "node",
+      "payload": "node.web.summary"
+    },
+    "viewRole": "card",
+    "renderShape": {
+      "kind": "svg"
+    },
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 180\" role=\"img\" aria-label=\"Example graph card\"><rect x=\"16\" y=\"16\" width=\"288\" height=\"148\" rx=\"20\" fill=\"#f8fafc\" stroke=\"#0f172a\" stroke-width=\"5\"/><text x=\"36\" y=\"58\" fill=\"#0f172a\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"700\">Example Graph</text><text x=\"36\" y=\"88\" fill=\"#334155\" font-family=\"Arial, sans-serif\" font-size=\"12\">Open this graph from another graph.</text></svg>"
+  }
+}
+```
+
 ### Safe starter shape
 - declaration surface kind: `view`
 - port `data.view.intent`: `node`
 - port `data.view.payload`: something like `node.web.summary` or `node.web.detail`
 - port `data.identity.graphId`: the graph's real id
+- port `data.target.graphId`: the graph's real id
+- port `data.target.mode`: usually `navigate`
 - port `data.viewRole`: something honest like `card`, `summary`, `port`, or `document`
 - port render shape: `markdown` or `svg`
 
@@ -166,6 +232,8 @@ If this port is the graph's primary declared surface, point the declaration surf
 - Do not omit `targetMode`, `artifactKind`, `defaultSurfaceId`, or the declared `surfaces` array when authoring a real declaration
 - Do not emit empty inline payload placeholders such as `html: ""` or `svg: ""` on `port` or `portal` nodes
 - Do not put the graph id at `data.graphId` when authoring a real port; use `data.identity.graphId`
+- Do not return a metadata-only card when the user asked for a working port back to the graph
+- Do not omit `data.target` on a graph-owned entry port unless the task is explicitly to make a visual stub only
 - Do not set `data.renderShape.kind: "card"` on a `port`; use `data.viewRole: "card"` plus a real render payload such as `data.svg` or `data.markdown`
 - Do not assume `cover`, `icon`, and `description` will render a visual card body on their own
 - Do not author a normal graph declaration as:
