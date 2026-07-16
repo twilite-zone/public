@@ -50,6 +50,27 @@ Twilite uses two important address schemes and they do different jobs.
 - Durable graph identity: `github://`
 - User-facing navigation inside Twilite: `tlz://`
 
+## GitHub Session Recovery
+Twilite has two related but different auth states:
+
+- a broader Twilite account session
+- a GitHub provider session that must still hold a usable token for installations and repo access
+
+If someone says "my GitHub installations disappeared" or "I look signed in but GitHub repos are gone", do not assume GitHub itself lost the installations.
+
+Usually the real problem is:
+
+- the Twilite account session still exists
+- the GitHub identity still appears linked
+- but the GitHub provider token used for installations expired or went missing
+
+When that happens:
+
+- tell the user the account session and GitHub provider session can drift apart
+- tell them to disconnect GitHub in Twilite and reconnect it
+- if the UI exposes a reconnect action, prefer that over vague "sign in again" language
+- describe the state precisely as "GitHub linked but provider session expired" instead of "not signed in"
+
 ## Primitive Chooser
 Use the primitive that matches the job directly. Do not substitute a nearby concept just because it feels related.
 

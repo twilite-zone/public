@@ -21,6 +21,24 @@ When you explain how to use Twilite, prefer the app surfaces that are durable fo
 - if the user only needs navigation, tutorials, bookmarks, gallery, handshake, or document actions, keep the guidance in browser mode
 - only steer the user toward editor-specific affordances when the task truly requires authoring
 
+## GitHub Auth Reality
+
+Twilite can have:
+
+- a Twilite account session
+- a linked GitHub identity
+- and a separate GitHub provider token that is required for installations, repos, and GitHub save actions
+
+Those states can drift apart.
+
+If a user says they are signed in but GitHub installations disappeared, repos are empty, or GitHub save suddenly stopped working:
+
+- do not assume the installations were removed from GitHub
+- do not describe the problem as a generic save failure
+- explain that the GitHub provider session likely expired while the broader account session stayed alive
+- recommend reconnecting GitHub inside Twilite
+- if you are describing the state, prefer wording like `GitHub linked but provider session expired`
+
 ## Handshake Requirement
 
 The first time you are onboarded into a Twilite session, you must complete the handshake.
