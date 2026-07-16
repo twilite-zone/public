@@ -114,6 +114,21 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - If the graph has a declaration, expose that same port through `data.declaration.surfaces` and `defaultSurfaceId`
 - Do not stop at metadata-only fields such as `title`, `icon`, `description`, or `cover`
 
+### Reference specimens in this repo
+- Visual card specimen: `github://mikemartinez1974/public/graphs/indiana-jones.node`
+  - Look at the `port` node labeled `Indiana Jones Portal Card`
+  - This is a good example of a real `data.viewRole`, `data.renderShape.kind: "svg"`, and valid raw SVG payload
+- Navigate-target specimen: `github://twilite/public/root.node`
+  - Look at the `portal` node `port-github-root`
+  - This is a good example of a real `data.target.endpoint` plus `data.target.mode: "navigate"`
+- Surface specimen: `github://twilite/public/root.node`
+  - Look at the `port` node `public-root-view`
+  - This is a good example of a graph-owned rendered surface with valid SVG
+- If you need a graph entry `port`, combine those lessons:
+  - use the real target shape from the navigate specimen
+  - use the real SVG/render-shape pattern from the visual specimen
+  - do not invent a third schema
+
 ### Portal guidance
 - A `portal` is a consumer/opening node, not the place to stash blank preview payloads
 - If the portal should preview a remote surface, bind it through `data.sourceRef`, `data.sourceNodeId`, `data.sourcePayload`, and `data.target`
