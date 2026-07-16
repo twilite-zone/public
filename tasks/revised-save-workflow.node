@@ -133,8 +133,6 @@
         "markdown": "# Save Facility: Simplified Interface\n\nImplement a cleaner save/home flow around user intent.\n\nPrimary question:\n\n**Where should this graph live?**\n\nThe UI should hide storage mechanics until the user chooses a destination.\n\nCore destinations:\n\n- **Local**: private, stored on this device\n- **GitHub**: durable, versioned, shareable repository storage\n- **Twilite Cloud**: future hosted/collaborative paid tier\n\nGoal: make saving feel like choosing a home for the graph, not configuring backend storage.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "visibilityRole": "browser",
         "_placement": {
           "version": 1,
@@ -268,8 +266,6 @@
         "markdown": "# UX Rule\n\nDo **not** lead with implementation details.\n\nAvoid exposing these until needed:\n\n- repo\n- branch\n- visibility\n- writeback rules\n- storage authority\n- GitHub mode labels like Work / Private / Public\n\nLead with user intent:\n\n> I want this graph to live locally, in GitHub, or in Twilite Cloud.\n\nThen progressively reveal destination-specific settings.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "visibilityRole": "browser",
         "_placement": {
           "version": 1,
@@ -403,8 +399,6 @@
         "markdown": "# Modal Step 1: Choose Home\n\nTitle:\n\n**Where should this graph live?**\n\nRule: if the graph is **unbound** (no durable home yet), the primary **Save** action must *always* land here. It must not write back to any previous destination implicitly.\n\nShow three large destination cards:\n\n## Local\nPrivate, stored on this device.\n\nButton: **Save Locally**\n\n## GitHub\nSave to a repository.\n\nButton: **Choose Repository**\n\n## Twilite Cloud\nHosted, collaborative graphs.\n\nButton: **Coming Soon** or disabled until paid tier exists.\n\nKeep this first step simple. No repo picker, branch selector, or visibility toggle yet.\n\nAlso show a small **Current location** chip on the toolbar at all times so users always know where future Save actions will write.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "visibilityRole": "browser",
         "_placement": {
           "version": 1,
@@ -538,8 +532,6 @@
         "markdown": "# Modal Step 2: GitHub Details\n\nOnly show this after the user chooses GitHub.\n\nRequired fields:\n\n- Repository picker\n- File path / graph file name\n- Save target summary\n\nCritical toggle:\n\n- **Set this as the graph home** (default ON when invoked from Save)\n  - OFF means **Save As / Export copy** (write a copy without changing the home)\n\nUseful controls:\n\n- Search repos\n- Create new repo or choose existing repo\n- Public/private visibility only when creating a repo\n\nAdvanced collapsed section:\n\n- branch\n- commit message\n\nGuardrail:\n\n- If the target is a protected file (e.g. `twilite-zone/*:root.node`), require an explicit confirmation before overwrite.\n\nFinal button:\n\n**Save to GitHub**",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "visibilityRole": "browser",
         "_placement": {
           "version": 1,
@@ -673,8 +665,6 @@
         "markdown": "# Home vs Save As\n\nSeparate these concepts clearly.\n\n## Home\nThe graph's default write location.\n\nFuture saves go here automatically.\n\n## Save As / Export\nCreates a copy somewhere else.\n\nDoes **not** change the graph home unless the user explicitly chooses that.\n\nUI wording should reflect intent:\n\n- **Save Graph** = sets/uses Home\n- **Export copy** / **Save As** = writes a copy, does not change Home",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "visibilityRole": "browser",
         "_placement": {
           "version": 1,
@@ -808,8 +798,6 @@
         "markdown": "# Suggested State Model\n\nTrack the graph's persistence state explicitly.\n\nPossible fields:\n\n`js\nhome: {\n  kind: 'local' | 'github' | 'twilite-cloud',\n  label: string,\n  writable: boolean,\n  ref?: string,\n  repo?: string,\n  owner?: string,\n  branch?: string,\n  path?: string,\n  visibility?: 'public' | 'private',\n  lastSavedAt?: string\n}\n`\n\nAlso track transient modal state separately:\n\n`js\nsaveFlow: {\n  step: 'choose-home' | 'github-details' | 'confirm',\n  selectedKind?: 'local' | 'github' | 'twilite-cloud'\n}\n`",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "visibilityRole": "browser",
         "_placement": {
           "version": 1,
@@ -943,8 +931,6 @@
         "markdown": "# Copy Improvements\n\nReplace system-heavy labels with human labels.\n\n## Current\n- Change Home\n- Current Home\n- Destination\n- Set GitHub Home\n- Save writes back to the GitHub graph URL shown above\n\n## Suggested\n- Save Graph\n- Current location\n- Choose where this graph lives\n- Save to GitHub\n- Future changes will be saved directly to this GitHub file\n- Export copy (does not change where Save writes)\n\nTone: clear, calm, confidence-building.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "visibilityRole": "browser",
         "_placement": {
           "version": 1,
@@ -1078,8 +1064,6 @@
         "markdown": "# Success Confirmation\n\nAfter saving or setting home, show a concise confirmation.\n\nExample:\n\n**Saved to GitHub**\n\n`twilite-zone/public/root.node`\n\nFuture changes will be saved here automatically.\n\nAlso consider showing:\n\n- writable/read-only status\n- last saved time\n- link/copy action\n- open in GitHub action",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "visibilityRole": "browser",
         "_placement": {
           "version": 1,
@@ -1213,8 +1197,6 @@
         "markdown": "# Implementation Tasks for Codex\n\n1. Rename/refactor current save dialog toward **Save Graph** or **Choose Graph Home**.\n\n2. Replace first screen with destination cards:\n   - Local\n   - GitHub\n   - Twilite Cloud disabled/future\n\n3. Collapse GitHub Work / Private / Public into one GitHub destination.\n\n4. Move repo, branch, visibility, and file path controls into a GitHub-only second step.\n\n5. Add clear distinction between:\n   - set graph home\n   - save as / export copy\n\n6. Add confirmation state after save.\n\n7. Preserve existing save behavior while changing the interaction model.\n\n8. Keep advanced controls available but hidden by default.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "visibilityRole": "browser",
         "_placement": {
           "version": 1,
@@ -1348,8 +1330,6 @@
         "markdown": "# Acceptance Criteria\n\n- User can choose Local without seeing GitHub controls.\n- User can choose GitHub and then see repo/path details.\n- GitHub Work / Private / Public are no longer primary top-level choices.\n- Current graph home is displayed in plain language.\n- Button labels describe user intent, not storage mechanics.\n- Advanced GitHub details are collapsed by default.\n- Save confirmation clearly says where future changes will go.\n- Existing local and GitHub save mechanisms continue to work.\n- UI leaves room for future Twilite Cloud destination.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "visibilityRole": "browser",
         "_placement": {
           "version": 1,
@@ -1571,8 +1551,6 @@
         "definitionKey": "declaration",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "_placement": {
           "version": 1,
           "state": "auto-placed",
