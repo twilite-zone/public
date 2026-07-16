@@ -88,6 +88,7 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 
 ### Port guidance
 - When a user says "create a port for this graph", interpret that as: create a graph-owned entry surface that can open or connect back to this graph
+- Before inventing a port shape, inspect the port tutorial graph: `github://twilite-zone/public/tutorial/basic-primitives/port/root.node`
 - Put the graph id on the port too: `data.identity.graphId`
 - Give the port a real navigation target in `data.target`
 - For a graph-owned entry port, prefer `data.target.graphId` and `data.target.mode: "navigate"` unless the graph is using a more specific endpoint contract
@@ -117,6 +118,10 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - Do not stop at metadata-only fields such as `title`, `icon`, `description`, or `cover`
 
 ### Reference specimens in this repo
+- Primary tutorial reference: `github://twilite-zone/public/tutorial/basic-primitives/port/root.node`
+  - Use this first when the task is to author or repair a `port`
+  - It now includes a markdown reader port, an SVG card port, an HTML port, a graph entry port, and a sample consumer portal
+  - Copy the pattern that matches the user request instead of inventing a new schema
 - Visual card specimen: `github://mikemartinez1974/public/graphs/indiana-jones.node`
   - Look at the `port` node labeled `Indiana Jones Portal Card`
   - This is a good example of a real `data.viewRole`, `data.renderShape.kind: "svg"`, and valid raw SVG payload
@@ -127,8 +132,9 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
   - Look at the `port` node `public-root-view`
   - This is a good example of a graph-owned rendered surface with valid SVG
 - If you need a graph entry `port`, combine those lessons:
-  - use the real target shape from the navigate specimen
-  - use the real SVG/render-shape pattern from the visual specimen
+  - use the tutorial graph first
+  - use the real target shape from the navigate specimen when you need a portal-style opener
+  - use the real SVG/render-shape pattern from the visual specimen when you need a custom card
   - do not invent a third schema
 
 ### SVG red flags
