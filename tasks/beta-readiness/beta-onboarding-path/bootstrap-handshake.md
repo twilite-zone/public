@@ -30,6 +30,9 @@ Handshake requirements:
 - if you do not know the schema, inspect first
 - use `root` only when the nodes are known to expose `root`
 - use `reference` as the safe default edge type
+- do not emit empty inline payload placeholders like `html: ""` or `svg: ""`
+- for `port` or `portal` nodes, only include inline render fields when they contain real authored content
+- if a `portal` previews a remote surface, bind it through `sourceRef`, `sourceNodeId`, `sourcePayload`, and `target` instead of storing blank local payload fields
 - if you create edges later, use `source` and `target`
 - do not use `sourceNodeId` and `targetNodeId` in `createEdges`
 - do not put `edges` inside a `createNodes` command
@@ -64,6 +67,7 @@ After the handshake, when creating a real graph declaration:
 - keep `identity.graphId` consistent across the declaration and graph-owned nodes
 - do not rely on compatibility-only fields like `primaryNodeViewId` or `portViewNodeId` without also declaring real surfaces
 - a declaration that loads but omits `targetMode`, `artifactKind`, or real surfaces may still trigger saveability or interpretation problems
+- when creating `port` or `portal` nodes, omit empty `html`, `svg`, `markdown`, and `text` fields rather than persisting placeholders
 
 Minimal valid handshake example:
 

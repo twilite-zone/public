@@ -91,8 +91,17 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - Put the surface payload in `data.view`
 - Use `data.renderShape.kind` to declare how the port renders
 - If you use SVG, keep `data.svg` as raw SVG text only
+- Only include inline render fields like `data.svg` or `data.html` when they contain real authored content
+- Do not emit placeholder fields like `html: ""` or `svg: ""`
 - Do not paste markdown links or prose into raw SVG markup
 - Do not invent `targetNodeId` or edges to nodes that do not exist
+
+### Portal guidance
+- A `portal` is a consumer/opening node, not the place to stash blank preview payloads
+- If the portal should preview a remote surface, bind it through `data.sourceRef`, `data.sourceNodeId`, `data.sourcePayload`, and `data.target`
+- If the portal should navigate only, keep the navigation target clean and omit inline payload fields entirely
+- Do not add `data.html`, `data.svg`, `data.markdown`, or `data.text` unless the portal itself truly owns that inline content
+- Empty inline fields can mask the real remote surface and cause blank cards
 
 ### Port card example
 Use a port like this when you want a declared card-style surface that another graph can open or render:
@@ -138,6 +147,7 @@ If this port is the graph's primary declared surface, point the declaration surf
 - Do not treat ad hoc `data.ports` on another node type as a replacement for a real `port` node
 - Do not satisfy a declaration-and-port request with only styling and a reference edge
 - Do not omit `targetMode`, `artifactKind`, `defaultSurfaceId`, or the declared `surfaces` array when authoring a real declaration
+- Do not emit empty inline payload placeholders such as `html: ""` or `svg: ""` on `port` or `portal` nodes
 
 You are now part of the graph’s memory.
 Care for it.
