@@ -6,8 +6,8 @@
     "graphId": "port-primitive-graph",
     "version": "0.2.0",
     "kind": "tutorial",
-    "created": "2026-06-13T14:56:41.324Z",
-    "modified": "2026-06-13T16:11:48.064Z",
+    "created": "2026-07-16T17:01:38.143Z",
+    "modified": "2026-07-16T22:09:29.992Z",
     "author": "",
     "tags": [
       "tutorial"
@@ -39,7 +39,36 @@
           "kind": "tutorial",
           "scope": "local"
         },
+        "dependencies": {
+          "nodeTypes": [
+            "declaration",
+            "port",
+            "portal",
+            "bridge",
+            "tutorial-title",
+            "tutorial-concept",
+            "tutorial-example",
+            "tutorial-challenge",
+            "tutorial-checkpoint"
+          ]
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": false,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive"
+        },
         "declaration": {
+          "kind": "graph",
+          "artifactKind": "graph",
           "targetMode": "artifact",
           "defaultSurfaceId": "port-primitive-reader",
           "surfaces": [
@@ -327,8 +356,8 @@
       "label": "Port Reader",
       "root": false,
       "position": {
-        "x": 2028.0173234497643,
-        "y": -1511.798942733864
+        "x": 2406.530665361644,
+        "y": -1844.5419127891307
       },
       "width": 320,
       "height": 200,
@@ -470,6 +499,7 @@
           "intent": "node",
           "payload": "node.web.detail"
         },
+        "viewRole": "document",
         "renderShape": {
           "kind": "markdown",
           "sourcePath": "",
@@ -496,7 +526,7 @@
           "version": 1,
           "state": "manually-shaped",
           "source": "manual",
-          "updatedAt": 1781367054003,
+          "updatedAt": 1784239728758,
           "reason": "node-drag"
         },
         "visibilityRole": "browser"
@@ -784,7 +814,7 @@
       "showLabel": true,
       "data": {
         "title": "Ports Expose",
-        "body": "A port tells the outside world what this graph makes available.\n\nIt is an addressable contract, not the thing doing the navigation.",
+        "body": "A port tells the outside world what this graph makes available.\n\nIt is an addressable contract, not the thing doing the navigation.\n\nA good port usually has:\n- graph identity\n- a real surface payload\n- an honest role such as `card`, `port`, or `document`",
         "tag": "Concept",
         "_classBinding": {
           "key": "tutorial-concept",
@@ -874,7 +904,7 @@
       "showLabel": true,
       "data": {
         "title": "Ports Are Addressed",
-        "body": "A portal or another graph artifact targets a port by identity.\n\nThat is what lets a graph expose multiple meaningful surfaces without ambiguity.",
+        "body": "A portal or another graph artifact targets a port by identity.\n\nUse the shape `filePath#nodeId:portId` when you are addressing a specific port node.\n\nExample:\n`github://twilite-zone/public/tutorial/basic-primitives/port/root.node#port-primitive-reader:root`\n\nThat is what lets a graph expose multiple meaningful surfaces without ambiguity.",
         "tag": "Concept",
         "_classBinding": {
           "key": "tutorial-concept",
@@ -1060,7 +1090,7 @@
       "showLabel": true,
       "data": {
         "title": "Example Exposure",
-        "body": "Inspect the sample nodes to see a `port` exposing a reader surface and a `portal` targeting it as a semantic entry point.",
+        "body": "Inspect the sample nodes to compare four concrete patterns: a markdown reader port, an SVG card port, an HTML port, and a consumer portal that addresses a specific port correctly.",
         "cta": "Inspect",
         "_classBinding": {
           "key": "tutorial-example",
@@ -1135,21 +1165,24 @@
         },
         "memo": "Example portal targeting the sample reader port.",
         "target": {
-          "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node:port-primitive-reader",
-          "mode": "navigate",
+          "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node#port-primitive-reader:root",
+          "mode": "view",
           "label": "Consume Reader",
           "ref": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node",
-          "portId": "port-primitive-reader",
-          "handleId": "port-primitive-reader"
+          "nodeId": "port-primitive-reader",
+          "portId": "root",
+          "handleId": "root",
+          "surfaceId": "port-primitive-reader"
         },
         "sourcePayload": "node.web.detail",
-        "authority": "consume",
+        "authority": "navigate",
         "intent": "external",
         "security": "prompt",
         "ref": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node",
         "src": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node",
-        "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node:port-primitive-reader",
+        "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node#port-primitive-reader:root",
         "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node",
+        "sourceNodeId": "port-primitive-reader",
         "_placement": {
           "version": 1,
           "state": "manually-shaped",
@@ -1321,7 +1354,7 @@
       "showLabel": true,
       "data": {
         "title": "Model A Port",
-        "body": "Create one `port` node in a scratch graph.\n\nGive it a reader surface and describe what another node is allowed to open or consume through it.",
+        "body": "Create one graph entry `port` in a scratch graph.\n\nRequired:\n- `data.identity.graphId`\n- a real `data.target`\n- one real preview payload such as markdown, svg, or html\n- a clear difference between `data.viewRole` and `data.renderShape.kind`\n\nDo not use metadata-only card fields as if they render the body.",
         "difficulty": "starter",
         "_classBinding": {
           "key": "tutorial-challenge",
@@ -1507,7 +1540,7 @@
       "showLabel": true,
       "data": {
         "title": "What Success Looks Like",
-        "body": "A correct port lesson outcome has a named exposure point, a declared reader surface, and a clear distinction between what is exposed and what opens it.",
+        "body": "A correct outcome has:\n- a declaration with a real surface entry\n- a port with `identity.graphId`\n- a real target or a clearly declared reader surface\n- one real payload kind (`markdown`, `svg`, or `html`)\n- no `renderShape.kind: card`\n- no markdownified `xmlns` inside SVG",
         "status": "verify",
         "_classBinding": {
           "key": "tutorial-checkpoint",
@@ -1529,6 +1562,160 @@
           "updatedAt": 1781366122184,
           "reason": "node-drag"
         }
+      }
+    },
+    {
+      "id": "port-primitive-svg-card",
+      "type": "port",
+      "label": "SVG Card Port",
+      "root": false,
+      "position": {
+        "x": 2395,
+        "y": -1548
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-port"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "viewRole": "card",
+        "renderShape": {
+          "kind": "svg"
+        },
+        "memo": "SVG specimen showing a valid inline card payload.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 180\" role=\"img\" aria-label=\"SVG card specimen\"><rect x=\"14\" y=\"14\" width=\"292\" height=\"152\" rx=\"22\" fill=\"#082f49\" stroke=\"#67e8f9\" stroke-width=\"4\"/><rect x=\"34\" y=\"36\" width=\"124\" height=\"16\" rx=\"8\" fill=\"#22d3ee\" opacity=\"0.95\"/><rect x=\"34\" y=\"66\" width=\"186\" height=\"12\" rx=\"6\" fill=\"#bae6fd\" opacity=\"0.9\"/><rect x=\"34\" y=\"90\" width=\"158\" height=\"12\" rx=\"6\" fill=\"#e0f2fe\" opacity=\"0.82\"/><circle cx=\"246\" cy=\"62\" r=\"22\" fill=\"#facc15\"/><path d=\"M214 118 C232 100 258 100 276 118\" fill=\"none\" stroke=\"#93c5fd\" stroke-width=\"8\" stroke-linecap=\"round\"/><text x=\"34\" y=\"138\" fill=\"#f8fafc\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"700\">SVG Card Port</text><text x=\"34\" y=\"156\" fill=\"#bae6fd\" font-family=\"Arial, sans-serif\" font-size=\"11\">Valid raw SVG with a real xmlns.</text></svg>",
+        "defaultPorts": [
+          {
+            "id": "root",
+            "label": "root",
+            "direction": "bidirectional",
+            "dataType": "any",
+            "angle": 180
+          }
+        ],
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1784246400000,
+          "reason": "tutorial-upgrade"
+        }
+      }
+    },
+    {
+      "id": "port-primitive-html-card",
+      "type": "port",
+      "label": "HTML Port",
+      "root": false,
+      "position": {
+        "x": 2395,
+        "y": -1288
+      },
+      "width": 360,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-port"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "viewRole": "card",
+        "renderShape": {
+          "kind": "html"
+        },
+        "memo": "HTML specimen showing a safe inline card payload.",
+        "html": "<div style=\"width:100%;height:100%;box-sizing:border-box;padding:18px;border-radius:18px;background:linear-gradient(135deg,#f8fafc,#dbeafe);border:3px solid #0f172a;font-family:Arial,sans-serif;color:#0f172a;\"><div style=\"font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1d4ed8;\">HTML Port</div><div style=\"margin-top:18px;font-size:24px;font-weight:700;\">Rendered From Inline HTML</div><div style=\"margin-top:10px;font-size:13px;line-height:1.4;color:#334155;\">Use this when the card is easier to express as DOM than SVG.</div></div>",
+        "defaultPorts": [
+          {
+            "id": "root",
+            "label": "root",
+            "direction": "bidirectional",
+            "dataType": "any",
+            "angle": 180
+          }
+        ],
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1784246400001,
+          "reason": "tutorial-upgrade"
+        }
+      }
+    },
+    {
+      "id": "port-primitive-entry-port",
+      "type": "portal",
+      "label": "Graph Entry Port",
+      "root": false,
+      "position": {
+        "x": 2401.785505078116,
+        "y": -998.7191914034282
+      },
+      "width": 392.1257246071962,
+      "height": 326.92914696213955,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-basic-primitives-port"
+        },
+        "target": {
+          "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node#port-primitive-reader:root",
+          "mode": "navigate",
+          "label": "Open Reader",
+          "ref": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node",
+          "nodeId": "port-primitive-reader",
+          "portId": "root",
+          "handleId": "root",
+          "surfaceId": ""
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "viewRole": "card",
+        "renderShape": {
+          "kind": "markdown"
+        },
+        "markdown": "# Graph Entry Port\n\nA working entry port has both:\n\n- a real `target`\n- a real preview payload",
+        "authority": "navigate",
+        "intent": "external",
+        "ref": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node",
+        "src": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node",
+        "endpoint": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node#port-primitive-reader:root",
+        "defaultPorts": [
+          {
+            "id": "root",
+            "label": "root",
+            "direction": "bidirectional",
+            "dataType": "any",
+            "angle": 180
+          }
+        ],
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1784239702269,
+          "reason": "node-drag"
+        },
+        "security": "prompt",
+        "sourceRef": "github://twilite-zone/public/tutorial/basic-primitives/port/root.node",
+        "sourceNodeId": "port-primitive-reader",
+        "sourcePayload": "node.web.detail",
+        "surfaceId": ""
       }
     },
     {
