@@ -38,8 +38,10 @@ Handshake requirements:
 - a graph-owned entry `port` should usually include `data.target.graphId` and `data.target.mode: "navigate"`
 - do not return a metadata-only card when the user asked for a `port` that connects back to the graph
 - when unsure, inspect a real specimen before inventing shape:
-  - visual port specimen: `github://mikemartinez1974/public/graphs/indiana-jones.node`
-  - navigate specimen: `github://twilite/public/root.node`
+  - first inspect the port tutorial: `github://twilite-zone/public/tutorial/basic-primitives/port/root.node`
+  - then use supporting specimens as needed:
+    - visual port specimen: `github://mikemartinez1974/public/graphs/indiana-jones.node`
+    - navigate specimen: `github://twilite/public/root.node`
 - if you author `renderShape`, use an object like `{"kind":"svg"}`, not a bare string like `"svg"`
 - do not use `{"kind":"card"}` for `renderShape`; `card` is a view role, not a render format
 - do not assume `title`, `description`, `icon`, or `cover` will paint a port card by themselves; provide a real payload such as `data.svg`, `data.markdown`, `data.html`, `data.image`, or `data.text`
