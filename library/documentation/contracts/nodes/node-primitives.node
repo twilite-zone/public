@@ -107,7 +107,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Declaration\n\n**Type:** `declaration`\n\nDeclares graph identity, intent, dependencies, authority, and exposed surfaces.\n\nExactly one declaration should anchor a graph artifact.",
+        "markdown": "## Declaration\n\n**Type:** `declaration`\n\nDeclares graph identity, intent, dependencies, authority, and exposed surfaces.\n\nExactly one declaration should anchor a graph artifact.\n\nFor a normal graph, prefer this functional shape:\n- `data.declaration.kind: graph`\n- `data.declaration.targetMode: artifact`\n- `data.declaration.artifactKind: graph`\n- `data.declaration.defaultSurfaceId`: a real declared surface id\n- declared surface `kind: view`\n- `viewNodeId`: the real node that renders that surface\n\nCommon mistakes to avoid:\n- `targetMode: graph`\n- `artifactKind: educational` for a normal graph\n- surface `kind: card` when the declaration is really pointing at a view surface",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -532,7 +532,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Primitive Families\n\nThe modern Twilite model is organized around a light shared substrate plus composed roles.\n\nCore primitive families include:\n- `declaration`\n- content-bearing nodes such as `markdown`\n- boundary primitives such as `port` and `portal`\n- authority primitives such as `bridge`\n- dedicated view primitives such as `icon-view`, `port-view`, `document-view`, and `editor-view`\n\nAnything more specialized can still be graph-local or class-backed.",
+        "markdown": "## Primitive Families\n\nThe modern Twilite model is organized around a light shared substrate plus composed roles.\n\nCore primitive families include:\n- `declaration`\n- content-bearing nodes such as `markdown`\n- boundary primitives such as `port` and `portal`\n- authority primitives such as `bridge`\n- dedicated view primitives such as `icon-view`, `port-view`, `document-view`, and `editor-view`\n\nAnything more specialized can still be graph-local or class-backed.\n\n## Port authoring rules\n- put the graph id at `data.identity.graphId`, not `data.graphId`\n- put payload intent at `data.view`\n- put the role at `data.viewRole`\n- author render shape as an object like `data.renderShape.kind: svg`, not a bare string\n- include `data.svg` only when it contains real raw SVG\n- use `xmlns=\"http://www.w3.org/2000/svg\"` in SVG roots\n- never paste markdownified URLs into SVG attributes",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
