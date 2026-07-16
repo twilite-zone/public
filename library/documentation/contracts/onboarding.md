@@ -66,18 +66,42 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 ### Declaration guidance
 - Put graph identity in `data.identity`
 - Put graph kind and scope in `data.intent`
+- Set `data.declaration.kind` to the kind of artifact you are declaring, usually `graph`
+- Set `data.declaration.targetMode` explicitly, usually `artifact`
+- Set `data.declaration.artifactKind` explicitly, usually `graph` for normal graphs
 - Put exposed surfaces in `data.declaration.surfaces`
 - Point `data.declaration.defaultSurfaceId` at a surface you actually create
 - Use `viewNodeId` to point at the port node that renders that surface
+- Keep `dependencies.nodeTypes` honest: list the node types the graph actually uses
+- Keep `identity.graphId` consistent across the declaration and graph-owned nodes
 - Do not invent edges from the declaration to the port unless the graph specifically needs them
+
+### Declaration checklist
+- `data.identity.graphId`, `name`, `version`, and `description` should be real values, not placeholders
+- `data.intent.kind` and `scope` should describe the graph honestly
+- `data.declaration.targetMode` should usually be `artifact`
+- `data.declaration.artifactKind` should usually be `graph` unless the graph is really a different artifact class
+- `data.declaration.defaultSurfaceId` must name a surface that exists in `data.declaration.surfaces`
+- Each declared view surface should include `id`, `kind`, `label`, `memo`, and `viewNodeId`
+- If you include compatibility fields like `primaryNodeViewId` or `portViewNodeId`, keep them aligned with the declared surfaces instead of letting them disagree
+- A graph with a partial declaration may load, but it can still trigger saveability or interpretation problems
 
 ### Port guidance
 - Put the graph id on the port too: `data.identity.graphId`
 - Put the surface payload in `data.view`
 - Use `data.renderShape.kind` to declare how the port renders
 - If you use SVG, keep `data.svg` as raw SVG text only
+- Only include inline render fields like `data.svg` or `data.html` when they contain real authored content
+- Do not emit placeholder fields like `html: ""` or `svg: ""`
 - Do not paste markdown links or prose into raw SVG markup
 - Do not invent `targetNodeId` or edges to nodes that do not exist
+
+### Portal guidance
+- A `portal` is a consumer/opening node, not the place to stash blank preview payloads
+- If the portal should preview a remote surface, bind it through `data.sourceRef`, `data.sourceNodeId`, `data.sourcePayload`, and `data.target`
+- If the portal should navigate only, keep the navigation target clean and omit inline payload fields entirely
+- Do not add `data.html`, `data.svg`, `data.markdown`, or `data.text` unless the portal itself truly owns that inline content
+- Empty inline fields can mask the real remote surface and cause blank cards
 
 ### Port card example
 Use a port like this when you want a declared card-style surface that another graph can open or render:
@@ -122,6 +146,8 @@ If this port is the graph's primary declared surface, point the declaration surf
 - If the user asks for a `port`, create a `port`, not a `markdown` node
 - Do not treat ad hoc `data.ports` on another node type as a replacement for a real `port` node
 - Do not satisfy a declaration-and-port request with only styling and a reference edge
+- Do not omit `targetMode`, `artifactKind`, `defaultSurfaceId`, or the declared `surfaces` array when authoring a real declaration
+- Do not emit empty inline payload placeholders such as `html: ""` or `svg: ""` on `port` or `portal` nodes
 
 You are now part of the graph’s memory.
 Care for it.
