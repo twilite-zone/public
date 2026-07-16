@@ -34,6 +34,9 @@ Handshake requirements:
 - for `port` or `portal` nodes, only include inline render fields when they contain real authored content
 - if a `portal` previews a remote surface, bind it through `sourceRef`, `sourceNodeId`, `sourcePayload`, and `target` instead of storing blank local payload fields
 - if you author a real `port`, put the graph id at `data.identity.graphId`, not `data.graphId`
+- if the user asks for "a port for this graph", treat that as a working graph entry surface, not just a decorative card
+- a graph-owned entry `port` should usually include `data.target.graphId` and `data.target.mode: "navigate"`
+- do not return a metadata-only card when the user asked for a `port` that connects back to the graph
 - if you author `renderShape`, use an object like `{"kind":"svg"}`, not a bare string like `"svg"`
 - do not use `{"kind":"card"}` for `renderShape`; `card` is a view role, not a render format
 - do not assume `title`, `description`, `icon`, or `cover` will paint a port card by themselves; provide a real payload such as `data.svg`, `data.markdown`, `data.html`, `data.image`, or `data.text`
@@ -72,6 +75,7 @@ After the handshake, when creating a real graph declaration:
   - `defaultSurfaceId`
   - `surfaces`
 - if the graph exposes a primary card or reader surface, point the declared surface at the real node with `viewNodeId`
+- if you create a graph-owned entry `port`, expose that same port through the declaration surfaces instead of leaving it undeclared
 - keep `dependencies.nodeTypes` aligned with the node types actually present in the graph
 - keep `identity.graphId` consistent across the declaration and graph-owned nodes
 - do not rely on compatibility-only fields like `primaryNodeViewId` or `portViewNodeId` without also declaring real surfaces
