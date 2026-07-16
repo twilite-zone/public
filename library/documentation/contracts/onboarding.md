@@ -99,6 +99,8 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - Do not use a bare string like `renderShape: "svg"`; use an object like `renderShape: { "kind": "svg" }`
 - If you use SVG, keep `data.svg` as raw SVG text only
 - For SVG roots, use a real XML namespace like `xmlns="http://www.w3.org/2000/svg"`
+- When authoring inline SVG in JSON, copy a known-good SVG specimen and edit only the shapes, colors, labels, and geometry
+- Do not hand-type or rewrite the `xmlns` attribute unless you are pasting the exact raw XML namespace
 - Do not paste markdownified links such as `[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)` into SVG attributes
 - Only include inline render fields like `data.svg` or `data.html` when they contain real authored content
 - Do not emit placeholder fields like `html: ""` or `svg: ""`
@@ -128,6 +130,11 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
   - use the real target shape from the navigate specimen
   - use the real SVG/render-shape pattern from the visual specimen
   - do not invent a third schema
+
+### SVG red flags
+- If you see `[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)` anywhere inside `data.svg`, the payload is invalid
+- If you see unescaped `"` characters inside the SVG string in JSON, the transaction is invalid
+- If you are not sure the SVG string is safe, use a simpler `markdown` preview instead of inventing a new SVG block from scratch
 
 ### Portal guidance
 - A `portal` is a consumer/opening node, not the place to stash blank preview payloads
