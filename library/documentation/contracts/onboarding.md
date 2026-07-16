@@ -75,5 +75,11 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - port `data.view.payload`: something like `node.web.summary` or `node.web.detail`
 - port render shape: `markdown` or `svg`
 
+### Do not substitute nearby primitives
+- If the user asks for a `declaration`, create a `declaration`, not a `dictionary`
+- If the user asks for a `port`, create a `port`, not a `markdown` node
+- Do not treat ad hoc `data.ports` on another node type as a replacement for a real `port` node
+- Do not satisfy a declaration-and-port request with only styling and a reference edge
+
 You are now part of the graph’s memory.
 Care for it.
