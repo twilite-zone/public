@@ -181,8 +181,6 @@
         "markdown": "# Traversal And Authority\n\nStatus: complete for this phase.\n\nTwilite now has explicit runtime semantics for traversal, authority, and host/session boundaries. `navigate`, `expand`, and `focus` now behave as distinct runtime operations instead of blurred UI conventions.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": true,
         "root": true,
         "_classBinding": {
@@ -309,8 +307,6 @@
         "markdown": "# Traversal Policy\n\nCurrent rule to implement explicitly:\n- `navigate` changes the document/session host\n- `expand` keeps the same host session and materializes a fragment in place\n- `focus` moves execution authority inside that session\n\nWhat is already true:\n- ring-based loading bounds growth\n- expanded fragments can coexist structurally\n- browser address display can follow focused fragment without replacing the host session",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -437,8 +433,6 @@
         "markdown": "# Authority Policy\n\nCurrent runtime stance:\n- host session owns the shared structure\n- focused fragment owns execution/reload authority inside that session\n- imported manifest authority remains informational / host-primary during expansion\n- non-fragment navigation is where document/session authority should reset\n\nThis is now partly real in runtime and should be treated as the authoritative default.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -565,8 +559,6 @@
         "markdown": "# Capability Policy\n\nCurrent rule:\n- showing a node is not the same as running a node\n- scripts are already scoped to the active fragment\n- focused-fragment reload is scoped locally\n- static rendering can remain broad while live behavior stays local\n\nRemaining capability glue should follow this rule rather than reintroducing ambient power.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -693,8 +685,6 @@
         "markdown": "# Safe To Build Now\n\nAlready safe / already in motion:\n- entry surfaces\n- focus and fragment identity\n- provenance metadata\n- ring-based loading and semantic views\n- fragment-scoped script APIs\n- focused-fragment reload and rematerialization",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -821,8 +811,6 @@
         "markdown": "# Avoid Baking In\n\nStill avoid:\n- ambient global execution assumptions\n- silent authority merging across visible graphs\n- hooks firing everywhere because something is visible\n- letting address-bar display become destructive navigation\n- blurring `navigate`, `expand`, and `focus` back together",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -949,8 +937,6 @@
         "markdown": "# Future Boundary\n\nDo not over-harden the model yet.\n\nThe current implementation should preserve a later upgrade path to:\n- multi-fragment authority domains\n- tighter lifecycle/hook scoping\n- explicit cross-fragment capability surfaces\n\nBut the immediate job is simpler: make the current traversal/authority rule explicit and consistent.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -1040,8 +1026,6 @@
         "markdown": "# Implementation Glue\n\nImplemented now:\n- real document/session navigation commits history only on successful host loads\n- focused-fragment preview stays ephemeral in the address bar\n- replacing the host document resets focus/authority to the new root node\n- `navigate` is now graph-only; it no longer mutates the host graph by creating fallback text nodes from arbitrary URLs\n- script runtime is anchored to the script node's fragment instead of falling back to global focus\n- script event subscriptions and script-node auto-run/execute triggers are gated by the active fragment\n- built-in execution surfaces (`executeNode`, `executeNodes`, interpreter graph execution, API/timer/delay/etc.) now default to active-fragment authority\n- plugin graph reads/writes now follow the active fragment by default\n- plugin selection reads are scoped to the active fragment and plugin-emitted events now carry fragment/plugin provenance while rejecting obvious out-of-scope node targets\n\nFollow-up work:\n- add an explicit import surface if raw text/HTML URL ingestion is still desirable\n- decide how these gates should widen if/when multi-fragment authority domains are introduced",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -1131,8 +1115,6 @@
         "markdown": "# Next Questions\n\nFollow-up questions, not blockers for this phase:\n- what should the explicit import API/UI be for raw text or HTML URLs?\n- when navigating into a non-fragment graph, what runtime state beyond focus should be preserved vs reset?\n- when multi-fragment authority domains arrive later, which of these current fragment gates should widen first?",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {

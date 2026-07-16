@@ -148,8 +148,6 @@
         "markdown": "## Goal — proposal\n\n**Purpose**: Represents a desired outcome. Strategic or local.\n\n**Canonical fields**:\n- `label` (string)\n- `description` (markdown)\n- `priority` (low | medium | high | critical)\n- `status` (open | active | achieved | abandoned)\n- `scope` (strategic | local)\n\n**Rules**:\n- Goals do not carry tasks; tasks carry goals via edges.\n- A goal may have child goals (decomposition).\n- Completion state lives on the goal, not inferred from tasks.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -274,8 +272,6 @@
         "markdown": "## Constraint — proposal\n\n**Purpose**: A boundary that implementation must respect.\n\n**Canonical fields**:\n- `label` (string)\n- `body` (markdown)\n- `category` (schema | ux | performance | policy | security)\n- `hardness` (hard | soft)\n- `scope` (global | subgraph | node-local)\n\n**Rules**:\n- Hard constraints are never negotiable without a Decision node.\n- Soft constraints are guidance; Codex may deviate with explanation.\n- Constraint is a **node**, not an edge. It connects via `constrains` edges to what it governs.\n- Open question: does a global constraint need special handling in fragment traversal?",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -400,8 +396,6 @@
         "markdown": "## Decision — proposal\n\n**Purpose**: Records a resolved choice, its rationale, and status.\n\n**Canonical fields**:\n- `label` (string)\n- `body` (markdown — rationale)\n- `status` (proposed | accepted | superseded | reversed)\n- `date` (ISO 8601)\n- `supersedes` (node ID, optional)\n\n**Rules**:\n- Decisions are append-only in intent. Use `supersedes` to chain.\n- A Decision can resolve an Open Question (edge: `resolves`).\n- A Decision can authorize relaxing a Constraint (edge: `overrides`).\n- Codex should treat accepted decisions as authoritative.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -526,8 +520,6 @@
         "markdown": "## Open Question — proposal\n\n**Purpose**: Captures an unresolved question that blocks or informs decisions.\n\n**Canonical fields**:\n- `label` (string)\n- `body` (markdown)\n- `status` (open | investigating | resolved | deferred)\n- `owner` (string, optional)\n- `resolution` (markdown, optional — filled on close)\n\n**Rules**:\n- Resolution converts status to `resolved`, does not delete the node.\n- Resolution should produce a Decision or Task (edge: `resolved-by`).\n- Unresolved open questions should be surfaced prominently in prompts.\n- Distinct from Risk: a question is epistemic, a risk is probabilistic.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -652,8 +644,6 @@
         "markdown": "## Task — proposal\n\n**Purpose**: A discrete, implementable unit of work.\n\n**Canonical fields**:\n- `label` (string)\n- `body` (markdown — description + context)\n- `status` (todo | in-progress | done | blocked | cancelled)\n- `priority` (low | medium | high | critical)\n- `owner` (string, optional)\n- `estimate` (string, optional — e.g. \"2h\", \"S/M/L\")\n\n**Rules**:\n- Tasks should be scoped to one implementation unit.\n- A task may have one or more Acceptance Criteria nodes.\n- Tasks connect to Goals via `implements` edges.\n- Static by default. No live behavior unless explicitly promoted.\n- Maps directly to an execution prompt when status is `todo`.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -778,8 +768,6 @@
         "markdown": "## Dependency — proposal\n\n**Resolution**: Both node and edge, with distinct roles.\n\n- **Edge-only** (`depends-on` edge type): sufficient for simple ordering — A must complete before B.\n- **Node** (this type): use when the dependency is a first-class entity — an external system, a prerequisite artifact, a third-party service, or a blocker with its own status.\n\n**Canonical fields** (node form):\n- `label` (string)\n- `body` (markdown)\n- `kind` (external-system | prerequisite | blocker | ordering)\n- `status` (pending | available | blocked | resolved)\n- `source` (string — what provides this dependency)\n\n**Rules**:\n- Prefer edge for pure ordering. Use node when status, source, or kind matter.\n- A blocker dependency with `status: blocked` should surface in prompt context.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -904,8 +892,6 @@
         "markdown": "## Acceptance Criteria — proposal\n\n**Purpose**: Defines when a Task or Goal is considered complete.\n\n**Canonical fields**:\n- `label` (string)\n- `items` (array of strings — checklist format)\n- `body` (markdown — optional prose supplement)\n- `format` (checklist | prose | test-spec)\n- `verified` (boolean, default false)\n\n**Rules**:\n- Attach to Tasks via `verifies` edges; may also attach to Goals.\n- Checklist format is preferred — it is unambiguous for Codex.\n- Prose format is allowed but should be used only when criteria are non-enumerable.\n- `verified: true` does not automatically mark the Task as done — it is a signal, not a trigger.\n- May eventually drive auto-review; `test-spec` format reserved for that path.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -1030,8 +1016,6 @@
         "markdown": "## Risk / Edge Case — proposal\n\n**Purpose**: Names a probabilistic or boundary condition that could affect outcomes.\n\n**Canonical fields**:\n- `label` (string)\n- `body` (markdown)\n- `kind` (risk | edge-case) — keep combined for now, split later if needed\n- `severity` (low | medium | high | critical)\n- `likelihood` (low | medium | high)\n- `mitigation` (markdown, optional)\n- `status` (open | mitigated | accepted | escalated)\n\n**Rules**:\n- Escalation path: `status: escalated` converts to a Task or Decision (edge: `escalates-to`).\n- Edge cases connect to Acceptance Criteria via `covered-by` edges.\n- Distinct from Open Question: a risk is known, probabilistic. A question is unknown.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -1156,8 +1140,6 @@
         "markdown": "## Arch: Dependency resolution\n\n**Decision**: Dependency is both node and edge, with distinct use-cases.\n\nEdge (`depends-on`) = ordering only.\nNode = first-class entity with status, kind, and source.\n\nThis resolves the node-vs-edge tension. The Dependency node proposal above encodes the full rule.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -1282,8 +1264,6 @@
         "markdown": "## Arch: Constraint as node\n\n**Decision**: Constraint is a first-class node, not edge metadata.\n\nRationale: constraints need independent identity, category, hardness, and scope. They connect to what they govern via typed `constrains` edges. Edge-only representation loses too much.\n\nOpen: global-scope constraint behavior in fragment traversal is deferred.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -1408,8 +1388,6 @@
         "markdown": "## Arch: Execution linkage\n\nA Task with `status: todo` + its connected Acceptance Criteria + its connected Constraints + its parent Goal = the natural prompt bundle for Codex.\n\nNo separate 'execution context' node type is needed yet. The traversal from a Task node provides the context. If prompt shaping becomes complex, promote to a node type later.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",

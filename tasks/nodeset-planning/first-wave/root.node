@@ -156,8 +156,6 @@
         "markdown": "# Planning Node Set First Wave\n\nShip a concrete v1 planning schema instead of continuing abstract node-set debate.\n\nFirst wave node types:\n- `goal`\n- `task`\n- `decision`\n- `open-question`\n- `constraint`\n\nModeling rule:\n- `dependency` is edge-first in v1\n- planning nodes stay static and fragment-safe\n- prompt extraction should treat these as the canonical planning surface",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": true,
         "root": true,
         "_classBinding": {
@@ -247,8 +245,6 @@
         "markdown": "## Ship In V1\n\nImplement these node types now:\n\n- `goal`\n- `task`\n- `decision`\n- `open-question`\n- `constraint`\n\nWhy these first:\n- highest planning value\n- low semantic overlap\n- useful in prompts and summaries\n- can be rendered as mostly static nodes\n- survive fragment traversal cleanly",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -338,8 +334,6 @@
         "markdown": "## Defer In V1\n\nDo not make these first-class planning nodes yet:\n\n- `dependency`\n- `acceptance-criteria`\n- `risk-edge-case`\n\nReason:\n- more structurally ambiguous\n- likely partly relational rather than purely node-shaped\n- better informed after first-wave authoring feedback",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -429,8 +423,6 @@
         "markdown": "## Dependency Rule\n\n`dependency` is edge-first in v1.\n\nUse dependency edges with metadata like:\n- `kind`\n- `hard`\n- `external`\n- `status`\n\nIf a prerequisite must be modeled as an object, represent that object as a normal node and connect it with dependency edges.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -520,8 +512,6 @@
         "markdown": "## Canonical Fields\n\n`goal`\n- `summary`\n- `horizon`\n- `priority`\n- `status`\n\n`task`\n- `summary`\n- `status`\n- `owner`\n- `priority`\n- `estimate`\n\n`decision`\n- `summary`\n- `status`\n- `rationale`\n- `supersedes`\n\n`open-question`\n- `summary`\n- `status`\n- `owner`\n- `resolutionTarget`\n\n`constraint`\n- `summary`\n- `kind`\n- `scope`\n- `hardness`",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -611,8 +601,6 @@
         "markdown": "## Runtime Rules\n\nPlanning nodes should be:\n- static by default\n- fragment-safe by default\n- non-executable by default\n- valid across expansion and reload\n\nThey should gain value from structure and prompt extraction, not from live runtime behaviors.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -702,8 +690,6 @@
         "markdown": "## Implementation Punch List\n\n1. Define schema for the five first-wave node types.\n2. Register them in the node-type/dictionary system.\n3. Give each a simple authored view with distinct compact styling.\n4. Keep `dependency` edge-first.\n5. Update prompt/context extraction to pull:\n   - active goals\n   - open tasks\n   - settled decisions\n   - unresolved questions\n   - binding constraints\n6. Reassess deferred node types after real planning-graph usage.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -793,8 +779,6 @@
         "markdown": "## Follow-Up Questions\n\n- Should planning nodes eventually get dedicated edge types beyond `dependency`?\n- Should acceptance criteria remain attachments or become typed nodes later?\n- When should risk split from edge case?\n- How much structured validation should planning nodes carry in the editor?",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -884,8 +868,6 @@
         "markdown": "## Observed Holes\n\nFrom actual planning-graph usage, the current set is strong on work, decisions, and constraints, but thinner on **belief** and **time**.\n\nMost likely missing node types:\n\n- `assumption`\n  - for provisional beliefs that are neither decisions nor open questions\n- `milestone`\n  - for release checkpoints and horizon markers that are not ordinary tasks\n\nPossible later additions, but less urgent:\n\n- `investigation`\n  - if open questions need a stronger research/execution shape\n- `evidence` or `reference-note`\n  - if planning graphs need to preserve why a conclusion is trusted\n\nWhat does **not** look like a hole right now:\n\n- `status` and `owner` as standalone nodes\n- these are working better as fields on the current planning types",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
@@ -1091,8 +1073,6 @@
         "markdown": "## Current Library State\n\nThe planning-node library already contains class artifacts for:\n- `goal`\n- `task`\n- `decision`\n- `constraint`\n- `open-question`\n- `acceptance-criteria`\n- `risk`\n- `dependency`\n\nSo the first-wave task is not greenfield. The real work is to reconcile that broader library with the narrower approved first-wave contract.",
         "memo": "",
         "link": "",
-        "html": "",
-        "svg": "",
         "isRoot": false,
         "root": false,
         "_classBinding": {
