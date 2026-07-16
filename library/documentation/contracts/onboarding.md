@@ -79,6 +79,38 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - Do not paste markdown links or prose into raw SVG markup
 - Do not invent `targetNodeId` or edges to nodes that do not exist
 
+### Port card example
+Use a port like this when you want a declared card-style surface that another graph can open or render:
+
+```json
+{
+  "id": "example-summary-port",
+  "type": "port",
+  "label": "Example Summary",
+  "position": { "x": 320, "y": 120 },
+  "width": 420,
+  "height": 240,
+  "visible": true,
+  "showLabel": true,
+  "data": {
+    "identity": {
+      "graphId": "example-graph"
+    },
+    "view": {
+      "intent": "node",
+      "payload": "node.web.summary"
+    },
+    "viewRole": "card",
+    "renderShape": {
+      "kind": "svg"
+    },
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 180\" role=\"img\" aria-label=\"Example summary card\"><rect x=\"16\" y=\"16\" width=\"288\" height=\"148\" rx=\"20\" fill=\"#f8fafc\" stroke=\"#0f172a\" stroke-width=\"5\"/><rect x=\"36\" y=\"38\" width=\"136\" height=\"18\" rx=\"9\" fill=\"#2563eb\" opacity=\"0.9\"/><rect x=\"36\" y=\"72\" width=\"220\" height=\"12\" rx=\"6\" fill=\"#cbd5e1\"/><rect x=\"36\" y=\"96\" width=\"184\" height=\"12\" rx=\"6\" fill=\"#dbeafe\"/><rect x=\"36\" y=\"128\" width=\"112\" height=\"20\" rx=\"10\" fill=\"#0f172a\" opacity=\"0.92\"/><text x=\"92\" y=\"142\" text-anchor=\"middle\" fill=\"#f8fafc\" font-family=\"Arial, sans-serif\" font-size=\"11\" font-weight=\"700\">OPEN GRAPH</text></svg>"
+  }
+}
+```
+
+If this port is the graph's primary declared surface, point the declaration surface at this node with `viewNodeId`.
+
 ### Safe starter shape
 - declaration surface kind: `view`
 - port `data.view.intent`: `node`
