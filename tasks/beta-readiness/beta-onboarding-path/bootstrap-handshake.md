@@ -44,6 +44,9 @@ Handshake requirements:
 - do not use `{"kind":"card"}` for `renderShape`; `card` is a view role, not a render format
 - do not assume `title`, `description`, `icon`, or `cover` will paint a port card by themselves; provide a real payload such as `data.svg`, `data.markdown`, `data.html`, `data.image`, or `data.text`
 - if you author SVG, keep `xmlns="http://www.w3.org/2000/svg"` as raw XML, not a markdown link
+- if you author inline SVG in JSON, copy a known-good specimen and edit only the artwork; do not retype `xmlns`
+- if you see `[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)` inside `svg`, the payload is invalid
+- if you are not sure you can safely emit escaped inline SVG, prefer a `markdown` preview instead of inventing SVG from scratch
 - if you create edges later, use `source` and `target`
 - do not use `sourceNodeId` and `targetNodeId` in `createEdges`
 - do not put `edges` inside a `createNodes` command
