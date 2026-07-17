@@ -261,13 +261,59 @@
           "targetMode": "artifact",
           "artifactKind": "task-graph-template",
           "graphViewRole": "authoring",
-          "defaultSurfaceId": "view",
+          "defaultSurfaceId": "card",
           "surfaces": [
             {
-              "id": "view",
+              "id": "card",
+              "kind": "port",
+              "label": "Card",
+              "viewNodeId": "task-graph-template-view",
+              "memo": "Primary outward-facing task graph card for portals and host graphs.",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            },
+            {
+              "id": "icon",
+              "kind": "icon",
+              "label": "Icon",
+              "viewNodeId": "task-graph-template-icon-view",
+              "memo": "Minimal semantic-zoom identity surface for the task graph template.",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            },
+            {
+              "id": "summary",
               "kind": "view",
-              "label": "View",
-              "memo": "Human-facing authoring and reading surface for the task graph.",
+              "label": "Summary",
+              "viewNodeId": "task-graph-template-summary",
+              "memo": "Readable derived summary surface sourced from the authoritative summary node.",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            },
+            {
+              "id": "workspace",
+              "kind": "view",
+              "label": "Workspace",
+              "viewNodeId": "task-graph-template-summary-task",
+              "memo": "Task-shaped authoring rollup surface for legacy and workspace-style consumers.",
               "exposes": {
                 "views": {
                   "mode": "allow"
@@ -280,8 +326,8 @@
           ],
           "primaryNodeViewId": "task-graph-template-summary",
           "primaryEditorViewId": "",
-          "iconViewNodeId": "",
-          "portViewNodeId": ""
+          "iconViewNodeId": "task-graph-template-icon-view",
+          "portViewNodeId": "task-graph-template-view"
         },
         "_classBinding": {
           "key": "declaration",
@@ -1833,6 +1879,8 @@
           "Scan the task list for scope and progress"
         ],
         "countAsTask": false,
+        "compatibilityRole": "legacy-task-summary-consumer",
+        "deprecated": true,
         "summarySource": "node-updater",
         "definitionKey": "task",
         "_classBinding": {
