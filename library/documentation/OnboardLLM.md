@@ -258,6 +258,52 @@ There are lower-level aliases in internal runtime layers such as `createNode`, `
 - In `updateNodes`, `updates` must be one object.
 - Do not make `updates` an array.
 - Do not put per-node entries inside `updateNodes`.
+
+## Markdown Styling Rules
+
+- Treat `data.markdown` as content, not as a CSS styling channel
+- Do not try to change markdown node text color with inline HTML like `<div style="color:#172033">...`
+- Twilite sanitizes markdown HTML, so inline CSS is the wrong authoring path even when the JSON is otherwise valid
+- For markdown node presentation, use node-level style fields such as `style.color`, `style.background`, `style.borderColor`, and related node chrome properties
+- If the user really needs richly styled inline content, switch to a node or surface contract that explicitly supports `html` or `svg`
+- If you place HTML inside `data.markdown`, keep it structurally simple and do not rely on `style=` attributes surviving sanitization
+
+Wrong:
+
+```json
+{
+  "action": "updateNode",
+  "id": "classic-rag",
+  "updates": {
+    "data": {
+      "markdown": "<div style=\"color:#172033\"><h1>Classic RAG</h1></div>"
+    }
+  }
+}
+```
+
+Why it is wrong:
+
+- it uses `data.markdown` as a presentation channel
+- inline CSS in markdown is sanitized and should be treated as unsupported
+- if the quotes are not escaped, the whole transaction becomes invalid JSON before Twilite can even apply it
+
+Right:
+
+```json
+{
+  "action": "updateNode",
+  "id": "classic-rag",
+  "updates": {
+    "style": {
+      "color": "#172033"
+    },
+    "data": {
+      "markdown": "# Classic RAG\n\nBest for fast retrieval, FAQs, documentation, and semantic search."
+    }
+  }
+}
+```
 - In `updateEdges`, `updates` must be one object.
 - Do not make `updates` an array in `updateEdges`.
 - Do not put per-edge entries inside `updateEdges`.
