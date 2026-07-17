@@ -17,15 +17,15 @@
   },
   "nodes": [
     {
-      "id": "authoring-contract-hardening-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "id": "authoring-contract-hardening-declaration",
+      "type": "declaration",
+      "label": "Declaration",
       "position": {
         "x": -1240,
         "y": -960
       },
-      "width": 360,
-      "height": 220,
+      "width": 420,
+      "height": 320,
       "visible": false,
       "showLabel": true,
       "data": {
@@ -38,20 +38,20 @@
           "updatedAt": "2026-07-17T00:00:00.000Z"
         },
         "intent": {
-          "kind": "task",
+          "kind": "task-graph",
           "scope": "local"
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
-            "legend",
+            "declaration",
             "bridge",
             "script",
             "markdown",
             "goal",
             "task",
             "open-question",
-            "summary"
+            "summary",
+            "port"
           ],
           "portContracts": [
             "core"
@@ -96,23 +96,35 @@
           "edgeRouting": "auto",
           "autoSave": false
         },
-        "summaryNodeId": "authoring-contract-hardening-summary"
-      }
-    },
-    {
-      "id": "authoring-contract-hardening-legend",
-      "type": "legend",
-      "label": "Legend",
-      "position": {
-        "x": -1240,
-        "y": -680
-      },
-      "width": 300,
-      "height": 180,
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "entries": []
+        "summaryNodeId": "authoring-contract-hardening-summary",
+        "name": "Authoring Contract Hardening Declaration",
+        "declaresKind": "task-graph",
+        "purpose": "Declare this graph as the source task graph for hardening Twilite's authoring contract, diagnostics, specimens, and persistence boundaries.",
+        "primaryNodeViewId": "authoring-contract-hardening-summary-task",
+        "declaration": {
+          "kind": "task-graph",
+          "targetMode": "artifact",
+          "artifactKind": "task-graph",
+          "graphViewRole": "authoring",
+          "defaultSurfaceId": "summary",
+          "surfaces": [
+            {
+              "id": "summary",
+              "kind": "view",
+              "label": "Summary",
+              "memo": "Primary outward-facing summary surface for the authoring contract hardening task graph.",
+              "viewNodeId": "authoring-contract-hardening-summary-task",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            }
+          ]
+        }
       }
     },
     {
