@@ -18,7 +18,7 @@
           "graphId": "declaration-node-class",
           "name": "Declaration Node Class",
           "version": "0.1.0",
-          "description": "Declares graph identity, intent, default port, and exposed entries for other graphs and readers.",
+          "description": "Declares graph identity, intent, the default surface, and the named surfaces exposed to readers and other graphs.",
           "createdAt": "2026-04-17T12:00:00.000Z",
           "updatedAt": "2026-04-17T12:00:00.000Z"
         },
@@ -29,8 +29,7 @@
         "dependencies": {
           "nodeTypes": [
             "declaration",
-            "legend",
-            "view",
+            "port",
             "markdown"
           ],
           "portContracts": [
@@ -108,30 +107,120 @@
                 }
               }
             }
+          },
+          "views": [
+            {
+              "key": "declaration",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "declaration",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "declaration",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "declaration",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "declaration",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "declaration",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
           }
+        },
+        "declaration": {
+          "kind": "node-class",
+          "graphViewRole": "authoring",
+          "targetMode": "artifact",
+          "artifactKind": "node-class",
+          "defaultSurfaceId": "declaration-detail-surface",
+          "surfaces": [
+            {
+              "id": "declaration-detail-surface",
+              "kind": "port",
+              "label": "Declaration Detail Surface",
+              "memo": "Primary detail surface for the declaration node class.",
+              "viewNodeId": "declaration-detail-view",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            },
+            {
+              "id": "declaration-summary-surface",
+              "kind": "port",
+              "label": "Declaration Summary Surface",
+              "memo": "Compact summary surface for galleries and host graphs.",
+              "viewNodeId": "declaration-summary-view",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            },
+            {
+              "id": "declaration-icon-surface",
+              "kind": "port",
+              "label": "Declaration Icon Surface",
+              "memo": "Icon-scale surface for menus and compact consumers.",
+              "viewNodeId": "declaration-icon-view",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            }
+          ]
         }
       }
     },
     {
-      "id": "declaration-class-legend",
-      "type": "legend",
-      "label": "Legend",
-      "position": {
-        "x": -760,
-        "y": 0
-      },
-      "visible": true,
-      "showLabel": true,
-      "width": 320,
-      "height": 180,
-      "data": {}
-    },
-    {
       "id": "declaration-editor-view",
-      "type": "view",
-      "label": "Declaration Editor",
+      "type": "port",
+      "label": "Declaration Editor Surface",
       "position": {
-        "x": -120,
+        "x": -140,
         "y": -180
       },
       "visible": true,
@@ -368,14 +457,14 @@
               },
               {
                 "key": "defaultSurfaceId",
-                "label": "Default Port ID",
+                "label": "Default Surface ID",
                 "type": "text",
                 "path": "data.declaration.defaultSurfaceId",
                 "placeholder": "root"
               },
               {
                 "key": "surfaces",
-                "label": "Entries (JSON)",
+                "label": "Surfaces (JSON)",
                 "type": "json",
                 "path": "data.declaration.surfaces",
                 "multiline": true,
@@ -408,10 +497,10 @@
     },
     {
       "id": "declaration-detail-view",
-      "type": "view",
-      "label": "Declaration Detail",
+      "type": "port",
+      "label": "Declaration Detail Surface",
       "position": {
-        "x": 520,
+        "x": 540,
         "y": -180
       },
       "visible": true,
@@ -422,14 +511,14 @@
         "key": "node.web.detail",
         "intent": "node",
         "payload": "node.web.detail",
-        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;gap:12px;padding:18px;box-sizing:border-box;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,243,255,0.96));border:1px solid rgba(109,40,217,0.14);overflow:hidden;\"><div style=\"display:flex;align-items:flex-start;justify-content:space-between;gap:12px;\"><div style=\"display:flex;flex-direction:column;gap:6px;min-width:0;\"><div style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#4c1d95;\">{{data.identity.name || data.name || 'Declaration'}}</div><div style=\"font:700 13px/1.25 ui-monospace, SFMono-Regular, Menlo, monospace;color:#6d28d9;\">{{data.declaration.kind || data.declaresKind || 'graph'}}{{data.declaration.artifactKind ? (' : ' + data.declaration.artifactKind) : ''}}</div></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(109,40,217,0.12);color:#5b21b6;font-size:11px;font-weight:700;\">Declaration</span><span style=\"padding:4px 8px;border-radius:999px;background:rgba(76,29,149,0.08);color:#4c1d95;font-size:11px;font-weight:700;\">{{data.declaration.graphViewRole || 'authoring'}}</span></div></div><div style=\"display:grid;grid-template-columns:1fr 1fr;gap:12px;\"><div style=\"padding:10px 12px;border-radius:12px;background:rgba(255,255,255,0.9);border:1px solid rgba(109,40,217,0.1);font:600 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;color:#3b0764;\">default port: {{data.declaration.defaultSurfaceId || 'undeclared'}}</div><div style=\"padding:10px 12px;border-radius:12px;background:rgba(255,255,255,0.9);border:1px solid rgba(109,40,217,0.1);font:600 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;color:#3b0764;\">entries: {{(data.declaration.surfaces && data.declaration.surfaces.length) ? data.declaration.surfaces.length : 0}}</div></div><div style=\"padding:10px 12px;border-radius:12px;background:rgba(255,255,255,0.9);border:1px solid rgba(109,40,217,0.1);font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#4c1d95;\">Intent: {{data.intent.kind || 'graph'}} | Scope: {{data.intent.scope || 'local'}} | Target: {{data.declaration.targetMode || 'artifact'}}</div><div style=\"font:500 13px/1.5 ui-sans-serif, system-ui, sans-serif;color:#5b21b6;white-space:pre-wrap;overflow:auto;\">{{data.purpose || 'Declare graph identity, the default port, and the entries this graph exposes to readers and other graphs.'}}</div></div>",
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;gap:12px;padding:18px;box-sizing:border-box;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,243,255,0.96));border:1px solid rgba(109,40,217,0.14);overflow:hidden;\"><div style=\"display:flex;align-items:flex-start;justify-content:space-between;gap:12px;\"><div style=\"display:flex;flex-direction:column;gap:6px;min-width:0;\"><div style=\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#4c1d95;\">{{data.identity.name || data.name || 'Declaration'}}</div><div style=\"font:700 13px/1.25 ui-monospace, SFMono-Regular, Menlo, monospace;color:#6d28d9;\">{{data.declaration.kind || data.declaresKind || 'graph'}}{{data.declaration.artifactKind ? (' : ' + data.declaration.artifactKind) : ''}}</div></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;\"><span style=\"padding:4px 8px;border-radius:999px;background:rgba(109,40,217,0.12);color:#5b21b6;font-size:11px;font-weight:700;\">Declaration</span><span style=\"padding:4px 8px;border-radius:999px;background:rgba(76,29,149,0.08);color:#4c1d95;font-size:11px;font-weight:700;\">{{data.declaration.graphViewRole || 'authoring'}}</span></div></div><div style=\"display:grid;grid-template-columns:1fr 1fr;gap:12px;\"><div style=\"padding:10px 12px;border-radius:12px;background:rgba(255,255,255,0.9);border:1px solid rgba(109,40,217,0.1);font:600 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;color:#3b0764;\">default surface: {{data.declaration.defaultSurfaceId || 'undeclared'}}</div><div style=\"padding:10px 12px;border-radius:12px;background:rgba(255,255,255,0.9);border:1px solid rgba(109,40,217,0.1);font:600 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;color:#3b0764;\">surfaces: {{(data.declaration.surfaces && data.declaration.surfaces.length) ? data.declaration.surfaces.length : 0}}</div></div><div style=\"padding:10px 12px;border-radius:12px;background:rgba(255,255,255,0.9);border:1px solid rgba(109,40,217,0.1);font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#4c1d95;\">Intent: {{data.intent.kind || 'graph'}} | Scope: {{data.intent.scope || 'local'}} | Target: {{data.declaration.targetMode || 'artifact'}}</div><div style=\"font:500 13px/1.5 ui-sans-serif, system-ui, sans-serif;color:#5b21b6;white-space:pre-wrap;overflow:auto;\">{{data.purpose || 'Declare graph identity, default surface, and the named surfaces this graph exposes to readers and other graphs.'}}</div></div>",
         "semanticLevel": "detail"
       }
     },
     {
       "id": "declaration-summary-view",
-      "type": "view",
-      "label": "Declaration Summary",
+      "type": "port",
+      "label": "Declaration Summary Surface",
       "position": {
         "x": 1140,
         "y": -180
@@ -442,14 +531,14 @@
         "key": "node.web.summary",
         "intent": "node",
         "payload": "node.web.summary",
-        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;border-radius:16px;background:white;border:1px solid rgba(109,40,217,0.14);\"><div style=\"font:700 18px/1.25 ui-sans-serif, system-ui, sans-serif;color:#4c1d95;\">{{data.identity.name || data.name || 'Declaration'}}</div><div style=\"font:700 13px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace;color:#6d28d9;\">default port: {{data.declaration.defaultSurfaceId || 'undeclared'}}</div><div style=\"font:500 13px/1.45 ui-sans-serif, system-ui, sans-serif;color:#5b21b6;\">{{data.purpose || 'Declares the graph identity and exposed entries.'}}</div></div>",
+        "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;border-radius:16px;background:white;border:1px solid rgba(109,40,217,0.14);\"><div style=\"font:700 18px/1.25 ui-sans-serif, system-ui, sans-serif;color:#4c1d95;\">{{data.identity.name || data.name || 'Declaration'}}</div><div style=\"font:700 13px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace;color:#6d28d9;\">default surface: {{data.declaration.defaultSurfaceId || 'undeclared'}}</div><div style=\"font:500 13px/1.45 ui-sans-serif, system-ui, sans-serif;color:#5b21b6;\">{{data.purpose || 'Declares the graph identity and exposed surfaces.'}}</div></div>",
         "semanticLevel": "summary"
       }
     },
     {
       "id": "declaration-icon-view",
-      "type": "view",
-      "label": "Declaration Icon",
+      "type": "port",
+      "label": "Declaration Icon Surface",
       "position": {
         "x": 1620,
         "y": -180
@@ -479,12 +568,57 @@
       "width": 560,
       "height": 220,
       "data": {
-        "markdown": "## Declaration\n\nA declaration names the graph, carries intent, identifies the default port, and lists the entries the graph exposes to readers and other graphs."
+        "markdown": "## Declaration\n\nA declaration names the graph, carries intent, identifies the default surface, and lists the named surfaces the graph exposes to readers and other graphs.\n\nThis class graph now models those surfaces as actual `port` specimens so the contract is visible on the canvas instead of being implied by generic view nodes."
       }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "declaration-edge-editor-detail",
+      "type": "reference",
+      "source": "declaration-editor-view",
+      "target": "declaration-detail-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "edits",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "declaration-edge-detail-summary",
+      "type": "reference",
+      "source": "declaration-detail-view",
+      "target": "declaration-summary-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "summarizes",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "declaration-edge-summary-icon",
+      "type": "reference",
+      "source": "declaration-summary-view",
+      "target": "declaration-icon-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "condenses",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "declaration-edge-detail-notes",
+      "type": "reference",
+      "source": "declaration-detail-view",
+      "target": "declaration-notes",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "documents",
+      "style": {},
+      "data": {}
+    }
+  ],
   "timestamp": "2026-04-17T12:00:00.000Z",
   "nodeCount": 6,
-  "edgeCount": 0
+  "edgeCount": 4
 }
