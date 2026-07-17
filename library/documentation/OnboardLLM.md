@@ -676,6 +676,7 @@ Preferred visual edge style fields:
 - `arrowPosition`
 - `animation`
 - `animationSpeed`
+- `glow`
 - `gradient`
 
 Supported animation values in the live renderer include:
@@ -684,6 +685,24 @@ Supported animation values in the live renderer include:
 - `glow`
 - `pulse`
 - `flow`
+
+Alias normalization that Twilite now tolerates:
+
+- `stroke` -> `color`
+- `strokeWidth` -> `width`
+- `strokeDasharray` -> `dash`
+- `routing` or `router` -> `route`
+
+Animation may be:
+
+- a simple string like `animation: "flow"`
+- or an object like `animation: { "type": "flow", "duration": 1800, "glow": { "color": "#7DD3FC", "blur": 12 } }`
+
+When the animation is an object:
+
+- `type` maps to the live animation mode
+- `duration` or `durationMs` is converted into `animationSpeed`
+- nested `glow` becomes `style.glow`
 
 Simple edge edit example:
 
@@ -721,7 +740,9 @@ Shared edge style update example:
         "style": {
           "color": "#0f766e",
           "width": 2,
-          "dash": [8, 4]
+          "dash": [8, 4],
+          "showArrow": true,
+          "arrowPosition": "end"
         }
       }
     }
@@ -742,8 +763,11 @@ Concrete "do something fancy with the edges" example:
         "label": "studies",
         "style": {
           "color": "#d97706",
-          "animation": "dash",
-          "animationSpeed": 1.2
+          "strokeDasharray": "10 8",
+          "animation": {
+            "type": "dash",
+            "duration": 1200
+          }
         }
       }
     },
@@ -754,8 +778,12 @@ Concrete "do something fancy with the edges" example:
         "label": "carries",
         "style": {
           "color": "#92400e",
-          "animation": "dash",
-          "animationSpeed": 1.2
+          "gradient": {
+            "start": "#f59e0b",
+            "end": "#f97316"
+          },
+          "showArrow": true,
+          "arrowPosition": "end"
         }
       }
     },
@@ -766,8 +794,14 @@ Concrete "do something fancy with the edges" example:
         "label": "opposes",
         "style": {
           "color": "#7f1d1d",
-          "animation": "glow",
-          "animationSpeed": 1
+          "animation": {
+            "type": "glow",
+            "duration": 1600,
+            "glow": {
+              "color": "#fca5a5",
+              "blur": 14
+            }
+          }
         }
       }
     }
@@ -801,6 +835,7 @@ Why it is wrong:
 - `style.animated` is not the preferred live animation contract
 - it may have no visible effect in normal edge rendering
 - use `style.animation` instead
+- if you want dashes, do not rely on `animated: true`; set a real dash pattern or a dash animation contract
 
 Correct animation example:
 
@@ -815,6 +850,7 @@ Correct animation example:
         "label": "explores",
         "style": {
           "color": "#ca8a04",
+          "dash": [10, 8],
           "animation": "dash",
           "animationSpeed": 1.2
         }
@@ -1562,3 +1598,8 @@ If you are creating a markdown node, it should look like this shape:
 When onboarded, complete the handshake first.
 
 After the handshake, continue helping through valid Twilite graph mutations.
+Edge class note:
+
+- edge instances and edge-class `renderDefaults` now share the same visual vocabulary
+- edge classes may still use older names like `renderDefaults.stroke`, `renderDefaults.width`, `renderDefaults.dash`, and `renderDefaults.routingHint`
+- but when authoring new material, prefer the same conceptual contract you would use on a live edge: color, width, dash, route, arrows, opacity, animation, glow, and gradient
