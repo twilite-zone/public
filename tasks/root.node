@@ -2,7 +2,7 @@
   "fileVersion": "1.0",
   "metadata": {
     "title": "Task Graphs",
-    "description": "Public index of Twilite task graphs organized by execution horizon and priority.",
+    "description": "Dashboard of major Twilite workstreams organized into operational lanes and backed by child task graphs.",
     "created": "2026-04-04T18:30:23.361Z",
     "modified": "2026-07-17T00:00:00.000Z",
     "author": "",
@@ -48,10 +48,9 @@
             "bridge",
             "port",
             "portal",
-            "task",
+            "task-summary",
             "title",
-            "type-definition",
-            "port"
+            "type-definition"
           ],
           "portContracts": [
             "core"
@@ -112,7 +111,7 @@
         "root": false,
         "name": "Graph Declaration",
         "declaresKind": "tasks",
-        "purpose": "Declare the public tasks branch as a horizon-organized index of active, background, strategic, and archived Twilite workstreams.",
+        "purpose": "Declare the public task board as a dashboard of major Twilite workstreams, grouped by operating mode and backed by child task graphs.",
         "declaration": {
           "kind": "tasks",
           "artifactKind": "tasks",
@@ -137,23 +136,47 @@
       "label": "Legend",
       "root": false,
       "position": {
-        "x": 120,
-        "y": -105.47067442411344
+        "x": 1120,
+        "y": 20
       },
-      "width": 320,
-      "height": 180,
-      "visible": false,
-      "showLabel": true,
+      "width": 760,
+      "height": 220,
+      "visible": true,
+      "showLabel": false,
       "data": {
         "entries": [
           {
-            "key": "task",
-            "intent": "reference",
-            "implementation": "port node",
-            "dictionaryKey": "default"
+            "key": "now",
+            "intent": "lane",
+            "implementation": "active implementation workstreams",
+            "dictionaryKey": "task-summary"
+          },
+          {
+            "key": "foundations",
+            "intent": "lane",
+            "implementation": "platform structure and primitives",
+            "dictionaryKey": "task-summary"
+          },
+          {
+            "key": "product-ux",
+            "intent": "lane",
+            "implementation": "user-facing experience work",
+            "dictionaryKey": "task-summary"
+          },
+          {
+            "key": "research-bets",
+            "intent": "lane",
+            "implementation": "strategic or exploratory tracks",
+            "dictionaryKey": "task-summary"
+          },
+          {
+            "key": "archive-references",
+            "intent": "lane",
+            "implementation": "reference clusters and support areas",
+            "dictionaryKey": "portal"
           }
         ],
-        "markdown": "## Legend\n- task: open a task graph",
+        "markdown": "## How To Use This Board\n- Open any visible card to enter that workstream.\n- `Now` contains active implementation tracks.\n- `Foundations` holds reusable platform and graph-structure work.\n- `Product / UX` groups user-facing surface work.\n- `Research / Bets` keeps exploratory tracks reachable without crowding active delivery.\n- Child-track details live inside their parent graphs rather than on this root board.",
         "isRoot": false,
         "root": false
       }
@@ -164,11 +187,11 @@
       "label": "Title",
       "root": true,
       "position": {
-        "x": 260,
-        "y": -220
+        "x": 1120,
+        "y": -260
       },
-      "width": 460,
-      "height": 220,
+      "width": 720,
+      "height": 240,
       "ports": [
         {
           "id": "root",
@@ -192,10 +215,10 @@
         }
       ],
       "visible": true,
-      "showLabel": true,
+      "showLabel": false,
       "data": {
-        "title": "Task Graphs",
-        "subtitle": "Top-level index for work in /tasks. The board is organized by execution horizon so active build work, supporting tracks, strategic bets, and archived references stay distinct.",
+        "title": "Twilite Task Board",
+        "subtitle": "Dashboard of major workstreams. Open a card to enter the child graph. The top-level board is grouped by operating mode rather than chronology.",
         "intent": "headline",
         "status": "active",
         "_classBinding": {
@@ -313,12 +336,12 @@
     },
     {
       "id": "tasks-root-port-3",
-      "type": "task",
+      "type": "task-summary",
       "label": "Semantic Zoom",
       "root": false,
       "position": {
-        "x": 1260,
-        "y": 880
+        "x": 680,
+        "y": 820
       },
       "width": 420,
       "height": 260,
@@ -333,137 +356,99 @@
         "sourceNodeId": "semantic-zoom-root-summary-task",
         "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
             "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
             "updatedAt": "2026-03-24T01:10:00.000Z"
           },
           "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
           "defaults": {
-            "label": "Task",
+            "label": "Task Summary",
             "size": {
-              "width": 340,
+              "width": 420,
               "height": 260
             },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
             "showLabel": false,
             "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
+              "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
             }
           },
           "nodeDef": {
-            "key": "task",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "key": "task-summary",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0",
             "defaults": {
-              "label": "Task",
+              "label": "Task Summary",
               "size": {
-                "width": 340,
+                "width": 420,
                 "height": 260
               },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
               "showLabel": false,
               "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
+                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
               }
             }
           },
           "views": [
             {
-              "key": "task",
+              "key": "task-summary",
               "intent": "editor",
               "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             },
             {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
+              "key": "task-summary",
               "intent": "node",
               "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             }
           ],
           "nodeView": {
-            "key": "task",
+            "key": "task-summary",
             "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0"
           },
           "editorView": {
-            "key": "task",
+            "key": "task-summary",
             "intent": "editor",
             "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0"
           }
         },
         "_bridge": {
-          "sourceNodeId": "root-bridge-task",
-          "sourceBridgeNodeId": "root-bridge-task",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/tasks/root.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task",
+        "definitionKey": "task-summary",
         "title": "Semantic Zoom",
         "body": "Source-backed task view.",
         "priority": "medium",
@@ -475,12 +460,12 @@
     },
     {
       "id": "tasks-root-port-vscode-landing",
-      "type": "task",
+      "type": "task-summary",
       "label": "VS Code Landing",
       "root": false,
       "position": {
-        "x": 2340,
-        "y": 1340
+        "x": 1280,
+        "y": 1420
       },
       "width": 420,
       "height": 260,
@@ -498,137 +483,99 @@
         "sourceNodeId": "vscode-landing-surface-summary-task",
         "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
             "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
             "updatedAt": "2026-03-24T01:10:00.000Z"
           },
           "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
           "defaults": {
-            "label": "Task",
+            "label": "Task Summary",
             "size": {
-              "width": 340,
+              "width": 420,
               "height": 260
             },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
             "showLabel": false,
             "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
+              "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
             }
           },
           "nodeDef": {
-            "key": "task",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "key": "task-summary",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0",
             "defaults": {
-              "label": "Task",
+              "label": "Task Summary",
               "size": {
-                "width": 340,
+                "width": 420,
                 "height": 260
               },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
               "showLabel": false,
               "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
+                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
               }
             }
           },
           "views": [
             {
-              "key": "task",
+              "key": "task-summary",
               "intent": "editor",
               "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             },
             {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
+              "key": "task-summary",
               "intent": "node",
               "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             }
           ],
           "nodeView": {
-            "key": "task",
+            "key": "task-summary",
             "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0"
           },
           "editorView": {
-            "key": "task",
+            "key": "task-summary",
             "intent": "editor",
             "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0"
           }
         },
         "_bridge": {
-          "sourceNodeId": "root-bridge-task",
-          "sourceBridgeNodeId": "root-bridge-task",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/tasks/root.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task",
+        "definitionKey": "task-summary",
         "title": "VS Code Landing",
         "body": "Source-backed task view.",
         "priority": "medium",
@@ -640,12 +587,12 @@
     },
     {
       "id": "tasks-root-port-10",
-      "type": "task",
+      "type": "task-summary",
       "label": "Landing Page Seriousness",
       "root": false,
       "position": {
-        "x": -360,
-        "y": 1340
+        "x": 1280,
+        "y": 1720
       },
       "width": 420,
       "height": 260,
@@ -663,137 +610,99 @@
         "sourceNodeId": "landing-page-seriousness-summary-task",
         "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
             "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
             "updatedAt": "2026-03-24T01:10:00.000Z"
           },
           "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
           "defaults": {
-            "label": "Task",
+            "label": "Task Summary",
             "size": {
-              "width": 340,
+              "width": 420,
               "height": 260
             },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
             "showLabel": false,
             "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
+              "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
             }
           },
           "nodeDef": {
-            "key": "task",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "key": "task-summary",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0",
             "defaults": {
-              "label": "Task",
+              "label": "Task Summary",
               "size": {
-                "width": 340,
+                "width": 420,
                 "height": 260
               },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
               "showLabel": false,
               "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
+                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
               }
             }
           },
           "views": [
             {
-              "key": "task",
+              "key": "task-summary",
               "intent": "editor",
               "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             },
             {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
+              "key": "task-summary",
               "intent": "node",
               "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             }
           ],
           "nodeView": {
-            "key": "task",
+            "key": "task-summary",
             "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0"
           },
           "editorView": {
-            "key": "task",
+            "key": "task-summary",
             "intent": "editor",
             "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0"
           }
         },
         "_bridge": {
-          "sourceNodeId": "root-bridge-task",
-          "sourceBridgeNodeId": "root-bridge-task",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/tasks/root.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task",
+        "definitionKey": "task-summary",
         "title": "Landing Page Seriousness",
         "body": "Source-backed task view.",
         "priority": "medium",
@@ -805,12 +714,12 @@
     },
     {
       "id": "tasks-root-port-11",
-      "type": "task",
+      "type": "task-summary",
       "label": "Modularization Boundaries",
       "root": false,
       "position": {
-        "x": 180,
-        "y": 1340
+        "x": 680,
+        "y": 1420
       },
       "width": 420,
       "height": 260,
@@ -828,137 +737,99 @@
         "sourceNodeId": "modularization-boundaries-summary-task",
         "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
             "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
             "updatedAt": "2026-03-24T01:10:00.000Z"
           },
           "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
           "defaults": {
-            "label": "Task",
+            "label": "Task Summary",
             "size": {
-              "width": 340,
+              "width": 420,
               "height": 260
             },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
             "showLabel": false,
             "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
+              "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
             }
           },
           "nodeDef": {
-            "key": "task",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "key": "task-summary",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0",
             "defaults": {
-              "label": "Task",
+              "label": "Task Summary",
               "size": {
-                "width": 340,
+                "width": 420,
                 "height": 260
               },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
               "showLabel": false,
               "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
+                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
               }
             }
           },
           "views": [
             {
-              "key": "task",
+              "key": "task-summary",
               "intent": "editor",
               "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             },
             {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
+              "key": "task-summary",
               "intent": "node",
               "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             }
           ],
           "nodeView": {
-            "key": "task",
+            "key": "task-summary",
             "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0"
           },
           "editorView": {
-            "key": "task",
+            "key": "task-summary",
             "intent": "editor",
             "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0"
           }
         },
         "_bridge": {
-          "sourceNodeId": "root-bridge-task",
-          "sourceBridgeNodeId": "root-bridge-task",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/tasks/root.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task",
+        "definitionKey": "task-summary",
         "title": "Modularization Boundaries",
         "body": "Source-backed task view.",
         "priority": "medium",
@@ -974,13 +845,13 @@
       "label": "Archive",
       "root": false,
       "position": {
-        "x": 120,
-        "y": 1620
+        "x": 2480,
+        "y": 520
       },
       "width": 300,
       "height": 150,
       "visible": true,
-      "showLabel": true,
+      "showLabel": false,
       "data": {
         "memo": "Completed task graphs archived for reference.",
         "intent": "external",
@@ -999,12 +870,12 @@
     },
     {
       "id": "tasks-root-port-edge-classes",
-      "type": "task",
+      "type": "task-summary",
       "label": "Edge Classes",
       "root": false,
       "position": {
-        "x": 180,
-        "y": 880
+        "x": 680,
+        "y": 520
       },
       "width": 420,
       "height": 260,
@@ -1017,137 +888,99 @@
         "sourceNodeId": "edge-classes-task-summary-task",
         "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
             "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
             "updatedAt": "2026-03-24T01:10:00.000Z"
           },
           "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
           "defaults": {
-            "label": "Task",
+            "label": "Task Summary",
             "size": {
-              "width": 340,
+              "width": 420,
               "height": 260
             },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
             "showLabel": false,
             "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
+              "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
             }
           },
           "nodeDef": {
-            "key": "task",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "key": "task-summary",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0",
             "defaults": {
-              "label": "Task",
+              "label": "Task Summary",
               "size": {
-                "width": 340,
+                "width": 420,
                 "height": 260
               },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
               "showLabel": false,
               "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
+                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
               }
             }
           },
           "views": [
             {
-              "key": "task",
+              "key": "task-summary",
               "intent": "editor",
               "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             },
             {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
+              "key": "task-summary",
               "intent": "node",
               "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             }
           ],
           "nodeView": {
-            "key": "task",
+            "key": "task-summary",
             "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0"
           },
           "editorView": {
-            "key": "task",
+            "key": "task-summary",
             "intent": "editor",
             "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0"
           }
         },
         "_bridge": {
-          "sourceNodeId": "root-bridge-task",
-          "sourceBridgeNodeId": "root-bridge-task",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/tasks/root.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task",
+        "definitionKey": "task-summary",
         "title": "Edge Classes",
         "body": "Source-backed task view.",
         "priority": "medium",
@@ -1159,12 +992,12 @@
     },
     {
       "id": "tasks-root-port-beta-readiness",
-      "type": "task",
+      "type": "task-summary",
       "label": "Beta Readiness",
       "root": false,
       "position": {
-        "x": 1800,
-        "y": 420
+        "x": 1880,
+        "y": 520
       },
       "width": 420,
       "height": 260,
@@ -1173,11 +1006,11 @@
       "data": {
         "sourceRef": "github://twilite-zone/public/tasks/beta-readiness/root.node",
         "sourceNodeId": "beta-readiness-summary-task",
-        "sourcePayload": "node.web.detail",
+        "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
             "graphId": "task-graph-summary-view-class",
             "name": "Task Summary Class",
@@ -1257,27 +1090,27 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task"
+        "definitionKey": "task-summary"
       }
     },
     {
       "id": "tasks-root-port-interaction-policy",
-      "type": "task",
+      "type": "task-summary",
       "label": "Interaction Policy",
       "root": false,
       "position": {
-        "x": 2340,
-        "y": 420
+        "x": 1280,
+        "y": 520
       },
       "width": 420,
       "height": 260,
@@ -1288,11 +1121,11 @@
         "intent": "external",
         "sourceRef": "github://twilite-zone/public/tasks/interaction-policy/root.node",
         "sourceNodeId": "interaction-policy-task-summary-task",
-        "sourcePayload": "node.web.detail",
+        "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
             "graphId": "task-graph-summary-view-class",
             "name": "Task Summary Class",
@@ -1372,27 +1205,27 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task"
+        "definitionKey": "task-summary"
       }
     },
     {
       "id": "tasks-root-port-local-runtime",
-      "type": "task",
+      "type": "task-summary",
       "label": "Local Node Runtime",
       "root": false,
       "position": {
-        "x": 180,
-        "y": 420
+        "x": 80,
+        "y": 520
       },
       "width": 420,
       "height": 260,
@@ -1403,11 +1236,11 @@
         "intent": "external",
         "sourceRef": "github://twilite-zone/public/tasks/local-node-runtime/root.node",
         "sourceNodeId": "local-node-runtime-summary-task",
-        "sourcePayload": "node.web.detail",
+        "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
             "graphId": "task-graph-summary-view-class",
             "name": "Task Summary Class",
@@ -1487,27 +1320,27 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task"
+        "definitionKey": "task-summary"
       }
     },
     {
       "id": "tasks-root-port-graph-organization",
-      "type": "task",
+      "type": "task-summary",
       "label": "Graph Organization Law",
       "root": false,
       "position": {
-        "x": 720,
-        "y": 420
+        "x": 80,
+        "y": 820
       },
       "width": 420,
       "height": 260,
@@ -1518,11 +1351,11 @@
         "intent": "external",
         "sourceRef": "github://twilite-zone/public/tasks/graph-organization/root.node",
         "sourceNodeId": "graph-organization-task-summary-task",
-        "sourcePayload": "node.web.detail",
+        "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
             "graphId": "task-graph-summary-view-class",
             "name": "Task Summary Class",
@@ -1602,27 +1435,27 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task"
+        "definitionKey": "task-summary"
       }
     },
     {
       "id": "tasks-root-port-mobile-graph",
-      "type": "task",
+      "type": "task-summary",
       "label": "Mobile Graph Authoring",
       "root": false,
       "position": {
-        "x": 1260,
-        "y": 1340
+        "x": 1280,
+        "y": 1120
       },
       "width": 420,
       "height": 260,
@@ -1635,649 +1468,9 @@
         "sourceNodeId": "mobile-graph-authoring-task-summary-task",
         "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
-            "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
-            "updatedAt": "2026-03-24T01:10:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
-          "defaults": {
-            "label": "Task",
-            "size": {
-              "width": 340,
-              "height": 260
-            },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
-            }
-          },
-          "nodeDef": {
-            "key": "task",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Task",
-              "size": {
-                "width": 340,
-                "height": 260
-              },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "task",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "task",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "task",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "root-bridge-task",
-          "sourceBridgeNodeId": "root-bridge-task",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/tasks/root.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
-        },
-        "definitionKey": "task",
-        "title": "Mobile Graph Authoring",
-        "body": "Source-backed task view.",
-        "priority": "medium",
-        "status": "todo",
-        "owner": "",
-        "estimateHours": "",
-        "countAsTask": true
-      }
-    },
-    {
-      "id": "tasks-root-port-intent-first",
-      "type": "task",
-      "label": "Intent-First Authoring",
-      "root": false,
-      "position": {
-        "x": 1800,
-        "y": 1340
-      },
-      "width": 420,
-      "height": 260,
-      "visible": true,
-      "showLabel": false,
-      "data": {
-        "memo": "Strategic authoring model work around intent, manifestation, and system-owned geometry.",
-        "intent": "external",
-        "sourceRef": "github://twilite-zone/public/tasks/intent-first-authoring/root.node",
-        "sourceNodeId": "intent-first-authoring-task-summary-task",
-        "sourcePayload": "node.web",
-        "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
-            "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
-            "updatedAt": "2026-03-24T01:10:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
-          "defaults": {
-            "label": "Task",
-            "size": {
-              "width": 340,
-              "height": 260
-            },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
-            }
-          },
-          "nodeDef": {
-            "key": "task",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Task",
-              "size": {
-                "width": 340,
-                "height": 260
-              },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "task",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "task",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "task",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "root-bridge-task",
-          "sourceBridgeNodeId": "root-bridge-task",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/tasks/root.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
-        },
-        "definitionKey": "task",
-        "title": "Intent-First Authoring",
-        "body": "Source-backed task view.",
-        "priority": "medium",
-        "status": "todo",
-        "owner": "",
-        "estimateHours": "",
-        "countAsTask": true
-      }
-    },
-    {
-      "id": "tasks-root-port-chatgpt-app",
-      "type": "task",
-      "label": "ChatGPT Interface for Twilite",
-      "root": false,
-      "position": {
-        "x": 2340,
-        "y": 880
-      },
-      "width": 420,
-      "height": 260,
-      "visible": true,
-      "showLabel": false,
-      "data": {
-        "memo": "Strategic/background UI direction for chat-style interaction in Twilite.",
-        "intent": "external",
-        "sourceRef": "github://twilite-zone/public/tasks/chat-gpt-app/root.node",
-        "sourceNodeId": "chatgpt-app-task-summary-task",
-        "sourcePayload": "node.web",
-        "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
-            "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
-            "updatedAt": "2026-03-24T01:10:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
-          "defaults": {
-            "label": "Task",
-            "size": {
-              "width": 340,
-              "height": 260
-            },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
-            }
-          },
-          "nodeDef": {
-            "key": "task",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Task",
-              "size": {
-                "width": 340,
-                "height": 260
-              },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "task",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "task",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "task",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "root-bridge-task",
-          "sourceBridgeNodeId": "root-bridge-task",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/tasks/root.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
-        },
-        "definitionKey": "task",
-        "title": "ChatGPT Interface for Twilite",
-        "body": "Source-backed task view.",
-        "priority": "medium",
-        "status": "todo",
-        "owner": "",
-        "estimateHours": "",
-        "countAsTask": true
-      }
-    },
-    {
-      "id": "tasks-root-port-core-loop-proof",
-      "type": "task",
-      "label": "Undeniable Core Loop",
-      "root": false,
-      "position": {
-        "x": -360,
-        "y": 880
-      },
-      "width": 420,
-      "height": 260,
-      "visible": true,
-      "showLabel": false,
-      "data": {
-        "memo": "Foundational product framing work that supports the main build effort.",
-        "intent": "external",
-        "sourceRef": "github://twilite-zone/public/tasks/core-loop-proof/root.node",
-        "sourceNodeId": "core-loop-proof-task-summary-task",
-        "sourcePayload": "node.web",
-        "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
-            "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
-            "updatedAt": "2026-03-24T01:10:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
-          "defaults": {
-            "label": "Task",
-            "size": {
-              "width": 340,
-              "height": 260
-            },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
-            }
-          },
-          "nodeDef": {
-            "key": "task",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Task",
-              "size": {
-                "width": 340,
-                "height": 260
-              },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "task",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "task",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "task",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "root-bridge-task",
-          "sourceBridgeNodeId": "root-bridge-task",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/tasks/root.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
-        },
-        "definitionKey": "task",
-        "title": "Undeniable Core Loop",
-        "body": "Source-backed task view.",
-        "priority": "medium",
-        "status": "todo",
-        "owner": "",
-        "estimateHours": "",
-        "countAsTask": true
-      }
-    },
-    {
-      "id": "tasks-root-port-port-primitives",
-      "type": "task",
-      "label": "Port Primitives",
-      "root": false,
-      "position": {
-        "x": 1260,
-        "y": 420
-      },
-      "width": 420,
-      "height": 260,
-      "visible": true,
-      "showLabel": false,
-      "data": {
-        "memo": "Clarify the port primitive, default handles, and explicit declaration law.",
-        "intent": "external",
-        "sourceRef": "github://twilite-zone/public/tasks/port-primitives/root.node",
-        "sourceNodeId": "port-primitives-summary-task",
-        "sourcePayload": "node.web.detail",
-        "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
             "graphId": "task-graph-summary-view-class",
             "name": "Task Summary Class",
@@ -2357,27 +1550,515 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task"
+        "definitionKey": "task-summary",
+        "title": "Mobile Graph Authoring",
+        "body": "Source-backed task view.",
+        "priority": "medium",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "countAsTask": true
+      }
+    },
+    {
+      "id": "tasks-root-port-intent-first",
+      "type": "task-summary",
+      "label": "Intent-First Authoring",
+      "root": false,
+      "position": {
+        "x": 1880,
+        "y": 1120
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "memo": "Strategic authoring model work around intent, manifestation, and system-owned geometry.",
+        "intent": "external",
+        "sourceRef": "github://twilite-zone/public/tasks/intent-first-authoring/root.node",
+        "sourceNodeId": "intent-first-authoring-task-summary-task",
+        "sourcePayload": "node.web",
+        "_classBinding": {
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
+            "version": "0.1.0",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "defaults": {
+            "label": "Task Summary",
+            "size": {
+              "width": 420,
+              "height": 260
+            },
+            "showLabel": false,
+            "data": {
+              "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
+            }
+          },
+          "nodeDef": {
+            "key": "task-summary",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "showLabel": false,
+              "data": {
+                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task-summary",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task-summary",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task-summary",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task-summary",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
+        },
+        "definitionKey": "task-summary",
+        "title": "Intent-First Authoring",
+        "body": "Source-backed task view.",
+        "priority": "medium",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "countAsTask": true
+      }
+    },
+    {
+      "id": "tasks-root-port-chatgpt-app",
+      "type": "task-summary",
+      "label": "ChatGPT Interface for Twilite",
+      "root": false,
+      "position": {
+        "x": 1280,
+        "y": 820
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "memo": "Strategic/background UI direction for chat-style interaction in Twilite.",
+        "intent": "external",
+        "sourceRef": "github://twilite-zone/public/tasks/chat-gpt-app/root.node",
+        "sourceNodeId": "chatgpt-app-task-summary-task",
+        "sourcePayload": "node.web",
+        "_classBinding": {
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
+            "version": "0.1.0",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "defaults": {
+            "label": "Task Summary",
+            "size": {
+              "width": 420,
+              "height": 260
+            },
+            "showLabel": false,
+            "data": {
+              "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
+            }
+          },
+          "nodeDef": {
+            "key": "task-summary",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "showLabel": false,
+              "data": {
+                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task-summary",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task-summary",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task-summary",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task-summary",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
+        },
+        "definitionKey": "task-summary",
+        "title": "ChatGPT Interface for Twilite",
+        "body": "Source-backed task view.",
+        "priority": "medium",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "countAsTask": true
+      }
+    },
+    {
+      "id": "tasks-root-port-core-loop-proof",
+      "type": "task-summary",
+      "label": "Undeniable Core Loop",
+      "root": false,
+      "position": {
+        "x": 1880,
+        "y": 820
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "memo": "Foundational product framing work that supports the main build effort.",
+        "intent": "external",
+        "sourceRef": "github://twilite-zone/public/tasks/core-loop-proof/root.node",
+        "sourceNodeId": "core-loop-proof-task-summary-task",
+        "sourcePayload": "node.web",
+        "_classBinding": {
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
+            "version": "0.1.0",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "defaults": {
+            "label": "Task Summary",
+            "size": {
+              "width": 420,
+              "height": 260
+            },
+            "showLabel": false,
+            "data": {
+              "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
+            }
+          },
+          "nodeDef": {
+            "key": "task-summary",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "showLabel": false,
+              "data": {
+                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task-summary",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task-summary",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task-summary",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task-summary",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
+        },
+        "definitionKey": "task-summary",
+        "title": "Undeniable Core Loop",
+        "body": "Source-backed task view.",
+        "priority": "medium",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "countAsTask": true
+      }
+    },
+    {
+      "id": "tasks-root-port-port-primitives",
+      "type": "task-summary",
+      "label": "Port Primitives",
+      "root": false,
+      "position": {
+        "x": 80,
+        "y": 1120
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "memo": "Clarify the port primitive, default handles, and explicit declaration law.",
+        "intent": "external",
+        "sourceRef": "github://twilite-zone/public/tasks/port-primitives/root.node",
+        "sourceNodeId": "port-primitives-summary-task",
+        "sourcePayload": "node.web",
+        "_classBinding": {
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
+            "version": "0.1.0",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "defaults": {
+            "label": "Task Summary",
+            "size": {
+              "width": 420,
+              "height": 260
+            },
+            "showLabel": false,
+            "data": {
+              "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
+            }
+          },
+          "nodeDef": {
+            "key": "task-summary",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "showLabel": false,
+              "data": {
+                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task-summary",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task-summary",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task-summary",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task-summary",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
+        },
+        "definitionKey": "task-summary"
       }
     },
     {
       "id": "tasks-root-port-candidate-node-sets",
-      "type": "task",
+      "type": "task-summary",
       "label": "Candidate Node Sets",
       "root": false,
       "position": {
-        "x": 2880,
-        "y": 880
+        "x": 1880,
+        "y": 1420
       },
       "width": 420,
       "height": 260,
@@ -2390,137 +2071,99 @@
         "sourceNodeId": "candidate-node-sets-summary-task",
         "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
             "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
             "updatedAt": "2026-03-24T01:10:00.000Z"
           },
           "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
           "defaults": {
-            "label": "Task",
+            "label": "Task Summary",
             "size": {
-              "width": 340,
+              "width": 420,
               "height": 260
             },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
             "showLabel": false,
             "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
+              "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
             }
           },
           "nodeDef": {
-            "key": "task",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "key": "task-summary",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0",
             "defaults": {
-              "label": "Task",
+              "label": "Task Summary",
               "size": {
-                "width": 340,
+                "width": 420,
                 "height": 260
               },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
               "showLabel": false,
               "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
+                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
               }
             }
           },
           "views": [
             {
-              "key": "task",
+              "key": "task-summary",
               "intent": "editor",
               "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             },
             {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
+              "key": "task-summary",
               "intent": "node",
               "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
               "source": "local",
               "version": ">=0.1.0"
             }
           ],
           "nodeView": {
-            "key": "task",
+            "key": "task-summary",
             "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0"
           },
           "editorView": {
-            "key": "task",
+            "key": "task-summary",
             "intent": "editor",
             "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
             "source": "local",
             "version": ">=0.1.0"
           }
         },
         "_bridge": {
-          "sourceNodeId": "root-bridge-task",
-          "sourceBridgeNodeId": "root-bridge-task",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/tasks/root.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task",
+        "definitionKey": "task-summary",
         "title": "Candidate Node Sets",
         "body": "Source-backed task view.",
         "priority": "medium",
@@ -2586,12 +2229,12 @@
     },
     {
       "id": "tasks-root-port-template-contract-composition",
-      "type": "task",
+      "type": "task-summary",
       "label": "Template & Contract Composition",
       "root": false,
       "position": {
-        "x": 720,
-        "y": 880
+        "x": 680,
+        "y": 1120
       },
       "width": 420,
       "height": 260,
@@ -2604,169 +2247,9 @@
         "sourceNodeId": "template-contract-composition-summary-task",
         "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
-            "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
-            "updatedAt": "2026-03-24T01:10:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
-          "defaults": {
-            "label": "Task",
-            "size": {
-              "width": 340,
-              "height": 260
-            },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
-            }
-          },
-          "nodeDef": {
-            "key": "task",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Task",
-              "size": {
-                "width": 340,
-                "height": 260
-              },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "task",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "task",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "task",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "root-bridge-task",
-          "sourceBridgeNodeId": "root-bridge-task",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/tasks/root.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
-        },
-        "definitionKey": "task",
-        "title": "Template & Contract Composition",
-        "body": "Source-backed task view.",
-        "priority": "medium",
-        "status": "todo",
-        "owner": "",
-        "estimateHours": "",
-        "countAsTask": true
-      }
-    },
-    {
-      "id": "tasks-root-port-view-data-script-template",
-      "type": "task",
-      "label": "View/Data/Script Template",
-      "root": false,
-      "position": {
-        "x": 2880,
-        "y": 420
-      },
-      "width": 420,
-      "height": 260,
-      "visible": true,
-      "showLabel": false,
-      "data": {
-        "memo": "Create a reusable building-block template for declared data, a host view, and a graph-owned script that builds that view precisely.",
-        "intent": "external",
-        "sourceRef": "github://twilite-zone/public/tasks/view-data-script-template/root.node",
-        "sourceNodeId": "view-data-script-template-summary-task",
-        "sourcePayload": "node.web.detail",
-        "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
             "graphId": "task-graph-summary-view-class",
             "name": "Task Summary Class",
@@ -2846,17 +2329,139 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task"
+        "definitionKey": "task-summary",
+        "title": "Template & Contract Composition",
+        "body": "Source-backed task view.",
+        "priority": "medium",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "countAsTask": true
+      }
+    },
+    {
+      "id": "tasks-root-port-view-data-script-template",
+      "type": "task-summary",
+      "label": "View/Data/Script Template",
+      "root": false,
+      "position": {
+        "x": 680,
+        "y": 1720
+      },
+      "width": 420,
+      "height": 260,
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "memo": "Create a reusable building-block template for declared data, a host view, and a graph-owned script that builds that view precisely.",
+        "intent": "external",
+        "sourceRef": "github://twilite-zone/public/tasks/view-data-script-template/root.node",
+        "sourceNodeId": "view-data-script-template-summary-task",
+        "sourcePayload": "node.web",
+        "_classBinding": {
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
+            "version": "0.1.0",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "defaults": {
+            "label": "Task Summary",
+            "size": {
+              "width": 420,
+              "height": 260
+            },
+            "showLabel": false,
+            "data": {
+              "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
+            }
+          },
+          "nodeDef": {
+            "key": "task-summary",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "showLabel": false,
+              "data": {
+                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task-summary",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task-summary",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task-summary",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task-summary",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
+        },
+        "definitionKey": "task-summary"
       }
     },
     {
@@ -3246,13 +2851,13 @@
       "label": "Developer Area",
       "root": false,
       "position": {
-        "x": 1180,
-        "y": -220
+        "x": 2480,
+        "y": 820
       },
       "width": 360,
       "height": 240,
       "visible": true,
-      "showLabel": true,
+      "showLabel": false,
       "data": {
         "memo": "Open the Twilite developer branch for internal operational and architecture work.",
         "intent": "external",
@@ -3270,7 +2875,7 @@
     },
     {
       "id": "tasks-root-port-load-render-decoupling",
-      "type": "task",
+      "type": "task-summary",
       "label": "Load / Render Decoupling",
       "root": false,
       "position": {
@@ -3282,7 +2887,7 @@
       "ports": [],
       "inputs": [],
       "outputs": [],
-      "visible": true,
+      "visible": false,
       "showLabel": false,
       "data": {
         "memo": "Separate semantic-zoom loading order from rendering density for smoother upgrades.",
@@ -3290,331 +2895,9 @@
         "sourceNodeId": "load-render-decoupling-summary-task",
         "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
-            "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
-            "updatedAt": "2026-03-24T01:10:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
-          "defaults": {
-            "label": "Task",
-            "size": {
-              "width": 340,
-              "height": 260
-            },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
-            }
-          },
-          "nodeDef": {
-            "key": "task",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Task",
-              "size": {
-                "width": 340,
-                "height": 260
-              },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "task",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "task",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "task",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "root-bridge-task",
-          "sourceBridgeNodeId": "root-bridge-task",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/tasks/root.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
-        },
-        "definitionKey": "task",
-        "title": "Load / Render Decoupling",
-        "body": "Source-backed task view.",
-        "priority": "medium",
-        "status": "todo",
-        "owner": "",
-        "estimateHours": "",
-        "countAsTask": true
-      }
-    },
-    {
-      "id": "tasks-root-port-icon-rendering",
-      "type": "task",
-      "label": "Icon Rendering",
-      "root": false,
-      "position": {
-        "x": 3420,
-        "y": 880
-      },
-      "width": 420,
-      "height": 260,
-      "ports": [],
-      "inputs": [],
-      "outputs": [],
-      "visible": true,
-      "showLabel": false,
-      "data": {
-        "memo": "Define native icon rendering for semantic zoom and icon views.",
-        "sourceRef": "github://twilite-zone/public/tasks/semantic-zoom/icon-rendering/root.node",
-        "sourceNodeId": "icon-rendering-summary-task",
-        "sourcePayload": "node.web",
-        "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
-            "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
-            "updatedAt": "2026-03-24T01:10:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
-          "defaults": {
-            "label": "Task",
-            "size": {
-              "width": 340,
-              "height": 260
-            },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
-            }
-          },
-          "nodeDef": {
-            "key": "task",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Task",
-              "size": {
-                "width": 340,
-                "height": 260
-              },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "task",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "task",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "task",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "root-bridge-task",
-          "sourceBridgeNodeId": "root-bridge-task",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/tasks/root.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
-        },
-        "definitionKey": "task",
-        "title": "Icon Rendering",
-        "body": "Source-backed task view.",
-        "priority": "medium",
-        "status": "todo",
-        "owner": "",
-        "estimateHours": "",
-        "countAsTask": true
-      }
-    },
-    {
-      "id": "tasks-root-port-error-card-system",
-      "type": "task",
-      "label": "Error Card System",
-      "root": false,
-      "position": {
-        "x": 3260,
-        "y": 420
-      },
-      "width": 420,
-      "height": 260,
-      "visible": true,
-      "showLabel": false,
-      "data": {
-        "memo": "Design reusable error cards and fallback surfaces for failed graph rendering paths.",
-        "intent": "external",
-        "sourceRef": "github://twilite-zone/public/tasks/interaction-policy/error-card-system/root.node",
-        "sourceNodeId": "error-card-system-summary-task",
-        "sourcePayload": "node.web.detail",
-        "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
             "graphId": "task-graph-summary-view-class",
             "name": "Task Summary Class",
@@ -3694,17 +2977,263 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task"
+        "definitionKey": "task-summary",
+        "title": "Load / Render Decoupling",
+        "body": "Source-backed task view.",
+        "priority": "medium",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "countAsTask": true
+      }
+    },
+    {
+      "id": "tasks-root-port-icon-rendering",
+      "type": "task-summary",
+      "label": "Icon Rendering",
+      "root": false,
+      "position": {
+        "x": 3420,
+        "y": 880
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [],
+      "inputs": [],
+      "outputs": [],
+      "visible": false,
+      "showLabel": false,
+      "data": {
+        "memo": "Define native icon rendering for semantic zoom and icon views.",
+        "sourceRef": "github://twilite-zone/public/tasks/semantic-zoom/icon-rendering/root.node",
+        "sourceNodeId": "icon-rendering-summary-task",
+        "sourcePayload": "node.web",
+        "_classBinding": {
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
+            "version": "0.1.0",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "defaults": {
+            "label": "Task Summary",
+            "size": {
+              "width": 420,
+              "height": 260
+            },
+            "showLabel": false,
+            "data": {
+              "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
+            }
+          },
+          "nodeDef": {
+            "key": "task-summary",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "showLabel": false,
+              "data": {
+                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task-summary",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task-summary",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task-summary",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task-summary",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
+        },
+        "definitionKey": "task-summary",
+        "title": "Icon Rendering",
+        "body": "Source-backed task view.",
+        "priority": "medium",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "countAsTask": true
+      }
+    },
+    {
+      "id": "tasks-root-port-error-card-system",
+      "type": "task-summary",
+      "label": "Error Card System",
+      "root": false,
+      "position": {
+        "x": 3260,
+        "y": 420
+      },
+      "width": 420,
+      "height": 260,
+      "visible": false,
+      "showLabel": false,
+      "data": {
+        "memo": "Design reusable error cards and fallback surfaces for failed graph rendering paths.",
+        "intent": "external",
+        "sourceRef": "github://twilite-zone/public/tasks/interaction-policy/error-card-system/root.node",
+        "sourceNodeId": "error-card-system-summary-task",
+        "sourcePayload": "node.web",
+        "_classBinding": {
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
+            "version": "0.1.0",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "defaults": {
+            "label": "Task Summary",
+            "size": {
+              "width": 420,
+              "height": 260
+            },
+            "showLabel": false,
+            "data": {
+              "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
+            }
+          },
+          "nodeDef": {
+            "key": "task-summary",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "showLabel": false,
+              "data": {
+                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task-summary",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task-summary",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task-summary",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task-summary",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
+        },
+        "definitionKey": "task-summary"
       }
     },
     {
@@ -3821,13 +3350,13 @@
       "label": "Tutorial Task Cluster",
       "root": false,
       "position": {
-        "x": 1620,
-        "y": -220
+        "x": 2480,
+        "y": 1120
       },
       "width": 340,
       "height": 220,
       "visible": true,
-      "showLabel": true,
+      "showLabel": false,
       "data": {
         "target": {
           "endpoint": "github://twilite-zone/public/tasks/tutorial-howto-cluster/root.node:root",
@@ -3847,7 +3376,7 @@
     },
     {
       "id": "tasks-root-port-bridge-capability-lanes",
-      "type": "task",
+      "type": "task-summary",
       "label": "Bridge Capability Lanes",
       "root": false,
       "position": {
@@ -3856,18 +3385,18 @@
       },
       "width": 420,
       "height": 260,
-      "visible": true,
+      "visible": false,
       "showLabel": false,
       "data": {
         "memo": "Separate bridge create, consume, and execute lanes so classes, views, and scripts cross graph boundaries intentionally.",
         "intent": "external",
         "sourceRef": "github://twilite-zone/public/tasks/interaction-policy/bridge-authority-model/bridge-capability-lanes/root.node",
         "sourceNodeId": "bridge-capability-lanes-summary-task",
-        "sourcePayload": "node.web.detail",
+        "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
             "graphId": "task-graph-summary-view-class",
             "name": "Task Summary Class",
@@ -3947,22 +3476,22 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task"
+        "definitionKey": "task-summary"
       }
     },
     {
       "id": "tasks-root-port-field-driven-class-artifacts",
-      "type": "task",
+      "type": "task-summary",
       "label": "Field-Driven Class Artifacts",
       "root": false,
       "position": {
@@ -3971,18 +3500,18 @@
       },
       "width": 420,
       "height": 260,
-      "visible": true,
+      "visible": false,
       "showLabel": false,
       "data": {
         "memo": "Downstream of minimal shared contract and remaining node composition work.",
         "intent": "external",
         "sourceRef": "github://twilite-zone/public/tasks/node-primitive-consolidation/field-driven-class-artifacts/root.node",
         "sourceNodeId": "field-driven-class-artifacts-task-summary",
-        "sourcePayload": "node.web.detail",
+        "sourcePayload": "node.web",
         "_classBinding": {
-          "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "identity": {
             "graphId": "task-graph-summary-view-class",
             "name": "Task Summary Class",
@@ -4062,17 +3591,17 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task"
+        "definitionKey": "task-summary"
       }
     },
     {
@@ -4085,7 +3614,7 @@
       },
       "width": 420,
       "height": 260,
-      "visible": true,
+      "visible": false,
       "showLabel": false,
       "data": {
         "memo": "Plan the first clean Twilite media workflow for images, embeds, and video.",
@@ -4191,346 +3720,964 @@
     },
     {
       "id": "tasks-root-port-authoring-contract-hardening",
-      "type": "task",
+      "type": "task-summary",
       "label": "Authoring Contract Hardening",
       "root": false,
       "position": {
-        "x": 180,
-        "y": 1120
+        "x": 80,
+        "y": 1420
       },
       "width": 420,
-      "height": 240,
+      "height": 260,
       "visible": true,
-      "showLabel": true,
+      "showLabel": false,
       "data": {
         "sourceRef": "github://twilite-zone/public/tasks/authoring-contract-hardening/root.node",
         "sourceNodeId": "authoring-contract-hardening-summary-task",
-        "sourcePayload": "node.web.detail",
-        "countAsTask": true
+        "sourcePayload": "node.web",
+        "countAsTask": true,
+        "_classBinding": {
+          "key": "task-summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "identity": {
+            "graphId": "task-graph-summary-view-class",
+            "name": "Task Summary Class",
+            "version": "0.1.0",
+            "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+            "createdAt": "2026-03-22T00:00:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "defaults": {
+            "label": "Task Summary",
+            "size": {
+              "width": 420,
+              "height": 260
+            },
+            "showLabel": false,
+            "data": {
+              "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+              "sourceNodeId": "task-graph-template-summary",
+              "sourcePayload": "node.web"
+            }
+          },
+          "nodeDef": {
+            "key": "task-summary",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task Summary",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "showLabel": false,
+              "data": {
+                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+                "sourceNodeId": "task-graph-template-summary",
+                "sourcePayload": "node.web"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "task-summary",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "task-summary",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "task-summary",
+            "intent": "node",
+            "payload": "node.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "task-summary",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "definitionKey": "task-summary",
+        "_bridge": {
+          "sourceNodeId": "root-bridge-task-summary",
+          "sourceBridgeNodeId": "root-bridge-task-summary",
+          "sourceBridgeLabel": "Task Summary",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task-summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
+        }
+      }
+    },
+    {
+      "id": "tasks-root-lane-now",
+      "type": "title",
+      "label": "Now",
+      "root": false,
+      "position": {
+        "x": 80,
+        "y": 320
+      },
+      "width": 420,
+      "height": 170,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "output",
+          "dataType": "any",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Now",
+        "subtitle": "Active implementation workstreams.",
+        "intent": "section",
+        "status": "active",
+        "_classBinding": {
+          "key": "title",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "identity": {
+            "graphId": "title-node-class",
+            "name": "Title Node Class",
+            "version": "0.1.0",
+            "description": "Template heading or major framing node for reusable graph structures.",
+            "createdAt": "2026-03-26T02:30:00.000Z",
+            "updatedAt": "2026-03-26T02:30:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Template heading or major framing node for reusable graph structures.",
+          "description": "Template heading or major framing node for reusable graph structures.",
+          "defaults": {
+            "label": "Title",
+            "size": {
+              "width": 420,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "subtitle": "",
+              "intent": "headline",
+              "status": "draft"
+            }
+          },
+          "nodeDef": {
+            "key": "title",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Title",
+              "size": {
+                "width": 420,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "subtitle": "",
+                "intent": "headline",
+                "status": "draft"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "title",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "title",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "title",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceBridgeNodeId": "tasks-root-title-port",
+          "sourceBridgeLabel": "Title",
+          "targetKind": "node-class",
+          "classKey": "title",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "sourceNodeId": "tutorial-title-port"
+        },
+        "definitionKey": "title"
+      }
+    },
+    {
+      "id": "tasks-root-lane-foundations",
+      "type": "title",
+      "label": "Foundations",
+      "root": false,
+      "position": {
+        "x": 680,
+        "y": 320
+      },
+      "width": 420,
+      "height": 170,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "output",
+          "dataType": "any",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Foundations",
+        "subtitle": "Platform structure and reusable primitives.",
+        "intent": "section",
+        "status": "active",
+        "_classBinding": {
+          "key": "title",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "identity": {
+            "graphId": "title-node-class",
+            "name": "Title Node Class",
+            "version": "0.1.0",
+            "description": "Template heading or major framing node for reusable graph structures.",
+            "createdAt": "2026-03-26T02:30:00.000Z",
+            "updatedAt": "2026-03-26T02:30:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Template heading or major framing node for reusable graph structures.",
+          "description": "Template heading or major framing node for reusable graph structures.",
+          "defaults": {
+            "label": "Title",
+            "size": {
+              "width": 420,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "subtitle": "",
+              "intent": "headline",
+              "status": "draft"
+            }
+          },
+          "nodeDef": {
+            "key": "title",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Title",
+              "size": {
+                "width": 420,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "subtitle": "",
+                "intent": "headline",
+                "status": "draft"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "title",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "title",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "title",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceBridgeNodeId": "tasks-root-title-port",
+          "sourceBridgeLabel": "Title",
+          "targetKind": "node-class",
+          "classKey": "title",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "sourceNodeId": "tutorial-title-port"
+        },
+        "definitionKey": "title"
+      }
+    },
+    {
+      "id": "tasks-root-lane-product-ux",
+      "type": "title",
+      "label": "Product / UX",
+      "root": false,
+      "position": {
+        "x": 1280,
+        "y": 320
+      },
+      "width": 420,
+      "height": 170,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "output",
+          "dataType": "any",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Product / UX",
+        "subtitle": "User-facing surface and interaction work.",
+        "intent": "section",
+        "status": "active",
+        "_classBinding": {
+          "key": "title",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "identity": {
+            "graphId": "title-node-class",
+            "name": "Title Node Class",
+            "version": "0.1.0",
+            "description": "Template heading or major framing node for reusable graph structures.",
+            "createdAt": "2026-03-26T02:30:00.000Z",
+            "updatedAt": "2026-03-26T02:30:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Template heading or major framing node for reusable graph structures.",
+          "description": "Template heading or major framing node for reusable graph structures.",
+          "defaults": {
+            "label": "Title",
+            "size": {
+              "width": 420,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "subtitle": "",
+              "intent": "headline",
+              "status": "draft"
+            }
+          },
+          "nodeDef": {
+            "key": "title",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Title",
+              "size": {
+                "width": 420,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "subtitle": "",
+                "intent": "headline",
+                "status": "draft"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "title",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "title",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "title",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceBridgeNodeId": "tasks-root-title-port",
+          "sourceBridgeLabel": "Title",
+          "targetKind": "node-class",
+          "classKey": "title",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "sourceNodeId": "tutorial-title-port"
+        },
+        "definitionKey": "title"
+      }
+    },
+    {
+      "id": "tasks-root-lane-research-bets",
+      "type": "title",
+      "label": "Research / Bets",
+      "root": false,
+      "position": {
+        "x": 1880,
+        "y": 320
+      },
+      "width": 420,
+      "height": 170,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "output",
+          "dataType": "any",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Research / Bets",
+        "subtitle": "Exploration, strategy, and product bets.",
+        "intent": "section",
+        "status": "active",
+        "_classBinding": {
+          "key": "title",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "identity": {
+            "graphId": "title-node-class",
+            "name": "Title Node Class",
+            "version": "0.1.0",
+            "description": "Template heading or major framing node for reusable graph structures.",
+            "createdAt": "2026-03-26T02:30:00.000Z",
+            "updatedAt": "2026-03-26T02:30:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Template heading or major framing node for reusable graph structures.",
+          "description": "Template heading or major framing node for reusable graph structures.",
+          "defaults": {
+            "label": "Title",
+            "size": {
+              "width": 420,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "subtitle": "",
+              "intent": "headline",
+              "status": "draft"
+            }
+          },
+          "nodeDef": {
+            "key": "title",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Title",
+              "size": {
+                "width": 420,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "subtitle": "",
+                "intent": "headline",
+                "status": "draft"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "title",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "title",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "title",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceBridgeNodeId": "tasks-root-title-port",
+          "sourceBridgeLabel": "Title",
+          "targetKind": "node-class",
+          "classKey": "title",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "sourceNodeId": "tutorial-title-port"
+        },
+        "definitionKey": "title"
+      }
+    },
+    {
+      "id": "tasks-root-lane-archive-references",
+      "type": "title",
+      "label": "Archive / References",
+      "root": false,
+      "position": {
+        "x": 2480,
+        "y": 320
+      },
+      "width": 420,
+      "height": 170,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "output",
+          "dataType": "any",
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "Archive / References",
+        "subtitle": "Reference clusters and support areas.",
+        "intent": "section",
+        "status": "active",
+        "_classBinding": {
+          "key": "title",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "identity": {
+            "graphId": "title-node-class",
+            "name": "Title Node Class",
+            "version": "0.1.0",
+            "description": "Template heading or major framing node for reusable graph structures.",
+            "createdAt": "2026-03-26T02:30:00.000Z",
+            "updatedAt": "2026-03-26T02:30:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Template heading or major framing node for reusable graph structures.",
+          "description": "Template heading or major framing node for reusable graph structures.",
+          "defaults": {
+            "label": "Title",
+            "size": {
+              "width": 420,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "subtitle": "",
+              "intent": "headline",
+              "status": "draft"
+            }
+          },
+          "nodeDef": {
+            "key": "title",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Title",
+              "size": {
+                "width": 420,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "subtitle": "",
+                "intent": "headline",
+                "status": "draft"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "title",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "title",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "title",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "title",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceBridgeNodeId": "tasks-root-title-port",
+          "sourceBridgeLabel": "Title",
+          "targetKind": "node-class",
+          "classKey": "title",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "sourceNodeId": "tutorial-title-port"
+        },
+        "definitionKey": "title"
       }
     }
   ],
   "edges": [
     {
-      "id": "tasks-root-edge-title-type",
+      "id": "tasks-root-edge-guide",
       "type": "reference",
       "source": "tasks-root-title",
-      "target": "tasks-root-type",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "declares type",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-type-view",
-      "type": "reference",
-      "source": "tasks-root-type",
-      "target": "tasks-root-view",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "informs",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-title-view",
-      "type": "reference",
-      "source": "tasks-root-title",
-      "target": "tasks-root-view",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "host view",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-developer-area",
-      "type": "reference",
-      "source": "tasks-root-title",
-      "target": "tasks-root-port-developer-area",
-      "sourcePort": "right",
-      "targetPort": "root",
-      "label": "developer area",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-tutorial-howto-cluster",
-      "type": "reference",
-      "source": "tasks-root-title",
-      "target": "tasks-root-port-tutorial-howto-cluster",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "active",
+      "target": "tasks-root-legend",
+      "label": "board guide",
       "style": {
-        "curved": true,
-        "route": "curved"
+        "width": 2,
+        "dash": [
+          6,
+          4
+        ],
+        "curved": true
       },
       "data": {}
     },
     {
-      "id": "tasks-root-edge-lane-active-start",
+      "id": "tasks-root-edge-lane-now",
       "type": "reference",
       "source": "tasks-root-title",
-      "target": "tasks-root-port-local-runtime",
-      "label": "active",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
+      "target": "tasks-root-lane-now",
+      "label": "now",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
       "data": {}
     },
     {
-      "id": "tasks-root-edge-lane-active-2",
-      "type": "reference",
-      "source": "tasks-root-port-local-runtime",
-      "target": "tasks-root-port-graph-organization",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-active-3",
-      "type": "reference",
-      "source": "tasks-root-port-graph-organization",
-      "target": "tasks-root-port-port-primitives",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-active-4",
-      "type": "reference",
-      "source": "tasks-root-port-port-primitives",
-      "target": "tasks-root-port-beta-readiness",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-active-5",
-      "type": "reference",
-      "source": "tasks-root-port-beta-readiness",
-      "target": "tasks-root-port-interaction-policy",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-active-8",
-      "type": "reference",
-      "source": "tasks-root-port-bridge-capability-lanes",
-      "target": "tasks-root-port-view-data-script-template",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-active-9",
-      "type": "reference",
-      "source": "tasks-root-port-view-data-script-template",
-      "target": "tasks-root-port-error-card-system",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-background-start",
+      "id": "tasks-root-edge-lane-foundations",
       "type": "reference",
       "source": "tasks-root-title",
-      "target": "tasks-root-port-core-loop-proof",
-      "label": "supporting",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
+      "target": "tasks-root-lane-foundations",
+      "label": "foundations",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
       "data": {}
     },
     {
-      "id": "tasks-root-edge-lane-background-1",
-      "type": "reference",
-      "source": "tasks-root-port-core-loop-proof",
-      "target": "tasks-root-port-edge-classes",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-background-2",
-      "type": "reference",
-      "source": "tasks-root-port-edge-classes",
-      "target": "tasks-root-port-template-contract-composition",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-background-3",
-      "type": "reference",
-      "source": "tasks-root-port-template-contract-composition",
-      "target": "tasks-root-port-3",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-background-4",
-      "type": "reference",
-      "source": "tasks-root-port-3",
-      "target": "tasks-root-port-load-render-decoupling",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-background-5",
-      "type": "reference",
-      "source": "tasks-root-port-load-render-decoupling",
-      "target": "tasks-root-port-chatgpt-app",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-background-6",
-      "type": "reference",
-      "source": "tasks-root-port-chatgpt-app",
-      "target": "tasks-root-port-candidate-node-sets",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-background-7",
-      "type": "reference",
-      "source": "tasks-root-port-candidate-node-sets",
-      "target": "tasks-root-port-icon-rendering",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-background-branch",
-      "type": "reference",
-      "source": "tasks-root-port-template-contract-composition",
-      "target": "tasks-root-port-field-driven-class-artifacts",
-      "label": "related",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-future-start",
+      "id": "tasks-root-edge-lane-product",
       "type": "reference",
       "source": "tasks-root-title",
-      "target": "tasks-root-port-10",
-      "label": "future",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
+      "target": "tasks-root-lane-product-ux",
+      "label": "product / ux",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
       "data": {}
     },
     {
-      "id": "tasks-root-edge-lane-future-1",
+      "id": "tasks-root-edge-lane-research",
       "type": "reference",
-      "source": "tasks-root-port-10",
-      "target": "tasks-root-port-11",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-future-2",
-      "type": "reference",
-      "source": "tasks-root-port-11",
-      "target": "tasks-root-port-mobile-graph",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-future-3",
-      "type": "reference",
-      "source": "tasks-root-port-mobile-graph",
-      "target": "tasks-root-port-intent-first",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-future-4",
-      "type": "reference",
-      "source": "tasks-root-port-intent-first",
-      "target": "tasks-root-port-vscode-landing",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
+      "source": "tasks-root-title",
+      "target": "tasks-root-lane-research-bets",
+      "label": "research / bets",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
       "data": {}
     },
     {
       "id": "tasks-root-edge-lane-archive",
       "type": "reference",
       "source": "tasks-root-title",
-      "target": "tasks-root-port-archive",
-      "label": "archive",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-lane-active-6",
-      "type": "reference",
-      "source": "tasks-root-port-interaction-policy",
-      "target": "tasks-root-port-bridge-capability-lanes",
-      "label": "",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "tasks-root-edge-beta-media",
-      "type": "reference",
-      "source": "tasks-root-port-beta-readiness",
-      "target": "tasks-root-port-media-authoring",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "media",
-      "style": {},
+      "target": "tasks-root-lane-archive-references",
+      "label": "archive / references",
+      "style": {
+        "width": 2,
+        "dash": [],
+        "curved": true
+      },
       "data": {}
     }
   ],
