@@ -120,14 +120,29 @@
         "name": "Authoring Contract Hardening Declaration",
         "declaresKind": "task-graph",
         "purpose": "Declare this graph as the source task graph for hardening Twilite's authoring contract, diagnostics, specimens, and persistence boundaries.",
-        "primaryNodeViewId": "authoring-contract-hardening-summary-task",
+        "primaryNodeViewId": "authoring-contract-hardening-entry-port",
         "declaration": {
           "kind": "task-graph",
           "targetMode": "artifact",
           "artifactKind": "task-graph",
           "graphViewRole": "authoring",
-          "defaultSurfaceId": "summary",
+          "defaultSurfaceId": "entry",
           "surfaces": [
+            {
+              "id": "entry",
+              "kind": "port",
+              "label": "Entry Card",
+              "memo": "Primary outward-facing entry surface for the authoring contract hardening task graph.",
+              "viewNodeId": "authoring-contract-hardening-entry-port",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            },
             {
               "id": "summary",
               "kind": "view",
@@ -2533,6 +2548,35 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
         },
         "definitionKey": "summary",
+        "identity": {
+          "graphId": "authoring-contract-hardening-declaration"
+        }
+      }
+    },
+    {
+      "id": "authoring-contract-hardening-entry-port",
+      "type": "port",
+      "label": "Authoring Contract Hardening Entry",
+      "root": false,
+      "position": {
+        "x": -1240,
+        "y": 820
+      },
+      "width": 420,
+      "height": 260,
+      "visible": false,
+      "showLabel": false,
+      "data": {
+        "memo": "Outward-facing entry surface for the Authoring Contract Hardening task graph.",
+        "intent": "external",
+        "target": {
+          "endpoint": "github://twilite-zone/public/tasks/authoring-contract-hardening/root.node:root",
+          "mode": "navigate",
+          "label": "Open"
+        },
+        "sourceRef": "github://twilite-zone/public/tasks/authoring-contract-hardening/root.node",
+        "sourceNodeId": "authoring-contract-hardening-summary-task",
+        "sourcePayload": "node.web",
         "identity": {
           "graphId": "authoring-contract-hardening-declaration"
         }
