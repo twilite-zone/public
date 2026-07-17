@@ -12,7 +12,10 @@
       "authoring",
       "publishing"
     ],
-    "preferredViewer": "https://twilite.zone"
+    "preferredViewer": "https://twilite.zone",
+    "graphId": "document-authoring-contract",
+    "version": "0.2.0",
+    "kind": "artifact"
   },
   "nodes": [
     {
@@ -32,7 +35,7 @@
         "identity": {
           "graphId": "document-authoring-contract",
           "name": "Document Authoring Contract",
-          "version": "0.1.0",
+          "version": "0.2.0",
           "description": "Product-level contract for how Twilite document graphs should be authored, structured, surfaced, and validated.",
           "createdAt": "2026-07-17T00:00:00.000Z",
           "updatedAt": "2026-07-17T00:00:00.000Z"
@@ -44,8 +47,6 @@
         "dependencies": {
           "nodeTypes": [
             "declaration",
-            "manifest",
-            "legend",
             "title",
             "type-definition",
             "node-view",
@@ -62,7 +63,9 @@
             "nodes": ">=1.0.0",
             "ports": ">=1.0.0"
           },
-          "optional": []
+          "optional": [
+            "legend"
+          ]
         },
         "authority": {
           "mutation": {
@@ -103,15 +106,16 @@
         "declaration": {
           "kind": "artifact",
           "targetMode": "artifact",
-          "artifactKind": "document-authoring-contract",
+          "artifactKind": "contract",
+          "primaryNodeViewId": "document-authoring-contract-node-view",
           "graphViewRole": "documentation",
-          "defaultSurfaceId": "view",
+          "defaultSurfaceId": "detail",
           "surfaces": [
             {
-              "id": "view",
+              "id": "detail",
               "kind": "view",
-              "label": "View",
-              "memo": "Human-facing reading surface for the document authoring contract.",
+              "label": "Detail",
+              "memo": "Primary reading surface for the document authoring contract.",
               "viewNodeId": "document-authoring-contract-node-view",
               "exposes": {
                 "views": {
@@ -119,15 +123,36 @@
                 },
                 "declarations": {
                   "mode": "allow"
+                }
+              }
+            },
+            {
+              "id": "port",
+              "kind": "view",
+              "label": "Port",
+              "memo": "Host-facing preview surface for connected consumers.",
+              "viewNodeId": "document-authoring-contract-port-view",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
                 },
-                "nodeClasses": {
-                  "mode": "deny"
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            },
+            {
+              "id": "icon",
+              "kind": "view",
+              "label": "Icon",
+              "memo": "Semantic-zoom icon surface for the document authoring contract.",
+              "viewNodeId": "document-authoring-contract-icon-view",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
                 },
-                "edgeClasses": {
-                  "mode": "deny"
-                },
-                "scripts": {
-                  "mode": "deny"
+                "declarations": {
+                  "mode": "allow"
                 }
               }
             }
@@ -144,123 +169,6 @@
         },
         "definitionKey": "declaration",
         "visibilityRole": "browser"
-      }
-    },
-    {
-      "id": "document-authoring-contract-manifest",
-      "type": "manifest",
-      "label": "Manifest",
-      "root": false,
-      "position": {
-        "x": -1040,
-        "y": -300
-      },
-      "width": 360,
-      "height": 220,
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "document-authoring-contract",
-          "name": "Document Authoring Contract",
-          "version": "0.1.0",
-          "description": "Product-level contract for how Twilite document graphs should be authored, structured, surfaced, and validated.",
-          "createdAt": "2026-07-17T00:00:00.000Z",
-          "updatedAt": "2026-07-17T00:00:00.000Z"
-        },
-        "intent": {
-          "kind": "graph",
-          "scope": "documentation"
-        },
-        "dependencies": {
-          "nodeTypes": [
-            "manifest",
-            "legend",
-            "title",
-            "type-definition",
-            "field",
-            "node-view",
-            "port-view",
-            "icon-view",
-            "markdown",
-            "port"
-          ],
-          "portContracts": [
-            "core"
-          ],
-          "skills": [],
-          "schemaVersions": {
-            "nodes": ">=1.0.0",
-            "ports": ">=1.0.0"
-          },
-          "optional": []
-        },
-        "authority": {
-          "mutation": {
-            "allowCreate": true,
-            "allowUpdate": true,
-            "allowDelete": true,
-            "appendOnly": false
-          },
-          "actors": {
-            "humans": true,
-            "agents": true,
-            "tools": true
-          },
-          "styleAuthority": "descriptive",
-          "history": {
-            "rewriteAllowed": false,
-            "squashAllowed": false
-          }
-        },
-        "document": {
-          "url": ""
-        },
-        "settings": {
-          "theme": null,
-          "backgroundImage": null,
-          "defaultNodeColor": "#1976d2",
-          "defaultEdgeColor": "#666666",
-          "snapToGrid": false,
-          "gridSize": 20,
-          "edgeRouting": "auto",
-          "autoSave": false
-        },
-        "summaryNodeId": "document-authoring-contract-node-view"
-      }
-    },
-    {
-      "id": "document-authoring-contract-legend",
-      "type": "legend",
-      "label": "Legend",
-      "root": false,
-      "position": {
-        "x": -560,
-        "y": -300
-      },
-      "width": 300,
-      "height": 220,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "entries": [
-          {
-            "label": "Title",
-            "color": "#f3efe6"
-          },
-          {
-            "label": "Type",
-            "color": "#e7f2ff"
-          },
-          {
-            "label": "Contract",
-            "color": "#ecfeff"
-          },
-          {
-            "label": "Reference",
-            "color": "#f4f7ff"
-          }
-        ]
       }
     },
     {
