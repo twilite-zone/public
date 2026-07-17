@@ -258,6 +258,47 @@ Use this shape when the user asks for "a port for this graph" and the main goal 
 - If you paste fenced JSON from a chat response, make sure the payload inside the fence is complete and balanced
 - If the app reports a JSON syntax error, fix that first before debugging node contracts
 
+## Markdown content versus node styling
+
+- `data.markdown` is for authored content, not for canvas styling
+- Do not use inline CSS inside markdown payloads to change text color, borders, or layout
+- Twilite sanitizes markdown HTML, so `style=` attributes inside markdown should be treated as unsupported authoring
+- Use node-level style fields like `style.color`, `style.background`, `style.borderColor`, and `style.boxShadow` for the node's presentation
+- If the authored content itself must be richly styled, use an `html` or `svg` render path instead of trying to smuggle CSS through markdown
+
+### Markdown styling anti-pattern
+
+Wrong:
+
+```json
+{
+  "action": "updateNode",
+  "id": "classic-rag",
+  "updates": {
+    "data": {
+      "markdown": "<div style=\"color:#172033\"><h1>Classic RAG</h1></div>"
+    }
+  }
+}
+```
+
+Correct intent-preserving alternative:
+
+```json
+{
+  "action": "updateNode",
+  "id": "classic-rag",
+  "updates": {
+    "style": {
+      "color": "#172033"
+    },
+    "data": {
+      "markdown": "# Classic RAG"
+    }
+  }
+}
+```
+
 ### Do not substitute nearby primitives
 - If the user asks for a `declaration`, create a `declaration`, not a `dictionary`
 - If the user asks for a `port`, create a `port`, not a `markdown` node
