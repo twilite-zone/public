@@ -1528,6 +1528,51 @@ For a fresh graph artifact:
 - add only the node types the graph actually needs
 - avoid unnecessary compatibility scaffolding
 
+## Declaration Editor Contract
+
+If you are authoring or repairing a custom editor for a `declaration`, use the built-in declaration editor as the minimum functional contract.
+
+- A custom declaration editor may use a different layout
+- A custom declaration editor may use custom HTML or a class-backed editor surface
+- A custom declaration editor may group fields differently
+- But it still must correctly edit the declaration contract
+
+At minimum, a valid declaration editor must support:
+
+- `data.identity.name`
+- `data.identity.graphId`
+- `data.identity.version`
+- `data.identity.description`
+- `data.intent.kind`
+- `data.intent.scope`
+- `data.declaration.targetMode`
+- `data.declaration.artifactKind`
+- `data.declaration.graphViewRole`
+- `data.declaration.defaultSurfaceId`
+- `data.declaration.primaryNodeViewId`
+- `data.declaration.primaryEditorViewId`
+- `data.declaration.iconViewNodeId`
+- `data.declaration.portViewNodeId`
+- `data.declaration.surfaces`
+
+When present, keep these declaration-owned fields working too:
+
+- `data.declaresKind`
+- `data.purpose`
+
+These fields are not just plain strings:
+
+- `data.identity.graphId` must participate in graph-id rename behavior
+- `data.declaration.defaultSurfaceId` must resolve against real declared surfaces
+- `data.declaration.surfaces` must preserve valid surface objects and their editable fields
+- declaration view bindings must resolve against real compatible view nodes in the graph
+
+Do not assume that a pretty `editor.web.html` specimen is enough.
+
+- If the editor cannot actually edit the required declaration state, it is invalid
+- Do not rely on the runtime to paste the stock declaration editor underneath an incomplete custom one
+- If you cannot satisfy the declaration editor contract, say so instead of inventing partial syntax
+
 ## Handshake Example
 
 ```json

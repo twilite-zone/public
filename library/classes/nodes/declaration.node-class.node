@@ -422,12 +422,44 @@
         "html": "<div style=\"width:100%;height:100%;display:flex;flex-direction:column;gap:12px;padding:18px;box-sizing:border-box;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(243,244,255,0.96));border:1px solid rgba(109,40,217,0.14);overflow:hidden;\"><div style=\"display:flex;align-items:flex-start;justify-content:space-between;gap:12px;\"><div style=\"display:flex;flex-direction:column;gap:6px;min-width:0;\"><div style=\"font:700 11px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#7c3aed;\">Editor Surface</div><div style=\"font:700 24px/1.12 ui-sans-serif, system-ui, sans-serif;color:#312e81;\">Declaration Editor</div></div><div style=\"padding:4px 8px;border-radius:999px;background:rgba(124,58,237,0.1);color:#5b21b6;font:700 11px/1 ui-sans-serif, system-ui, sans-serif;\">form-driven</div></div><div style=\"display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;\"><div style=\"padding:10px 12px;border-radius:12px;background:white;border:1px solid rgba(109,40,217,0.12);font:600 12px/1.35 ui-sans-serif, system-ui, sans-serif;color:#4338ca;\">Identity fields</div><div style=\"padding:10px 12px;border-radius:12px;background:white;border:1px solid rgba(109,40,217,0.12);font:600 12px/1.35 ui-sans-serif, system-ui, sans-serif;color:#4338ca;\">Intent and target mode</div><div style=\"padding:10px 12px;border-radius:12px;background:white;border:1px solid rgba(109,40,217,0.12);font:600 12px/1.35 ui-sans-serif, system-ui, sans-serif;color:#4338ca;\">Surface bindings</div><div style=\"padding:10px 12px;border-radius:12px;background:white;border:1px solid rgba(109,40,217,0.12);font:600 12px/1.35 ui-sans-serif, system-ui, sans-serif;color:#4338ca;\">Purpose and description</div></div><div style=\"padding:12px 14px;border-radius:14px;background:rgba(255,255,255,0.88);border:1px solid rgba(109,40,217,0.12);font:500 13px/1.5 ui-sans-serif, system-ui, sans-serif;color:#4c1d95;\">This specimen previews the editor contract for declaration nodes. The actual editable schema still lives in <span style=\"font-weight:700;color:#312e81;\">data.editor.web.fields</span>; the card here is just the visual surface specimen.</div></div>",
         "editor": {
           "web": {
+            "host": {
+              "kind": "declaration-editor",
+              "chrome": {
+                "eyebrow": "Editor Surface",
+                "title": "Declaration Editor",
+                "badge": "form-driven",
+                "summary": "Edit graph identity, intent, exposed surfaces, and primary bindings through the declaration contract."
+              },
+              "sections": [
+                {
+                  "key": "identity",
+                  "title": "Identity fields",
+                  "summary": "Define the artifact's canonical name, graph id, version, and human description."
+                },
+                {
+                  "key": "intent",
+                  "title": "Intent and target mode",
+                  "summary": "Describe what kind of artifact this is and how Twilite should interpret it."
+                },
+                {
+                  "key": "bindings",
+                  "title": "Surface bindings",
+                  "summary": "Choose the primary views and keep the declaration's surface contract aligned."
+                },
+                {
+                  "key": "narrative",
+                  "title": "Purpose and description",
+                  "summary": "Explain what this graph means and how readers or other graphs should use it."
+                }
+              ]
+            },
             "fields": [
               {
                 "key": "graphName",
                 "label": "Graph Name",
                 "type": "text",
                 "path": "data.identity.name",
+                "section": "identity",
                 "placeholder": "Untitled Graph"
               },
               {
@@ -435,6 +467,7 @@
                 "label": "Graph ID",
                 "type": "text",
                 "path": "data.identity.graphId",
+                "section": "identity",
                 "placeholder": "graph-id"
               },
               {
@@ -442,6 +475,7 @@
                 "label": "Version",
                 "type": "text",
                 "path": "data.identity.version",
+                "section": "identity",
                 "placeholder": "0.1.0"
               },
               {
@@ -449,6 +483,7 @@
                 "label": "Intent Kind",
                 "type": "select",
                 "path": "data.intent.kind",
+                "section": "intent",
                 "options": [
                   {
                     "label": "Graph",
@@ -485,6 +520,7 @@
                 "label": "Intent Scope",
                 "type": "select",
                 "path": "data.intent.scope",
+                "section": "intent",
                 "options": [
                   {
                     "label": "Mixed",
@@ -509,6 +545,7 @@
                 "label": "Target Mode",
                 "type": "select",
                 "path": "data.declaration.targetMode",
+                "section": "intent",
                 "options": [
                   {
                     "label": "Artifact",
@@ -525,6 +562,7 @@
                 "label": "Artifact Kind",
                 "type": "select",
                 "path": "data.declaration.artifactKind",
+                "section": "intent",
                 "options": [
                   {
                     "label": "Graph",
@@ -561,6 +599,7 @@
                 "label": "Declares Kind",
                 "type": "select",
                 "path": "data.declaresKind",
+                "section": "intent",
                 "options": [
                   {
                     "label": "Graph",
@@ -597,6 +636,7 @@
                 "label": "Graph View Role",
                 "type": "select",
                 "path": "data.declaration.graphViewRole",
+                "section": "intent",
                 "options": [
                   {
                     "label": "Authoring",
@@ -617,6 +657,7 @@
                 "label": "Primary Node View",
                 "type": "select",
                 "path": "data.declaration.primaryNodeViewId",
+                "section": "bindings",
                 "optionsSource": "graphViewNodes",
                 "optionsFilter": "node"
               },
@@ -625,6 +666,7 @@
                 "label": "Primary Editor View",
                 "type": "select",
                 "path": "data.declaration.primaryEditorViewId",
+                "section": "bindings",
                 "optionsSource": "graphViewNodes",
                 "optionsFilter": "editor"
               },
@@ -633,6 +675,7 @@
                 "label": "Icon View Node",
                 "type": "select",
                 "path": "data.declaration.iconViewNodeId",
+                "section": "bindings",
                 "optionsSource": "graphViewNodes",
                 "optionsFilter": "icon"
               },
@@ -641,6 +684,7 @@
                 "label": "Port View Node",
                 "type": "select",
                 "path": "data.declaration.portViewNodeId",
+                "section": "bindings",
                 "optionsSource": "graphViewNodes",
                 "optionsFilter": "port"
               },
@@ -649,6 +693,7 @@
                 "label": "Default Surface ID",
                 "type": "text",
                 "path": "data.declaration.defaultSurfaceId",
+                "section": "bindings",
                 "placeholder": "root"
               },
               {
@@ -656,6 +701,7 @@
                 "label": "Surfaces (JSON)",
                 "type": "json",
                 "path": "data.declaration.surfaces",
+                "section": "bindings",
                 "multiline": true,
                 "rows": 10,
                 "placeholder": "[\\n  {\\n    \\\"id\\\": \\\"root\\\",\\n    \\\"kind\\\": \\\"port\\\",\\n    \\\"label\\\": \\\"Root\\\",\\n    \\\"memo\\\": \\\"Primary landing port for the graph.\\\",\\n    \\\"viewNodeId\\\": \\\"graph-port\\\",\\n    \\\"exposes\\\": {\\n      \\\"views\\\": {\\\"mode\\\": \\\"allow\\\"},\\n      \\\"declarations\\\": {\\\"mode\\\": \\\"allow\\\"}\\n    }\\n  }\\n]\\n"
@@ -665,6 +711,7 @@
                 "label": "Purpose",
                 "type": "markdown",
                 "path": "data.purpose",
+                "section": "narrative",
                 "placeholder": "Declare what this graph is and how readers and other graphs should interpret it.",
                 "multiline": true,
                 "rows": 4
@@ -674,6 +721,7 @@
                 "label": "Description",
                 "type": "markdown",
                 "path": "data.identity.description",
+                "section": "narrative",
                 "placeholder": "Describe this graph for humans and tooling.",
                 "multiline": true,
                 "rows": 6

@@ -107,6 +107,57 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - If you include compatibility fields like `primaryNodeViewId` or `portViewNodeId`, keep them aligned with the declared surfaces instead of letting them disagree
 - A graph with a partial declaration may load, but it can still trigger saveability or interpretation problems
 
+### Declaration editor contract
+If you author a custom editor for a `declaration`, treat the built-in declaration editor as the minimum executable contract.
+
+- A custom declaration editor may choose its own layout, styling, grouping, and HTML
+- A custom declaration editor may present the fields in a different order
+- A custom declaration editor may use a class-backed editor surface instead of the stock visual layout
+- But if it claims to edit a `declaration`, it must still correctly edit the declaration contract
+
+Minimum required declaration fields:
+
+- `data.identity.name`
+- `data.identity.graphId`
+- `data.identity.version`
+- `data.identity.description`
+- `data.intent.kind`
+- `data.intent.scope`
+- `data.declaration.targetMode`
+- `data.declaration.artifactKind`
+- `data.declaration.graphViewRole`
+- `data.declaration.defaultSurfaceId`
+- `data.declaration.primaryNodeViewId`
+- `data.declaration.primaryEditorViewId`
+- `data.declaration.iconViewNodeId`
+- `data.declaration.portViewNodeId`
+- `data.declaration.surfaces`
+
+Common declaration-owned metadata that should remain supported when present:
+
+- `data.declaresKind`
+- `data.purpose`
+
+Required declaration-editor behaviors:
+
+- `data.identity.graphId` is not just a text box:
+  - changing it must participate in the graph id rename flow
+  - the declaration node id and canonical graph id must stay aligned
+- `data.declaration.defaultSurfaceId` is not a freeform string only:
+  - it should resolve against real declared surfaces
+  - it should not silently point at a missing surface
+- `data.declaration.surfaces` is not arbitrary JSON prose:
+  - surface `id`, `kind`, `label`, `memo`, `viewNodeId`, and exposure families must remain editable
+  - the editor should preserve valid surface objects instead of downgrading them into opaque text
+- view-binding fields are semantic selectors:
+  - `primaryNodeViewId`, `primaryEditorViewId`, `iconViewNodeId`, and `portViewNodeId` should resolve against real compatible view nodes in the graph
+
+Failure rule:
+
+- If a custom declaration editor cannot correctly edit those required fields and behaviors, it is not a valid declaration editor
+- The runtime should not quietly merge the stock declaration editor into an incomplete custom declaration editor
+- An incomplete declaration editor should fail as an authoring error instead of being treated as alternate syntax
+
 ### Port guidance
 - When a user says "create a port for this graph", interpret that as: create a graph-owned entry surface that can open or connect back to this graph
 - Before inventing a port shape, inspect the port tutorial graph: `github://twilite-zone/public/tutorial/basic-primitives/port/root.node`
