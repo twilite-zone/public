@@ -1,26 +1,26 @@
 {
-  "type": "nodegraph-data",
+  "type": "task",
   "nodes": [
     {
-      "id": "chatgpt-app-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "id": "chatgpt-app-declaration",
+      "type": "declaration",
+      "label": "Declaration",
       "position": {
         "x": -780,
         "y": -260
       },
-      "width": 360,
-      "height": 240,
+      "width": 460,
+      "height": 340,
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
           "graphId": "chatgpt-app-task",
           "name": "ChatGPT Interface for Twilite",
-          "version": "0.1.0",
-          "description": "Planning graph for creating a ChatGPT-style interface layer inside Twilite.",
+          "version": "0.2.0",
+          "description": "Declaration-first planning graph for creating a ChatGPT-style interface layer inside Twilite.",
           "createdAt": "2026-03-18T12:00:00.000Z",
-          "updatedAt": "2026-03-18T12:00:00.000Z"
+          "updatedAt": "2026-07-22T00:00:00.000Z"
         },
         "intent": {
           "kind": "task",
@@ -28,11 +28,17 @@
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
-            "legend",
+            "declaration",
+            "bridge",
             "markdown",
+            "goal",
+            "constraint",
+            "decision",
+            "open-question",
+            "task",
             "port",
-            "summary"
+            "portal",
+            "script"
           ],
           "portContracts": [
             "core"
@@ -75,24 +81,182 @@
           "snapToGrid": false,
           "gridSize": 20,
           "edgeRouting": "auto",
-          "autoSave": false
+          "autoSave": false,
+          "expansion": {
+            "allowGraphEntry": true
+          }
         },
-        "summaryNodeId": "chatgpt-app-task-summary"
-      }
-    },
-    {
-      "id": "chatgpt-app-legend",
-      "type": "legend",
-      "label": "Legend",
-      "position": {
-        "x": -780,
-        "y": 20
+        "summaryNodeId": "chatgpt-app-task-summary",
+        "declaration": {
+          "kind": "task",
+          "targetMode": "graph",
+          "graphViewRole": "authoring",
+          "defaultSurfaceId": "summary",
+          "surfaces": [
+            {
+              "id": "summary",
+              "kind": "view",
+              "label": "ChatGPT Interface Summary",
+              "viewNodeId": "chatgpt-app-task-summary",
+              "memo": "Outward summary port for the ChatGPT interface task graph.",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            },
+            {
+              "id": "workspace",
+              "kind": "view",
+              "label": "Planning Workspace",
+              "viewNodeId": "chatgpt-app-overview",
+              "memo": "Primary planning workspace for this task graph.",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            }
+          ],
+          "primaryNodeViewId": "chatgpt-app-task-summary",
+          "primaryEditorViewId": ""
+        }
       },
-      "width": 320,
-      "height": 180,
-      "visible": true,
-      "showLabel": true,
-      "data": {}
+      "root": false,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "chatgpt-app-overview",
@@ -124,76 +288,7 @@
         "memo": "",
         "link": "",
         "isRoot": true,
-        "root": true,
-        "_classBinding": {
-          "key": "markdown",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "identity": {
-            "graphId": "markdown_class",
-            "name": "markdown Node Class",
-            "version": "0.1.0",
-            "description": "Canonical markdown content node.",
-            "createdAt": "2026-02-24T20:05:15Z",
-            "updatedAt": "2026-03-24T01:20:00.000Z"
-          },
-          "intent": "graph",
-          "meaning": "Canonical markdown content node.",
-          "description": "Canonical markdown content node.",
-          "defaults": {},
-          "nodeDef": {
-            "key": "markdown",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "views": [
-            {
-              "key": "markdown",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "markdown",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "markdown",
-            "intent": "node",
-            "payload": "node.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "markdown",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "markdown",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
-        },
-        "definitionKey": "markdown"
+        "root": true
       }
     },
     {
@@ -338,9 +433,9 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
+          "sourceNodeId": "root-bridge-goal",
+          "sourceBridgeNodeId": "root-bridge-goal",
+          "sourceBridgeLabel": "Goal",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
@@ -486,9 +581,9 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
+          "sourceNodeId": "root-bridge-constraint",
+          "sourceBridgeNodeId": "root-bridge-constraint",
+          "sourceBridgeLabel": "Constraint",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/constraint.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
@@ -634,9 +729,9 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
+          "sourceNodeId": "root-bridge-constraint",
+          "sourceBridgeNodeId": "root-bridge-constraint",
+          "sourceBridgeLabel": "Constraint",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/constraint.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
@@ -778,9 +873,9 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
+          "sourceNodeId": "root-bridge-decision",
+          "sourceBridgeNodeId": "root-bridge-decision",
+          "sourceBridgeLabel": "Decision",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
@@ -922,9 +1017,9 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
+          "sourceNodeId": "root-bridge-decision",
+          "sourceBridgeNodeId": "root-bridge-decision",
+          "sourceBridgeLabel": "Decision",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
@@ -1066,9 +1161,9 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
+          "sourceNodeId": "root-bridge-open-question",
+          "sourceBridgeNodeId": "root-bridge-open-question",
+          "sourceBridgeLabel": "Open Question",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
@@ -1210,9 +1305,9 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
+          "sourceNodeId": "root-bridge-open-question",
+          "sourceBridgeNodeId": "root-bridge-open-question",
+          "sourceBridgeLabel": "Open Question",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
@@ -1367,9 +1462,9 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
@@ -1524,9 +1619,9 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
@@ -1681,9 +1776,9 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
@@ -1838,9 +1933,9 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
@@ -1995,9 +2090,9 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
@@ -2152,9 +2247,9 @@
           }
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
+          "sourceNodeId": "root-bridge-task",
+          "sourceBridgeNodeId": "root-bridge-task",
+          "sourceBridgeLabel": "Task",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
@@ -2180,81 +2275,12 @@
       "data": {
         "markdown": "# Suggested Sequence\n\n## Phase 1\n- define Twilite chat mode\n- lock context and authority rules\n- decide what chat can see and do\n\n## Phase 2\n- build chat surface in the Twilite shell\n- implement streaming API\n- make graph-aware prompt assembly work\n\n## Phase 3\n- bridge chat output into graph actions\n- add confirmation UX for mutations\n- tighten guardrails and failure states\n\n## Phase 4\n- add evals and observability\n- measure chat usefulness on real Twilite tasks\n- expand persistence only after the core loop works",
         "memo": "",
-        "link": "",
-        "_classBinding": {
-          "key": "markdown",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "identity": {
-            "graphId": "markdown_class",
-            "name": "markdown Node Class",
-            "version": "0.1.0",
-            "description": "Canonical markdown content node.",
-            "createdAt": "2026-02-24T20:05:15Z",
-            "updatedAt": "2026-03-24T01:20:00.000Z"
-          },
-          "intent": "graph",
-          "meaning": "Canonical markdown content node.",
-          "description": "Canonical markdown content node.",
-          "defaults": {},
-          "nodeDef": {
-            "key": "markdown",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "views": [
-            {
-              "key": "markdown",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "markdown",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "markdown",
-            "intent": "node",
-            "payload": "node.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "markdown",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "markdown",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
-        },
-        "definitionKey": "markdown"
+        "link": ""
       }
     },
     {
-      "id": "chatgpt-app-port-library",
-      "type": "port",
+      "id": "chatgpt-app-portal-library",
+      "type": "portal",
       "label": "Open Planning Class Library",
       "position": {
         "x": -40,
@@ -2265,29 +2291,46 @@
       "visible": true,
       "showLabel": true,
       "data": {
+        "memo": "Open the planning nodeset used by this graph.",
+        "link": "",
+        "authority": "navigate",
+        "src": "github://twilite-zone/public/library/classes/nodes/task-planning/root.node",
+        "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/root.node",
+        "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/root.node:root",
+        "intent": "external",
         "target": {
           "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/root.node:root",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/root.node",
           "mode": "navigate",
           "url": "",
           "graphId": "",
           "nodeId": "",
           "portId": "root",
-          "label": "Open"
+          "label": "Open Planning Class Library",
+          "handleId": "root",
+          "surfaceId": ""
         },
-        "memo": "Reference planning nodeset used by this graph.",
-        "link": ""
+        "identity": {
+          "graphId": "chatgpt-app-task"
+        },
+        "security": "prompt",
+        "sourceNodeId": "",
+        "sourcePayload": "node.web.summary",
+        "surfaceId": "",
+        "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/root.node",
+        "visibilityRole": "browser"
       }
     },
     {
       "id": "chatgpt-app-task-summary",
-      "type": "summary",
+      "type": "port",
       "label": "ChatGPT Interface for Twilite Summary",
       "position": {
         "x": -760,
         "y": -40
       },
-      "width": 420,
-      "height": 250,
+      "width": 470,
+      "height": 320,
       "visible": true,
       "showLabel": true,
       "data": {
@@ -2316,118 +2359,163 @@
         ],
         "taskListText": "1. Define the Twilite chat mode and authority contract\n2. Build the ChatGPT-style Twilite chat surface\n3. Define graph-aware context assembly\n4. Implement the server-side chat API and streaming transport\n5. Bridge chat output into graph actions\n6. Add guardrails, evals, and observability for Twilite chat",
         "questionListText": "1. Where should chat history live in Twilite?\n2. What actions can chat take versus only suggest?",
-        "_classBinding": {
-          "key": "summary",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-          "identity": {
-            "graphId": "task-graph-summary-class",
-            "name": "Task Summary Provider Class",
-            "version": "0.1.0",
-            "description": "Provider surface for a planning task summary.",
-            "createdAt": "2026-03-22T00:00:00.000Z",
-            "updatedAt": "2026-03-24T01:10:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "Provider surface for a planning task summary.",
-          "description": "Provider surface for a planning task summary.",
-          "defaults": {
-            "label": "Task Summary Provider",
-            "size": {
-              "width": 420,
-              "height": 250
-            },
-            "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
-            "showLabel": false,
-            "data": {
-              "goal": "Summarize this task graph",
-              "status": "todo",
-              "taskProgress": {
-                "completed": 0,
-                "total": 0
-              },
-              "questionProgress": {
-                "answered": 0,
-                "total": 0
-              }
-            }
-          },
-          "nodeDef": {
-            "key": "summary",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Task Summary Provider",
-              "size": {
-                "width": 420,
-                "height": 250
-              },
-              "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
-              "showLabel": false,
-              "data": {
-                "goal": "Summarize this task graph",
-                "status": "todo",
-                "taskProgress": {
-                  "completed": 0,
-                  "total": 0
-                },
-                "questionProgress": {
-                  "answered": 0,
-                  "total": 0
-                }
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "summary",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "summary",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "summary",
-            "intent": "node",
-            "payload": "node.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "summary",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
+        "updatedAt": "2026-04-04T17:43:15.076Z",
+        "priority": "critical",
+        "owner": "Michael",
+        "targetDate": "",
+        "nextAction": "Resolve the remaining product and authority questions, then sequence implementation.",
+        "blockedReason": "",
+        "health": "needs-review",
+        "identity": {
+          "graphId": "chatgpt-app-task"
         },
-        "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Summary",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "summary",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        "view": {
+          "intent": "node",
+          "payload": "node.web",
+          "label": "Summary"
         },
-        "definitionKey": "summary",
-        "updatedAt": "2026-04-04T17:43:15.076Z"
-      }
+        "renderShape": {
+          "kind": "html"
+        },
+        "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;box-sizing:border-box;padding:0;overflow:hidden;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(228,247,239,.94));color:#23160a;position:relative;border:1px solid rgba(0,0,0,.08);'>\n  <div style='display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:linear-gradient(135deg, #9be7c4, #1f9d67);color:#082618;border-bottom:1px solid rgba(0,0,0,.08);'>\n    <div style='display:flex;align-items:center;gap:10px;min-width:0;'>\n      <div style='width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:{{eq(data.status, \"done\", \"rgba(31,157,103,.20)\", \"rgba(255,255,255,.18)\")}};border:1px solid {{eq(data.status, \"done\", \"rgba(8,38,24,.24)\", \"rgba(8,38,24,.32)\")}};color:#082618;font:800 14px system-ui,sans-serif;flex:0 0 auto;'>{{eq(data.status, \"done\", \"✓\", \"\")}}</div>\n      <div style='min-width:0;'>\n        <div style='font:700 10px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:.68;margin-bottom:2px;'>Task Graph</div>\n        <div style='font:800 18px/1.02 Georgia, \"Times New Roman\", serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;'>{{data.goal}}</div>\n      </div>\n    </div>\n    <div style='display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.38);border:1px solid rgba(0,0,0,.08);font:700 10px system-ui,sans-serif;text-transform:uppercase;white-space:nowrap;'>{{data.status}}</div>\n  </div>\n  <div style='display:flex;flex-direction:column;gap:12px;padding:14px 16px;min-height:0;flex:1;color:#23160a;'>\n    <div style='display:flex;align-items:center;gap:7px;flex-wrap:wrap;font:700 10px system-ui,sans-serif;color:#5b4731;'>\n      <span>Priority {{data.priority}}</span><span>•</span><span>Health {{data.health}}</span><span>•</span><span>Owner {{data.owner}}</span><span>•</span><span>Target {{data.targetDate}}</span>\n    </div>\n    <div style='padding:9px 11px;border-radius:12px;background:rgba(31,157,103,.12);border:1px solid rgba(0,0,0,.06);font:600 11px/1.35 system-ui,sans-serif;color:#23160a;'>\n      <div><strong>Next:</strong> {{data.nextAction}}</div>\n      <div style='margin-top:4px;color:#7a3e2d;'><strong>Blocker:</strong> {{data.blockedReason}}</div>\n    </div>\n    <div style='display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;'>\n      <div style='padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.06);'>\n        <div style='font:700 10px system-ui,sans-serif;letter-spacing:.13em;text-transform:uppercase;opacity:.72;color:#3b5b47;'>Tasks</div>\n        <div style='margin-top:6px;font:800 24px/1 Georgia, \"Times New Roman\", serif;color:#23160a;'>{{data.taskProgress.completed}} / {{data.taskProgress.total}}</div>\n      </div>\n      <div style='padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.06);'>\n        <div style='font:700 10px system-ui,sans-serif;letter-spacing:.13em;text-transform:uppercase;opacity:.72;color:#3b5b47;'>Questions</div>\n        <div style='margin-top:6px;font:800 24px/1 Georgia, \"Times New Roman\", serif;color:#23160a;'>{{data.questionProgress.answered}} / {{data.questionProgress.total}}</div>\n      </div>\n    </div>\n    <div style='display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;min-height:0;flex:1;'>\n      <div style='padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.06);min-height:0;'>\n        <div style='font:700 10px system-ui,sans-serif;letter-spacing:.13em;text-transform:uppercase;opacity:.66;color:#6b533a;margin-bottom:6px;'>Tasks in scope</div>\n        <div style='font:600 11px/1.35 system-ui,sans-serif;color:#23160a;white-space:pre-wrap;max-height:8.4em;overflow:auto;'>{{data.taskListText}}</div>\n      </div>\n      <div style='padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.06);min-height:0;'>\n        <div style='font:700 10px system-ui,sans-serif;letter-spacing:.13em;text-transform:uppercase;opacity:.66;color:#6b533a;margin-bottom:6px;'>Open questions</div>\n        <div style='font:600 11px/1.35 system-ui,sans-serif;color:#23160a;white-space:pre-wrap;max-height:8.4em;overflow:auto;'>{{data.questionListText}}</div>\n      </div>\n    </div>\n  <div style='padding:0 16px 9px;font:600 9px system-ui,sans-serif;color:#6b7280;'>Updated {{data.updatedAt}}</div>\n</div>",
+        "payload": "node.web",
+        "intent": "node",
+        "key": "node.web",
+        "viewRole": "summary",
+        "viewKind": "display",
+        "semanticLevel": "summary",
+        "visibilityRole": "browser",
+        "memo": "Source-owned summary port consumed by task collection portals."
+      },
+      "root": false,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "chatgpt-app-task-summary-updater",
@@ -2445,10 +2533,10 @@
         "mode": "auto",
         "status": "idle",
         "scriptRef": "",
-        "source": "const SUMMARY_NODE_ID = 'chatgpt-app-task-summary';\nconst SUMMARY_TASK_NODE_ID = 'chatgpt-app-task-summary-task';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel, maxItems = 4) => {\n  const visible = items.filter(Boolean).slice(0, maxItems);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst fetchJson = async (ref) => {\n  const normalizedRef = String(ref || '').trim();\n  if (!normalizedRef) return null;\n  try {\n    const response = await fetch(normalizedRef, { cache: 'no-store' });\n    if (!response.ok) return null;\n    return await response.json();\n  } catch (error) {\n    return null;\n  }\n};\nconst summaryStatusCache = new Map();\nconst getExternalSummaryStatus = async (entry) => {\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  if (!sourceRef || !sourceNodeId || sourceNodeId === SUMMARY_NODE_ID) return '';\n  const cacheKey = sourceRef + '#' + sourceNodeId;\n  if (summaryStatusCache.has(cacheKey)) return summaryStatusCache.get(cacheKey);\n  const graphData = await fetchJson(sourceRef);\n  const sourceNode = Array.isArray(graphData?.nodes)\n    ? graphData.nodes.find((node) => node?.id === sourceNodeId)\n    : null;\n  const status = normalize(sourceNode?.data?.status);\n  summaryStatusCache.set(cacheKey, status);\n  return status;\n};\n\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nif (!summaryNode) {\n  return { success: false, error: 'Summary node missing' };\n}\n\nconst summaryTaskNode = nodes.find((entry) => entry?.id === SUMMARY_TASK_NODE_ID);\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task' && entry?.id !== SUMMARY_TASK_NODE_ID && entry?.data?.countAsTask !== false);\nconst externalSummaryTasks = nodes.filter((entry) => {\n  if (entry?.type !== 'task-summary') return false;\n  if (entry?.data?.countAsTask === false) return false;\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  return Boolean(sourceRef && sourceNodeId && sourceNodeId !== SUMMARY_NODE_ID);\n});\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst literalTaskItems = tasks.map((entry) => ({\n  title: toTitle(entry, 'Untitled task'),\n  status: normalize(entry?.data?.status)\n}));\nconst externalTaskItems = await Promise.all(externalSummaryTasks.map(async (entry) => ({\n  title: toTitle(entry, 'Untitled task summary'),\n  status: await getExternalSummaryStatus(entry)\n})));\nconst taskItems = [...literalTaskItems, ...externalTaskItems].filter((entry) => entry?.title);\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalize(goalNode?.data?.status);\nconst derivedStatus = goalStatus\n  ? (goalStatus === 'done' && !allTasksDone ? 'in-progress' : goalNode?.data?.status)\n  : (allTasksDone ? 'done' : (completedTaskCount > 0 ? 'in-progress' : (summaryNode?.data?.status || 'todo')));\n\nconst nextData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  taskProgress: {\n    completed: completedTaskCount,\n    total: taskItems.length\n  },\n  questionProgress: {\n    answered: questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length,\n    total: questions.length\n  },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.', taskTitles.length || 4),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'node-updater',\n  updatedAt: new Date().toISOString()\n};\n\nawait api.updateNode(SUMMARY_NODE_ID, { data: nextData });\n\nif (summaryTaskNode) {\n  const taskTitle = goalNode?.label || summaryNode?.data?.goal || 'Task view';\n  const taskBody = ['Goal: ' + taskTitle, 'Status: ' + derivedStatus, '', 'Tasks in scope:', nextData.taskListText, '', 'Open questions:', nextData.questionListText].join('\\n');\n  const taskData = {\n    ...(summaryTaskNode.data || {}),\n    title: taskTitle,\n    body: taskBody,\n    status: derivedStatus,\n    summarySource: 'node-updater',\n    taskProgress: nextData.taskProgress,\n    questionProgress: nextData.questionProgress\n  };\n  await api.updateNode(SUMMARY_TASK_NODE_ID, { data: taskData });\n}\nreturn { success: true, summary: nextData, taskNodeId: SUMMARY_TASK_NODE_ID };",
+        "source": "const SUMMARY_NODE_ID = 'chatgpt-app-task-summary';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel, maxItems = 4) => {\n  const visible = items.filter(Boolean).slice(0, maxItems);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst fetchJson = async (ref) => {\n  const normalizedRef = String(ref || '').trim();\n  if (!normalizedRef) return null;\n  try {\n    const response = await fetch(normalizedRef, { cache: 'no-store' });\n    if (!response.ok) return null;\n    return await response.json();\n  } catch (error) {\n    return null;\n  }\n};\nconst summaryStatusCache = new Map();\nconst getExternalSummaryStatus = async (entry) => {\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  if (!sourceRef || !sourceNodeId || sourceNodeId === SUMMARY_NODE_ID) return '';\n  const cacheKey = sourceRef + '#' + sourceNodeId;\n  if (summaryStatusCache.has(cacheKey)) return summaryStatusCache.get(cacheKey);\n  const graphData = await fetchJson(sourceRef);\n  const sourceNode = Array.isArray(graphData?.nodes)\n    ? graphData.nodes.find((node) => node?.id === sourceNodeId)\n    : null;\n  const status = normalize(sourceNode?.data?.status);\n  summaryStatusCache.set(cacheKey, status);\n  return status;\n};\n\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nif (!summaryNode) {\n  return { success: false, error: 'Summary node missing' };\n}\n\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task' && entry?.data?.countAsTask !== false);\nconst externalSummaryTasks = nodes.filter((entry) => {\n  if (entry?.type !== 'task-summary') return false;\n  if (entry?.data?.countAsTask === false) return false;\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  return Boolean(sourceRef && sourceNodeId && sourceNodeId !== SUMMARY_NODE_ID);\n});\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst literalTaskItems = tasks.map((entry) => ({\n  title: toTitle(entry, 'Untitled task'),\n  status: normalize(entry?.data?.status)\n}));\nconst externalTaskItems = await Promise.all(externalSummaryTasks.map(async (entry) => ({\n  title: toTitle(entry, 'Untitled task summary'),\n  status: await getExternalSummaryStatus(entry)\n})));\nconst taskItems = [...literalTaskItems, ...externalTaskItems].filter((entry) => entry?.title);\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalize(goalNode?.data?.status);\nconst derivedStatus = goalStatus\n  ? (goalStatus === 'done' && !allTasksDone ? 'in-progress' : goalNode?.data?.status)\n  : (allTasksDone ? 'done' : (completedTaskCount > 0 ? 'in-progress' : (summaryNode?.data?.status || 'todo')));\n\nconst nextData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  taskProgress: {\n    completed: completedTaskCount,\n    total: taskItems.length\n  },\n  questionProgress: {\n    answered: questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length,\n    total: questions.length\n  },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.', taskTitles.length || 4),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'node-updater',\n  updatedAt: new Date().toISOString()\n};\n\nawait api.updateNode(SUMMARY_NODE_ID, { data: nextData });\n\nreturn { success: true, summary: nextData };",
         "summaryNodeId": "chatgpt-app-task-summary",
         "autoRun": true,
-        "description": "Keep the ChatGPT Interface for Twilite summary node in sync with the task graph contents.",
+        "description": "Keep the declaration-exposed summary port in sync with the task graph contents.",
         "scriptName": "Task Node Updater",
         "scriptId": "",
         "autoRunOnGraphChange": true
@@ -2456,331 +2544,803 @@
     },
     {
       "id": "root-bridge-goal",
-      "type": "port",
+      "type": "bridge",
       "label": "Goal",
       "position": {
         "x": -1160,
         "y": 1660
       },
-      "width": 260,
-      "height": 120,
+      "width": 300,
+      "height": 130,
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Visible node-class bridge for Goal.",
+        "memo": "Create goal nodes in this focused graph.",
         "intent": "external",
+        "authority": "bridge",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node:root",
           "mode": "bridge",
-          "kind": "node-class",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
           "label": "Create",
+          "kind": "node-class",
           "key": "goal",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
           "meaning": "Strategic or local outcome node for planning graphs."
+        },
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "goal",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "goal",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node"
+        },
+        "identity": {
+          "graphId": "chatgpt-app-task"
         }
-      }
+      },
+      "root": false,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "root-bridge-constraint",
-      "type": "port",
+      "type": "bridge",
       "label": "Constraint",
       "position": {
         "x": -1160,
         "y": 1800
       },
-      "width": 260,
-      "height": 120,
+      "width": 300,
+      "height": 130,
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Visible node-class bridge for Constraint.",
+        "memo": "Create constraint nodes in this focused graph.",
         "intent": "external",
+        "authority": "bridge",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/constraint.node-class.node:root",
           "mode": "bridge",
-          "kind": "node-class",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/constraint.node-class.node",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
           "label": "Create",
+          "kind": "node-class",
           "key": "constraint",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/constraint.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
           "meaning": "Boundary or rule that implementation must respect."
+        },
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/constraint.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "constraint",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/constraint.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/constraint.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "constraint",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/constraint.node-class.node"
+        },
+        "identity": {
+          "graphId": "chatgpt-app-task"
         }
-      }
+      },
+      "root": false,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "root-bridge-decision",
-      "type": "port",
+      "type": "bridge",
       "label": "Decision",
       "position": {
         "x": -1160,
         "y": 1940
       },
-      "width": 260,
-      "height": 120,
+      "width": 300,
+      "height": 130,
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Visible node-class bridge for Decision.",
+        "memo": "Create decision nodes in this focused graph.",
         "intent": "external",
+        "authority": "bridge",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node:root",
           "mode": "bridge",
-          "kind": "node-class",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
           "label": "Create",
+          "kind": "node-class",
           "key": "decision",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
           "meaning": "Recorded, timestamped choice for planning graphs."
+        },
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "decision",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "decision",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node"
+        },
+        "identity": {
+          "graphId": "chatgpt-app-task"
         }
-      }
+      },
+      "root": false,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "root-bridge-open-question",
-      "type": "port",
+      "type": "bridge",
       "label": "Open Question",
       "position": {
         "x": -1160,
         "y": 2080
       },
-      "width": 260,
-      "height": 120,
+      "width": 300,
+      "height": 130,
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Visible node-class bridge for Open Question.",
+        "memo": "Create open question nodes in this focused graph.",
         "intent": "external",
+        "authority": "bridge",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node:root",
           "mode": "bridge",
-          "kind": "node-class",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
           "label": "Create",
+          "kind": "node-class",
           "key": "open-question",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
           "meaning": "Unresolved question node for planning graphs."
+        },
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "identity": {
+          "graphId": "chatgpt-app-task"
         }
-      }
+      },
+      "root": false,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "root-bridge-task",
-      "type": "port",
+      "type": "bridge",
       "label": "Task",
       "position": {
         "x": -1160,
         "y": 2220
       },
-      "width": 260,
-      "height": 120,
+      "width": 300,
+      "height": 130,
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Visible node-class bridge for Task.",
+        "memo": "Create task nodes in this focused graph.",
         "intent": "external",
-        "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node:root",
-          "mode": "bridge",
-          "kind": "node-class",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Create",
-          "key": "task",
-          "meaning": "Atomic executable unit of work for planning graphs."
-        }
-      }
-    },
-    {
-      "id": "root-bridge-task-summary-provider",
-      "type": "port",
-      "label": "Summary",
-      "position": {
-        "x": -1160,
-        "y": 2360
-      },
-      "width": 260,
-      "height": 120,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Visible node-class bridge for Summary.",
-        "intent": "external",
-        "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node:root",
-          "mode": "bridge",
-          "kind": "node-class",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Create",
-          "key": "summary",
-          "meaning": "Provider surface for a planning task summary."
-        }
-      }
-    },
-    {
-      "id": "chatgpt-app-task-summary-task",
-      "type": "task",
-      "label": "Ship a usable ChatGPT-style interface inside Twilite",
-      "position": {
-        "x": -760,
-        "y": 280
-      },
-      "width": 380,
-      "height": 220,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "body": "Goal: Ship a usable ChatGPT-style interface inside Twilite\nStatus: open\n\nTasks in scope:\n1. Define the Twilite chat mode and authority contract\n2. Build the ChatGPT-style Twilite chat surface\n3. Define graph-aware context assembly\n4. Implement the server-side chat API and streaming transport\n5. Bridge chat output into graph actions\n6. Add guardrails, evals, and observability for Twilite chat\n\nOpen questions:\n1. Where should chat history live in Twilite?\n2. What actions can chat take versus only suggest?",
-        "status": "open",
-        "owner": "Michael",
-        "priority": "critical",
-        "estimateHours": "4",
-        "acceptanceCriteria": [
-          "Chat mode entry points are explicit",
-          "Conversation and action contract are named",
-          "Deferred capabilities are written down"
+        "authority": "bridge",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
         ],
+        "target": {
+          "mode": "bridge",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "task",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ],
+          "meaning": "Atomic executable unit of work for planning graphs."
+        },
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
         "_classBinding": {
           "key": "task",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-          "identity": {
-            "graphId": "task-class",
-            "name": "Task Class",
-            "version": "0.1.0",
-            "description": "Atomic executable unit of work for planning graphs.",
-            "createdAt": "2026-03-15T20:30:00.000Z",
-            "updatedAt": "2026-03-24T01:10:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "Atomic executable unit of work for planning graphs.",
-          "description": "Atomic executable unit of work for planning graphs.",
-          "defaults": {
-            "label": "Task",
-            "size": {
-              "width": 340,
-              "height": 260
-            },
-            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "body": "Describe the concrete work to execute.",
-              "priority": "high",
-              "status": "todo",
-              "owner": "",
-              "estimateHours": "",
-              "acceptanceCriteria": [
-                "Describe what done looks like"
-              ]
-            }
-          },
-          "nodeDef": {
-            "key": "task",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Task",
-              "size": {
-                "width": 340,
-                "height": 260
-              },
-              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "body": "Describe the concrete work to execute.",
-                "priority": "high",
-                "status": "todo",
-                "owner": "",
-                "estimateHours": "",
-                "acceptanceCriteria": [
-                  "Describe what done looks like"
-                ]
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "task",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "task",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "task",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
         "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
@@ -2788,19 +3348,139 @@
           "classKey": "task",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
-        "definitionKey": "task",
-        "title": "Ship a usable ChatGPT-style interface inside Twilite",
-        "countAsTask": false,
-        "summarySource": "node-updater",
-        "taskProgress": {
-          "completed": 0,
-          "total": 6
-        },
-        "questionProgress": {
-          "answered": 0,
-          "total": 2
+        "identity": {
+          "graphId": "chatgpt-app-task"
         }
-      }
+      },
+      "root": false,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ]
     }
   ],
   "edges": [
@@ -3033,7 +3713,7 @@
       "id": "chatgpt-app-edge-026",
       "type": "reference",
       "source": "chatgpt-app-overview",
-      "target": "chatgpt-app-port-library",
+      "target": "chatgpt-app-portal-library",
       "sourcePort": "out",
       "targetPort": "root",
       "label": "library"
@@ -3059,7 +3739,7 @@
   ],
   "clusters": [],
   "scripts": [],
-  "nodeCount": 26,
+  "nodeCount": 24,
   "edgeCount": 28,
-  "timestamp": "2026-03-24T15:52:24.734Z"
+  "timestamp": "2026-07-22T00:00:00.000Z"
 }
