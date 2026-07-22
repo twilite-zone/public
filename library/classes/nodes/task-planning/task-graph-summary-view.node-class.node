@@ -30,11 +30,11 @@
       "data": {
         "identity": {
           "graphId": "task-graph-summary-view-class",
-          "name": "Task Summary Class",
-          "version": "0.1.0",
-          "description": "Dynamic-view-backed consumer for a task summary provider surface.",
+      "name": "Task Summary Consumer Class",
+      "version": "0.2.0",
+      "description": "Dynamic-view-backed task summary consumer with local workboard projection metadata.",
           "createdAt": "2026-03-22T00:00:00.000Z",
-          "updatedAt": "2026-03-24T01:10:00.000Z"
+      "updatedAt": "2026-07-22T00:00:00.000Z"
         },
         "intent": {
           "kind": "node-class",
@@ -99,13 +99,19 @@
               "label": "Task Summary",
               "size": {
                 "width": 420,
-                "height": 260
+            "height": 340
               },
               "showLabel": false,
               "data": {
-                "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
-                "sourceNodeId": "task-graph-template-summary",
-                "sourcePayload": "node.web"
+            "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
+            "sourceNodeId": "task-graph-template-summary",
+            "sourcePayload": "node.web",
+            "board": {
+              "lane": "next",
+              "rank": 0,
+              "pinned": false,
+              "reviewedAt": ""
+            }
               }
             }
           }
@@ -175,13 +181,61 @@
                 "path": "data.sourceNodeId",
                 "placeholder": "task-graph-template-summary"
               },
-              {
-                "key": "sourcePayload",
+          {
+            "key": "sourcePayload",
                 "label": "Source Payload",
                 "type": "text",
                 "path": "data.sourcePayload",
-                "placeholder": "node.web"
+            "placeholder": "node.web"
+          },
+          {
+            "key": "boardLane",
+            "label": "Workboard Lane",
+            "type": "select",
+            "path": "data.board.lane",
+            "options": [
+              {
+                "label": "Inbox",
+                "value": "inbox"
+              },
+              {
+                "label": "Now",
+                "value": "now"
+              },
+              {
+                "label": "Next",
+                "value": "next"
+              },
+              {
+                "label": "Waiting",
+                "value": "waiting"
+              },
+              {
+                "label": "Recently Completed",
+                "value": "recently-completed"
               }
+            ]
+          },
+          {
+            "key": "boardRank",
+            "label": "Rank Within Lane",
+            "type": "number",
+            "path": "data.board.rank",
+            "placeholder": "0"
+          },
+          {
+            "key": "boardPinned",
+            "label": "Pinned",
+            "type": "checkbox",
+            "path": "data.board.pinned"
+          },
+          {
+            "key": "boardReviewedAt",
+            "label": "Reviewed At",
+            "type": "text",
+            "path": "data.board.reviewedAt",
+            "placeholder": "YYYY-MM-DD"
+          }
             ]
           }
         }
