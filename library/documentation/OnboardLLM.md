@@ -1528,6 +1528,160 @@ For a fresh graph artifact:
 - add only the node types the graph actually needs
 - avoid unnecessary compatibility scaffolding
 
+## Using Custom Node Classes In A New Graph
+
+Custom node types are not activated merely by naming them in the declaration.
+
+`data.dependencies.nodeTypes` is descriptive. It tells readers and validators which node types the graph uses, but it does not register those types or grant authority to create them. A node such as `{ "type": "person" }` is not class-resolved solely because `person` appears in that list.
+
+For every external node class used by a new graph:
+
+- create or preserve a `bridge` node that points to the class's durable `.node-class.node` `github://` reference
+- give that bridge focused-graph creation authority through `scope: "focused-graph"` and `grants: ["create"]`
+- connect the declaration to the bridge with an explicit class-authority edge
+- preserve `_classBinding` on every class instance, including its class key and source reference
+- preserve the instance's `_bridge` provenance when the template or source graph supplies it
+- connect the class bridge to each instance with the template's instantiation edge pattern
+
+The bridge is executable graph infrastructure. The declaration's dependency list is not a substitute for it.
+
+### Template derivation rule
+
+When creating a graph from a template, clone its executable structure before changing its example content.
+
+Preserve all of the following unless the relevant contract explicitly says they may be omitted:
+
+- the declaration node and declaration-first ordering
+- declared surfaces and their real `viewNodeId` targets
+- class bridges and their grants
+- declaration-to-bridge authority edges
+- class-instance `_classBinding` and `_bridge` data
+- instantiation edges and required port or handle contracts
+
+Replace or extend the example content only after that infrastructure is intact. Do not visually imitate a template by recreating its apparent person, role, work, or other semantic nodes without the linkage machinery that makes those types resolvable.
+
+### Minimal custom-class pattern
+
+This fragment assumes the graph's declaration and surface nodes already exist. It shows the required bridge, class-bound instance, authority edge, and instantiation edge:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "createNodes",
+      "nodes": [
+        {
+          "id": "11111111-1111-4111-8111-111111111111",
+          "type": "bridge",
+          "label": "Person",
+          "position": { "x": 0, "y": 0 },
+          "ports": [
+            { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 210 }
+          ],
+          "handles": [
+            { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "portId": "root", "angle": 210 }
+          ],
+          "inputs": [
+            { "key": "root", "label": "root", "type": "any" }
+          ],
+          "outputs": [
+            { "key": "root", "label": "root", "type": "any" }
+          ],
+          "data": {
+            "intent": "external",
+            "scope": "focused-graph",
+            "grants": ["create"],
+            "target": {
+              "mode": "bridge",
+              "ref": "github://example/public/people/template/person.node-class.node",
+              "kind": "node-class",
+              "resourceKind": "node-class",
+              "scope": "focused-graph",
+              "grants": ["create"],
+              "key": "person"
+            },
+            "_classBinding": {
+              "key": "person",
+              "sourceRef": "github://example/public/people/template/person.node-class.node"
+            },
+            "_bridge": {
+              "sourceRef": "github://example/public/people/template/person.node-class.node",
+              "entryPort": "root",
+              "kind": "node-class",
+              "targetKind": "node-class",
+              "classKey": "person",
+              "classRef": "github://example/public/people/template/person.node-class.node"
+            }
+          }
+        },
+        {
+          "id": "22222222-2222-4222-8222-222222222222",
+          "type": "person",
+          "label": "Example Person",
+          "position": { "x": 360, "y": 220 },
+          "ports": [
+            { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 210 }
+          ],
+          "handles": [
+            { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "portId": "root", "angle": 210 }
+          ],
+          "inputs": [
+            { "key": "root", "label": "root", "type": "any" }
+          ],
+          "outputs": [
+            { "key": "root", "label": "root", "type": "any" }
+          ],
+          "data": {
+            "displayName": "Example Person",
+            "definitionKey": "person",
+            "_classBinding": {
+              "key": "person",
+              "sourceRef": "github://example/public/people/template/person.node-class.node",
+              "ref": "github://example/public/people/template/person.node-class.node"
+            },
+            "_bridge": {
+              "sourceNodeId": "existing-declaration-node",
+              "sourceRef": "github://example/public/people/template/person.node-class.node",
+              "entryPort": "root",
+              "kind": "node-class",
+              "targetKind": "node-class",
+              "classKey": "person",
+              "classRef": "github://example/public/people/template/person.node-class.node"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "action": "createEdges",
+      "edges": [
+        {
+          "id": "33333333-3333-4333-8333-333333333333",
+          "type": "reference",
+          "source": "existing-declaration-node",
+          "target": "11111111-1111-4111-8111-111111111111",
+          "sourcePort": "root",
+          "targetPort": "root",
+          "label": "class authority"
+        },
+        {
+          "id": "44444444-4444-4444-8444-444444444444",
+          "type": "reference",
+          "source": "11111111-1111-4111-8111-111111111111",
+          "target": "22222222-2222-4222-8222-222222222222",
+          "sourcePort": "root",
+          "targetPort": "root",
+          "label": "instantiates"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Before returning this pattern, replace the example class reference and declaration id with real values from the template or target graph. The one-port arrays above are only a minimal standalone specimen. When deriving from a real template, preserve its full `ports`, `inputs`, `outputs`, and `handles` arrays; do not collapse them to `root` or invent `top` or `bottom` unless the inspected nodes actually expose those ports.
+
 ## Declaration Editor Contract
 
 If you are authoring or repairing a custom editor for a `declaration`, use the built-in declaration editor as the minimum functional contract.

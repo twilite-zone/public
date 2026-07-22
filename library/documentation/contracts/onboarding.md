@@ -107,6 +107,24 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - If you include compatibility fields like `primaryNodeViewId` or `portViewNodeId`, keep them aligned with the declared surfaces instead of letting them disagree
 - A graph with a partial declaration may load, but it can still trigger saveability or interpretation problems
 
+### Custom node classes are executable infrastructure
+
+- `data.dependencies.nodeTypes` is descriptive; it does not register a custom type or grant runtime authority
+- Every external node class used by the graph requires a real `bridge` node pointing to its `.node-class.node` resource
+- Give the bridge focused-graph creation authority with `scope: "focused-graph"` and `grants: ["create"]`
+- Connect the declaration to the bridge using the graph's class-authority edge pattern
+- Keep `_classBinding.key` and the durable `github://` class reference on every class instance
+- Preserve `_bridge` provenance and the bridge-to-instance instantiation edge when the template supplies them
+- A node with `type: "person"`, `type: "role"`, or another custom type is not sufficiently class-resolved merely because that string appears in `dependencies.nodeTypes`
+
+### Deriving a graph from a template
+
+- Clone the template structurally; do not recreate only what is visually apparent
+- Preserve the declaration, declared surfaces, real `viewNodeId` targets, class bridges, authority edges, class bindings, instantiation edges, and required port or handle contracts
+- Replace or extend example content only after the executable infrastructure is intact
+- Omit infrastructure only when the relevant class or template contract explicitly says it is optional
+- Never infer that a custom node type is globally available
+
 ### Declaration editor contract
 If you author a custom editor for a `declaration`, treat the built-in declaration editor as the minimum executable contract.
 
