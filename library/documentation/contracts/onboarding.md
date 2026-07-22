@@ -155,6 +155,7 @@ Common declaration-owned metadata that should remain supported when present:
 
 - `data.declaresKind`
 - `data.purpose`
+- `data.analytics`
 
 Required declaration-editor behaviors:
 
@@ -175,6 +176,33 @@ Failure rule:
 - If a custom declaration editor cannot correctly edit those required fields and behaviors, it is not a valid declaration editor
 - The runtime should not quietly merge the stock declaration editor into an incomplete custom declaration editor
 - An incomplete declaration editor should fail as an authoring error instead of being treated as alternate syntax
+
+### Optional graph analytics
+
+Graph analytics is an explicit declaration-owned opt-in. It is not a default property of public graphs.
+
+```json
+"analytics": {
+  "pageTitle": "Optional reporting title",
+  "contentGroup": "people"
+}
+```
+
+- Put the optional object on the declaration node at `data.analytics`
+- The presence of a valid object, including `{}`, makes the graph eligible for tracking
+- If `data.analytics` is absent, the graph is deliberately untracked
+- `pageTitle` and `contentGroup` are the only authored fields currently supported; both are optional
+- Do not author `page_location`, a measurement id, arbitrary event parameters, dispatch instructions, or consent state in the graph
+- Twilite derives `page_location` as the real HTTPS Twilite launch URL for the focused graph
+- Keep durable identity, provider fetch location, and Twilite launch location distinct:
+  - `github://...` may be the durable graph identity
+  - a provider URL or API may be the fetch location
+  - `https://twilite.zone/?doc=...` is the web launch location used for the virtual page view
+- A page view occurs only when an opted-in graph becomes the focused Twilite document after a successful load
+- Twilite Back and Forward may create new page views; retries, previews, embeds, bridges, class resolution, and background loads must not
+- Graph navigation belongs to Twilite's browser history and must not mutate web-browser history merely for analytics
+- Graph-author opt-in does not override any viewer-level consent or site policy enforced by the runtime
+- Do not add `data.analytics` to templates, classes, support graphs, private graphs, or batches of authored graphs unless the user explicitly asks to opt them in
 
 ### Port guidance
 - When a user says "create a port for this graph", interpret that as: create a graph-owned entry surface that can open or connect back to this graph
