@@ -39,6 +39,8 @@ When you explain how to use Twilite, prefer the app surfaces that are durable fo
   - `github://TwiliteLLC/twilite/public/<relative-path>`
 - Keep `public/root.node` as the application entry graph and `public/company/root.node` as the separate Twilite LLC company graph.
 - Do not merge a company or organization graph into the application root merely because it is a primary destination.
+- In a web-published graph, use the HTTPS address when the graph intends to consume the web-hosted resource; use GitHub when repository provenance is intentional or no verified web projection exists.
+- Migrate references in bounded graph or collection passes and verify every projected target before rewriting it.
 - The `public/` directory is omitted only from the web URL because it is the configured document root.
 - Do not invent legacy aliases. A legacy repository reference works only while the named repository file remains available.
 

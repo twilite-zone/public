@@ -60,6 +60,9 @@ GitHub:   github://TwiliteLLC/twilite/public/<relative-path>
 - `public/` remains part of the GitHub repository path
 - `public/` is omitted from the web URL because it is the web server's document root
 - Both address forms are valid and legal; choose the form that expresses the location you mean
+- A graph published through `twilite.zone` should use the HTTPS form when it intends to consume the web-hosted resource and its richer hosting behavior
+- Keep the GitHub form when repository provenance is intentional or no verified web projection exists
+- Apply address migration in bounded graph or collection passes and prove the projected target exists before rewriting references
 - Do not create hidden aliases or rewrite one form into the other
 - This projection applies to graph resources under the configured public document root and does not require a per-graph manifest
 
