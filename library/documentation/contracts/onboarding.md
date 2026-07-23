@@ -32,23 +32,45 @@ When you open a graph, you become its steward.
 - Make one small, reversible change
 
 ## Ref Schemes
-Twilite uses two important address schemes and they do different jobs.
+Twilite accepts graph resources through multiple address schemes. Preserve the address the author or user chose.
 
-### `github://` is the canonical graph identity
-- Use `github://owner/repo/path/to/file.node` when you mean the real graph asset
-- Prefer it for durable refs like `ref`, `sourceRef`, `classRef`, `src`, and `endpoint`
-- When someone asks for the graph address, return the exact `github://...` handle
+### `github://` addresses repository resources
+- Use `github://owner/repo/path/to/file.node` when referring to a graph through its GitHub repository location
+- It is legal in `ref`, `sourceRef`, `classRef`, `src`, `endpoint`, browser navigation, portals, bridges, and class bindings
 - Prefer explicit file paths like `root.node` instead of relying on folder inference
+
+### `http://` and `https://` address web-hosted graph resources
+- A web-hosted `.node` or `.node-class.node` file is a first-class graph resource, not merely a launch page
+- HTTP and HTTPS graph addresses are legal anywhere Twilite accepts a graph address
+- Twilite fetches, caches, reloads, displays, and saves the address as entered; do not silently substitute a GitHub address
+- Two addresses may publish equivalent content while briefly returning different revisions during deployment
+
+### Public document-root projection
+For the Twilite application repository:
+
+```text
+physical: twilite/public/<relative-path>
+web:      https://twilite.zone/<relative-path>
+GitHub:   github://TwiliteLLC/twilite/public/<relative-path>
+```
+
+- `public/` remains part of the GitHub repository path
+- `public/` is omitted from the web URL because it is the web server's document root
+- Both address forms are valid and legal; choose the form that expresses the location you mean
+- Do not create hidden aliases or rewrite one form into the other
+- This projection applies to graph resources under the configured public document root and does not require a per-graph manifest
 
 ### `tlz://` is Twilite navigation
 - Use `tlz://` for in-app navigation and markdown links
-- Treat it as browser-level navigation sugar, not the canonical storage identity
+- Treat it as browser-level navigation sugar, not a provider or storage address
 - If a value tells Twilite where to navigate, `tlz://` is fine
-- If a value identifies where a graph lives in repo space, use `github://`
+- If a value identifies where a graph is fetched, use its actual `github://`, `http://`, or `https://` address
 
 ## Practical Rule
-- Durable graph identity: `github://`
+- Repository location: `github://`
+- Web-hosted graph location: `http://` or `https://`
 - User-facing navigation inside Twilite: `tlz://`
+- Preserve the entered provider address instead of canonicalizing it
 
 ## GitHub Session Recovery
 Twilite has two related but different auth states:
@@ -195,7 +217,7 @@ Graph analytics is an explicit declaration-owned opt-in. It is not a default pro
 - Do not author `page_location`, a measurement id, arbitrary event parameters, dispatch instructions, or consent state in the graph
 - Twilite derives `page_location` as the real HTTPS Twilite launch URL for the focused graph
 - Keep durable identity, provider fetch location, and Twilite launch location distinct:
-  - `github://...` may be the durable graph identity
+  - `github://...` or a direct HTTP(S) graph URL may identify the focused graph resource
   - a provider URL or API may be the fetch location
   - `https://twilite.zone/?doc=...` is the web launch location used for the virtual page view
 - A page view occurs only when an opted-in graph becomes the focused Twilite document after a successful load
