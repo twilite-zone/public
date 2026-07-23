@@ -29,6 +29,17 @@ When you explain how to use Twilite, prefer the app surfaces that are durable fo
 - if the user only needs navigation, tutorials, bookmarks, gallery, handshake, or document actions, keep the guidance in browser mode
 - only steer the user toward editor-specific affordances when the task truly requires authoring
 
+## Graph Address Legality
+
+- Accept `github://`, `http://`, and `https://` graph resources anywhere Twilite accepts a graph address, including portals, bridges, `ref`, `sourceRef`, `classRef`, `src`, and `endpoint`.
+- Preserve the provider address the user or author entered. Do not silently rewrite an HTTP graph address as GitHub or a GitHub graph address as HTTP.
+- Fetch and cache the requested form. Equivalent publications may briefly expose different revisions during deployment.
+- For the Twilite application repository, `twilite/public/<relative-path>` is available as both:
+  - `https://twilite.zone/<relative-path>`
+  - `github://TwiliteLLC/twilite/public/<relative-path>`
+- The `public/` directory is omitted only from the web URL because it is the configured document root.
+- Do not invent legacy aliases. A legacy repository reference works only while the named repository file remains available.
+
 ## GitHub Auth Reality
 
 Twilite can have:
