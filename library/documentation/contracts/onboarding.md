@@ -54,6 +54,9 @@ web:      https://twilite.zone/<relative-path>
 GitHub:   github://TwiliteLLC/twilite/public/<relative-path>
 ```
 
+- `public/root.node` is the application entry graph
+- `public/company/root.node` is the separate Twilite LLC company graph
+- Do not collapse an organization or company graph into the application root merely because the application opens it prominently
 - `public/` remains part of the GitHub repository path
 - `public/` is omitted from the web URL because it is the web server's document root
 - Both address forms are valid and legal; choose the form that expresses the location you mean
