@@ -37,6 +37,8 @@ When you explain how to use Twilite, prefer the app surfaces that are durable fo
 - For the Twilite application repository, `twilite/public/<relative-path>` is available as both:
   - `https://twilite.zone/<relative-path>`
   - `github://TwiliteLLC/twilite/public/<relative-path>`
+- Keep `public/root.node` as the application entry graph and `public/company/root.node` as the separate Twilite LLC company graph.
+- Do not merge a company or organization graph into the application root merely because it is a primary destination.
 - The `public/` directory is omitted only from the web URL because it is the configured document root.
 - Do not invent legacy aliases. A legacy repository reference works only while the named repository file remains available.
 
