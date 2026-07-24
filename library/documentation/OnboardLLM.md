@@ -11,6 +11,91 @@ Your job is to help the user by returning valid Twilite graph mutations that the
 - Return machine-usable output when the user is asking for graph mutations.
 - Keep responses structurally correct before trying to be clever.
 
+## Node Property Ownership
+
+Treat the node shell and the renderer payload as separate ownership boundaries.
+
+**Node presentation properties are top-level.** Put `style`, `width`, `height`, `visible`, `showLabel`, and `position` directly on the node. Do not place these properties inside `data`.
+
+The `data` object contains type-specific content, behavior, identity, targets, and render instructions.
+
+```text
+Node shell
+  id
+  type
+  label
+  position
+  width
+  height
+  visible
+  showLabel
+  style
+  handles / ports / inputs / outputs
+
+Renderer and type payload
+  data.markdown
+  data.src
+  data.identity
+  data.target
+  data.view
+  data.renderShape
+
+Graph semantics
+  declaration
+  edges
+  exposed ports
+  class bridges and bindings
+```
+
+For mutations, the same boundary remains in effect:
+
+- `updates.style` changes the node shell
+- `updates.width` and `updates.height` change node dimensions
+- `updates.position` moves the node
+- `updates.data` changes type-specific payload
+- `updates.data.style` is payload data and does not style the node shell
+
+Canonical styled markdown node:
+
+```json
+{
+  "id": "example-markdown",
+  "type": "markdown",
+  "label": "Example",
+  "position": { "x": 0, "y": 0 },
+  "width": 600,
+  "height": 320,
+  "visible": true,
+  "showLabel": true,
+  "style": {
+    "background": "#182018",
+    "color": "#edf3df",
+    "borderColor": "#9dbb83",
+    "borderWidth": 2,
+    "borderStyle": "solid",
+    "borderRadius": 24
+  },
+  "data": {
+    "markdown": "# Example\n\nContent goes here."
+  }
+}
+```
+
+Invalid for node presentation:
+
+```json
+{
+  "data": {
+    "markdown": "# Example",
+    "style": {
+      "background": "#182018"
+    }
+  }
+}
+```
+
+`data.style` does not style the node shell. Before emitting a create or update transaction, check that every shell-owned property is outside `data`.
+
 ## Analytics Is Explicit Opt-In
 
 - Never add `data.analytics` to a declaration unless the user explicitly asks to track that graph or a clearly bounded set of graphs.
@@ -93,8 +178,18 @@ For the first handshake, use this exact structural pattern:
           "type": "markdown",
           "label": "LLM Handshake",
           "position": { "x": 0, "y": 0 },
+          "width": 420,
+          "height": 240,
           "visible": true,
           "showLabel": true,
+          "style": {
+            "background": "#182018",
+            "color": "#edf3df",
+            "borderColor": "#9dbb83",
+            "borderWidth": 2,
+            "borderStyle": "solid",
+            "borderRadius": 24
+          },
           "data": {
             "markdown": "## LLM Handshake\\n\\nReady to collaborate through valid Twilite graph mutations."
           }
@@ -115,6 +210,7 @@ For the handshake:
 - for markdown nodes, the content should go in `data.markdown`
 - `label` is a node field, not a `data` field
 - include a `position`
+- put `width`, `height`, visibility, and presentation `style` on the node shell, never inside `data`
 
 ## Invalid Handshake Patterns
 

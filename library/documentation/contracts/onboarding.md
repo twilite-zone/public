@@ -12,6 +12,76 @@ When you open a graph, you become its steward.
 - Preserve intent before improving form
 - Never surprise future readers (human or agent)
 
+## Node Property Ownership
+
+Node shell properties and renderer payload fields are different contracts.
+
+> **Node presentation properties are top-level.** Put `style`, `width`, `height`, `visible`, `showLabel`, and `position` directly on the node. Do not place these properties inside `data`. The `data` object contains type-specific content and behavior only.
+
+```text
+Node shell
+  position
+  width / height
+  visible / showLabel
+  style
+  handles / ports / inputs / outputs
+
+Renderer and type payload
+  data.markdown
+  data.src
+  data.identity
+  data.target
+  data.view
+  data.renderShape
+
+Graph semantics
+  declaration
+  edges
+  exposed ports
+  class bridges and bindings
+```
+
+Correct:
+
+```json
+{
+  "id": "example-markdown",
+  "type": "markdown",
+  "label": "Example",
+  "position": { "x": 0, "y": 0 },
+  "width": 600,
+  "height": 320,
+  "visible": true,
+  "showLabel": true,
+  "style": {
+    "background": "#182018",
+    "color": "#edf3df",
+    "borderColor": "#9dbb83",
+    "borderWidth": 2,
+    "borderStyle": "solid",
+    "borderRadius": 24
+  },
+  "data": {
+    "markdown": "# Example\n\nContent goes here."
+  }
+}
+```
+
+Wrong for presentation:
+
+```json
+{
+  "data": {
+    "markdown": "# Example",
+    "style": {
+      "background": "#182018"
+    }
+  }
+}
+```
+
+`data.style` is payload data. It does not style the node shell. In an update transaction, use `updates.style`, `updates.width`, `updates.height`, and `updates.position`; do not nest those fields inside `updates.data`.
+
 ## How to Work in a Graph
 1. Read the Manifest first
 2. Run validation before mutation
