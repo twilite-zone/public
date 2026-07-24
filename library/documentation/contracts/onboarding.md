@@ -28,6 +28,7 @@ Node shell
 
 Renderer and type payload
   data.markdown
+  data.svg
   data.src
   data.identity
   data.target
@@ -81,6 +82,50 @@ Wrong for presentation:
 ```
 
 `data.style` is payload data. It does not style the node shell. In an update transaction, use `updates.style`, `updates.width`, `updates.height`, and `updates.position`; do not nest those fields inside `updates.data`.
+
+## First-Class Content Nodes
+
+`markdown` and `svg` are peer content primitives.
+
+- Use `markdown` for prose, links, lists, instructions, and documents.
+- Use `svg` for diagrams, visual explanations, icons, maps, cards, and authored vector graphics.
+- A normal graph-owned illustration does not need to be disguised as markdown or wrapped in a port.
+- Use a `port` only when the visual is intended to be an exposed graph surface.
+
+Canonical SVG node:
+
+```json
+{
+  "id": "example-svg",
+  "type": "svg",
+  "label": "Example Diagram",
+  "position": { "x": 680, "y": 0 },
+  "width": 420,
+  "height": 320,
+  "visible": true,
+  "showLabel": true,
+  "style": {
+    "background": "#0f172a",
+    "borderColor": "#334155",
+    "borderWidth": 1,
+    "borderStyle": "solid",
+    "borderRadius": 20
+  },
+  "data": {
+    "altText": "Two labeled circles connected by an arrow.",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Two labeled circles connected by an arrow\"><rect width=\"320\" height=\"180\" rx=\"20\" fill=\"#0f172a\"/><circle cx=\"80\" cy=\"90\" r=\"34\" fill=\"#38bdf8\"/><circle cx=\"240\" cy=\"90\" r=\"34\" fill=\"#a78bfa\"/><path d=\"M120 90h72\" stroke=\"#f8fafc\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"m182 76 18 14-18 14\" fill=\"none\" stroke=\"#f8fafc\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+  }
+}
+```
+
+SVG authoring rules:
+
+- Store the graphic in `data.svg`.
+- Give the SVG a `viewBox`, responsive dimensions, `preserveAspectRatio`, `role="img"`, and `aria-label`.
+- Put a plain-language description in `data.altText`.
+- Keep node dimensions and shell styling at the top level.
+- Do not include scripts, event-handler attributes, or executable embedded content.
+- Twilite sanitizes SVG before rendering.
 
 ## How to Work in a Graph
 1. Read the Manifest first
@@ -175,6 +220,7 @@ Use the primitive that matches the job directly. Do not substitute a nearby conc
 - `declaration`: use for graph identity, intent, authority, and exposed surfaces
 - `port`: use for a declared renderable or navigable surface
 - `markdown`: use for text content only
+- `svg`: use for graph-owned vector graphics and visual explanations
 - `portal`: use for a consumer/opening node that targets another declared surface
 - `dictionary`: use only when the task is specifically about dictionary infrastructure or compatibility behavior, not as a substitute for `declaration` or `port`
 - `bridge`: use for import/export boundaries and explicit external authority
