@@ -18,6 +18,18 @@ Node shell properties and renderer payload fields are different contracts.
 
 > **Node presentation properties are top-level.** Put `style`, `width`, `height`, `visible`, `showLabel`, and `position` directly on the node. Do not place these properties inside `data`. The `data` object contains type-specific content and behavior only.
 
+Transactions must first be valid strict JSON. Escape double quotes inside every JSON string, not only inside HTML or SVG. For font stacks, prefer safe inner single quotes:
+
+```json
+{
+  "style": {
+    "fontFamily": "Inter, system-ui, 'Segoe UI', sans-serif"
+  }
+}
+```
+
+Unescaped inner double quotes make the whole transaction unparsable, so no graph validation or mutation can occur.
+
 ```text
 Node shell
   position
