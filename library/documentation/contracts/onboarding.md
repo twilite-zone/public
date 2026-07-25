@@ -125,7 +125,7 @@ Canonical SVG node:
   },
   "data": {
     "altText": "Two labeled circles connected by an arrow.",
-    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Two labeled circles connected by an arrow\"><rect width=\"320\" height=\"180\" rx=\"20\" fill=\"#0f172a\"/><circle cx=\"80\" cy=\"90\" r=\"34\" fill=\"#38bdf8\"/><circle cx=\"240\" cy=\"90\" r=\"34\" fill=\"#a78bfa\"/><path d=\"M120 90h72\" stroke=\"#f8fafc\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"m182 76 18 14-18 14\" fill=\"none\" stroke=\"#f8fafc\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+    "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Two labeled circles connected by an arrow'><rect width='320' height='180' rx='20' fill='#0f172a'/><circle cx='80' cy='90' r='34' fill='#38bdf8'/><circle cx='240' cy='90' r='34' fill='#a78bfa'/><path d='M120 90h72' stroke='#f8fafc' stroke-width='6' stroke-linecap='round'/><path d='m182 76 18 14-18 14' fill='none' stroke='#f8fafc' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/></svg>"
   }
 }
 ```
@@ -378,6 +378,8 @@ Graph analytics is an explicit declaration-owned opt-in. It is not a default pro
 - Do not use a bare string like `renderShape: "svg"`; use an object like `renderShape: { "kind": "svg" }`
 - If you use SVG, keep `data.svg` as raw SVG text only
 - For SVG roots, use a real XML namespace like `xmlns="http://www.w3.org/2000/svg"`
+- Inside a JSON `data.svg` string, use single quotes for every SVG/XML attribute rather than relying on repeated escaping
+- Before returning the transaction, parse the complete payload as strict JSON
 - When authoring inline SVG in JSON, copy a known-good SVG specimen and edit only the shapes, colors, labels, and geometry
 - Do not hand-type or rewrite the `xmlns` attribute unless you are pasting the exact raw XML namespace
 - Do not paste markdownified links such as `[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)` into SVG attributes
@@ -418,6 +420,7 @@ Graph analytics is an explicit declaration-owned opt-in. It is not a default pro
 ### SVG red flags
 - If you see `[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)` anywhere inside `data.svg`, the payload is invalid
 - If you see unescaped `"` characters inside the SVG string in JSON, the transaction is invalid
+- The safe inline form is `"svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'>...</svg>"`
 - If you are not sure the SVG string is safe, use a simpler `markdown` preview instead of inventing a new SVG block from scratch
 
 ### Portal guidance
@@ -496,6 +499,75 @@ Use this shape when the user asks for "a port for this graph" and the main goal 
   }
 }
 ```
+
+### Complete SVG port transaction
+When the user asks to add a port to the current graph, create the real port and expose that same node through the declaration in one transaction. Inspect the declaration first, use its real id and graph id, and preserve every existing surface when supplying the complete `surfaces` array.
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "createNodes",
+      "nodes": [
+        {
+          "id": "example-entry-port",
+          "type": "port",
+          "label": "Example Graph",
+          "position": { "x": 320, "y": 120 },
+          "width": 420,
+          "height": 240,
+          "visible": true,
+          "showLabel": true,
+          "data": {
+            "identity": {
+              "graphId": "example-graph",
+              "name": "Example Graph"
+            },
+            "target": {
+              "graphId": "example-graph",
+              "mode": "navigate"
+            },
+            "viewRole": "card",
+            "renderShape": {
+              "kind": "svg"
+            },
+            "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 240' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Example graph entry'><rect width='420' height='240' rx='28' fill='#0f172a'/><text x='210' y='112' text-anchor='middle' fill='#f8fafc' font-family='Inter, system-ui, sans-serif' font-size='28' font-weight='700'>Example Graph</text><text x='210' y='148' text-anchor='middle' fill='#bae6fd' font-family='Inter, system-ui, sans-serif' font-size='15'>Open graph</text></svg>"
+          },
+          "style": {
+            "background": "transparent",
+            "border": "none",
+            "borderRadius": 28,
+            "padding": 0
+          }
+        }
+      ]
+    },
+    {
+      "action": "updateNode",
+      "id": "example-declaration",
+      "updates": {
+        "data": {
+          "declaration": {
+            "defaultSurfaceId": "entry",
+            "surfaces": [
+              {
+                "id": "entry",
+                "kind": "view",
+                "label": "Entry",
+                "memo": "Primary graph entry surface.",
+                "viewNodeId": "example-entry-port"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+The example is illustrative. Replace its ids with inspected real ids. If the declaration already has surfaces, include all of them in the replacement array and add the new surface; never erase existing surfaces accidentally.
 
 ### Safe starter shape
 - declaration surface kind: `view`

@@ -45,10 +45,12 @@ Handshake requirements:
 - if you author `renderShape`, use an object like `{"kind":"svg"}`, not a bare string like `"svg"`
 - do not use `{"kind":"card"}` for `renderShape`; `card` is a view role, not a render format
 - do not assume `title`, `description`, `icon`, or `cover` will paint a port card by themselves; provide a real payload such as `data.svg`, `data.markdown`, `data.html`, `data.image`, or `data.text`
-- if you author SVG, keep `xmlns="http://www.w3.org/2000/svg"` as raw XML, not a markdown link
+- if you author SVG, keep `xmlns='http://www.w3.org/2000/svg'` as raw XML, not a markdown link
 - if you author inline SVG in JSON, copy a known-good specimen and edit only the artwork; do not retype `xmlns`
 - if you see `[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)` inside `svg`, the payload is invalid
-- if you are not sure you can safely emit escaped inline SVG, prefer a `markdown` preview instead of inventing SVG from scratch
+- inside a JSON `data.svg` string, use single quotes for every SVG/XML attribute; do not emit unescaped double-quoted SVG attributes
+- parse the complete transaction as strict JSON before returning it
+- when adding a port to an existing graph, create the port and update the declaration's complete `surfaces` array in the same transaction; preserve every existing surface and point the new surface's `viewNodeId` at the new port
 - if you create edges later, use `source` and `target`
 - do not use `sourceNodeId` and `targetNodeId` in `createEdges`
 - do not put `edges` inside a `createNodes` command
