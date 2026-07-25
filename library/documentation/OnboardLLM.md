@@ -44,6 +44,7 @@ Node shell
 
 Renderer and type payload
   data.markdown
+  data.svg
   data.src
   data.identity
   data.target
@@ -105,6 +106,53 @@ Invalid for node presentation:
 ```
 
 `data.style` does not style the node shell. Before emitting a create or update transaction, check that every shell-owned property is outside `data`.
+
+## First-Class Content Nodes
+
+Treat `markdown` and `svg` as peer authoring primitives:
+
+- use `markdown` for prose, lists, links, instructions, and readable documents
+- use `svg` for diagrams, maps, visual explanations, icons, cards, and other authored vector graphics
+- do not wrap SVG in markdown or create a port merely to display a graph-owned illustration
+- use a `port` when the graphic is an exposed graph surface, not merely because the content is visual
+
+An SVG node stores its graphic in `data.svg`. SVG presentation attributes inside that string belong to the vector artwork; node-shell presentation still belongs in top-level `style`.
+
+Canonical SVG node:
+
+```json
+{
+  "id": "example-svg",
+  "type": "svg",
+  "label": "Example Diagram",
+  "position": { "x": 680, "y": 0 },
+  "width": 420,
+  "height": 320,
+  "visible": true,
+  "showLabel": true,
+  "style": {
+    "background": "#0f172a",
+    "borderColor": "#334155",
+    "borderWidth": 1,
+    "borderStyle": "solid",
+    "borderRadius": 20
+  },
+  "data": {
+    "altText": "Two labeled circles connected by an arrow.",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Two labeled circles connected by an arrow\"><rect width=\"320\" height=\"180\" rx=\"20\" fill=\"#0f172a\"/><circle cx=\"80\" cy=\"90\" r=\"34\" fill=\"#38bdf8\"/><circle cx=\"240\" cy=\"90\" r=\"34\" fill=\"#a78bfa\"/><path d=\"M120 90h72\" stroke=\"#f8fafc\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"m182 76 18 14-18 14\" fill=\"none\" stroke=\"#f8fafc\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+  }
+}
+```
+
+SVG authoring rules:
+
+- provide a real root `<svg>` element and a `viewBox`
+- prefer `width="100%"`, `height="100%"`, and `preserveAspectRatio`
+- include `role="img"` and an `aria-label` in the SVG, and put a plain-language description in `data.altText`
+- keep the JSON string valid by escaping quotes
+- never include scripts, event-handler attributes, or executable embedded content
+- expect Twilite to sanitize SVG before rendering
+- use top-level `width` and `height` for the node dimensions; `data.width` and `data.height` do not size the node shell
 
 ## Analytics Is Explicit Opt-In
 
@@ -170,7 +218,7 @@ Complete the handshake by returning:
 
 The handshake is not a full graph. It is proof that you understand how to speak Twilite’s mutation format.
 
-Use a markdown node unless the user asks for something else.
+Use a markdown node for a prose handshake. An SVG node is equally valid when the user asks for a visual handshake or when a small diagram is the clearest proof of authoring readiness.
 
 ## Handshake Shape That Must Be Used
 
