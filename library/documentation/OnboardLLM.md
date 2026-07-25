@@ -1983,7 +1983,7 @@ If you are creating a markdown node, it should look like this shape:
               "createdAt": "2026-02-22T00:00:00.000Z",
               "updatedAt": "2026-02-22T00:00:00.000Z"
             },
-            "intent": { "kind": "graph", "scope": "foundation" },
+            "intent": { "kind": "graph", "scope": "local" },
             "dependencies": {
               "nodeTypes": ["declaration", "markdown"],
               "portContracts": ["core"],

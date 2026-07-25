@@ -81,6 +81,9 @@ After the handshake, when creating a real graph declaration:
 
 - create a real `declaration` node, not a substitute primitive
 - include `data.identity`, `data.intent`, `data.dependencies`, `data.authority`, `data.settings`, and `data.declaration`
+- always include non-empty `data.intent.kind` and `data.intent.scope`
+- choose `data.intent.kind` to describe the graph's subject or purpose, such as `person`, `organization`, `event`, `work`, `task-board`, `documentation`, or `graph`
+- use `data.intent.scope: "public"` for intentionally public content, `"local"` for graph-local infrastructure, `"shared"` for reusable shared resources, and `"mixed"` only when the graph genuinely spans scopes or a narrower scope cannot be determined
 - in `data.declaration`, include:
   - `kind`
   - `targetMode`
@@ -99,6 +102,8 @@ After the handshake, when creating a real graph declaration:
   - `data.declaration.targetMode: "artifact"`
   - `data.declaration.artifactKind: "graph"`
   - declared surface `kind: "view"`
+- treat `data.declaration.kind` as the declaration's type; do not substitute `data.intent.kind` for it
+- for example, a person graph normally has `data.intent.kind: "person"` and `data.declaration.kind: "graph"`
 - do not improvise a normal graph declaration as `knowledge-graph` + `targetMode: "graph"` + surface `kind: "card"` unless the contract explicitly requires that shape
 
 Minimal valid handshake example:

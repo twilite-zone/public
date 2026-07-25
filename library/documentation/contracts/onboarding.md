@@ -242,8 +242,11 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 
 ### Declaration guidance
 - Put graph identity in `data.identity`
-- Put graph kind and scope in `data.intent`
-- Set `data.declaration.kind` to the kind of artifact you are declaring, usually `graph`
+- Always put non-empty `kind` and `scope` fields in `data.intent`
+- `data.intent.kind` describes the graph's subject or purpose, such as `person`, `organization`, `event`, `work`, `task-board`, `documentation`, or `graph`
+- Use `data.intent.scope: "public"` for intentionally public content, `"local"` for graph-local infrastructure, `"shared"` for reusable shared resources, and `"mixed"` only when the graph genuinely spans scopes or a narrower scope cannot be determined
+- `data.declaration.kind` is the declaration's type. Set it to the type of artifact being declared, usually `graph`
+- Do not use `data.intent.kind` as a substitute for `data.declaration.kind`; a person graph normally has `intent.kind: "person"` and `declaration.kind: "graph"`
 - Set `data.declaration.targetMode` explicitly, usually `artifact`
 - Set `data.declaration.artifactKind` explicitly, usually `graph` for normal graphs
 - Put exposed surfaces in `data.declaration.surfaces`
@@ -255,7 +258,8 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 
 ### Declaration checklist
 - `data.identity.graphId`, `name`, `version`, and `description` should be real values, not placeholders
-- `data.intent.kind` and `scope` should describe the graph honestly
+- `data.intent.kind` and `scope` are required, must be non-empty, and should describe the graph honestly
+- `data.declaration.kind` is required and is equivalent to the declared artifact's type
 - `data.declaration.targetMode` should usually be `artifact`
 - `data.declaration.artifactKind` should usually be `graph` unless the graph is really a different artifact class
 - `data.declaration.defaultSurfaceId` must name a surface that exists in `data.declaration.surfaces`
