@@ -18,6 +18,8 @@ Twilite transactions are strict JSON before they are graph commands. A syntax fa
 - double quotes inside any JSON string must be escaped as `\"` or replaced with safe inner single quotes
 - this rule applies to `fontFamily`, markdown, labels, descriptions, URLs, HTML, SVG, and every other string field
 - prefer `"fontFamily": "Inter, system-ui, 'Segoe UI', sans-serif"` for CSS font stacks
+- inside a JSON `data.svg` or `data.html` string, use single quotes for markup attributes; for example, write `"svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'>...</svg>"`
+- never allow a URL inside SVG markup to become Markdown link syntax; `xmlns` is the literal XML attribute `xmlns='http://www.w3.org/2000/svg'`
 - never emit `"fontFamily": "Inter, system-ui, "Segoe UI", sans-serif"` because the inner double quotes terminate the JSON string
 - validate the complete transaction as JSON before returning it
 
@@ -139,7 +141,7 @@ Canonical SVG node:
   },
   "data": {
     "altText": "Two labeled circles connected by an arrow.",
-    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Two labeled circles connected by an arrow\"><rect width=\"320\" height=\"180\" rx=\"20\" fill=\"#0f172a\"/><circle cx=\"80\" cy=\"90\" r=\"34\" fill=\"#38bdf8\"/><circle cx=\"240\" cy=\"90\" r=\"34\" fill=\"#a78bfa\"/><path d=\"M120 90h72\" stroke=\"#f8fafc\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"m182 76 18 14-18 14\" fill=\"none\" stroke=\"#f8fafc\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+    "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Two labeled circles connected by an arrow'><rect width='320' height='180' rx='20' fill='#0f172a'/><circle cx='80' cy='90' r='34' fill='#38bdf8'/><circle cx='240' cy='90' r='34' fill='#a78bfa'/><path d='M120 90h72' stroke='#f8fafc' stroke-width='6' stroke-linecap='round'/><path d='m182 76 18 14-18 14' fill='none' stroke='#f8fafc' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/></svg>"
   }
 }
 ```
@@ -149,7 +151,8 @@ SVG authoring rules:
 - provide a real root `<svg>` element and a `viewBox`
 - prefer `width="100%"`, `height="100%"`, and `preserveAspectRatio`
 - include `role="img"` and an `aria-label` in the SVG, and put a plain-language description in `data.altText`
-- keep the JSON string valid by escaping quotes
+- keep the JSON string valid by using single quotes for every SVG attribute inside `data.svg`
+- never emit Markdown link syntax inside SVG markup
 - never include scripts, event-handler attributes, or executable embedded content
 - expect Twilite to sanitize SVG before rendering
 - use top-level `width` and `height` for the node dimensions; `data.width` and `data.height` do not size the node shell
