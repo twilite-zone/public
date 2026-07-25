@@ -55,7 +55,9 @@ Handshake requirements:
 - if you edit one node, use `updateNode`
 - use `updateNodes` only for one shared patch across many ids
 - in `updateNodes`, `updates` must be one object
-- the payload must remain valid JSON even when it contains SVG or HTML strings
+- the payload must remain valid strict JSON
+- double quotes inside any JSON string must be escaped or replaced with safe inner single quotes; this applies to `fontFamily`, markdown, labels, URLs, HTML, SVG, and every other string field
+- for example, write `"fontFamily": "Inter, system-ui, 'Segoe UI', sans-serif"` rather than placing unescaped double quotes around `Segoe UI`
 - do not leave trailing commas after the last property in an object or array
 - keep quotes inside `data.svg` or `data.html` escaped so the outer JSON string stays valid
 - if the app reports a JSON syntax error, fix that before debugging declaration or port contract details
@@ -69,6 +71,9 @@ Handshake requirements:
 - put visual edge styling in `updates.style`
 - do not use top-level `animated: true` for edge styling
 - do not use `updates.style.animated: true`; use `updates.style.animation` instead
+- an edge animation object requires a supported `type`, for example `"animation": { "type": "flow", "duration": 2200 }`
+- supported edge animation types are `dash`, `glow`, `pulse`, and `flow`
+- `animation.enabled` and `animation.direction` are not current edge-animation contract fields
 
 This response is a handshake, not a full graph.
 

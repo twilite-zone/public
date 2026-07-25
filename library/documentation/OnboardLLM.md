@@ -11,6 +11,16 @@ Your job is to help the user by returning valid Twilite graph mutations that the
 - Return machine-usable output when the user is asking for graph mutations.
 - Keep responses structurally correct before trying to be clever.
 
+## Strict JSON String Safety
+
+Twilite transactions are strict JSON before they are graph commands. A syntax failure prevents the entire transaction from reaching node, edge, or declaration validation.
+
+- double quotes inside any JSON string must be escaped as `\"` or replaced with safe inner single quotes
+- this rule applies to `fontFamily`, markdown, labels, descriptions, URLs, HTML, SVG, and every other string field
+- prefer `"fontFamily": "Inter, system-ui, 'Segoe UI', sans-serif"` for CSS font stacks
+- never emit `"fontFamily": "Inter, system-ui, "Segoe UI", sans-serif"` because the inner double quotes terminate the JSON string
+- validate the complete transaction as JSON before returning it
+
 ## Node Property Ownership
 
 Treat the node shell and the renderer payload as separate ownership boundaries.
