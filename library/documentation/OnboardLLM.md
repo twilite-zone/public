@@ -1880,6 +1880,7 @@ At minimum, a valid declaration editor must support:
 - `data.identity.description`
 - `data.intent.kind`
 - `data.intent.scope`
+- `data.declaration.kind`
 - `data.declaration.targetMode`
 - `data.declaration.artifactKind`
 - `data.declaration.graphViewRole`
@@ -1889,23 +1890,28 @@ At minimum, a valid declaration editor must support:
 - `data.declaration.iconViewNodeId`
 - `data.declaration.portViewNodeId`
 - `data.declaration.surfaces`
+- `data.purpose`
+- optional `data.analytics` through the bounded analytics opt-in control
 
-When present, keep these declaration-owned fields working too:
+When present, keep this compatibility metadata working too:
 
 - `data.declaresKind`
-- `data.purpose`
 
 These fields are not just plain strings:
 
 - `data.identity.graphId` must participate in graph-id rename behavior
+- `data.declaration.kind` is the graph's extensible type; do not replace it with `data.declaresKind` or `data.declaration.artifactKind`
 - `data.declaration.defaultSurfaceId` must resolve against real declared surfaces
 - `data.declaration.surfaces` must preserve valid surface objects and their editable fields
 - declaration view bindings must resolve against real compatible view nodes in the graph
+- analytics must remain absent by default and use the bounded enable toggle, page title, content group, and hosted URL fields rather than an opaque JSON editor
 
 Do not assume that a pretty `editor.web.html` specimen is enough.
 
 - If the editor cannot actually edit the required declaration state, it is invalid
-- Do not rely on the runtime to paste the stock declaration editor underneath an incomplete custom one
+- Twilite preserves baseline editability by supplying any omitted primitive fields to a class-backed editor
+- Authored class fields take precedence at matching paths; additional fields and sections are allowed
+- Do not deliberately omit baseline fields or depend on fallback injection as the authored contract
 - If you cannot satisfy the declaration editor contract, say so instead of inventing partial syntax
 
 ## Handshake Example

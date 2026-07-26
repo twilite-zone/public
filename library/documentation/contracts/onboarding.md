@@ -301,6 +301,7 @@ Minimum required declaration fields:
 - `data.identity.description`
 - `data.intent.kind`
 - `data.intent.scope`
+- `data.declaration.kind`
 - `data.declaration.targetMode`
 - `data.declaration.artifactKind`
 - `data.declaration.graphViewRole`
@@ -310,18 +311,21 @@ Minimum required declaration fields:
 - `data.declaration.iconViewNodeId`
 - `data.declaration.portViewNodeId`
 - `data.declaration.surfaces`
+- `data.purpose`
+- optional `data.analytics` through the bounded analytics opt-in control
 
 Common declaration-owned metadata that should remain supported when present:
 
 - `data.declaresKind`
-- `data.purpose`
-- `data.analytics`
 
 Required declaration-editor behaviors:
 
 - `data.identity.graphId` is not just a text box:
   - changing it must participate in the graph id rename flow
   - the declaration node id and canonical graph id must stay aligned
+- `data.declaration.kind` is the graph's extensible type:
+  - do not substitute `data.intent.kind`, `data.declaresKind`, or `data.declaration.artifactKind`
+  - use a control that permits real graph kinds rather than a closed list
 - `data.declaration.defaultSurfaceId` is not a freeform string only:
   - it should resolve against real declared surfaces
   - it should not silently point at a missing surface
@@ -330,12 +334,18 @@ Required declaration-editor behaviors:
   - the editor should preserve valid surface objects instead of downgrading them into opaque text
 - view-binding fields are semantic selectors:
   - `primaryNodeViewId`, `primaryEditorViewId`, `iconViewNodeId`, and `portViewNodeId` should resolve against real compatible view nodes in the graph
+- analytics is a bounded optional control:
+  - absence of `data.analytics` means the graph is untracked
+  - use the enable toggle plus `pageTitle`, `contentGroup`, and hosted `url` fields
+  - do not reduce analytics authoring to an opaque JSON textarea
 
 Failure rule:
 
 - If a custom declaration editor cannot correctly edit those required fields and behaviors, it is not a valid declaration editor
-- The runtime should not quietly merge the stock declaration editor into an incomplete custom declaration editor
-- An incomplete declaration editor should fail as an authoring error instead of being treated as alternate syntax
+- Twilite injects omitted primitive baseline fields into class-backed editors so valid declarations remain editable
+- Authored fields win at matching paths, and classes may add fields, sections, appearance, help, and specialized behavior
+- Class authors must still declare the complete baseline; fallback injection is a safety net, not alternate syntax
+- Unsupported extension field types remain authoring errors until the runtime explicitly implements them
 
 ### Optional graph analytics
 
