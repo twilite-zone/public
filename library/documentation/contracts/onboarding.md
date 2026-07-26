@@ -344,24 +344,30 @@ Graph analytics is an explicit declaration-owned opt-in. It is not a default pro
 ```json
 "analytics": {
   "pageTitle": "Optional reporting title",
-  "contentGroup": "people"
+  "contentGroup": "people",
+  "url": "https://example.com/people/example.node"
 }
 ```
 
 - Put the optional object on the declaration node at `data.analytics`
 - The presence of a valid object, including `{}`, makes the graph eligible for tracking
 - If `data.analytics` is absent, the graph is deliberately untracked
-- `pageTitle` and `contentGroup` are the only authored fields currently supported; both are optional
+- `pageTitle`, `contentGroup`, and `url` are the only authored fields currently supported; all are optional
+- `url` must name a real HTTPS-hosted graph location; never infer one merely because the graph is stored on GitHub
 - Do not author `page_location`, a measurement id, arbitrary event parameters, dispatch instructions, or consent state in the graph
-- Twilite derives `page_location` as the real HTTPS Twilite launch URL for the focused graph
-- Keep durable identity, provider fetch location, and Twilite launch location distinct:
-  - `github://...` or a direct HTTP(S) graph URL may identify the focused graph resource
+- Twilite resolves `page_location` from the graph's real hosting state:
+  - a directly loaded HTTP(S) graph reports its actual sanitized source URL
+  - a GitHub-only graph reports its deterministic Twilite HTTPS launch URL
+  - a valid `analytics.url` overrides a GitHub storage ref only when it names a real HTTPS-hosted graph
+- Keep durable identity, provider fetch location, hosted location, and Twilite launch location distinct:
+  - `github://...` identifies stored repository content, not a hosted page
+  - a direct HTTP(S) graph URL identifies a hosted graph resource
   - a provider URL or API may be the fetch location
-  - `https://twilite.zone/?doc=...` is the web launch location used for the virtual page view
+  - `https://twilite.zone/?doc=...` is the web launch location for a graph without its own hosted address
 - A page view occurs only when an opted-in graph becomes the focused Twilite document after a successful load
 - Twilite Back and Forward may create new page views; retries, previews, embeds, bridges, class resolution, and background loads must not
 - Graph navigation belongs to Twilite's browser history and must not mutate web-browser history merely for analytics
-- Graph-author opt-in does not override any viewer-level consent or site policy enforced by the runtime
+- Twilite defaults analytics storage and all advertising-related consent states to denied; opted-in page views are measured without persistent analytics storage
 - Do not add `data.analytics` to templates, classes, support graphs, private graphs, or batches of authored graphs unless the user explicitly asks to opt them in
 
 ### Port guidance

@@ -162,7 +162,8 @@ SVG authoring rules:
 - Never add `data.analytics` to a declaration unless the user explicitly asks to track that graph or a clearly bounded set of graphs.
 - The presence of a valid declaration `data.analytics` object, including `{}`, makes the graph eligible for a Twilite virtual page view.
 - Absence means untracked; do not treat public visibility as analytics consent.
-- Only author optional `pageTitle` and `contentGroup` fields. Twilite owns the launch URL, measurement configuration, dispatch, deduplication, and viewer-level policy.
+- Only author optional `pageTitle`, `contentGroup`, and `url` fields. `url` is allowed only when it names a real HTTPS-hosted location for the graph; GitHub storage alone is not hosting.
+- Twilite owns measurement configuration, dispatch, deduplication, cookieless consent defaults, and viewer-level policy.
 - Do not opt in templates, classes, support graphs, or private graphs by inference.
 
 ## App Surface Expectations
