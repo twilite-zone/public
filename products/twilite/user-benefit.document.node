@@ -19,7 +19,6 @@
   },
   "settings": {
     "theme": null,
-    "backgroundImage": null,
     "defaultNodeColor": "#1976d2",
     "defaultEdgeColor": "#64748b",
     "snapToGrid": false,
@@ -161,12 +160,8 @@
             "squashAllowed": false
           }
         },
-        "document": {
-          "url": "https://twilite.zone/products/twilite/user-benefit.document.node"
-        },
         "settings": {
           "theme": null,
-          "backgroundImage": null,
           "defaultNodeColor": "#1976d2",
           "defaultEdgeColor": "#666666",
           "snapToGrid": false,
@@ -198,9 +193,9 @@
         "declaresKind": "document",
         "purpose": "Explain the practical and emotional value Twilite gives a user.",
         "primaryNodeViewId": "twilite-user-benefit-document-view",
-      "declaration": {
-        "kind": "document",
-        "graphViewRole": "document",
+        "declaration": {
+          "kind": "document",
+          "graphViewRole": "document",
           "defaultSurfaceId": "user-benefit",
           "surfaces": [
             {
@@ -209,6 +204,21 @@
               "label": "What Twilite Gives the User",
               "memo": "Public summary port for the Twilite user-benefit document.",
               "viewNodeId": "twilite-user-benefit-port",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            },
+            {
+              "id": "document",
+              "kind": "port",
+              "label": "Full Document",
+              "memo": "Consumable full-document surface for What Twilite Gives the User.",
+              "viewNodeId": "twilite-user-benefit-document-port",
               "exposes": {
                 "views": {
                   "mode": "allow"
@@ -1564,6 +1574,233 @@
       ]
     },
     {
+      "id": "twilite-user-benefit-document-port",
+      "type": "port",
+      "label": "Full Document",
+      "root": false,
+      "position": {
+        "x": 1580,
+        "y": 850
+      },
+      "width": 500,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "data": {
+        "title": "What Twilite Gives the User",
+        "localTitle": "What Twilite Gives the User",
+        "publishedTitle": "What Twilite Gives the User",
+        "purpose": "Exposes the complete composed document as a consumable graph surface.",
+        "titleSourceNodeId": "twilite-user-benefit-title",
+        "audience": "Prospective users, collaborators, and customers",
+        "status": "active",
+        "viewRole": "document",
+        "viewKind": "display",
+        "exposedAuthority": "consume-view",
+        "runtimeExposed": true,
+        "partNodeIds": [
+          "twilite-user-benefit-title",
+          "twilite-user-benefit-promise",
+          "twilite-user-benefit-complexity",
+          "twilite-user-benefit-context",
+          "twilite-user-benefit-reuse",
+          "twilite-user-benefit-depth",
+          "twilite-user-benefit-ai",
+          "twilite-user-benefit-ownership",
+          "twilite-user-benefit-summary"
+        ],
+        "documentOrder": [
+          "twilite-user-benefit-title",
+          "twilite-user-benefit-promise",
+          "twilite-user-benefit-complexity",
+          "twilite-user-benefit-context",
+          "twilite-user-benefit-reuse",
+          "twilite-user-benefit-depth",
+          "twilite-user-benefit-ai",
+          "twilite-user-benefit-ownership",
+          "twilite-user-benefit-summary"
+        ],
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"28\" y=\"20\" width=\"164\" height=\"120\" rx=\"18\" fill=\"#fffdfa\" stroke=\"#0f172a\" stroke-width=\"5\"/><rect x=\"46\" y=\"38\" width=\"92\" height=\"14\" rx=\"7\" fill=\"#f59e0b\" opacity=\"0.85\"/><rect x=\"46\" y=\"68\" width=\"128\" height=\"16\" rx=\"8\" fill=\"#e0f2fe\" stroke=\"#0ea5e9\" stroke-width=\"3\"/><rect x=\"46\" y=\"92\" width=\"56\" height=\"16\" rx=\"8\" fill=\"#ede9fe\" stroke=\"#8b5cf6\" stroke-width=\"3\"/><rect x=\"110\" y=\"92\" width=\"64\" height=\"16\" rx=\"8\" fill=\"#dcfce7\" stroke=\"#16a34a\" stroke-width=\"3\"/><rect x=\"46\" y=\"116\" width=\"128\" height=\"10\" rx=\"5\" fill=\"#fde68a\" opacity=\"0.9\"/></svg>",
+        "_classBinding": {
+          "key": "document-view",
+          "sourceRef": "https://twilite.zone/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "identity": {
+            "graphId": "document-view-node-class",
+            "name": "Document View Node Class",
+            "version": "0.1.0",
+            "description": "A composed readable surface for graph-backed documents and document-like artifacts.",
+            "createdAt": "2026-03-24T00:00:00.000Z",
+            "updatedAt": "2026-03-26T19:45:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "A composed readable surface for graph-backed documents and document-like artifacts.",
+          "description": "A composed readable surface for graph-backed documents and document-like artifacts.",
+          "defaults": {
+            "label": "Document View",
+            "size": {
+              "width": 420,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "titleSourceNodeId": "",
+              "typeSourceNodeId": "",
+              "purpose": "",
+              "audience": "",
+              "status": "draft",
+              "viewRole": "document",
+              "viewKind": "display",
+              "exposedAuthority": "consume-view",
+              "runtimeExposed": false,
+              "localTitle": "",
+              "publishedTitle": ""
+            }
+          },
+          "nodeDef": {
+            "key": "document-view",
+            "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/document-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Document View",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "titleSourceNodeId": "",
+                "typeSourceNodeId": "",
+                "purpose": "",
+                "audience": "",
+                "status": "draft",
+                "viewRole": "document",
+                "viewKind": "display",
+                "exposedAuthority": "consume-view",
+                "runtimeExposed": false,
+                "localTitle": "",
+                "publishedTitle": ""
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "document-view",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/document-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "document-view",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/document-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "document-view",
+              "intent": "node",
+              "payload": "node.web.document",
+              "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/document-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "document-view",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/document-view.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "document-view",
+            "intent": "node",
+            "payload": "node.web.document",
+            "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/document-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "document-view",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/document-view.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "twilite-user-benefit-bridge-document-view",
+          "sourceBridgeNodeId": "twilite-user-benefit-bridge-document-view",
+          "sourceBridgeLabel": "Document View",
+          "sourceRef": "https://twilite.zone/library/classes/nodes/ui-interaction/document-view.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "document-view",
+          "classRef": "https://twilite.zone/library/classes/nodes/ui-interaction/document-view.node-class.node"
+        },
+        "definitionKey": "document-view",
+        "identity": {
+          "graphId": "twilite-user-benefit-document"
+        },
+        "payload": "node.web.document",
+        "view": {
+          "intent": "node",
+          "payload": "node.web.document",
+          "label": "Full Document",
+          "showEditButton": true
+        }
+      }
+    },
+    {
       "id": "twilite-user-benefit-bridge-title",
       "type": "bridge",
       "label": "Title",
@@ -2399,6 +2636,20 @@
       "sourcePort": "right",
       "targetPort": "left",
       "label": "publishes",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "user-benefit-edge-document-port",
+      "type": "reference",
+      "source": "twilite-user-benefit-document-view",
+      "target": "twilite-user-benefit-document-port",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "exposes document",
       "style": {
         "curved": true,
         "route": "curved"
