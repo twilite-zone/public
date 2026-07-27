@@ -248,7 +248,6 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - `data.declaration.kind` is the declaration's type. Set it to the type of artifact being declared, usually `graph`
 - Do not use `data.intent.kind` as a substitute for `data.declaration.kind`; a person graph normally has `intent.kind: "person"` and `declaration.kind: "graph"`
 - Set `data.declaration.targetMode` explicitly, usually `artifact`
-- Set `data.declaration.artifactKind` explicitly, usually `graph` for normal graphs
 - Put exposed surfaces in `data.declaration.surfaces`
 - Point `data.declaration.defaultSurfaceId` at a surface you actually create
 - Use `viewNodeId` to point at the port node that renders that surface
@@ -261,10 +260,10 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - `data.intent.kind` and `scope` are required, must be non-empty, and should describe the graph honestly
 - `data.declaration.kind` is required and is equivalent to the declared artifact's type
 - `data.declaration.targetMode` should usually be `artifact`
-- `data.declaration.artifactKind` should usually be `graph` unless the graph is really a different artifact class
 - `data.declaration.defaultSurfaceId` must name a surface that exists in `data.declaration.surfaces`
 - Each declared view surface should include `id`, `kind`, `label`, `memo`, and `viewNodeId`
-- If you include compatibility fields like `primaryNodeViewId` or `portViewNodeId`, keep them aligned with the declared surfaces instead of letting them disagree
+- Do not author legacy classification or view aliases in new declarations: `artifactKind`, `graphViewRole`, `declaresKind`, `primaryNodeViewId`, `primaryEditorViewId`, `iconViewNodeId`, or `portViewNodeId`
+- Twilite may still read those legacy fields from existing graphs as silent compatibility fallbacks; their presence or staleness must not make a declaration invalid
 - A graph with a partial declaration may load, but it can still trigger saveability or interpretation problems
 
 ### Custom node classes are executable infrastructure
@@ -303,20 +302,12 @@ Minimum required declaration fields:
 - `data.intent.scope`
 - `data.declaration.kind`
 - `data.declaration.targetMode`
-- `data.declaration.artifactKind`
-- `data.declaration.graphViewRole`
 - `data.declaration.defaultSurfaceId`
-- `data.declaration.primaryNodeViewId`
-- `data.declaration.primaryEditorViewId`
-- `data.declaration.iconViewNodeId`
-- `data.declaration.portViewNodeId`
 - `data.declaration.surfaces`
 - `data.purpose`
 - optional `data.analytics` through the bounded analytics opt-in control
 
-Common declaration-owned metadata that should remain supported when present:
-
-- `data.declaresKind`
+Legacy declaration metadata remains readable when present but is not part of the authoring contract.
 
 Required declaration-editor behaviors:
 
@@ -324,7 +315,7 @@ Required declaration-editor behaviors:
   - changing it must participate in the graph id rename flow
   - the declaration node id and canonical graph id must stay aligned
 - `data.declaration.kind` is the graph's extensible type:
-  - do not substitute `data.intent.kind`, `data.declaresKind`, or `data.declaration.artifactKind`
+  - do not substitute `data.intent.kind` or legacy duplicates such as `data.declaresKind` and `data.declaration.artifactKind`
   - use a control that permits real graph kinds rather than a closed list
 - `data.declaration.defaultSurfaceId` is not a freeform string only:
   - it should resolve against real declared surfaces
@@ -332,8 +323,8 @@ Required declaration-editor behaviors:
 - `data.declaration.surfaces` is not arbitrary JSON prose:
   - surface `id`, `kind`, `label`, `memo`, `viewNodeId`, and exposure families must remain editable
   - the editor should preserve valid surface objects instead of downgrading them into opaque text
-- view-binding fields are semantic selectors:
-  - `primaryNodeViewId`, `primaryEditorViewId`, `iconViewNodeId`, and `portViewNodeId` should resolve against real compatible view nodes in the graph
+- `data.declaration.surfaces` is the sole authored presentation contract:
+  - use `defaultSurfaceId` and real surface `viewNodeId` bindings instead of legacy preferred-view aliases
 - analytics is a bounded optional control:
   - absence of `data.analytics` means the graph is untracked
   - use the enable toggle plus `pageTitle`, `contentGroup`, and hosted `url` fields
@@ -649,7 +640,7 @@ Correct intent-preserving alternative:
 - If the user asks for a `port`, create a `port`, not a `markdown` node
 - Do not treat ad hoc `data.ports` on another node type as a replacement for a real `port` node
 - Do not satisfy a declaration-and-port request with only styling and a reference edge
-- Do not omit `targetMode`, `artifactKind`, `defaultSurfaceId`, or the declared `surfaces` array when authoring a real declaration
+- Do not omit `targetMode`, `defaultSurfaceId`, or the declared `surfaces` array when authoring a real declaration
 - Do not emit empty inline payload placeholders such as `html: ""` or `svg: ""` on `port` or `portal` nodes
 - Do not put the graph id at `data.graphId` when authoring a real port; use `data.identity.graphId`
 - Do not return a metadata-only card when the user asked for a working port back to the graph
@@ -659,12 +650,10 @@ Correct intent-preserving alternative:
 - Do not author a normal graph declaration as:
   - `data.declaration.kind: "knowledge-graph"`
   - `data.declaration.targetMode: "graph"`
-  - `data.declaration.artifactKind: "educational"`
   - surface `kind: "card"`
 - For a normal graph, prefer:
   - `data.declaration.kind: "graph"`
   - `data.declaration.targetMode: "artifact"`
-  - `data.declaration.artifactKind: "graph"`
   - surface `kind: "view"`
 
 You are now part of the graph’s memory.

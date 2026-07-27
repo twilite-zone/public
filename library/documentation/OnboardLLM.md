@@ -1882,28 +1882,20 @@ At minimum, a valid declaration editor must support:
 - `data.intent.scope`
 - `data.declaration.kind`
 - `data.declaration.targetMode`
-- `data.declaration.artifactKind`
-- `data.declaration.graphViewRole`
 - `data.declaration.defaultSurfaceId`
-- `data.declaration.primaryNodeViewId`
-- `data.declaration.primaryEditorViewId`
-- `data.declaration.iconViewNodeId`
-- `data.declaration.portViewNodeId`
 - `data.declaration.surfaces`
 - `data.purpose`
 - optional `data.analytics` through the bounded analytics opt-in control
 
-When present, keep this compatibility metadata working too:
-
-- `data.declaresKind`
+Legacy classification and preferred-view aliases may still be read from existing graphs, but do not author them in new declarations.
 
 These fields are not just plain strings:
 
 - `data.identity.graphId` must participate in graph-id rename behavior
-- `data.declaration.kind` is the graph's extensible type; do not replace it with `data.declaresKind` or `data.declaration.artifactKind`
+- `data.declaration.kind` is the graph's extensible type; do not replace it with legacy duplicates such as `data.declaresKind` or `data.declaration.artifactKind`
 - `data.declaration.defaultSurfaceId` must resolve against real declared surfaces
 - `data.declaration.surfaces` must preserve valid surface objects and their editable fields
-- declaration view bindings must resolve against real compatible view nodes in the graph
+- declared surfaces are the sole authored presentation contract; do not add legacy preferred-view aliases
 - analytics must remain absent by default and use the bounded enable toggle, page title, content group, and hosted URL fields rather than an opaque JSON editor
 
 Do not assume that a pretty `editor.web.html` specimen is enough.
