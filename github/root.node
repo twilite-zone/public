@@ -225,7 +225,7 @@
         "declaration": {
           "kind": "github-guide",
           "graphViewRole": "authoring",
-          "targetMode": "graph",
+          "targetMode": "artifact",
           "primaryNodeViewId": "github-view",
           "surfaces": [
             {
@@ -932,12 +932,159 @@
       }
     },
     {
+      "id": "github-install-interface",
+      "type": "markdown",
+      "label": "Install the GitHub Interface",
+      "root": false,
+      "position": {
+        "x": 340,
+        "y": -40
+      },
+      "width": 500,
+      "height": 360,
+      "color": "#312e81",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "value"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "value"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "value"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "value"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Install the Twilite GitHub Interface\n\nBefore Twilite can write to a repository, install the **Twilite GitHub Interface** for the GitHub account or organization that owns it.\n\n1. Start Twilite’s GitHub connection flow.\n2. Install or configure the Twilite GitHub Interface.\n3. Grant the installation access to the repository you want Twilite to write to.\n4. Return to Twilite and select that installation.\n\nInstalling the interface does not automatically grant access to every repository. If the repository is not included in the installation’s repository selection, Twilite can’t write to it.",
+        "identity": {
+          "graphId": "github-guide"
+        }
+      }
+    },
+    {
       "id": "github-access",
       "type": "markdown",
       "label": "Connect Access",
       "root": false,
       "position": {
-        "x": 340,
+        "x": 900,
         "y": -40
       },
       "width": 500,
@@ -1084,7 +1231,7 @@
       "label": "Edit and Save",
       "root": false,
       "position": {
-        "x": 900,
+        "x": 1460,
         "y": -40
       },
       "width": 500,
@@ -2367,12 +2514,26 @@
       "data": {}
     },
     {
-      "id": "github-open-access",
+      "id": "github-open-install",
       "type": "reference",
       "source": "github-open",
+      "target": "github-install-interface",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "install",
+      "style": {
+        "width": 2,
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "github-install-access",
+      "type": "reference",
+      "source": "github-install-interface",
       "target": "github-access",
-      "sourcePort": "bottom",
-      "targetPort": "top",
+      "sourcePort": "right",
+      "targetPort": "left",
       "label": "connect",
       "style": {
         "width": 2,
@@ -2385,8 +2546,8 @@
       "type": "reference",
       "source": "github-access",
       "target": "github-save",
-      "sourcePort": "bottom",
-      "targetPort": "top",
+      "sourcePort": "right",
+      "targetPort": "left",
       "label": "write",
       "style": {
         "width": 2,
