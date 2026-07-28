@@ -42,7 +42,9 @@ Node shell
   visible
   showLabel
   style
-  handles / ports / inputs / outputs
+  ports
+  handles (only when they add visual placement or bindings)
+  inputs / outputs (legacy-only compatibility)
 
 Renderer and type payload
   data.markdown
@@ -585,7 +587,8 @@ Current runtime behavior:
 - `position` merges with the current position
 - `style` merges with the current style
 - `state` merges with the current state
-- `ports`, `inputs`, and `outputs` should be treated as full replacement arrays for the semantic port contract you want after the edit
+- `ports` should be treated as the full replacement array for the semantic connection contract
+- `inputs` and `outputs` are legacy-only compatibility arrays; do not add or update them when canonical `ports` exist
 - `handles` should be treated as a full replacement array for UI handle affordances when you edit them
 
 Simple edit example:
@@ -1550,18 +1553,22 @@ Do not assume node style keys apply unchanged to every graph element.
 Twilite now separates semantic ports from UI handles:
 
 - `ports`: the semantic interface contract used by `sourcePort` and `targetPort`
-- `inputs`: legacy semantic input list
-- `outputs`: legacy semantic output list
+- `inputs`: legacy semantic input list; omit when canonical `ports` exist
+- `outputs`: legacy semantic output list; omit when canonical `ports` exist
 - `handles`: optional UI affordances that may bind to ports
 
 Rules:
 
+- New and updated nodes should author `ports` as the canonical semantic connection contract.
+- Do not duplicate canonical ports into `inputs` and `outputs`.
+- Preserve `inputs` and `outputs` only when repairing a legacy-only node that has no `ports` yet.
 - Edges connect to ports, not directly to handles.
 - A handle may bind to one semantic port using `portId`.
 - Multiple handles may bind to the same port.
 - A handle with no `portId` is visual-only.
 - Ports may define default placement.
 - Handles may override that placement with their own `angle`.
+- Omit `handles` when they would be structurally identical to `ports`; add them only when they provide distinct visual placement or bindings.
 - If a handle selects a referenced-graph surface, use `surfaceId`.
 
 Safe explicit port-plus-handle example:
@@ -1608,18 +1615,11 @@ Safe explicit port-plus-handle example:
       "dataType": "value",
       "angle": 180
     }
-  ],
-  "inputs": [
-    { "key": "root", "label": "root", "type": "value" }
-  ],
-  "outputs": [
-    { "key": "root", "label": "root", "type": "value" },
-    { "key": "message", "label": "message", "type": "value" }
   ]
 }
 ```
 
-If the user asks to add or change semantic ports on an existing node, return an `updateNode` mutation that sets the full intended `ports`, `inputs`, and `outputs` arrays together.
+If the user asks to add or change semantic ports on an existing node, return an `updateNode` mutation that sets the full intended `ports` array. Do not add derived `inputs` or `outputs`.
 
 If the user asks to add or change handles on an existing node, return an `updateNode` mutation that sets the full intended `handles` array.
 
@@ -1674,13 +1674,6 @@ Example: add a new semantic output port and two bound handles to an existing mar
             "portId": "message",
             "angle": 90
           }
-        ],
-        "inputs": [
-          { "key": "root", "label": "root", "type": "value" }
-        ],
-        "outputs": [
-          { "key": "root", "label": "root", "type": "value" },
-          { "key": "message", "label": "message", "type": "value" }
         ]
       }
     }
@@ -1763,12 +1756,6 @@ This fragment assumes the graph's declaration and surface nodes already exist. I
           "handles": [
             { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "portId": "root", "angle": 210 }
           ],
-          "inputs": [
-            { "key": "root", "label": "root", "type": "any" }
-          ],
-          "outputs": [
-            { "key": "root", "label": "root", "type": "any" }
-          ],
           "data": {
             "intent": "external",
             "scope": "focused-graph",
@@ -1806,12 +1793,6 @@ This fragment assumes the graph's declaration and surface nodes already exist. I
           ],
           "handles": [
             { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "portId": "root", "angle": 210 }
-          ],
-          "inputs": [
-            { "key": "root", "label": "root", "type": "any" }
-          ],
-          "outputs": [
-            { "key": "root", "label": "root", "type": "any" }
           ],
           "data": {
             "displayName": "Example Person",
@@ -1861,7 +1842,7 @@ This fragment assumes the graph's declaration and surface nodes already exist. I
 }
 ```
 
-Before returning this pattern, replace the example class reference and declaration id with real values from the template or target graph. The one-port arrays above are only a minimal standalone specimen. When deriving from a real template, preserve its full `ports`, `inputs`, `outputs`, and `handles` arrays; do not collapse them to `root` or invent `top` or `bottom` unless the inspected nodes actually expose those ports.
+Before returning this pattern, replace the example class reference and declaration id with real values from the template or target graph. The one-port arrays above are only a minimal standalone specimen. When deriving from a real template, preserve its full canonical `ports` contract and any `handles` that add distinct placement or bindings; do not collapse them to `root` or invent `top` or `bottom` unless the inspected nodes actually expose those ports. Preserve legacy-only `inputs` and `outputs` only when no canonical `ports` exist.
 
 ## Declaration Editor Contract
 

@@ -36,7 +36,9 @@ Node shell
   width / height
   visible / showLabel
   style
-  handles / ports / inputs / outputs
+  ports
+  handles (only when they add visual placement or bindings)
+  inputs / outputs (legacy-only compatibility)
 
 Renderer and type payload
   data.markdown
