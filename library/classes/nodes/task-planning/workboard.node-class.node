@@ -80,7 +80,7 @@
                           { "label": "Automatic from task status", "value": "auto" },
                           { "label": "Manual lane", "value": "manual" }
                         ],
-                        "helperText": "Automatic placement follows the workboard policy. Manual placement preserves the selected lane."
+                        "helperText": "Manual placement and pinning are synchronized for now. A pinned task keeps its selected lane; an unpinned task follows workboard policy."
                       },
                       {
                         "key": "boardLane",
@@ -101,7 +101,7 @@
                         "label": "Pinned",
                         "type": "boolean",
                         "path": "data.board.pinned",
-                        "helperText": "Pinned tasks sort before ordinary tasks in the same lane."
+                        "helperText": "Pinned currently means manually placed: the task keeps its selected lane and is excluded from automatic placement."
                       },
                       {
                         "key": "boardRank",
@@ -269,7 +269,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Workboard policy\n\nThe controller owns graph-local projection policy. Source task graphs continue to own task status, priority, and the work itself. Portal carriers own local `data.board` placement overrides.\n\n- `laneMode: auto` follows the status-to-lane mapping.\n- `laneMode: manual` preserves the carrier's selected lane.\n- Pinning and rank are local projection data, not source-task truth."
+        "markdown": "## Workboard policy\n\nThe controller owns graph-local projection policy. Source task graphs continue to own task status, priority, and the work itself. Portal carriers own local `data.board` placement overrides.\n\n- `laneMode: auto` follows the status-to-lane mapping.\n- `laneMode: manual` preserves the carrier's selected lane.\n- For now, pinning and manual placement are the same state: pinned carriers use `laneMode: manual`; unpinned carriers use `laneMode: auto`.\n- Rank remains local projection data, not source-task truth."
       }
     }
   ],
