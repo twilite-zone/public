@@ -58,6 +58,68 @@
               "data": {
                 "name": "Workboard",
                 "description": "A focused operational view of source-owned task graphs.",
+                "editorContributions": [
+                  {
+                    "id": "workboard-task-placement",
+                    "match": {
+                      "nodeType": "portal",
+                      "pathExists": "data.board"
+                    },
+                    "section": {
+                      "key": "placement",
+                      "title": "Placement",
+                      "summary": "Local workboard lane, ordering, and review state."
+                    },
+                    "fields": [
+                      {
+                        "key": "boardLaneMode",
+                        "label": "Placement",
+                        "type": "select",
+                        "path": "data.board.laneMode",
+                        "options": [
+                          { "label": "Automatic from task status", "value": "auto" },
+                          { "label": "Manual lane", "value": "manual" }
+                        ],
+                        "helperText": "Automatic placement follows the workboard policy. Manual placement preserves the selected lane."
+                      },
+                      {
+                        "key": "boardLane",
+                        "label": "Lane",
+                        "type": "select",
+                        "path": "data.board.lane",
+                        "options": [
+                          { "label": "Inbox", "value": "inbox" },
+                          { "label": "Now", "value": "now" },
+                          { "label": "Next", "value": "next" },
+                          { "label": "Waiting", "value": "waiting" },
+                          { "label": "Recently Completed", "value": "recently-completed" }
+                        ],
+                        "visibleWhen": { "path": "data.board.laneMode", "equals": "manual" }
+                      },
+                      {
+                        "key": "boardPinned",
+                        "label": "Pinned",
+                        "type": "boolean",
+                        "path": "data.board.pinned",
+                        "helperText": "Pinned tasks sort before ordinary tasks in the same lane."
+                      },
+                      {
+                        "key": "boardRank",
+                        "label": "Rank",
+                        "type": "number",
+                        "path": "data.board.rank",
+                        "helperText": "Lower ranks appear first after pinning and priority rules."
+                      },
+                      {
+                        "key": "boardReviewedAt",
+                        "label": "Reviewed At",
+                        "type": "text",
+                        "path": "data.board.reviewedAt",
+                        "placeholder": "YYYY-MM-DDTHH:mm:ss.sssZ"
+                      }
+                    ]
+                  }
+                ],
                 "policy": {
                   "defaultLaneMode": "auto",
                   "unknownLane": "inbox",
