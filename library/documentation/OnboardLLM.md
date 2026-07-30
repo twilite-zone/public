@@ -1284,6 +1284,35 @@ Why it is unsafe:
 - the inner double quotes break JSON parsing
 - the namespace is no longer valid SVG
 
+## Script Source Is Opaque After JSON Parsing
+
+Store graph-owned JavaScript in `data.source`.
+
+The transaction or graph file must be valid JSON, so JSON transport escaping is
+still required. Once Twilite parses that JSON, however, the resulting
+`data.source` string is the authored JavaScript. Do not decode, normalize, or
+globally replace its backslashes, quotes, newlines, template literals, regular
+expressions, or HTML-looking text.
+
+In particular, this valid JavaScript must remain unchanged:
+
+```js
+const text = items.map(item => item.label).join('\n');
+```
+
+Do not turn the remaining `\n` sequence into a literal newline. Doing so places
+a newline inside the quoted JavaScript string and causes script compilation to
+fail.
+
+Boundary rule:
+
+```text
+transaction JSON escaping -> JSON parser -> opaque data.source -> ScriptRunner
+```
+
+Only an explicit source-import adapter may decode an external encoding. The
+ordinary graph and inline-script paths must pass source through losslessly.
+
 ## Reusing Exported Node Data
 
 Exported graph fragments often contain runtime or bridge metadata such as:

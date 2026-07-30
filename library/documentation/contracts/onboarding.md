@@ -596,6 +596,24 @@ The example is illustrative. Replace its ids with inspected real ids. If the dec
 - If you paste fenced JSON from a chat response, make sure the payload inside the fence is complete and balanced
 - If the app reports a JSON syntax error, fix that first before debugging node contracts
 
+### Lossless script-source boundary
+
+- Put graph-owned JavaScript in `data.source`.
+- Escape it only as required to make the containing graph or transaction valid JSON.
+- After JSON parsing, treat the resulting source string as opaque authored JavaScript.
+- Do not globally expand `\n`, `\r`, backslashes, quotes, template literals, regular expressions, or HTML-looking text.
+- A remaining escape such as `.join('\n')` belongs to JavaScript and must reach the ScriptRunner unchanged.
+- Decode source only at an explicit import boundary that declares an external encoding.
+
+The required transport is:
+
+```text
+JSON transport -> one JSON decode -> unchanged data.source -> ScriptRunner
+```
+
+If compilation fails, report it as a script compilation failure with the source
+node id. Do not silently rewrite the source and retry.
+
 ## Markdown content versus node styling
 
 - `data.markdown` is for authored content, not for canvas styling
