@@ -334,7 +334,14 @@
               "priority": "highest",
               "action": "setData",
               "bind": "data.status",
-              "value": "done"
+              "value": "done",
+              "when": {
+                "path": "data.status",
+                "notIn": [
+                  "done",
+                  "cancelled"
+                ]
+              }
             },
             {
               "id": "task-mark-active",
@@ -345,18 +352,33 @@
               "priority": "high",
               "action": "setData",
               "bind": "data.status",
-              "value": "in-progress"
+              "value": "in-progress",
+              "when": {
+                "path": "data.status",
+                "in": [
+                  "todo",
+                  "waiting",
+                  "blocked"
+                ]
+              }
             },
             {
               "id": "task-mark-todo",
               "type": "button",
               "label": "Reopen",
-              "icon": "edit",
+              "icon": "restore",
               "variant": "outlined",
               "priority": "normal",
               "action": "setData",
               "bind": "data.status",
-              "value": "todo"
+              "value": "todo",
+              "when": {
+                "path": "data.status",
+                "in": [
+                  "done",
+                  "cancelled"
+                ]
+              }
             },
             {
               "id": "task-edit",
@@ -407,18 +429,32 @@
               "priority": "highest",
               "action": "setData",
               "bind": "data.status",
-              "value": "done"
+              "value": "done",
+              "when": {
+                "path": "data.status",
+                "notIn": [
+                  "done",
+                  "cancelled"
+                ]
+              }
             },
             {
               "id": "task-summary-reopen",
               "type": "button",
               "label": "Reopen",
-              "icon": "edit",
+              "icon": "restore",
               "variant": "outlined",
               "priority": "high",
               "action": "setData",
               "bind": "data.status",
-              "value": "todo"
+              "value": "todo",
+              "when": {
+                "path": "data.status",
+                "in": [
+                  "done",
+                  "cancelled"
+                ]
+              }
             }
           ],
           "html": {
