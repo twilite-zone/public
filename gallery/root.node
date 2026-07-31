@@ -19,7 +19,6 @@
       "id": "gallery-declaration",
       "type": "declaration",
       "label": "Declaration",
-      "root": false,
       "position": {
         "x": 40,
         "y": -520
@@ -175,7 +174,6 @@
         "dependencies": {
           "nodeTypes": [
             "declaration",
-            "bridge",
             "markdown",
             "port",
             "portal"
@@ -220,9 +218,6 @@
           "gridSize": 20,
           "edgeRouting": "auto",
           "autoSave": false,
-          "expansion": {
-            "allowGraphEntry": true
-          },
           "layout": {
             "mode": "autoOnMissingPositions",
             "defaultLayout": "layered",
@@ -248,16 +243,16 @@
         "purpose": "Curate current graphs that demonstrate Twilite as a medium.",
         "declaration": {
           "kind": "gallery",
-          "graphViewRole": "authoring",
-          "targetMode": "graph",
-          "primaryNodeViewId": "gallery-view",
+          "graphViewRole": "publishing",
+          "targetMode": "artifact",
           "surfaces": [
             {
-              "id": "gallery-home",
-              "kind": "view",
-              "label": "Twilite Gallery",
+              "id": "root",
+              "kind": "port",
+              "label": "Root Port",
+              "portNodeId": "gallery-view",
               "viewNodeId": "gallery-view",
-              "memo": "Public gallery card and entry surface.",
+              "memo": "Default public entry into the Twilite Gallery.",
               "exposes": {
                 "views": {
                   "mode": "allow"
@@ -268,74 +263,14 @@
               }
             }
           ],
-          "defaultSurfaceId": "gallery-home"
-        }
-      }
-    },
-    {
-      "id": "gallery-view-port",
-      "type": "bridge",
-      "label": "View",
-      "root": false,
-      "position": {
-        "x": 460,
-        "y": -520
-      },
-      "width": 280,
-      "height": 120,
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "memo": "Bridge for the View class.",
-        "intent": "external",
-        "resourceKind": "node-class",
-        "scope": "focused-graph",
-        "grants": [
-          "create"
-        ],
-        "authority": "bridge",
-        "bridge": {
-          "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        },
-        "_classBinding": {
-          "key": "ui-view",
-          "sourceRef": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "ui-view",
-          "classRef": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node"
-        },
-        "target": {
-          "mode": "bridge",
-          "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ],
-          "label": "View",
-          "key": "ui-view"
-        },
-        "identity": {
-          "graphId": "gallery-declaration"
+          "defaultSurfaceId": "root"
         }
       }
     },
     {
       "id": "gallery-view",
       "type": "port",
-      "label": "Twilite Gallery",
-      "root": false,
+      "label": "Root Port",
       "position": {
         "x": 800,
         "y": -520
@@ -478,123 +413,15 @@
         "audience": "Visitors, graph authors, and builders",
         "status": "active",
         "svg": "<svg viewBox=\"0 0 260 180\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><defs><linearGradient id=\"gallery-bg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#111827\"/><stop offset=\"0.52\" stop-color=\"#312e81\"/><stop offset=\"1\" stop-color=\"#701a75\"/></linearGradient><linearGradient id=\"gallery-glow\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#67e8f9\"/><stop offset=\"1\" stop-color=\"#f0abfc\"/></linearGradient><filter id=\"gallery-shadow\"><feDropShadow dx=\"0\" dy=\"4\" stdDeviation=\"5\" flood-color=\"#020617\" flood-opacity=\"0.55\"/></filter></defs><rect width=\"260\" height=\"180\" rx=\"24\" fill=\"url(#gallery-bg)\"/><rect x=\"14\" y=\"14\" width=\"232\" height=\"152\" rx=\"20\" fill=\"#0f172a\" fill-opacity=\"0.76\" stroke=\"#c4b5fd\" stroke-opacity=\"0.28\"/><g filter=\"url(#gallery-shadow)\"><rect x=\"31\" y=\"34\" width=\"56\" height=\"68\" rx=\"8\" fill=\"#172554\" stroke=\"#67e8f9\" stroke-width=\"2\"/><rect x=\"102\" y=\"27\" width=\"57\" height=\"82\" rx=\"8\" fill=\"#2e1065\" stroke=\"#c4b5fd\" stroke-width=\"2\"/><rect x=\"174\" y=\"40\" width=\"54\" height=\"63\" rx=\"8\" fill=\"#4a044e\" stroke=\"#f0abfc\" stroke-width=\"2\"/></g><g fill=\"none\" stroke=\"url(#gallery-glow)\" stroke-width=\"2.5\" stroke-linecap=\"round\" opacity=\"0.95\"><path d=\"M44 79 L60 53 L76 76 L60 89 Z\"/><path d=\"M114 82 L130 48 L147 76 L136 94 Z\"/><path d=\"M185 82 L199 57 L217 75 L203 91 Z\"/></g><g fill=\"#f8fafc\"><circle cx=\"44\" cy=\"79\" r=\"4\"/><circle cx=\"60\" cy=\"53\" r=\"5\"/><circle cx=\"76\" cy=\"76\" r=\"4\"/><circle cx=\"60\" cy=\"89\" r=\"4\"/><circle cx=\"114\" cy=\"82\" r=\"4\"/><circle cx=\"130\" cy=\"48\" r=\"5\"/><circle cx=\"147\" cy=\"76\" r=\"4\"/><circle cx=\"136\" cy=\"94\" r=\"4\"/><circle cx=\"185\" cy=\"82\" r=\"4\"/><circle cx=\"199\" cy=\"57\" r=\"5\"/><circle cx=\"217\" cy=\"75\" r=\"4\"/><circle cx=\"203\" cy=\"91\" r=\"4\"/></g><path d=\"M42 121 H218\" stroke=\"#c4b5fd\" stroke-opacity=\"0.35\"/><text x=\"130\" y=\"143\" text-anchor=\"middle\" font-family=\"ui-sans-serif,system-ui,sans-serif\" font-size=\"14\" font-weight=\"800\" letter-spacing=\"0.13em\" fill=\"#f8fafc\">TWILITE GALLERY</text><text x=\"130\" y=\"157\" text-anchor=\"middle\" font-family=\"ui-sans-serif,system-ui,sans-serif\" font-size=\"7\" font-weight=\"600\" letter-spacing=\"0.18em\" fill=\"#a5f3fc\">LIVING GRAPHS ON EXHIBIT</text></svg>",
-        "_classBinding": {
-          "key": "ui-view",
-          "sourceRef": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "identity": {
-            "graphId": "ui-view-node-class",
-            "name": "View Node Class",
-            "version": "0.1.0",
-            "description": "A user-facing interface surface or screen-level view.",
-            "createdAt": "2026-03-24T00:00:00.000Z",
-            "updatedAt": "2026-03-26T19:45:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "A user-facing interface surface or screen-level view.",
-          "description": "A user-facing interface surface or screen-level view.",
-          "defaults": {
-            "label": "View",
-            "size": {
-              "width": 420,
-              "height": 320
-            },
-            "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "purpose": "",
-              "audience": "",
-              "status": "draft"
-            }
-          },
-          "nodeDef": {
-            "key": "ui-view",
-            "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "View",
-              "size": {
-                "width": 420,
-                "height": 320
-              },
-              "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "purpose": "",
-                "audience": "",
-                "status": "draft"
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "ui-view",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "ui-view",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "ui-view",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "ui-view",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "ui-view",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "ui-view",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceBridgeNodeId": "gallery-view-port",
-          "sourceBridgeLabel": "View",
-          "targetKind": "node-class",
-          "classKey": "ui-view",
-          "classRef": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node"
-        },
-        "definitionKey": "ui-view",
         "viewRole": "summary",
         "view": {
           "intent": "node",
           "payload": "node.web.summary"
         },
         "identity": {
-          "graphId": "gallery-declaration"
+          "graphId": "gallery-declaration",
+          "portId": "root",
+          "name": "Root Port"
         }
       }
     },
@@ -602,7 +429,6 @@
       "id": "gallery-intro",
       "type": "markdown",
       "label": "Current Work",
-      "root": true,
       "position": {
         "x": 40,
         "y": -120
@@ -749,7 +575,6 @@
       "id": "gallery-collections-title",
       "type": "markdown",
       "label": "Living Collections",
-      "root": false,
       "position": {
         "x": -920,
         "y": 300
@@ -896,7 +721,6 @@
       "id": "gallery-exhibits-title",
       "type": "markdown",
       "label": "Featured Graphs",
-      "root": false,
       "position": {
         "x": 40,
         "y": 300
@@ -1043,7 +867,6 @@
       "id": "gallery-build-title",
       "type": "markdown",
       "label": "Build Something",
-      "root": false,
       "position": {
         "x": 1000,
         "y": 300
@@ -1190,7 +1013,6 @@
       "id": "gallery-public-atelier",
       "type": "portal",
       "label": "Public Atelier",
-      "root": false,
       "position": {
         "x": -1120,
         "y": 580
@@ -1354,7 +1176,6 @@
       "id": "gallery-people",
       "type": "portal",
       "label": "People Collection",
-      "root": false,
       "position": {
         "x": -700,
         "y": 580
@@ -1518,7 +1339,6 @@
       "id": "gallery-events",
       "type": "portal",
       "label": "Events Collection",
-      "root": false,
       "position": {
         "x": -1120,
         "y": 880
@@ -1682,7 +1502,6 @@
       "id": "gallery-works",
       "type": "portal",
       "label": "Works Collection",
-      "root": false,
       "position": {
         "x": -700,
         "y": 880
@@ -1846,7 +1665,6 @@
       "id": "gallery-apollo-11",
       "type": "portal",
       "label": "Apollo 11",
-      "root": false,
       "position": {
         "x": -160,
         "y": 580
@@ -2010,7 +1828,6 @@
       "id": "gallery-candace",
       "type": "portal",
       "label": "Candace Owens",
-      "root": false,
       "position": {
         "x": 260,
         "y": 580
@@ -2174,7 +1991,6 @@
       "id": "gallery-openai",
       "type": "portal",
       "label": "OpenAI",
-      "root": false,
       "position": {
         "x": -160,
         "y": 880
@@ -2338,7 +2154,6 @@
       "id": "gallery-bride-of-charlie",
       "type": "portal",
       "label": "Bride of Charlie",
-      "root": false,
       "position": {
         "x": 260,
         "y": 880
@@ -2502,7 +2317,6 @@
       "id": "gallery-template-gallery",
       "type": "portal",
       "label": "Template Gallery",
-      "root": false,
       "position": {
         "x": 840,
         "y": 580
@@ -2666,7 +2480,6 @@
       "id": "gallery-tutorial",
       "type": "portal",
       "label": "Twilite Tutorial",
-      "root": false,
       "position": {
         "x": 1260,
         "y": 580
@@ -2830,7 +2643,6 @@
       "id": "gallery-product",
       "type": "portal",
       "label": "Twilite Product",
-      "root": false,
       "position": {
         "x": 840,
         "y": 880
@@ -2994,7 +2806,6 @@
       "id": "gallery-back",
       "type": "portal",
       "label": "Twilite Zone",
-      "root": false,
       "position": {
         "x": 1260,
         "y": -120
@@ -3158,7 +2969,6 @@
       "id": "gallery-workboard-template",
       "type": "portal",
       "label": "Workboard Template",
-      "root": false,
       "position": {
         "x": 1260,
         "y": 880
