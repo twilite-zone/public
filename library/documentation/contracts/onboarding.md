@@ -252,7 +252,7 @@ When creating a first real graph, create one `declaration` node and one required
 - Set `data.declaration.targetMode` explicitly, usually `artifact`
 - Put exposed surfaces in `data.declaration.surfaces`
 - Set `data.declaration.defaultSurfaceId` to `root`
-- Declare a surface with `id: "root"` whose `portNodeId` points at the one real port node carrying `root: true`
+- Declare a surface with `id: "root"` whose `portNodeId` points at the graph's required `Root Port` node
 - Put authored or delegated presentation on the root port. The declaration exposes the port; it does not independently choose the port's content node
 - Keep `dependencies.nodeTypes` honest: list the node types the graph actually uses
 - Keep `identity.graphId` consistent across the declaration and graph-owned nodes
@@ -264,7 +264,8 @@ When creating a first real graph, create one `declaration` node and one required
 - `data.declaration.kind` is required and is equivalent to the declared artifact's type
 - `data.declaration.targetMode` should usually be `artifact`
 - `data.declaration.defaultSurfaceId` must be `root`, and `data.declaration.surfaces` must contain that surface
-- The root surface must include `id: "root"`, `kind: "port"`, and a valid `portNodeId` whose node is a `port` with top-level `root: true`
+- The root surface must include `id: "root"`, `kind: "port"`, and a valid `portNodeId` whose node is the graph's `Root Port`
+- Do not author top-level `root`, `isRoot`, `data.root`, or `data.isRoot`; these are legacy compatibility fields, not the current root model
 - Named ports are optional and explicitly addressed. Never infer a named or sole port as root
 - Do not author legacy classification or view aliases in new declarations: `artifactKind`, `graphViewRole`, `declaresKind`, `primaryNodeViewId`, `primaryEditorViewId`, `iconViewNodeId`, or `portViewNodeId`
 - Twilite may still read those legacy fields from existing graphs as silent compatibility fallbacks; their presence or staleness must not make a declaration invalid

@@ -1904,8 +1904,8 @@ These fields are not just plain strings:
 - `data.identity.graphId` must participate in graph-id rename behavior
 - `data.declaration.kind` is the graph's extensible type; do not replace it with legacy duplicates such as `data.declaresKind` or `data.declaration.artifactKind`
 - `data.declaration.defaultSurfaceId` must be `root`
-- `data.declaration.surfaces` must preserve valid surface objects and contain a root surface whose `portNodeId` resolves to the graph's one real `port` node with top-level `root: true`
-- The root node of a graph is the root port. Titles, declarations, summaries, and other content nodes must not carry the graph root flag
+- `data.declaration.surfaces` must preserve valid surface objects and contain exactly one root surface whose `portNodeId` resolves to the graph's required `Root Port` node
+- The root node of a graph is the declaration-bound Root Port. Do not author `root` or `isRoot` flags on any node; those fields are legacy compatibility only
 - Named ports require deliberate exposure and addressing; never promote a sole or named port to root by inference
 - declared surfaces are the sole authored presentation contract; do not add legacy preferred-view aliases
 - analytics must remain absent by default and use the bounded enable toggle, page title, content group, and hosted URL fields rather than an opaque JSON editor
