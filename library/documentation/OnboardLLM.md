@@ -2045,6 +2045,26 @@ If you are creating a markdown node, it should look like this shape:
 }
 ```
 
+## Task Identity, Projection, And Promotion
+
+Keep `task` as the semantic invariant:
+
+- A task is a regular `task` inside its own graph.
+- The same task remains a `task` when exposed through a port and projected into a collection or workboard.
+- Project describes the scope and internal point of view of a task with its own graph. Do not create a separate `project` type merely because the task has subordinate structure.
+- A portal is the external carrier and provenance record; it does not become the semantic type of the resolved task.
+
+Keep a task local when the containing graph fully owns and explains it. Promote it into its own graph when it needs subordinate tasks, questions, decisions, risks, independent authority, or a durable external surface. Promotion changes authority and available detail, not type.
+
+Use collections and workboards for different purposes:
+
+- A task collection remembers durable local tasks and projected task graphs.
+- A workboard presents a small operational point of view through lanes, ordering, pinning, and review policy.
+- Source task graphs own status, progress, priority, next actions, blockers, and summaries.
+- Workboards own only local projection state under `data.board`.
+
+When deriving a workboard, use the `SKILL.md` stored beside the canonical workboard template. Preserve its declaration, controller, exposed port, lane anchors, graph-owned reconciler, bridges, and class bindings. Do not move reconciliation into application-side React code.
+
 ## Final Rule
 
 When onboarded, complete the handshake first.

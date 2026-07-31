@@ -655,6 +655,17 @@ Correct intent-preserving alternative:
 }
 ```
 
+### Task identity and graph promotion
+
+- Keep `task` as the semantic type inside a task's own graph and when another graph consumes it.
+- Treat project as a scope and point-of-view description, not a separate node type.
+- Keep small work as local task nodes when the containing graph owns it completely.
+- Promote a task into its own graph when it needs subordinate structure, independent authority, or an exposed durable surface.
+- Promotion changes authority and detail, not semantic type. Leave an ordinary portal-backed task projection in the parent collection or workboard.
+- Use a task collection as a durable index. Use a workboard as an operational projection with local `data.board` policy.
+- Keep status and progress in the authoritative task graph; keep lane, rank, pinning, and review time in the consuming workboard.
+- Treat a graph-adjacent `SKILL.md` and its neighboring template graph as one versioned derivation package.
+
 ### Do not substitute nearby primitives
 - If the user asks for a `declaration`, create a `declaration`, not a `dictionary`
 - If the user asks for a `port`, create a `port`, not a `markdown` node
