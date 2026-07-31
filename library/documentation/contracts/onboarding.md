@@ -240,7 +240,7 @@ Use the primitive that matches the job directly. Do not substitute a nearby conc
 - `bridge`: use for import/export boundaries and explicit external authority
 
 ## Declaration-First Starter Pattern
-When creating a first real graph, prefer one `declaration` node and one `port` node.
+When creating a first real graph, create one `declaration` node and one required root `port` node. The root node of a graph is its root port. Do not make a title, declaration, content node, or arbitrary class instance the graph root.
 
 ### Declaration guidance
 - Put graph identity in `data.identity`
@@ -251,8 +251,9 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - Do not use `data.intent.kind` as a substitute for `data.declaration.kind`; a person graph normally has `intent.kind: "person"` and `declaration.kind: "graph"`
 - Set `data.declaration.targetMode` explicitly, usually `artifact`
 - Put exposed surfaces in `data.declaration.surfaces`
-- Point `data.declaration.defaultSurfaceId` at a surface you actually create
-- Use `viewNodeId` to point at the port node that renders that surface
+- Set `data.declaration.defaultSurfaceId` to `root`
+- Declare a surface with `id: "root"` whose `portNodeId` points at the one real port node carrying `root: true`
+- Put authored or delegated presentation on the root port. The declaration exposes the port; it does not independently choose the port's content node
 - Keep `dependencies.nodeTypes` honest: list the node types the graph actually uses
 - Keep `identity.graphId` consistent across the declaration and graph-owned nodes
 - Do not invent edges from the declaration to the port unless the graph specifically needs them
@@ -262,8 +263,9 @@ When creating a first real graph, prefer one `declaration` node and one `port` n
 - `data.intent.kind` and `scope` are required, must be non-empty, and should describe the graph honestly
 - `data.declaration.kind` is required and is equivalent to the declared artifact's type
 - `data.declaration.targetMode` should usually be `artifact`
-- `data.declaration.defaultSurfaceId` must name a surface that exists in `data.declaration.surfaces`
-- Each declared view surface should include `id`, `kind`, `label`, `memo`, and `viewNodeId`
+- `data.declaration.defaultSurfaceId` must be `root`, and `data.declaration.surfaces` must contain that surface
+- The root surface must include `id: "root"`, `kind: "port"`, and a valid `portNodeId` whose node is a `port` with top-level `root: true`
+- Named ports are optional and explicitly addressed. Never infer a named or sole port as root
 - Do not author legacy classification or view aliases in new declarations: `artifactKind`, `graphViewRole`, `declaresKind`, `primaryNodeViewId`, `primaryEditorViewId`, `iconViewNodeId`, or `portViewNodeId`
 - Twilite may still read those legacy fields from existing graphs as silent compatibility fallbacks; their presence or staleness must not make a declaration invalid
 - A graph with a partial declaration may load, but it can still trigger saveability or interpretation problems
@@ -401,9 +403,12 @@ Graph analytics is an explicit declaration-owned opt-in. It is not a default pro
 ### What "create a port" usually means
 - Create a real `port` node, not a `portal`, `markdown`, or `dictionary`
 - Make it graph-owned with `data.identity.graphId`
-- Give it a real target so it can open or connect back to the graph
+- Every graph must have exactly one root port, and that port is the graph's only implicit entry point
+- A root port may carry its own presentation or delegate presentation to a visible local node through `data.sourceNodeId`; it must not silently forward entry to another graph
+- Give non-root ports an explicit target only when their purpose requires navigation or connection
 - Give it a real preview payload if you want it to render as a card
-- If the graph has a declaration, expose that same port through `data.declaration.surfaces` and `defaultSurfaceId`
+- Expose the root port through the declaration's `root` surface and keep `defaultSurfaceId: "root"`
+- Expose every additional port deliberately; a port node's existence does not make it externally connectable
 - Do not stop at metadata-only fields such as `title`, `icon`, `description`, or `cover`
 
 ### Reference specimens in this repo
@@ -558,14 +563,14 @@ When the user asks to add a port to the current graph, create the real port and 
       "updates": {
         "data": {
           "declaration": {
-            "defaultSurfaceId": "entry",
+            "defaultSurfaceId": "root",
             "surfaces": [
               {
-                "id": "entry",
-                "kind": "view",
-                "label": "Entry",
-                "memo": "Primary graph entry surface.",
-                "viewNodeId": "example-entry-port"
+                "id": "root",
+                "kind": "port",
+                "label": "Root",
+                "memo": "Required safe graph entry port.",
+                "portNodeId": "example-entry-port"
               }
             ]
           }
@@ -675,7 +680,7 @@ Correct intent-preserving alternative:
 - Do not emit empty inline payload placeholders such as `html: ""` or `svg: ""` on `port` or `portal` nodes
 - Do not put the graph id at `data.graphId` when authoring a real port; use `data.identity.graphId`
 - Do not return a metadata-only card when the user asked for a working port back to the graph
-- Do not omit `data.target` on a graph-owned entry port unless the task is explicitly to make a visual stub only
+- Do not add an external delegated target to the root port. Root is the graph's safe entry boundary; use a named port for deliberate forwarding
 - Do not set `data.renderShape.kind: "card"` on a `port`; use `data.viewRole: "card"` plus a real render payload such as `data.svg` or `data.markdown`
 - Do not assume `cover`, `icon`, and `description` will render a visual card body on their own
 - Do not author a normal graph declaration as:
