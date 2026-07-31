@@ -1906,6 +1906,9 @@ These fields are not just plain strings:
 - `data.declaration.defaultSurfaceId` must be `root`
 - `data.declaration.surfaces` must preserve valid surface objects and contain exactly one root surface whose `portNodeId` resolves to the graph's required `Root Port` node
 - The root node of a graph is the declaration-bound Root Port. Do not author `root` or `isRoot` flags on any node; those fields are legacy compatibility only
+- A port may author its own view or delegate its view to another node in the same graph with `data.sourceScope: "graph"`, `data.sourceNodeId`, and `data.sourcePayload`
+- A port may independently delegate navigation focus to a visible node in the same graph with `data.targetNodeId`; when absent, navigation focuses the port itself
+- Do not put `data.sourceRef` on a port and do not delegate a port view or landing target across graphs. Cross-graph consumption belongs exclusively to a `portal`
 - Named ports require deliberate exposure and addressing; never promote a sole or named port to root by inference
 - declared surfaces are the sole authored presentation contract; do not add legacy preferred-view aliases
 - analytics must remain absent by default and use the bounded enable toggle, page title, content group, and hosted URL fields rather than an opaque JSON editor

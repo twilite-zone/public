@@ -398,14 +398,19 @@ Graph analytics is an explicit declaration-owned opt-in. It is not a default pro
 - Only include inline render fields like `data.svg` or `data.html` when they contain real authored content
 - Do not emit placeholder fields like `html: ""` or `svg: ""`
 - Do not paste markdown links or prose into raw SVG markup
-- Do not invent `targetNodeId` or edges to nodes that do not exist
+- `data.sourceNodeId` may delegate a port's view only to a node in the same graph
+- `data.targetNodeId` may delegate a port's landing focus only to a visible node in the same graph
+- Do not invent `sourceNodeId`, `targetNodeId`, or edges to nodes that do not exist
 - Do not expect `title`, `description`, `icon`, or `cover` alone to render a port card body; they are metadata unless you also provide a real inline payload such as `data.svg` or `data.markdown`
 
 ### What "create a port" usually means
 - Create a real `port` node, not a `portal`, `markdown`, or `dictionary`
 - Make it graph-owned with `data.identity.graphId`
 - Every graph must have exactly one root port, and that port is the graph's only implicit entry point
-- A root port may carry its own presentation or delegate presentation to a visible local node through `data.sourceNodeId`; it must not silently forward entry to another graph
+- A root port may carry its own presentation or delegate presentation to a local node through `data.sourceNodeId`
+- View delegation and landing delegation are independent: `data.sourceNodeId` supplies the rendered surface, while `data.targetNodeId` identifies the visible local node navigation should focus
+- Leave `data.targetNodeId` absent to focus the port itself
+- Port delegation is graph-local. Do not put `data.sourceRef` on a port or delegate a port view or landing target to another graph; use a `portal` for every cross-graph consumer
 - Give non-root ports an explicit target only when their purpose requires navigation or connection
 - Give it a real preview payload if you want it to render as a card
 - Expose the root port through the declaration's `root` surface and keep `defaultSurfaceId: "root"`
