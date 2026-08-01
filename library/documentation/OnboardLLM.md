@@ -159,14 +159,14 @@ SVG authoring rules:
 - expect Twilite to sanitize SVG before rendering
 - use top-level `width` and `height` for the node dimensions; `data.width` and `data.height` do not size the node shell
 
-## Analytics Is Opt-Out
+## Analytics Inherits Repository Policy
 
-- Focused graph page views are measured by default; preview, embed, bridge, class-resolution, and background loads remain untracked.
-- To opt a graph out, put `{ "enabled": false }` at declaration `data.analytics`.
-- Absence of `data.analytics`, `{}`, or `{ "enabled": true }` leaves focused-view analytics enabled.
-- Only author `enabled` plus optional `pageTitle`, `contentGroup`, and `url`. `url` is allowed only when it names a real HTTPS-hosted location for the graph; GitHub storage alone is not hosting.
+- Focused graph page views inherit the verified source repository policy; preview, embed, bridge, class-resolution, and background loads remain untracked.
+- A verified public GitHub repository is enrolled by the default Commons policy. Private, local, unresolved, and unrecognized sources fail closed.
+- `data.analytics.enabled` is legacy metadata and does not grant or revoke participation.
+- Only author optional `pageTitle`, `contentGroup`, and `url`. `url` is allowed only when it names a real HTTPS-hosted location for the graph; GitHub storage alone is not hosting.
 - Twilite owns measurement configuration, dispatch, deduplication, consent defaults, and viewer-level policy.
-- Do not infer analytics eligibility from public visibility; the focused-document boundary and explicit opt-out govern dispatch.
+- Portals preserve the target graph's provider provenance and never transfer enrollment across a repository boundary.
 
 ## App Surface Expectations
 
@@ -1895,7 +1895,7 @@ At minimum, a valid declaration editor must support:
 - `data.declaration.defaultSurfaceId` (required value: `root`)
 - `data.declaration.surfaces`
 - `data.purpose`
-- optional `data.analytics` through the bounded analytics opt-out control
+- optional `data.analytics` through bounded reporting metadata that cannot change repository participation
 
 Legacy classification and preferred-view aliases may still be read from existing graphs, but do not author them in new declarations.
 
@@ -1911,7 +1911,7 @@ These fields are not just plain strings:
 - Do not put `data.sourceRef` on a port and do not delegate a port view or landing target across graphs. Cross-graph consumption belongs exclusively to a `portal`
 - Named ports require deliberate exposure and addressing; never promote a sole or named port to root by inference
 - declared surfaces are the sole authored presentation contract; do not add legacy preferred-view aliases
-- analytics must remain absent by default and use the bounded enable toggle, page title, content group, and hosted URL fields rather than an opaque JSON editor
+- analytics metadata should use the bounded page title, content group, and hosted URL fields rather than an opaque JSON editor; repository policy controls participation
 
 Do not assume that a pretty `editor.web.html` specimen is enough.
 
