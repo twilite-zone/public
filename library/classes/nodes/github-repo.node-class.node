@@ -7,10 +7,13 @@
       "label": "Declaration",
       "position": {
         "x": -980,
-        "y": -260
+        "y": -220
       },
       "width": 420,
       "height": 320,
+      "ports": [
+        { "id": "bottom", "label": "bottom", "direction": "output", "dataType": "any", "position": { "side": "bottom", "offset": 0.5 } }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -29,6 +32,7 @@
         "dependencies": {
           "nodeTypes": [
             "declaration",
+            "bridge",
             "title",
             "type-definition",
             "port",
@@ -115,13 +119,31 @@
           "targetMode": "artifact",
           "artifactKind": "node-class",
           "graphViewRole": "browser",
-          "defaultSurfaceId": "overview",
+          "defaultSurfaceId": "root",
           "surfaces": [
             {
-              "id": "overview",
-              "kind": "view",
+              "id": "root",
+              "kind": "port",
               "label": "Overview",
               "memo": "Public class overview surface for the GitHub repo node class.",
+              "portNodeId": "github-repo-class-overview",
+              "viewNodeId": "github-repo-class-overview",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            },
+            {
+              "id": "overview",
+              "kind": "port",
+              "label": "Overview",
+              "memo": "Named alias for the class graph overview surface.",
+              "portNodeId": "github-repo-class-overview",
+              "viewNodeId": "github-repo-class-overview",
               "exposes": {
                 "views": {
                   "mode": "allow"
@@ -159,10 +181,13 @@
       "label": "GitHub Repo Class Export",
       "position": {
         "x": -980,
-        "y": 120
+        "y": 260
       },
       "width": 320,
       "height": 140,
+      "ports": [
+        { "id": "top", "label": "top", "direction": "input", "dataType": "any", "position": { "side": "top", "offset": 0.5 } }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -239,15 +264,104 @@
       }
     },
     {
+      "id": "github-repo-class-title-authority",
+      "type": "bridge",
+      "label": "Title Class Authority",
+      "position": { "x": -1320, "y": -180 },
+      "width": 260,
+      "height": 100,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "authority": "bridge",
+        "target": {
+          "mode": "bridge",
+          "key": "title",
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"]
+        },
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"]
+        }
+      }
+    },
+    {
+      "id": "github-repo-class-type-definition-authority",
+      "type": "bridge",
+      "label": "Type Definition Class Authority",
+      "position": { "x": -1320, "y": -60 },
+      "width": 260,
+      "height": 100,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "authority": "bridge",
+        "target": {
+          "mode": "bridge",
+          "key": "type-definition",
+          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"]
+        },
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"]
+        }
+      }
+    },
+    {
+      "id": "github-repo-class-icon-view-authority",
+      "type": "bridge",
+      "label": "Icon View Class Authority",
+      "position": { "x": -1320, "y": 60 },
+      "width": 260,
+      "height": 100,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "authority": "bridge",
+        "target": {
+          "mode": "bridge",
+          "key": "icon-view",
+          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+          "kind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"]
+        },
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": ["create"]
+        }
+      }
+    },
+    {
       "id": "github-repo-class-title",
       "type": "title",
       "label": "Title",
       "position": {
         "x": -460,
-        "y": -240
+        "y": -600
       },
       "width": 520,
       "height": 220,
+      "ports": [
+        { "id": "left", "label": "left", "direction": "output", "dataType": "any", "position": { "side": "left", "offset": 0.5 } },
+        { "id": "right", "label": "right", "direction": "output", "dataType": "any", "position": { "side": "right", "offset": 0.5 } },
+        { "id": "bottom", "label": "bottom", "direction": "output", "dataType": "any", "position": { "side": "bottom", "offset": 0.5 } }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -276,10 +390,14 @@
       "label": "Type",
       "position": {
         "x": -420,
-        "y": 40
+        "y": -220
       },
       "width": 360,
       "height": 220,
+      "ports": [
+        { "id": "top", "label": "top", "direction": "input", "dataType": "any", "position": { "side": "top", "offset": 0.5 } },
+        { "id": "right", "label": "right", "direction": "output", "dataType": "any", "position": { "side": "right", "offset": 0.5 } }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -310,11 +428,15 @@
       "type": "port",
       "label": "Overview",
       "position": {
-        "x": 20,
-        "y": -240
+        "x": 100,
+        "y": -600
       },
       "width": 460,
       "height": 300,
+      "ports": [
+        { "id": "left", "label": "left", "direction": "input", "dataType": "any", "position": { "side": "left", "offset": 0.5 } },
+        { "id": "bottom", "label": "bottom", "direction": "output", "dataType": "any", "position": { "side": "bottom", "offset": 0.5 } }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -330,6 +452,11 @@
         "typeSourceNodeId": "github-repo-class-type",
         "audience": "Library",
         "status": "active",
+        "identity": {
+          "graphId": "github-repo-node-class",
+          "portId": "root",
+          "name": "Overview"
+        },
         "svg": "<svg viewBox=\"0 0 240 170\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"10\" y=\"10\" width=\"220\" height=\"150\" rx=\"24\" fill=\"#f8fafc\" stroke=\"#cbd5e1\" stroke-width=\"3\"/><rect x=\"26\" y=\"24\" width=\"188\" height=\"98\" rx=\"20\" fill=\"#0f172a\"/><path d=\"M120 46c-17 0-30 13-30 30 0 13 8 24 19 29 2 0 2-1 2-2v-5c-8 2-10-3-10-3-1-3-3-4-3-4-3-1 0-1 0-1 3 0 5 3 5 3 3 4 7 3 9 2 0-2 1-3 2-4-7-1-14-4-14-15 0-3 1-6 3-8 0-1-1-4 0-7 0 0 3-1 8 3 2-1 5-1 8-1 3 0 6 0 8 1 5-4 8-3 8-3 1 3 0 6 0 7 2 2 3 5 3 8 0 11-7 14-14 15 1 1 3 3 3 6v8c0 1 0 2 2 2 11-5 19-16 19-29 0-17-13-30-30-30z\" fill=\"#f8fafc\"/><text x=\"120\" y=\"147\" text-anchor=\"middle\" font-family=\"ui-sans-serif,system-ui,sans-serif\" font-size=\"14\" font-weight=\"800\" letter-spacing=\"0.12em\" fill=\"#0f172a\">GITHUB REPO</text></svg>",
         "_classBinding": {
           "key": "ui-view",
@@ -351,11 +478,14 @@
       "type": "icon-view",
       "label": "Icon",
       "position": {
-        "x": 540,
-        "y": -240
+        "x": -840,
+        "y": -600
       },
       "width": 300,
       "height": 220,
+      "ports": [
+        { "id": "right", "label": "right", "direction": "input", "dataType": "any", "position": { "side": "right", "offset": 0.5 } }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -392,8 +522,8 @@
       "type": "view",
       "label": "Instance Editor View",
       "position": {
-        "x": -420,
-        "y": 380
+        "x": -560,
+        "y": 260
       },
       "width": 520,
       "height": 360,
@@ -462,7 +592,7 @@
       "label": "Instance Detail View",
       "position": {
         "x": 180,
-        "y": 380
+        "y": 260
       },
       "width": 520,
       "height": 340,
@@ -496,7 +626,7 @@
       "label": "Instance Summary View",
       "position": {
         "x": 760,
-        "y": 380
+        "y": 260
       },
       "width": 420,
       "height": 280,
@@ -530,7 +660,7 @@
       "label": "Instance Icon View",
       "position": {
         "x": 1240,
-        "y": 380
+        "y": 260
       },
       "width": 280,
       "height": 220,
@@ -549,11 +679,14 @@
       "type": "markdown",
       "label": "Notes",
       "position": {
-        "x": 20,
-        "y": 100
+        "x": 100,
+        "y": -220
       },
       "width": 820,
       "height": 220,
+      "ports": [
+        { "id": "top", "label": "top", "direction": "input", "dataType": "any", "position": { "side": "top", "offset": 0.5 } }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -567,12 +700,13 @@
       "type": "reference",
       "source": "github-repo-class-declaration",
       "target": "github-repo-class-export-bridge",
-      "sourcePort": "right",
-      "targetPort": "root",
+      "sourcePort": "bottom",
+      "targetPort": "top",
       "label": "exports",
       "style": {
-        "curved": true,
-        "route": "curved"
+        "curved": false,
+        "route": "orthogonal",
+        "width": 2
       },
       "data": {}
     },
@@ -581,10 +715,14 @@
       "type": "reference",
       "source": "github-repo-class-title",
       "target": "github-repo-class-type",
-      "sourcePort": "root",
-      "targetPort": "root",
+      "sourcePort": "bottom",
+      "targetPort": "top",
       "label": "names",
-      "style": {},
+      "style": {
+        "curved": false,
+        "route": "orthogonal",
+        "width": 2
+      },
       "data": {}
     },
     {
@@ -592,10 +730,14 @@
       "type": "reference",
       "source": "github-repo-class-type",
       "target": "github-repo-class-overview",
-      "sourcePort": "root",
-      "targetPort": "root",
+      "sourcePort": "right",
+      "targetPort": "left",
       "label": "describes",
-      "style": {},
+      "style": {
+        "curved": false,
+        "route": "orthogonal",
+        "width": 2
+      },
       "data": {}
     },
     {
@@ -603,10 +745,14 @@
       "type": "reference",
       "source": "github-repo-class-title",
       "target": "github-repo-class-overview",
-      "sourcePort": "root",
-      "targetPort": "root",
+      "sourcePort": "right",
+      "targetPort": "left",
       "label": "overview",
-      "style": {},
+      "style": {
+        "curved": false,
+        "route": "orthogonal",
+        "width": 2
+      },
       "data": {}
     },
     {
@@ -614,10 +760,14 @@
       "type": "reference",
       "source": "github-repo-class-title",
       "target": "github-repo-class-icon",
-      "sourcePort": "root",
-      "targetPort": "root",
+      "sourcePort": "left",
+      "targetPort": "right",
       "label": "icon",
-      "style": {},
+      "style": {
+        "curved": false,
+        "route": "orthogonal",
+        "width": 2
+      },
       "data": {}
     },
     {
@@ -625,16 +775,20 @@
       "type": "reference",
       "source": "github-repo-class-overview",
       "target": "github-repo-class-notes",
-      "sourcePort": "root",
-      "targetPort": "root",
+      "sourcePort": "bottom",
+      "targetPort": "top",
       "label": "documents",
-      "style": {},
+      "style": {
+        "curved": false,
+        "route": "orthogonal",
+        "width": 2
+      },
       "data": {}
     }
   ],
   "clusters": [],
   "scripts": [],
-  "nodeCount": 10,
-  "edgeCount": 5,
+  "nodeCount": 14,
+  "edgeCount": 6,
   "timestamp": "2026-05-15T00:00:00.000Z"
 }
