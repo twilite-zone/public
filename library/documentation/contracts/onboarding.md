@@ -310,7 +310,7 @@ Minimum required declaration fields:
 - `data.declaration.defaultSurfaceId`
 - `data.declaration.surfaces`
 - `data.purpose`
-- optional `data.analytics` through the bounded analytics opt-in control
+- optional `data.analytics` through the bounded analytics opt-out control
 
 Legacy declaration metadata remains readable when present but is not part of the authoring contract.
 
@@ -330,9 +330,9 @@ Required declaration-editor behaviors:
   - the editor should preserve valid surface objects instead of downgrading them into opaque text
 - `data.declaration.surfaces` is the sole authored presentation contract:
   - use `defaultSurfaceId` and real surface `viewNodeId` bindings instead of legacy preferred-view aliases
-- analytics is a bounded optional control:
-  - absence of `data.analytics` means the graph is untracked
-  - use the enable toggle plus `pageTitle`, `contentGroup`, and hosted `url` fields
+- analytics is a bounded opt-out control:
+  - focused graph page views are tracked when `data.analytics` is absent
+  - use the enable toggle to write `enabled: false` when opting out, plus optional `pageTitle`, `contentGroup`, and hosted `url` fields
   - do not reduce analytics authoring to an opaque JSON textarea
 
 Failure rule:
@@ -343,12 +343,13 @@ Failure rule:
 - Class authors must still declare the complete baseline; fallback injection is a safety net, not alternate syntax
 - Unsupported extension field types remain authoring errors until the runtime explicitly implements them
 
-### Optional graph analytics
+### Graph analytics opt-out
 
-Graph analytics is an explicit declaration-owned opt-in. It is not a default property of public graphs.
+Focused graph page views are measured by default. Analytics remains declaration-owned and can be disabled per graph.
 
 ```json
 "analytics": {
+  "enabled": false,
   "pageTitle": "Optional reporting title",
   "contentGroup": "people",
   "url": "https://example.com/people/example.node"
@@ -356,9 +357,9 @@ Graph analytics is an explicit declaration-owned opt-in. It is not a default pro
 ```
 
 - Put the optional object on the declaration node at `data.analytics`
-- The presence of a valid object, including `{}`, makes the graph eligible for tracking
-- If `data.analytics` is absent, the graph is deliberately untracked
-- `pageTitle`, `contentGroup`, and `url` are the only authored fields currently supported; all are optional
+- Absence of `data.analytics`, `{}`, or `{ "enabled": true }` keeps focused-view tracking enabled
+- Set `enabled: false` to opt the graph out
+- `enabled`, `pageTitle`, `contentGroup`, and `url` are the only authored fields currently supported; all are optional
 - `url` must name a real HTTPS-hosted graph location; never infer one merely because the graph is stored on GitHub
 - Do not author `page_location`, a measurement id, arbitrary event parameters, dispatch instructions, or consent state in the graph
 - Twilite resolves `page_location` from the graph's real hosting state:
@@ -370,11 +371,11 @@ Graph analytics is an explicit declaration-owned opt-in. It is not a default pro
   - a direct HTTP(S) graph URL identifies a hosted graph resource
   - a provider URL or API may be the fetch location
   - `https://twilite.zone/?doc=...` is the web launch location for a graph without its own hosted address
-- A page view occurs only when an opted-in graph becomes the focused Twilite document after a successful load
+- A page view occurs only when an analytics-enabled graph becomes the focused Twilite document after a successful load
 - Twilite Back and Forward may create new page views; retries, previews, embeds, bridges, class resolution, and background loads must not
 - Graph navigation belongs to Twilite's browser history and must not mutate web-browser history merely for analytics
-- Twilite defaults analytics storage and all advertising-related consent states to denied; opted-in page views are measured without persistent analytics storage
-- Do not add `data.analytics` to templates, classes, support graphs, private graphs, or batches of authored graphs unless the user explicitly asks to opt them in
+- Twilite defaults all advertising-related consent states to denied and keeps advertising signals disabled
+- Add `{ "enabled": false }` to templates, classes, support graphs, private graphs, or other artifacts that should never produce focused graph page views
 
 ### Port guidance
 - When a user says "create a port for this graph", interpret that as: create a graph-owned entry surface that can open or connect back to this graph

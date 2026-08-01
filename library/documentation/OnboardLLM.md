@@ -159,14 +159,14 @@ SVG authoring rules:
 - expect Twilite to sanitize SVG before rendering
 - use top-level `width` and `height` for the node dimensions; `data.width` and `data.height` do not size the node shell
 
-## Analytics Is Explicit Opt-In
+## Analytics Is Opt-Out
 
-- Never add `data.analytics` to a declaration unless the user explicitly asks to track that graph or a clearly bounded set of graphs.
-- The presence of a valid declaration `data.analytics` object, including `{}`, makes the graph eligible for a Twilite virtual page view.
-- Absence means untracked; do not treat public visibility as analytics consent.
-- Only author optional `pageTitle`, `contentGroup`, and `url` fields. `url` is allowed only when it names a real HTTPS-hosted location for the graph; GitHub storage alone is not hosting.
-- Twilite owns measurement configuration, dispatch, deduplication, cookieless consent defaults, and viewer-level policy.
-- Do not opt in templates, classes, support graphs, or private graphs by inference.
+- Focused graph page views are measured by default; preview, embed, bridge, class-resolution, and background loads remain untracked.
+- To opt a graph out, put `{ "enabled": false }` at declaration `data.analytics`.
+- Absence of `data.analytics`, `{}`, or `{ "enabled": true }` leaves focused-view analytics enabled.
+- Only author `enabled` plus optional `pageTitle`, `contentGroup`, and `url`. `url` is allowed only when it names a real HTTPS-hosted location for the graph; GitHub storage alone is not hosting.
+- Twilite owns measurement configuration, dispatch, deduplication, consent defaults, and viewer-level policy.
+- Do not infer analytics eligibility from public visibility; the focused-document boundary and explicit opt-out govern dispatch.
 
 ## App Surface Expectations
 
@@ -1895,7 +1895,7 @@ At minimum, a valid declaration editor must support:
 - `data.declaration.defaultSurfaceId` (required value: `root`)
 - `data.declaration.surfaces`
 - `data.purpose`
-- optional `data.analytics` through the bounded analytics opt-in control
+- optional `data.analytics` through the bounded analytics opt-out control
 
 Legacy classification and preferred-view aliases may still be read from existing graphs, but do not author them in new declarations.
 
