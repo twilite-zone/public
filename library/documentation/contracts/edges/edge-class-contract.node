@@ -1,18 +1,19 @@
 {
+  "type": "nodegraph-data",
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Edge Class Contract",
-    "description": "Minimal promise-based contract for edge-class identity, optional rendering and constraints, root presentation, export, and assignment precedence.",
-    "created": "2026-04-25T00:00:00.000Z",
-    "modified": "2026-08-02T20:00:00.000Z",
+    "title": "Graph Contract",
+    "description": "Minimum contract for when a .node artifact becomes a graph.",
+    "created": "2026-05-05T00:00:00.000Z",
+    "modified": "2026-08-02T00:00:00.000Z",
     "author": "",
     "tags": [
       "contract",
-      "edges",
-      "edge-classes",
-      "promise-based",
-      "template-guided"
-    ]
+      "graph",
+      "minimum",
+      "ratified-core"
+    ],
+    "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
     {
@@ -20,11 +21,11 @@
       "type": "declaration",
       "label": "Declaration",
       "position": {
-        "x": -260,
-        "y": -160
+        "x": -900,
+        "y": -260
       },
-      "width": 360,
-      "height": 220,
+      "width": 420,
+      "height": 320,
       "visible": true,
       "showLabel": true,
       "data": {
@@ -32,21 +33,24 @@
           "graphId": "edge-class-contract",
           "name": "Edge Class Contract",
           "version": "1.0.0",
-          "description": "Minimal promise-based contract for edge-class identity, optional rendering and constraints, root presentation, export, and assignment precedence.",
-          "createdAt": "2026-04-25T00:00:00.000Z",
+          "description": "Promise-based contract for authored Twilite edge classes.",
+          "createdAt": "2026-04-01T00:00:00.000Z",
           "updatedAt": "2026-08-02T20:00:00.000Z"
         },
         "intent": {
           "kind": "graph",
-          "scope": "mixed"
+          "scope": "documentation"
         },
         "dependencies": {
           "nodeTypes": [
             "declaration",
-        "markdown",
-        "field",
-        "port",
-        "portal"
+            "title",
+            "type-definition",
+            "node-view",
+            "markdown",
+            "port",
+            "bridge",
+            "portal"
           ],
           "portContracts": [
             "core"
@@ -70,34 +74,13 @@
             "agents": true,
             "tools": true
           },
-          "styleAuthority": "normative",
+          "styleAuthority": "descriptive",
           "history": {
             "rewriteAllowed": false,
             "squashAllowed": false
           }
         },
-    "declaresKind": "graph",
-    "declaration": {
-      "kind": "graph",
-      "targetMode": "artifact",
-      "artifactKind": "graph",
-      "defaultSurfaceId": "root",
-      "surfaces": [
-        {
-          "id": "root",
-          "kind": "port",
-          "label": "Edge Class Contract",
-          "memo": "Canonical entry surface for the normative edge-class contract.",
-          "portNodeId": "edge-class-contract-view",
-          "viewNodeId": "edge-class-contract-view",
-          "exposes": {
-            "views": { "mode": "allow" },
-            "declarations": { "mode": "allow" }
-          }
-        }
-      ]
-    },
-    "document": {
+        "document": {
           "url": ""
         },
         "settings": {
@@ -109,89 +92,382 @@
           "gridSize": 20,
           "edgeRouting": "auto",
           "autoSave": false
-        }
+        },
+        "summaryNodeId": "edge-class-contract-node-view",
+        "name": "Edge Class Contract Declaration",
+        "declaresKind": "graph",
+        "purpose": "Define edge-class promises and separate executable diagnostics from template-generated richness.",
+        "primaryNodeViewId": "edge-class-contract-node-view",
+        "declaration": {
+          "kind": "graph",
+          "targetMode": "artifact",
+          "artifactKind": "graph",
+          "graphViewRole": "documentation",
+          "defaultSurfaceId": "root",
+          "surfaces": [
+            {
+              "id": "root",
+              "kind": "port",
+              "label": "Edge Class Contract",
+              "memo": "Canonical routing and presentation boundary for the edge class contract.",
+              "portNodeId": "edge-class-contract-root-port",
+              "viewNodeId": "edge-class-contract-root-port",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                },
+                "nodeClasses": {
+                  "mode": "deny"
+                },
+                "edgeClasses": {
+                  "mode": "deny"
+                },
+                "scripts": {
+                  "mode": "deny"
+                }
+              }
+            }
+          ],
+          "primaryNodeViewId": "edge-class-contract-node-view",
+          "primaryEditorViewId": "",
+          "iconViewNodeId": "",
+          "portViewNodeId": ""
+        },
+        "_classBinding": {
+          "key": "declaration",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "declaration",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node"
+        },
+        "definitionKey": "declaration"
       }
     },
     {
-      "id": "edge-class-contract-field-bridge",
-      "type": "bridge",
-      "label": "Field Class",
+      "id": "edge-class-contract-title",
+      "type": "title",
+      "label": "Title",
       "position": {
         "x": -260,
-        "y": 90
+        "y": -220
       },
-      "width": 280,
-      "height": 120,
+      "width": 560,
+      "height": 220,
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Creation authority for field nodes used by this contract.",
-        "intent": "external",
-        "target": {
-          "mode": "bridge",
-          "ref": "https://twilite.zone/library/classes/nodes/data-schema/field.node-class.node",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ],
-          "label": "Field",
-          "key": "field"
-        },
-        "resourceKind": "node-class",
-        "scope": "focused-graph",
-        "grants": [
-          "create"
-        ],
-        "authority": "bridge",
-        "bridge": {
-          "ref": "https://twilite.zone/library/classes/nodes/data-schema/field.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        },
+        "title": "Edge Class Contract",
+        "subtitle": "Diagnostics report broken promises. Templates provide richer edge-class graphs.",
+        "intent": "headline",
         "_classBinding": {
-          "key": "field",
-          "sourceRef": "https://twilite.zone/library/classes/nodes/data-schema/field.node-class.node"
-        }
+          "key": "title",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "title",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
+        },
+        "definitionKey": "title"
       }
     },
     {
-      "id": "edge-class-contract-view",
-      "type": "port",
-      "label": "Edge Contract",
+      "id": "edge-class-contract-type",
+      "type": "type-definition",
+      "label": "Type",
       "position": {
-        "x": 140,
-        "y": -160
+        "x": -260,
+        "y": 60
       },
       "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "name": "Edge Class Contract",
+        "key": "edge-class-contract",
+        "classRef": "github://twilite-zone/public/library/documentation/contracts/edges/edge-class-contract.node",
+        "meaning": "Minimum executable contract for declaring, resolving, assigning, and validating an authored edge class.",
+        "description": "An edge class adds reusable semantic identity and optional capabilities without making plain edges invalid.",
+        "category": "contract",
+        "status": "ratified-core",
+        "_classBinding": {
+          "key": "type-definition",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "type-definition",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
+        },
+        "definitionKey": "type-definition"
+      }
+    },
+    {
+      "id": "edge-class-contract-node-view",
+      "type": "node-view",
+      "label": "Node View",
+      "position": {
+        "x": 220,
+        "y": 20
+      },
+      "width": 440,
       "height": 280,
       "visible": true,
       "showLabel": true,
       "data": {
         "title": "Edge Class Contract",
-        "purpose": "Defines the minimum edge-class authoring and consumption contract so Step 2 is concrete and testable.",
-        "audience": "Author",
-        "status": "active",
-        "svg": "<svg viewBox=\"0 0 260 180\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><defs><linearGradient id=\"contract-bg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#111827\"/><stop offset=\"1\" stop-color=\"#020617\"/></linearGradient><linearGradient id=\"contract-line\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#fb7185\"/><stop offset=\"1\" stop-color=\"#f8fafc\"/></linearGradient></defs><rect width=\"260\" height=\"180\" rx=\"24\" fill=\"url(#contract-bg)\"/><rect x=\"14\" y=\"14\" width=\"232\" height=\"152\" rx=\"20\" fill=\"#0f172a\" stroke=\"#fb7185\" stroke-opacity=\".32\"/><text x=\"28\" y=\"34\" font-family=\"ui-sans-serif,system-ui,sans-serif\" font-size=\"7\" font-weight=\"700\" letter-spacing=\".18em\" fill=\"#94a3b8\">TWILITE CONTRACT SYSTEM</text><g fill=\"none\" stroke=\"url(#contract-line)\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"77\" cy=\"73\" r=\"17\"/><circle cx=\"183\" cy=\"73\" r=\"17\"/><path d=\"M94 73H166\"/><path d=\"M149 59L166 73L149 87\"/><circle cx=\"130\" cy=\"73\" r=\"6\" fill=\"#f8fafc\"/></g><path d=\"M28 118H232\" stroke=\"#fb7185\" stroke-opacity=\".25\"/><text x=\"130\" y=\"143\" text-anchor=\"middle\" font-family=\"ui-sans-serif,system-ui,sans-serif\" font-size=\"15\" font-weight=\"800\" letter-spacing=\".14em\" fill=\"#f8fafc\">EDGE</text><text x=\"130\" y=\"157\" text-anchor=\"middle\" font-family=\"ui-sans-serif,system-ui,sans-serif\" font-size=\"7\" font-weight=\"700\" letter-spacing=\".18em\" fill=\"#fb7185\">TYPED RELATION</text></svg>",
+        "purpose": "Stable summary surface for the promise-based edge class contract.",
+        "titleSourceNodeId": "edge-class-contract-title",
+        "typeSourceNodeId": "edge-class-contract-type",
+        "viewRole": "node",
+        "viewKind": "interactive",
+        "audience": "Graph authors and template authors",
+        "status": "ratified",
+        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"18\" y=\"16\" width=\"184\" height=\"128\" rx=\"24\" fill=\"#f7fbff\" stroke=\"#17324d\" stroke-width=\"5\"/><rect x=\"36\" y=\"34\" width=\"92\" height=\"14\" rx=\"7\" fill=\"#dbeafe\"/><rect x=\"136\" y=\"34\" width=\"44\" height=\"14\" rx=\"7\" fill=\"#e2e8f0\"/><rect x=\"36\" y=\"62\" width=\"144\" height=\"18\" rx=\"9\" fill=\"#eef2ff\"/><rect x=\"36\" y=\"92\" width=\"58\" height=\"30\" rx=\"10\" fill=\"#bfdbfe\"/><rect x=\"102\" y=\"92\" width=\"44\" height=\"30\" rx=\"10\" fill=\"#cbd5e1\"/><rect x=\"154\" y=\"92\" width=\"26\" height=\"30\" rx=\"10\" fill=\"#dbeafe\"/></svg>",
         "_classBinding": {
-          "key": "ui-view",
-          "sourceRef": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "intent": "node-class",
-          "meaning": "A user-facing interface surface or screen-level view.",
-          "description": "A user-facing interface surface or screen-level view.",
-          "nodeDef": {
-            "key": "ui-view",
-            "ref": "https://twilite.zone/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
+          "key": "node-view",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node"
         },
-        "definitionKey": "ui-view"
+        "_bridge": {
+          "classKey": "node-view",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node"
+        },
+        "definitionKey": "node-view"
+      }
+    },
+    {
+      "id": "edge-class-contract-bridge-title",
+      "type": "bridge",
+      "label": "Title",
+      "position": {
+        "x": -1400,
+        "y": -180
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "authority": "bridge",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "visibilityRole": "editor",
+        "target": {
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "key": "title",
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph"
+        },
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph"
+        }
+      }
+    },
+    {
+      "id": "edge-class-contract-bridge-type-definition",
+      "type": "bridge",
+      "label": "Type Definition",
+      "position": {
+        "x": -1400,
+        "y": -20
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "authority": "bridge",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "visibilityRole": "editor",
+        "target": {
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "key": "type-definition",
+          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph"
+        },
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph"
+        }
+      }
+    },
+    {
+      "id": "edge-class-contract-bridge-node-view",
+      "type": "bridge",
+      "label": "Node View",
+      "position": {
+        "x": -1400,
+        "y": 140
+      },
+      "width": 260,
+      "height": 120,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "authority": "bridge",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "visibilityRole": "editor",
+        "target": {
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node:root",
+          "mode": "bridge",
+          "kind": "node-class",
+          "key": "node-view",
+          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph"
+        },
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/node-view.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph"
+        }
+      }
+    },
+    {
+      "id": "edge-class-contract-root-port",
+      "type": "port",
+      "label": "Graph Contract",
+      "position": {
+        "x": -900,
+        "y": 120
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "edge-class-contract",
+          "portId": "root",
+          "name": "Edge Class Contract"
+        },
+        "title": "Edge Class Contract",
+        "purpose": "Define what an edge class must promise, what it may add, and when diagnostics should speak.",
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary",
+          "label": "Edge Class Contract"
+        },
+        "payload": "node.web.summary",
+        "intent": "node",
+        "key": "node.web.summary",
+        "viewRole": "summary",
+        "viewKind": "display",
+        "semanticLevel": "summary",
+        "visibilityRole": "browser"
+      }
+    },
+    {
+      "id": "edge-class-contract-overview",
+      "type": "markdown",
+      "label": "Contract Boundary",
+      "position": {
+        "x": 740,
+        "y": -180
+      },
+      "width": 620,
+      "height": 360,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Edge Classes Add Meaning\n\nA plain edge is valid when its endpoints and handles resolve. An **edge class** is optional reusable semantic identity layered onto that edge.\n\nAn authored edge class makes a small executable promise:\n\n- one authority-bearing `declaration` with `declaresKind: \"edge-class\"`\n- one canonical declared `root` surface backed by a real graph-owned port\n- a stable `data.edgeClass.key`\n- a human-readable label and meaning\n- durable resolution when an edge assigns the class\n\nThe canonical edge-class declaration object lives at `data.edgeClass`. Older Field-node representations remain readable compatibility data, but new templates should not generate them.\n\nEdge instances may override class defaults. Otherwise, declared class defaults apply. With no class assignment, the edge remains plain.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "markdown",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "edge-class-contract-promise",
+      "type": "markdown",
+      "label": "Minimum Promise",
+      "position": {
+        "x": 740,
+        "y": 240
+      },
+      "width": 520,
+      "height": 500,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Minimum Promise\n\n```json\n{\n  \"type\": \"declaration\",\n  \"data\": {\n    \"declaresKind\": \"edge-class\",\n    \"declaration\": {\n      \"kind\": \"edge-class\",\n      \"defaultSurfaceId\": \"root\",\n      \"surfaces\": [\n        { \"id\": \"root\", \"kind\": \"port\", \"portNodeId\": \"root-port-node-id\" }\n      ]\n    },\n    \"edgeClass\": {\n      \"key\": \"domain.relationship\",\n      \"label\": \"Relationship\",\n      \"meaning\": \"What this relationship asserts\"\n    }\n  }\n}\n```\n\nThe root port must exist. The key must be stable for durable assignment and resolution. Label and meaning explain the semantic assertion rather than its styling.\n\nOptional source or target constraints become promises only when declared.",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "markdown",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "edge-class-contract-diagnostics",
+      "type": "markdown",
+      "label": "Diagnostics",
+      "position": {
+        "x": 1420,
+        "y": -180
+      },
+      "width": 580,
+      "height": 380,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Diagnostics Report Broken Promises\n\nValidators report:\n\n- a missing or ambiguous edge-class declaration\n- a missing canonical root port or other declared target\n- a missing or malformed edge-class key\n- an assigned class that cannot resolve\n- invalid endpoints or named handles\n- a violated source or target constraint explicitly declared by the class\n- a missing view, export, renderer, or preview explicitly promised by the class\n\nValidators remain silent when optional render defaults, previews, additional views, exports, constraints, or visual metadata were never declared.\n\nCompatibility notes may explain legacy representations separately. They are not invariant-core failures.",
+        "definitionKey": "markdown"
+      }
+    },
+    {
+      "id": "edge-class-contract-template-boundary",
+      "type": "markdown",
+      "label": "Template Boundary",
+      "position": {
+        "x": 1420,
+        "y": 260
+      },
+      "width": 520,
+      "height": 480,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Richness Comes From Templates\n\nEdge-class templates should create useful graphs, not merely the minimum valid declaration.\n\nA strong new edge-class graph may include:\n\n- title, type definition, and node-view surfaces\n- meaning, direction, and assignment examples\n- source and target constraints\n- rendering defaults and preview\n- export surfaces\n- semantic edges that explain how its sections relate\n- a return portal to the containing collection\n\nThose are generated authoring affordances and composition guidance. Their absence from an older or deliberately minimal edge class is not a warning.\n\nThe rule is:\n\n1. validate every promise the graph actually makes\n2. preserve plain-edge fallback\n3. let templates supply richer starting structure\n4. let authors add capabilities deliberately",
+        "_classBinding": {
+          "key": "markdown",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "markdown",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
+        },
+        "definitionKey": "markdown"
       }
     },
     {
@@ -199,11 +475,11 @@
       "type": "portal",
       "label": "Back: Contracts Root",
       "position": {
-        "x": 600,
-        "y": -160
+        "x": 2020,
+        "y": 260
       },
-      "width": 320,
-      "height": 220,
+      "width": 360,
+      "height": 160,
       "visible": true,
       "showLabel": true,
       "data": {
@@ -222,250 +498,110 @@
         "sourceNodeId": "contracts-port-view",
         "sourcePayload": "node.web.document"
       }
-    },
-    {
-      "id": "edge-class-contract-root",
-      "type": "markdown",
-      "label": "🧩 Edge Class Contract (Normative)",
-      "position": {
-        "x": 140,
-        "y": 160
-      },
-      "width": 780,
-      "height": 320,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "# Edge Class Contract\n\n**Authority:** Normative\n\nAn edge class is an optional reusable semantic upgrade for a plain edge. It may own relationship meaning, light rendering defaults, applicability constraints, and legend identity. A plain edge remains fully valid without a class.\n\nThis contract protects execution without turning edge authoring into ceremony:\n\n- diagnostics report broken declared promises\n- optional capabilities remain silent when absent\n- templates generate richer, well-connected edge-class graphs for new work\n- older lean edge classes are not warned merely for lacking decorative or explanatory structure"
-      }
-    },
-    {
-      "id": "edge-class-contract-identity",
-      "type": "markdown",
-      "label": "1. Identity (Required)",
-      "position": {
-        "x": -260,
-        "y": 520
-      },
-      "width": 520,
-      "height": 320,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## 1. Identity Contract (Required)\n\nA new edge-class artifact uses one authority-bearing declaration with:\n\n- `data.declaration.kind: edge-class`\n- a canonical declared `root` surface\n- `data.edgeClass.key`: stable semantic key, such as `idea.supports`\n- `data.edgeClass.label`: human-facing label\n- `data.edgeClass.meaning`: concise relationship meaning\n\nThe declaration-owned `data.edgeClass` object is the canonical semantic home. Legacy Field-node representations may continue loading as compatibility data, but new templates should not split one edge-class contract across required Field nodes.\n\nDiagnostics should report a missing or duplicate promised key, an unresolved root, or malformed declared identity. They should not demand optional views, examples, constraints, or style fields."
-      }
-    },
-    {
-      "id": "edge-class-contract-render",
-      "type": "markdown",
-      "label": "2. Render Defaults (Required)",
-      "position": {
-        "x": 300,
-        "y": 520
-      },
-      "width": 620,
-      "height": 420,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## 2. Rendering Defaults (Optional Capability)\n\nAn edge class may declare `data.edgeClass.defaultEdgeType` and a small `data.edgeClass.renderDefaults` object.\n\nUseful render defaults include:\n\n- `stroke`\n- `width`\n- `dash`\n- `routingHint`\n- `labelTone`\n\nWhen declared, these values are the class defaults used by canvas rendering and previews. Edge-instance overrides remain authoritative for that instance.\n\nAbsence of render defaults is valid and silent. Invalid declared values, an unknown declared edge type, or contradictory render promises are diagnostics."
-      }
-    },
-    {
-      "id": "edge-class-contract-preview",
-      "type": "markdown",
-      "label": "3. Preview (Required Behavior)",
-      "position": {
-        "x": 960,
-        "y": 520
-      },
-      "width": 620,
-      "height": 420,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## 3. Preview Behavior\n\nA template should create a useful root or summary presentation that shows the edge label, key, meaning, and a representative line. The Idea template edge classes are the current compact reference pattern.\n\nA preview is not a universal validity requirement. When a class declares both render defaults and a canonical preview, the preview should reflect those defaults. Demonstrable drift between two declared representations is a broken promise; absence of an optional preview is not a warning."
-      }
-    },
-    {
-      "id": "edge-class-contract-views",
-      "type": "markdown",
-      "label": "4. Views (Recommended Minimum)",
-      "position": {
-        "x": -260,
-        "y": 880
-      },
-      "width": 520,
-      "height": 380,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## 4. Surface Contract\n\nEvery new edge-class graph follows the base graph contract and exposes one canonical `root` surface.\n\nThe root should make the class understandable and addressable. It may use `node.web.summary`, as the Idea edge classes do.\n\nAdditional payloads such as `node.web.icon`, `node.web.detail`, `node.web.document`, or `editor.web` are optional capabilities. If declared, they must resolve and honor their payload contract. If absent, validators remain silent."
-      }
-    },
-    {
-      "id": "edge-class-contract-export",
-      "type": "markdown",
-      "label": "5. Export Surface (Library Declaration)",
-      "position": {
-        "x": 300,
-        "y": 980
-      },
-      "width": 620,
-      "height": 420,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## 5. Export and Consumption\n\nAn edge class only needs an export contract when it claims library consumption.\n\nA library that exports edge classes must expose them through a declared export surface using allow or allowlist policy. A consuming graph must use a real bridge with appropriate authority and select the intended export surface when selection is required.\n\nReachability alone does not grant class authority. A local template may instead bridge directly to its edge-class artifacts, as the Idea template does.\n\nDiagnostics report broken declared exports, unresolved class references, or invalid bridge authority. A private or local edge class that never claims library export does not receive an export warning."
-      }
-    },
-    {
-      "id": "edge-class-contract-assignment",
-      "type": "markdown",
-      "label": "6. Assignment + Precedence",
-      "position": {
-        "x": 960,
-        "y": 980
-      },
-      "width": 620,
-      "height": 420,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## 6. Edge Assignment and Precedence\n\nA plain edge remains valid without a class.\n\nWhen an edge is classified, it should store:\n\n- `edge.data.edgeClassRef`: durable semantic authority\n- `edge.data.edgeClassKey`: stable key mirror\n\nRendering precedence is:\n\n1. explicit edge-instance overrides\n2. declared class defaults\n3. the ordinary plain-edge fallback\n\nThe class owns reusable meaning. The edge instance owns its endpoints and may own local display metadata or rendering overrides."
-      }
-    },
-    {
-      "id": "edge-class-contract-step-2-checklist",
-      "type": "markdown",
-      "label": "Step 2 Checklist (Concrete)",
-      "position": {
-        "x": 140,
-        "y": 1440
-      },
-      "width": 1080,
-      "height": 520,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "## New Edge-Class Template Checklist\n\nTemplates should create the richer graph; users should not have to retrofit it manually.\n\n### Required executable core\n\n- declaration with `kind: edge-class`\n- canonical declared `root` surface backed by a real port\n- `data.edgeClass.key`\n- `data.edgeClass.label`\n- `data.edgeClass.meaning`\n\n### Strong generated defaults\n\n- `defaultEdgeType`\n- small `renderDefaults`\n- optional `sourceKinds` and `targetKinds`\n- readable root preview\n- structural edge from declaration to root\n- an example relationship when the template family benefits from one\n- semantic explanatory edges where they clarify meaning\n\n### Validation boundary\n\n- reject unresolved or contradictory declared values\n- validate source and target constraints only when declared\n- validate preview consistency only when both preview and render defaults are declared\n- require export behavior only when library export is claimed\n- never warn solely because optional richness is absent\n\nPass criteria: the class resolves through its root, classified edges retain their endpoints and meaning, and every capability the class claims actually works."
-      }
     }
   ],
   "edges": [
     {
-      "id": "edge-class-contract-edge-declaration-root",
-      "type": "reference",
+      "id": "edge-class-contract-edge-authority-title",
       "source": "edge-class-contract-declaration",
-      "target": "edge-class-contract-view",
+      "target": "edge-class-contract-bridge-title",
+      "type": "reference",
+      "label": "class authority",
       "sourcePort": "root",
-      "targetPort": "root",
-      "label": "default surface",
-      "style": {},
-      "data": { "relation": "surface" }
+      "targetPort": "root"
     },
     {
-      "id": "edge-class-contract-edge-root-identity",
+      "id": "edge-class-contract-edge-authority-type-definition",
+      "source": "edge-class-contract-declaration",
+      "target": "edge-class-contract-bridge-type-definition",
       "type": "reference",
-      "source": "edge-class-contract-root",
-      "target": "edge-class-contract-identity",
+      "label": "class authority",
       "sourcePort": "root",
-      "targetPort": "root",
-      "label": "may define",
-      "style": {},
-      "data": {}
+      "targetPort": "root"
     },
     {
-      "id": "edge-class-contract-edge-root-render",
+      "id": "edge-class-contract-edge-authority-node-view",
+      "source": "edge-class-contract-declaration",
+      "target": "edge-class-contract-bridge-node-view",
       "type": "reference",
-      "source": "edge-class-contract-root",
-      "target": "edge-class-contract-render",
+      "label": "class authority",
       "sourcePort": "root",
-      "targetPort": "root",
-      "label": "may present",
-      "style": {},
-      "data": {}
+      "targetPort": "root"
     },
     {
-      "id": "edge-class-contract-edge-root-preview",
+      "id": "edge-class-contract-edge-declaration-root",
+      "source": "edge-class-contract-declaration",
+      "target": "edge-class-contract-root-port",
       "type": "reference",
-      "source": "edge-class-contract-root",
-      "target": "edge-class-contract-preview",
+      "label": "declares root",
       "sourcePort": "root",
-      "targetPort": "root",
-      "label": "requires",
-      "style": {},
-      "data": {}
+      "targetPort": "root"
     },
     {
-      "id": "edge-class-contract-edge-render-preview",
+      "id": "edge-class-contract-edge-title-type",
+      "source": "edge-class-contract-title",
+      "target": "edge-class-contract-type",
       "type": "reference",
-      "source": "edge-class-contract-render",
-      "target": "edge-class-contract-preview",
+      "label": "names",
       "sourcePort": "root",
-      "targetPort": "root",
-      "label": "informs when declared",
-      "style": {},
-      "data": {}
+      "targetPort": "root"
     },
     {
-      "id": "edge-class-contract-edge-root-views",
+      "id": "edge-class-contract-edge-type-view",
+      "source": "edge-class-contract-type",
+      "target": "edge-class-contract-node-view",
       "type": "reference",
-      "source": "edge-class-contract-root",
-      "target": "edge-class-contract-views",
+      "label": "exposes",
       "sourcePort": "root",
-      "targetPort": "root",
-      "label": "may expose",
-      "style": {},
-      "data": {}
+      "targetPort": "root"
     },
     {
-      "id": "edge-class-contract-edge-root-export",
+      "id": "edge-class-contract-edge-view-overview",
+      "source": "edge-class-contract-node-view",
+      "target": "edge-class-contract-overview",
       "type": "reference",
-      "source": "edge-class-contract-root",
-      "target": "edge-class-contract-export",
+      "label": "summarizes",
       "sourcePort": "root",
-      "targetPort": "root",
-      "label": "may export",
-      "style": {},
-      "data": {}
+      "targetPort": "root"
     },
     {
-      "id": "edge-class-contract-edge-identity-assignment",
+      "id": "edge-class-contract-edge-overview-promise",
+      "source": "edge-class-contract-overview",
+      "target": "edge-class-contract-promise",
       "type": "reference",
-      "source": "edge-class-contract-identity",
-      "target": "edge-class-contract-assignment",
+      "label": "defines",
       "sourcePort": "root",
-      "targetPort": "root",
-      "label": "identifies",
-      "style": {},
-      "data": {}
+      "targetPort": "root"
     },
     {
-      "id": "edge-class-contract-edge-export-assignment",
+      "id": "edge-class-contract-edge-promise-diagnostics",
+      "source": "edge-class-contract-promise",
+      "target": "edge-class-contract-diagnostics",
       "type": "reference",
-      "source": "edge-class-contract-export",
-      "target": "edge-class-contract-assignment",
+      "label": "governs",
       "sourcePort": "root",
-      "targetPort": "root",
-      "label": "enables",
-      "style": {},
-      "data": {}
+      "targetPort": "root"
     },
     {
-      "id": "edge-class-contract-edge-assignment-step",
+      "id": "edge-class-contract-edge-promise-template",
+      "source": "edge-class-contract-promise",
+      "target": "edge-class-contract-template-boundary",
       "type": "reference",
-      "source": "edge-class-contract-assignment",
-      "target": "edge-class-contract-step-2-checklist",
+      "label": "separates from guidance",
       "sourcePort": "root",
-      "targetPort": "root",
-      "label": "makes concrete",
-      "style": {},
-      "data": {}
+      "targetPort": "root"
+    },
+    {
+      "id": "edge-class-contract-edge-template-back",
+      "source": "edge-class-contract-template-boundary",
+      "target": "edge-class-contract-back",
+      "type": "reference",
+      "label": "returns to collection",
+      "sourcePort": "root",
+      "targetPort": "root"
     }
   ],
-  "clusters": [],
-  "nodeCount": 12,
-  "edgeCount": 10,
+  "nodeCount": 13,
+  "edgeCount": 11,
   "timestamp": "2026-08-02T20:00:00.000Z"
 }
