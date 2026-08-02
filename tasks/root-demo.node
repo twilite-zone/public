@@ -31,7 +31,8 @@
             "manifest",
             "legend",
             "markdown",
-            "port"
+            "port",
+            "bridge"
           ],
           "portContracts": [
             "core"
@@ -1692,7 +1693,7 @@
     },
     {
       "id": "root-demo-bridge-task-summary",
-      "type": "port",
+      "type": "bridge",
       "label": "Task Summary",
       "position": {
         "x": -1000,
@@ -1700,7 +1701,7 @@
       },
       "width": 260,
       "height": 120,
-      "visible": true,
+      "visible": false,
       "showLabel": true,
       "data": {
         "memo": "Visible node-class bridge for Task Summary.",
@@ -1716,8 +1717,19 @@
           "portId": "root",
           "label": "Create",
           "key": "task-summary",
-          "meaning": "Dynamic-view-backed consumer for a task summary provider surface."
-        }
+          "meaning": "Dynamic-view-backed consumer for a task summary provider surface.",
+          "resourceKind": "node-class",
+          "scope": "focused-graph"
+        },
+        "authority": "bridge",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph"
+        },
+        "visibilityRole": "editor"
       }
     }
   ],
