@@ -447,6 +447,12 @@ Focused graph page views inherit policy from their verified source repository. A
 - A `portal` is a consumer/opening node, not the place to stash blank preview payloads
 - If the portal should preview a remote surface, bind it through `data.sourceRef`, `data.sourceNodeId`, `data.sourcePayload`, and `data.target`
 - If the portal should navigate only, keep the navigation target clean and omit inline payload fields entirely
+- Keep the durable graph/save address as the clean `.node` ref and store the selected declared port separately as `data.target.surfaceId`
+- A bare graph address resolves the declaration's exposed `root` surface; portal navigation passes any named surface as separate transient intent
+- The older `<graph-ref>:<surface-id>` input form may be parsed for compatibility, but the viewer must normalize it back to the clean graph ref before updating the address bar or save target
+- A port node is not public merely because it exists. The declaration must expose it through `data.declaration.surfaces`
+- When a requested port is missing, hidden, ambiguous, or not exposed, navigation fails before the destination replaces the current graph
+- In the portal editor, select from the destination graph's declared surfaces instead of typing an internal node id
 - Do not add `data.html`, `data.svg`, `data.markdown`, or `data.text` unless the portal itself truly owns that inline content
 - Empty inline fields can mask the real remote surface and cause blank cards
 

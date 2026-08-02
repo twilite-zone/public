@@ -1600,6 +1600,15 @@ Rules:
 - Omit `handles` when they would be structurally identical to `ports`; add them only when they provide distinct visual placement or bindings.
 - If a handle selects a referenced-graph surface, use `surfaceId`.
 
+### Public graph port navigation
+
+- Preserve the clean `.node` graph ref as durable identity and save location. Store a portal's declared selection separately in `data.target.surfaceId`.
+- Treat the graph ref without a separate surface selection as a request for the declaration's exposed `root` surface.
+- The legacy `<graph-ref>:<surface-id>` input form may still be parsed, but it must be stripped back to the graph ref before the address bar or save workflow receives it.
+- Never address an internal node id as though it were a public port. A real `port` must be listed in `declaration.data.declaration.surfaces` to be externally navigable.
+- Missing, hidden, ambiguous, and unexposed entries are load-blocking navigation failures; the viewer keeps the current graph instead of opening the destination and merely warning afterward.
+- Portal editors should resolve and store a declared surface selection, including `surfaceId`, rather than inventing a target node id.
+
 Safe explicit port-plus-handle example:
 
 ```json
