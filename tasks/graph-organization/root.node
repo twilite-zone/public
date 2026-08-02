@@ -2779,8 +2779,8 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
         },
         "definitionKey": "task-summary-provider",
-        "updatedAt": "2026-08-02T20:30:00.000Z",
-        "nextAction": "Implement the bounded template-installation proof, then use its result to refine the template-library and graph-growth rules.",
+        "updatedAt": "2026-08-02T22:30:00.000Z",
+        "nextAction": "Verify exact duplicate node IDs are rejected without suffixing; Workboard singleton collision policy is now settled.",
         "visibilityRole": "browser"
       },
       "root": false,
@@ -3660,15 +3660,25 @@
         "title": "Implement lean template installation",
         "body": "Copy a template's bounded functional nodes and edges into an existing graph, add the required bridges, preserve the host declaration and canonical root, rely on existing automatic graph rules, and reject ID collisions without suffixing.",
         "priority": "high",
-        "status": "todo",
+        "status": "in-progress",
         "owner": "Michael",
         "estimateHours": "4",
         "ideaRef": "github://mikemartinez1974/public/ideas/installing-templates-into-existing-graphs.node",
+        "progressNote": "The bounded Workboard capability was copied into an existing idea graph with its required bridges while preserving the host declaration and root. Single-instance behavior passed. The multi-board experiment exposed ambiguous graph-local task ownership, so Workboard is now a singleton capability and its reconciler rejects multiple controllers.",
+        "completedCriteria": [
+          "A bounded template capability installs into an existing graph",
+          "The host declaration and canonical root remain unchanged",
+          "Required bridges are added with the installed nodes",
+          "Existing dependency, view, layout, and save behavior remains authoritative",
+          "A second Workboard controller is rejected as a singleton capability collision"
+        ],
+        "nextAction": "Verify that an exact duplicate node ID stops installation clearly and never creates a suffix.",
         "acceptanceCriteria": [
           "A bounded template capability installs into an existing graph",
           "The host declaration and canonical root remain unchanged",
           "Required bridges are added with the installed nodes",
           "Existing dependency, view, layout, and save behavior remains authoritative",
+          "A second Workboard controller is rejected as a singleton capability collision",
           "An ID collision stops installation clearly and never creates a suffixed ID"
         ],
         "_classBinding": {
