@@ -1744,6 +1744,8 @@ For a fresh graph artifact:
 
 Custom node types are not activated merely by naming them in the declaration.
 
+A custom node-class file must also be a finished, inspectable graph artifact. Do not emit a loose `manifest` followed by chained `view` nodes merely because the resulting instance renders. Author one real `declaration`, one explanatory `markdown` contract node, and visible primitive `port` nodes for `editor.web`, `node.web.detail`, `node.web.summary`, and `node.web.icon`. Expose `root` through the detail port, keep named surfaces for all four roles, connect the declaration directly to the note and each surface, and use deliberate positions plus complete canonical port shapes. Every editor field must be represented by the detail surface; summary and icon surfaces may use intentional subsets.
+
 `data.dependencies.nodeTypes` is descriptive. It tells readers and validators which node types the graph uses, but it does not register those types or grant authority to create them. A node such as `{ "type": "person" }` is not class-resolved solely because `person` appears in that list.
 
 For every external node class used by a new graph:

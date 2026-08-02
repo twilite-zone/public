@@ -273,6 +273,12 @@ When creating a first real graph, create one `declaration` node and one required
 
 ### Custom node classes are executable infrastructure
 
+- A `.node-class.node` file is itself an inspectable graph artifact; a working renderer does not excuse a poor definition graph
+- Author one real `declaration`, one explanatory `markdown` contract node, and visible primitive `port` nodes for `editor.web`, `node.web.detail`, `node.web.summary`, and `node.web.icon`
+- Expose `root` through the detail port, set `defaultSurfaceId: "root"`, and retain named detail, summary, icon, and editor surfaces with real `viewNodeId` targets
+- Connect the declaration directly to the contract note and each surface port with meaningful contract or surface edges; do not chain loose view nodes merely to make the graph connected
+- Give every definition node a deliberate position and complete canonical `ports`; include matching `inputs` and `outputs` when the class-artifact convention requires the full shape
+- Every authored editor field must have a meaningful representation in the detail surface. Summary and icon surfaces are deliberate smaller projections, not discarded editor data
 - `data.dependencies.nodeTypes` is descriptive; it does not register a custom type or grant runtime authority
 - Every external node class used by the graph requires a real `bridge` node pointing to its `.node-class.node` resource
 - Give the bridge focused-graph creation authority with `scope: "focused-graph"` and `grants: ["create"]`
