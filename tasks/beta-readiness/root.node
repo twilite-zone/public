@@ -4,7 +4,7 @@
     "title": "Beta Readiness",
     "description": "Release-readiness task graph for getting Twilite to beta.",
     "created": "2026-03-23T07:17:38.912Z",
-    "modified": "2026-07-14T00:00:00.000Z",
+    "modified": "2026-08-02T02:30:00.000Z",
     "author": "",
     "tags": [
       "beta",
@@ -16,16 +16,16 @@
   },
   "nodes": [
     {
-      "id": "beta-readiness-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "id": "beta-readiness-task",
+      "type": "declaration",
+      "label": "Beta Readiness Declaration",
       "position": {
-        "x": -501.5,
-        "y": -1245
+        "x": -2050,
+        "y": -980
       },
-      "width": 360,
-      "height": 240,
-      "visible": false,
+      "width": 300,
+      "height": 180,
+      "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
@@ -34,16 +34,17 @@
           "version": "0.1.0",
           "description": "Release-readiness task graph for getting Twilite to beta.",
           "createdAt": "2026-03-16T22:40:00.000Z",
-          "updatedAt": "2026-03-26T02:05:00.000Z"
+          "updatedAt": "2026-08-02T02:30:00.000Z"
         },
         "intent": {
           "kind": "task",
-          "scope": "local"
+          "scope": "public"
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
+            "declaration",
             "legend",
+            "port",
             "bridge",
             "script",
             "section",
@@ -85,9 +86,6 @@
             "squashAllowed": false
           }
         },
-        "document": {
-          "url": ""
-        },
         "settings": {
           "theme": null,
           "backgroundImage": null,
@@ -107,30 +105,236 @@
             "enableGithubPages": false
           }
         },
-        "summaryNodeId": "beta-readiness-summary"
-      }
+        "summaryNodeId": "beta-readiness-summary",
+        "declaration": {
+          "kind": "task",
+          "targetMode": "artifact",
+          "defaultSurfaceId": "root",
+          "surfaces": [
+            {
+              "id": "root",
+              "kind": "port",
+              "label": "Beta Readiness",
+              "portNodeId": "beta-readiness-root-port",
+              "viewNodeId": "beta-readiness-root-port",
+              "memo": "Default graph entry backed by the authoritative summary."
+            },
+            {
+              "id": "summary",
+              "kind": "port",
+              "label": "Summary",
+              "portNodeId": "beta-readiness-root-port",
+              "viewNodeId": "beta-readiness-root-port",
+              "memo": "Named summary surface for workboards and other consumers."
+            }
+          ]
+        }
+      },
+      "root": false,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-legend",
       "type": "legend",
       "label": "Legend",
       "position": {
-        "x": -1181.5,
-        "y": -1245
+        "x": -2050,
+        "y": -620
       },
       "width": 320,
       "height": 180,
       "visible": true,
       "showLabel": true,
-      "data": {}
+      "data": {},
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-overview",
       "type": "section",
       "label": "Overview",
       "position": {
-        "x": 2480.5,
-        "y": -1245
+        "x": -260,
+        "y": -1040
       },
       "width": 520,
       "height": 260,
@@ -160,15 +364,106 @@
         },
         "definitionKey": "section"
       },
-      "root": false
+      "root": false,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-goal",
       "type": "goal",
       "label": "Ship a credible beta release",
       "position": {
-        "x": 2322.833333333333,
-        "y": -815
+        "x": 0,
+        "y": -650
       },
       "width": 420,
       "height": 300,
@@ -177,7 +472,7 @@
       "data": {
         "body": "Get Twilite stable, secure, legible, and usable enough for beta users.",
         "priority": "critical",
-        "status": "open",
+        "status": "in-progress",
         "owner": "Michael",
         "targetDate": "2026-04-30",
         "successMetrics": [
@@ -316,15 +611,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node"
         },
         "definitionKey": "goal"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-constraint",
       "type": "constraint",
       "label": "Do not regress working graph authoring flows",
       "position": {
-        "x": 1056.1666666666665,
-        "y": -305
+        "x": 600,
+        "y": -650
       },
       "width": 400,
       "height": 280,
@@ -464,15 +850,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/constraint.node-class.node"
         },
         "definitionKey": "constraint"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-decision",
       "type": "decision",
       "label": "Beta means trustable core workflows, not feature completeness",
       "position": {
-        "x": 2219.5,
-        "y": -305
+        "x": -600,
+        "y": -650
       },
       "width": 420,
       "height": 280,
@@ -608,15 +1085,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node"
         },
         "definitionKey": "decision"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-question",
       "type": "open-question",
       "label": "What is the minimum acceptable onboarding path?",
       "position": {
-        "x": 2439.5,
-        "y": 135
+        "x": 720,
+        "y": 240
       },
       "width": 420,
       "height": 300,
@@ -752,15 +1320,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node"
         },
         "definitionKey": "open-question"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-task-github",
       "type": "task",
       "label": "Complete GitHub App migration",
       "position": {
-        "x": 1576.1666666666665,
-        "y": -295
+        "x": -1480,
+        "y": 240
       },
       "width": 380,
       "height": 260,
@@ -910,15 +1569,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
         "definitionKey": "task"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-task-diagnostics",
       "type": "task",
       "label": "Make diagnostics durable and attributable",
       "position": {
-        "x": 1699.5,
-        "y": 159
+        "x": -1480,
+        "y": 620
       },
       "width": 400,
       "height": 260,
@@ -1067,15 +1817,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
         "definitionKey": "task"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-task-layout",
       "type": "task",
       "label": "Stabilize layout and expansion placement",
       "position": {
-        "x": 1179.5,
-        "y": 605
+        "x": -600,
+        "y": 240
       },
       "width": 420,
       "height": 260,
@@ -1092,7 +1933,6 @@
         "status": "done",
         "owner": "",
         "estimateHours": "",
-        "countAsTask": true,
         "_classBinding": {
           "key": "task",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
@@ -1225,15 +2065,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
         "definitionKey": "task"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-task-cursor",
       "type": "task",
       "label": "Fix erratic mouse cursor mode switching",
       "position": {
-        "x": 1719.5,
-        "y": 1025
+        "x": -160,
+        "y": 240
       },
       "width": 420,
       "height": 260,
@@ -1382,15 +2313,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
         "definitionKey": "task"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-task-layout-controls",
       "type": "task",
       "label": "Make layout controls feel correct and usable",
       "position": {
-        "x": 1179.5,
-        "y": 1025
+        "x": -600,
+        "y": 620
       },
       "width": 420,
       "height": 260,
@@ -1544,15 +2566,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
         "definitionKey": "task"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-task-onboarding",
       "type": "task",
       "label": "Build a beta onboarding path",
       "position": {
-        "x": 1189.5,
-        "y": 1465
+        "x": 720,
+        "y": 620
       },
       "width": 400,
       "height": 260,
@@ -1702,15 +2815,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
         "definitionKey": "task"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-task-payments",
       "type": "task",
       "label": "Make payments and billing trustworthy",
       "position": {
-        "x": 699.5,
-        "y": 1465
+        "x": -1040,
+        "y": 240
       },
       "width": 400,
       "height": 260,
@@ -1863,15 +3067,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
         "definitionKey": "task"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-task-launch-content",
       "type": "task",
       "label": "Prepare launch posts and tutorial videos",
       "position": {
-        "x": 1659.5,
-        "y": 1465
+        "x": 1380,
+        "y": 620
       },
       "width": 400,
       "height": 260,
@@ -2020,15 +3315,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
         "definitionKey": "task"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-task-typography",
       "type": "task",
       "label": "Establish a real typography system",
       "position": {
-        "x": 258.5,
-        "y": 155
+        "x": 280,
+        "y": 620
       },
       "width": 420,
       "height": 260,
@@ -2040,7 +3426,6 @@
         "status": "todo",
         "owner": "Michael",
         "estimateHours": "6",
-        "countAsTask": false,
         "memo": "Removed from the counted beta-critical path. Keep visible as planned follow-up work.",
         "acceptanceCriteria": [
           "Primary UI typography is chosen intentionally",
@@ -2185,15 +3570,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
         "definitionKey": "task"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-task-classes",
       "type": "task",
       "label": "Polish class-system defaults",
       "position": {
-        "x": 2259.5,
-        "y": 1025
+        "x": -160,
+        "y": 620
       },
       "width": 380,
       "height": 260,
@@ -2347,15 +3823,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
         "definitionKey": "task"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-task-persistence",
       "type": "task",
       "label": "Clarify save and export behavior",
       "position": {
-        "x": 699.5,
-        "y": 605
+        "x": -1040,
+        "y": 620
       },
       "width": 360,
       "height": 260,
@@ -2506,15 +4073,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
         "definitionKey": "task"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-port-library",
       "type": "bridge",
       "label": "Open Planning Class Library",
       "position": {
-        "x": 1902.833333333333,
-        "y": -815
+        "x": -2050,
+        "y": -320
       },
       "width": 300,
       "height": 140,
@@ -2522,7 +4180,7 @@
       "showLabel": true,
       "data": {
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/root.node:root",
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/root.node",
           "mode": "navigate",
           "kind": "graph",
           "url": "",
@@ -2547,15 +4205,106 @@
             "open"
           ]
         }
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-port-onboarding",
       "type": "task-summary",
       "label": "Beta Onboarding Path",
       "position": {
-        "x": 1179.5,
-        "y": 1745
+        "x": 720,
+        "y": 1000
       },
       "width": 420,
       "height": 260,
@@ -2660,16 +4409,108 @@
           "classKey": "task-summary",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task-summary"
-      }
+        "definitionKey": "task-summary",
+        "countAsTask": false
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-port-payments",
       "type": "task-summary",
       "label": "Payments Readiness",
       "position": {
-        "x": 699.5,
-        "y": 1745
+        "x": -1040,
+        "y": 1000
       },
       "width": 420,
       "height": 260,
@@ -2774,16 +4615,108 @@
           "classKey": "task-summary",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task-summary"
-      }
+        "definitionKey": "task-summary",
+        "countAsTask": false
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-port-launch-content",
       "type": "task-summary",
       "label": "Launch Content Readiness",
       "position": {
-        "x": 1659.5,
-        "y": 1745
+        "x": 1380,
+        "y": 1000
       },
       "width": 420,
       "height": 260,
@@ -2888,16 +4821,108 @@
           "classKey": "task-summary",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task-summary"
-      }
+        "definitionKey": "task-summary",
+        "countAsTask": false
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-summary",
       "type": "summary",
       "label": "Beta Readiness Summary",
       "position": {
-        "x": 2660.5,
-        "y": -305
+        "x": 420,
+        "y": -1040
       },
       "width": 420,
       "height": 260,
@@ -2908,29 +4933,33 @@
         "status": "in-progress",
         "taskProgress": {
           "completed": 6,
-          "total": 8
+          "total": 12
         },
         "questionProgress": {
           "answered": 1,
           "total": 1
         },
-        "summarySource": "node-updater",
+        "summarySource": "graph-updater",
         "taskTitles": [
           "Complete GitHub App migration",
           "Make diagnostics durable and attributable",
-          "Stabilize layout and expansion placement",
+          "Layout Stability",
           "Fix erratic mouse cursor mode switching",
           "Make layout controls feel correct and usable",
           "Build a beta onboarding path",
+          "Make payments and billing trustworthy",
+          "Prepare launch posts and tutorial videos",
+          "Establish a real typography system",
           "Polish class-system defaults",
-          "Clarify save and export behavior"
+          "Clarify save and export behavior",
+          "Make media authoring predictable and durable"
         ],
         "questionTitles": [
           "What is the minimum acceptable onboarding path?"
         ],
-        "taskListText": "1. Complete GitHub App migration\n2. Make diagnostics durable and attributable\n3. Stabilize layout and expansion placement\n4. Fix erratic mouse cursor mode switching\n5. Make layout controls feel correct and usable\n6. Build a beta onboarding path\n7. Polish class-system defaults\n8. Clarify save and export behavior",
+        "taskListText": "1. Complete GitHub App migration\n2. Make diagnostics durable and attributable\n3. Layout Stability\n4. Fix erratic mouse cursor mode switching\n5. Make layout controls feel correct and usable\n6. Build a beta onboarding path\n7. Make payments and billing trustworthy\n8. Prepare launch posts and tutorial videos\n9. Establish a real typography system\n10. Polish class-system defaults\n11. Clarify save and export behavior\n12. Make media authoring predictable and durable",
         "questionListText": "1. What is the minimum acceptable onboarding path?",
-        "updatedAt": "2026-04-04T18:14:54.329Z",
+        "updatedAt": "2026-08-02T02:30:00.000Z",
         "_classBinding": {
           "key": "summary",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
@@ -3040,16 +5069,112 @@
           "classKey": "summary",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
         },
-        "definitionKey": "summary"
-      }
+        "definitionKey": "summary",
+        "priority": "critical",
+        "owner": "Michael",
+        "nextAction": "Finish layout controls, billing readiness, and class defaults; then close media authoring and launch content.",
+        "blockedReason": "",
+        "health": "on-track"
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-summary-updater",
       "type": "script",
       "label": "Summary Updater",
       "position": {
-        "x": 2881.5,
-        "y": -705
+        "x": 1040,
+        "y": -360
       },
       "width": 320,
       "height": 190,
@@ -3062,21 +5187,117 @@
         "autoRunOnGraphChange": true,
         "allowMutations": true,
         "dryRun": false,
-        "source": "const SUMMARY_NODE_ID = 'beta-readiness-summary';\nconst SUMMARY_TASK_ID = 'beta-readiness-summary-task';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel) => {\n  const visible = items.filter(Boolean);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst fetchJson = async (ref) => {\n  const normalizedRef = String(ref || '').trim();\n  if (!normalizedRef) return null;\n  try {\n    const response = await fetch(normalizedRef, { cache: 'no-store' });\n    if (!response.ok) return null;\n    return await response.json();\n  } catch {\n    return null;\n  }\n};\nconst summaryStatusCache = new Map();\nconst getExternalSummaryStatus = async (entry) => {\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  if (!sourceRef || !sourceNodeId || sourceNodeId === SUMMARY_NODE_ID) return '';\n  const cacheKey = sourceRef + '#' + sourceNodeId;\n  if (summaryStatusCache.has(cacheKey)) return summaryStatusCache.get(cacheKey);\n  const graphData = await fetchJson(sourceRef);\n  const sourceNode = Array.isArray(graphData?.nodes) ? graphData.nodes.find((node) => node?.id === sourceNodeId) : null;\n  const status = normalize(sourceNode?.data?.status);\n  summaryStatusCache.set(cacheKey, status);\n  return status;\n};\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nconst summaryTaskNode = nodes.find((entry) => entry?.id === SUMMARY_TASK_ID);\nif (!summaryNode || !summaryTaskNode) return { success: false, error: 'Summary surface missing' };\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task' && entry?.id !== SUMMARY_TASK_ID && entry?.data?.countAsTask !== false);\nconst externalSummaryTasks = nodes.filter((entry) => entry?.type === 'task-summary' && entry?.data?.countAsTask !== false);\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst literalTaskItems = tasks.map((entry) => ({ title: toTitle(entry, 'Untitled task'), status: normalize(entry?.data?.status) }));\nconst externalTaskItems = await Promise.all(externalSummaryTasks.map(async (entry) => ({ title: toTitle(entry, 'Untitled task summary'), status: await getExternalSummaryStatus(entry) })));\nconst taskItems = [...literalTaskItems, ...externalTaskItems].filter((entry) => entry?.title);\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst answeredQuestionCount = questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalize(goalNode?.data?.status);\nconst derivedStatus = goalStatus ? (goalStatus === 'done' && !allTasksDone ? 'in-progress' : (goalNode?.data?.status || 'open')) : (allTasksDone ? 'done' : (completedTaskCount > 0 ? 'in-progress' : (summaryNode?.data?.status || 'todo')));\nconst nextSummaryData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  taskProgress: { completed: completedTaskCount, total: taskItems.length },\n  questionProgress: { answered: answeredQuestionCount, total: questions.length },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.'),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'graph-updater'\n};\nconst nextSummaryTaskData = {\n  ...(summaryTaskNode.data || {}),\n  title: goalNode?.label || summaryTaskNode?.data?.title || 'Task graph',\n  body: `Goal: ${goalNode?.label || 'Task graph'}\\nStatus: ${derivedStatus}\\n\\nTasks in scope:\\n${toListText(taskTitles, 'No tasks listed.')}\\n\\nOpen questions:\\n${toListText(questionTitles, 'No open questions.')}` ,\n  status: derivedStatus,\n  taskProgress: { completed: completedTaskCount, total: taskItems.length },\n  questionProgress: { answered: answeredQuestionCount, total: questions.length },\n  summarySource: 'node-updater',\n  countAsTask: false,\n  definitionKey: 'task'\n};\nif (!isEqual(summaryNode.data || {}, nextSummaryData)) await api.updateNode(SUMMARY_NODE_ID, { data: { ...nextSummaryData, updatedAt: new Date().toISOString() } });\nif (!isEqual(summaryTaskNode.data || {}, nextSummaryTaskData)) await api.updateNode(SUMMARY_TASK_ID, { data: { ...nextSummaryTaskData, updatedAt: new Date().toISOString() } });\nreturn { success: true, status: derivedStatus, taskCount: taskItems.length, questionCount: questions.length };",
+        "source": "const SUMMARY_NODE_ID = 'beta-readiness-summary';\nconst SUMMARY_TASK_ID = 'beta-readiness-summary-task';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel) => {\n  const visible = items.filter(Boolean);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst fetchJson = async (ref) => {\n  const normalizedRef = String(ref || '').trim();\n  if (!normalizedRef) return null;\n  try {\n    const response = await fetch(normalizedRef, { cache: 'no-store' });\n    if (!response.ok) return null;\n    return await response.json();\n  } catch {\n    return null;\n  }\n};\nconst summaryStatusCache = new Map();\nconst getExternalSummaryStatus = async (entry) => {\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  if (!sourceRef || !sourceNodeId || sourceNodeId === SUMMARY_NODE_ID) return '';\n  const cacheKey = sourceRef + '#' + sourceNodeId;\n  if (summaryStatusCache.has(cacheKey)) return summaryStatusCache.get(cacheKey);\n  const graphData = await fetchJson(sourceRef);\n  const sourceNode = Array.isArray(graphData?.nodes) ? graphData.nodes.find((node) => node?.id === sourceNodeId) : null;\n  const status = normalize(sourceNode?.data?.status);\n  summaryStatusCache.set(cacheKey, status);\n  return status;\n};\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nconst summaryTaskNode = nodes.find((entry) => entry?.id === SUMMARY_TASK_ID);\nif (!summaryNode || !summaryTaskNode) return { success: false, error: 'Summary surface missing' };\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task' && entry?.id !== SUMMARY_TASK_ID && entry?.data?.countAsTask !== false);\nconst externalSummaryTasks = nodes.filter((entry) => entry?.type === 'task-summary' && entry?.data?.countAsTask !== false);\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst literalTaskItems = tasks.map((entry) => ({ title: toTitle(entry, 'Untitled task'), status: normalize(entry?.data?.status) }));\nconst externalTaskItems = await Promise.all(externalSummaryTasks.map(async (entry) => ({ title: toTitle(entry, 'Untitled task summary'), status: await getExternalSummaryStatus(entry) })));\nconst taskItems = [...literalTaskItems, ...externalTaskItems].filter((entry) => entry?.title);\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst answeredQuestionCount = questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalize(goalNode?.data?.status);\nconst hasActiveTasks = taskItems.some((entry) => ['in-progress', 'blocked', 'waiting'].includes(entry.status));\nconst derivedStatus = allTasksDone ? 'done' : ((goalStatus === 'in-progress' || hasActiveTasks || completedTaskCount > 0) ? 'in-progress' : (goalStatus || summaryNode?.data?.status || 'todo'));\nconst nextSummaryData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  taskProgress: { completed: completedTaskCount, total: taskItems.length },\n  questionProgress: { answered: answeredQuestionCount, total: questions.length },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.'),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'graph-updater'\n};\nconst nextSummaryTaskData = {\n  ...(summaryTaskNode.data || {}),\n  title: goalNode?.label || summaryTaskNode?.data?.title || 'Task graph',\n  body: `Goal: ${goalNode?.label || 'Task graph'}\\nStatus: ${derivedStatus}\\n\\nTasks in scope:\\n${toListText(taskTitles, 'No tasks listed.')}\\n\\nOpen questions:\\n${toListText(questionTitles, 'No open questions.')}` ,\n  status: derivedStatus,\n  taskProgress: { completed: completedTaskCount, total: taskItems.length },\n  questionProgress: { answered: answeredQuestionCount, total: questions.length },\n  summarySource: 'node-updater',\n  countAsTask: false,\n  definitionKey: 'task'\n};\nif (!isEqual(summaryNode.data || {}, nextSummaryData)) await api.updateNode(SUMMARY_NODE_ID, { data: { ...nextSummaryData, updatedAt: new Date().toISOString() } });\nif (!isEqual(summaryTaskNode.data || {}, nextSummaryTaskData)) await api.updateNode(SUMMARY_TASK_ID, { data: { ...nextSummaryTaskData, updatedAt: new Date().toISOString() } });\nreturn { success: true, status: derivedStatus, taskCount: taskItems.length, questionCount: questions.length };",
         "scriptId": "",
         "scriptRef": "",
         "_semanticLevel": "detail",
-        "lastResult": null,
-        "lastRunAt": null
-      }
+        "lastResult": {
+          "success": true,
+          "status": "in-progress",
+          "taskCount": 11,
+          "questionCount": 1
+        },
+        "lastRunAt": "2026-08-02T02:30:00.000Z"
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "root-bridge-goal",
       "type": "bridge",
       "label": "Goal",
       "position": {
-        "x": -1561.5,
-        "y": -655
+        "x": -2480,
+        "y": -860
       },
       "width": 260,
       "height": 120,
@@ -3092,7 +5313,7 @@
           "create"
         ],
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node:root",
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
           "mode": "bridge",
           "kind": "node-class",
           "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
@@ -3112,15 +5333,106 @@
             "create"
           ]
         }
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "root-bridge-constraint",
       "type": "bridge",
       "label": "Constraint",
       "position": {
-        "x": -1561.5,
-        "y": -515
+        "x": -2480,
+        "y": -710
       },
       "width": 260,
       "height": 120,
@@ -3136,7 +5448,7 @@
           "create"
         ],
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/constraint.node-class.node:root",
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/constraint.node-class.node",
           "mode": "bridge",
           "kind": "node-class",
           "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/constraint.node-class.node",
@@ -3156,15 +5468,106 @@
             "create"
           ]
         }
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "root-bridge-decision",
       "type": "bridge",
       "label": "Decision",
       "position": {
-        "x": -1561.5,
-        "y": -375
+        "x": -2480,
+        "y": -560
       },
       "width": 260,
       "height": 120,
@@ -3180,7 +5583,7 @@
           "create"
         ],
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node:root",
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
           "mode": "bridge",
           "kind": "node-class",
           "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
@@ -3200,15 +5603,106 @@
             "create"
           ]
         }
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "root-bridge-open-question",
       "type": "bridge",
       "label": "Open Question",
       "position": {
-        "x": -1561.5,
-        "y": -235
+        "x": -2480,
+        "y": -410
       },
       "width": 260,
       "height": 120,
@@ -3224,7 +5718,7 @@
           "create"
         ],
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node:root",
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
           "mode": "bridge",
           "kind": "node-class",
           "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
@@ -3244,15 +5738,106 @@
             "create"
           ]
         }
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "root-bridge-task",
       "type": "bridge",
       "label": "Task",
       "position": {
-        "x": -1561.5,
-        "y": -95
+        "x": -2480,
+        "y": -260
       },
       "width": 260,
       "height": 120,
@@ -3268,7 +5853,7 @@
           "create"
         ],
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node:root",
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
           "mode": "bridge",
           "kind": "node-class",
           "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
@@ -3288,15 +5873,106 @@
             "create"
           ]
         }
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "root-bridge-task-summary",
       "type": "bridge",
       "label": "Task Summary",
       "position": {
-        "x": -1561.5,
-        "y": 45
+        "x": -2480,
+        "y": -110
       },
       "width": 260,
       "height": 120,
@@ -3312,7 +5988,7 @@
           "create"
         ],
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node:root",
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
           "mode": "bridge",
           "kind": "node-class",
           "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node",
@@ -3332,15 +6008,106 @@
             "create"
           ]
         }
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "root-bridge-summary",
       "type": "bridge",
       "label": "Summary",
       "position": {
-        "x": -1561.5,
-        "y": 185
+        "x": -2480,
+        "y": 40
       },
       "width": 260,
       "height": 120,
@@ -3356,7 +6123,7 @@
           "create"
         ],
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node:root",
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
           "mode": "bridge",
           "kind": "node-class",
           "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
@@ -3376,15 +6143,106 @@
             "create"
           ]
         }
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-port-type-rendering",
       "type": "task-summary",
       "label": "Type Rendering Precedence",
       "position": {
-        "x": 2259.5,
-        "y": 1365
+        "x": -160,
+        "y": 1000
       },
       "width": 420,
       "height": 260,
@@ -3489,23 +6347,115 @@
           "classKey": "task-summary",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task-summary"
-      }
+        "definitionKey": "task-summary",
+        "countAsTask": false
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-summary-task",
       "type": "task",
       "label": "Ship a credible beta release",
       "position": {
-        "x": 2660.5,
-        "y": 25
+        "x": 1040,
+        "y": -640
       },
       "width": 380,
       "height": 220,
-      "visible": true,
+      "visible": false,
       "showLabel": true,
       "data": {
-        "body": "Goal: Ship a credible beta release\nStatus: in-progress\n\nTasks in scope:\n1. Complete GitHub App migration\n2. Make diagnostics durable and attributable\n3. Stabilize layout and expansion placement\n4. Fix erratic mouse cursor mode switching\n5. Make layout controls feel correct and usable\n6. Build a beta onboarding path\n7. Polish class-system defaults\n8. Clarify save and export behavior\n\nOpen questions:\n1. What is the minimum acceptable onboarding path?",
+        "body": "Goal: Ship a credible beta release\nStatus: in-progress\n\nTasks in scope:\n1. Complete GitHub App migration\n2. Make diagnostics durable and attributable\n3. Layout Stability\n4. Fix erratic mouse cursor mode switching\n5. Make layout controls feel correct and usable\n6. Build a beta onboarding path\n7. Make payments and billing trustworthy\n8. Prepare launch posts and tutorial videos\n9. Establish a real typography system\n10. Polish class-system defaults\n11. Clarify save and export behavior\n12. Make media authoring predictable and durable\n\nOpen questions:\n1. What is the minimum acceptable onboarding path?",
         "status": "in-progress",
         "owner": "Michael",
         "priority": "critical",
@@ -3521,7 +6471,7 @@
         "summarySource": "node-updater",
         "taskProgress": {
           "completed": 6,
-          "total": 9
+          "total": 12
         },
         "questionProgress": {
           "answered": 1,
@@ -3658,17 +6608,109 @@
           "targetKind": "node-class",
           "classKey": "task",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
-        }
+        },
+        "updatedAt": "2026-08-02T02:30:00.000Z"
       },
-      "root": true
+      "root": true,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "root-bridge-section",
       "type": "bridge",
       "label": "Section",
       "position": {
-        "x": -1561.5,
-        "y": 325
+        "x": -2480,
+        "y": 190
       },
       "width": 260,
       "height": 120,
@@ -3684,7 +6726,7 @@
           "create"
         ],
         "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node:root",
+          "endpoint": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node",
           "mode": "bridge",
           "kind": "node-class",
           "ref": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node",
@@ -3704,15 +6746,106 @@
             "create"
           ]
         }
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-task-media",
       "type": "task",
       "label": "Make media authoring predictable and durable",
       "position": {
-        "x": 2139.5,
-        "y": 1465
+        "x": 280,
+        "y": 240
       },
       "width": 400,
       "height": 260,
@@ -3861,15 +6994,106 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
         "definitionKey": "task"
-      }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     },
     {
       "id": "beta-readiness-port-media-authoring",
       "type": "task-summary",
       "label": "Media Authoring Readiness",
       "position": {
-        "x": 2139.5,
-        "y": 1745
+        "x": 280,
+        "y": 1000
       },
       "width": 420,
       "height": 260,
@@ -3974,466 +7198,1572 @@
           "classKey": "task-summary",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary-view.node-class.node"
         },
-        "definitionKey": "task-summary"
-      }
+        "definitionKey": "task-summary",
+        "countAsTask": false
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
+    },
+    {
+      "id": "beta-readiness-root-port",
+      "type": "port",
+      "label": "Beta Readiness",
+      "root": false,
+      "position": {
+        "x": 1040,
+        "y": -980
+      },
+      "width": 420,
+      "height": 260,
+      "visible": false,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "beta-readiness-task"
+        },
+        "authority": "consume-view",
+        "sourceScope": "graph",
+        "sourceNodeId": "beta-readiness-summary",
+        "sourcePayload": "node.web",
+        "surfaceId": "root",
+        "targetNodeId": "beta-readiness-summary",
+        "view": {
+          "intent": "node",
+          "payload": "node.web"
+        }
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
+    },
+    {
+      "id": "beta-readiness-section-platform",
+      "type": "section",
+      "label": "Platform Trust",
+      "position": {
+        "x": -1260,
+        "y": -120
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Platform Trust",
+        "summary": "Identity, diagnostics, persistence, billing, and other trust boundaries that must work before beta.",
+        "level": "h2",
+        "anchor": "platform",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section",
+        "identity": {
+          "graphId": "beta-readiness-task"
+        }
+      },
+      "root": false,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
+    },
+    {
+      "id": "beta-readiness-section-authoring",
+      "type": "section",
+      "label": "Canvas & Authoring",
+      "position": {
+        "x": -380,
+        "y": -120
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Canvas & Authoring",
+        "summary": "The graph interaction, class, typography, and media workflows that make Twilite usable as a creative tool.",
+        "level": "h2",
+        "anchor": "authoring",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section",
+        "identity": {
+          "graphId": "beta-readiness-task"
+        }
+      },
+      "root": false,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
+    },
+    {
+      "id": "beta-readiness-section-onboarding",
+      "type": "section",
+      "label": "Onboarding",
+      "position": {
+        "x": 720,
+        "y": -120
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Onboarding",
+        "summary": "The shortest reliable path from first visit to a successful graph interaction.",
+        "level": "h2",
+        "anchor": "onboarding",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section",
+        "identity": {
+          "graphId": "beta-readiness-task"
+        }
+      },
+      "root": false,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
+    },
+    {
+      "id": "beta-readiness-section-launch",
+      "type": "section",
+      "label": "Launch",
+      "position": {
+        "x": 1400,
+        "y": -120
+      },
+      "width": 420,
+      "height": 220,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Launch",
+        "summary": "The public explanation and tutorial material that turns a working beta into an understandable release.",
+        "level": "h2",
+        "anchor": "launch",
+        "status": "active",
+        "_classBinding": {
+          "key": "section",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "root-bridge-section",
+          "sourceBridgeNodeId": "root-bridge-section",
+          "sourceBridgeLabel": "Section",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "section",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/document-publishing/section.node-class.node"
+        },
+        "definitionKey": "section",
+        "identity": {
+          "graphId": "beta-readiness-task"
+        }
+      },
+      "root": false,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ]
     }
   ],
   "edges": [
     {
-      "id": "beta-readiness-edge-1",
+      "id": "beta-edge-overview-goal",
       "type": "reference",
       "source": "beta-readiness-overview",
       "target": "beta-readiness-goal",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "drives",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "frames release",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "curved": true,
+        "route": "curved",
+        "width": 2
       },
-      "data": {}
+      "data": {
+        "role": "structure"
+      }
     },
     {
-      "id": "beta-readiness-edge-2",
+      "id": "beta-edge-decision-goal",
       "type": "reference",
-      "source": "beta-readiness-goal",
-      "target": "beta-readiness-constraint",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "bounded by",
+      "source": "beta-readiness-decision",
+      "target": "beta-readiness-goal",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "defines beta bar",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "curved": true,
+        "route": "curved",
+        "width": 2.5
       },
-      "data": {}
+      "data": {
+        "role": "dependency"
+      }
     },
     {
-      "id": "beta-readiness-edge-3",
+      "id": "beta-edge-constraint-goal",
       "type": "reference",
-      "source": "beta-readiness-goal",
-      "target": "beta-readiness-decision",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "guided by",
+      "source": "beta-readiness-constraint",
+      "target": "beta-readiness-goal",
+      "sourcePort": "left",
+      "targetPort": "right",
+      "label": "guards release",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "curved": true,
+        "route": "curved",
+        "width": 2.5
       },
-      "data": {}
+      "data": {
+        "role": "dependency"
+      }
     },
     {
-      "id": "beta-readiness-edge-4",
+      "id": "beta-edge-goal-beta-readiness-section-platform",
       "type": "reference",
       "source": "beta-readiness-goal",
-      "target": "beta-readiness-question",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "asks",
+      "target": "beta-readiness-section-platform",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "platform trust",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "curved": true,
+        "route": "curved",
+        "width": 2
       },
-      "data": {}
+      "data": {
+        "role": "structure"
+      }
     },
     {
-      "id": "beta-readiness-edge-5",
+      "id": "beta-edge-goal-beta-readiness-section-authoring",
       "type": "reference",
       "source": "beta-readiness-goal",
+      "target": "beta-readiness-section-authoring",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "canvas and authoring",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2
+      },
+      "data": {
+        "role": "structure"
+      }
+    },
+    {
+      "id": "beta-edge-goal-beta-readiness-section-onboarding",
+      "type": "reference",
+      "source": "beta-readiness-goal",
+      "target": "beta-readiness-section-onboarding",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "onboarding",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2
+      },
+      "data": {
+        "role": "structure"
+      }
+    },
+    {
+      "id": "beta-edge-goal-beta-readiness-section-launch",
+      "type": "reference",
+      "source": "beta-readiness-goal",
+      "target": "beta-readiness-section-launch",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "launch",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2
+      },
+      "data": {
+        "role": "structure"
+      }
+    },
+    {
+      "id": "beta-edge-beta-readiness-section-platform-beta-readiness-task-github",
+      "type": "reference",
+      "source": "beta-readiness-section-platform",
       "target": "beta-readiness-task-github",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "requires",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "includes",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "curved": true,
+        "route": "curved",
+        "width": 2
       },
-      "data": {}
+      "data": {
+        "role": "structure"
+      }
     },
     {
-      "id": "beta-readiness-edge-6",
+      "id": "beta-edge-beta-readiness-section-platform-beta-readiness-task-diagnostics",
       "type": "reference",
-      "source": "beta-readiness-goal",
+      "source": "beta-readiness-section-platform",
       "target": "beta-readiness-task-diagnostics",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "requires",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "includes",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "curved": true,
+        "route": "curved",
+        "width": 2
       },
-      "data": {}
+      "data": {
+        "role": "structure"
+      }
     },
     {
-      "id": "beta-readiness-edge-7",
+      "id": "beta-edge-beta-readiness-section-platform-beta-readiness-task-persistence",
       "type": "reference",
-      "source": "beta-readiness-goal",
-      "target": "beta-readiness-task-onboarding",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "requires",
+      "source": "beta-readiness-section-platform",
+      "target": "beta-readiness-task-persistence",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "includes",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "curved": true,
+        "route": "curved",
+        "width": 2
       },
-      "data": {}
+      "data": {
+        "role": "structure"
+      }
     },
     {
-      "id": "beta-readiness-edge-7b",
+      "id": "beta-edge-beta-readiness-section-platform-beta-readiness-task-payments",
       "type": "reference",
-      "source": "beta-readiness-goal",
+      "source": "beta-readiness-section-platform",
+      "target": "beta-readiness-task-payments",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "includes",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2
+      },
+      "data": {
+        "role": "structure"
+      }
+    },
+    {
+      "id": "beta-edge-beta-readiness-section-authoring-beta-readiness-task-layout",
+      "type": "reference",
+      "source": "beta-readiness-section-authoring",
+      "target": "beta-readiness-task-layout",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "includes",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2
+      },
+      "data": {
+        "role": "structure"
+      }
+    },
+    {
+      "id": "beta-edge-beta-readiness-section-authoring-beta-readiness-task-cursor",
+      "type": "reference",
+      "source": "beta-readiness-section-authoring",
+      "target": "beta-readiness-task-cursor",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "includes",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2
+      },
+      "data": {
+        "role": "structure"
+      }
+    },
+    {
+      "id": "beta-edge-beta-readiness-section-authoring-beta-readiness-task-layout-controls",
+      "type": "reference",
+      "source": "beta-readiness-section-authoring",
+      "target": "beta-readiness-task-layout-controls",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "includes",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2
+      },
+      "data": {
+        "role": "structure"
+      }
+    },
+    {
+      "id": "beta-edge-beta-readiness-section-authoring-beta-readiness-task-classes",
+      "type": "reference",
+      "source": "beta-readiness-section-authoring",
+      "target": "beta-readiness-task-classes",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "includes",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2
+      },
+      "data": {
+        "role": "structure"
+      }
+    },
+    {
+      "id": "beta-edge-beta-readiness-section-authoring-beta-readiness-task-typography",
+      "type": "reference",
+      "source": "beta-readiness-section-authoring",
       "target": "beta-readiness-task-typography",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "needs-polish",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "includes",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "curved": true,
+        "route": "curved",
+        "width": 2
       },
-      "data": {}
+      "data": {
+        "role": "structure"
+      }
     },
     {
-      "id": "beta-readiness-edge-8",
+      "id": "beta-edge-beta-readiness-section-authoring-beta-readiness-task-media",
+      "type": "reference",
+      "source": "beta-readiness-section-authoring",
+      "target": "beta-readiness-task-media",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "includes",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2
+      },
+      "data": {
+        "role": "structure"
+      }
+    },
+    {
+      "id": "beta-edge-beta-readiness-section-onboarding-beta-readiness-question",
+      "type": "reference",
+      "source": "beta-readiness-section-onboarding",
+      "target": "beta-readiness-question",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "includes",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2
+      },
+      "data": {
+        "role": "structure"
+      }
+    },
+    {
+      "id": "beta-edge-beta-readiness-section-onboarding-beta-readiness-task-onboarding",
+      "type": "reference",
+      "source": "beta-readiness-section-onboarding",
+      "target": "beta-readiness-task-onboarding",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "includes",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2
+      },
+      "data": {
+        "role": "structure"
+      }
+    },
+    {
+      "id": "beta-edge-beta-readiness-section-launch-beta-readiness-task-launch-content",
+      "type": "reference",
+      "source": "beta-readiness-section-launch",
+      "target": "beta-readiness-task-launch-content",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "includes",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2
+      },
+      "data": {
+        "role": "structure"
+      }
+    },
+    {
+      "id": "beta-edge-github-diagnostics",
       "type": "reference",
       "source": "beta-readiness-task-github",
       "target": "beta-readiness-task-diagnostics",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "depends-on",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "enables attribution",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "curved": true,
+        "route": "curved",
+        "width": 2.5
       },
-      "data": {}
+      "data": {
+        "role": "dependency"
+      }
     },
     {
-      "id": "beta-readiness-edge-9",
-      "type": "reference",
-      "source": "beta-readiness-task-diagnostics",
-      "target": "beta-readiness-task-layout",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "unblocks",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {}
-    },
-    {
-      "id": "beta-readiness-edge-10",
-      "type": "reference",
-      "source": "beta-readiness-task-diagnostics",
-      "target": "beta-readiness-task-persistence",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "clarifies",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {}
-    },
-    {
-      "id": "beta-readiness-edge-11",
-      "type": "reference",
-      "source": "beta-readiness-task-layout",
-      "target": "beta-readiness-task-onboarding",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "supports",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {}
-    },
-    {
-      "id": "beta-readiness-edge-11b",
-      "type": "reference",
-      "source": "beta-readiness-task-diagnostics",
-      "target": "beta-readiness-task-cursor",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "helps-debug",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {}
-    },
-    {
-      "id": "beta-readiness-edge-11c",
-      "type": "reference",
-      "source": "beta-readiness-task-layout",
-      "target": "beta-readiness-task-cursor",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "related",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {}
-    },
-    {
-      "id": "beta-readiness-edge-11d",
-      "type": "reference",
-      "source": "beta-readiness-task-cursor",
-      "target": "beta-readiness-task-onboarding",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "supports",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {}
-    },
-    {
-      "id": "beta-readiness-edge-11e",
+      "id": "beta-edge-layout-controls",
       "type": "reference",
       "source": "beta-readiness-task-layout",
       "target": "beta-readiness-task-layout-controls",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "needs-ui",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "foundation for",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "curved": true,
+        "route": "curved",
+        "width": 2.5
       },
-      "data": {}
+      "data": {
+        "role": "dependency"
+      }
     },
     {
-      "id": "beta-readiness-edge-11f",
-      "type": "reference",
-      "source": "beta-readiness-task-layout-controls",
-      "target": "beta-readiness-task-onboarding",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "supports",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {}
-    },
-    {
-      "id": "beta-readiness-edge-12",
-      "type": "reference",
-      "source": "beta-readiness-task-classes",
-      "target": "beta-readiness-task-onboarding",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "supports",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {}
-    },
-    {
-      "id": "beta-readiness-edge-13",
+      "id": "beta-edge-question-onboarding",
       "type": "reference",
       "source": "beta-readiness-question",
       "target": "beta-readiness-task-onboarding",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "shapes",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "resolved by",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "curved": true,
+        "route": "curved",
+        "width": 2.5
       },
-      "data": {}
+      "data": {
+        "role": "dependency"
+      }
     },
     {
-      "id": "beta-readiness-edge-13b",
+      "id": "beta-edge-classes-onboarding",
       "type": "reference",
-      "source": "beta-readiness-task-typography",
+      "source": "beta-readiness-task-classes",
       "target": "beta-readiness-task-onboarding",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "supports",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "supports authoring path",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "curved": true,
+        "route": "curved",
+        "width": 2.5
       },
-      "data": {}
+      "data": {
+        "role": "dependency"
+      }
     },
     {
-      "id": "beta-readiness-edge-14",
+      "id": "beta-edge-onboarding-launch",
       "type": "reference",
-      "source": "beta-readiness-overview",
-      "target": "beta-readiness-port-library",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "references",
+      "source": "beta-readiness-task-onboarding",
+      "target": "beta-readiness-task-launch-content",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "provides user journey",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "curved": true,
+        "route": "curved",
+        "width": 2.5
       },
-      "data": {}
+      "data": {
+        "role": "dependency"
+      }
     },
     {
-      "id": "beta-readiness-edge-004b",
+      "id": "beta-edge-media-launch",
+      "type": "reference",
+      "source": "beta-readiness-task-media",
+      "target": "beta-readiness-task-launch-content",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "enables tutorial media",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2.5
+      },
+      "data": {
+        "role": "dependency"
+      }
+    },
+    {
+      "id": "beta-edge-beta-readiness-task-onboarding-beta-readiness-port-onboarding",
       "type": "reference",
       "source": "beta-readiness-task-onboarding",
       "target": "beta-readiness-port-onboarding",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "path",
-      "style": {},
-      "data": {}
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "details",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
     },
     {
-      "id": "beta-readiness-edge-payments",
-      "type": "reference",
-      "source": "beta-readiness-goal",
-      "target": "beta-readiness-task-payments",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "billing",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "beta-readiness-edge-payments-summary",
+      "id": "beta-edge-beta-readiness-task-payments-beta-readiness-port-payments",
       "type": "reference",
       "source": "beta-readiness-task-payments",
       "target": "beta-readiness-port-payments",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "checklist",
-      "style": {},
-      "data": {}
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "details",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
     },
     {
-      "id": "beta-readiness-edge-launch-content",
-      "type": "reference",
-      "source": "beta-readiness-goal",
-      "target": "beta-readiness-task-launch-content",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "narrative",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "beta-readiness-edge-launch-content-summary",
+      "id": "beta-edge-beta-readiness-task-launch-content-beta-readiness-port-launch-content",
       "type": "reference",
       "source": "beta-readiness-task-launch-content",
       "target": "beta-readiness-port-launch-content",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "checklist",
-      "style": {},
-      "data": {}
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "details",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
     },
     {
-      "id": "beta-readiness-edge-summary",
-      "type": "reference",
-      "source": "beta-readiness-goal",
-      "target": "beta-readiness-summary",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "summary",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "beta-readiness-edge-summary-updater",
-      "type": "reference",
-      "source": "beta-readiness-summary-updater",
-      "target": "beta-readiness-summary",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "updates",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "beta-readiness-task-edge-summary",
-      "type": "reference",
-      "source": "beta-readiness-overview",
-      "target": "beta-readiness-summary",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "summary",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "beta-readiness-edge-type-rendering",
+      "id": "beta-edge-beta-readiness-task-classes-beta-readiness-port-type-rendering",
       "type": "reference",
       "source": "beta-readiness-task-classes",
       "target": "beta-readiness-port-type-rendering",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "rendering rule",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "rendering contract",
       "style": {
+        "curved": true,
+        "route": "curved",
         "width": 2,
-        "dash": [],
-        "curved": true
+        "dash": [
+          6,
+          5
+        ]
       },
-      "data": {}
+      "data": {
+        "role": "detail"
+      }
     },
     {
-      "id": "beta-readiness-edge-media-authoring",
-      "type": "reference",
-      "source": "beta-readiness-goal",
-      "target": "beta-readiness-task-media",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "enables",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "beta-readiness-edge-media-authoring-summary",
+      "id": "beta-edge-beta-readiness-task-media-beta-readiness-port-media-authoring",
       "type": "reference",
       "source": "beta-readiness-task-media",
       "target": "beta-readiness-port-media-authoring",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "tracks",
-      "style": {},
-      "data": {}
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "details",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
     },
     {
-      "id": "beta-readiness-edge-launch-content-depends-media",
+      "id": "beta-edge-goal-summary",
       "type": "reference",
-      "source": "beta-readiness-task-launch-content",
-      "target": "beta-readiness-task-media",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "depends on",
-      "style": {},
-      "data": {}
+      "source": "beta-readiness-goal",
+      "target": "beta-readiness-summary",
+      "sourcePort": "right",
+      "targetPort": "bottom",
+      "label": "rolls up",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2
+      },
+      "data": {
+        "role": "structure"
+      }
+    },
+    {
+      "id": "beta-edge-updater-summary",
+      "type": "reference",
+      "source": "beta-readiness-summary-updater",
+      "target": "beta-readiness-summary",
+      "sourcePort": "left",
+      "targetPort": "right",
+      "label": "updates",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
+    },
+    {
+      "id": "beta-edge-summary-root",
+      "type": "reference",
+      "source": "beta-readiness-summary",
+      "target": "beta-readiness-root-port",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "presents",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
+    },
+    {
+      "id": "beta-edge-declaration-root",
+      "type": "reference",
+      "source": "beta-readiness-task",
+      "target": "beta-readiness-root-port",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "exposes",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
+    },
+    {
+      "id": "beta-edge-authority-root-bridge-goal",
+      "type": "reference",
+      "source": "beta-readiness-task",
+      "target": "root-bridge-goal",
+      "sourcePort": "left",
+      "targetPort": "right",
+      "label": "class authority",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
+    },
+    {
+      "id": "beta-edge-authority-root-bridge-constraint",
+      "type": "reference",
+      "source": "beta-readiness-task",
+      "target": "root-bridge-constraint",
+      "sourcePort": "left",
+      "targetPort": "right",
+      "label": "class authority",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
+    },
+    {
+      "id": "beta-edge-authority-root-bridge-decision",
+      "type": "reference",
+      "source": "beta-readiness-task",
+      "target": "root-bridge-decision",
+      "sourcePort": "left",
+      "targetPort": "right",
+      "label": "class authority",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
+    },
+    {
+      "id": "beta-edge-authority-root-bridge-open-question",
+      "type": "reference",
+      "source": "beta-readiness-task",
+      "target": "root-bridge-open-question",
+      "sourcePort": "left",
+      "targetPort": "right",
+      "label": "class authority",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
+    },
+    {
+      "id": "beta-edge-authority-root-bridge-task",
+      "type": "reference",
+      "source": "beta-readiness-task",
+      "target": "root-bridge-task",
+      "sourcePort": "left",
+      "targetPort": "right",
+      "label": "class authority",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
+    },
+    {
+      "id": "beta-edge-authority-root-bridge-task-summary",
+      "type": "reference",
+      "source": "beta-readiness-task",
+      "target": "root-bridge-task-summary",
+      "sourcePort": "left",
+      "targetPort": "right",
+      "label": "class authority",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
+    },
+    {
+      "id": "beta-edge-authority-root-bridge-summary",
+      "type": "reference",
+      "source": "beta-readiness-task",
+      "target": "root-bridge-summary",
+      "sourcePort": "left",
+      "targetPort": "right",
+      "label": "class authority",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
+    },
+    {
+      "id": "beta-edge-authority-root-bridge-section",
+      "type": "reference",
+      "source": "beta-readiness-task",
+      "target": "root-bridge-section",
+      "sourcePort": "left",
+      "targetPort": "right",
+      "label": "class authority",
+      "style": {
+        "curved": true,
+        "route": "curved",
+        "width": 2,
+        "dash": [
+          6,
+          5
+        ]
+      },
+      "data": {
+        "role": "detail"
+      }
     }
   ],
   "clusters": [],
   "scripts": [],
-  "nodeCount": 32,
-  "edgeCount": 28,
-  "timestamp": "2026-07-07T00:00:00.000Z"
+  "nodeCount": 41,
+  "edgeCount": 43,
+  "timestamp": "2026-08-02T02:30:00.000Z",
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "#666666",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "layout": {
+      "mode": "manual"
+    },
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "tasks/beta-readiness/root.node",
+      "branch": "main",
+      "autoCreateRepo": true,
+      "repoVisibility": "public",
+      "seedOnCommit": false,
+      "enableGithubPages": true
+    },
+    "autoSave": false
+  }
 }
