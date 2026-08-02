@@ -2,14 +2,16 @@
   "fileVersion": "1.0",
   "metadata": {
     "title": "Edge Class Contract",
-    "description": "Contract for edge-class identity, render defaults, preview behavior, export/bridge consumption, and edge assignment precedence.",
+    "description": "Minimal promise-based contract for edge-class identity, optional rendering and constraints, root presentation, export, and assignment precedence.",
     "created": "2026-04-25T00:00:00.000Z",
-    "modified": "2026-04-25T00:00:00.000Z",
+    "modified": "2026-08-02T20:00:00.000Z",
     "author": "",
     "tags": [
       "contract",
       "edges",
-      "edge-classes"
+      "edge-classes",
+      "promise-based",
+      "template-guided"
     ]
   },
   "nodes": [
@@ -29,10 +31,10 @@
         "identity": {
           "graphId": "edge-class-contract",
           "name": "Edge Class Contract",
-          "version": "0.1.0",
-          "description": "Contract for edge class identity, rendering defaults, previews, and consumption through library export surfaces.",
+          "version": "1.0.0",
+          "description": "Minimal promise-based contract for edge-class identity, optional rendering and constraints, root presentation, export, and assignment precedence.",
           "createdAt": "2026-04-25T00:00:00.000Z",
-          "updatedAt": "2026-04-25T00:00:00.000Z"
+          "updatedAt": "2026-08-02T20:00:00.000Z"
         },
         "intent": {
           "kind": "graph",
@@ -41,9 +43,10 @@
         "dependencies": {
           "nodeTypes": [
             "declaration",
-            "markdown",
-            "field",
-            "port"
+        "markdown",
+        "field",
+        "port",
+        "portal"
           ],
           "portContracts": [
             "core"
@@ -73,7 +76,28 @@
             "squashAllowed": false
           }
         },
-        "document": {
+    "declaresKind": "graph",
+    "declaration": {
+      "kind": "graph",
+      "targetMode": "artifact",
+      "artifactKind": "graph",
+      "defaultSurfaceId": "root",
+      "surfaces": [
+        {
+          "id": "root",
+          "kind": "port",
+          "label": "Edge Class Contract",
+          "memo": "Canonical entry surface for the normative edge-class contract.",
+          "portNodeId": "edge-class-contract-view",
+          "viewNodeId": "edge-class-contract-view",
+          "exposes": {
+            "views": { "mode": "allow" },
+            "declarations": { "mode": "allow" }
+          }
+        }
+      ]
+    },
+    "document": {
           "url": ""
         },
         "settings": {
@@ -172,7 +196,7 @@
     },
     {
       "id": "edge-class-contract-back",
-      "type": "port",
+      "type": "portal",
       "label": "Back: Contracts Root",
       "position": {
         "x": 600,
@@ -183,6 +207,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
+        "authority": "navigate",
         "intent": "navigate",
         "target": {
           "endpoint": "github://twilite-zone/public/library/documentation/contracts/root.node:root",
@@ -191,6 +216,8 @@
           "label": "Open"
         },
         "memo": "Return to the contracts index.",
+        "ref": "github://twilite-zone/public/library/documentation/contracts/root.node",
+        "endpoint": "github://twilite-zone/public/library/documentation/contracts/root.node:root",
         "sourceRef": "github://twilite-zone/public/library/documentation/contracts/root.node",
         "sourceNodeId": "contracts-port-view",
         "sourcePayload": "node.web.document"
@@ -209,7 +236,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Edge Class Contract\n\n**Authority:** Normative\n\nAn **edge class** is the canonical reusable bundle for:\n- relationship *meaning*\n- rendering defaults\n- legend identity and preview\n\nThis contract exists to make edge class authoring (Tutorial Step 2) *specific and testable*, and to ensure the same edge class renders consistently in:\n- graph canvas\n- legend previews\n- edge properties preview\n"
+        "markdown": "# Edge Class Contract\n\n**Authority:** Normative\n\nAn edge class is an optional reusable semantic upgrade for a plain edge. It may own relationship meaning, light rendering defaults, applicability constraints, and legend identity. A plain edge remains fully valid without a class.\n\nThis contract protects execution without turning edge authoring into ceremony:\n\n- diagnostics report broken declared promises\n- optional capabilities remain silent when absent\n- templates generate richer, well-connected edge-class graphs for new work\n- older lean edge classes are not warned merely for lacking decorative or explanatory structure"
       }
     },
     {
@@ -225,7 +252,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## 1. Identity Contract (REQUIRED)\n\nA valid edge class artifact MUST provide stable identity and a human-facing label.\n\nCanonical storage (node-first):\n- Create **Field** nodes.\n- For each field node, set:\n  - `title` (a path like `edgeClass.key`)\n  - `fieldType` (usually `string`)\n  - `value`\n\nRequired titles:\n- `edgeClass.key` (stable key, e.g. `task.depends-on`)\n- `edgeClass.label` (human label)\n- `edgeClass.meaning` (one-line semantics)\n\nAdditional recommended identity (graph-level):\n- Declaration/manifest may still set `identity.graphId` / `identity.name` / `identity.description`, but edge class values are authored as nodes.\n\nRule:\n- `edgeClass.key` is the *primary stable key*.\n"
+        "markdown": "## 1. Identity Contract (Required)\n\nA new edge-class artifact uses one authority-bearing declaration with:\n\n- `data.declaration.kind: edge-class`\n- a canonical declared `root` surface\n- `data.edgeClass.key`: stable semantic key, such as `idea.supports`\n- `data.edgeClass.label`: human-facing label\n- `data.edgeClass.meaning`: concise relationship meaning\n\nThe declaration-owned `data.edgeClass` object is the canonical semantic home. Legacy Field-node representations may continue loading as compatibility data, but new templates should not split one edge-class contract across required Field nodes.\n\nDiagnostics should report a missing or duplicate promised key, an unresolved root, or malformed declared identity. They should not demand optional views, examples, constraints, or style fields."
       }
     },
     {
@@ -241,7 +268,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## 2. Render Defaults Contract (REQUIRED)\n\nAn edge class MUST declare its canonical style in a single place, so every renderer and preview can match.\n\nCanonical storage (node-first):\n- Create Field nodes with:\n  - `title`: `renderDefaults.stroke` (fieldType: `string`, value: hex color)\n  - `title`: `renderDefaults.width` (fieldType: `number`, value: a number)\n\nOptional:\n- `renderDefaults.dash` (fieldType: `json`, value: `[22, 8]`)\n- `renderDefaults.routingHint` (string, e.g. `orthogonal`)\n- `renderDefaults.labelTone` (string, e.g. `accent`)\n\nRule:\n- render defaults are the single source of truth for legend preview and edge rendering.\n"
+        "markdown": "## 2. Rendering Defaults (Optional Capability)\n\nAn edge class may declare `data.edgeClass.defaultEdgeType` and a small `data.edgeClass.renderDefaults` object.\n\nUseful render defaults include:\n\n- `stroke`\n- `width`\n- `dash`\n- `routingHint`\n- `labelTone`\n\nWhen declared, these values are the class defaults used by canvas rendering and previews. Edge-instance overrides remain authoritative for that instance.\n\nAbsence of render defaults is valid and silent. Invalid declared values, an unknown declared edge type, or contradictory render promises are diagnostics."
       }
     },
     {
@@ -257,7 +284,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## 3. Preview Contract (REQUIRED BEHAVIOR)\n\nThe legend preview MUST visually match the on-canvas edge.\n\nPreferred implementation rule:\n- Preview SVG is **derived** from `renderDefaults`.\n\nAllowed fallback:\n- A stored sample SVG may exist, but it MUST be treated as decorative unless validated against `renderDefaults`.\n\nRule:\n- Drift between legend preview and on-canvas edge is a contract violation.\n"
+        "markdown": "## 3. Preview Behavior\n\nA template should create a useful root or summary presentation that shows the edge label, key, meaning, and a representative line. The Idea template edge classes are the current compact reference pattern.\n\nA preview is not a universal validity requirement. When a class declares both render defaults and a canonical preview, the preview should reflect those defaults. Demonstrable drift between two declared representations is a broken promise; absence of an optional preview is not a warning."
       }
     },
     {
@@ -273,7 +300,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## 4. Views Contract (RECOMMENDED MINIMUM)\n\n### A) Stable view names (CONTRACT)\nThese payloads are the stable API for discovery + selection:\n- `node.web.icon`\n- `node.web.summary` (port-consumable default)\n- `node.web.detail`\n- `node.web.document`\n- `editor.web` (editors only)\n\n### B) Minimum surfaces (EDGE CLASS)\nAn edge class artifact MUST expose:\n- a **summary surface** with payload `node.web.summary`\n\nIt SHOULD also expose:\n- `icon-view` with payload `node.web.icon`\n- `node-view` with payload `node.web.detail`\n\nNotes:\n- Ports are **view consumers**. They do not provide views; they select among exposed surfaces (or fall back to minimap).\n- The node type can vary (`summary-view`, legacy `port-view`, etc.) as long as the payload matches the contract.\n- Class usability (legend/type selector) is primarily driven by bridge export + `edgeClass` Field nodes.\n"
+        "markdown": "## 4. Surface Contract\n\nEvery new edge-class graph follows the base graph contract and exposes one canonical `root` surface.\n\nThe root should make the class understandable and addressable. It may use `node.web.summary`, as the Idea edge classes do.\n\nAdditional payloads such as `node.web.icon`, `node.web.detail`, `node.web.document`, or `editor.web` are optional capabilities. If declared, they must resolve and honor their payload contract. If absent, validators remain silent."
       }
     },
     {
@@ -289,7 +316,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## 5. Export Surface Contract (REQUIRED FOR CONSUMPTION)\n\nEdge classes are consumed from a **library export surface**.\n\nCurrent canonical example:\n- `/library/classes/edges/root.node#root`\n\nLibrary declaration MUST:\n- declare `kind: library`\n- define an export surface (e.g. `surfaces[].kind = export`)\n- expose `edgeClasses` via allow/allowlist\n\nConsumer bridge MUST:\n- target the library\n- select the export surface (if surface selection is enabled)\n- have `Create` grant\n\nRule:\n- Edge classes do not become available just because the graph is reachable; they must be exported.\n"
+        "markdown": "## 5. Export and Consumption\n\nAn edge class only needs an export contract when it claims library consumption.\n\nA library that exports edge classes must expose them through a declared export surface using allow or allowlist policy. A consuming graph must use a real bridge with appropriate authority and select the intended export surface when selection is required.\n\nReachability alone does not grant class authority. A local template may instead bridge directly to its edge-class artifacts, as the Idea template does.\n\nDiagnostics report broken declared exports, unresolved class references, or invalid bridge authority. A private or local edge class that never claims library export does not receive an export warning."
       }
     },
     {
@@ -305,7 +332,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## 6. Edge Assignment Contract\n\nA plain edge remains valid without a class.\n\nWhen an edge is classified, it SHOULD store:\n- `edge.data.edgeClassRef` (authoritative)\n- `edge.data.edgeClassKey` (stable key mirror)\n\nPrecedence (render):\n1. instance overrides (`edge.style`, explicit instance `type`)\n2. class defaults (`edgeClass.renderDefaults`, `edgeClass.defaultEdgeType`)\n3. fallback: plain line\n\nRule:\n- semantics live in the class. Instance `label` is display metadata.\n"
+        "markdown": "## 6. Edge Assignment and Precedence\n\nA plain edge remains valid without a class.\n\nWhen an edge is classified, it should store:\n\n- `edge.data.edgeClassRef`: durable semantic authority\n- `edge.data.edgeClassKey`: stable key mirror\n\nRendering precedence is:\n\n1. explicit edge-instance overrides\n2. declared class defaults\n3. the ordinary plain-edge fallback\n\nThe class owns reusable meaning. The edge instance owns its endpoints and may own local display metadata or rendering overrides."
       }
     },
     {
@@ -321,11 +348,22 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Tutorial Step 2: Concrete Authoring Checklist\n\nTo complete Step 2, author the edge class as **nodes**, not nested JSON.\n\nFor each Field node, set:\n- `title`\n- `fieldType`\n- `value`\n\n### A) Identity (required)\nCreate Field nodes:\n- `edgeClass.key` (string)\n- `edgeClass.label` (string)\n- `edgeClass.meaning` (string)\n\n### B) Render defaults (required)\nCreate Field nodes:\n- `renderDefaults.stroke` (string hex)\n- `renderDefaults.width` (number)\n\nOptional:\n- `renderDefaults.dash` (json, e.g. `[22, 8]`)\n- `renderDefaults.routingHint` (string)\n\n### C) Port-consumable summary view (REQUIRED)\n- Add a `summary-view` (or legacy `port-view`) node with:\n  - `payload`: `node.web.summary`\n\n### D) Optional semantics\nCreate Field nodes (optional):\n- `defaultEdgeType` (string)\n- `sourceKinds` (json array or CSV string)\n- `targetKinds` (json array or CSV string)\n\n### E) Preview correctness\n- The legend preview MUST match the render defaults (no drift).\n\n### F) Export\n- Ensure the edge class library export surface allowlists your `edgeClass.key`.\n\nPass criteria:\n- The class appears in the consumer legend/type selector and renders identically on canvas.\n"
+        "markdown": "## New Edge-Class Template Checklist\n\nTemplates should create the richer graph; users should not have to retrofit it manually.\n\n### Required executable core\n\n- declaration with `kind: edge-class`\n- canonical declared `root` surface backed by a real port\n- `data.edgeClass.key`\n- `data.edgeClass.label`\n- `data.edgeClass.meaning`\n\n### Strong generated defaults\n\n- `defaultEdgeType`\n- small `renderDefaults`\n- optional `sourceKinds` and `targetKinds`\n- readable root preview\n- structural edge from declaration to root\n- an example relationship when the template family benefits from one\n- semantic explanatory edges where they clarify meaning\n\n### Validation boundary\n\n- reject unresolved or contradictory declared values\n- validate source and target constraints only when declared\n- validate preview consistency only when both preview and render defaults are declared\n- require export behavior only when library export is claimed\n- never warn solely because optional richness is absent\n\nPass criteria: the class resolves through its root, classified edges retain their endpoints and meaning, and every capability the class claims actually works."
       }
     }
   ],
   "edges": [
+    {
+      "id": "edge-class-contract-edge-declaration-root",
+      "type": "reference",
+      "source": "edge-class-contract-declaration",
+      "target": "edge-class-contract-view",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "default surface",
+      "style": {},
+      "data": { "relation": "surface" }
+    },
     {
       "id": "edge-class-contract-edge-root-identity",
       "type": "reference",
@@ -333,7 +371,7 @@
       "target": "edge-class-contract-identity",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "requires",
+      "label": "may define",
       "style": {},
       "data": {}
     },
@@ -344,7 +382,7 @@
       "target": "edge-class-contract-render",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "requires",
+      "label": "may present",
       "style": {},
       "data": {}
     },
@@ -366,7 +404,40 @@
       "target": "edge-class-contract-preview",
       "sourcePort": "root",
       "targetPort": "root",
-      "label": "drives",
+      "label": "informs when declared",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "edge-class-contract-edge-root-views",
+      "type": "reference",
+      "source": "edge-class-contract-root",
+      "target": "edge-class-contract-views",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "may expose",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "edge-class-contract-edge-root-export",
+      "type": "reference",
+      "source": "edge-class-contract-root",
+      "target": "edge-class-contract-export",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "may export",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "edge-class-contract-edge-identity-assignment",
+      "type": "reference",
+      "source": "edge-class-contract-identity",
+      "target": "edge-class-contract-assignment",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "identifies",
       "style": {},
       "data": {}
     },
@@ -394,7 +465,7 @@
     }
   ],
   "clusters": [],
-  "nodeCount": 11,
-  "edgeCount": 6,
-  "timestamp": "2026-04-25T00:00:00.000Z"
+  "nodeCount": 12,
+  "edgeCount": 10,
+  "timestamp": "2026-08-02T20:00:00.000Z"
 }
