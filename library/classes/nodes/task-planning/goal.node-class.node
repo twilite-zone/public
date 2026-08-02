@@ -4,7 +4,7 @@
     "title": "Goal Class",
     "description": "Strategic or local outcome node for planning graphs.",
     "created": "2026-03-15T20:30:00.000Z",
-    "modified": "2026-07-22T00:00:00.000Z",
+    "modified": "2026-08-02T01:35:00.000Z",
     "author": "",
     "tags": [
       "library",
@@ -15,25 +15,154 @@
   },
   "nodes": [
     {
-      "id": "goal-class-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "id": "goal-declaration",
+      "type": "declaration",
+      "label": "Goal Declaration",
+      "root": false,
       "position": {
-        "x": -760,
-        "y": -300
+        "x": 0,
+        "y": -420
       },
-      "width": 360,
-      "height": 240,
+      "width": 250,
+      "height": 110,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
           "graphId": "goal-class",
           "name": "Goal Class",
-        "version": "0.4.0",
+          "version": "0.4.0",
           "description": "Strategic or local outcome node for planning graphs.",
           "createdAt": "2026-03-15T20:30:00.000Z",
-        "updatedAt": "2026-07-24T00:00:00.000Z"
+          "updatedAt": "2026-08-02T01:35:00.000Z"
         },
         "intent": {
           "kind": "node-class",
@@ -41,9 +170,8 @@
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
-            "legend",
-            "view",
+            "declaration",
+            "port",
             "markdown"
           ],
           "portContracts": [
@@ -74,8 +202,114 @@
             "squashAllowed": false
           }
         },
-        "document": {
-          "url": ""
+        "declaration": {
+          "kind": "node-class",
+          "targetMode": "artifact",
+          "defaultSurfaceId": "root",
+          "surfaces": [
+            {
+              "id": "root",
+              "kind": "view",
+              "label": "Root",
+              "viewNodeId": "goal-detail-view"
+            },
+            {
+              "id": "goal-detail-view",
+              "kind": "view",
+              "label": "Surface",
+              "viewNodeId": "goal-detail-view"
+            },
+            {
+              "id": "goal-summary-view",
+              "kind": "view",
+              "label": "Card",
+              "viewNodeId": "goal-summary-view"
+            },
+            {
+              "id": "goal-icon-view",
+              "kind": "view",
+              "label": "Icon",
+              "viewNodeId": "goal-icon-view"
+            },
+            {
+              "id": "goal-editor-view",
+              "kind": "view",
+              "label": "Editor",
+              "viewNodeId": "goal-editor-view"
+            }
+          ]
+        },
+        "nodeClass": {
+          "contractVersion": "1.0.0",
+          "key": "goal",
+          "nodeDef": {
+            "key": "goal",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Goal",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+              "showLabel": false,
+              "data": {
+                "body": "Define the outcome this plan should achieve.",
+                "priority": "high",
+                "status": "open",
+                "owner": "",
+                "targetDate": "",
+                "successMetrics": [
+                  "Describe a measurable success signal"
+                ]
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 210
+                },
+                {
+                  "id": "top",
+                  "label": "top",
+                  "direction": "bidirectional",
+                  "dataType": "value",
+                  "angle": 270
+                },
+                {
+                  "id": "right",
+                  "label": "right",
+                  "direction": "bidirectional",
+                  "dataType": "value",
+                  "angle": 0
+                },
+                {
+                  "id": "bottom",
+                  "label": "bottom",
+                  "direction": "bidirectional",
+                  "dataType": "value",
+                  "angle": 90
+                },
+                {
+                  "id": "left",
+                  "label": "left",
+                  "direction": "bidirectional",
+                  "dataType": "value",
+                  "angle": 180
+                }
+              ]
+            }
+          },
+          "label": "Goal",
+          "meaning": "Strategic or local outcome node for planning graphs.",
+          "description": "Strategic or local outcome node for planning graphs.",
+          "requiredDataKeys": [
+            "body"
+          ]
         },
         "settings": {
           "theme": null,
@@ -95,78 +329,302 @@
             "enableGithubPages": false
           },
           "autoSave": false
-        },
-        "isRoot": false,
-        "root": false,
-        "nodeClass": {
-          "contractVersion": "1.0.0",
-          "key": "goal",
-          "nodeDef": {
-            "key": "goal",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Goal",
-              "size": {
-          "width": 420,
-          "height": 260
-              },
-              "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
-              "showLabel": false,
-              "data": {
-                "body": "Define the outcome this plan should achieve.",
-                "priority": "high",
-                "status": "open",
-                "owner": "",
-                "targetDate": "",
-                "successMetrics": [
-                  "Describe a measurable success signal"
-                ]
-              }
-            }
-          }
         }
       }
     },
     {
-      "id": "legend",
-      "type": "legend",
-      "label": "Legend",
+      "id": "goal-notes",
+      "type": "markdown",
+      "label": "Goal Contract",
+      "root": false,
       "position": {
-        "x": -360,
-        "y": -300
+        "x": -460,
+        "y": -160
       },
-      "width": 320,
-      "height": 180,
+      "width": 380,
+      "height": 230,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "entries": [
-          {
-            "key": "goal",
-            "intent": "class",
-            "implementation": "node class"
-          }
-        ],
-        "markdown": "## Legend\n- class views and notes",
-        "isRoot": false,
-        "root": false
+        "identity": {
+          "graphId": "goal-class"
+        },
+        "markdown": "Goal is a strategic or local outcome. It is static-first, fragment-safe, and intended to parent tasks, decisions, and constraints.\n\nAuthored fields: `label`, `body`, `priority`, `status`, `owner`, `targetDate`, `successMetrics`.\n\nThe detail surface represents the full editor contract; card and icon surfaces are deliberate projections."
       }
     },
     {
       "id": "goal-editor-view",
-      "type": "view",
-      "label": "Editor View (editor.web)",
+      "type": "port",
+      "label": "Editor",
+      "root": false,
       "position": {
-        "x": -760,
-        "y": 20
+        "x": -420,
+        "y": 140
       },
-      "width": 380,
-      "height": 230,
+      "width": 390,
+      "height": 270,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
+        "identity": {
+          "graphId": "goal-class"
+        },
         "view": {
           "intent": "editor",
           "payload": "editor.web"
@@ -274,17 +732,149 @@
     },
     {
       "id": "goal-detail-view",
-      "type": "view",
-      "label": "Node View (node.web.detail)",
+      "type": "port",
+      "label": "Surface",
+      "root": false,
       "position": {
-        "x": -340,
-        "y": 20
+        "x": 20,
+        "y": 140
       },
-      "width": 380,
-      "height": 230,
+      "width": 440,
+      "height": 320,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
+        "identity": {
+          "graphId": "goal-class"
+        },
         "view": {
           "intent": "node",
           "payload": "node.web.detail",
@@ -303,28 +893,157 @@
             "chrome": true
           }
         },
-        "node": {
-          "web": {
-            "detail": {
-              "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;box-sizing:border-box;padding:0;overflow:hidden;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,241,223,.94));color:#23160a;position:relative;'>\n  <div style='display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:linear-gradient(135deg, #f8e18a, #d19a00);color:#2b1600;border-bottom:1px solid rgba(0,0,0,.08);'>\n    <div style='display:flex;align-items:center;gap:10px;min-width:0;'>\n      <div style='width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.10);font:800 14px system-ui,sans-serif;flex:0 0 auto;'><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'in-progress', 'inline', 'none')}};color:#2563eb;\">◐</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'done', 'inline', 'none')}};color:#166534;\">✓</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'achieved', 'inline', 'none')}};color:#166534;\">✓</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'blocked', 'inline', 'none')}};color:#b91c1c;\">!</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'waiting', 'inline', 'none')}};color:#92400e;\">Ⅱ</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'cancelled', 'inline', 'none')}};color:#475569;\">×</span></div>\n      <div style='min-width:0;'>\n        <div style='font:700 10px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:.68;margin-bottom:2px;'>Goal</div>\n        <div style='font:800 18px/1.02 Georgia, \"Times New Roman\", serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'>{{label}}</div>\n      </div>\n    </div>\n    <div style='display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.38);border:1px solid rgba(0,0,0,.08);font:700 10px system-ui,sans-serif;text-transform:uppercase;white-space:nowrap;'>{{data.status}}</div>\n  </div>\n  <div style='display:flex;flex-direction:column;gap:12px;padding:14px 16px 14px 16px;min-height:0;flex:1;color:#23160a;'>\n    <div style='display:flex;align-items:center;gap:7px;flex-wrap:wrap;'>\n      <div style='padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.06);font:700 10px system-ui,sans-serif;color:#23160a;'>Priority: {{data.priority}}</div>\n      <div style='padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.06);font:700 10px system-ui,sans-serif;color:#23160a;'>Owner: {{data.owner}}</div>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;opacity:.74;color:#5b4731;'>Target {{data.targetDate}}</div>\n    </div>\n    <div style='padding:12px 13px 11px 13px;border-radius:14px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.06);color:#23160a;'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.66;margin-bottom:6px;color:#6b533a;'>Outcome</div>\n      <div style='font:500 14px/1.42 system-ui,sans-serif;max-height:5.7em;overflow:hidden;color:#23160a;'>{{data.body}}</div>\n    </div>\n    <div style='margin-top:auto;display:flex;flex-direction:column;gap:6px;color:#23160a;'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.66;color:#6b533a;'>Success signal</div>\n      <div style='padding:8px 10px;border-radius:12px;background:rgba(209,154,0,.14);border:1px solid rgba(0,0,0,.06);font:600 11px/1.35 system-ui,sans-serif;white-space:pre-wrap;overflow:hidden;color:#23160a;'>{{data.successMetrics}}</div>\n    </div>\n  </div>\n</div>"
-            }
-          }
-        }
+        "renderShape": {
+          "kind": "html"
+        },
+        "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;box-sizing:border-box;padding:0;overflow:hidden;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,241,223,.94));color:#23160a;position:relative;'>\n  <div style='display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:linear-gradient(135deg, #f8e18a, #d19a00);color:#2b1600;border-bottom:1px solid rgba(0,0,0,.08);'>\n    <div style='display:flex;align-items:center;gap:10px;min-width:0;'>\n      <div style='width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.10);font:800 14px system-ui,sans-serif;flex:0 0 auto;'><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'in-progress', 'inline', 'none')}};color:#2563eb;\">◐</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'done', 'inline', 'none')}};color:#166534;\">✓</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'achieved', 'inline', 'none')}};color:#166534;\">✓</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'blocked', 'inline', 'none')}};color:#b91c1c;\">!</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'waiting', 'inline', 'none')}};color:#92400e;\">Ⅱ</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'cancelled', 'inline', 'none')}};color:#475569;\">×</span></div>\n      <div style='min-width:0;'>\n        <div style='font:700 10px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:.68;margin-bottom:2px;'>Goal</div>\n        <div style='font:800 18px/1.02 Georgia, \"Times New Roman\", serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'>{{label}}</div>\n      </div>\n    </div>\n    <div style='display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.38);border:1px solid rgba(0,0,0,.08);font:700 10px system-ui,sans-serif;text-transform:uppercase;white-space:nowrap;'>{{data.status}}</div>\n  </div>\n  <div style='display:flex;flex-direction:column;gap:12px;padding:14px 16px 14px 16px;min-height:0;flex:1;color:#23160a;'>\n    <div style='display:flex;align-items:center;gap:7px;flex-wrap:wrap;'>\n      <div style='padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.06);font:700 10px system-ui,sans-serif;color:#23160a;'>Priority: {{data.priority}}</div>\n      <div style='padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.06);font:700 10px system-ui,sans-serif;color:#23160a;'>Owner: {{data.owner}}</div>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;opacity:.74;color:#5b4731;'>Target {{data.targetDate}}</div>\n    </div>\n    <div style='padding:12px 13px 11px 13px;border-radius:14px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.06);color:#23160a;'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.66;margin-bottom:6px;color:#6b533a;'>Outcome</div>\n      <div style='font:500 14px/1.42 system-ui,sans-serif;max-height:5.7em;overflow:hidden;color:#23160a;'>{{data.body}}</div>\n    </div>\n    <div style='margin-top:auto;display:flex;flex-direction:column;gap:6px;color:#23160a;'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.66;color:#6b533a;'>Success signal</div>\n      <div style='padding:8px 10px;border-radius:12px;background:rgba(209,154,0,.14);border:1px solid rgba(0,0,0,.06);font:600 11px/1.35 system-ui,sans-serif;white-space:pre-wrap;overflow:hidden;color:#23160a;'>{{data.successMetrics}}</div>\n    </div>\n  </div>\n</div>"
       }
     },
     {
       "id": "goal-summary-view",
-      "type": "view",
-      "label": "Summary View (node.web.summary)",
+      "type": "port",
+      "label": "Card",
+      "root": false,
       "position": {
-        "x": 80,
-        "y": 20
+        "x": 520,
+        "y": 140
       },
-      "width": 340,
-      "height": 180,
+      "width": 360,
+      "height": 220,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
+        "identity": {
+          "graphId": "goal-class"
+        },
         "view": {
           "intent": "node",
           "payload": "node.web.summary",
@@ -332,28 +1051,157 @@
             "chrome": true
           }
         },
-        "node": {
-          "web": {
-            "summary": {
-              "html": "<div style='width:100%;height:100%;display:flex;align-items:center;gap:10px;box-sizing:border-box;padding:8px 12px;border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,241,223,.94));color:#23160a;border:1px solid rgba(0,0,0,.08);position:relative;overflow:hidden;'>\n  <div style='position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg, #f8e18a, #d19a00);'></div>\n  <div style='width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(209,154,0,.14);color:#d19a00;font:800 13px system-ui,sans-serif;flex:0 0 auto;margin-left:4px;'><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'in-progress', 'inline', 'none')}};color:#2563eb;\">◐</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'done', 'inline', 'none')}};color:#166534;\">✓</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'achieved', 'inline', 'none')}};color:#166534;\">✓</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'blocked', 'inline', 'none')}};color:#b91c1c;\">!</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'waiting', 'inline', 'none')}};color:#92400e;\">Ⅱ</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'cancelled', 'inline', 'none')}};color:#475569;\">×</span></div>\n  <div style='min-width:0;display:flex;flex-direction:column;gap:2px;flex:1;'>\n    <div style='font:800 14px/1.05 Georgia, \"Times New Roman\", serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#23160a;'>{{label}}</div>\n    <div style='display:flex;gap:6px;align-items:center;font:700 10px system-ui,sans-serif;text-transform:uppercase;opacity:.74;white-space:nowrap;overflow:hidden;color:#5b4731;'>\n      <span>{{data.status}}</span><span>•</span><span>Priority {{data.priority}}</span>\n    </div>\n  </div>\n</div>"
-            }
-          }
-        }
+        "renderShape": {
+          "kind": "html"
+        },
+        "html": "<div style='width:100%;height:100%;display:flex;align-items:center;gap:10px;box-sizing:border-box;padding:8px 12px;border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,241,223,.94));color:#23160a;border:1px solid rgba(0,0,0,.08);position:relative;overflow:hidden;'>\n  <div style='position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg, #f8e18a, #d19a00);'></div>\n  <div style='width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(209,154,0,.14);color:#d19a00;font:800 13px system-ui,sans-serif;flex:0 0 auto;margin-left:4px;'><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'in-progress', 'inline', 'none')}};color:#2563eb;\">◐</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'done', 'inline', 'none')}};color:#166534;\">✓</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'achieved', 'inline', 'none')}};color:#166534;\">✓</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'blocked', 'inline', 'none')}};color:#b91c1c;\">!</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'waiting', 'inline', 'none')}};color:#92400e;\">Ⅱ</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'cancelled', 'inline', 'none')}};color:#475569;\">×</span></div>\n  <div style='min-width:0;display:flex;flex-direction:column;gap:2px;flex:1;'>\n    <div style='font:800 14px/1.05 Georgia, \"Times New Roman\", serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#23160a;'>{{label}}</div>\n    <div style='display:flex;gap:6px;align-items:center;font:700 10px system-ui,sans-serif;text-transform:uppercase;opacity:.74;white-space:nowrap;overflow:hidden;color:#5b4731;'>\n      <span>{{data.status}}</span><span>•</span><span>Priority {{data.priority}}</span>\n    </div>\n  </div>\n</div>"
       }
     },
     {
       "id": "goal-icon-view",
-      "type": "view",
-      "label": "Icon View (node.web.icon)",
+      "type": "port",
+      "label": "Icon",
+      "root": false,
       "position": {
-        "x": 460,
-        "y": 20
+        "x": 940,
+        "y": 140
       },
-      "width": 300,
-      "height": 160,
+      "width": 220,
+      "height": 220,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
+        "identity": {
+          "graphId": "goal-class"
+        },
         "view": {
           "intent": "node",
           "payload": "node.web.icon",
@@ -361,136 +1209,86 @@
             "chrome": true
           }
         },
-        "node": {
-          "web": {
-            "icon": {
-              "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:16px;background:white;border:1px solid rgba(15,23,42,.12);padding:12px;box-sizing:border-box;text-align:center;'><div style='font:700 10px/1.2 ui-sans-serif,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#d19a00;'>Goal</div><div style='font:700 14px/1.2 ui-sans-serif,system-ui,sans-serif;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;'>{{label}}</div><div style='font:700 9px/1 ui-sans-serif,system-ui,sans-serif;text-transform:uppercase;color:#64748b;'>{{data.status}}</div></div>"
-            }
-          }
-        }
-      }
-    },
-    {
-      "id": "goal-legacy-view",
-      "type": "view",
-      "label": "Legacy Node View (node.web)",
-      "position": {
-        "x": 800,
-        "y": 20
-      },
-      "width": 340,
-      "height": 180,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "view": {
-          "intent": "node",
-          "payload": "node.web",
-          "html": {
-            "chrome": true
-          }
+        "renderShape": {
+          "kind": "html"
         },
-        "node": {
-          "web": {
-            "html": {
-              "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;box-sizing:border-box;padding:0;overflow:hidden;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,241,223,.94));color:#23160a;position:relative;'>\n  <div style='display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:linear-gradient(135deg, #f8e18a, #d19a00);color:#2b1600;border-bottom:1px solid rgba(0,0,0,.08);'>\n    <div style='display:flex;align-items:center;gap:10px;min-width:0;'>\n      <div style='width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.10);font:800 14px system-ui,sans-serif;flex:0 0 auto;'><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'in-progress', 'inline', 'none')}};color:#2563eb;\">◐</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'done', 'inline', 'none')}};color:#166534;\">✓</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'achieved', 'inline', 'none')}};color:#166534;\">✓</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'blocked', 'inline', 'none')}};color:#b91c1c;\">!</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'waiting', 'inline', 'none')}};color:#92400e;\">Ⅱ</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'cancelled', 'inline', 'none')}};color:#475569;\">×</span></div>\n      <div style='min-width:0;'>\n        <div style='font:700 10px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:.68;margin-bottom:2px;'>Goal</div>\n        <div style='font:800 18px/1.02 Georgia, \"Times New Roman\", serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'>{{label}}</div>\n      </div>\n    </div>\n    <div style='display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.38);border:1px solid rgba(0,0,0,.08);font:700 10px system-ui,sans-serif;text-transform:uppercase;white-space:nowrap;'>{{data.status}}</div>\n  </div>\n  <div style='display:flex;flex-direction:column;gap:12px;padding:14px 16px 14px 16px;min-height:0;flex:1;color:#23160a;'>\n    <div style='display:flex;align-items:center;gap:7px;flex-wrap:wrap;'>\n      <div style='padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.06);font:700 10px system-ui,sans-serif;color:#23160a;'>Priority: {{data.priority}}</div>\n      <div style='padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.06);font:700 10px system-ui,sans-serif;color:#23160a;'>Owner: {{data.owner}}</div>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;opacity:.74;color:#5b4731;'>Target {{data.targetDate}}</div>\n    </div>\n    <div style='padding:12px 13px 11px 13px;border-radius:14px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.06);color:#23160a;'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.66;margin-bottom:6px;color:#6b533a;'>Outcome</div>\n      <div style='font:500 14px/1.42 system-ui,sans-serif;max-height:5.7em;overflow:hidden;color:#23160a;'>{{data.body}}</div>\n    </div>\n    <div style='margin-top:auto;display:flex;flex-direction:column;gap:6px;color:#23160a;'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.66;color:#6b533a;'>Success signal</div>\n      <div style='padding:8px 10px;border-radius:12px;background:rgba(209,154,0,.14);border:1px solid rgba(0,0,0,.06);font:600 11px/1.35 system-ui,sans-serif;white-space:pre-wrap;overflow:hidden;color:#23160a;'>{{data.successMetrics}}</div>\n    </div>\n  </div>\n</div>"
-            }
-          }
-        }
-      }
-    },
-    {
-      "id": "goal-notes",
-      "type": "markdown",
-      "label": "Definition Notes",
-      "position": {
-        "x": -760,
-        "y": 300
-      },
-      "width": 760,
-      "height": 220,
-      "color": "#455a64",
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "Goal is a strategic or local outcome. It is static-first, fragment-safe, and intended to parent tasks, decisions, and constraints.",
-        "memo": "",
-        "link": "",
-        "isRoot": false,
-        "root": false,
-        "_classBinding": {
-          "key": "markdown",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "identity": {
-            "graphId": "markdown_class",
-            "name": "markdown Node Class",
-            "version": "0.1.0",
-            "description": "Canonical markdown content node.",
-            "createdAt": "2026-02-24T20:05:15Z",
-            "updatedAt": "2026-03-24T01:20:00.000Z"
-          },
-          "intent": "graph",
-          "meaning": "Canonical markdown content node.",
-          "description": "Canonical markdown content node.",
-          "defaults": {},
-          "nodeDef": {
-            "key": "markdown",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "views": [
-            {
-              "key": "markdown",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "markdown",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "markdown",
-            "intent": "node",
-            "payload": "node.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "markdown",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "markdown",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
-        },
-        "definitionKey": "markdown"
+        "semanticLevel": "icon",
+        "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:16px;background:white;border:1px solid rgba(15,23,42,.12);padding:12px;box-sizing:border-box;text-align:center;'><div style='font:700 10px/1.2 ui-sans-serif,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#d19a00;'>Goal</div><div style='font:700 14px/1.2 ui-sans-serif,system-ui,sans-serif;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;'>{{label}}</div><div style='font:700 9px/1 ui-sans-serif,system-ui,sans-serif;text-transform:uppercase;color:#64748b;'>{{data.status}}</div></div>"
       }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "goal-edge-contract",
+      "type": "reference",
+      "source": "goal-declaration",
+      "target": "goal-notes",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "contract",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "goal-edge-goal-editor-view",
+      "type": "reference",
+      "source": "goal-declaration",
+      "target": "goal-editor-view",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "editor surface",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "goal-edge-goal-detail-view",
+      "type": "reference",
+      "source": "goal-declaration",
+      "target": "goal-detail-view",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "detail surface",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "goal-edge-goal-summary-view",
+      "type": "reference",
+      "source": "goal-declaration",
+      "target": "goal-summary-view",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "summary surface",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "goal-edge-goal-icon-view",
+      "type": "reference",
+      "source": "goal-declaration",
+      "target": "goal-icon-view",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "icon surface",
+      "style": {
+        "curved": true,
+        "route": "curved"
+      },
+      "data": {}
+    }
+  ],
   "clusters": [],
   "nodeCount": 8,
   "edgeCount": 0,
