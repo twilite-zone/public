@@ -114,7 +114,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Edge Class Contract\n\nPlain edges remain the baseline relationship object. A graph can always draw a simple edge without declaring a class.\n\nEdge classes are an optional semantic upgrade. When an edge needs reusable meaning, legend exposure, or shared render defaults, the base edge may carry an optional `edgeClassKey` that points at an addressable edge-class artifact.\n\nCurrent bridge doctrine:\n\n- the edge remains the thing being authored\n- the class artifact remains the semantic authority when linked\n- the legend is an exposure surface, not the authority\n- bridge flows should copy enough class metadata into the host legend for humans and renderers, but they should not create a second semantic home\n\nThis graph defines the minimal contract for that model.",
+        "markdown": "# Edge Class Contract\n\nPlain edges remain valid. Edge classes are optional semantic upgrades. The canonical contract now validates declared promises rather than requiring optional richness. New templates should generate readable edge-class graphs with useful structural and semantic edges, while older lean artifacts remain quiet when they make no such claims.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -201,7 +201,7 @@
       "data": {
         "body": "Edge classes should be concrete enough that graphs, legends, and bridge flows can use them coherently, but small enough to avoid overbuilding a runtime system too early.",
         "priority": "high",
-        "status": "in-progress",
+        "status": "done",
         "owner": "Michael",
         "estimateHours": "4",
         "_classBinding": {
@@ -333,7 +333,9 @@
           "classKey": "goal",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node"
         },
-        "definitionKey": "goal"
+        "definitionKey": "goal",
+        "completedAt": "2026-08-02T20:00:00.000Z",
+        "outcome": "Ratified a minimal promise-based edge-class contract: plain edges remain valid, declarations own semantic identity, optional capabilities are validated only when claimed, and richer graph structure comes from templates."
       }
     },
     {
@@ -766,7 +768,8 @@
           "classKey": "task",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
-        "definitionKey": "task"
+        "definitionKey": "task",
+        "completedAt": "2026-08-02T20:00:00.000Z"
       }
     },
     {
@@ -918,7 +921,8 @@
           "classKey": "task",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
-        "definitionKey": "task"
+        "definitionKey": "task",
+        "completedAt": "2026-08-02T20:00:00.000Z"
       }
     },
     {
@@ -1070,7 +1074,8 @@
           "classKey": "task",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
-        "definitionKey": "task"
+        "definitionKey": "task",
+        "completedAt": "2026-08-02T20:00:00.000Z"
       }
     },
     {
@@ -1222,7 +1227,8 @@
           "classKey": "task",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
-        "definitionKey": "task"
+        "definitionKey": "task",
+        "completedAt": "2026-08-02T20:00:00.000Z"
       }
     },
     {
@@ -1240,7 +1246,7 @@
       "data": {
         "body": "For now they may just be declarations, but the longer-term ontology question is whether they become more object-like.",
         "status": "answered",
-        "resolutionPath": "No, not by default. Edge classes should remain declarations first. If they later become more object-like, that should be because a clear runtime need emerged, not because we forced ontology too early.",
+        "resolutionPath": "Edge classes remain declaration-owned semantic contracts. Rich node-like presentation is template-provided and optional; it is not a universal runtime requirement.",
         "_classBinding": {
           "key": "open-question",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
@@ -1380,7 +1386,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Default Contract\n\nBase edge rule:\n\n- a plain edge remains fully valid without a class\n- `data.edgeClassKey` is optional, not required\n- adding an edge class upgrades the edge with reusable semantics and defaults\n\nAn edge class should default to:\n\n- `key`\n- `label`\n- `meaning`\n- `defaultEdgeType`\n- `usageGuidance`\n- `sourceKinds`\n- `targetKinds`\n- `legendRole`\n- `semanticAuthority`\n- small `renderDefaults` such as:\n  - `stroke`\n  - `width`\n  - `dash`\n  - `labelTone`\n  - `routingHint`\n\nBridge doctrine:\n- the class artifact remains the semantic authority\n- a host legend may mirror class metadata for local reading and render resolution\n- mirrored legend metadata is not a second semantic home\n\nDefaults:\n- the class owns semantic meaning\n- the class may carry light render defaults\n- the legend should expose, not invent, class meaning\n- edge instances may override rendering\n- instance values win when both are present\n- plain `reference` edges remain valid when no stronger semantic contract is needed",
+        "markdown": "# Ratified Default Contract\n\nRequired for a new edge class:\n\n- declaration-owned stable key\n- human label\n- concise meaning\n- canonical root surface\n\nOptional capabilities include render defaults, source and target constraints, previews, additional views, and library export. When a capability is declared, it must resolve and behave consistently. When it is absent, diagnostics remain silent.\n\nA plain edge never needs a class. Instance rendering overrides class defaults. The class remains the semantic authority when an edge opts into it.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -1465,7 +1471,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Edge Class Graph Shape\n\nA standard edge-class graph should contain:\n\n- a `manifest` node with:\n  - `intent.kind = edge-class`\n  - `data.edgeClass` as the authoritative contract payload\n- one human-readable overview/document node that explains the class meaning and usage\n- optional navigation ports such as `Back to Edge Class Library`\n\nWhat it does **not** need by default:\n\n- a custom runtime behavior node\n- arbitrary execution logic\n- a second semantic authority separate from `manifest.data.edgeClass`\n\nSo the graph shape is:\n\n1. authoritative manifest payload\n2. readable overview for humans\n3. optional navigation/support nodes\n\nThe manifest owns the class. The rest of the graph explains or exposes it.",
+        "markdown": "# Edge Class Graph Shape\n\nThe executable minimum is a declaration and canonical root presentation. The richer template shape should add a readable meaning card, a representative edge preview, optional applicability constraints, structural declaration-to-root wiring, and semantic explanatory edges or examples where they help.\n\nThis richer shape is a creation default, not a legacy warning policy. Standards protect execution; templates encourage expression.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -1654,8 +1660,8 @@
       "visible": true,
       "showLabel": false,
       "data": {
-        "goal": "Define a minimal, bridgeable contract for edge classes",
-        "status": "in-progress",
+        "goal": "Define a minimal contract for optional edge classes",
+        "status": "done",
         "taskProgress": {
           "completed": 4,
           "total": 4
@@ -1785,7 +1791,10 @@
           "classKey": "task-summary-provider",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
         },
-        "definitionKey": "task-summary-provider"
+        "definitionKey": "task-summary-provider",
+        "nextAction": "Reconcile the Graph Organization parent and use the ratified contract to guide the next edge-class template revision.",
+        "outcome": "Ratified a minimal promise-based edge-class contract: plain edges remain valid, declarations own semantic identity, optional capabilities are validated only when claimed, and richer graph structure comes from templates.",
+        "updatedAt": "2026-08-02T20:00:00.000Z"
       }
     },
     {
@@ -2625,7 +2634,7 @@
       "data": {}
     }
   ],
-  "nodeCount": 29,
-  "edgeCount": 20,
-  "timestamp": "2026-03-24T15:52:24.617Z"
+  "nodeCount": 30,
+  "edgeCount": 22,
+  "timestamp": "2026-08-02T20:00:00.000Z"
 }
