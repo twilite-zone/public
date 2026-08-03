@@ -1672,7 +1672,7 @@
       "data": {
         "body": "Make author-directed reorganization safe without deciding when an author should use it. Support promotion into child graphs, replacement by portals, stable source ownership and durable addresses, optional sections and summaries, archive movement, and bounded browsing for large collections.",
         "priority": "high",
-        "status": "todo",
+        "status": "in-progress",
         "owner": "Michael",
         "estimateHours": "4",
         "_classBinding": {
@@ -1817,7 +1817,20 @@
           "Twilite supplies reorganization operations without prescribing when authors must use them"
         ],
         "title": "Enable safe graph growth and reorganization",
-        "nextAction": "Separate the already-supported promotion and portal operations from the unfinished large-collection scaling work, then identify the smallest missing collection capability."
+        "nextAction": "Define the bounded collection projection contract: load collection identity and index metadata first, then fetch a stable cursor-based page of member references with filtering and sorting instead of materializing the full membership graph.",
+        "progressNote": "Audit complete. Author-directed promotion, portal replacement, stable source ownership, optional sections and summaries, and archive partitions are already established graph practices. The Elements panel virtualizes long rendered lists, but graph loading still materializes the complete .node payload before browsing. The missing capability is bounded collection projection, not another authoring threshold.",
+        "completedCriteria": [
+          "Authors can promote content into a child graph without losing durable identity or a return path",
+          "Local content can be replaced by a portal while source ownership and references remain stable",
+          "Sections and summaries can be added without changing graph authority",
+          "Collection members can move into archive partitions without deleting their source graphs",
+          "Twilite supplies reorganization operations without prescribing when authors must use them"
+        ],
+        "artifactRefs": [
+          "github://mikemartinez1974/public/tasks/SKILL.md",
+          "github://mikemartinez1974/public/tasks/archive/root.node",
+          "github://mikemartinez1974/public/tasks/root.node"
+        ]
       },
       "root": false,
       "ports": [
@@ -2790,7 +2803,7 @@
         },
         "definitionKey": "task-summary-provider",
         "updatedAt": "2026-08-02T23:30:00.000Z",
-        "nextAction": "Separate existing reorganization operations from the unfinished large-collection scaling work and identify the smallest missing collection capability.",
+        "nextAction": "Define a bounded collection projection that loads index metadata first and fetches stable cursor-based pages of member references on demand.",
         "visibilityRole": "browser"
       },
       "root": false,
