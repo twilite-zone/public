@@ -220,7 +220,7 @@
         "identity": {
           "graphId": "template-library-task",
           "portId": "root",
-          "name": "Windowed Collection Browsing Task"
+          "name": "Template Library Task"
         },
         "authority": "consume-view",
         "sourceScope": "graph",
@@ -250,7 +250,7 @@
       "width": 560,
       "height": 240,
       "data": {
-        "markdown": "## Good Artifact Contracts\n\nA **good artifact** satisfies the previously established Twilite graph standards appropriate to its role and is composed from required pieces that satisfy the contracts beneath it. Goodness is compositional: higher layers may delegate, but they may not conceal broken required promises. Optional pieces may degrade only through an explicit fallback.\n\n### Good Node\n\nA good node:\n\n- follows the established identity, ownership, data, visibility, port, handle, binding, and authority standards;\n- exposes or can resolve the authored semantic views appropriate to browsing: glyph, icon, summary/card, and detail, plus an editor when the node is editable;\n- uses a declared fallback chain when a richer view is unavailable;\n- keeps domain provenance separate from runtime-reserved view-resolution fields;\n- produces precise diagnostics for any view, binding, handle, or authority it declares but cannot resolve.\n\nA node instance may resolve these surfaces through its class. It does not need to duplicate class-owned view definitions.\n\n### Good Node Class\n\nA good node class:\n\n- is itself a standards-compliant class graph with a canonical root;\n- defines the data contract, editor, glyph/icon/summary/detail surfaces, fallbacks, and stable semantic meaning for its instances;\n- exposes a real bridge granting the bounded authority required to create and resolve instances;\n- is built from valid lower-level views, ports, and class machinery.\n\n### Good Template\n\nA good template:\n\n- is itself a good, standards-compliant graph composed from good required nodes and classes;\n- exposes a canonical root, useful preview, and concise authoring or installation guidance;\n- declares whether it derives a whole graph or installs a bounded capability;\n- exposes an export bridge describing the exported nodes, edges, bridges, authority, collision rules, and singleton constraints;\n- distinguishes graph-owned identity, IDs, save paths, and navigation from library-owned class, edge, view, and authority references;\n- enrolls automatically in the Templates collection and survives a Save-As-style derivation smoke test.\n\n### Composition Law\n\nA good class is built from good lower-level pieces. A good template is built from good classes and nodes. A derived graph becomes a good graph by preserving those contracts while acquiring its own identity and address.\n\n**Valid** means an artifact makes no broken declared promises. **Good** means it fulfills the complete useful contract expected of its advertised role.",
+        "markdown": "## Good Artifact Contracts\n\nA **good artifact** satisfies the previously established Twilite graph standards appropriate to its role and is composed from required pieces that satisfy the contracts beneath it. Goodness is compositional: higher layers may delegate, but they may not conceal broken required promises. Optional pieces may degrade only through an explicit fallback.\n\n### Good Node\n\nA good node:\n\n- follows the established identity, ownership, data, visibility, port, handle, binding, and authority standards;\n- exposes or can resolve the authored semantic views appropriate to browsing: icon, summary/card, and detail, plus an editor when the node is editable;\n- receives a Twilite-provided dot view from its type-badge icon at far zoom, with an optional authored override;\n- uses a declared fallback chain when a richer view is unavailable;\n- keeps domain provenance separate from runtime-reserved view-resolution fields;\n- produces precise diagnostics for any view, binding, handle, or authority it declares but cannot resolve.\n\nA node instance may resolve these surfaces through its class. It does not need to duplicate class-owned view definitions.\n\n### Good Node Class\n\nA good node class:\n\n- is itself a standards-compliant class graph with a canonical root;\n- defines the data contract, editor, icon/summary/detail surfaces, fallbacks, and stable semantic meaning for its instances, with an optional dot override;\n- exposes a real bridge granting the bounded authority required to create and resolve instances;\n- is built from valid lower-level views, ports, and class machinery.\n\n### Good Template\n\nA good template:\n\n- is itself a good, standards-compliant graph composed from good required nodes and classes;\n- exposes a canonical root, useful preview, and concise authoring or installation guidance;\n- declares whether it derives a whole graph or installs a bounded capability;\n- exposes an export bridge describing the exported nodes, edges, bridges, authority, collision rules, and singleton constraints;\n- distinguishes graph-owned identity, IDs, save paths, and navigation from library-owned class, edge, view, and authority references;\n- enrolls automatically in the Templates collection and survives a Save-As-style derivation smoke test.\n\n### Composition Law\n\nA good class is built from good lower-level pieces. A good template is built from good classes and nodes. A derived graph becomes a good graph by preserving those contracts while acquiring its own identity and address.\n\n**Valid** means an artifact makes no broken declared promises. **Good** means it fulfills the complete useful contract expected of its advertised role.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -760,8 +760,8 @@
         "goal": "Make templates as easy as saving a good graph",
         "status": "in-progress",
         "taskProgress": {
-          "completed": 1,
-          "total": 5
+          "completed": 2,
+          "total": 7
         },
         "questionProgress": {
           "answered": 0,
@@ -773,13 +773,15 @@
           "Audit and repair existing templates",
           "Upgrade the Templates collection",
           "Specify safe derivation rebinding",
-          "Prove Save-As template derivation"
+          "Prove Save-As template derivation",
+          "Bridge Presentation and Contract",
+          "Template Standardization and Derivation"
         ],
         "questionTitles": [
           "How should a template declare what it produces?",
           "Which fields belong to the derived graph?"
         ],
-        "taskListText": "1. Define the good-template contract\n2. Audit and repair existing templates\n3. Upgrade the Templates collection\n4. Specify safe derivation rebinding\n5. Prove Save-As template derivation",
+        "taskListText": "1. Define the good-template contract\n2. Audit and repair existing templates\n3. Upgrade the Templates collection\n4. Specify safe derivation rebinding\n5. Prove Save-As template derivation\n6. Bridge Presentation and Contract\n7. Template Standardization and Derivation",
         "questionListText": "1. How should a template declare what it produces?\n2. Which fields belong to the derived graph?",
         "_classBinding": {
           "key": "task-summary-provider",
@@ -892,7 +894,7 @@
         },
         "definitionKey": "task-summary-provider",
         "updatedAt": "2026-08-03T22:30:00.000Z",
-        "nextAction": "Define the shared export-bridge and glyph-fallback contracts, then repair canonical roots and intent metadata across the audited template families.",
+        "nextAction": "Complete Bridge Presentation first, then apply the existing export-role bridge contract through Template Standardization.",
         "visibilityRole": "browser"
       },
       "root": false,
@@ -953,7 +955,7 @@
         "summaryNodeId": "template-library-task-summary",
         "autoRun": true,
         "autoRunOnGraphChange": false,
-        "description": "Keep the Windowed Collection Browsing task summary synchronized with its goal, tasks, and questions.",
+        "description": "Keep the Template Library task summary synchronized with its goal, tasks, and questions.",
         "scriptName": "Task Summary Provider Updater",
         "scriptId": "",
         "source": "const SUMMARY_NODE_ID = 'template-library-task-summary';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel, maxItems = 4) => {\n  const visible = items.filter(Boolean).slice(0, maxItems);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst fetchJson = async (ref) => {\n  const normalizedRef = String(ref || '').trim();\n  if (!normalizedRef) return null;\n  try {\n    const response = await fetch(normalizedRef, { cache: 'no-store' });\n    if (!response.ok) return null;\n    return await response.json();\n  } catch (error) {\n    return null;\n  }\n};\nconst summaryStatusCache = new Map();\nconst getExternalSummaryStatus = async (entry) => {\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  if (!sourceRef || !sourceNodeId || sourceNodeId === SUMMARY_NODE_ID) return '';\n  const cacheKey = sourceRef + '#' + sourceNodeId;\n  if (summaryStatusCache.has(cacheKey)) return summaryStatusCache.get(cacheKey);\n  const graphData = await fetchJson(sourceRef);\n  const sourceNode = Array.isArray(graphData?.nodes)\n    ? graphData.nodes.find((node) => node?.id === sourceNodeId)\n    : null;\n  const status = normalize(sourceNode?.data?.status);\n  summaryStatusCache.set(cacheKey, status);\n  return status;\n};\n\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nif (!summaryNode) {\n  return { success: false, error: 'Summary node missing' };\n}\n\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task');\nconst externalSummaryTasks = nodes.filter((entry) => {\n  if (entry?.type !== 'task-summary') return false;\n  if (entry?.data?.countAsTask === false) return false;\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  return Boolean(sourceRef && sourceNodeId && sourceNodeId !== SUMMARY_NODE_ID);\n});\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst literalTaskItems = tasks.map((entry) => ({\n  title: toTitle(entry, 'Untitled task'),\n  status: normalize(entry?.data?.status)\n}));\nconst externalTaskItems = await Promise.all(externalSummaryTasks.map(async (entry) => ({\n  title: toTitle(entry, 'Untitled task summary'),\n  status: await getExternalSummaryStatus(entry)\n})));\nconst taskItems = [...literalTaskItems, ...externalTaskItems].filter((entry) => entry?.title);\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalize(goalNode?.data?.status);\nconst derivedStatus = goalStatus\n  ? (goalStatus === 'done' && !allTasksDone ? 'in-progress' : goalNode?.data?.status)\n  : (allTasksDone ? 'done' : (completedTaskCount > 0 ? 'in-progress' : (summaryNode?.data?.status || 'todo')));\n\nconst nextData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  taskProgress: {\n    completed: completedTaskCount,\n    total: taskItems.length\n  },\n  questionProgress: {\n    answered: questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length,\n    total: questions.length\n  },\n  taskTitles,\n  questionTitles,\n  taskListText: toListText(taskTitles, 'No tasks listed.', taskTitles.length || 4),\n  questionListText: toListText(questionTitles, 'No open questions.'),\n  summarySource: 'node-updater',\n  updatedAt: new Date().toISOString()\n};\n\nawait api.updateNode(SUMMARY_NODE_ID, { data: nextData });\nreturn { success: true, summary: nextData };",
@@ -1220,7 +1222,7 @@
       "data": {
         "body": "Inventory every current template, validate its graph standard, root, preview, machinery, and intended derivation mode, then repair concrete gaps.",
         "priority": "high",
-        "status": "in-progress",
+        "status": "done",
         "owner": "Michael",
         "estimateHours": "",
         "_classBinding": {
@@ -1360,8 +1362,8 @@
           "The implementation satisfies its named behavior in the Templates collection and a derived graph"
         ],
         "title": "Audit and repair existing templates",
-        "nextAction": "Define the shared export-bridge and glyph-fallback contracts, then batch-repair canonical roots and intent metadata before running derivation smoke tests.",
-        "progressNote": "Audit completed 2026-08-03. All 9 templates advertised by the Templates collection parse successfully; every preview source exists; every referenced graph resolves; and all edge endpoints and named handles are valid. The class-backed families already provide creation bridges and generally expose editor, icon, summary, and detail views. Systemic gaps remain: none of the 9 templates exposes an export bridge, no audited class explicitly exposes a glyph surface, Organization/Event/Work/Podcast/Candace template graphs lack canonical root surfaces, only Workboard/Idea/Collection carry adjacent template skills, several intent declarations are inconsistent, and the Templates collection remains hand-maintained rather than directory-discovered.",
+        "nextAction": "Continue through the promoted Bridge Presentation and Template Standardization child tasks.",
+        "progressNote": "Audit completed 2026-08-03. All 9 templates advertised by the Templates collection parse successfully; every preview source exists; every referenced graph resolves; and all edge endpoints and named handles are valid. The class-backed families already provide creation bridges and generally expose editor, icon, summary, and detail views. The existing export-role bridge model is not yet installed consistently across the templates. Organization/Event/Work/Podcast/Candace template graphs lack canonical root surfaces; only Workboard/Idea/Collection carry adjacent template skills; several intent declarations are inconsistent; and the Templates collection remains hand-maintained rather than directory-discovered. Far-zoom dots are now treated as Twilite-provided type-badge fallbacks rather than mandatory authored class surfaces.",
         "completedCriteria": [
           "Inventoried all 9 entries advertised by the Templates collection",
           "Verified all 9 graphs parse and every collection preview source exists",
@@ -2377,6 +2379,166 @@
         }
       ]
     },
+{
+    "id": "template-library-task-bridge-presentation",
+    "type": "portal",
+    "label": "Bridge Presentation and Contract",
+    "position": {
+        "x": -220,
+        "y": 1040
+    },
+    "width": 400,
+    "height": 230,
+    "visible": true,
+    "showLabel": true,
+    "ports": [
+        {
+            "id": "root",
+            "label": "root",
+            "direction": "bidirectional",
+            "dataType": "any",
+            "angle": 210
+        },
+        {
+            "id": "top",
+            "label": "top",
+            "direction": "bidirectional",
+            "dataType": "value",
+            "angle": 270
+        },
+        {
+            "id": "right",
+            "label": "right",
+            "direction": "bidirectional",
+            "dataType": "value",
+            "angle": 0
+        },
+        {
+            "id": "bottom",
+            "label": "bottom",
+            "direction": "bidirectional",
+            "dataType": "value",
+            "angle": 90
+        },
+        {
+            "id": "left",
+            "label": "left",
+            "direction": "bidirectional",
+            "dataType": "value",
+            "angle": 180
+        }
+    ],
+    "data": {
+        "memo": "Projected child task: Bridge Presentation and Contract.",
+        "authority": "navigate",
+        "src": "github://twilite-zone/public/tasks/graph-organization/template-library/bridge-presentation/root.node",
+        "ref": "github://twilite-zone/public/tasks/graph-organization/template-library/bridge-presentation/root.node",
+        "endpoint": "github://twilite-zone/public/tasks/graph-organization/template-library/bridge-presentation/root.node:root",
+        "intent": "external",
+        "target": {
+            "endpoint": "github://twilite-zone/public/tasks/graph-organization/template-library/bridge-presentation/root.node:root",
+            "ref": "github://twilite-zone/public/tasks/graph-organization/template-library/bridge-presentation/root.node",
+            "mode": "navigate",
+            "portId": "root",
+            "surfaceId": "root",
+            "label": "Open Bridge Presentation and Contract",
+            "handleId": "root"
+        },
+        "sourceRef": "github://twilite-zone/public/tasks/graph-organization/template-library/bridge-presentation/root.node",
+        "sourceNodeId": "bridge-presentation-contract-summary",
+        "sourcePayload": "node.web",
+        "surfaceId": "root",
+        "countAsTask": true,
+        "promotion": {
+            "promotedAt": "2026-08-03",
+            "promotedFrom": "template-library-task-bridge-presentation"
+        },
+        "visibilityRole": "browser",
+        "board": {
+            "rank": 1
+        }
+    }
+},
+{
+    "id": "template-library-task-template-standardization",
+    "type": "portal",
+    "label": "Template Standardization and Derivation",
+    "position": {
+        "x": 300,
+        "y": 1040
+    },
+    "width": 400,
+    "height": 230,
+    "visible": true,
+    "showLabel": true,
+    "ports": [
+        {
+            "id": "root",
+            "label": "root",
+            "direction": "bidirectional",
+            "dataType": "any",
+            "angle": 210
+        },
+        {
+            "id": "top",
+            "label": "top",
+            "direction": "bidirectional",
+            "dataType": "value",
+            "angle": 270
+        },
+        {
+            "id": "right",
+            "label": "right",
+            "direction": "bidirectional",
+            "dataType": "value",
+            "angle": 0
+        },
+        {
+            "id": "bottom",
+            "label": "bottom",
+            "direction": "bidirectional",
+            "dataType": "value",
+            "angle": 90
+        },
+        {
+            "id": "left",
+            "label": "left",
+            "direction": "bidirectional",
+            "dataType": "value",
+            "angle": 180
+        }
+    ],
+    "data": {
+        "memo": "Projected child task: Template Standardization and Derivation.",
+        "authority": "navigate",
+        "src": "github://twilite-zone/public/tasks/graph-organization/template-library/template-standardization/root.node",
+        "ref": "github://twilite-zone/public/tasks/graph-organization/template-library/template-standardization/root.node",
+        "endpoint": "github://twilite-zone/public/tasks/graph-organization/template-library/template-standardization/root.node:root",
+        "intent": "external",
+        "target": {
+            "endpoint": "github://twilite-zone/public/tasks/graph-organization/template-library/template-standardization/root.node:root",
+            "ref": "github://twilite-zone/public/tasks/graph-organization/template-library/template-standardization/root.node",
+            "mode": "navigate",
+            "portId": "root",
+            "surfaceId": "root",
+            "label": "Open Template Standardization and Derivation",
+            "handleId": "root"
+        },
+        "sourceRef": "github://twilite-zone/public/tasks/graph-organization/template-library/template-standardization/root.node",
+        "sourceNodeId": "template-standardization-derivation-summary",
+        "sourcePayload": "node.web",
+        "surfaceId": "root",
+        "countAsTask": true,
+        "promotion": {
+            "promotedAt": "2026-08-03",
+            "promotedFrom": "template-library-task-template-standardization"
+        },
+        "visibilityRole": "browser",
+        "board": {
+            "rank": 2
+        }
+    }
+},
     {
       "id": "template-library-task-idea",
       "type": "portal",
@@ -3147,6 +3309,48 @@
       },
       "data": {}
     },
+{
+    "id": "template-library-edge-audit-bridge-presentation",
+    "type": "reference",
+    "source": "template-library-task-discovery",
+    "target": "template-library-task-bridge-presentation",
+    "sourcePort": "bottom",
+    "targetPort": "top",
+    "label": "forks into",
+    "style": {
+        "curved": true,
+        "width": 2
+    },
+    "data": {}
+},
+{
+    "id": "template-library-edge-bridge-template-standardization",
+    "type": "reference",
+    "source": "template-library-task-bridge-presentation",
+    "target": "template-library-task-template-standardization",
+    "sourcePort": "right",
+    "targetPort": "left",
+    "label": "enables",
+    "style": {
+        "curved": true,
+        "width": 2
+    },
+    "data": {}
+},
+{
+    "id": "template-library-edge-standardization-collection",
+    "type": "reference",
+    "source": "template-library-task-template-standardization",
+    "target": "template-library-task-idea",
+    "sourcePort": "right",
+    "targetPort": "left",
+    "label": "upgrades",
+    "style": {
+        "curved": true,
+        "width": 2
+    },
+    "data": {}
+},
     {
       "id": "template-library-edge-pilot-idea",
       "type": "reference",
@@ -3246,12 +3450,12 @@
       "data": {}
     }
   ],
-  "nodeCount": 21,
-  "edgeCount": 22,
-  "timestamp": "2026-08-03T23:15:00.000Z",
+  "nodeCount": 23,
+  "edgeCount": 25,
+  "timestamp": "2026-08-03T23:45:00.000Z",
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Build Windowed Collection Browsing",
+    "title": "Make Templates as Easy as Saving a Good Graph",
     "description": "Implement directory-discovered windowed collection browsing and package it as the canonical Collection Template.",
     "graphId": "template-library-task",
     "version": "0.1.0",
