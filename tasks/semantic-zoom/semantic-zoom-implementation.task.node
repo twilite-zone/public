@@ -4642,24 +4642,29 @@
       "showLabel": true,
       "data": {
         "goal": "semantic-zoom-implementation.task.node",
-        "status": "todo",
+        "status": "in-progress",
         "taskProgress": {
           "completed": 0,
-          "total": 1
+          "total": 8
         },
         "questionProgress": {
           "answered": 0,
-          "total": 1
+          "total": 3
         },
         "summarySource": "graph-updater",
         "taskTitles": [
-          "Define the next concrete step"
+          "Codify focus + fragment contract",
+          "Implement semantic level resolver",
+          "Finalize fallback chain",
+          "Lock view selection rules",
+          "Define port policy by level",
+          "Finalize browse vs edit behavior",
+          "Validation pass on key graphs",
+          "Add semantic zoom smoothing"
         ],
-        "questionTitles": [
-          "What remains unresolved?"
-        ],
-        "taskListText": "1. Define the next concrete step",
-        "questionListText": "1. What remains unresolved?",
+        "questionTitles": [],
+        "taskListText": "1. Codify focus + fragment contract\n2. Implement semantic level resolver\n3. Finalize fallback chain\n4. Lock view selection rules\n5. Define port policy by level\n6. Finalize browse vs edit behavior\n7. Validation pass on key graphs\n8. Add semantic zoom smoothing",
+        "questionListText": "No open questions.",
         "_classBinding": {
           "key": "task-summary-provider",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
@@ -4769,7 +4774,9 @@
           "classKey": "task-summary-provider",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
         },
-        "definitionKey": "task-summary-provider"
+        "definitionKey": "task-summary-provider",
+        "updatedAt": "2026-08-03T21:30:00.000Z",
+        "nextAction": "Settle and codify the semantic view-selection rules: glyph at 0–25%, icon at 25–50%, and an authored selected content view at 50–100%."
       }
     },
     {
@@ -4812,7 +4819,7 @@
       "data": {
         "body": "Turn semantic-zoom-implementation.task.node into a concrete, maintainable task graph with explicit goals, trackable work, and visible unresolved questions.",
         "priority": "high",
-        "status": "todo",
+        "status": "in-progress",
         "owner": "Michael",
         "estimateHours": "2",
         "acceptanceCriteria": [
@@ -5425,7 +5432,7 @@
       "showLabel": true,
       "data": {
         "body": "Finalize node vs graph view selection (node.web.* wins for node instances; graph.web.* for graph objects).",
-        "status": "todo",
+        "status": "in-progress",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "3",
@@ -5560,8 +5567,46 @@
           "classKey": "task",
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
-        "definitionKey": "task"
-      }
+        "definitionKey": "task",
+        "nextAction": "Use the Semantic Zoom as View Selection idea to settle glyph, icon, and upper-band selected-view behavior before changing the resolver."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ]
     },
     {
       "id": "tasks-semantic-zoom-semantic-zoom-implementation-task-node-port-policy",
@@ -6763,6 +6808,79 @@
         },
         "visibilityRole": "editor"
       }
+    },
+    {
+      "id": "semantic-zoom-implementation-idea-portal",
+      "type": "portal",
+      "label": "Idea: Semantic Zoom as View Selection",
+      "position": {
+        "x": 8500,
+        "y": 520
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Open the design idea that defines semantic zoom as authored view selection.",
+        "authority": "navigate",
+        "src": "github://mikemartinez1974/public/ideas/semantic-zoom-view-selection.node",
+        "ref": "github://mikemartinez1974/public/ideas/semantic-zoom-view-selection.node",
+        "endpoint": "github://mikemartinez1974/public/ideas/semantic-zoom-view-selection.node:root",
+        "intent": "external",
+        "target": {
+          "endpoint": "github://mikemartinez1974/public/ideas/semantic-zoom-view-selection.node:root",
+          "ref": "github://mikemartinez1974/public/ideas/semantic-zoom-view-selection.node",
+          "mode": "navigate",
+          "portId": "root",
+          "surfaceId": "root",
+          "label": "Open Semantic Zoom Idea",
+          "handleId": "root"
+        },
+        "security": "prompt",
+        "sourceNodeId": "semantic-zoom-view-selection-root-port",
+        "sourcePayload": "node.web.summary",
+        "surfaceId": "root",
+        "sourceRef": "github://mikemartinez1974/public/ideas/semantic-zoom-view-selection.node",
+        "visibilityRole": "browser"
+      }
     }
   ],
   "edges": [
@@ -7644,9 +7762,27 @@
       "label": "question",
       "style": {},
       "data": {}
+    },
+    {
+      "id": "semantic-zoom-implementation-view-selection-idea-edge",
+      "type": "reference",
+      "source": "tasks-semantic-zoom-semantic-zoom-implementation-task-node-view-selection",
+      "target": "semantic-zoom-implementation-idea-portal",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "guided by",
+      "style": {
+        "route": "smoothstep",
+        "color": "#8b5cf6",
+        "width": 3,
+        "opacity": 0.82
+      },
+      "data": {
+        "relation": "design-source"
+      }
     }
   ],
-  "timestamp": "2026-03-24T15:52:24.198Z",
-  "nodeCount": 73,
-  "edgeCount": 95
+  "timestamp": "2026-08-03T21:30:00.000Z",
+  "nodeCount": 74,
+  "edgeCount": 96
 }
