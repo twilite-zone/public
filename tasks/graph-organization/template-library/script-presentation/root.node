@@ -736,8 +736,8 @@
         "status": "in-progress",
         "owner": "Michael",
         "acceptanceCriteria": [],
-        "nextAction": "Deploy and verify that the Collection Window Controller detail reads as configuration and its summary exposes the trusted Run surface.",
-        "progressNote": "The Script detail surface now presents the readable placement configuration: source, mutation and dry-run policy, automatic triggers, effects, requirements, grants, and multiplicity. The Script summary delegates firing to a host-owned runner surface that loads the graph-owned source, honors declared mutation and dry-run settings, and reports the latest result without granting execution authority to authored HTML.",
+        "nextAction": "Open the Script Capability Placement Smoke graph, create the bridged controller once, inspect Detail, and fire it from Summary.",
+        "progressNote": "The Script detail surface presents readable placement configuration and Summary delegates firing to the trusted runner. A proper Collection Window Controller capability graph now owns declaration, root exposure, Script configuration, placement contract, and navigation. Its isolated smoke host imports the Script through a real bridge instead of carrying a pre-pasted controller.",
         "visibilityRole": "browser",
         "_classBinding": {
           "key": "task",
@@ -1095,8 +1095,8 @@
         ],
         "taskListText": "1. Modernize the Script node class\n2. Complete script presentation surfaces\n3. Expose configuration and dependency contracts\n4. Prove selective script placement",
         "questionListText": "1. How should companion-node requirements travel?",
-        "updatedAt": "2026-08-04T16:42:00.000Z",
-        "nextAction": "Deploy and verify that the Collection Window Controller detail reads as configuration and its summary exposes the trusted Run surface.",
+        "updatedAt": "2026-08-04T17:18:00.000Z",
+        "nextAction": "Open the Script Capability Placement Smoke graph, create the bridged controller once, inspect Detail, and fire it from Summary.",
         "visibilityRole": "browser",
         "_classBinding": {
           "key": "task-summary-provider",
@@ -1425,6 +1425,62 @@
         "sourceRef": "github://twilite-zone/public/tasks/graph-organization/template-library/root.node",
         "sourceNodeId": "template-library-task-summary",
         "sourcePayload": "node.web",
+        "visibilityRole": "browser"
+      }
+    },
+    {
+      "id": "script-presentation-capability-graph",
+      "type": "portal",
+      "label": "Collection Window Controller Capability",
+      "position": { "x": 620, "y": 1100 },
+      "width": 430,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 210 },
+        { "id": "top", "label": "top", "direction": "bidirectional", "dataType": "value", "angle": 270 },
+        { "id": "right", "label": "right", "direction": "bidirectional", "dataType": "value", "angle": 0 }
+      ],
+      "data": {
+        "authority": "navigate",
+        "intent": "external",
+        "src": "github://mikemartinez1974/public/templates/collection-window-controller/root.node",
+        "ref": "github://mikemartinez1974/public/templates/collection-window-controller/root.node",
+        "endpoint": "github://mikemartinez1974/public/templates/collection-window-controller/root.node",
+        "sourceRef": "github://mikemartinez1974/public/templates/collection-window-controller/root.node",
+        "sourceNodeId": "collection-window-capability-root",
+        "sourcePayload": "node.web.summary",
+        "surfaceId": "root",
+        "target": { "ref": "github://mikemartinez1974/public/templates/collection-window-controller/root.node", "mode": "navigate", "portId": "root", "surfaceId": "root", "label": "Open Capability Graph" },
+        "visibilityRole": "browser"
+      }
+    },
+    {
+      "id": "script-presentation-smoke-graph",
+      "type": "portal",
+      "label": "Script Capability Placement Smoke",
+      "position": { "x": 1100, "y": 1100 },
+      "width": 430,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 210 },
+        { "id": "top", "label": "top", "direction": "bidirectional", "dataType": "value", "angle": 270 },
+        { "id": "left", "label": "left", "direction": "bidirectional", "dataType": "value", "angle": 180 }
+      ],
+      "data": {
+        "authority": "navigate",
+        "intent": "external",
+        "src": "github://mikemartinez1974/public/graphs/script-capability-smoke/root.node",
+        "ref": "github://mikemartinez1974/public/graphs/script-capability-smoke/root.node",
+        "endpoint": "github://mikemartinez1974/public/graphs/script-capability-smoke/root.node",
+        "sourceRef": "github://mikemartinez1974/public/graphs/script-capability-smoke/root.node",
+        "sourceNodeId": "script-capability-smoke-root",
+        "sourcePayload": "node.web",
+        "surfaceId": "root",
+        "target": { "ref": "github://mikemartinez1974/public/graphs/script-capability-smoke/root.node", "mode": "navigate", "portId": "root", "surfaceId": "root", "label": "Open Script Capability Smoke" },
         "visibilityRole": "browser"
       }
     },
@@ -2007,11 +2063,33 @@
         "width": 2
       },
       "data": {}
+    },
+    {
+      "id": "script-presentation-edge-capability-proof",
+      "type": "reference",
+      "source": "script-presentation-task-3",
+      "target": "script-presentation-capability-graph",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "defines capability",
+      "style": { "curved": true, "width": 2 },
+      "data": { "relationship": "defines capability", "semanticRole": "structural" }
+    },
+    {
+      "id": "script-presentation-edge-smoke-proof",
+      "type": "reference",
+      "source": "script-presentation-capability-graph",
+      "target": "script-presentation-smoke-graph",
+      "sourcePort": "right",
+      "targetPort": "left",
+      "label": "tested by",
+      "style": { "curved": true, "width": 2 },
+      "data": { "relationship": "tested by", "semanticRole": "structural" }
     }
   ],
   "timestamp": "2026-08-03T23:30:00.000Z",
-  "nodeCount": 18,
-  "edgeCount": 19,
+  "nodeCount": 20,
+  "edgeCount": 21,
   "fileVersion": "1.0",
   "metadata": {
     "title": "Script Node Presentation",
