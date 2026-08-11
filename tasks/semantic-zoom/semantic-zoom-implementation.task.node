@@ -4647,8 +4647,8 @@
           "completed": 5,
           "total": 8
         },
-        "questionProgress": {
-          "answered": 0,
+      "questionProgress": {
+          "answered": 3,
           "total": 3
         },
         "summarySource": "graph-updater",
@@ -4662,9 +4662,13 @@
           "Validation pass on key graphs",
           "Add semantic zoom smoothing"
         ],
-        "questionTitles": [],
+        "questionTitles": [
+          "Should editor mode suppress external loading?",
+          "Confirm local vs external defaults",
+          "Set icon interaction policy"
+        ],
         "taskListText": "1. Codify focus + fragment contract\n2. Implement semantic level resolver\n3. Finalize fallback chain\n4. Lock view selection rules\n5. Define port policy by level\n6. Finalize browse vs edit behavior\n7. Validation pass on key graphs\n8. Add semantic zoom smoothing",
-        "questionListText": "No open questions.",
+        "questionListText": "1. Should editor mode suppress external loading?\n2. Confirm local vs external defaults\n3. Set icon interaction policy",
         "_classBinding": {
           "key": "task-summary-provider",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
@@ -4775,8 +4779,8 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
         },
         "definitionKey": "task-summary-provider",
-        "updatedAt": "2026-08-03T21:30:00.000Z",
-        "nextAction": "Deploy and visually validate the central dot, glyph, icon, and selected content resolver on representative graphs; then finish the fallback and port policies."
+        "updatedAt": "2026-08-11T22:00:00.000Z",
+        "nextAction": "Open the Semantic Zoom Fallback Smoke Test on dev, verify all four bands and focused-node behavior, then complete the downward fallback and port policies."
       }
     },
     {
@@ -5280,7 +5284,7 @@
       "showLabel": true,
       "data": {
         "body": "Wire the representation fallback chain so missing views degrade to the nearest lower semantic level.",
-        "status": "todo",
+        "status": "in-progress",
         "owner": "Michael",
         "priority": "high",
         "estimateHours": "3",
@@ -6229,10 +6233,10 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "In editor mode, do we hard-suppress autoloaded fragments and render only the current .node file?",
-        "status": "open",
+        "body": "In editor mode, do we hard-suppress autoloaded fragments and render only the current .node file? No. Semantic presentation does not own loading policy; browse/edit visibility and explicit graph connections remain separate concerns.",
+        "status": "answered",
         "owner": "Michael",
-        "resolutionPath": "Resolve in semantic zoom policy decision",
+        "resolutionPath": "Do not make semantic zoom suppress external loading. Keep loading, authoring visibility, and semantic presentation as separate policies.",
         "_classBinding": {
           "key": "open-question",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
@@ -6372,10 +6376,10 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Do we keep local fragments at summary and external graphs at icon as the default, or override per graph?",
-        "status": "open",
+        "body": "Do we keep local fragments at summary and external graphs at icon as the default, or override per graph? No origin-based default. Presentation follows zoom, focus, and available authored views regardless of where the graph originated.",
+        "status": "answered",
         "owner": "Michael",
-        "resolutionPath": "Resolve in semantic zoom policy decision",
+        "resolutionPath": "Apply the same semantic presentation rules to local and external nodes; repository origin does not select a view.",
         "_classBinding": {
           "key": "open-question",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
@@ -6515,10 +6519,10 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Should icon-level nodes always select/focus on click, with navigation only on explicit open actions?",
-        "status": "open",
+        "body": "Should icon-level nodes always select/focus on click, with navigation only on explicit open actions? Yes. A single click selects and focuses at every semantic level; navigation and execution require an explicit authored action.",
+        "status": "answered",
         "owner": "Michael",
-        "resolutionPath": "Resolve in semantic zoom policy decision",
+        "resolutionPath": "Keep click semantics stable across zoom bands: single click selects and focuses; explicit Open or action controls navigate or execute.",
         "_classBinding": {
           "key": "open-question",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
@@ -6880,6 +6884,42 @@
         "surfaceId": "root",
         "sourceRef": "github://mikemartinez1974/public/ideas/semantic-zoom-view-selection.node",
         "visibilityRole": "browser"
+      }
+    },
+    {
+      "id": "semantic-zoom-implementation-smoke-portal",
+      "type": "portal",
+      "label": "Semantic Zoom Fallback Smoke Test",
+      "position": { "x": 8960, "y": 520 },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 210 },
+        { "id": "top", "label": "top", "direction": "bidirectional", "dataType": "value", "angle": 270 },
+        { "id": "right", "label": "right", "direction": "bidirectional", "dataType": "value", "angle": 0 },
+        { "id": "bottom", "label": "bottom", "direction": "bidirectional", "dataType": "value", "angle": 90 },
+        { "id": "left", "label": "left", "direction": "bidirectional", "dataType": "value", "angle": 180 }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Open the Graph Lab proof for dot, glyph, icon, authored view, focus, and downward fallback behavior.",
+        "authority": "navigate",
+        "intent": "external",
+        "target": {
+          "endpoint": "github://mikemartinez1974/public/graphs/semantic-zoom-fallback-smoke.node:root",
+          "ref": "github://mikemartinez1974/public/graphs/semantic-zoom-fallback-smoke.node",
+          "mode": "navigate",
+          "portId": "root",
+          "surfaceId": "root",
+          "label": "Open Semantic Zoom Smoke Test",
+          "handleId": "root"
+        },
+        "security": "prompt",
+        "sourceNodeId": "semantic-zoom-smoke-root",
+        "sourcePayload": "node.web",
+        "surfaceId": "root",
+        "sourceRef": "github://mikemartinez1974/public/graphs/semantic-zoom-fallback-smoke.node"
       }
     }
   ],
@@ -7780,9 +7820,27 @@
       "data": {
         "relation": "design-source"
       }
+    },
+    {
+      "id": "semantic-zoom-implementation-fallback-smoke-edge",
+      "type": "reference",
+      "source": "tasks-semantic-zoom-semantic-zoom-implementation-task-node-fallback-chain",
+      "target": "semantic-zoom-implementation-smoke-portal",
+      "sourcePort": "root",
+      "targetPort": "top",
+      "label": "proved by",
+      "style": {
+        "route": "smoothstep",
+        "color": "#14b8a6",
+        "width": 3,
+        "opacity": 0.82
+      },
+      "data": {
+        "relation": "validation-artifact"
+      }
     }
   ],
-  "timestamp": "2026-08-03T21:30:00.000Z",
-  "nodeCount": 74,
-  "edgeCount": 96
+  "timestamp": "2026-08-11T22:00:00.000Z",
+  "nodeCount": 75,
+  "edgeCount": 97
 }
