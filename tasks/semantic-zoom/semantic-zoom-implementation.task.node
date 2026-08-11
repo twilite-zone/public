@@ -2006,7 +2006,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Hysteresis Rules\n\nPhysical zoom should not cause semantic flicker at threshold boundaries.\n\nSuggested transitions:\n\n- `detail -> summary` below `0.85`\n- `summary -> detail` above `0.95`\n- `summary -> icon` below `0.40`\n- `icon -> summary` above `0.50`\n\nThis keeps semantic level changes stable while the user scrolls near a threshold.",
+        "markdown": "# Adopted Semantic Bands\n\nPhysical zoom selects a distinct information surface and hysteresis prevents flicker at each boundary.\n\n- `0–12%`: native dot\n- `12–20%`: native glyph\n- `20–45%`: authored icon\n- `45–75%`: authored summary\n- `above 75%`: authored detail\n\nThe resolver may simplify downward when an authored surface is unavailable, but it must never substitute a richer surface than the current band requested.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -4780,7 +4780,7 @@
         },
         "definitionKey": "task-summary-provider",
         "updatedAt": "2026-08-11T22:00:00.000Z",
-        "nextAction": "Open the Semantic Zoom Fallback Smoke Test on dev, verify all four bands and focused-node behavior, then complete the downward fallback and port policies."
+        "nextAction": "Open the Semantic Zoom Fallback Smoke Test on dev and verify dot, glyph, icon, summary, and detail content transitions plus focused-node behavior."
       }
     },
     {
@@ -5131,7 +5131,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Resolve dot/glyph/icon/detail from viewport zoom, then promote the focus anchor and explicitly proven expansion members deterministically.",
+        "body": "Resolve dot/glyph/icon/summary/detail from viewport zoom using the adopted 12/20/45/75 boundaries, then promote the focus anchor and explicitly proven expansion members deterministically.",
         "status": "done",
         "owner": "Michael",
         "priority": "high",
@@ -6903,7 +6903,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Open the Graph Lab proof for dot, glyph, icon, authored view, focus, and downward fallback behavior.",
+        "memo": "Open the Graph Lab proof for dot, glyph, icon, summary, detail, focus, and downward fallback behavior.",
         "authority": "navigate",
         "intent": "external",
         "target": {
