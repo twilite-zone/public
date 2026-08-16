@@ -7,7 +7,7 @@
     "version": "0.1.0",
     "kind": "task",
     "created": "2026-07-08T17:05:00.000Z",
-    "modified": "2026-08-08T20:00:00.000Z",
+    "modified": "2026-08-16T18:00:00.000Z",
     "author": "",
     "tags": [
       "task",
@@ -566,8 +566,8 @@
         "questionTitles": [],
         "taskListText": "1. Revisit the public READMEs as customer entry points\n2. Rebuild the Twilite product graph around the offer\n3. Create the What You Get When You Subscribe graph\n4. Run the first serious customer acquisition push\n5. Coordinate the one-month free trial launch",
         "questionListText": "No open questions.",
-        "nextAction": "Audit the READMEs and product graph together, then draft the subscriber-value graph before launching outreach.",
-        "updatedAt": "2026-08-08T18:00:00.000Z",
+  "nextAction": "Turn the 2026-08-16 entry-path audit into one coherent offer: replace the placeholder public README, add subscription and trial paths to the product graph, publish the subscriber-value graph, and implement a verified one-month Stripe trial before outreach.",
+  "updatedAt": "2026-08-16T18:00:00.000Z",
         "_classBinding": {
           "key": "task-summary-provider",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
@@ -1148,7 +1148,7 @@
       "data": {
         "body": "Audit and rewrite the READMEs that prospective users encounter so they explain what Twilite is, who it is for, why the graph model matters, and where to subscribe or begin a trial.",
         "priority": "high",
-        "status": "todo",
+        "status": "in-progress",
         "owner": "Michael",
         "acceptanceCriteria": [
           "The primary public READMEs tell one consistent product story",
@@ -1318,7 +1318,7 @@
       "data": {
         "body": "Revisit the public product graph as the canonical product explanation. Make the problem, value, workflow, audience, subscription offer, proof, and next action visible as a coherent graph.",
         "priority": "high",
-        "status": "todo",
+        "status": "in-progress",
         "owner": "Michael",
         "acceptanceCriteria": [
           "The product graph clearly states the problem, audience, value, and offer",
@@ -1489,7 +1489,7 @@
         "body": "Create a customer-facing graph that plainly shows the capabilities, services, limits, support expectations, and continuing value included with a Twilite subscription.",
         "relatedIdeaRef": "github://mikemartinez1974/public/ideas/public-browsing-paid-production.node",
         "priority": "high",
-        "status": "todo",
+        "status": "in-progress",
         "owner": "Michael",
         "acceptanceCriteria": [
           "The graph names concrete subscriber capabilities and continuing services",
@@ -1829,7 +1829,7 @@
       "data": {
         "body": "Coordinate messaging and launch timing with the authoritative Payments Readiness task that implements and verifies a one-month trial. Do not advertise the trial until entitlement and cancellation behavior are proven.",
         "priority": "high",
-        "status": "todo",
+        "status": "in-progress",
         "owner": "Michael",
         "acceptanceCriteria": [
           "Payments Readiness owns the technical trial implementation and proof",
@@ -2988,9 +2988,46 @@
           "graphId": "launch-content-declaration"
         }
       }
+    },
+    {
+      "id": "launch-content-entry-path-audit-2026-08-16",
+      "type": "markdown",
+      "label": "Customer Entry-Path Audit",
+      "root": false,
+      "position": { "x": 1440, "y": 360 },
+      "width": 520,
+      "height": 620,
+      "ports": [
+        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 210 }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Customer Entry-Path Audit — 2026-08-16",
+        "auditStatus": "complete",
+        "auditedRefs": [
+          "github://twilite-zone/public/README.md",
+          "github://twilite-zone/public/products/twilite/root.node",
+          "github://mikemartinez1974/public/ideas/public-browsing-paid-production.node",
+          "twilite/app/api/billing/create-checkout-session/route.js"
+        ],
+        "markdown": "# Customer Entry-Path Audit\n\n## Public README\nThe public README is only a repository label and pointer to `root.node`. It does not explain the audience, product value, free/paid boundary, price, trial, or next action.\n\n## Product graph\nThe flagship graph clearly explains persistent human-and-AI graph work, why structure matters, and several strong-fit audiences. It does not state the subscription offer, price, free public-browsing promise, one-month trial, or a direct signup path; its CTA routes to tutorial and product browsing.\n\n## Subscription offer\nThe product-policy graph contains a promising boundary: public graph browsing stays free while authenticated repository-backed production is paid. It lists concrete paid capabilities and proposes a bounded sandbox plus one-month full-product trial. The offer is still an internal idea with an open paywall question and untested willingness-to-pay assumption, not a customer-ready subscription surface.\n\n## Trial signup path\nThe account drawer can create/sign into a Twilite account and launch Stripe Checkout. The configured default is $15/month, and checkout returns to Twilite for entitlement confirmation. The checkout session does not set a Stripe trial period, the UI says `Upgrade with Stripe` rather than offering a trial, and no public product CTA leads directly into signup. Payments Readiness warns not to advertise the trial until entitlement and cancellation behavior are proven.\n\n## Current acquisition bottleneck\nTwilite has a compelling product thesis and a working paid checkout, but no single public path connects promise → concrete subscriber value → price/trial truth → account creation → checkout.\n\n## Immediate sequence\n1. Replace the placeholder README with a concise product entry and durable graph links.\n2. Add the free/paid boundary, $15/month offer, subscriber-value surface, and signup/trial CTA to the product graph.\n3. Turn the policy idea into the customer-facing What You Get When You Subscribe graph.\n4. Implement and smoke-test the one-month trial before publishing trial language.\n5. Then choose the first narrow customer profile and begin direct outreach.",
+        "identity": { "graphId": "launch-content-declaration" }
+      }
     }
   ],
   "edges": [
+    {
+      "id": "launch-content-edge-goal-entry-path-audit",
+      "type": "reference",
+      "source": "launch-content-goal",
+      "target": "launch-content-entry-path-audit-2026-08-16",
+      "sourcePort": "right",
+      "targetPort": "root",
+      "label": "audited by",
+      "style": {},
+      "data": { "relation": "evidence" }
+    },
     {
       "id": "launch-content-entry-edge",
       "type": "reference",
