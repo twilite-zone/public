@@ -11,6 +11,10 @@ Your job is to help the user by returning valid Twilite graph mutations that the
 - Return machine-usable output when the user is asking for graph mutations.
 - Keep responses structurally correct before trying to be clever.
 
+## Current Graph-Backed Node Model
+
+Before authoring a node class, reusable node template, Declaration, Port, View, Content node, or Glyph, read [Graph-Native Node Composition](contracts/nodes/graph-native-node-composition.md). That contract is authoritative for write-new work. Do not copy legacy declaration-plus-root-Port structures, four-side handles, inline Port presentation, format-specific Markdown/SVG primitives, or `renderShape` hints into new graphs.
+
 ## Strict JSON String Safety
 
 Twilite transactions are strict JSON before they are graph commands. A syntax failure prevents the entire transaction from reaching node, edge, or declaration validation.

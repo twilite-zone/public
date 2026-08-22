@@ -12,6 +12,10 @@ When you open a graph, you become its steward.
 - Preserve intent before improving form
 - Never surprise future readers (human or agent)
 
+## Current Node Composition Model
+
+For new graph-backed nodes and templates, follow [Graph-Native Node Composition](nodes/graph-native-node-composition.md). It is the write-new authority for Declarations, Ports, Views, Content, Glyphs, landing surfaces, and interface geometry. Older declaration-plus-root-Port, inline Port presentation, Markdown-node, SVG-node, and `renderShape` examples in this guide are compatibility references only.
+
 ## Node Property Ownership
 
 Node shell properties and renderer payload fields are different contracts.
@@ -231,16 +235,17 @@ When that happens:
 ## Primitive Chooser
 Use the primitive that matches the job directly. Do not substitute a nearby concept just because it feels related.
 
-- `declaration`: use for graph identity, intent, authority, and exposed surfaces
-- `port`: use for a declared renderable or navigable surface
-- `markdown`: use for text content only
-- `svg`: use for graph-owned vector graphics and visual explanations
+- `declaration`: use for graph identity, intent, authority, the implicit root interface, and its required View/Glyph/landing relationships
+- `port`: use for an additional named connection endpoint; it points to Views and may carry behaviors, but does not own inline presentation
+- `view`: use for a renderable surface; its incoming relationship defines detail, summary, or icon semantics
+- `content`: use for durable markdown, HTML, SVG, text, JSON, or image material through `data.content.kind` and `data.content.value`
+- `glyph`: use for symbolic node identity independently from the icon View
 - `portal`: use for a consumer/opening node that targets another declared surface
 - `dictionary`: use only when the task is specifically about dictionary infrastructure or compatibility behavior, not as a substitute for `declaration` or `port`
 - `bridge`: use for import/export boundaries and explicit external authority
 
 ## Declaration-First Starter Pattern
-When creating a first real graph, create one `declaration` node and one required root `port` node. The root node of a graph is its root port. Do not make a title, declaration, content node, or arbitrary class instance the graph root.
+When creating a first real graph-backed node, begin with one `declaration`. The Declaration is the implicit root Port; do not create a second root Port node. Occupy its five singular relationships—default View, summary View, icon View, Glyph, and landing surface. Use the optional repeatable `port` relationship only when the node needs an additional named interface.
 
 ### Declaration guidance
 - Put graph identity in `data.identity`
@@ -250,13 +255,12 @@ When creating a first real graph, create one `declaration` node and one required
 - `data.declaration.kind` is the declaration's type. Set it to the type of artifact being declared, usually `graph`
 - Do not use `data.intent.kind` as a substitute for `data.declaration.kind`; a person graph normally has `intent.kind: "person"` and `declaration.kind: "graph"`
 - Set `data.declaration.targetMode` explicitly, usually `artifact`
-- Put exposed surfaces in `data.declaration.surfaces`
-- Set `data.declaration.defaultSurfaceId` to `root`
-- Declare a surface with `id: "root"` whose `portNodeId` points at the graph's required `Root Port` node
-- Put authored or delegated presentation on the root port. The declaration exposes the port; it does not independently choose the port's content node
+- Author default, summary, icon, glyph, landing, and optional Port semantics as graph relationships
+- Keep `data.declaration.surfaces` only for additional exposed Ports and compatibility metadata
 - Keep `dependencies.nodeTypes` honest: list the node types the graph actually uses
 - Keep `identity.graphId` consistent across the declaration and graph-owned nodes
-- Do not invent edges from the declaration to the port unless the graph specifically needs them
+- Connect all five required singular Declaration relationships exactly once
+- Leave the repeatable `port` relationship unoccupied when the implicit root interface is sufficient
 
 ### Declaration checklist
 - `data.identity.graphId`, `name`, `version`, and `description` should be real values, not placeholders
