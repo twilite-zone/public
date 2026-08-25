@@ -12,7 +12,12 @@
       "width": 420,
       "height": 320,
       "ports": [
-        { "id": "bottom", "label": "bottom", "direction": "output", "dataType": "any", "position": { "side": "bottom", "offset": 0.5 } }
+        { "id": "default-view", "key": "default-view", "label": "default view", "direction": "output", "dataType": "any", "angle": 165, "role": "default-view", "allowedEdgeTypes": ["default-view"], "metadata": { "structural": true, "relationship": true, "role": "default-view", "required": true, "repeatable": false, "behaviors": [{ "trigger": "drag-create", "action": "create-node", "nodeType": "view", "targetPort": "root" }] } },
+        { "id": "summary-view", "key": "summary-view", "label": "summary view", "direction": "output", "dataType": "any", "angle": 180, "role": "shared-summary", "allowedEdgeTypes": ["reference"], "metadata": { "structural": true, "relationship": true, "role": "shared-summary", "required": true, "repeatable": false, "behaviors": [{ "trigger": "drag-create", "action": "create-node", "nodeType": "view", "targetPort": "root" }] } },
+        { "id": "icon-view", "key": "icon-view", "label": "icon view", "direction": "output", "dataType": "any", "angle": 195, "role": "shared-icon", "allowedEdgeTypes": ["reference"], "metadata": { "structural": true, "relationship": true, "role": "shared-icon", "required": true, "repeatable": false, "behaviors": [{ "trigger": "drag-create", "action": "create-node", "nodeType": "view", "targetPort": "root" }] } },
+        { "id": "glyph", "key": "glyph", "label": "glyph", "direction": "output", "dataType": "any", "angle": 270, "role": "shared-glyph", "allowedEdgeTypes": ["reference"], "metadata": { "structural": true, "relationship": true, "role": "shared-glyph", "required": true, "repeatable": false, "behaviors": [{ "trigger": "drag-create", "action": "create-node", "nodeType": "glyph", "targetPort": "root" }] } },
+        { "id": "port", "key": "port", "label": "port", "direction": "output", "dataType": "any", "angle": 90, "role": "exposes-port", "allowedEdgeTypes": ["reference"], "metadata": { "structural": true, "relationship": true, "role": "exposes-port", "required": false, "repeatable": true, "behaviors": [{ "trigger": "drag-create", "action": "create-node", "nodeType": "port", "targetPort": "root" }] } },
+        { "id": "landing-surface", "key": "landing-surface", "label": "landing surface", "direction": "output", "dataType": "any", "angle": 0, "role": "landing-surface", "allowedEdgeTypes": ["reference"], "metadata": { "structural": true, "relationship": true, "role": "landing-surface", "required": true, "repeatable": false, "behaviors": [{ "trigger": "drag-create", "action": "create-node", "nodeType": "content", "targetPort": "root" }] } }
       ],
       "visible": true,
       "showLabel": true,
@@ -23,7 +28,8 @@
           "version": "0.1.0",
           "description": "First-pass integration primitive for representing a GitHub repository and its home graph.",
           "createdAt": "2026-05-15T00:00:00.000Z",
-          "updatedAt": "2026-05-15T00:00:00.000Z"
+          "updatedAt": "2026-08-25T00:00:00.000Z",
+          "nodeId": "github-repo"
         },
         "intent": {
           "kind": "node-class",
@@ -38,7 +44,8 @@
             "port",
             "icon-view",
             "view",
-            "markdown"
+            "content",
+            "glyph"
           ],
           "portContracts": [
             "core"
@@ -120,55 +127,12 @@
           "targetMode": "artifact",
           "artifactKind": "node-class",
           "graphViewRole": "browser",
-          "defaultSurfaceId": "root",
-          "surfaces": [
-            {
-              "id": "root",
-              "kind": "port",
-              "label": "Overview",
-              "memo": "Public class overview surface for the GitHub repo node class.",
-              "portNodeId": "github-repo-class-overview",
-              "viewNodeId": "github-repo-class-overview",
-              "exposes": {
-                "views": {
-                  "mode": "allow"
-                },
-                "declarations": {
-                  "mode": "allow"
-                }
-              }
-            },
-            {
-              "id": "overview",
-              "kind": "port",
-              "label": "Overview",
-              "memo": "Named alias for the class graph overview surface.",
-              "portNodeId": "github-repo-class-overview",
-              "viewNodeId": "github-repo-class-overview",
-              "exposes": {
-                "views": {
-                  "mode": "allow"
-                },
-                "declarations": {
-                  "mode": "allow"
-                }
-              }
-            },
-            {
-              "id": "icon",
-              "kind": "view",
-              "label": "Icon",
-              "memo": "Far-zoom identity surface for the class graph itself.",
-              "exposes": {
-                "views": {
-                  "mode": "allow"
-                },
-                "declarations": {
-                  "mode": "allow"
-                }
-              }
-            }
-          ],
+          "defaultSurfaceId": "",
+          "surfaces": [],
+          "interfaceContract": {
+            "version": 1,
+            "implicitRootPort": true
+          },
           "primaryNodeViewId": "github-repo-class-overview",
           "primaryEditorViewId": "",
           "iconViewNodeId": "github-repo-class-icon",
@@ -187,7 +151,7 @@
       "width": 320,
       "height": 140,
       "ports": [
-        { "id": "top", "label": "top", "direction": "input", "dataType": "any", "position": { "side": "top", "offset": 0.5 } }
+        { "id": "root", "key": "root", "label": "root", "direction": "input", "dataType": "any", "angle": 270 }
       ],
       "visible": true,
       "showLabel": true,
@@ -426,8 +390,8 @@
     },
     {
       "id": "github-repo-class-overview",
-      "type": "port",
-      "label": "Overview",
+      "type": "content",
+      "label": "Class Overview Content",
       "position": {
         "x": 100,
         "y": -600
@@ -435,49 +399,26 @@
       "width": 460,
       "height": 300,
       "ports": [
-        { "id": "left", "label": "left", "direction": "input", "dataType": "any", "position": { "side": "left", "offset": 0.5 } },
-        { "id": "bottom", "label": "bottom", "direction": "output", "dataType": "any", "position": { "side": "bottom", "offset": 0.5 } }
+        { "id": "root", "key": "root", "label": "root", "direction": "input", "dataType": "any", "angle": 210, "metadata": { "interface": true, "structural": true, "role": "content.root" } }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
         "title": "GitHub Repo Node",
         "purpose": "Public class overview surface for the repo-native GitHub node. This is the class graph surface, not the instance summary contract.",
-        "viewRole": "summary",
-        "view": {
-          "intent": "node",
-          "payload": "node.web.summary",
-          "label": "UI View"
-        },
+        "renderShape": { "kind": "svg" },
         "titleSourceNodeId": "github-repo-class-title",
         "typeSourceNodeId": "github-repo-class-type",
         "audience": "Library",
         "status": "active",
-        "identity": {
-          "graphId": "github-repo-node-class",
-          "portId": "root",
-          "name": "Overview"
-        },
         "svg": "<svg viewBox=\"0 0 240 170\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"10\" y=\"10\" width=\"220\" height=\"150\" rx=\"24\" fill=\"#f8fafc\" stroke=\"#cbd5e1\" stroke-width=\"3\"/><rect x=\"26\" y=\"24\" width=\"188\" height=\"98\" rx=\"20\" fill=\"#0f172a\"/><path d=\"M120 46c-17 0-30 13-30 30 0 13 8 24 19 29 2 0 2-1 2-2v-5c-8 2-10-3-10-3-1-3-3-4-3-4-3-1 0-1 0-1 3 0 5 3 5 3 3 4 7 3 9 2 0-2 1-3 2-4-7-1-14-4-14-15 0-3 1-6 3-8 0-1-1-4 0-7 0 0 3-1 8 3 2-1 5-1 8-1 3 0 6 0 8 1 5-4 8-3 8-3 1 3 0 6 0 7 2 2 3 5 3 8 0 11-7 14-14 15 1 1 3 3 3 6v8c0 1 0 2 2 2 11-5 19-16 19-29 0-17-13-30-30-30z\" fill=\"#f8fafc\"/><text x=\"120\" y=\"147\" text-anchor=\"middle\" font-family=\"ui-sans-serif,system-ui,sans-serif\" font-size=\"14\" font-weight=\"800\" letter-spacing=\"0.12em\" fill=\"#0f172a\">GITHUB REPO</text></svg>",
-        "_classBinding": {
-          "key": "ui-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "ui-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
-        },
-        "definitionKey": "ui-view"
+        "identity": { "graphId": "github-repo-node-class", "nodeId": "github-repo" }
       }
     },
     {
       "id": "github-repo-class-icon",
-      "type": "icon-view",
-      "label": "Icon",
+      "type": "content",
+      "label": "Class Icon Content",
       "position": {
         "x": -840,
         "y": -600
@@ -485,37 +426,56 @@
       "width": 300,
       "height": 220,
       "ports": [
-        { "id": "right", "label": "right", "direction": "input", "dataType": "any", "position": { "side": "right", "offset": 0.5 } }
+        { "id": "root", "key": "root", "label": "root", "direction": "input", "dataType": "any", "angle": 210, "metadata": { "interface": true, "structural": true, "role": "content.root" } }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
         "title": "GitHub Repo",
         "purpose": "Far-zoom class identity surface for the repo node.",
-        "viewRole": "icon",
-        "view": {
-          "intent": "node",
-          "payload": "node.web.icon",
-          "label": "Icon View"
-        },
+        "renderShape": { "kind": "svg" },
         "titleSourceNodeId": "github-repo-class-title",
         "typeSourceNodeId": "github-repo-class-type",
         "audience": "Library",
         "status": "active",
         "svg": "<svg viewBox=\"0 0 160 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"16\" y=\"16\" width=\"128\" height=\"128\" rx=\"28\" fill=\"#0f172a\"/><path d=\"M80 45c-19 0-35 16-35 35 0 15 10 29 24 34 2 1 2 0 2-1v-6c-10 2-12-4-12-4-2-3-4-5-4-5-3-2 0-2 0-2 4 0 6 4 6 4 3 5 8 4 10 3 0-2 1-4 2-5-8-1-16-4-16-18 0-4 1-7 4-10 0-1-1-5 0-8 0 0 4-1 10 4 3-1 6-2 9-2s6 1 9 2c6-5 10-4 10-4 1 3 0 7 0 8 3 3 4 6 4 10 0 14-8 17-16 18 2 2 3 4 3 7v10c0 1 1 2 2 1 14-5 24-19 24-34 0-19-16-35-35-35z\" fill=\"#f8fafc\"/></svg>",
-        "_classBinding": {
-          "key": "icon-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "icon-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node"
-        },
-        "definitionKey": "icon-view"
+        "identity": { "graphId": "github-repo-node-class", "nodeId": "github-repo" }
+      }
+    },
+    {
+      "id": "github-repo-class-summary",
+      "type": "content",
+      "label": "Class Summary Content",
+      "position": { "x": 620, "y": -600 },
+      "width": 380,
+      "height": 240,
+      "ports": [
+        { "id": "root", "key": "root", "label": "root", "direction": "input", "dataType": "any", "angle": 210, "metadata": { "interface": true, "structural": true, "role": "content.root" } }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "renderShape": { "kind": "html" },
+        "html": "<div style=\"width:100%;height:100%;display:flex;align-items:center;gap:14px;padding:16px;box-sizing:border-box;border-radius:18px;background:#f8fafc;border:1px solid #cbd5e1;color:#0f172a;\"><div style=\"width:52px;height:52px;border-radius:15px;background:#0f172a;color:#fff;display:flex;align-items:center;justify-content:center;font:800 22px/1 ui-sans-serif,system-ui;\">GH</div><div><div style=\"font:800 18px/1.2 ui-sans-serif,system-ui;\">GitHub Repo</div><div style=\"margin-top:5px;font:500 12px/1.4 ui-sans-serif,system-ui;color:#475569;\">Repository identity, branch context, and home-graph resolution.</div></div></div>",
+        "identity": { "graphId": "github-repo-node-class", "nodeId": "github-repo" }
+      }
+    },
+    {
+      "id": "github-repo-class-glyph",
+      "type": "glyph",
+      "label": "GitHub Repo Glyph",
+      "position": { "x": -980, "y": -600 },
+      "width": 220,
+      "height": 140,
+      "ports": [
+        { "id": "root", "key": "root", "label": "root", "direction": "input", "dataType": "any", "angle": 270, "metadata": { "interface": true, "structural": true, "role": "shared-glyph" } }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "glyph": { "kind": "icon", "name": "Github" },
+        "interfaceContract": { "version": 1, "receivesGlyphDefinition": true },
+        "identity": { "graphId": "github-repo-node-class", "nodeId": "github-repo" }
       }
     },
     {
@@ -528,6 +488,10 @@
       },
       "width": 520,
       "height": 360,
+      "ports": [
+        { "id": "root", "key": "root", "label": "root", "direction": "input", "dataType": "any", "angle": 270, "metadata": { "interface": true, "structural": true, "role": "view.root" } },
+        { "id": "surface-delegate", "key": "surface-delegate", "label": "surface delegate", "direction": "output", "dataType": "any", "angle": 90, "metadata": { "structural": true, "relationship": true, "role": "view.content", "required": false, "behaviors": [{ "trigger": "drag-create", "action": "create-node", "nodeType": "content", "targetPort": "root" }] } }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -612,6 +576,10 @@
       },
       "width": 520,
       "height": 340,
+      "ports": [
+        { "id": "root", "key": "root", "label": "root", "direction": "input", "dataType": "any", "angle": 270, "metadata": { "interface": true, "structural": true, "role": "view.root" } },
+        { "id": "surface-delegate", "key": "surface-delegate", "label": "surface delegate", "direction": "output", "dataType": "any", "angle": 90, "metadata": { "structural": true, "relationship": true, "role": "view.content", "required": false, "behaviors": [{ "trigger": "drag-create", "action": "create-node", "nodeType": "content", "targetPort": "root" }] } }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -646,6 +614,10 @@
       },
       "width": 420,
       "height": 280,
+      "ports": [
+        { "id": "root", "key": "root", "label": "root", "direction": "input", "dataType": "any", "angle": 270, "metadata": { "interface": true, "structural": true, "role": "view.root" } },
+        { "id": "surface-delegate", "key": "surface-delegate", "label": "surface delegate", "direction": "output", "dataType": "any", "angle": 90, "metadata": { "structural": true, "relationship": true, "role": "view.content", "required": false, "behaviors": [{ "trigger": "drag-create", "action": "create-node", "nodeType": "content", "targetPort": "root" }] } }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -680,6 +652,10 @@
       },
       "width": 280,
       "height": 220,
+      "ports": [
+        { "id": "root", "key": "root", "label": "root", "direction": "input", "dataType": "any", "angle": 270, "metadata": { "interface": true, "structural": true, "role": "view.root" } },
+        { "id": "surface-delegate", "key": "surface-delegate", "label": "surface delegate", "direction": "output", "dataType": "any", "angle": 90, "metadata": { "structural": true, "relationship": true, "role": "view.content", "required": false, "behaviors": [{ "trigger": "drag-create", "action": "create-node", "nodeType": "content", "targetPort": "root" }] } }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -692,8 +668,8 @@
     },
     {
       "id": "github-repo-class-notes",
-      "type": "markdown",
-      "label": "Notes",
+      "type": "content",
+      "label": "Class Landing Surface",
       "position": {
         "x": 100,
         "y": -220
@@ -701,12 +677,18 @@
       "width": 820,
       "height": 220,
       "ports": [
-        { "id": "top", "label": "top", "direction": "input", "dataType": "any", "position": { "side": "top", "offset": 0.5 } }
+        { "id": "root", "key": "root", "label": "root", "direction": "input", "dataType": "any", "angle": 210, "metadata": { "interface": true, "structural": true, "role": "content.root" } }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## GitHub Repo Node Class\n\nThis graph now separates two levels clearly:\n\n- **Class graph surfaces**: the declaration, overview, and icon surfaces that describe the class itself\n- **Instance contract surfaces**: the editor/detail/summary/icon views used by actual `github-repo` node instances\n\nV1 scope stays narrow:\n\n- repo identity as `owner` + `repo`\n- optional `branch`\n- `homeRef` bootstrap fallback to `/root.node`\n- declaration-first home semantics\n\nNot in v1:\n\n- installation/write-status UX\n- repo introspection\n- README parsing\n- file-tree browsing"
+        "content": {
+          "kind": "markdown",
+          "value": "## GitHub Repo Node Class\n\nThis modern declaration-first class graph separates its graph-facing interface from the instance presentation contract.\n\n- The Declaration owns Detail, Summary, Icon, Glyph, Port, and Landing Surface relationships.\n- View nodes own their presentation payloads and may delegate content through `surface-delegate`.\n- The class export remains an authored Port relationship.\n- Instance Detail, Summary, Icon, and Editor Views remain the reusable `github-repo` class contract.\n\nThe node represents repository identity through `owner`, `repo`, `branch`, and `homeRef`."
+        },
+        "renderShape": { "kind": "markdown" },
+        "markdown": "## GitHub Repo Node Class\n\nThis modern declaration-first class graph separates its graph-facing interface from the instance presentation contract.\n\n- The Declaration owns Detail, Summary, Icon, Glyph, Port, and Landing Surface relationships.\n- View nodes own their presentation payloads and may delegate content through `surface-delegate`.\n- The class export remains an authored Port relationship.\n- Instance Detail, Summary, Icon, and Editor Views remain the reusable `github-repo` class contract.\n\nThe node represents repository identity through `owner`, `repo`, `branch`, and `homeRef`.",
+        "identity": { "graphId": "github-repo-node-class", "nodeId": "github-repo" }
       }
     }
   ],
@@ -716,15 +698,15 @@
       "type": "reference",
       "source": "github-repo-class-declaration",
       "target": "github-repo-class-export-bridge",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "exports",
+      "sourcePort": "port",
+      "targetPort": "root",
+      "label": "port",
       "style": {
         "curved": false,
         "route": "orthogonal",
         "width": 2
       },
-      "data": {}
+      "data": { "role": "exposes-port", "semanticRole": "exposes-port" }
     },
     {
       "id": "github-repo-class-edge-title-type",
@@ -743,68 +725,79 @@
     },
     {
       "id": "github-repo-class-edge-type-overview",
-      "type": "reference",
-      "source": "github-repo-class-type",
-      "target": "github-repo-class-overview",
-      "sourcePort": "right",
-      "targetPort": "left",
-      "label": "describes",
+      "type": "default-view",
+      "source": "github-repo-class-declaration",
+      "target": "github-repo-instance-detail-view",
+      "sourcePort": "default-view",
+      "targetPort": "root",
+      "label": "default view",
       "style": {
         "curved": false,
         "route": "orthogonal",
         "width": 2
       },
-      "data": {}
+      "data": { "role": "default-view", "semanticRole": "default-view" }
     },
     {
       "id": "github-repo-class-edge-title-overview",
       "type": "reference",
-      "source": "github-repo-class-title",
-      "target": "github-repo-class-overview",
-      "sourcePort": "right",
-      "targetPort": "left",
-      "label": "overview",
+      "source": "github-repo-class-declaration",
+      "target": "github-repo-instance-summary-view",
+      "sourcePort": "summary-view",
+      "targetPort": "root",
+      "label": "summary view",
       "style": {
         "curved": false,
         "route": "orthogonal",
         "width": 2
       },
-      "data": {}
+      "data": { "role": "shared-summary", "semanticRole": "shared-summary" }
     },
     {
       "id": "github-repo-class-edge-title-icon",
       "type": "reference",
-      "source": "github-repo-class-title",
-      "target": "github-repo-class-icon",
-      "sourcePort": "left",
-      "targetPort": "right",
-      "label": "icon",
+      "source": "github-repo-class-declaration",
+      "target": "github-repo-instance-icon-view",
+      "sourcePort": "icon-view",
+      "targetPort": "root",
+      "label": "icon view",
       "style": {
         "curved": false,
         "route": "orthogonal",
         "width": 2
       },
-      "data": {}
+      "data": { "role": "shared-icon", "semanticRole": "shared-icon" }
     },
     {
       "id": "github-repo-class-edge-overview-notes",
       "type": "reference",
-      "source": "github-repo-class-overview",
+      "source": "github-repo-class-declaration",
       "target": "github-repo-class-notes",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "documents",
+      "sourcePort": "landing-surface",
+      "targetPort": "root",
+      "label": "landing surface",
       "style": {
         "curved": false,
         "route": "orthogonal",
         "width": 2
       },
-      "data": {}
+      "data": { "role": "landing-surface", "semanticRole": "landing-surface" }
+    },
+    {
+      "id": "github-repo-class-edge-glyph",
+      "type": "reference",
+      "source": "github-repo-class-declaration",
+      "target": "github-repo-class-glyph",
+      "sourcePort": "glyph",
+      "targetPort": "root",
+      "label": "glyph",
+      "style": { "curved": false, "route": "orthogonal", "width": 2 },
+      "data": { "role": "shared-glyph", "semanticRole": "shared-glyph" }
     }
   ],
   "clusters": [],
   "scripts": [],
-  "nodeCount": 14,
-  "edgeCount": 6,
-  "timestamp": "2026-05-15T00:00:00.000Z"
+  "nodeCount": 16,
+  "edgeCount": 7,
+  "timestamp": "2026-08-25T00:00:00.000Z"
 }
