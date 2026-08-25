@@ -2,12 +2,12 @@
   "fileVersion": "1.0",
   "metadata": {
     "title": "GitHub in Twilite",
-    "description": "A practical guide to opening, editing, and saving repository-stored graphs.",
-    "graphId": "github-declaration",
+    "description": "Open, edit, navigate, and save repository-backed graphs.",
+    "graphId": "root",
     "version": "1.0.0",
     "kind": "github-guide",
     "created": "2026-07-24T05:24:18.542Z",
-    "modified": "2026-07-24T06:30:21.361Z",
+    "modified": "2026-08-25T16:54:10.944Z",
     "author": "",
     "tags": [
       "github-guide"
@@ -28,53 +28,165 @@
       "height": 220,
       "ports": [
         {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.5
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 165,
+          "role": "default-view",
+          "allowedEdgeTypes": [
+            "default-view"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-view",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
           }
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "top",
-            "offset": 0.5
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-summary",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
           }
         },
         {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-icon",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
           }
         },
         {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.2
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-glyph",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "glyph",
+                "targetPort": "root"
+              }
+            ]
           }
         },
         {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "right",
-            "offset": 0.5
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "landing-surface",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
           }
         }
       ],
@@ -139,12 +251,13 @@
           "contentGroup": "github-guide"
         },
         "identity": {
-          "graphId": "github-declaration",
+          "graphId": "root",
           "name": "GitHub in Twilite",
           "version": "1.0.0",
-          "description": "A practical guide to opening, editing, and saving repository-stored graphs.",
+          "description": "Open, edit, navigate, and save repository-backed graphs.",
           "createdAt": "2026-07-04T22:41:23.928Z",
-          "updatedAt": "2026-07-23T00:00:00.000Z"
+          "updatedAt": "2026-08-25T16:54:10.944Z",
+          "nodeId": "github"
         },
         "intent": {
           "kind": "github-guide",
@@ -156,7 +269,10 @@
             "bridge",
             "markdown",
             "port",
-            "portal"
+            "portal",
+            "view",
+            "content",
+            "glyph"
           ],
           "portContracts": [
             "core"
@@ -227,24 +343,12 @@
           "graphViewRole": "authoring",
           "targetMode": "artifact",
           "primaryNodeViewId": "github-view",
-          "surfaces": [
-            {
-              "id": "github-view",
-              "kind": "view",
-              "label": "GitHub in Twilite",
-              "viewNodeId": "github-view",
-              "memo": "Public GitHub guide card.",
-              "exposes": {
-                "views": {
-                  "mode": "allow"
-                },
-                "declarations": {
-                  "mode": "allow"
-                }
-              }
-            }
-          ],
-          "defaultSurfaceId": "github-view"
+          "surfaces": [],
+          "defaultSurfaceId": "",
+          "interfaceContract": {
+            "version": 1,
+            "implicitRootPort": true
+          }
         },
         "_classBinding": {
           "key": "declaration",
@@ -2468,23 +2572,379 @@
         "intent": "external",
         "security": "prompt"
       }
+    },
+    {
+      "id": "release-github-detail-view",
+      "type": "view",
+      "label": "GitHub in Twilite Detail",
+      "position": {
+        "x": 510.93439835176775,
+        "y": -707.0704698108391
+      },
+      "width": 420,
+      "height": 300,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "metadata": {
+            "interface": true,
+            "structural": true
+          }
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": ""
+        },
+        "interfaceContract": {
+          "version": 1,
+          "ownsContent": true,
+          "surfaceDelegation": true
+        },
+        "identity": {
+          "graphId": "root",
+          "nodeId": "github"
+        }
+      }
+    },
+    {
+      "id": "release-github-summary-view",
+      "type": "view",
+      "label": "GitHub in Twilite Summary",
+      "position": {
+        "x": 510.93439835176775,
+        "y": -347.07046981083903
+      },
+      "width": 380,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "metadata": {
+            "interface": true,
+            "structural": true
+          }
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": ""
+        },
+        "interfaceContract": {
+          "version": 1,
+          "ownsContent": true,
+          "surfaceDelegation": true
+        },
+        "identity": {
+          "graphId": "root",
+          "nodeId": "github"
+        }
+      }
+    },
+    {
+      "id": "release-github-icon-view",
+      "type": "view",
+      "label": "GitHub in Twilite Icon",
+      "position": {
+        "x": 510.93439835176775,
+        "y": -47.07046981083903
+      },
+      "width": 320,
+      "height": 220,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "metadata": {
+            "interface": true,
+            "structural": true
+          }
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": ""
+        },
+        "interfaceContract": {
+          "version": 1,
+          "ownsContent": true,
+          "surfaceDelegation": true
+        },
+        "identity": {
+          "graphId": "root",
+          "nodeId": "github"
+        }
+      }
+    },
+    {
+      "id": "release-github-glyph",
+      "type": "glyph",
+      "label": "GitHub in Twilite Glyph",
+      "position": {
+        "x": 10.934398351767783,
+        "y": -857.0704698108391
+      },
+      "width": 220,
+      "height": 140,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "metadata": {
+            "interface": true,
+            "structural": true,
+            "role": "shared-glyph"
+          }
+        }
+      ],
+      "data": {
+        "glyph": {
+          "kind": "icon",
+          "name": "Github"
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesGlyphDefinition": true
+        },
+        "identity": {
+          "graphId": "root",
+          "nodeId": "github"
+        }
+      }
+    },
+    {
+      "id": "release-github-landing",
+      "type": "content",
+      "label": "GitHub in Twilite Landing Surface",
+      "position": {
+        "x": 1060.9343983517679,
+        "y": -647.0704698108391
+      },
+      "width": 520,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "metadata": {
+            "interface": true,
+            "structural": true,
+            "role": "view.content"
+          }
+        }
+      ],
+      "data": {
+        "content": {
+          "kind": "markdown",
+          "value": "# GitHub in Twilite\n\nOpen, edit, navigate, and save repository-backed graphs."
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesViewContent": true
+        },
+        "identity": {
+          "graphId": "root",
+          "nodeId": "github"
+        }
+      }
+    },
+    {
+      "id": "release-github-summary-content",
+      "type": "content",
+      "label": "GitHub in Twilite Summary Content",
+      "position": {
+        "x": 990.9343983517678,
+        "y": -287.07046981083903
+      },
+      "width": 420,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "metadata": {
+            "interface": true,
+            "structural": true,
+            "role": "view.content"
+          }
+        }
+      ],
+      "data": {
+        "content": {
+          "kind": "markdown",
+          "value": "## GitHub in Twilite\n\nOpen, edit, navigate, and save repository-backed graphs."
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesViewContent": true
+        },
+        "identity": {
+          "graphId": "root",
+          "nodeId": "github"
+        }
+      }
+    },
+    {
+      "id": "release-github-icon-content",
+      "type": "content",
+      "label": "GitHub in Twilite Icon Content",
+      "position": {
+        "x": 950.9343983517678,
+        "y": 12.929530189160971
+      },
+      "width": 320,
+      "height": 220,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "metadata": {
+            "interface": true,
+            "structural": true,
+            "role": "view.content"
+          }
+        }
+      ],
+      "data": {
+        "content": {
+          "kind": "svg",
+          "value": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 220\" role=\"img\" aria-label=\"GitHub in Twilite\"><rect width=\"320\" height=\"220\" rx=\"28\" fill=\"#0f172a\"/><circle cx=\"160\" cy=\"92\" r=\"58\" fill=\"#334155\"/><circle cx=\"160\" cy=\"92\" r=\"38\" fill=\"none\" stroke=\"#fff\" stroke-width=\"8\"/><path d=\"M122 92h76M160 54v76\" stroke=\"#fff\" stroke-width=\"8\" stroke-linecap=\"round\"/><text x=\"160\" y=\"184\" text-anchor=\"middle\" fill=\"#fff\" font-family=\"system-ui,sans-serif\" font-size=\"18\" font-weight=\"800\">GITHUB IN TWILITE</text></svg>"
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesViewContent": true
+        },
+        "identity": {
+          "graphId": "root",
+          "nodeId": "github"
+        }
+      }
     }
   ],
   "edges": [
-    {
-      "id": "github-declares-view",
-      "type": "reference",
-      "source": "github-declaration",
-      "target": "github-view",
-      "sourcePort": "right",
-      "targetPort": "left",
-      "label": "publishes",
-      "style": {
-        "width": 2,
-        "curved": true
-      },
-      "data": {}
-    },
     {
       "id": "github-view-model",
       "type": "reference",
@@ -2652,6 +3112,118 @@
         "curved": true
       },
       "data": {}
+    },
+    {
+      "id": "release-github-default",
+      "type": "default-view",
+      "source": "github-declaration",
+      "target": "release-github-detail-view",
+      "sourcePort": "default-view",
+      "targetPort": "root",
+      "label": "default view",
+      "style": {},
+      "data": {
+        "role": "default-view",
+        "semanticRole": "default-view"
+      }
+    },
+    {
+      "id": "release-github-summary",
+      "type": "reference",
+      "source": "github-declaration",
+      "target": "release-github-summary-view",
+      "sourcePort": "summary-view",
+      "targetPort": "root",
+      "label": "summary view",
+      "style": {},
+      "data": {
+        "role": "shared-summary",
+        "semanticRole": "shared-summary"
+      }
+    },
+    {
+      "id": "release-github-icon",
+      "type": "reference",
+      "source": "github-declaration",
+      "target": "release-github-icon-view",
+      "sourcePort": "icon-view",
+      "targetPort": "root",
+      "label": "icon view",
+      "style": {},
+      "data": {
+        "role": "shared-icon",
+        "semanticRole": "shared-icon"
+      }
+    },
+    {
+      "id": "release-github-glyph-edge",
+      "type": "reference",
+      "source": "github-declaration",
+      "target": "release-github-glyph",
+      "sourcePort": "glyph",
+      "targetPort": "root",
+      "label": "glyph",
+      "style": {},
+      "data": {
+        "role": "shared-glyph",
+        "semanticRole": "shared-glyph"
+      }
+    },
+    {
+      "id": "release-github-landing-edge",
+      "type": "reference",
+      "source": "github-declaration",
+      "target": "release-github-landing",
+      "sourcePort": "landing-surface",
+      "targetPort": "root",
+      "label": "landing surface",
+      "style": {},
+      "data": {
+        "role": "landing-surface",
+        "semanticRole": "landing-surface"
+      }
+    },
+    {
+      "id": "release-github-detail-content",
+      "type": "reference",
+      "source": "release-github-detail-view",
+      "target": "release-github-landing",
+      "sourcePort": "surface-delegate",
+      "targetPort": "root",
+      "label": "content",
+      "style": {},
+      "data": {
+        "role": "view.content",
+        "semanticRole": "view.content"
+      }
+    },
+    {
+      "id": "release-github-summary-content-edge",
+      "type": "reference",
+      "source": "release-github-summary-view",
+      "target": "release-github-summary-content",
+      "sourcePort": "surface-delegate",
+      "targetPort": "root",
+      "label": "content",
+      "style": {},
+      "data": {
+        "role": "view.content",
+        "semanticRole": "view.content"
+      }
+    },
+    {
+      "id": "release-github-icon-content-edge",
+      "type": "reference",
+      "source": "release-github-icon-view",
+      "target": "release-github-icon-content",
+      "sourcePort": "surface-delegate",
+      "targetPort": "root",
+      "label": "content",
+      "style": {},
+      "data": {
+        "role": "view.content",
+        "semanticRole": "view.content"
+      }
     }
   ],
   "clusters": [],
