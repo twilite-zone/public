@@ -18,140 +18,270 @@
     {
       "id": "task-graph-template-declaration",
       "type": "declaration",
-      "label": "Declaration",
-      "root": false,
+      "label": "Task Graph Template",
       "position": {
-        "x": -361.03873557848283,
-        "y": -1180.9836074522425
+        "x": -500,
+        "y": -1250
       },
-      "width": 420,
-      "height": 320,
+      "width": 360,
+      "height": 240,
       "handles": [
         {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
+          "id": "default-view",
+          "key": "default-view",
+          "portId": "default-view",
+          "label": "default view",
+          "direction": "output",
           "dataType": "any",
-          "angle": 210
+          "angle": 165,
+          "role": "default-view"
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
+          "id": "summary-view",
+          "key": "summary-view",
+          "portId": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary"
         },
         {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
+          "id": "icon-view",
+          "key": "icon-view",
+          "portId": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon"
         },
         {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
+          "id": "glyph",
+          "key": "glyph",
+          "portId": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph"
         },
         {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
+          "id": "port",
+          "key": "port",
+          "portId": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port"
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "portId": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface"
         }
       ],
       "ports": [
         {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default view",
+          "direction": "output",
           "dataType": "any",
-          "angle": 210
+          "angle": 165,
+          "role": "default-view",
+          "allowedEdgeTypes": [
+            "default-view"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-view",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-summary",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-icon",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-glyph",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "glyph",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "landing-surface",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
         }
       ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
+      "inputs": [],
       "outputs": [
         {
-          "key": "root",
-          "label": "root",
+          "key": "default-view",
+          "label": "default view",
           "type": "any"
         },
         {
-          "key": "top",
-          "label": "top",
-          "type": "value"
+          "key": "summary-view",
+          "label": "summary view",
+          "type": "any"
         },
         {
-          "key": "left",
-          "label": "left",
-          "type": "value"
+          "key": "icon-view",
+          "label": "icon view",
+          "type": "any"
         },
         {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
+          "key": "glyph",
+          "label": "glyph",
+          "type": "any"
         },
         {
-          "key": "right",
-          "label": "right",
-          "type": "value"
+          "key": "port",
+          "label": "port",
+          "type": "any"
+        },
+        {
+          "key": "landing-surface",
+          "label": "landing surface",
+          "type": "any"
         }
       ],
       "visible": true,
@@ -160,9 +290,10 @@
         "identity": {
           "graphId": "task-graph-template-declaration",
           "name": "Task Graph Template",
-          "version": "0.2.0",
-          "description": "Canonical declaration-first task graph template with graph-owned operational summaries and compatible task lifecycle fields.",
-          "updatedAt": "2026-07-22T00:00:00.000Z"
+          "version": "1.0.0",
+          "description": "Modern declaration-first task graph template with graph-owned summaries and semantic views.",
+          "updatedAt": "2026-07-22T00:00:00.000Z",
+          "nodeId": "task"
         },
         "intent": {
           "kind": "template",
@@ -171,19 +302,17 @@
         "dependencies": {
           "nodeTypes": [
             "declaration",
-            "markdown",
+            "view",
+            "content",
+            "glyph",
             "port",
-            "title",
-            "type-definition",
-            "port-view",
-            "icon-view",
+            "bridge",
             "goal",
             "task",
             "open-question",
             "decision",
             "script",
-            "summary",
-            "bridge"
+            "summary"
           ],
           "portContracts": [
             "core"
@@ -254,65 +383,23 @@
         "name": "Task Graph Template Declaration",
         "declaresKind": "template",
         "purpose": "Canonical declaration-first template for planning graphs with derived summaries and backward-compatible task contracts.",
-        "primaryNodeViewId": "task-graph-template-summary",
+        "primaryNodeViewId": "task-graph-template-detail-view",
         "declaration": {
           "kind": "template",
           "targetMode": "artifact",
           "artifactKind": "task-graph-template",
-          "graphViewRole": "authoring",
-          "defaultSurfaceId": "card",
+          "interfaceContract": {
+            "version": 1,
+            "implicitRootPort": true
+          },
+          "defaultSurfaceId": "",
           "surfaces": [
             {
-              "id": "card",
-              "kind": "port",
-              "label": "Card",
-              "viewNodeId": "task-graph-template-view",
-              "memo": "Primary outward-facing task graph card for portals and host graphs.",
-              "exposes": {
-                "views": {
-                  "mode": "allow"
-                },
-                "declarations": {
-                  "mode": "allow"
-                }
-              }
-            },
-            {
-              "id": "icon",
-              "kind": "icon",
-              "label": "Icon",
-              "viewNodeId": "task-graph-template-icon-view",
-              "memo": "Minimal semantic-zoom identity surface for the task graph template.",
-              "exposes": {
-                "views": {
-                  "mode": "allow"
-                },
-                "declarations": {
-                  "mode": "allow"
-                }
-              }
-            },
-            {
               "id": "summary",
-              "kind": "view",
-              "label": "Summary",
-              "viewNodeId": "task-graph-template-summary",
-              "memo": "Readable derived summary surface sourced from the authoritative summary node.",
-              "exposes": {
-                "views": {
-                  "mode": "allow"
-                },
-                "declarations": {
-                  "mode": "allow"
-                }
-              }
-            },
-            {
-              "id": "workspace",
-              "kind": "view",
-              "label": "Workspace",
-              "viewNodeId": "task-graph-template-summary-task",
-              "memo": "Task-shaped authoring rollup surface for legacy and workspace-style consumers.",
+              "kind": "port",
+              "label": "Task Summary",
+              "portNodeId": "task-graph-template-summary-port",
+              "viewNodeId": "task-graph-template-summary-view",
               "exposes": {
                 "views": {
                   "mode": "allow"
@@ -322,11 +409,7 @@
                 }
               }
             }
-          ],
-          "primaryNodeViewId": "task-graph-template-summary",
-          "primaryEditorViewId": "",
-          "iconViewNodeId": "task-graph-template-icon-view",
-          "portViewNodeId": "task-graph-template-view"
+          ]
         },
         "_classBinding": {
           "key": "declaration",
@@ -1258,8 +1341,8 @@
           "answered": 0,
           "total": 1
         },
-    "summarySource": "node-updater",
-    "nodeViewPayload": "node.web",
+        "summarySource": "node-updater",
+        "nodeViewPayload": "node.web",
         "taskTitles": [
           "Do the next concrete step"
         ],
@@ -2013,1457 +2096,6 @@
           "state": "manually-shaped",
           "source": "manual",
           "updatedAt": 1784322245587,
-          "reason": "node-drag"
-        }
-      }
-    },
-    {
-      "id": "task-graph-template-title-port",
-      "type": "bridge",
-      "label": "Title",
-      "root": false,
-      "position": {
-        "x": -1160,
-        "y": 180
-      },
-      "width": 280,
-      "height": 120,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Bridge for the Title class.",
-        "intent": "external",
-        "target": {
-          "mode": "bridge",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ],
-          "label": "Title",
-          "key": "title",
-          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
-        },
-        "resourceKind": "node-class",
-        "scope": "focused-graph",
-        "grants": [
-          "create"
-        ],
-        "authority": "bridge",
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        },
-        "_classBinding": {
-          "key": "title",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "title",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
-        },
-        "identity": {
-          "graphId": "task-graph-template-declaration"
-        }
-      }
-    },
-    {
-      "id": "task-graph-template-type-port",
-      "type": "bridge",
-      "label": "Type Definition",
-      "root": false,
-      "position": {
-        "x": -1160,
-        "y": 320
-      },
-      "width": 280,
-      "height": 120,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Bridge for the Type Definition class.",
-        "intent": "external",
-        "target": {
-          "mode": "bridge",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ],
-          "label": "Type Definition",
-          "key": "type-definition",
-          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-        },
-        "resourceKind": "node-class",
-        "scope": "focused-graph",
-        "grants": [
-          "create"
-        ],
-        "authority": "bridge",
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        },
-        "_classBinding": {
-          "key": "type-definition",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "type-definition",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-        },
-        "identity": {
-          "graphId": "task-graph-template-declaration"
-        }
-      }
-    },
-    {
-      "id": "task-graph-template-view-port",
-      "type": "bridge",
-      "label": "Port View",
-      "root": false,
-      "position": {
-        "x": -1160,
-        "y": 460
-      },
-      "width": 280,
-      "height": 120,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Bridge for the Port View class.",
-        "intent": "external",
-        "target": {
-          "mode": "bridge",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ],
-          "label": "Port View",
-          "key": "port-view",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node"
-        },
-        "resourceKind": "node-class",
-        "scope": "focused-graph",
-        "grants": [
-          "create"
-        ],
-        "authority": "bridge",
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        },
-        "_classBinding": {
-          "key": "port-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "port-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node"
-        },
-        "identity": {
-          "graphId": "task-graph-template-declaration"
-        }
-      }
-    },
-    {
-      "id": "task-graph-template-icon-view-port",
-      "type": "bridge",
-      "label": "Icon View",
-      "root": false,
-      "position": {
-        "x": -1160,
-        "y": 600
-      },
-      "width": 280,
-      "height": 120,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Bridge for the Icon View class.",
-        "intent": "external",
-        "target": {
-          "mode": "bridge",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ],
-          "label": "Icon View",
-          "key": "icon-view",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node"
-        },
-        "resourceKind": "node-class",
-        "scope": "focused-graph",
-        "grants": [
-          "create"
-        ],
-        "authority": "bridge",
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        },
-        "_classBinding": {
-          "key": "icon-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "icon-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node"
-        },
-        "identity": {
-          "graphId": "task-graph-template-declaration"
-        }
-      }
-    },
-    {
-      "id": "task-graph-template-title",
-      "type": "title",
-      "label": "Title",
-      "root": true,
-      "position": {
-        "x": -183.3646488348213,
-        "y": 71.31987619267068
-      },
-      "width": 560,
-      "height": 280,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "Task Graph Template",
-        "subtitle": "Canonical planning-style template artifact for task graphs with a goal, tasks, open questions, and a document surface. If a graph only routes people elsewhere, it is an index or landing graph, not a task graph.",
-        "intent": "headline",
-        "status": "active",
-        "_classBinding": {
-          "key": "title",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
-        },
-        "_bridge": {
-          "sourceBridgeNodeId": "task-graph-template-title-port",
-          "sourceBridgeLabel": "Title",
-          "targetKind": "node-class",
-          "classKey": "title",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
-        },
-        "definitionKey": "title",
-        "identity": {
-          "graphId": "task-graph-template-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1784322453030,
-          "reason": "node-drag"
-        }
-      }
-    },
-    {
-      "id": "task-graph-template-type",
-      "type": "type-definition",
-      "label": "Type",
-      "root": false,
-      "position": {
-        "x": -206.70146397525707,
-        "y": -400.31003857273606
-      },
-      "width": 260,
-      "height": 140,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "name": "Task Graph Template",
-        "key": "task-graph-template",
-        "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-template.node",
-        "meaning": "A canonical planning template artifact organized around a goal with associated tasks, questions, decisions, and a document surface.",
-        "description": "Use this type when a host should render the artifact specifically as the reusable task graph template, not as a generic task graph.",
-        "category": "planning",
-        "status": "active",
-        "_classBinding": {
-          "key": "type-definition",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-        },
-        "_bridge": {
-          "sourceBridgeNodeId": "task-graph-template-type-port",
-          "sourceBridgeLabel": "Type Definition",
-          "targetKind": "node-class",
-          "classKey": "type-definition",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-        },
-        "definitionKey": "type-definition",
-        "identity": {
-          "graphId": "task-graph-template-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1784328676768,
-          "reason": "node-drag"
-        }
-      }
-    },
-    {
-      "id": "task-graph-template-view",
-      "type": "port-view",
-      "label": "Port View",
-      "root": false,
-      "position": {
-        "x": 231.5641019699019,
-        "y": -894.2530431742744
-      },
-      "width": 420,
-      "height": 280,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "Task Graph Template",
-        "purpose": "Host-facing port card surface for the canonical planning template.",
-        "titleSourceNodeId": "task-graph-template-title",
-        "typeSourceNodeId": "task-graph-template-type",
-        "viewRole": "port",
-        "viewKind": "display",
-        "exposedAuthority": "consume-view",
-        "audience": "Author",
-        "status": "active",
-        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\">\n  <defs>\n    <linearGradient id=\"taskGraphCard\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#fff8d6\"/>\n      <stop offset=\"100%\" stop-color=\"#ffe38a\"/>\n    </linearGradient>\n    <linearGradient id=\"taskNodeA\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#f8e18a\"/>\n      <stop offset=\"100%\" stop-color=\"#d19a00\"/>\n    </linearGradient>\n    <linearGradient id=\"taskNodeB\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#9be7c4\"/>\n      <stop offset=\"100%\" stop-color=\"#1f9d67\"/>\n    </linearGradient>\n    <linearGradient id=\"taskNodeC\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#d9c2f0\"/>\n      <stop offset=\"100%\" stop-color=\"#8b5cf6\"/>\n    </linearGradient>\n  </defs>\n  <rect x=\"20\" y=\"20\" width=\"180\" height=\"120\" rx=\"18\" fill=\"#f8fafc\" stroke=\"#334155\" stroke-width=\"5\"/>\n  <rect x=\"36\" y=\"34\" width=\"54\" height=\"32\" rx=\"10\" fill=\"url(#taskNodeA)\" stroke=\"#8a6c00\" stroke-width=\"3\"/>\n  <rect x=\"126\" y=\"34\" width=\"54\" height=\"32\" rx=\"10\" fill=\"url(#taskNodeB)\" stroke=\"#176847\" stroke-width=\"3\"/>\n  <rect x=\"82\" y=\"94\" width=\"56\" height=\"30\" rx=\"10\" fill=\"url(#taskNodeC)\" stroke=\"#6d28d9\" stroke-width=\"3\"/>\n  <path d=\"M90 50h36\" stroke=\"#475569\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n  <path d=\"M62 66c8 14 18 24 34 30\" stroke=\"#475569\" stroke-width=\"4\" stroke-linecap=\"round\" fill=\"none\"/>\n  <path d=\"M154 66c-8 14-18 24-34 30\" stroke=\"#475569\" stroke-width=\"4\" stroke-linecap=\"round\" fill=\"none\"/>\n</svg>",
-        "_classBinding": {
-          "key": "port-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node"
-        },
-        "_bridge": {
-          "sourceBridgeNodeId": "task-graph-template-view-port",
-          "sourceBridgeLabel": "Port View",
-          "targetKind": "node-class",
-          "classKey": "port-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/port-view.node-class.node"
-        },
-        "definitionKey": "port-view",
-        "identity": {
-          "graphId": "task-graph-template-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1784328628662,
-          "reason": "node-drag"
-        }
-      }
-    },
-    {
-      "id": "task-graph-template-icon-view",
-      "type": "icon-view",
-      "label": "Icon View",
-      "root": false,
-      "position": {
-        "x": 277.58369611830705,
-        "y": -478.0415466657239
-      },
-      "width": 320,
-      "height": 220,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "Task Graph Template",
-        "purpose": "Minimal semantic-zoom icon surface for the canonical planning template.",
-        "titleSourceNodeId": "task-graph-template-title",
-        "typeSourceNodeId": "task-graph-template-type",
-        "viewRole": "icon",
-        "viewKind": "display",
-        "exposedAuthority": "consume-view",
-        "audience": "Author",
-        "status": "active",
-        "svg": "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"16\" y=\"16\" width=\"88\" height=\"88\" rx=\"22\" fill=\"#f8fafc\" stroke=\"#334155\" stroke-width=\"6\"/><rect x=\"28\" y=\"34\" width=\"22\" height=\"16\" rx=\"5\" fill=\"#f8e18a\" stroke=\"#8a6c00\" stroke-width=\"2.5\"/><rect x=\"70\" y=\"34\" width=\"22\" height=\"16\" rx=\"5\" fill=\"#9be7c4\" stroke=\"#176847\" stroke-width=\"2.5\"/><rect x=\"49\" y=\"70\" width=\"22\" height=\"14\" rx=\"5\" fill=\"#d9c2f0\" stroke=\"#6d28d9\" stroke-width=\"2.5\"/><path d=\"M50 42h20\" stroke=\"#475569\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M39 50c4 7 8 12 16 17\" stroke=\"#475569\" stroke-width=\"3\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M81 50c-4 7-8 12-16 17\" stroke=\"#475569\" stroke-width=\"3\" stroke-linecap=\"round\" fill=\"none\"/></svg>",
-        "_classBinding": {
-          "key": "icon-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node"
-        },
-        "_bridge": {
-          "sourceBridgeNodeId": "task-graph-template-icon-view-port",
-          "sourceBridgeLabel": "Icon View",
-          "targetKind": "node-class",
-          "classKey": "icon-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/icon-view.node-class.node"
-        },
-        "definitionKey": "icon-view",
-        "identity": {
-          "graphId": "task-graph-template-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1784328673588,
           "reason": "node-drag"
         }
       }
@@ -4589,527 +3221,491 @@
       }
     },
     {
-      "id": "69a80dfa-8faf-45de-9ce6-67c7b835b3ff",
-      "type": "markdown",
-      "label": "GPT Says:",
-      "root": false,
+      "id": "task-graph-template-detail-view",
+      "type": "view",
+      "label": "Task Graph Detail",
       "position": {
-        "x": 1506.2068832397072,
-        "y": -956.8756587580438
+        "x": -1100,
+        "y": -1330
       },
-      "width": 567.8806638718447,
-      "height": 455.99747333448107,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "left",
-          "offset": 0.2,
-          "position": {
-            "side": "left",
-            "offset": 0.2
-          }
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "left",
-          "offset": 0.5,
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "right",
-          "offset": 0.5,
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
-        }
-      ],
+      "width": 420,
+      "height": 280,
       "ports": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "left",
-          "offset": 0.2,
-          "position": {
-            "side": "left",
-            "offset": 0.2
-          }
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
           }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
         },
         {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "left",
-          "offset": 0.5,
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "right",
-          "offset": 0.5,
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
         }
       ],
       "inputs": [
         {
           "key": "root",
           "label": "root",
-          "type": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.2
-          }
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value",
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value",
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value",
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
+          "type": "any"
         }
       ],
       "outputs": [
         {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.2
-          }
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value",
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value",
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value",
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "type": "any"
         }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "",
-        "link": "",
-        "markdown": "Codex’s diagnosis is basically right. After looking at the graph itself, I’d add four refinements.\n\nFirst, the declaration is not merely old-fashioned. It is internally vague. It names `task-graph-template-summary` as `primaryNodeViewId`, yet the declared `view` surface has no `viewNodeId` at all. The declaration also leaves `portViewNodeId` and `iconViewNodeId` empty. So the outward surface is partly implied through fallback behavior rather than explicitly wired. That is exactly the sort of hidden contract this hardening effort is meant to eliminate.\n\nSecond, I would avoid making the new port another synchronized state container. The clean chain should be:\n\n```text\ngoal / tasks / questions\n          ↓\n     updater script\n          ↓\n authoritative summary\n          ↓\n passive outward port\n```\n\nThe port should point at the summary through something like `sourceNodeId` and `sourcePayload`, or whatever the canonical modern equivalent is. The updater should not have to copy rollups into the port. Otherwise you replace the current dual-output model with a new dual-output model wearing a nicer hat. 🎩\n\nThird, I would define the **payload contract** before adding the port. The current summary contains useful derived fields such as goal, status, task progress, question progress, task titles, and question titles.  Decide which of those belong in the stable public payload and which are internal conveniences. A consumer should not silently become dependent on every field the summary happens to carry today.\n\nSomething along these lines:\n\n```text\ntaskGraphSummary.v1\n- title\n- status\n- completedTasks\n- totalTasks\n- answeredQuestions\n- totalQuestions\n- summary\n- target\n```\n\nThat gives the port an actual contract rather than merely a pretty rendering.\n\nFourth, I would isolate legacy compatibility aggressively. The `summary-task` node is a real `task` node, which means generic task scans must remember to exclude it. That is conceptually hazardous even if the updater already knows how.  If it must remain, I’d mark it unmistakably:\n\n```json\n{\n  \"countAsTask\": false,\n  \"compatibilityRole\": \"legacy-task-summary-consumer\",\n  \"deprecated\": true\n}\n```\n\nPossibly also hide it by default. A compatibility shim should look like scaffolding, not like a first-class room in the house.\n\nSo my preferred migration would be:\n\n1. Keep `summary` as authoritative derived state.\n2. Define a small versioned outward summary payload.\n3. Add a real passive port sourced from that summary.\n4. Point the declaration’s default surface explicitly at the port.\n5. Rename the fake `...-port` bridges.\n6. Quarantine `summary-task`, then remove it when the old consumer path is gone.\n\nThe extra principle I’d state plainly in the contract is:\n\n> **Views and ports expose state; they do not own or synthesize it.**\n\nThat sentence would prevent this same cloud from drifting into other templates later.\n",
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "semanticLevel": "detail",
+        "content": {
+          "kind": "markdown",
+          "value": "# Task Graph\\n\\nA coordinated unit of work with a goal, concrete tasks or questions, decisions, and a durable summary."
+        },
+        "interfaceContract": {
+          "version": 1,
+          "ownsContent": true,
+          "surfaceDelegation": true
+        },
         "identity": {
           "graphId": "task-graph-template-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1784322365441,
-          "reason": "node-drag"
         }
       }
     },
     {
-      "id": "055d3ae2-10b2-40b4-ac12-369d05658a0f",
-      "type": "markdown",
-      "label": "GPT Says:",
-      "root": false,
+      "id": "task-graph-template-summary-view",
+      "type": "view",
+      "label": "Task Graph Summary View",
       "position": {
-        "x": 1761.7528183207185,
-        "y": 25.303467273265255
+        "x": -1100,
+        "y": -990
       },
-      "width": 567.8806638718447,
-      "height": 455.99747333448107,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "left",
-          "offset": 0.2,
-          "position": {
-            "side": "left",
-            "offset": 0.2
-          }
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "left",
-          "offset": 0.5,
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "right",
-          "offset": 0.5,
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
-        }
-      ],
+      "width": 420,
+      "height": 280,
       "ports": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "left",
-          "offset": 0.2,
-          "position": {
-            "side": "left",
-            "offset": 0.2
-          }
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
           }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
         },
         {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "left",
-          "offset": 0.5,
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "right",
-          "offset": 0.5,
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
         }
       ],
       "inputs": [
         {
           "key": "root",
           "label": "root",
-          "type": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.2
-          }
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value",
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value",
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value",
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
+          "type": "any"
         }
       ],
       "outputs": [
         {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.2
-          }
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value",
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value",
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value",
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "type": "any"
         }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "",
-        "link": "",
-        "markdown": "Broadly, I think a task graph needs to exist at several scales. Not merely “small card” and “big graph,” but as an object that can be recognized, inspected, entered, operated, and composed with other graphs.\n\nThe cleanest model is probably a **surface ladder**:\n\n## 1. Identity surface\n\nThe smallest possible representation.\n\nThis is what appears in breadcrumbs, search results, compact references, graph selectors, navigation history, and tiny semantic-zoom states.\n\nIt should communicate:\n\n* title\n* icon\n* task-graph type\n* overall status\n* perhaps a tiny progress indicator\n\nThis is not the task itself. It is the graph’s passport photo.\n\n```text\n🛠 Task Graph Template\n3 of 7 complete\n```\n\nPossible declaration role:\n\n```text\nicon\n```\n\n## 2. Card surface\n\nThe primary outward `port`.\n\nThis is what another graph consumes when it wants to embed the task graph as an object. It should answer, at a glance:\n\n* What is being attempted?\n* What state is it in?\n* How far along is it?\n* Is anything blocked?\n* What is the next meaningful action?\n* Where do I enter it?\n\nThis should be the default surface because it represents the graph without exposing its machinery.\n\n```text\nGoal\nStatus\nProgress\nNext task\nOpen questions\nBlocked state\nEnter graph\n```\n\nPossible role:\n\n```text\ncard\n```\n\nThis is the graph’s handshake with the rest of Twilite.\n\n## 3. Summary or document surface\n\nA readable, non-canvas representation of the entire plan.\n\nThis should synthesize the graph into something closer to a project brief:\n\n* goal\n* current status\n* task list\n* open questions\n* decisions\n* blockers\n* completed work\n* next steps\n\nThis is valuable for readers who want the meaning of the task graph without navigating spatially.\n\nPossible role:\n\n```text\nsummary\n```\n\nor:\n\n```text\ndocument\n```\n\nI would keep this distinct from the card. The card is an invitation; the document is a report.\n\n## 4. Operational workspace surface\n\nThe full graph-authoring experience.\n\nThis is where the graph is entered and worked on:\n\n* create and edit tasks\n* connect dependencies\n* answer questions\n* record decisions\n* run updater scripts\n* reorganize the plan\n* inspect class and bridge plumbing when appropriate\n\nPossible role:\n\n```text\nworkspace\n```\n\nor:\n\n```text\nauthoring\n```\n\nThis is likely the graph’s normal full-screen destination, but it should not be its default embedded representation.\n\n## 5. Execution view\n\nA task graph also needs a view intended for **doing**, not understanding.\n\nThe authoring canvas may contain goals, decisions, questions, scripts, bridges, declarations, and other architectural furniture. An execution view should strip that down to actionable work:\n\n* ready tasks\n* blocked tasks\n* in-progress tasks\n* next actions\n* assigned actor\n* completion controls\n\nThis might be a list, board, queue, or focused task runner.\n\nPossible role:\n\n```text\nexecution\n```\n\nThe distinction matters:\n\n> The workspace explains and modifies the plan.\n> The execution surface advances it.\n\nThat could become extremely useful once agents operate inside Twilite.\n\n## 6. Dependency view\n\nA task graph’s edges carry meaning that a card or list cannot show.\n\nA dependency view should expose:\n\n* what must happen first\n* what is blocked by what\n* parallel work streams\n* critical junctions\n* tasks with no path forward\n* tasks that unlock many others\n\nPossible role:\n\n```text\ndependencies\n```\n\nThis could still be graph-shaped, but filtered to operational nodes and dependency relationships. No declaration nodes, class bridges, updater scripts, or other backstage rigging.\n\nIt is the clean architectural X-ray.\n\n## 7. Timeline or sequence view\n\nDependencies and chronology are related, but not identical.\n\nA timeline surface could show:\n\n* planned ordering\n* milestones\n* deadlines\n* completed events\n* decision dates\n* changes in status\n\nPossible role:\n\n```text\ntimeline\n```\n\nNot every task graph needs dates. This should therefore be optional, but the surface role should be available when the graph has temporal information.\n\n## 8. Activity and history surface\n\nA proper task object should be able to explain what happened to it.\n\nThis view would show:\n\n* tasks created or completed\n* decisions made\n* questions resolved\n* status changes\n* agent actions\n* script runs\n* important graph revisions\n\nPossible role:\n\n```text\nactivity\n```\n\nThis becomes especially important in an agent environment. Without it, the graph can show current truth but not how that truth arrived.\n\n## 9. Machine-readable surface\n\nThe visual port is for humans and host graphs. Agents and tools also need a stable semantic payload.\n\nThis should expose a deliberately small, versioned contract:\n\n```text\ntaskGraph.v1\n- graphId\n- title\n- goal\n- status\n- progress\n- blockers\n- nextActions\n- openQuestionCount\n- updatedAt\n- target\n```\n\nPossible role:\n\n```text\ndata\n```\n\nor:\n\n```text\napi\n```\n\nI would not make this a visible card unless there is a debugging need. It may simply be a declared surface or payload contract behind the main port.\n\nThis is how the task graph becomes a dependable computational citizen rather than just a rendered artifact.\n\n## 10. Compatibility surface\n\nOnly where needed.\n\nThe current `summary-task` path fits here. It should be explicitly named as legacy and excluded from ordinary discovery.\n\nPossible role:\n\n```text\ncompatibility\n```\n\nIt should never be mistaken for the primary representation.\n\n---\n\n## The complete surface family\n\nI would envision the declaration eventually saying something conceptually like:\n\n```text\nicon           → smallest recognizable identity\ncard           → default outward port\nsummary        → readable synthesized report\nworkspace      → full authoring graph\nexecution      → actionable task queue or board\ndependencies   → filtered relationship graph\ntimeline       → chronological projection\nactivity       → history and changes\ndata           → stable machine payload\ncompatibility  → temporary legacy consumer surface\n```\n\nThat sounds like a lot, but they do not all need to be implemented immediately, and they do not all require distinct stored nodes.\n\nSome may be:\n\n* actual nodes\n* views backed by one authoritative summary\n* filtered projections of the graph\n* runtime render modes\n* declaration entries pointing at the same node with different intents\n\nThe important thing is that they are **different promises**.\n\n## The irreducible core\n\nFor a task graph to have a complete basic existence in Twilite, I think it minimally needs four:\n\n1. **Icon**, so it can be recognized.\n2. **Card port**, so it can be composed into other graphs.\n3. **Summary**, so it can be read.\n4. **Workspace**, so it can be entered and changed.\n\nThen the first truly task-specific additions should be:\n\n5. **Execution**, so work can be performed.\n6. **Dependencies**, so structure can be understood.\n7. **Activity**, so changes can be trusted.\n\nThat gives the task graph a life cycle:\n\n> Recognize it.\n> Embed it.\n> Read it.\n> Enter it.\n> Work it.\n> Understand it.\n> Audit it.\n\nThat feels like a full and proper existence in the Twilite Zone. 🌒\n",
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "semanticLevel": "summary",
+        "content": {
+          "kind": "markdown",
+          "value": "## Task Graph\\n\\nGoal, progress, next action, blockers, and unresolved questions."
+        },
+        "interfaceContract": {
+          "version": 1,
+          "ownsContent": true,
+          "surfaceDelegation": true
+        },
         "identity": {
           "graphId": "task-graph-template-declaration"
+        }
+      }
+    },
+    {
+      "id": "task-graph-template-icon-view",
+      "type": "view",
+      "label": "Task Graph Icon View",
+      "position": {
+        "x": -1100,
+        "y": -650
+      },
+      "width": 420,
+      "height": 280,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
         },
-        "_placement": {
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "semanticLevel": "icon",
+        "content": {
+          "kind": "svg",
+          "value": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 220'><rect width='320' height='220' rx='28' fill='#172554'/><circle cx='160' cy='92' r='54' fill='#dbeafe'/><path d='M132 92l18 18 40-44' fill='none' stroke='#2563eb' stroke-width='14' stroke-linecap='round' stroke-linejoin='round'/><text x='160' y='184' text-anchor='middle' fill='#fff' font-family='system-ui' font-size='20' font-weight='800'>TASK</text></svg>"
+        },
+        "interfaceContract": {
           "version": 1,
-          "state": "auto-placed",
-          "source": "create",
-          "updatedAt": 1784322772487,
-          "reason": "node-batch-create"
+          "ownsContent": true,
+          "surfaceDelegation": true
         },
-        "visibilityRole": "browser"
+        "identity": {
+          "graphId": "task-graph-template-declaration"
+        }
+      }
+    },
+    {
+      "id": "task-graph-template-glyph",
+      "type": "glyph",
+      "label": "Task Glyph",
+      "position": {
+        "x": -500,
+        "y": -1650
+      },
+      "width": 220,
+      "height": 140,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "glyph": {
+          "kind": "icon",
+          "name": "TaskAlt"
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesGlyphDefinition": true
+        },
+        "identity": {
+          "graphId": "task-graph-template-declaration"
+        }
+      }
+    },
+    {
+      "id": "task-graph-template-landing-surface",
+      "type": "content",
+      "label": "Task Graph Landing Surface",
+      "position": {
+        "x": 120,
+        "y": -1250
+      },
+      "width": 520,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "content": {
+          "kind": "markdown",
+          "value": "# Task Graph\\n\\nDefine a goal, perform concrete tasks, resolve open questions, record decisions, and publish a graph-owned summary."
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesViewContent": true
+        },
+        "identity": {
+          "graphId": "task-graph-template-declaration"
+        }
+      }
+    },
+    {
+      "id": "task-graph-template-summary-port",
+      "type": "port",
+      "label": "Task Summary",
+      "position": {
+        "x": -500,
+        "y": -850
+      },
+      "width": 360,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "surfaceId": "summary",
+        "direction": "output",
+        "dataType": "task",
+        "sourceNodeId": "task-graph-template-summary",
+        "sourcePayload": "node.web.summary",
+        "presentation": {
+          "detail": {
+            "mode": "own",
+            "viewNodeId": "task-graph-template-summary-view"
+          },
+          "summary": {
+            "mode": "own",
+            "viewNodeId": "task-graph-template-summary-view"
+          },
+          "icon": {
+            "mode": "shared"
+          }
+        },
+        "identity": {
+          "graphId": "task-graph-template-declaration"
+        }
       }
     }
   ],
   "edges": [
-    {
-      "id": "task-graph-template-edge-export",
-      "type": "reference",
-      "source": "task-graph-template-declaration",
-      "target": "task-graph-template-export-kit",
-      "sourcePort": "right",
-      "targetPort": "left",
-      "label": "exports",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "task-graph-template-edge-001",
-      "type": "reference",
-      "source": "task-graph-template-title",
-      "target": "task-graph-template-goal",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "goal",
-      "style": {},
-      "data": {}
-    },
     {
       "id": "task-graph-template-edge-002",
       "type": "reference",
@@ -5166,81 +3762,95 @@
       "data": {}
     },
     {
-      "id": "task-graph-template-edge-011",
-      "type": "reference",
-      "source": "task-graph-template-title",
-      "target": "task-graph-template-back",
-      "sourcePort": "root",
+      "id": "task-graph-template-default-view",
+      "type": "default-view",
+      "source": "task-graph-template-declaration",
+      "target": "task-graph-template-detail-view",
+      "sourcePort": "default-view",
       "targetPort": "root",
-      "label": "library",
-      "style": {},
-      "data": {}
+      "label": "default view",
+      "data": {
+        "role": "default-view",
+        "semanticRole": "default-view"
+      }
     },
     {
-      "id": "task-graph-template-edge-012",
-      "type": "reference",
-      "source": "task-graph-template-title",
-      "target": "task-graph-template-bridge-goal",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "bridge",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "task-graph-template-edge-013",
-      "type": "reference",
-      "source": "task-graph-template-title",
-      "target": "task-graph-template-type",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "names",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "task-graph-template-edge-014",
-      "type": "reference",
-      "source": "task-graph-template-type",
-      "target": "task-graph-template-view",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "declares type",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "task-graph-template-edge-015",
+      "id": "task-graph-template-summary-view-edge",
       "type": "reference",
       "source": "task-graph-template-declaration",
-      "target": "task-graph-template-view",
-      "sourcePort": "right",
-      "targetPort": "left",
-      "label": "port view",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "task-graph-template-edge-016",
-      "type": "reference",
-      "source": "task-graph-template-type",
-      "target": "task-graph-template-icon-view",
-      "sourcePort": "root",
+      "target": "task-graph-template-summary-view",
+      "sourcePort": "summary-view",
       "targetPort": "root",
-      "label": "icon view",
-      "style": {},
-      "data": {}
+      "label": "summary view",
+      "data": {
+        "role": "shared-summary",
+        "semanticRole": "shared-summary"
+      }
     },
     {
-      "id": "task-graph-template-edge-017",
+      "id": "task-graph-template-icon-view-edge",
       "type": "reference",
       "source": "task-graph-template-declaration",
       "target": "task-graph-template-icon-view",
-      "sourcePort": "right",
-      "targetPort": "left",
+      "sourcePort": "icon-view",
+      "targetPort": "root",
       "label": "icon view",
-      "style": {},
-      "data": {}
+      "data": {
+        "role": "shared-icon",
+        "semanticRole": "shared-icon"
+      }
+    },
+    {
+      "id": "task-graph-template-glyph-edge",
+      "type": "reference",
+      "source": "task-graph-template-declaration",
+      "target": "task-graph-template-glyph",
+      "sourcePort": "glyph",
+      "targetPort": "root",
+      "label": "glyph",
+      "data": {
+        "role": "shared-glyph",
+        "semanticRole": "shared-glyph"
+      }
+    },
+    {
+      "id": "task-graph-template-landing-edge",
+      "type": "reference",
+      "source": "task-graph-template-declaration",
+      "target": "task-graph-template-landing-surface",
+      "sourcePort": "landing-surface",
+      "targetPort": "root",
+      "label": "landing surface",
+      "data": {
+        "role": "landing-surface",
+        "semanticRole": "landing-surface"
+      }
+    },
+    {
+      "id": "task-graph-template-summary-port-edge",
+      "type": "reference",
+      "source": "task-graph-template-declaration",
+      "target": "task-graph-template-summary-port",
+      "sourcePort": "port",
+      "targetPort": "root",
+      "label": "port",
+      "data": {
+        "role": "exposes-port",
+        "semanticRole": "exposes-port"
+      }
+    },
+    {
+      "id": "task-graph-template-export-edge",
+      "type": "reference",
+      "source": "task-graph-template-declaration",
+      "target": "task-graph-template-export-kit",
+      "sourcePort": "port",
+      "targetPort": "root",
+      "label": "exports",
+      "data": {
+        "role": "exposes-port",
+        "semanticRole": "exposes-port"
+      }
     }
   ],
   "clusters": [],
@@ -5297,7 +3907,7 @@
       "tags": ""
     }
   ],
-  "nodeCount": 26,
-  "edgeCount": 14,
-  "timestamp": "2026-07-22T00:00:00.000Z"
+  "nodeCount": 22,
+  "edgeCount": 12,
+  "timestamp": "2026-08-27T16:24:08.220Z"
 }
