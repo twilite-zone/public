@@ -4,7 +4,7 @@
     "title": "Open Question Class",
     "description": "Unresolved question node for planning graphs.",
     "created": "2026-03-15T20:30:00.000Z",
-    "modified": "2026-08-02T01:35:00.000Z",
+    "modified": "2026-08-27T00:00:00.000Z",
     "author": "",
     "tags": [
       "library",
@@ -23,134 +23,232 @@
         "x": 0,
         "y": -420
       },
-      "width": 250,
-      "height": 110,
+      "width": 360,
+      "height": 240,
       "handles": [
         {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
+          "id": "default-view",
+          "key": "default-view",
+          "portId": "default-view",
+          "label": "default view",
+          "direction": "output",
           "dataType": "any",
-          "angle": 210
+          "angle": 165,
+          "role": "default-view"
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
+          "id": "summary-view",
+          "key": "summary-view",
+          "portId": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary"
         },
         {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
+          "id": "icon-view",
+          "key": "icon-view",
+          "portId": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon"
         },
         {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
+          "id": "glyph",
+          "key": "glyph",
+          "portId": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph"
         },
         {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
+          "id": "port",
+          "key": "port",
+          "portId": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port"
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "portId": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface"
         }
       ],
       "ports": [
         {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default view",
+          "direction": "output",
           "dataType": "any",
-          "angle": 210
+          "angle": 165,
+          "role": "default-view",
+          "allowedEdgeTypes": [
+            "default-view"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-view",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-summary",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-icon",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-glyph",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "glyph",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "landing-surface",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
         }
       ],
       "visible": true,
@@ -162,7 +260,8 @@
           "version": "0.2.0",
           "description": "Unresolved question node for planning graphs.",
           "createdAt": "2026-03-15T20:30:00.000Z",
-          "updatedAt": "2026-08-02T01:35:00.000Z"
+          "updatedAt": "2026-08-27T00:00:00.000Z",
+          "nodeId": "open-question"
         },
         "intent": {
           "kind": "node-class",
@@ -171,8 +270,9 @@
         "dependencies": {
           "nodeTypes": [
             "declaration",
-            "port",
-            "markdown"
+            "content",
+            "view",
+            "glyph"
           ],
           "portContracts": [
             "core"
@@ -209,35 +309,45 @@
           "surfaces": [
             {
               "id": "root",
-              "kind": "view",
-              "label": "Root",
-              "viewNodeId": "open-question-detail-view"
-            },
-            {
-              "id": "open-question-detail-view",
-              "kind": "view",
-              "label": "Surface",
-              "viewNodeId": "open-question-detail-view"
-            },
-            {
-              "id": "open-question-summary-view",
-              "kind": "view",
-              "label": "Card",
-              "viewNodeId": "open-question-summary-view"
-            },
-            {
-              "id": "open-question-icon-view",
-              "kind": "view",
-              "label": "Icon",
-              "viewNodeId": "open-question-icon-view"
-            },
-            {
-              "id": "open-question-editor-view",
-              "kind": "view",
-              "label": "Editor",
-              "viewNodeId": "open-question-editor-view"
+              "kind": "port",
+              "label": "Open Question",
+              "memo": "Implicit root port for consuming the Open Question class and its semantic views.",
+              "presentation": {
+                "detail": {
+                  "mode": "shared",
+                  "viewNodeId": "open-question-detail-view"
+                },
+                "summary": {
+                  "mode": "shared",
+                  "viewNodeId": "open-question-summary-view"
+                },
+                "icon": {
+                  "mode": "shared",
+                  "viewNodeId": "open-question-icon-view"
+                }
+              },
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
             }
-          ]
+          ],
+          "artifactKind": "node-class",
+          "graphViewRole": "browser",
+          "sharedPresentation": {
+            "detailViewNodeId": "open-question-detail-view",
+            "summaryViewNodeId": "open-question-summary-view",
+            "iconViewNodeId": "open-question-icon-view",
+            "glyphNodeId": "open-question-glyph"
+          },
+          "primaryNodeViewId": "open-question-detail-view",
+          "primaryEditorViewId": "open-question-editor-view",
+          "iconViewNodeId": "open-question-icon-view",
+          "portViewNodeId": ""
         },
         "nodeClass": {
           "contractVersion": "1.0.0",
@@ -260,42 +370,21 @@
                 "status": "open",
                 "owner": "",
                 "resolutionPath": "",
-                "prominence": "high"
+                "prominence": "high",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "HelpOutline"
+                  }
+                }
               },
               "ports": [
                 {
                   "id": "root",
+                  "key": "root",
                   "label": "root",
                   "direction": "bidirectional",
                   "dataType": "any",
-                  "angle": 210
-                },
-                {
-                  "id": "top",
-                  "label": "top",
-                  "direction": "bidirectional",
-                  "dataType": "value",
-                  "angle": 270
-                },
-                {
-                  "id": "right",
-                  "label": "right",
-                  "direction": "bidirectional",
-                  "dataType": "value",
-                  "angle": 0
-                },
-                {
-                  "id": "bottom",
-                  "label": "bottom",
-                  "direction": "bidirectional",
-                  "dataType": "value",
-                  "angle": 90
-                },
-                {
-                  "id": "left",
-                  "label": "left",
-                  "direction": "bidirectional",
-                  "dataType": "value",
                   "angle": 180
                 }
               ]
@@ -326,301 +415,138 @@
             "enableGithubPages": false
           },
           "autoSave": false
-        }
+        },
+        "primaryNodeViewId": "open-question-detail-view"
       }
     },
     {
       "id": "open-question-notes",
-      "type": "markdown",
-      "label": "Open Question Contract",
+      "type": "content",
+      "label": "Open Question Landing Surface",
       "root": false,
       "position": {
-        "x": -460,
-        "y": -160
+        "x": 520,
+        "y": -360
       },
-      "width": 380,
-      "height": 230,
+      "width": 460,
+      "height": 220,
       "handles": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
+          "direction": "input",
           "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
+          "angle": 180,
+          "portId": "root"
         }
       ],
       "ports": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
+          "direction": "input",
           "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
+          "angle": 180,
+          "metadata": {
+            "interface": true,
+            "structural": true,
+            "role": "content.root"
+          }
         }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "open-question-class"
+          "graphId": "open-question-class",
+          "nodeId": "open-question"
         },
-        "markdown": "Open Question captures unresolved issues that block clarity.\n\nAuthored fields: `label`, `body`, `status`, `owner`, `resolutionPath`, `prominence`.\n\nThe detail surface represents the full editor contract; card and icon surfaces are deliberate projections."
+        "markdown": "Open Question captures unresolved issues that block clarity.\n\nAuthored fields: `label`, `body`, `status`, `owner`, `resolutionPath`, `prominence`.\n\nThe detail surface represents the full editor contract; card and icon surfaces are deliberate projections.",
+        "content": {
+          "kind": "markdown",
+          "value": "Open Question captures unresolved issues that block clarity.\n\nAuthored fields: `label`, `body`, `status`, `owner`, `resolutionPath`, `prominence`.\n\nThe detail surface represents the full editor contract; card and icon surfaces are deliberate projections."
+        },
+        "renderShape": {
+          "kind": "markdown"
+        }
       }
     },
     {
       "id": "open-question-editor-view",
-      "type": "port",
+      "type": "view",
       "label": "Editor",
       "root": false,
       "position": {
-        "x": -420,
-        "y": 140
+        "x": 40,
+        "y": 420
       },
-      "width": 390,
-      "height": 270,
+      "width": 480,
+      "height": 320,
       "handles": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
+          "direction": "input",
           "dataType": "any",
-          "angle": 210
+          "angle": 270,
+          "portId": "root"
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
         }
       ],
       "ports": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
+          "direction": "input",
           "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
           "angle": 270
         },
         {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
         }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "open-question-class"
+          "graphId": "open-question-class",
+          "nodeId": "open-question"
         },
         "view": {
           "intent": "editor",
@@ -706,148 +632,78 @@
     },
     {
       "id": "open-question-detail-view",
-      "type": "port",
+      "type": "view",
       "label": "Surface",
       "root": false,
       "position": {
-        "x": 20,
-        "y": 140
+        "x": -620,
+        "y": -180
       },
-      "width": 440,
-      "height": 320,
+      "width": 420,
+      "height": 300,
       "handles": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
+          "direction": "input",
           "dataType": "any",
-          "angle": 210
+          "angle": 270,
+          "portId": "root"
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
         }
       ],
       "ports": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
+          "direction": "input",
           "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
           "angle": 270
         },
         {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
         }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "open-question-class"
+          "graphId": "open-question-class",
+          "nodeId": "open-question"
         },
         "view": {
           "intent": "node",
@@ -903,153 +759,84 @@
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;box-sizing:border-box;padding:0;overflow:hidden;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(244,236,255,.94));color:#23160a;position:relative;'>\n  <div style='display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:linear-gradient(135deg, #ead6ff, #8750c7);color:#261339;border-bottom:1px solid rgba(0,0,0,.08);'>\n    <div style='display:flex;align-items:center;gap:10px;min-width:0;'>\n      <div style='width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.10);font:800 14px system-ui,sans-serif;flex:0 0 auto;'>?</div>\n      <div style='min-width:0;'>\n        <div style='font:700 10px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:.68;margin-bottom:2px;'>Open Question</div>\n        <div style='font:800 18px/1.02 Georgia, \"Times New Roman\", serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'>{{label}}</div>\n      </div>\n    </div>\n    <div style='display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.38);border:1px solid rgba(0,0,0,.08);font:700 10px system-ui,sans-serif;text-transform:uppercase;white-space:nowrap;'>{{data.status}}</div>\n  </div>\n  <div style='display:flex;flex-direction:column;gap:12px;padding:14px 16px 14px 16px;min-height:0;flex:1;color:#23160a;'>\n    <div style='display:flex;align-items:center;gap:7px;flex-wrap:wrap;'>\n      <div style='padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.06);font:700 10px system-ui,sans-serif;color:#23160a;'>Status: {{data.status}}</div>\n      <div style='padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.06);font:700 10px system-ui,sans-serif;color:#23160a;'>Owner: {{data.owner}}</div>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;opacity:.74;color:#5b4731;'>Prominence {{data.prominence}}</div>\n    </div>\n    <div style='padding:12px 13px 11px 13px;border-radius:14px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.06);color:#23160a;'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.66;margin-bottom:6px;color:#6b533a;'>Unknown</div>\n      <div style='font:500 14px/1.42 system-ui,sans-serif;max-height:5.7em;overflow:hidden;color:#23160a;'>{{data.body}}</div>\n    </div>\n    <div style='margin-top:auto;display:flex;flex-direction:column;gap:6px;color:#23160a;'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.66;color:#6b533a;'>Resolution path</div>\n      <div style='padding:8px 10px;border-radius:12px;background:rgba(135,80,199,.14);border:1px solid rgba(0,0,0,.06);font:600 11px/1.35 system-ui,sans-serif;white-space:pre-wrap;overflow:hidden;color:#23160a;'>{{data.resolutionPath}}</div>\n    </div>\n  </div>\n</div>"
+        "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;box-sizing:border-box;padding:0;overflow:hidden;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(244,236,255,.94));color:#23160a;position:relative;'>\n  <div style='display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:linear-gradient(135deg, #ead6ff, #8750c7);color:#261339;border-bottom:1px solid rgba(0,0,0,.08);'>\n    <div style='display:flex;align-items:center;gap:10px;min-width:0;'>\n      <div style='width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.10);font:800 14px system-ui,sans-serif;flex:0 0 auto;'>?</div>\n      <div style='min-width:0;'>\n        <div style='font:700 10px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:.68;margin-bottom:2px;'>Open Question</div>\n        <div style='font:800 18px/1.02 Georgia, \"Times New Roman\", serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'>{{label}}</div>\n      </div>\n    </div>\n    <div style='display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.38);border:1px solid rgba(0,0,0,.08);font:700 10px system-ui,sans-serif;text-transform:uppercase;white-space:nowrap;'>{{data.status}}</div>\n  </div>\n  <div style='display:flex;flex-direction:column;gap:12px;padding:14px 16px 14px 16px;min-height:0;flex:1;color:#23160a;'>\n    <div style='display:flex;align-items:center;gap:7px;flex-wrap:wrap;'>\n      <div style='padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.06);font:700 10px system-ui,sans-serif;color:#23160a;'>Status: {{data.status}}</div>\n      <div style='padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.06);font:700 10px system-ui,sans-serif;color:#23160a;'>Owner: {{data.owner}}</div>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;opacity:.74;color:#5b4731;'>Prominence {{data.prominence}}</div>\n    </div>\n    <div style='padding:12px 13px 11px 13px;border-radius:14px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.06);color:#23160a;'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.66;margin-bottom:6px;color:#6b533a;'>Unknown</div>\n      <div style='font:500 14px/1.42 system-ui,sans-serif;max-height:5.7em;overflow:hidden;color:#23160a;'>{{data.body}}</div>\n    </div>\n    <div style='margin-top:auto;display:flex;flex-direction:column;gap:6px;color:#23160a;'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.66;color:#6b533a;'>Resolution path</div>\n      <div style='padding:8px 10px;border-radius:12px;background:rgba(135,80,199,.14);border:1px solid rgba(0,0,0,.06);font:600 11px/1.35 system-ui,sans-serif;white-space:pre-wrap;overflow:hidden;color:#23160a;'>{{data.resolutionPath}}</div>\n    </div>\n  </div>\n</div>",
+        "semanticLevel": "detail"
       }
     },
     {
       "id": "open-question-summary-view",
-      "type": "port",
+      "type": "view",
       "label": "Card",
       "root": false,
       "position": {
-        "x": 520,
-        "y": 140
+        "x": -620,
+        "y": 170
       },
-      "width": 360,
-      "height": 220,
+      "width": 420,
+      "height": 240,
       "handles": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
+          "direction": "input",
           "dataType": "any",
-          "angle": 210
+          "angle": 270,
+          "portId": "root"
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
         }
       ],
       "ports": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
+          "direction": "input",
           "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
           "angle": 270
         },
         {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
         }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "open-question-class"
+          "graphId": "open-question-class",
+          "nodeId": "open-question"
         },
         "view": {
           "intent": "node",
@@ -1085,153 +872,84 @@
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='width:100%;height:100%;display:flex;align-items:center;gap:10px;box-sizing:border-box;padding:8px 12px;border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(244,236,255,.94));color:#23160a;border:1px solid rgba(0,0,0,.08);position:relative;overflow:hidden;'>\n  <div style='position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg, #ead6ff, #8750c7);'></div>\n  <div style='width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(135,80,199,.14);color:#8750c7;font:800 13px system-ui,sans-serif;flex:0 0 auto;margin-left:4px;'>?</div>\n  <div style='min-width:0;display:flex;flex-direction:column;gap:2px;flex:1;'>\n    <div style='font:800 14px/1.05 Georgia, \"Times New Roman\", serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#23160a;'>{{label}}</div>\n    <div style='display:flex;gap:6px;align-items:center;font:700 10px system-ui,sans-serif;text-transform:uppercase;opacity:.74;white-space:nowrap;overflow:hidden;color:#5b4731;'>\n      <span>{{data.status}}</span><span>•</span><span>Status {{data.status}}</span>\n    </div>\n  </div>\n</div>"
+        "html": "<div style='width:100%;height:100%;display:flex;align-items:center;gap:10px;box-sizing:border-box;padding:8px 12px;border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(244,236,255,.94));color:#23160a;border:1px solid rgba(0,0,0,.08);position:relative;overflow:hidden;'>\n  <div style='position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg, #ead6ff, #8750c7);'></div>\n  <div style='width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(135,80,199,.14);color:#8750c7;font:800 13px system-ui,sans-serif;flex:0 0 auto;margin-left:4px;'>?</div>\n  <div style='min-width:0;display:flex;flex-direction:column;gap:2px;flex:1;'>\n    <div style='font:800 14px/1.05 Georgia, \"Times New Roman\", serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#23160a;'>{{label}}</div>\n    <div style='display:flex;gap:6px;align-items:center;font:700 10px system-ui,sans-serif;text-transform:uppercase;opacity:.74;white-space:nowrap;overflow:hidden;color:#5b4731;'>\n      <span>{{data.status}}</span><span>•</span><span>Status {{data.status}}</span>\n    </div>\n  </div>\n</div>",
+        "semanticLevel": "summary"
       }
     },
     {
       "id": "open-question-icon-view",
-      "type": "port",
+      "type": "view",
       "label": "Icon",
       "root": false,
       "position": {
-        "x": 940,
-        "y": 140
+        "x": -620,
+        "y": 500
       },
-      "width": 220,
-      "height": 220,
+      "width": 420,
+      "height": 240,
       "handles": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
+          "direction": "input",
           "dataType": "any",
-          "angle": 210
+          "angle": 270,
+          "portId": "root"
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
         }
       ],
       "ports": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
+          "direction": "input",
           "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
           "angle": 270
         },
         {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
         }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "open-question-class"
+          "graphId": "open-question-class",
+          "nodeId": "open-question"
         },
         "view": {
           "intent": "node",
@@ -1246,78 +964,122 @@
         "semanticLevel": "icon",
         "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:16px;background:white;border:1px solid rgba(15,23,42,.12);padding:12px;box-sizing:border-box;text-align:center;'><div style='font:700 10px/1.2 ui-sans-serif,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8750c7;'>Question</div><div style='font:700 14px/1.2 ui-sans-serif,system-ui,sans-serif;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;'>{{label}}</div><div style='font:700 9px/1 ui-sans-serif,system-ui,sans-serif;text-transform:uppercase;color:#64748b;'>{{data.status}}</div></div>"
       }
+    },
+    {
+      "id": "open-question-glyph",
+      "type": "glyph",
+      "label": "Open Question Glyph",
+      "root": false,
+      "position": {
+        "x": 70,
+        "y": -680
+      },
+      "width": 220,
+      "height": 140,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "glyph": {
+          "kind": "icon",
+          "name": "HelpOutline"
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesGlyphDefinition": true
+        },
+        "identity": {
+          "graphId": "open-question-class",
+          "nodeId": "open-question"
+        }
+      }
     }
   ],
   "edges": [
     {
-      "id": "open-question-edge-contract",
-      "type": "reference",
-      "source": "open-question-declaration",
-      "target": "open-question-notes",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "contract",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "open-question-edge-open-question-editor-view",
-      "type": "reference",
-      "source": "open-question-declaration",
-      "target": "open-question-editor-view",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "editor surface",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "open-question-edge-open-question-detail-view",
-      "type": "reference",
+      "id": "open-question-edge-default-view",
+      "type": "default-view",
       "source": "open-question-declaration",
       "target": "open-question-detail-view",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "detail surface",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
+      "sourcePort": "default-view",
+      "targetPort": "root",
+      "label": "default view",
+      "data": {
+        "role": "default view",
+        "semanticRole": "declaration.default-view"
+      }
     },
     {
-      "id": "open-question-edge-open-question-summary-view",
+      "id": "open-question-edge-summary-view",
       "type": "reference",
       "source": "open-question-declaration",
       "target": "open-question-summary-view",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "summary surface",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
+      "sourcePort": "summary-view",
+      "targetPort": "root",
+      "label": "summary view",
+      "data": {
+        "role": "summary view",
+        "semanticRole": "declaration.shared-summary"
+      }
     },
     {
-      "id": "open-question-edge-open-question-icon-view",
+      "id": "open-question-edge-icon-view",
       "type": "reference",
       "source": "open-question-declaration",
       "target": "open-question-icon-view",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "icon surface",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
+      "sourcePort": "icon-view",
+      "targetPort": "root",
+      "label": "icon view",
+      "data": {
+        "role": "icon view",
+        "semanticRole": "declaration.shared-icon"
+      }
+    },
+    {
+      "id": "open-question-edge-glyph",
+      "type": "reference",
+      "source": "open-question-declaration",
+      "target": "open-question-glyph",
+      "sourcePort": "glyph",
+      "targetPort": "root",
+      "label": "glyph",
+      "data": {
+        "role": "glyph",
+        "semanticRole": "declaration.shared-glyph"
+      }
+    },
+    {
+      "id": "open-question-edge-landing-surface",
+      "type": "reference",
+      "source": "open-question-declaration",
+      "target": "open-question-notes",
+      "sourcePort": "landing-surface",
+      "targetPort": "root",
+      "label": "landing surface",
+      "data": {
+        "role": "landing surface",
+        "semanticRole": "declaration.landing-surface"
+      }
     }
   ],
   "clusters": [],
