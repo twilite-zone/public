@@ -4,18 +4,253 @@
     "title": "Workboard Class",
     "description": "Graph-local policy controller for task placement, ordering, and reconciliation.",
     "created": "2026-07-29T23:00:00.000Z",
-    "modified": "2026-07-29T23:00:00.000Z",
-    "tags": ["library", "node-class", "task-planning", "workboard"],
+    "modified": "2026-08-27T00:00:00.000Z",
+    "tags": [
+      "library",
+      "node-class",
+      "task-planning",
+      "workboard"
+    ],
     "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
     {
-      "id": "workboard-class-manifest",
-      "type": "manifest",
-      "label": "Workboard Class",
-      "position": { "x": -720, "y": -260 },
-      "width": 400,
-      "height": 300,
+      "id": "workboard-declaration",
+      "type": "declaration",
+      "label": "Workboard Declaration",
+      "root": false,
+      "position": {
+        "x": 0,
+        "y": -420
+      },
+      "width": 360,
+      "height": 240,
+      "handles": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "portId": "default-view",
+          "label": "default view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 165,
+          "role": "default-view"
+        },
+        {
+          "id": "summary-view",
+          "key": "summary-view",
+          "portId": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary"
+        },
+        {
+          "id": "icon-view",
+          "key": "icon-view",
+          "portId": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon"
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "portId": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph"
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "portId": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port"
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "portId": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface"
+        }
+      ],
+      "ports": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 165,
+          "role": "default-view",
+          "allowedEdgeTypes": [
+            "default-view"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-view",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-summary",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-icon",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-glyph",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "glyph",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "landing-surface",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -23,14 +258,29 @@
           "graphId": "workboard-class",
           "name": "Workboard Class",
           "version": "0.1.0",
-          "description": "Graph-local policy controller for task placement, ordering, and reconciliation."
+          "description": "Graph-local policy controller for task placement, ordering, and reconciliation.",
+          "updatedAt": "2026-08-27T00:00:00.000Z",
+          "nodeId": "workboard"
         },
-        "intent": { "kind": "node-class", "scope": "local" },
+        "intent": {
+          "kind": "node-class",
+          "scope": "local"
+        },
         "dependencies": {
-          "nodeTypes": ["manifest", "view", "markdown"],
-          "portContracts": ["core"],
+          "nodeTypes": [
+            "declaration",
+            "content",
+            "view",
+            "glyph"
+          ],
+          "portContracts": [
+            "core"
+          ],
           "skills": [],
-          "schemaVersions": { "nodes": ">=1.0.0", "ports": ">=1.0.0" },
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
           "optional": []
         },
         "authority": {
@@ -40,7 +290,11 @@
             "allowDelete": true,
             "appendOnly": false
           },
-          "actors": { "humans": true, "agents": true, "tools": true },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
           "styleAuthority": "descriptive"
         },
         "nodeClass": {
@@ -53,7 +307,10 @@
             "version": ">=0.1.0",
             "defaults": {
               "label": "Workboard",
-              "size": { "width": 720, "height": 260 },
+              "size": {
+                "width": 720,
+                "height": 260
+              },
               "showLabel": false,
               "data": {
                 "name": "Workboard",
@@ -77,8 +334,14 @@
                         "type": "select",
                         "path": "data.board.laneMode",
                         "options": [
-                          { "label": "Automatic from task status", "value": "auto" },
-                          { "label": "Manual lane", "value": "manual" }
+                          {
+                            "label": "Automatic from task status",
+                            "value": "auto"
+                          },
+                          {
+                            "label": "Manual lane",
+                            "value": "manual"
+                          }
                         ],
                         "helperText": "Manual placement and pinning are synchronized for now. A pinned task keeps its selected lane; an unpinned task follows workboard policy."
                       },
@@ -88,13 +351,31 @@
                         "type": "select",
                         "path": "data.board.lane",
                         "options": [
-                          { "label": "Inbox", "value": "inbox" },
-                          { "label": "Now", "value": "now" },
-                          { "label": "Next", "value": "next" },
-                          { "label": "Waiting", "value": "waiting" },
-                          { "label": "Recently Completed", "value": "recently-completed" }
+                          {
+                            "label": "Inbox",
+                            "value": "inbox"
+                          },
+                          {
+                            "label": "Now",
+                            "value": "now"
+                          },
+                          {
+                            "label": "Next",
+                            "value": "next"
+                          },
+                          {
+                            "label": "Waiting",
+                            "value": "waiting"
+                          },
+                          {
+                            "label": "Recently Completed",
+                            "value": "recently-completed"
+                          }
                         ],
-                        "visibleWhen": { "path": "data.board.laneMode", "equals": "manual" }
+                        "visibleWhen": {
+                          "path": "data.board.laneMode",
+                          "equals": "manual"
+                        }
                       },
                       {
                         "key": "boardPinned",
@@ -133,46 +414,268 @@
                   },
                   "ordering": {
                     "pinnedFirst": true,
-                    "priorityOrder": ["critical", "high", "medium", "low"],
+                    "priorityOrder": [
+                      "critical",
+                      "high",
+                      "medium",
+                      "low"
+                    ],
                     "tieBreaker": "rank"
                   },
                   "automation": {
                     "freshReads": true,
                     "retainFailures": true
                   }
+                },
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Dashboard"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "declaration": {
+          "kind": "node-class",
+          "targetMode": "artifact",
+          "defaultSurfaceId": "root",
+          "surfaces": [
+            {
+              "id": "root",
+              "kind": "port",
+              "label": "Workboard",
+              "memo": "Implicit root port for consuming the Workboard class and its semantic views.",
+              "presentation": {
+                "detail": {
+                  "mode": "shared",
+                  "viewNodeId": "workboard-detail-view"
+                },
+                "summary": {
+                  "mode": "shared",
+                  "viewNodeId": "workboard-summary-view"
+                },
+                "icon": {
+                  "mode": "shared",
+                  "viewNodeId": "workboard-icon-view"
+                }
+              },
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
                 }
               }
             }
+          ],
+          "artifactKind": "node-class",
+          "graphViewRole": "browser",
+          "sharedPresentation": {
+            "detailViewNodeId": "workboard-detail-view",
+            "summaryViewNodeId": "workboard-summary-view",
+            "iconViewNodeId": "workboard-icon-view",
+            "glyphNodeId": "workboard-glyph"
+          },
+          "primaryNodeViewId": "workboard-detail-view",
+          "primaryEditorViewId": "workboard-editor-view",
+          "iconViewNodeId": "workboard-icon-view",
+          "portViewNodeId": ""
+        },
+        "primaryNodeViewId": "workboard-detail-view"
+      }
+    },
+    {
+      "id": "workboard-notes",
+      "type": "content",
+      "label": "Workboard Landing Surface",
+      "root": false,
+      "position": {
+        "x": 520,
+        "y": -360
+      },
+      "width": 460,
+      "height": 220,
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "metadata": {
+            "interface": true,
+            "structural": true,
+            "role": "content.root"
           }
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workboard-class",
+          "nodeId": "workboard"
+        },
+        "markdown": "## Workboard policy\n\nThe controller owns graph-local projection policy. Source task graphs continue to own task status, priority, and the work itself. Portal carriers own local `data.board` placement overrides.\n\n- `laneMode: auto` follows the status-to-lane mapping.\n- `laneMode: manual` preserves the carrier's selected lane.\n- For now, pinning and manual placement are the same state: pinned carriers use `laneMode: manual`; unpinned carriers use `laneMode: auto`.\n- Rank remains local projection data, not source-task truth.",
+        "content": {
+          "kind": "markdown",
+          "value": "## Workboard policy\n\nThe controller owns graph-local projection policy. Source task graphs continue to own task status, priority, and the work itself. Portal carriers own local `data.board` placement overrides.\n\n- `laneMode: auto` follows the status-to-lane mapping.\n- `laneMode: manual` preserves the carrier's selected lane.\n- For now, pinning and manual placement are the same state: pinned carriers use `laneMode: manual`; unpinned carriers use `laneMode: auto`.\n- Rank remains local projection data, not source-task truth."
+        },
+        "renderShape": {
+          "kind": "markdown"
         }
       }
     },
     {
       "id": "workboard-editor-view",
       "type": "view",
-      "label": "Editor View",
-      "position": { "x": -280, "y": -260 },
-      "width": 440,
-      "height": 300,
+      "label": "Editor",
+      "root": false,
+      "position": {
+        "x": 40,
+        "y": 420
+      },
+      "width": 480,
+      "height": 320,
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "view": { "intent": "editor", "payload": "editor.web" },
+        "view": {
+          "intent": "editor",
+          "payload": "editor.web"
+        },
         "editor": {
           "web": {
             "layout": {
               "mode": "tabs",
               "sections": [
-                { "key": "board", "title": "Board", "summary": "Identity and default placement behavior." },
-                { "key": "lanes", "title": "Lanes", "summary": "Map task status to local workboard lanes." },
-                { "key": "ordering", "title": "Ordering", "summary": "Control priority, pinning, and rank." },
-                { "key": "automation", "title": "Automation", "summary": "Configure source reads and failure handling for the graph-owned reconciler." }
+                {
+                  "key": "board",
+                  "title": "Board",
+                  "summary": "Identity and default placement behavior."
+                },
+                {
+                  "key": "lanes",
+                  "title": "Lanes",
+                  "summary": "Map task status to local workboard lanes."
+                },
+                {
+                  "key": "ordering",
+                  "title": "Ordering",
+                  "summary": "Control priority, pinning, and rank."
+                },
+                {
+                  "key": "automation",
+                  "title": "Automation",
+                  "summary": "Configure source reads and failure handling for the graph-owned reconciler."
+                }
               ]
             },
             "fields": [
-              { "key": "label", "label": "Node Label", "type": "text", "path": "label", "section": "board" },
-              { "key": "name", "label": "Board Name", "type": "text", "path": "data.name", "section": "board" },
-              { "key": "description", "label": "Description", "type": "markdown", "path": "data.description", "rows": 5, "section": "board" },
+              {
+                "key": "label",
+                "label": "Node Label",
+                "type": "text",
+                "path": "label",
+                "section": "board"
+              },
+              {
+                "key": "name",
+                "label": "Board Name",
+                "type": "text",
+                "path": "data.name",
+                "section": "board"
+              },
+              {
+                "key": "description",
+                "label": "Description",
+                "type": "markdown",
+                "path": "data.description",
+                "rows": 5,
+                "section": "board"
+              },
               {
                 "key": "defaultLaneMode",
                 "label": "Default Placement",
@@ -180,8 +683,14 @@
                 "path": "data.policy.defaultLaneMode",
                 "section": "board",
                 "options": [
-                  { "label": "Automatic from task status", "value": "auto" },
-                  { "label": "Manual", "value": "manual" }
+                  {
+                    "label": "Automatic from task status",
+                    "value": "auto"
+                  },
+                  {
+                    "label": "Manual",
+                    "value": "manual"
+                  }
                 ]
               },
               {
@@ -191,35 +700,326 @@
                 "path": "data.policy.unknownLane",
                 "section": "board",
                 "options": [
-                  { "label": "Inbox", "value": "inbox" },
-                  { "label": "Now", "value": "now" },
-                  { "label": "Next", "value": "next" },
-                  { "label": "Waiting", "value": "waiting" }
+                  {
+                    "label": "Inbox",
+                    "value": "inbox"
+                  },
+                  {
+                    "label": "Now",
+                    "value": "now"
+                  },
+                  {
+                    "label": "Next",
+                    "value": "next"
+                  },
+                  {
+                    "label": "Waiting",
+                    "value": "waiting"
+                  }
                 ]
               },
-              { "key": "statusTodo", "label": "Todo", "type": "select", "path": "data.policy.statusLanes.todo", "section": "lanes", "options": [{ "label": "Inbox", "value": "inbox" }, { "label": "Now", "value": "now" }, { "label": "Next", "value": "next" }, { "label": "Waiting", "value": "waiting" }, { "label": "Recently Completed", "value": "recently-completed" }] },
-              { "key": "statusActive", "label": "In Progress", "type": "select", "path": "data.policy.statusLanes.in-progress", "section": "lanes", "options": [{ "label": "Inbox", "value": "inbox" }, { "label": "Now", "value": "now" }, { "label": "Next", "value": "next" }, { "label": "Waiting", "value": "waiting" }, { "label": "Recently Completed", "value": "recently-completed" }] },
-              { "key": "statusBlocked", "label": "Blocked", "type": "select", "path": "data.policy.statusLanes.blocked", "section": "lanes", "options": [{ "label": "Inbox", "value": "inbox" }, { "label": "Now", "value": "now" }, { "label": "Next", "value": "next" }, { "label": "Waiting", "value": "waiting" }, { "label": "Recently Completed", "value": "recently-completed" }] },
-              { "key": "statusWaiting", "label": "Waiting", "type": "select", "path": "data.policy.statusLanes.waiting", "section": "lanes", "options": [{ "label": "Inbox", "value": "inbox" }, { "label": "Now", "value": "now" }, { "label": "Next", "value": "next" }, { "label": "Waiting", "value": "waiting" }, { "label": "Recently Completed", "value": "recently-completed" }] },
-              { "key": "statusDone", "label": "Done", "type": "select", "path": "data.policy.statusLanes.done", "section": "lanes", "options": [{ "label": "Inbox", "value": "inbox" }, { "label": "Now", "value": "now" }, { "label": "Next", "value": "next" }, { "label": "Waiting", "value": "waiting" }, { "label": "Recently Completed", "value": "recently-completed" }] },
-              { "key": "statusCancelled", "label": "Cancelled", "type": "select", "path": "data.policy.statusLanes.cancelled", "section": "lanes", "options": [{ "label": "Inbox", "value": "inbox" }, { "label": "Now", "value": "now" }, { "label": "Next", "value": "next" }, { "label": "Waiting", "value": "waiting" }, { "label": "Recently Completed", "value": "recently-completed" }] },
-              { "key": "pinnedFirst", "label": "Pinned Tasks First", "type": "boolean", "path": "data.policy.ordering.pinnedFirst", "section": "ordering" },
-              { "key": "priorityOrder", "label": "Priority Order", "type": "json", "path": "data.policy.ordering.priorityOrder", "section": "ordering", "rows": 5 },
-              { "key": "tieBreaker", "label": "Tie Breaker", "type": "select", "path": "data.policy.ordering.tieBreaker", "section": "ordering", "options": [{ "label": "Rank", "value": "rank" }, { "label": "Title", "value": "title" }, { "label": "Updated time", "value": "updatedAt" }] },
-              { "key": "freshReads", "label": "Read Fresh Source Graphs", "type": "boolean", "path": "data.policy.automation.freshReads", "section": "automation", "helperText": "When the graph-owned reconciler runs, bypass cached source graphs." },
-              { "key": "retainFailures", "label": "Keep Failed Cards Visible", "type": "boolean", "path": "data.policy.automation.retainFailures", "section": "automation" }
+              {
+                "key": "statusTodo",
+                "label": "Todo",
+                "type": "select",
+                "path": "data.policy.statusLanes.todo",
+                "section": "lanes",
+                "options": [
+                  {
+                    "label": "Inbox",
+                    "value": "inbox"
+                  },
+                  {
+                    "label": "Now",
+                    "value": "now"
+                  },
+                  {
+                    "label": "Next",
+                    "value": "next"
+                  },
+                  {
+                    "label": "Waiting",
+                    "value": "waiting"
+                  },
+                  {
+                    "label": "Recently Completed",
+                    "value": "recently-completed"
+                  }
+                ]
+              },
+              {
+                "key": "statusActive",
+                "label": "In Progress",
+                "type": "select",
+                "path": "data.policy.statusLanes.in-progress",
+                "section": "lanes",
+                "options": [
+                  {
+                    "label": "Inbox",
+                    "value": "inbox"
+                  },
+                  {
+                    "label": "Now",
+                    "value": "now"
+                  },
+                  {
+                    "label": "Next",
+                    "value": "next"
+                  },
+                  {
+                    "label": "Waiting",
+                    "value": "waiting"
+                  },
+                  {
+                    "label": "Recently Completed",
+                    "value": "recently-completed"
+                  }
+                ]
+              },
+              {
+                "key": "statusBlocked",
+                "label": "Blocked",
+                "type": "select",
+                "path": "data.policy.statusLanes.blocked",
+                "section": "lanes",
+                "options": [
+                  {
+                    "label": "Inbox",
+                    "value": "inbox"
+                  },
+                  {
+                    "label": "Now",
+                    "value": "now"
+                  },
+                  {
+                    "label": "Next",
+                    "value": "next"
+                  },
+                  {
+                    "label": "Waiting",
+                    "value": "waiting"
+                  },
+                  {
+                    "label": "Recently Completed",
+                    "value": "recently-completed"
+                  }
+                ]
+              },
+              {
+                "key": "statusWaiting",
+                "label": "Waiting",
+                "type": "select",
+                "path": "data.policy.statusLanes.waiting",
+                "section": "lanes",
+                "options": [
+                  {
+                    "label": "Inbox",
+                    "value": "inbox"
+                  },
+                  {
+                    "label": "Now",
+                    "value": "now"
+                  },
+                  {
+                    "label": "Next",
+                    "value": "next"
+                  },
+                  {
+                    "label": "Waiting",
+                    "value": "waiting"
+                  },
+                  {
+                    "label": "Recently Completed",
+                    "value": "recently-completed"
+                  }
+                ]
+              },
+              {
+                "key": "statusDone",
+                "label": "Done",
+                "type": "select",
+                "path": "data.policy.statusLanes.done",
+                "section": "lanes",
+                "options": [
+                  {
+                    "label": "Inbox",
+                    "value": "inbox"
+                  },
+                  {
+                    "label": "Now",
+                    "value": "now"
+                  },
+                  {
+                    "label": "Next",
+                    "value": "next"
+                  },
+                  {
+                    "label": "Waiting",
+                    "value": "waiting"
+                  },
+                  {
+                    "label": "Recently Completed",
+                    "value": "recently-completed"
+                  }
+                ]
+              },
+              {
+                "key": "statusCancelled",
+                "label": "Cancelled",
+                "type": "select",
+                "path": "data.policy.statusLanes.cancelled",
+                "section": "lanes",
+                "options": [
+                  {
+                    "label": "Inbox",
+                    "value": "inbox"
+                  },
+                  {
+                    "label": "Now",
+                    "value": "now"
+                  },
+                  {
+                    "label": "Next",
+                    "value": "next"
+                  },
+                  {
+                    "label": "Waiting",
+                    "value": "waiting"
+                  },
+                  {
+                    "label": "Recently Completed",
+                    "value": "recently-completed"
+                  }
+                ]
+              },
+              {
+                "key": "pinnedFirst",
+                "label": "Pinned Tasks First",
+                "type": "boolean",
+                "path": "data.policy.ordering.pinnedFirst",
+                "section": "ordering"
+              },
+              {
+                "key": "priorityOrder",
+                "label": "Priority Order",
+                "type": "json",
+                "path": "data.policy.ordering.priorityOrder",
+                "section": "ordering",
+                "rows": 5
+              },
+              {
+                "key": "tieBreaker",
+                "label": "Tie Breaker",
+                "type": "select",
+                "path": "data.policy.ordering.tieBreaker",
+                "section": "ordering",
+                "options": [
+                  {
+                    "label": "Rank",
+                    "value": "rank"
+                  },
+                  {
+                    "label": "Title",
+                    "value": "title"
+                  },
+                  {
+                    "label": "Updated time",
+                    "value": "updatedAt"
+                  }
+                ]
+              },
+              {
+                "key": "freshReads",
+                "label": "Read Fresh Source Graphs",
+                "type": "boolean",
+                "path": "data.policy.automation.freshReads",
+                "section": "automation",
+                "helperText": "When the graph-owned reconciler runs, bypass cached source graphs."
+              },
+              {
+                "key": "retainFailures",
+                "label": "Keep Failed Cards Visible",
+                "type": "boolean",
+                "path": "data.policy.automation.retainFailures",
+                "section": "automation"
+              }
             ]
           }
+        },
+        "identity": {
+          "graphId": "workboard-class",
+          "nodeId": "workboard"
         }
       }
     },
     {
       "id": "workboard-detail-view",
       "type": "view",
-      "label": "Detail View",
-      "position": { "x": 200, "y": -260 },
-      "width": 440,
+      "label": "Surface",
+      "root": false,
+      "position": {
+        "x": -620,
+        "y": -180
+      },
+      "width": 420,
       "height": 300,
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
@@ -227,52 +1027,366 @@
           "intent": "node",
           "payload": "node.web.detail",
           "controls": [
-            { "id": "workboard-reconcile", "type": "button", "label": "Reconcile", "title": "Reconcile workboard", "icon": "refresh", "variant": "outlined", "compact": true, "priority": 10, "action": "emit", "event": "executeNode", "payload": { "nodeId": "workboard-reconciler", "meta": { "trigger": "workboard-control" } } },
-            { "id": "workboard-edit", "type": "button", "label": "Edit", "icon": "edit", "variant": "outlined", "priority": "high", "action": "openEditor" }
+            {
+              "id": "workboard-reconcile",
+              "type": "button",
+              "label": "Reconcile",
+              "title": "Reconcile workboard",
+              "icon": "refresh",
+              "variant": "outlined",
+              "compact": true,
+              "priority": 10,
+              "action": "emit",
+              "event": "executeNode",
+              "payload": {
+                "nodeId": "workboard-reconciler",
+                "meta": {
+                  "trigger": "workboard-control"
+                }
+              }
+            },
+            {
+              "id": "workboard-edit",
+              "type": "button",
+              "label": "Edit",
+              "icon": "edit",
+              "variant": "outlined",
+              "priority": "high",
+              "action": "openEditor"
+            }
           ]
         },
-        "node": {
-          "web": {
-            "detail": {
-              "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:22px 26px;display:flex;align-items:center;gap:22px;overflow:hidden;border-radius:22px;background:linear-gradient(135deg,#111827,#1e3a5f 55%,#0f766e);color:#f8fafc;border:1px solid rgba(148,163,184,.3);box-shadow:0 18px 50px rgba(2,6,23,.38);'><div style='width:74px;height:74px;border-radius:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:14px;box-sizing:border-box;background:rgba(15,23,42,.6);border:1px solid rgba(125,211,252,.38);flex:0 0 auto;'><span style='background:#7c3aed;border-radius:4px;'></span><span style='background:#ef4444;border-radius:4px;'></span><span style='background:#f59e0b;border-radius:4px;'></span><span style='background:#2563eb;border-radius:4px;'></span><span style='background:#22c55e;border-radius:4px;'></span><span style='background:#38bdf8;border-radius:4px;'></span></div><div style='min-width:0;flex:1;'><div style='font:700 10px ui-sans-serif,system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7dd3fc;margin-bottom:7px;'>Workboard Controller</div><div style='font:800 26px/1.05 Georgia,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'>{{data.name}}</div><div style='font:500 13px/1.45 ui-sans-serif,system-ui,sans-serif;color:#cbd5e1;margin-top:8px;max-height:3em;overflow:hidden;'>{{data.description}}</div><div style='display:flex;gap:8px;flex-wrap:wrap;margin-top:13px;'><span style='padding:5px 9px;border-radius:999px;background:rgba(56,189,248,.16);font:700 10px ui-sans-serif,system-ui,sans-serif;color:#bae6fd;'>{{data.policy.defaultLaneMode}} placement</span><span style='padding:5px 9px;border-radius:999px;background:rgba(52,211,153,.14);font:700 10px ui-sans-serif,system-ui,sans-serif;color:#a7f3d0;'>graph-owned policy</span></div></div></div>"
-            }
+        "identity": {
+          "graphId": "workboard-class",
+          "nodeId": "workboard"
+        },
+        "renderShape": {
+          "kind": "html"
+        },
+        "html": "",
+        "semanticLevel": "detail"
+      }
+    },
+    {
+      "id": "workboard-summary-view",
+      "type": "view",
+      "label": "Summary View",
+      "root": false,
+      "position": {
+        "x": -620,
+        "y": 170
+      },
+      "width": 420,
+      "height": 240,
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
           }
         }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary",
+          "controls": [
+            {
+              "id": "workboard-reconcile",
+              "type": "button",
+              "label": "Reconcile",
+              "title": "Reconcile workboard",
+              "icon": "refresh",
+              "variant": "outlined",
+              "compact": true,
+              "priority": 10,
+              "action": "emit",
+              "event": "executeNode",
+              "payload": {
+                "nodeId": "workboard-reconciler",
+                "meta": {
+                  "trigger": "workboard-control"
+                }
+              }
+            },
+            {
+              "id": "workboard-edit",
+              "type": "button",
+              "label": "Edit",
+              "icon": "edit",
+              "variant": "outlined",
+              "priority": "high",
+              "action": "openEditor"
+            }
+          ]
+        },
+        "identity": {
+          "graphId": "workboard-class",
+          "nodeId": "workboard"
+        },
+        "renderShape": {
+          "kind": "html"
+        },
+        "html": "",
+        "semanticLevel": "summary"
       }
     },
     {
       "id": "workboard-icon-view",
       "type": "view",
-      "label": "Icon View",
-      "position": { "x": 680, "y": -260 },
-      "width": 300,
-      "height": 180,
+      "label": "Icon",
+      "root": false,
+      "position": {
+        "x": -620,
+        "y": 500
+      },
+      "width": 420,
+      "height": 240,
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "view": { "intent": "node", "payload": "node.web.icon" },
-        "node": {
-          "web": {
-            "icon": {
-              "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;border-radius:18px;background:linear-gradient(145deg,#111827,#164e63);color:#f8fafc;border:1px solid rgba(125,211,252,.3);'><div style='display:flex;gap:5px;'><span style='width:16px;height:16px;border-radius:4px;background:#7c3aed;'></span><span style='width:16px;height:16px;border-radius:4px;background:#ef4444;'></span><span style='width:16px;height:16px;border-radius:4px;background:#f59e0b;'></span><span style='width:16px;height:16px;border-radius:4px;background:#2563eb;'></span><span style='width:16px;height:16px;border-radius:4px;background:#22c55e;'></span></div><div style='font:800 14px/1.2 ui-sans-serif,system-ui,sans-serif;text-align:center;'>{{data.name}}</div><div style='font:700 9px ui-sans-serif,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.15em;color:#7dd3fc;'>Workboard</div></div>"
-            }
-          }
-        }
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "identity": {
+          "graphId": "workboard-class",
+          "nodeId": "workboard"
+        },
+        "renderShape": {
+          "kind": "html"
+        },
+        "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;border-radius:18px;background:linear-gradient(145deg,#111827,#164e63);color:#f8fafc;border:1px solid rgba(125,211,252,.3);'><div style='display:flex;gap:5px;'><span style='width:16px;height:16px;border-radius:4px;background:#7c3aed;'></span><span style='width:16px;height:16px;border-radius:4px;background:#ef4444;'></span><span style='width:16px;height:16px;border-radius:4px;background:#f59e0b;'></span><span style='width:16px;height:16px;border-radius:4px;background:#2563eb;'></span><span style='width:16px;height:16px;border-radius:4px;background:#22c55e;'></span></div><div style='font:800 14px/1.2 ui-sans-serif,system-ui,sans-serif;text-align:center;'>{{data.name}}</div><div style='font:700 9px ui-sans-serif,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.15em;color:#7dd3fc;'>Workboard</div></div>",
+        "semanticLevel": "icon"
       }
     },
     {
-      "id": "workboard-notes",
-      "type": "markdown",
-      "label": "Workboard Contract",
-      "position": { "x": -280, "y": 100 },
-      "width": 720,
-      "height": 260,
+      "id": "workboard-glyph",
+      "type": "glyph",
+      "label": "Workboard Glyph",
+      "root": false,
+      "position": {
+        "x": 70,
+        "y": -680
+      },
+      "width": 220,
+      "height": 140,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Workboard policy\n\nThe controller owns graph-local projection policy. Source task graphs continue to own task status, priority, and the work itself. Portal carriers own local `data.board` placement overrides.\n\n- `laneMode: auto` follows the status-to-lane mapping.\n- `laneMode: manual` preserves the carrier's selected lane.\n- For now, pinning and manual placement are the same state: pinned carriers use `laneMode: manual`; unpinned carriers use `laneMode: auto`.\n- Rank remains local projection data, not source-task truth."
+        "glyph": {
+          "kind": "icon",
+          "name": "Dashboard"
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesGlyphDefinition": true
+        },
+        "identity": {
+          "graphId": "workboard-class",
+          "nodeId": "workboard"
+        }
       }
     }
   ],
-  "edges": []
+  "edges": [
+    {
+      "id": "workboard-edge-default-view",
+      "type": "default-view",
+      "source": "workboard-declaration",
+      "target": "workboard-detail-view",
+      "sourcePort": "default-view",
+      "targetPort": "root",
+      "label": "default view",
+      "data": {
+        "role": "default view",
+        "semanticRole": "declaration.default-view"
+      }
+    },
+    {
+      "id": "workboard-edge-summary-view",
+      "type": "reference",
+      "source": "workboard-declaration",
+      "target": "workboard-summary-view",
+      "sourcePort": "summary-view",
+      "targetPort": "root",
+      "label": "summary view",
+      "data": {
+        "role": "summary view",
+        "semanticRole": "declaration.shared-summary"
+      }
+    },
+    {
+      "id": "workboard-edge-icon-view",
+      "type": "reference",
+      "source": "workboard-declaration",
+      "target": "workboard-icon-view",
+      "sourcePort": "icon-view",
+      "targetPort": "root",
+      "label": "icon view",
+      "data": {
+        "role": "icon view",
+        "semanticRole": "declaration.shared-icon"
+      }
+    },
+    {
+      "id": "workboard-edge-glyph",
+      "type": "reference",
+      "source": "workboard-declaration",
+      "target": "workboard-glyph",
+      "sourcePort": "glyph",
+      "targetPort": "root",
+      "label": "glyph",
+      "data": {
+        "role": "glyph",
+        "semanticRole": "declaration.shared-glyph"
+      }
+    },
+    {
+      "id": "workboard-edge-landing-surface",
+      "type": "reference",
+      "source": "workboard-declaration",
+      "target": "workboard-notes",
+      "sourcePort": "landing-surface",
+      "targetPort": "root",
+      "label": "landing surface",
+      "data": {
+        "role": "landing surface",
+        "semanticRole": "declaration.landing-surface"
+      }
+    }
+  ],
+  "clusters": [],
+  "nodeCount": 8,
+  "edgeCount": 0,
+  "timestamp": "2026-03-24T15:44:10.110Z"
 }
