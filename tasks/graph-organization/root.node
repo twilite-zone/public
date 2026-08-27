@@ -91,29 +91,14 @@
           "kind": "task",
           "targetMode": "artifact",
           "artifactKind": "task-graph",
-          "defaultSurfaceId": "root",
+          "defaultSurfaceId": "",
           "surfaces": [
             {
-              "id": "root",
-              "kind": "port",
-              "label": "Graph Organization Law",
-              "memo": "Primary outward-facing summary surface for the graph-organization task graph.",
-              "portNodeId": "graph-organization-root-port",
-              "viewNodeId": "graph-organization-task-summary",
-              "exposes": {
-                "views": {
-                  "mode": "allow"
-                },
-                "declarations": {
-                  "mode": "allow"
-                }
-              }
-            },
-            {
               "id": "summary",
-              "kind": "view",
-              "label": "Summary",
-              "viewNodeId": "graph-organization-task-summary",
+              "kind": "port",
+              "label": "Make useful graph forms recognizable and reusable",
+              "portNodeId": "graph-organization-root-port",
+              "viewNodeId": "graph-organization-declaration-summary-view",
               "exposes": {
                 "views": {
                   "mode": "allow"
@@ -123,46 +108,272 @@
                 }
               }
             }
-          ]
+          ],
+          "interfaceContract": {
+            "version": 1,
+            "implicitRootPort": true
+          }
         },
         "visibilityRole": "editor"
       },
       "root": false,
       "ports": [
         {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default view",
+          "direction": "output",
           "dataType": "any",
-          "angle": 210
+          "angle": 165,
+          "role": "default-view",
+          "allowedEdgeTypes": [
+            "default-view"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-view",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-summary",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-icon",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-glyph",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "glyph",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "landing-surface",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "portId": "default-view",
+          "label": "default view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 165,
+          "role": "default-view"
+        },
+        {
+          "id": "summary-view",
+          "key": "summary-view",
+          "portId": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary"
+        },
+        {
+          "id": "icon-view",
+          "key": "icon-view",
+          "portId": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon"
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "portId": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph"
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "portId": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port"
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "portId": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface"
+        }
+      ],
+      "inputs": [],
+      "outputs": [
+        {
+          "key": "default-view",
+          "label": "default view",
+          "type": "any"
+        },
+        {
+          "key": "summary-view",
+          "label": "summary view",
+          "type": "any"
+        },
+        {
+          "key": "icon-view",
+          "label": "icon view",
+          "type": "any"
+        },
+        {
+          "key": "glyph",
+          "label": "glyph",
+          "type": "any"
+        },
+        {
+          "key": "port",
+          "label": "port",
+          "type": "any"
+        },
+        {
+          "key": "landing-surface",
+          "label": "landing surface",
+          "type": "any"
         }
       ]
     },
@@ -2572,127 +2783,138 @@
           "Define edge meaning by graph role",
           "Make graph shapes recognizable and template-worthy",
           "Enable safe graph growth and reorganization",
-          "Define the template library as a graph surface",
-          "Implement lean template installation"
+          "Implement lean template installation",
+          "Make templates as easy as saving a good graph"
         ],
         "questionTitles": [
           "How strict should organization law be before it becomes oppressive?"
         ],
-        "taskListText": "1. Define section and header grammar\n2. Define edge meaning by graph role\n3. Make graph shapes recognizable and template-worthy\n4. Enable safe graph growth and reorganization\n5. Define the template library as a graph surface\n6. Implement lean template installation",
+        "taskListText": "1. Define section and header grammar\n2. Define edge meaning by graph role\n3. Make graph shapes recognizable and template-worthy\n4. Enable safe graph growth and reorganization\n5. Implement lean template installation\n6. Make templates as easy as saving a good graph",
         "questionListText": "1. How strict should organization law be before it becomes oppressive?",
         "_classBinding": {
-          "key": "task-summary-provider",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-          "identity": {
-            "graphId": "task-graph-summary-class",
-            "name": "Task Summary Provider Class",
-            "version": "0.1.0",
-            "description": "Provider surface for a planning task summary.",
-            "createdAt": "2026-03-22T00:00:00.000Z",
-            "updatedAt": "2026-03-24T01:10:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "Provider surface for a planning task summary.",
-          "description": "Provider surface for a planning task summary.",
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
           "defaults": {
-            "label": "Task Summary Provider",
+            "label": "Task",
             "size": {
-              "width": 420,
-              "height": 250
+              "width": 380,
+              "height": 260
             },
-            "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
             "showLabel": false,
             "data": {
-              "goal": "Summarize this task graph",
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
               "status": "todo",
-              "taskProgress": {
-                "completed": 0,
-                "total": 0
-              },
-              "questionProgress": {
-                "answered": 0,
-                "total": 0
+              "owner": "",
+              "estimateHours": "",
+              "targetDate": "",
+              "startedAt": "",
+              "completedAt": "",
+              "externalRef": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Checklist"
+                }
               }
-            }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
           },
           "nodeDef": {
-            "key": "task-summary-provider",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+            "key": "task",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
             "source": "local",
             "version": ">=0.1.0",
             "defaults": {
-              "label": "Task Summary Provider",
+              "label": "Task",
               "size": {
-                "width": 420,
-                "height": 250
+                "width": 380,
+                "height": 260
               },
-              "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
               "showLabel": false,
               "data": {
-                "goal": "Summarize this task graph",
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
                 "status": "todo",
-                "taskProgress": {
-                  "completed": 0,
-                  "total": 0
-                },
-                "questionProgress": {
-                  "answered": 0,
-                  "total": 0
+                "owner": "",
+                "estimateHours": "",
+                "targetDate": "",
+                "startedAt": "",
+                "completedAt": "",
+                "externalRef": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Checklist"
+                  }
                 }
-              }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
             }
-          },
-          "views": [
-            {
-              "key": "task-summary-provider",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "task-summary-provider",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "task-summary-provider",
-            "intent": "node",
-            "payload": "node.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "task-summary-provider",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
           }
         },
         "_bridge": {
           "sourceNodeId": "",
           "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Summary",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task-summary-provider",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+          "classKey": "task",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
         },
-        "definitionKey": "task-summary-provider",
-    "updatedAt": "2026-08-16T12:00:00.000Z",
-    "nextAction": "Continue through the active Template Library child task: finish Template Standardization and Derivation, then prove safe template derivation against the current bridge and script presentation contracts.",
-        "visibilityRole": "browser"
+        "definitionKey": "task",
+        "updatedAt": "2026-08-27T22:21:14.474Z",
+        "nextAction": "Continue through the active Template Library child task: finish Template Standardization and Derivation, then prove safe template derivation against the current bridge and script presentation contracts.",
+        "visibilityRole": "browser",
+        "title": "Make useful graph forms recognizable and reusable",
+        "body": "Goal: Make useful graph forms recognizable and reusable",
+        "priority": "medium",
+        "owner": "",
+        "estimateHours": "",
+        "targetDate": "",
+        "startedAt": "",
+        "completedAt": "",
+        "externalRef": "",
+        "acceptanceCriteria": [
+          "Review the graph-owned task summary for current scope and progress"
+        ],
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Checklist"
+          }
+        }
       },
       "root": false,
       "ports": [
@@ -3383,7 +3605,7 @@
     {
       "id": "graph-organization-root-port",
       "type": "port",
-      "label": "Graph Organization Law",
+      "label": "Make useful graph forms recognizable and reusable",
       "root": true,
       "visible": false,
       "showLabel": true,
@@ -3396,38 +3618,11 @@
       "ports": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
+          "direction": "input",
           "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
           "angle": 270
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
         }
       ],
       "data": {
@@ -3440,14 +3635,55 @@
         "sourceScope": "graph",
         "sourceNodeId": "graph-organization-task-summary",
         "sourcePayload": "node.web",
-        "surfaceId": "root",
+        "surfaceId": "summary",
         "targetNodeId": "graph-organization-task-summary",
         "view": {
           "intent": "node",
-          "payload": "node.web"
+          "payload": "node.web",
+          "nodeType": "task"
         },
-        "visibilityRole": "editor"
-      }
+        "visibilityRole": "editor",
+        "direction": "output",
+        "dataType": "task",
+        "renderedNodeType": "task",
+        "presentation": {
+          "detail": {
+            "mode": "own",
+            "viewNodeId": "graph-organization-task-summary"
+          },
+          "summary": {
+            "mode": "own",
+            "viewNodeId": "graph-organization-task-summary"
+          },
+          "icon": {
+            "mode": "own",
+            "viewNodeId": "graph-organization-task-summary"
+          },
+          "glyph": {
+            "mode": "own",
+            "viewNodeId": "graph-organization-task-summary"
+          }
+        }
+      },
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": []
     },
     {
       "id": "graph-organization-standardization-idea",
@@ -3745,6 +3981,425 @@
         "sourcePayload": "node.web.summary",
         "visibilityRole": "browser"
       }
+    },
+    {
+      "id": "graph-organization-declaration-detail-view",
+      "type": "view",
+      "label": "Make useful graph forms recognizable and reusable Detail",
+      "position": {
+        "x": -2100,
+        "y": -600
+      },
+      "width": 420,
+      "height": 280,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "semanticLevel": "detail",
+        "content": {
+          "kind": "markdown",
+          "value": "# Make useful graph forms recognizable and reusable\n\nA graph-owned task with its goal, concrete work, decisions, questions, and current operational summary."
+        },
+        "interfaceContract": {
+          "version": 1,
+          "ownsContent": true,
+          "surfaceDelegation": true
+        },
+        "identity": {
+          "graphId": "graph-organization-declaration"
+        }
+      }
+    },
+    {
+      "id": "graph-organization-declaration-summary-view",
+      "type": "view",
+      "label": "Make useful graph forms recognizable and reusable Summary View",
+      "position": {
+        "x": -2100,
+        "y": -260
+      },
+      "width": 420,
+      "height": 280,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "semanticLevel": "summary",
+        "content": {
+          "kind": "markdown",
+          "value": "## Make useful graph forms recognizable and reusable\n\nCurrent status, priority, progress, next action, blockers, and unresolved questions."
+        },
+        "interfaceContract": {
+          "version": 1,
+          "ownsContent": true,
+          "surfaceDelegation": true
+        },
+        "identity": {
+          "graphId": "graph-organization-declaration"
+        }
+      }
+    },
+    {
+      "id": "graph-organization-declaration-icon-view-modern",
+      "type": "view",
+      "label": "Make useful graph forms recognizable and reusable Icon View",
+      "position": {
+        "x": -2100,
+        "y": 80
+      },
+      "width": 420,
+      "height": 280,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "semanticLevel": "icon",
+        "content": {
+          "kind": "svg",
+          "value": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 220'><rect width='320' height='220' rx='28' fill='#172554'/><circle cx='160' cy='92' r='54' fill='#dbeafe'/><path d='M132 92l18 18 40-44' fill='none' stroke='#2563eb' stroke-width='14' stroke-linecap='round' stroke-linejoin='round'/><text x='160' y='184' text-anchor='middle' fill='#fff' font-family='system-ui' font-size='20' font-weight='800'>TASK</text></svg>"
+        },
+        "interfaceContract": {
+          "version": 1,
+          "ownsContent": true,
+          "surfaceDelegation": true
+        },
+        "identity": {
+          "graphId": "graph-organization-declaration"
+        }
+      }
+    },
+    {
+      "id": "graph-organization-declaration-glyph",
+      "type": "glyph",
+      "label": "Make useful graph forms recognizable and reusable Glyph",
+      "position": {
+        "x": -1500,
+        "y": -920
+      },
+      "width": 220,
+      "height": 140,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "glyph": {
+          "kind": "icon",
+          "name": "TaskAlt"
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesGlyphDefinition": true
+        },
+        "identity": {
+          "graphId": "graph-organization-declaration"
+        }
+      }
+    },
+    {
+      "id": "graph-organization-declaration-landing-surface",
+      "type": "content",
+      "label": "Make useful graph forms recognizable and reusable Landing Surface",
+      "position": {
+        "x": -880,
+        "y": -520
+      },
+      "width": 520,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "content": {
+          "kind": "markdown",
+          "value": "# Make useful graph forms recognizable and reusable\n\nOpen this task graph to inspect and advance its authoritative work."
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesViewContent": true
+        },
+        "identity": {
+          "graphId": "graph-organization-declaration"
+        }
+      }
     }
   ],
   "edges": [
@@ -3753,8 +4408,8 @@
       "type": "reference",
       "source": "graph-organization-declaration",
       "target": "graph-organization-root-port",
-      "sourcePort": "right",
-      "targetPort": "left",
+      "sourcePort": "port",
+      "targetPort": "root",
       "label": "exposes",
       "style": {
         "curved": true,
@@ -3768,7 +4423,7 @@
       "source": "graph-organization-task-summary",
       "target": "graph-organization-root-port",
       "sourcePort": "bottom",
-      "targetPort": "top",
+      "targetPort": "root",
       "label": "presents",
       "style": {
         "curved": true,
@@ -4075,7 +4730,7 @@
       "type": "reference",
       "source": "graph-organization-declaration",
       "target": "root-bridge-goal",
-      "sourcePort": "left",
+      "sourcePort": "port",
       "targetPort": "right",
       "label": "class authority",
       "style": {
@@ -4089,7 +4744,7 @@
       "type": "reference",
       "source": "graph-organization-declaration",
       "target": "root-bridge-constraint",
-      "sourcePort": "left",
+      "sourcePort": "port",
       "targetPort": "right",
       "label": "class authority",
       "style": {
@@ -4103,7 +4758,7 @@
       "type": "reference",
       "source": "graph-organization-declaration",
       "target": "root-bridge-decision",
-      "sourcePort": "left",
+      "sourcePort": "port",
       "targetPort": "right",
       "label": "class authority",
       "style": {
@@ -4117,7 +4772,7 @@
       "type": "reference",
       "source": "graph-organization-declaration",
       "target": "root-bridge-task",
-      "sourcePort": "left",
+      "sourcePort": "port",
       "targetPort": "right",
       "label": "class authority",
       "style": {
@@ -4131,7 +4786,7 @@
       "type": "reference",
       "source": "graph-organization-declaration",
       "target": "root-bridge-task-summary",
-      "sourcePort": "left",
+      "sourcePort": "port",
       "targetPort": "right",
       "label": "class authority",
       "style": {
@@ -4145,7 +4800,7 @@
       "type": "reference",
       "source": "graph-organization-declaration",
       "target": "root-bridge-open-question",
-      "sourcePort": "left",
+      "sourcePort": "port",
       "targetPort": "right",
       "label": "class authority",
       "style": {
@@ -4159,7 +4814,7 @@
       "type": "reference",
       "source": "graph-organization-declaration",
       "target": "root-bridge-task-summary-provider",
-      "sourcePort": "left",
+      "sourcePort": "port",
       "targetPort": "right",
       "label": "class authority",
       "style": {
@@ -4209,10 +4864,88 @@
         "width": 2
       },
       "data": {}
+    },
+    {
+      "id": "graph-organization-declaration-default-view-edge",
+      "type": "default-view",
+      "source": "graph-organization-declaration",
+      "target": "graph-organization-declaration-detail-view",
+      "sourcePort": "default-view",
+      "targetPort": "root",
+      "label": "default view",
+      "data": {
+        "role": "default-view",
+        "semanticRole": "default-view"
+      }
+    },
+    {
+      "id": "graph-organization-declaration-summary-view-edge",
+      "type": "reference",
+      "source": "graph-organization-declaration",
+      "target": "graph-organization-declaration-summary-view",
+      "sourcePort": "summary-view",
+      "targetPort": "root",
+      "label": "summary view",
+      "data": {
+        "role": "shared-summary",
+        "semanticRole": "shared-summary"
+      }
+    },
+    {
+      "id": "graph-organization-declaration-icon-view-edge",
+      "type": "reference",
+      "source": "graph-organization-declaration",
+      "target": "graph-organization-declaration-icon-view-modern",
+      "sourcePort": "icon-view",
+      "targetPort": "root",
+      "label": "icon view",
+      "data": {
+        "role": "shared-icon",
+        "semanticRole": "shared-icon"
+      }
+    },
+    {
+      "id": "graph-organization-declaration-glyph-edge",
+      "type": "reference",
+      "source": "graph-organization-declaration",
+      "target": "graph-organization-declaration-glyph",
+      "sourcePort": "glyph",
+      "targetPort": "root",
+      "label": "glyph",
+      "data": {
+        "role": "shared-glyph",
+        "semanticRole": "shared-glyph"
+      }
+    },
+    {
+      "id": "graph-organization-declaration-landing-surface-edge",
+      "type": "reference",
+      "source": "graph-organization-declaration",
+      "target": "graph-organization-declaration-landing-surface",
+      "sourcePort": "landing-surface",
+      "targetPort": "root",
+      "label": "landing surface",
+      "data": {
+        "role": "landing-surface",
+        "semanticRole": "landing-surface"
+      }
+    },
+    {
+      "id": "graph-organization-declaration-port-edge",
+      "type": "reference",
+      "source": "graph-organization-declaration",
+      "target": "graph-organization-root-port",
+      "sourcePort": "port",
+      "targetPort": "root",
+      "label": "port",
+      "data": {
+        "role": "exposes-port",
+        "semanticRole": "exposes-port"
+      }
     }
   ],
-  "nodeCount": 31,
-  "edgeCount": 33,
+  "nodeCount": 36,
+  "edgeCount": 39,
   "timestamp": "2026-08-03T22:00:00.000Z",
   "fileVersion": "1.0",
   "metadata": {

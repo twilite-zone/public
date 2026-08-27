@@ -15,39 +15,166 @@
       "showLabel": true,
       "ports": [
         {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default view",
+          "direction": "output",
           "dataType": "any",
-          "angle": 210
+          "angle": 165,
+          "role": "default-view",
+          "allowedEdgeTypes": [
+            "default-view"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-view",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-summary",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-icon",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-glyph",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "glyph",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "landing-surface",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
         }
       ],
       "data": {
@@ -111,14 +238,14 @@
           "kind": "task",
           "targetMode": "artifact",
           "artifactKind": "task",
-          "defaultSurfaceId": "root",
+          "defaultSurfaceId": "",
           "surfaces": [
             {
-              "id": "root",
+              "id": "summary",
               "kind": "port",
-              "label": "Script Node Presentation",
+              "label": "Make scripts good placeable behavior nodes",
               "portNodeId": "script-presentation-root-port",
-              "viewNodeId": "script-presentation-summary",
+              "viewNodeId": "script-presentation-declaration-summary-view",
               "exposes": {
                 "views": {
                   "mode": "allow"
@@ -127,27 +254,115 @@
                   "mode": "allow"
                 }
               }
-            },
-            {
-              "id": "summary",
-              "kind": "view",
-              "label": "Summary",
-              "viewNodeId": "script-presentation-summary",
-              "exposes": {
-                "views": {
-                  "mode": "allow"
-                }
-              }
             }
-          ]
+          ],
+          "interfaceContract": {
+            "version": 1,
+            "implicitRootPort": true
+          }
         },
         "visibilityRole": "editor"
-      }
+      },
+      "handles": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "portId": "default-view",
+          "label": "default view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 165,
+          "role": "default-view"
+        },
+        {
+          "id": "summary-view",
+          "key": "summary-view",
+          "portId": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary"
+        },
+        {
+          "id": "icon-view",
+          "key": "icon-view",
+          "portId": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon"
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "portId": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph"
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "portId": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port"
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "portId": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface"
+        }
+      ],
+      "inputs": [],
+      "outputs": [
+        {
+          "key": "default-view",
+          "label": "default view",
+          "type": "any"
+        },
+        {
+          "key": "summary-view",
+          "label": "summary view",
+          "type": "any"
+        },
+        {
+          "key": "icon-view",
+          "label": "icon view",
+          "type": "any"
+        },
+        {
+          "key": "glyph",
+          "label": "glyph",
+          "type": "any"
+        },
+        {
+          "key": "port",
+          "label": "port",
+          "type": "any"
+        },
+        {
+          "key": "landing-surface",
+          "label": "landing surface",
+          "type": "any"
+        }
+      ]
     },
     {
       "id": "script-presentation-root-port",
       "type": "port",
-      "label": "Script Node Presentation",
+      "label": "Make scripts good placeable behavior nodes",
       "position": {
         "x": -650,
         "y": -200
@@ -159,38 +374,11 @@
       "ports": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
+          "direction": "input",
           "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
           "angle": 270
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
         }
       ],
       "data": {
@@ -203,16 +391,57 @@
         "sourceScope": "graph",
         "sourceNodeId": "script-presentation-summary",
         "sourcePayload": "node.web",
-        "surfaceId": "root",
+        "surfaceId": "summary",
         "targetNodeId": "script-presentation-summary",
         "view": {
           "intent": "node",
-          "payload": "node.web"
+          "payload": "node.web",
+          "nodeType": "task"
         },
         "visibilityRole": "editor",
         "title": "Script Node Presentation",
-        "description": "Make graph-owned scripts understandable, configurable, and safely placeable as first-class behavior nodes."
-      }
+        "description": "Make graph-owned scripts understandable, configurable, and safely placeable as first-class behavior nodes.",
+        "direction": "output",
+        "dataType": "task",
+        "renderedNodeType": "task",
+        "presentation": {
+          "detail": {
+            "mode": "own",
+            "viewNodeId": "script-presentation-summary"
+          },
+          "summary": {
+            "mode": "own",
+            "viewNodeId": "script-presentation-summary"
+          },
+          "icon": {
+            "mode": "own",
+            "viewNodeId": "script-presentation-summary"
+          },
+          "glyph": {
+            "mode": "own",
+            "viewNodeId": "script-presentation-summary"
+          }
+        }
+      },
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": []
     },
     {
       "id": "script-presentation-overview",
@@ -1095,63 +1324,130 @@
         ],
         "taskListText": "1. Modernize the Script node class\n2. Complete script presentation surfaces\n3. Expose configuration and dependency contracts\n4. Prove selective script placement",
         "questionListText": "1. How should companion-node requirements travel?",
-        "updatedAt": "2026-08-04T17:18:00.000Z",
+        "updatedAt": "2026-08-27T22:21:14.570Z",
         "nextAction": "Refresh the Script Capability Placement Smoke graph, place Surface and Controller, then verify Apply Size, Run, Previous, and Next from the Controller Summary.",
         "visibilityRole": "browser",
         "_classBinding": {
-          "key": "task-summary-provider",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-          "nodeDef": {
-            "key": "task-summary-provider",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "views": [
-            {
-              "key": "task-summary-provider",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 380,
+              "height": 260
             },
-            {
-              "key": "task-summary-provider",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "task-summary-provider",
-            "intent": "node",
-            "payload": "node.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "targetDate": "",
+              "startedAt": "",
+              "completedAt": "",
+              "externalRef": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Checklist"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
           },
-          "editorView": {
-            "key": "task-summary-provider",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "nodeDef": {
+            "key": "task",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
             "source": "local",
-            "version": ">=0.1.0"
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 380,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "targetDate": "",
+                "startedAt": "",
+                "completedAt": "",
+                "externalRef": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Checklist"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
           }
         },
         "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
           "entryPort": "root",
           "kind": "node-class",
           "targetKind": "node-class",
-          "classKey": "task-summary-provider",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+          "classKey": "task",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "",
+          "sourceBridgeLabel": "Task"
         },
-        "definitionKey": "task-summary-provider"
+        "definitionKey": "task",
+        "title": "Make scripts good placeable behavior nodes",
+        "body": "Goal: Make scripts good placeable behavior nodes",
+        "priority": "medium",
+        "owner": "",
+        "estimateHours": "",
+        "targetDate": "",
+        "startedAt": "",
+        "completedAt": "",
+        "externalRef": "",
+        "acceptanceCriteria": [
+          "Review the graph-owned task summary for current scope and progress"
+        ],
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Checklist"
+          }
+        }
       }
     },
     {
@@ -1432,15 +1728,36 @@
       "id": "script-presentation-capability-graph",
       "type": "portal",
       "label": "Collection Window Controller Capability",
-      "position": { "x": 620, "y": 1100 },
+      "position": {
+        "x": 620,
+        "y": 1100
+      },
       "width": 430,
       "height": 240,
       "visible": true,
       "showLabel": true,
       "ports": [
-        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 210 },
-        { "id": "top", "label": "top", "direction": "bidirectional", "dataType": "value", "angle": 270 },
-        { "id": "right", "label": "right", "direction": "bidirectional", "dataType": "value", "angle": 0 }
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        }
       ],
       "data": {
         "authority": "navigate",
@@ -1452,7 +1769,13 @@
         "sourceNodeId": "collection-window-capability-root",
         "sourcePayload": "node.web.summary",
         "surfaceId": "root",
-        "target": { "ref": "github://mikemartinez1974/public/templates/collection-window-controller/root.node", "mode": "navigate", "portId": "root", "surfaceId": "root", "label": "Open Capability Graph" },
+        "target": {
+          "ref": "github://mikemartinez1974/public/templates/collection-window-controller/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "surfaceId": "root",
+          "label": "Open Capability Graph"
+        },
         "visibilityRole": "browser"
       }
     },
@@ -1460,15 +1783,36 @@
       "id": "script-presentation-smoke-graph",
       "type": "portal",
       "label": "Script Capability Placement Smoke",
-      "position": { "x": 1100, "y": 1100 },
+      "position": {
+        "x": 1100,
+        "y": 1100
+      },
       "width": 430,
       "height": 240,
       "visible": true,
       "showLabel": true,
       "ports": [
-        { "id": "root", "label": "root", "direction": "bidirectional", "dataType": "any", "angle": 210 },
-        { "id": "top", "label": "top", "direction": "bidirectional", "dataType": "value", "angle": 270 },
-        { "id": "left", "label": "left", "direction": "bidirectional", "dataType": "value", "angle": 180 }
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
       ],
       "data": {
         "authority": "navigate",
@@ -1480,7 +1824,13 @@
         "sourceNodeId": "script-capability-smoke-root",
         "sourcePayload": "node.web",
         "surfaceId": "root",
-        "target": { "ref": "github://mikemartinez1974/public/graphs/script-capability-smoke/root.node", "mode": "navigate", "portId": "root", "surfaceId": "root", "label": "Open Script Capability Smoke" },
+        "target": {
+          "ref": "github://mikemartinez1974/public/graphs/script-capability-smoke/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "surfaceId": "root",
+          "label": "Open Script Capability Smoke"
+        },
         "visibilityRole": "browser"
       }
     },
@@ -1795,6 +2145,425 @@
           ]
         }
       }
+    },
+    {
+      "id": "script-presentation-declaration-detail-view",
+      "type": "view",
+      "label": "Make scripts good placeable behavior nodes Detail",
+      "position": {
+        "x": -1700,
+        "y": -580
+      },
+      "width": 420,
+      "height": 280,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "semanticLevel": "detail",
+        "content": {
+          "kind": "markdown",
+          "value": "# Make scripts good placeable behavior nodes\n\nA graph-owned task with its goal, concrete work, decisions, questions, and current operational summary."
+        },
+        "interfaceContract": {
+          "version": 1,
+          "ownsContent": true,
+          "surfaceDelegation": true
+        },
+        "identity": {
+          "graphId": "script-presentation"
+        }
+      }
+    },
+    {
+      "id": "script-presentation-declaration-summary-view",
+      "type": "view",
+      "label": "Make scripts good placeable behavior nodes Summary View",
+      "position": {
+        "x": -1700,
+        "y": -240
+      },
+      "width": 420,
+      "height": 280,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "semanticLevel": "summary",
+        "content": {
+          "kind": "markdown",
+          "value": "## Make scripts good placeable behavior nodes\n\nCurrent status, priority, progress, next action, blockers, and unresolved questions."
+        },
+        "interfaceContract": {
+          "version": 1,
+          "ownsContent": true,
+          "surfaceDelegation": true
+        },
+        "identity": {
+          "graphId": "script-presentation"
+        }
+      }
+    },
+    {
+      "id": "script-presentation-declaration-icon-view-modern",
+      "type": "view",
+      "label": "Make scripts good placeable behavior nodes Icon View",
+      "position": {
+        "x": -1700,
+        "y": 100
+      },
+      "width": 420,
+      "height": 280,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "semanticLevel": "icon",
+        "content": {
+          "kind": "svg",
+          "value": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 220'><rect width='320' height='220' rx='28' fill='#172554'/><circle cx='160' cy='92' r='54' fill='#dbeafe'/><path d='M132 92l18 18 40-44' fill='none' stroke='#2563eb' stroke-width='14' stroke-linecap='round' stroke-linejoin='round'/><text x='160' y='184' text-anchor='middle' fill='#fff' font-family='system-ui' font-size='20' font-weight='800'>TASK</text></svg>"
+        },
+        "interfaceContract": {
+          "version": 1,
+          "ownsContent": true,
+          "surfaceDelegation": true
+        },
+        "identity": {
+          "graphId": "script-presentation"
+        }
+      }
+    },
+    {
+      "id": "script-presentation-declaration-glyph",
+      "type": "glyph",
+      "label": "Make scripts good placeable behavior nodes Glyph",
+      "position": {
+        "x": -1100,
+        "y": -900
+      },
+      "width": 220,
+      "height": 140,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "glyph": {
+          "kind": "icon",
+          "name": "TaskAlt"
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesGlyphDefinition": true
+        },
+        "identity": {
+          "graphId": "script-presentation"
+        }
+      }
+    },
+    {
+      "id": "script-presentation-declaration-landing-surface",
+      "type": "content",
+      "label": "Make scripts good placeable behavior nodes Landing Surface",
+      "position": {
+        "x": -480,
+        "y": -500
+      },
+      "width": 520,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "content": {
+          "kind": "markdown",
+          "value": "# Make scripts good placeable behavior nodes\n\nOpen this task graph to inspect and advance its authoritative work."
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesViewContent": true
+        },
+        "identity": {
+          "graphId": "script-presentation"
+        }
+      }
     }
   ],
   "edges": [
@@ -1831,8 +2600,8 @@
       "type": "reference",
       "source": "script-presentation-declaration",
       "target": "script-presentation-root-port",
-      "sourcePort": "right",
-      "targetPort": "left",
+      "sourcePort": "port",
+      "targetPort": "root",
       "label": "exposes",
       "style": {
         "curved": true,
@@ -2013,7 +2782,7 @@
       "type": "reference",
       "source": "script-presentation-declaration",
       "target": "script-presentation-bridge-goal",
-      "sourcePort": "left",
+      "sourcePort": "port",
       "targetPort": "right",
       "label": "class authority",
       "style": {
@@ -2027,7 +2796,7 @@
       "type": "reference",
       "source": "script-presentation-declaration",
       "target": "script-presentation-bridge-task",
-      "sourcePort": "left",
+      "sourcePort": "port",
       "targetPort": "right",
       "label": "class authority",
       "style": {
@@ -2041,7 +2810,7 @@
       "type": "reference",
       "source": "script-presentation-declaration",
       "target": "script-presentation-bridge-open-question",
-      "sourcePort": "left",
+      "sourcePort": "port",
       "targetPort": "right",
       "label": "class authority",
       "style": {
@@ -2055,7 +2824,7 @@
       "type": "reference",
       "source": "script-presentation-declaration",
       "target": "script-presentation-bridge-task-summary-provider",
-      "sourcePort": "left",
+      "sourcePort": "port",
       "targetPort": "right",
       "label": "class authority",
       "style": {
@@ -2072,8 +2841,14 @@
       "sourcePort": "bottom",
       "targetPort": "top",
       "label": "defines capability",
-      "style": { "curved": true, "width": 2 },
-      "data": { "relationship": "defines capability", "semanticRole": "structural" }
+      "style": {
+        "curved": true,
+        "width": 2
+      },
+      "data": {
+        "relationship": "defines capability",
+        "semanticRole": "structural"
+      }
     },
     {
       "id": "script-presentation-edge-smoke-proof",
@@ -2083,13 +2858,97 @@
       "sourcePort": "right",
       "targetPort": "left",
       "label": "tested by",
-      "style": { "curved": true, "width": 2 },
-      "data": { "relationship": "tested by", "semanticRole": "structural" }
+      "style": {
+        "curved": true,
+        "width": 2
+      },
+      "data": {
+        "relationship": "tested by",
+        "semanticRole": "structural"
+      }
+    },
+    {
+      "id": "script-presentation-declaration-default-view-edge",
+      "type": "default-view",
+      "source": "script-presentation-declaration",
+      "target": "script-presentation-declaration-detail-view",
+      "sourcePort": "default-view",
+      "targetPort": "root",
+      "label": "default view",
+      "data": {
+        "role": "default-view",
+        "semanticRole": "default-view"
+      }
+    },
+    {
+      "id": "script-presentation-declaration-summary-view-edge",
+      "type": "reference",
+      "source": "script-presentation-declaration",
+      "target": "script-presentation-declaration-summary-view",
+      "sourcePort": "summary-view",
+      "targetPort": "root",
+      "label": "summary view",
+      "data": {
+        "role": "shared-summary",
+        "semanticRole": "shared-summary"
+      }
+    },
+    {
+      "id": "script-presentation-declaration-icon-view-edge",
+      "type": "reference",
+      "source": "script-presentation-declaration",
+      "target": "script-presentation-declaration-icon-view-modern",
+      "sourcePort": "icon-view",
+      "targetPort": "root",
+      "label": "icon view",
+      "data": {
+        "role": "shared-icon",
+        "semanticRole": "shared-icon"
+      }
+    },
+    {
+      "id": "script-presentation-declaration-glyph-edge",
+      "type": "reference",
+      "source": "script-presentation-declaration",
+      "target": "script-presentation-declaration-glyph",
+      "sourcePort": "glyph",
+      "targetPort": "root",
+      "label": "glyph",
+      "data": {
+        "role": "shared-glyph",
+        "semanticRole": "shared-glyph"
+      }
+    },
+    {
+      "id": "script-presentation-declaration-landing-surface-edge",
+      "type": "reference",
+      "source": "script-presentation-declaration",
+      "target": "script-presentation-declaration-landing-surface",
+      "sourcePort": "landing-surface",
+      "targetPort": "root",
+      "label": "landing surface",
+      "data": {
+        "role": "landing-surface",
+        "semanticRole": "landing-surface"
+      }
+    },
+    {
+      "id": "script-presentation-declaration-port-edge",
+      "type": "reference",
+      "source": "script-presentation-declaration",
+      "target": "script-presentation-root-port",
+      "sourcePort": "port",
+      "targetPort": "root",
+      "label": "port",
+      "data": {
+        "role": "exposes-port",
+        "semanticRole": "exposes-port"
+      }
     }
   ],
   "timestamp": "2026-08-03T23:30:00.000Z",
-  "nodeCount": 20,
-  "edgeCount": 21,
+  "nodeCount": 25,
+  "edgeCount": 27,
   "fileVersion": "1.0",
   "metadata": {
     "title": "Script Node Presentation",
