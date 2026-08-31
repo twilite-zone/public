@@ -182,6 +182,26 @@ When you explain how to use Twilite, prefer the app surfaces that are durable fo
 - if the user only needs navigation, tutorials, bookmarks, gallery, handshake, or document actions, keep the guidance in browser mode
 - only steer the user toward editor-specific affordances when the task truly requires authoring
 
+## MCP And Copy/Paste
+
+Twilite supports two agent transports over the same reviewed graph contract:
+
+- **Copy/paste** is the universal path. Return a valid Twilite transaction for the user to inspect and apply.
+- **MCP** is the connected path. Use it when the host exposes the Twilite MCP server and the task benefits from live addressed reads or bounded update proposals.
+
+MCP does not grant extra mutation authority and does not replace the transaction interpreter. The current server exposes graph, node, and edge reads plus proposal tools. Proposals are not applied or saved by the MCP server and must report `approvalRequired: true`.
+
+For an exact node read:
+
+1. Discover the `twilite-node` resource template when no named Twilite tool is visible.
+2. Build `twilite://node/{encoded-graph-address}/{nodeId}` with the complete `github://` graph address URL-encoded.
+3. Read the resource and require a successful MCP initialize handshake plus an actual `application/vnd.twilite.node+json` response before reporting fields.
+4. If the handshake fails, report the failure and do not substitute a local-file or GitHub read when the user specifically requested MCP.
+
+Use the tools `read_twilite_graph`, `read_twilite_node`, and `read_twilite_edge` when the host primarily exposes tools. Use `propose_content_update` and the edge proposal tools only to create reviewable Twilite transactions. Never describe a proposal as an applied change.
+
+Server setup and smoke instructions live in `twilite/scripts/mcp/README.md`.
+
 ## Graph Address Legality
 
 - Accept `github://`, `http://`, and `https://` graph resources anywhere Twilite accepts a graph address, including portals, bridges, `ref`, `sourceRef`, `classRef`, `src`, and `endpoint`.
@@ -1724,6 +1744,36 @@ Example: add a new semantic output port and two bound handles to an existing mar
 ```
 
 If you do not know the current semantic port contract on the target node, say so and ask for the node JSON or inspect the current graph before inventing ports.
+
+## Cross-Graph Edges, Expansion, Focus, And Data
+
+Keep these responsibilities separate:
+
+- a Portal owns reversible graph expansion and collapse
+- an inter-graph edge owns durable graph/node/Port connectivity
+- the shared focus transition owns camera motion and may follow the rendered edge route
+- a typed handoff envelope owns runtime data delivery
+
+An authored cross-graph edge stores canonical endpoints in `edge.data.interGraph`. While the fragment is collapsed, the canvas may project the endpoint onto the Portal; the semantic target remains the declared node and Port inside the target graph.
+
+Script nodes deliver v1 data with:
+
+```js
+return await api.sendHandoff({
+  edgeId: 'host-to-fragment-handoff',
+  payload: {
+    schema: 'twilite://schema/text@1',
+    contentType: 'text/plain',
+    value: 'Hello from the host graph'
+  }
+});
+```
+
+V1 supports only ephemeral `send`. The destination fragment must already be expanded. The runtime validates mutation authority, the authored route, source/output and destination/input Ports, and payload schema before emitting receiver input. Rejection must return an inspectable envelope and must not mutate the receiver.
+
+Do not use ordinary `nodeOutput` propagation for cross-graph delivery. Do not make send expand a Portal. Do not claim request-response, streaming, persistence, retries, replay, session, durable, or fan-out behavior until those capabilities are separately implemented.
+
+The complete model and canonical smoke pair are documented in [Cross-Graph Interaction and Typed Handoffs](CrossGraphInteraction.md).
 
 ## Working In Existing Graphs
 
