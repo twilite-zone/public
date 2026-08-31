@@ -605,7 +605,7 @@
         "title": "Make scripts good placeable behavior nodes",
         "body": "Give Script nodes complete presentation and dependency contracts so templates can support selective behavior placement as well as whole-graph derivation.",
         "priority": "high",
-        "status": "in-progress",
+        "status": "done",
         "owner": "Michael",
         "acceptanceCriteria": [
           "The canonical Script class exposes icon, summary, detail, and editor views",
@@ -962,15 +962,19 @@
         "title": "Expose configuration and dependency contracts",
         "body": "Present inputs, outputs, mutations, grants, multiplicity, configuration, and required companion nodes without forcing authors to read source.",
         "priority": "high",
-        "status": "in-progress",
+        "status": "done",
         "owner": "Michael",
         "acceptanceCriteria": [
           "A bridged Script placement preserves authored dimensions, ports, class binding, presentation metadata, configuration, requirements, effects, and multiplicity",
           "The placed Script retains explicit bridge provenance and runtime authority",
           "The Collection Window Controller remains configurable and operable without reading source"
         ],
-        "nextAction": "Refresh the Script Capability Placement Smoke graph, create Collection Surface and Collection Window Controller from Elements, then verify the controller renders its authored Summary and can Apply Size, Refresh, Previous, and Next.",
-        "progressNote": "The bridge placement path now carries the authored Script node template instead of rebuilding a generic Script node. Dimensions, ports, class binding, presentation metadata, safe configuration, requirements, effects, multiplicity, and bridge provenance survive placement. The smoke import now grants runtime authority explicitly. A focused placement-contract test and the production build pass; live UI placement and firing remain the final proof for this slice.",
+        "nextAction": "Completed through the canonical Script Capability Placement Smoke graph.",
+        "progressNote": "The bridge placement path now carries the authored Script node template instead of rebuilding a generic Script node. Dimensions, ports, class binding, presentation metadata, safe configuration, requirements, effects, multiplicity, and bridge provenance survive placement. The smoke import grants runtime authority explicitly. A focused placement-contract test, production build, structural validation, and Michael's live UI placement and firing proof all pass.",
+        "artifactRefs": [
+          "github://mikemartinez1974/public/graphs/script-capability-smoke/root.node",
+          "github://mikemartinez1974/public/templates/collection-window-controller/root.node"
+        ],
         "visibilityRole": "browser",
         "_classBinding": {
           "key": "task",
@@ -1081,11 +1085,20 @@
         "title": "Prove selective script placement",
         "body": "Exercise the Collection Window Controller and Workboard Reconciler as representative placeable behaviors and distinguish standalone scripts from bounded capability sets.",
         "priority": "high",
-        "status": "todo",
+        "status": "done",
         "owner": "Michael",
-        "acceptanceCriteria": [],
-        "nextAction": "",
-        "progressNote": "Live smoke proof passed on the public root and Bridge Role + Surface Smoke graph. Import and export roles remain visible, the Bridge class owns presentation, and the trusted host retains correct Create eligibility.",
+        "acceptanceCriteria": [
+          "Collection Window Controller and Workboard Reconciler each declare whether they are standalone scripts or bounded capability sets",
+          "Authors can place only the capability entries explicitly exposed by the import bridge",
+          "Required companion nodes and singleton constraints are visible before placement"
+        ],
+        "nextAction": "Completed: selectively place capability-kit scripts, and derive template-only scripts with their bounded host structure.",
+        "progressNote": "Collection Window Controller selective placement passes through the canonical smoke graph and declares capability-kit placement. Workboard Reconciler declares template-only placement because it depends on the sole Workboard controller, five lane anchors, empty states, task carriers, and retargeted graph-local IDs. It is deliberately not exposed as a standalone Elements entry. The embedded reconciler compiles and two unchanged mock runs are idempotent and fresh.",
+        "artifactRefs": [
+          "github://mikemartinez1974/public/templates/collection-window-controller/root.node",
+          "github://mikemartinez1974/public/templates/workboard-template/root.node",
+          "github://twilite-zone/public/library/classes/nodes/script.node-class.node"
+        ],
         "visibilityRole": "browser",
         "_classBinding": {
           "key": "task",
@@ -1195,9 +1208,9 @@
       "data": {
         "title": "How should companion-node requirements travel?",
         "body": "Decide how a placed script declares and installs a bounded set of required lanes, ports, summaries, controllers, or other graph nodes.",
-        "status": "open",
+        "status": "answered",
         "owner": "Michael",
-        "resolutionPath": "",
+        "resolutionPath": "Use explicit Script placement metadata. Standalone scripts travel alone; capability-kit scripts expose a curated set of independently placeable entries; template-only scripts remain inside whole-template derivation when companions contain structural IDs or graph-wide invariants.",
         "visibilityRole": "browser",
         "_classBinding": {
           "key": "open-question",
@@ -1253,7 +1266,7 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node"
         },
         "definitionKey": "open-question",
-        "answer": ""
+        "answer": "Do not auto-install every declared requirement. Use placementMode to distinguish standalone, capability-kit, and template-only behavior. Capability kits expose only safe curated entries; structurally coupled companions travel through template derivation."
       }
     },
     {
@@ -1307,13 +1320,13 @@
       ],
       "data": {
         "goal": "Make scripts good placeable behavior nodes",
-        "status": "in-progress",
+        "status": "done",
         "taskProgress": {
-          "completed": 2,
+          "completed": 4,
           "total": 4
         },
         "questionProgress": {
-          "answered": 0,
+          "answered": 1,
           "total": 1
         },
         "summarySource": "node-updater",
@@ -1328,8 +1341,8 @@
         ],
         "taskListText": "1. Modernize the Script node class\n2. Complete script presentation surfaces\n3. Expose configuration and dependency contracts\n4. Prove selective script placement",
         "questionListText": "1. How should companion-node requirements travel?",
-        "updatedAt": "2026-08-30T23:45:00.000Z",
-        "nextAction": "Refresh the Script Capability Placement Smoke graph, create Collection Surface and Collection Window Controller from Elements, then verify the controller renders its authored Summary and can Apply Size, Refresh, Previous, and Next.",
+        "updatedAt": "2026-08-31T00:30:00.000Z",
+        "nextAction": "Complete. Use the Script placement contract when authoring future graph-owned behavior.",
         "visibilityRole": "browser",
         "_classBinding": {
           "key": "task",
