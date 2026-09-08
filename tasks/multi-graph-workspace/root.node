@@ -744,7 +744,7 @@
       "data": {
         "body": "Let a person open, compare, connect, and edit two or more graphs at once while every graph keeps its own visible boundary, identity, coordinates, save authority, undo history, loading state, and provenance.",
         "priority": "critical",
-        "status": "open",
+        "status": "done",
         "owner": "Michael",
         "targetDate": "",
         "successMetrics": [
@@ -854,6 +854,15 @@
             "kind": "icon",
             "name": "Flag"
           }
+        },
+        "completedAt": "2026-09-08T04:02:39.424Z",
+        "implementationEvidence": {
+          "runtime": "twilite/components/GraphEditor/hooks/useGraphWorkspace.js",
+          "guide": "twilite/docs/multi-graph-workspace.md",
+          "unitTests": "31 focused tests passed",
+          "browserSmoke": "twilite/tests/browser/graphWorkspace.smoke.cjs: passed in Chrome against a local production build, with fixture GitHub reads and commits",
+          "build": "npm run build: passed",
+          "deployment": "Local implementation; not published"
         }
       }
     },
@@ -938,14 +947,14 @@
       "showLabel": false,
       "data": {
         "goal": "Display multiple graphs as distinct, usable documents in one workspace",
-        "status": "todo",
+        "status": "done",
         "viewRole": "document",
         "taskProgress": {
-          "completed": 0,
+          "completed": 9,
           "total": 9
         },
         "questionProgress": {
-          "answered": 0,
+          "answered": 3,
           "total": 3
         },
         "summarySource": "node-updater",
@@ -1071,7 +1080,7 @@
           "sourceBridgeNodeId": "multi-graph-workspace-bridge-summary",
           "sourceBridgeLabel": "Task Graph Summary"
         },
-        "updatedAt": "2026-09-07T19:57:10.619Z",
+        "updatedAt": "2026-09-08T04:02:39.432Z",
         "identity": {
           "graphId": "multi-graph-workspace-declaration"
         },
@@ -1087,9 +1096,9 @@
         "priority": "critical",
         "owner": "Michael",
         "targetDate": "",
-        "nextAction": "Implement the workspace state model and render two independently loaded graphs inside visible regions.",
+        "nextAction": "Use Open alongside in the canvas toolbar to exercise the implemented workspace with real documents. See the runtime guide for controls and reproducible validation.",
         "blockedReason": "",
-        "health": "planned",
+        "health": "implemented-and-validated",
         "presentation": {
           "glyph": {
             "kind": "icon",
@@ -1097,10 +1106,10 @@
           }
         },
         "title": "Display multiple graphs as distinct, usable documents in one workspace",
-        "body": "Goal: Display multiple graphs as distinct, usable documents in one workspace\nStatus: todo\n\nTasks in scope:\n1. Create the multi-document workspace state model\n2. Render visible graph regions and headers\n3. Define graph activation and focus behavior\n4. Map graph-local coordinates into the workspace\n\nOpen questions:\n1. When should workspace state become a graph artifact?\n2. What is the supported open-graph budget?\n3. How much automatic graph placement is useful?",
+        "body": "Goal: Display multiple graphs as distinct, usable documents in one workspace\nStatus: done\n\nTasks in scope:\n1. Create the multi-document workspace state model\n2. Render visible graph regions and headers\n3. Define graph activation and focus behavior\n4. Map graph-local coordinates into the workspace\n\nOpen questions:\n1. When should workspace state become a graph artifact?\n2. What is the supported open-graph budget?\n3. How much automatic graph placement is useful?",
         "estimateHours": "",
         "startedAt": "",
-        "completedAt": "",
+        "completedAt": "2026-09-08T04:02:39.424Z",
         "externalRef": "github://twilite-zone/public/tasks/multi-graph-workspace/root.node",
         "acceptanceCriteria": [
           "Two or more graph documents can be visible at the same time with unmistakable borders and headers.",
@@ -3616,7 +3625,7 @@
         "title": "Create the multi-document workspace state model",
         "body": "Represent each open graph as a workspace instance with instanceId, graphRef, graphId, bounds, transform, load state, dirty state, and authority. Keep activeGraphInstanceId separate from focusedNodeId so node focus can clear while command scope remains deterministic.",
         "priority": "high",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "estimateHours": "8",
         "acceptanceCriteria": [
@@ -3731,15 +3740,16 @@
           "graphId": "multi-graph-workspace-declaration"
         },
         "targetDate": "",
-        "startedAt": "",
-        "completedAt": "",
+        "startedAt": "2026-09-08T04:02:39.424Z",
+        "completedAt": "2026-09-08T04:02:39.424Z",
         "externalRef": "",
         "presentation": {
           "glyph": {
             "kind": "icon",
             "name": "Checklist"
           }
-        }
+        },
+        "implementationEvidence": "Implemented independent document snapshots, unique workspace instance IDs, and explicit active graph state. Browser smoke verifies duplicate IDs and independent edits."
       }
     },
     {
@@ -3825,7 +3835,7 @@
         "title": "Render visible graph regions and headers",
         "body": "Draw every graph inside a bounded region behind its nodes. The region has a persistent border, title/address header, active state, dirty state, load state, and authority badge. It is workspace chrome, not a semantic group node.",
         "priority": "high",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "estimateHours": "12",
         "acceptanceCriteria": [
@@ -3941,15 +3951,16 @@
           "graphId": "multi-graph-workspace-declaration"
         },
         "targetDate": "",
-        "startedAt": "",
-        "completedAt": "",
+        "startedAt": "2026-09-08T04:02:39.424Z",
+        "completedAt": "2026-09-08T04:02:39.424Z",
         "externalRef": "",
         "presentation": {
           "glyph": {
             "kind": "icon",
             "name": "Checklist"
           }
-        }
+        },
+        "implementationEvidence": "Implemented persistent 3px active and 1px inactive borders, labeled headers, ACTIVE and access badges, dirty markers, loading shells, and contained errors. Browser screenshot verified."
       }
     },
     {
@@ -4035,7 +4046,7 @@
         "title": "Define graph activation and focus behavior",
         "body": "Clicking a node or empty space inside a graph activates that graph. Clicking empty graph space clears node focus and ends handle editing while retaining that graph as active. Clicking workspace space outside every graph clears node focus and keeps the last active graph for deterministic commands.",
         "priority": "high",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "estimateHours": "6",
         "acceptanceCriteria": [
@@ -4150,15 +4161,16 @@
           "graphId": "multi-graph-workspace-declaration"
         },
         "targetDate": "",
-        "startedAt": "",
-        "completedAt": "",
+        "startedAt": "2026-09-08T04:02:39.424Z",
+        "completedAt": "2026-09-08T04:02:39.424Z",
         "externalRef": "",
         "presentation": {
           "glyph": {
             "kind": "icon",
             "name": "Checklist"
           }
-        }
+        },
+        "implementationEvidence": "Region clicks and keyboard header activation select command scope. Empty clicks clear focus; activation ends handle arranging, clears fragment scope, and remounts graph-local node renderers. Browser smoke verifies keyboard activation and retained background scope."
       }
     },
     {
@@ -4244,7 +4256,7 @@
         "title": "Map graph-local coordinates into the workspace",
         "body": "Keep node positions graph-local and map them through the graph region transform into shared workspace coordinates. Version one uses one workspace camera and movable/resizable graph regions, avoiding nested graph pan and zoom gesture conflicts.",
         "priority": "high",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "estimateHours": "16",
         "acceptanceCriteria": [
@@ -4360,15 +4372,16 @@
           "graphId": "multi-graph-workspace-declaration"
         },
         "targetDate": "",
-        "startedAt": "",
-        "completedAt": "",
+        "startedAt": "2026-09-08T04:02:39.424Z",
+        "completedAt": "2026-09-08T04:02:39.424Z",
         "externalRef": "",
         "presentation": {
           "glyph": {
             "kind": "icon",
             "name": "Checklist"
           }
-        }
+        },
+        "implementationEvidence": "Implemented shared camera, draggable and keyboard-movable regions, resizing, Fit active, and Fit workspace. Unit and browser checks verify placement does not alter local node coordinates or dirty clean documents."
       }
     },
     {
@@ -4454,7 +4467,7 @@
         "title": "Add open-alongside, close, and load lifecycle",
         "body": "Make Open Alongside a distinct navigation action from replace-current and same-node expansion. New regions begin with a visible loading shell; failures stay contained in that region; closing a dirty graph uses the existing save/discard flow.",
         "priority": "high",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "estimateHours": "12",
         "acceptanceCriteria": [
@@ -4570,15 +4583,16 @@
           "graphId": "multi-graph-workspace-declaration"
         },
         "targetDate": "",
-        "startedAt": "",
-        "completedAt": "",
+        "startedAt": "2026-09-08T04:02:39.424Z",
+        "completedAt": "2026-09-08T04:02:39.424Z",
         "externalRef": "",
         "presentation": {
           "glyph": {
             "kind": "icon",
             "name": "Checklist"
           }
-        }
+        },
+        "implementationEvidence": "Implemented Open alongside, duplicate instances, retryable error shells, and close with discard/cancel for dirty documents. Browser smoke verifies isolated load failures, duplicate opens, and canceled dirty close."
       }
     },
     {
@@ -4664,7 +4678,7 @@
         "title": "Scope save, dirty state, and history per graph",
         "body": "Preserve declaration and document URL as persistence authority. Save writes the active graph only. Save All writes each dirty graph independently. Undo and redo operate on the active graph history.",
         "priority": "high",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "estimateHours": "16",
         "acceptanceCriteria": [
@@ -4780,15 +4794,16 @@
           "graphId": "multi-graph-workspace-declaration"
         },
         "targetDate": "",
-        "startedAt": "",
-        "completedAt": "",
+        "startedAt": "2026-09-08T04:02:39.424Z",
+        "completedAt": "2026-09-08T04:02:39.424Z",
         "externalRef": "",
         "presentation": {
           "glyph": {
             "kind": "icon",
             "name": "Checklist"
           }
-        }
+        },
+        "implementationEvidence": "Implemented per-instance undo history and independent Save/Save all ownership, branches, settings, scripts, and dirty results. Browser smoke verifies separate payloads, partial failure/retry, and script-only saves. Conflicting dirty copies of one address are rejected by Save all."
       }
     },
     {
@@ -4874,7 +4889,7 @@
         "title": "Render and persist cross-graph edges",
         "body": "Resolve endpoints from graph-local coordinates into a workspace-wide edge overlay. Draw the connection continuously across borders, with small boundary markers showing the graph transition. Preserve logicalEdgeId and declaration-owned edgeReferences.",
         "priority": "high",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "estimateHours": "20",
         "acceptanceCriteria": [
@@ -4990,15 +5005,16 @@
           "graphId": "multi-graph-workspace-declaration"
         },
         "targetDate": "",
-        "startedAt": "",
-        "completedAt": "",
+        "startedAt": "2026-09-08T04:02:39.424Z",
+        "completedAt": "2026-09-08T04:02:39.424Z",
         "externalRef": "",
         "presentation": {
           "glyph": {
             "kind": "icon",
             "name": "Checklist"
           }
-        }
+        },
+        "implementationEvidence": "Implemented selectable continuous overlay with boundary markers, compatible endpoint creation, label editing, deletion, and declaration-owned references. Unit and browser checks verify both-owner updates and undo/redo reconciliation without losing unrelated edits."
       }
     },
     {
@@ -5084,7 +5100,7 @@
         "title": "Add performance and accessibility safeguards",
         "body": "Keep active graphs fully interactive while allowing inactive and offscreen graphs to reduce detail by existing semantic-view rules. Region headers and activation must work with keyboard focus and expose graph name, state, and authority to assistive technology.",
         "priority": "high",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "estimateHours": "12",
         "acceptanceCriteria": [
@@ -5200,15 +5216,16 @@
           "graphId": "multi-graph-workspace-declaration"
         },
         "targetDate": "",
-        "startedAt": "",
-        "completedAt": "",
+        "startedAt": "2026-09-08T04:02:39.424Z",
+        "completedAt": "2026-09-08T04:02:39.424Z",
         "externalRef": "",
         "presentation": {
           "glyph": {
             "kind": "icon",
             "name": "Checklist"
           }
-        }
+        },
+        "implementationEvidence": "Inactive content renders payloads; other inactive nodes render non-executing summaries. Offscreen previews are culled, with visible reduction above 200 nodes and a 500-local-edge preview budget. Browser smoke verifies keyboard activation and five open graphs totaling 637 nodes; added 23/103/503-node fixtures loaded and painted in 644/1305/1931 ms on this machine. These synthetic measurements are not universal limits."
       }
     },
     {
@@ -5294,7 +5311,7 @@
         "title": "Persist workspace arrangement separately",
         "body": "Store which graphs are open plus their region bounds and ordering as workspace state. Start with local persistence keyed by workspace, then promote the format to a graph-native workspace/spec artifact after the interaction contract stabilizes.",
         "priority": "high",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "estimateHours": "8",
         "acceptanceCriteria": [
@@ -5409,15 +5426,16 @@
           "graphId": "multi-graph-workspace-declaration"
         },
         "targetDate": "",
-        "startedAt": "",
-        "completedAt": "",
+        "startedAt": "2026-09-08T04:02:39.424Z",
+        "completedAt": "2026-09-08T04:02:39.424Z",
         "externalRef": "",
         "presentation": {
           "glyph": {
             "kind": "icon",
             "name": "Checklist"
           }
-        }
+        },
+        "implementationEvidence": "Implemented versioned local arrangement records and tab-local workspace key. Browser smoke verifies graph refs, frame offsets, ordering, and active graph restoration. Records exclude graph content; missing refs retain removable/retryable error regions."
       }
     },
     {
@@ -5501,9 +5519,9 @@
       "showLabel": true,
       "data": {
         "body": "Version one can use local persisted state. We need evidence from real use before fixing a durable .workspace.node schema or a reusable spec template.",
-        "status": "open",
+        "status": "answered",
         "owner": "",
-        "resolutionPath": "Prototype local persistence, exercise reopen and sharing flows, then derive the graph-native format from observed requirements.",
+        "resolutionPath": "Version one uses versioned local workspace records and a tab-local pointer. Shared graph-native workspace/spec files remain a later extension after real use; graph files contain no workspace coordinates.",
         "prominence": "high",
         "definitionKey": "open-question",
         "_classBinding": {
@@ -5607,7 +5625,8 @@
             "kind": "icon",
             "name": "HelpOutline"
           }
-        }
+        },
+        "answeredAt": "2026-09-08T04:02:39.424Z"
       }
     },
     {
@@ -5691,9 +5710,9 @@
       "showLabel": true,
       "data": {
         "body": "We need measured limits for open graph count, total visible nodes, and cross-graph edges before choosing virtualization thresholds.",
-        "status": "open",
+        "status": "answered",
         "owner": "",
-        "resolutionPath": "Benchmark representative small, medium, and large graph sets after the region renderer works.",
+        "resolutionPath": "Initial measured preview workload: five open graphs, 637 total nodes, and one cross-graph connection. Additional 23/103/503-node fixture load-plus-paint times were 644/1305/1931 ms in local Chrome. Inactive previews cap at 200 nodes and 500 local edges with a visible reduced-detail notice; the active graph retains full rendering. Broader custom-node and edge-heavy profiling can extend this measured baseline.",
         "prominence": "high",
         "definitionKey": "open-question",
         "_classBinding": {
@@ -5797,7 +5816,8 @@
             "kind": "icon",
             "name": "HelpOutline"
           }
-        }
+        },
+        "answeredAt": "2026-09-08T04:02:39.424Z"
       }
     },
     {
@@ -5881,9 +5901,9 @@
       "showLabel": true,
       "data": {
         "body": "Open Alongside needs a predictable initial location, but aggressive auto-layout could disrupt deliberate workspace arrangements.",
-        "status": "open",
+        "status": "answered",
         "owner": "",
-        "resolutionPath": "Start with nearest free space to the active region and test collision behavior before adding layout modes.",
+        "resolutionPath": "New regions are placed 120 workspace units beyond the rightmost existing frame and aligned with the first region. Existing arrangements are untouched; users can move regions by header drag or Alt+Arrow and resize them.",
         "prominence": "high",
         "definitionKey": "open-question",
         "_classBinding": {
@@ -5987,7 +6007,8 @@
             "kind": "icon",
             "name": "HelpOutline"
           }
-        }
+        },
+        "answeredAt": "2026-09-08T04:02:39.424Z"
       }
     },
     {
