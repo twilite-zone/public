@@ -959,7 +959,7 @@
           "Prototype portal-to-live-surface workspace binding",
           "Compute stable frame aperture geometry",
           "Render graph borders with bridge openings",
-          "Route portal-owned edges through compatible bridge apertures",
+          "Place bridged graphs left and align bridge plumbing",
           "Render and evaluate a shared surface in the bridge gap",
           "Project live portal connections into workspace and minimap geometry",
           "Validate portal substitution, connection, disconnection, and foldout"
@@ -969,7 +969,7 @@
           "Which workspace instance fulfills a portal when duplicates are open?",
           "Which live representation replaces each kind of portal?"
         ],
-        "taskListText": "1. Prototype portal-to-live-surface workspace binding\n2. Compute stable frame aperture geometry\n3. Render graph borders with bridge openings\n4. Route portal-owned edges through compatible bridge apertures\n5. Render and evaluate a shared surface in the bridge gap\n6. Project live portal connections into workspace and minimap geometry\n7. Validate portal substitution, connection, disconnection, and foldout",
+        "taskListText": "1. Prototype portal-to-live-surface workspace binding\n2. Compute stable frame aperture geometry\n3. Render graph borders with bridge openings\n4. Place bridged graphs left and align bridge plumbing\n5. Render and evaluate a shared surface in the bridge gap\n6. Project live portal connections into workspace and minimap geometry\n7. Validate portal substitution, connection, disconnection, and foldout",
         "questionListText": "1. What is the canonical represented-identity key?\n2. Which workspace instance fulfills a portal when duplicates are open?\n3. Which live representation replaces each kind of portal?",
         "definitionKey": "task",
         "_classBinding": {
@@ -1074,7 +1074,7 @@
           "sourceBridgeNodeId": "workspace-bridge-apertures-bridge-summary",
           "sourceBridgeLabel": "Task Graph Summary"
         },
-        "updatedAt": "2026-09-09T16:19:03.007Z",
+        "updatedAt": "2026-09-09T17:44:30.194Z",
         "identity": {
           "graphId": "workspace-bridge-apertures-declaration"
         },
@@ -1100,7 +1100,7 @@
           }
         },
         "title": "Evaluate shared portal and landing-surface projection at workspace boundaries",
-        "body": "Goal: Evaluate shared portal and landing-surface projection at workspace boundaries\nStatus: in-progress\n\nTasks in scope:\n1. Prototype portal-to-live-surface workspace binding\n2. Compute stable frame aperture geometry\n3. Render graph borders with bridge openings\n4. Route portal-owned edges through compatible bridge apertures\n\nOpen questions:\n1. What is the canonical represented-identity key?\n2. Which workspace instance fulfills a portal when duplicates are open?\n3. Which live representation replaces each kind of portal?",
+        "body": "Goal: Evaluate shared portal and landing-surface projection at workspace boundaries\nStatus: in-progress\n\nTasks in scope:\n1. Prototype portal-to-live-surface workspace binding\n2. Compute stable frame aperture geometry\n3. Render graph borders with bridge openings\n4. Place bridged graphs left and align bridge plumbing\n\nOpen questions:\n1. What is the canonical represented-identity key?\n2. Which workspace instance fulfills a portal when duplicates are open?\n3. Which live representation replaces each kind of portal?",
         "estimateHours": "",
         "startedAt": "",
         "completedAt": "",
@@ -4173,7 +4173,7 @@
     {
       "id": "workspace-bridge-apertures-task-role-treatment",
       "type": "task",
-      "label": "Route portal-owned edges through compatible bridge apertures",
+      "label": "Place bridged graphs left and align bridge plumbing",
       "root": false,
       "position": {
         "x": 420,
@@ -4250,18 +4250,19 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Route portal-owned edges through compatible bridge apertures",
-        "body": "For an authored local edge ending at a portal, require a compatible authored bridge before projecting the edge across graph frames. The bridge supplies authority and aperture geometry; the portal and live representation remain the semantic endpoint pair.",
+        "title": "Place bridged graphs left and align bridge plumbing",
+        "body": "In edit mode, derive the position of every disconnected authored bridge from the top-left bound node that names it through _bridge.sourceBridgeNodeId. Keep authored positions unchanged. When a graph opens alongside, place it left of the focused graph that opened it and continue left to avoid collisions. Treat bridge aperture routing as provisional until bridge endpoints are reconciled with the port and edge model.",
         "priority": "high",
-        "status": "todo",
+        "status": "in-progress",
         "owner": "",
         "estimateHours": "5",
         "acceptanceCriteria": [
-          "The authored edge continues to name the graph-local portal node.",
-          "The portal target and bridge target resolve to the same canonical graph address.",
-          "The bridge never replaces the portal or live node as semantic endpoint.",
-          "Import and export roles are not misread as edge direction.",
-          "An incompatible or absent bridge leaves the local portal rendering intact."
+          "Disconnected bridge nodes render above-left of their bound source node in edit mode.",
+          "Bridge nodes with explicit semantic edges keep their authored positions.",
+          "Derived plumbing layout does not mutate or dirty the graph document.",
+          "The opened bridged graph is placed left of its focused source and exposes its provisional corridor from its right or bottom boundary.",
+          "Active canvas, inactive workspace previews, and workspace minimap use the same derived placement.",
+          "A real-browser smoke confirms the result remains legible with several bridges and several bound instances."
         ],
         "definitionKey": "task",
         "_classBinding": {
@@ -4370,14 +4371,15 @@
           "graphId": "workspace-bridge-apertures-declaration"
         },
         "targetDate": "",
-        "startedAt": "",
+        "startedAt": "2026-09-09",
         "externalRef": "",
         "presentation": {
           "glyph": {
             "kind": "icon",
             "name": "Checklist"
           }
-        }
+        },
+        "implementationEvidence": "A render-only bridge plumbing layout places disconnected bridge nodes above-left of their top-left bound source. New graph frames now open left of the focused source and continue left when occupied. Resolved bridge geometry uses the opened graph as the right-or-bottom egress frame. Port and edge reconciliation plus visual smoke review remain open."
       }
     },
     {
