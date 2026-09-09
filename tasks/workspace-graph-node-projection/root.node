@@ -7,7 +7,7 @@
     "version": "0.1.0",
     "kind": "task",
     "created": "2026-09-09T21:10:19.109Z",
-    "modified": "2026-09-09T21:11:21.841Z",
+    "modified": "2026-09-09T22:24:33.508Z",
     "author": "",
     "tags": [
       "task",
@@ -297,7 +297,7 @@
           "name": "Workspace Graph-Node Projection",
           "version": "0.1.0",
           "description": "Experimental implementation plan for treating open graphs as workspace-scale nodes whose exposed interfaces can instantiate locally owned nodes in another graph.",
-          "updatedAt": "2026-09-09T21:11:21.841Z",
+          "updatedAt": "2026-09-09T22:24:33.508Z",
           "nodeId": "workspace-graph-node-projection"
         },
         "intent": {
@@ -666,7 +666,7 @@
     {
       "id": "workspace-graph-node-projection-goal",
       "type": "goal",
-      "label": "Create nodes by dragging exposed graph interfaces into a new graph",
+      "label": "Instantiate typed capabilities at graph and workspace scale",
       "root": false,
       "position": {
         "x": -240,
@@ -743,17 +743,18 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Make graphs legible and operable as workspace-scale nodes. A user can create or paste a graph into the workspace, see eligible interfaces from neighboring graphs on their borders, and drag one into the new graph to instantiate a node owned by the receiving graph.",
+        "body": "Make the same abstraction work recursively. A border handle exposes a typed capability. Dropping it into the deepest accepting container instantiates the appropriate primitive: a node inside a graph, or a graph document with a declaration on the workspace surface. Identity, representation, and relationship policies remain explicit and independent of scale.",
         "priority": "critical",
         "status": "in-progress",
         "owner": "Michael",
         "targetDate": "",
         "successMetrics": [
-          "Creating or pasting a graph adds it alongside existing graphs and makes it the active drop target.",
-          "Every open source graph projects only declared, eligible interfaces as stable border handles.",
-          "Dropping a handle inside the receiving graph creates a valid node with a new graph-local ID and source provenance.",
-          "The source graph remains unchanged and the target graph is the only graph dirtied by instantiation.",
-          "Workspace zoom, graph zoom, minimap, focus, undo, save, close, and reopen preserve a coherent result."
+          "One instantiate capability resolves consistently at graph and workspace scale.",
+          "Blank graph space creates a graph-owned node; blank workspace creates a workspace-owned graph instance backed by a graph document and declaration.",
+          "Dropping on an existing compatible endpoint performs relationship behavior instead of empty-space instantiation.",
+          "The deepest accepting container owns the result and only its persistent document becomes dirty.",
+          "Identity, representation, relationship, and authority remain explicit capability dimensions rather than UI guesses.",
+          "Workspace and graph zoom preserve the same ports, handles, and capability meaning."
         ],
         "definitionKey": "goal",
         "_classBinding": {
@@ -939,7 +940,7 @@
       "visible": true,
       "showLabel": false,
       "data": {
-        "goal": "Create nodes by dragging exposed graph interfaces into a new graph",
+        "goal": "Instantiate typed capabilities at graph and workspace scale",
         "status": "in-progress",
         "viewRole": "document",
         "taskProgress": {
@@ -947,28 +948,28 @@
           "total": 8
         },
         "questionProgress": {
-          "answered": 0,
+          "answered": 1,
           "total": 3
         },
         "summarySource": "node-updater",
         "nodeViewPayload": "node.web",
         "taskTitles": [
-          "Define the graph-to-workspace projection contract",
-          "Create or paste a new graph into the workspace",
-          "Resolve eligible interfaces from neighboring graphs",
-          "Render stable handles on graph borders",
-          "Define drag payload, preview, and target hit testing",
-          "Instantiate a locally owned node in the receiving graph",
-          "Reconcile ports, portals, bridges, and edge creation",
-          "Integrate persistence, undo, minimap, zoom, and visual validation"
+          "Define the recursive container and capability contract",
+          "Instantiate a capability on blank workspace space",
+          "Project exposed port capabilities onto graph borders",
+          "Render scale-stable handles and accepting surfaces",
+          "Define the scale-independent instantiate payload",
+          "Instantiate a capability inside a graph container",
+          "Resolve endpoint drops as relationship operations",
+          "Validate recursive instantiation end to end"
         ],
         "questionTitles": [
-          "What exactly does each exposure instantiate?",
+          "How does one capability instantiate at both scales?",
           "Which grants permit reference, view consumption, and instantiation?",
           "What provenance survives repeated and multi-instance drops?"
         ],
-        "taskListText": "1. Define the graph-to-workspace projection contract\n2. Create or paste a new graph into the workspace\n3. Resolve eligible interfaces from neighboring graphs\n4. Render stable handles on graph borders\n5. Define drag payload, preview, and target hit testing\n6. Instantiate a locally owned node in the receiving graph\n7. Reconcile ports, portals, bridges, and edge creation\n8. Integrate persistence, undo, minimap, zoom, and visual validation",
-        "questionListText": "1. What exactly does each exposure instantiate?\n2. Which grants permit reference, view consumption, and instantiation?\n3. What provenance survives repeated and multi-instance drops?",
+        "taskListText": "1. Define the recursive container and capability contract\n2. Instantiate a capability on blank workspace space\n3. Project exposed port capabilities onto graph borders\n4. Render scale-stable handles and accepting surfaces\n5. Define the scale-independent instantiate payload\n6. Instantiate a capability inside a graph container\n7. Resolve endpoint drops as relationship operations\n8. Validate recursive instantiation end to end",
+        "questionListText": "1. How does one capability instantiate at both scales?\n2. Which grants permit reference, view consumption, and instantiation?\n3. What provenance survives repeated and multi-instance drops?",
         "definitionKey": "task",
         "_classBinding": {
           "key": "task",
@@ -1072,7 +1073,7 @@
           "sourceBridgeNodeId": "workspace-graph-node-projection-bridge-summary",
           "sourceBridgeLabel": "Task Graph Summary"
         },
-        "updatedAt": "2026-09-09T21:11:21.841Z",
+        "updatedAt": "2026-09-09T22:24:33.508Z",
         "identity": {
           "graphId": "workspace-graph-node-projection-declaration"
         },
@@ -1088,7 +1089,7 @@
         "priority": "critical",
         "owner": "Michael",
         "targetDate": "",
-        "nextAction": "Implement the graph-to-workspace projection contract and create/paste graph lifecycle first.",
+        "nextAction": "Define the recursive container resolver and capability schema, preserving compatibility with current drag-create behavior.",
         "blockedReason": "",
         "health": "unknown",
         "presentation": {
@@ -1097,8 +1098,8 @@
             "name": "Checklist"
           }
         },
-        "title": "Create nodes by dragging exposed graph interfaces into a new graph",
-        "body": "Goal: Create nodes by dragging exposed graph interfaces into a new graph\nStatus: in-progress\n\nTasks in scope:\n1. Define the graph-to-workspace projection contract\n2. Create or paste a new graph into the workspace\n3. Resolve eligible interfaces from neighboring graphs\n4. Render stable handles on graph borders\n\nOpen questions:\n1. What exactly does each exposure instantiate?\n2. Which grants permit reference, view consumption, and instantiation?\n3. What provenance survives repeated and multi-instance drops?",
+        "title": "Instantiate typed capabilities at graph and workspace scale",
+        "body": "Goal: Instantiate typed capabilities at graph and workspace scale\nStatus: in-progress\n\nTasks in scope:\n1. Define the recursive container and capability contract\n2. Instantiate a capability on blank workspace space\n3. Project exposed port capabilities onto graph borders\n4. Render scale-stable handles and accepting surfaces\n\nOpen questions:\n1. How does one capability instantiate at both scales?\n2. Which grants permit reference, view consumption, and instantiation?\n3. What provenance survives repeated and multi-instance drops?",
         "estimateHours": "",
         "startedAt": "",
         "completedAt": "",
@@ -3149,7 +3150,7 @@
       "data": {
         "content": {
           "kind": "markdown",
-          "value": "# Workspace Graph-Node Projection\n\n> **Experimental plan:** this graph records an implementation attempt to inspect in the running workspace. It is not yet the final law of the model.\n\n## Intended experience\n\n1. Say **Create a new graph** or paste a graph address into the workspace.\n2. Twilite places that graph alongside the graphs already open and makes it the active receiving graph.\n3. Each neighboring graph projects its declared, eligible views and ports as handles on its border.\n4. Drag a handle across the workspace and drop it inside the new graph.\n5. Twilite validates the exposure, previews the result, and creates a node owned by the receiving graph.\n6. Save the receiving graph. The source graph remains unchanged.\n\n## Projection hypothesis\n\nAt workspace scale, a **graph document behaves as a macro-node**. Its frame is the node boundary. Its selected declared view supplies its presentation. Its exposed ports become workspace border ports, and handles make those ports draggable. Bridges describe incoming adjacency; portals describe outgoing adjacency. These are projections of the existing graph model, not a parallel semantic model.\n\nInside a graph, ordinary graph semantics continue to apply. The graph owns its nodes and edges. At workspace scale, layout, focus, frame size, border-handle placement, and minimap arrangement belong to workspace state.\n\n## Drop transaction\n\nThe drag payload identifies the source graph, workspace instance, exposed node and port, selected surface or view, semantic type, permitted action, and provenance. A valid drop into another graph creates a new graph-local node and position. It may also create a portal-backed carrier or a graph-local edge when the exposure contract explicitly requires that result.\n\nThe drop does not mutate the source graph, reuse the source graph-local node ID, or invent an edge that crosses graph documents. Source identity survives as provenance; the receiving graph owns the created node.\n\n## Rendering rule\n\nBorder handles remain stable while the graph changes semantic zoom internally. Incoming bridge-related apertures occupy the top or left. Outgoing or creatable exposures occupy the right or bottom. Unexposed plumbing remains hidden in browse mode. The workspace minimap shows graph frames and their adjacency, while a graph-level minimap can still describe a large focused graph.\n\n## Questions this attempt must answer\n\n- Does a given exposure create a semantic node, a portal-backed carrier, a selected view projection, or present a chooser?\n- Which grants distinguish view consumption, local projection, semantic instantiation, and relationship creation?\n- Which provenance fields disambiguate repeated drops and multiple workspace instances of one source graph?\n\nThe first implementation should make those decisions explicit in one projection resolver and one target-graph transaction, then let us inspect the interaction before promoting the experiment into a durable contract."
+          "value": "# Recursive Workspace Instantiation\n\n> **Experimental plan:** this graph records an implementation attempt to inspect in the running workspace. It is not yet the final law of the model.\n\n## Governing rule\n\n**A border handle exposes a typed capability. Dragging it performs the operation defined by that capability while preserving the distinction between identity, representation, and relationship.**\n\nThe abstraction repeats at two scales:\n\n```text\nWorkspace container\n└── Graph presented as a macro-node\n    └── Graph container\n        └── Node\n```\n\nA graph contains nodes. A workspace contains graph instances backed by graph documents. Ports expose capabilities at either scale, and handles make those capabilities draggable.\n\n## One instantiate operation\n\nInstantiation is scale-independent. The receiving container determines the concrete primitive:\n\n| Drop target | Receiving scope | Result |\n| --- | --- | --- |\n| Blank space inside a graph | Graph container | Create a graph-owned node |\n| Blank workspace space | Workspace container | Create a graph instance backed by a graph document and declaration |\n| Compatible existing endpoint | Relationship layer at that scope | Perform the declared connection or relationship operation |\n| Interior of another open graph | That graph container | Create a node owned by that graph |\n\nBlank workspace space is not null. It is an active container surface, just as blank graph space is an active graph container surface.\n\n## Deepest accepting container\n\nThe drop resolver chooses the deepest compatible target beneath the pointer:\n\n1. A compatible node or graph endpoint.\n2. An accepting graph interior.\n3. The workspace surface.\n\nAn endpoint drop performs relationship behavior. A graph-interior drop instantiates a node. A workspace-surface drop instantiates a graph and its declaration. The preview must name the exact result before mutation.\n\n## Capability dimensions\n\nThe capability carries independent policies for:\n\n- **Identity:** new local identity, explicitly shared semantic identity, or another declared identity policy.\n- **Representation:** selected view, surface, content, glyph, or class defaults.\n- **Relationship:** none, local edge, portal relationship, or another explicit endpoint operation.\n- **Authority:** what the source offers and what the receiving container may perform.\n- **Provenance:** source graph, workspace instance, node, port, surface, and capability version.\n\nContainer scale never silently chooses semantic identity. A node created inside a graph normally gets a new graph-local ID. A graph created on the workspace gets a graph document and declaration, but whether that declaration represents a new or existing semantic identity comes from the capability.\n\n## Border projection\n\nThe port is the primitive projected onto a graph border. An output capability becomes a draggable source handle. An input capability becomes a target socket. A bidirectional port may provide both.\n\nViews, declarations, node classes, portals, content, glyphs, and other semantic nodes reach the border only through a declared public port. Edges never appear as independent draggable exports. Bridges may create incoming adjacency apertures, but they do not become creation capabilities unless a port explicitly grants that behavior.\n\nBorder handles remain stable while graph content semantic-zooms. Incoming adjacency occupies the top or left; outgoing or creatable capabilities occupy the right or bottom. The workspace minimap shows graph frames and adjacency, while graph-level navigation can still describe a large focused graph.\n\n## Transactions\n\nA graph-interior drop creates a node owned by the receiving graph, with a new graph-local ID unless identity policy says otherwise. A workspace drop creates a graph document, declaration, root port, workspace instance, placement, and focus. A compatible endpoint drop executes the declared relationship operation.\n\nEach result is one undoable transaction. Source graphs remain unchanged. Only the persistent receiving document becomes dirty. Workspace arrangement remains workspace state.\n\n## Remaining questions\n\n- What is the minimum authority vocabulary for offering and accepting capabilities at both scopes?\n- Which identity and provenance tuple survives repeated drops and multiple workspace instances?\n- Which concrete capability schemas should replace or extend the current `drag-create` plus `create-node` behavior without breaking existing graphs?\n\nThe first implementation should make the container resolver and capability interpreter explicit, preserve the existing local-edge model, and let us inspect the interaction before promoting this experiment into a durable contract."
         },
         "interfaceContract": {
           "version": 1,
@@ -3530,7 +3531,7 @@
     {
       "id": "workspace-graph-node-projection-task-define-projection",
       "type": "task",
-      "label": "Define the graph-to-workspace projection contract",
+      "label": "Define the recursive container and capability contract",
       "root": false,
       "position": {
         "x": -1100,
@@ -3607,16 +3608,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Define the graph-to-workspace projection contract",
-        "body": "Specify the derived workspace model: graph document to macro-node/frame; declared view to macro-node presentation; exposed port to border port; handle to draggable affordance; bridge to incoming adjacency; portal to outgoing adjacency. Keep graph documents authoritative and mark the model experimental.",
+        "title": "Define the recursive container and capability contract",
+        "body": "Define one scale-independent model: containers own members; ports expose typed capabilities; handles render capabilities; and instantiate resolves according to the receiving container. A graph contains nodes, while a workspace contains graph instances backed by graph documents and declarations.",
         "priority": "critical",
         "status": "in-progress",
         "owner": "",
         "estimateHours": "",
         "acceptanceCriteria": [
-          "One projection function produces a deterministic workspace representation from loaded graph data.",
-          "The contract distinguishes graph-local semantic data from workspace-only frame geometry and focus state.",
-          "Bridge, portal, port, view, and handle each have one stated workspace responsibility."
+          "The contract names graph and workspace as container scopes.",
+          "The same capability shape is valid at both scopes.",
+          "Identity, representation, relationship, authority, and result type are independent fields.",
+          "No primitive is inferred from handle appearance or canvas coordinates alone."
         ],
         "definitionKey": "task",
         "_classBinding": {
@@ -3739,7 +3741,7 @@
     {
       "id": "workspace-graph-node-projection-task-create-paste-graph",
       "type": "task",
-      "label": "Create or paste a new graph into the workspace",
+      "label": "Instantiate a capability on blank workspace space",
       "root": false,
       "position": {
         "x": -560,
@@ -3816,16 +3818,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Create or paste a new graph into the workspace",
-        "body": "Define the command and lifecycle for a blank or pasted graph: durable address when available, declaration and root port, workspace placement, active focus, writable state, and unsaved state.",
+        "title": "Instantiate a capability on blank workspace space",
+        "body": "Treat blank workspace space as an active workspace container, not null. Dropping an instantiable capability there creates a graph instance backed by a new or selected graph document, a valid declaration, a root port, workspace placement, and initial focus.",
         "priority": "critical",
         "status": "todo",
         "owner": "",
         "estimateHours": "",
         "acceptanceCriteria": [
-          "The new graph appears alongside current graphs without replacing them.",
-          "A new graph has a valid declaration and root port before any interface is dropped.",
-          "Workspace placement does not dirty unrelated graph documents."
+          "The workspace resolves the drop as graph-scale instantiation.",
+          "The result has a graph document, declaration, root port, address lifecycle, and workspace instance ID.",
+          "The declaration applies the capability identity policy rather than automatically sharing source identity.",
+          "Existing workspace graphs remain open and unchanged."
         ],
         "definitionKey": "task",
         "_classBinding": {
@@ -3948,7 +3951,7 @@
     {
       "id": "workspace-graph-node-projection-task-resolve-exposures",
       "type": "task",
-      "label": "Resolve eligible interfaces from neighboring graphs",
+      "label": "Project exposed port capabilities onto graph borders",
       "root": false,
       "position": {
         "x": -20,
@@ -4025,16 +4028,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Resolve eligible interfaces from neighboring graphs",
-        "body": "Walk the existing declaration-first chain from declaration through exposed port and selected view. Produce workspace handles only for interfaces whose type, surface, direction, and authority can participate in drag-create.",
+        "title": "Project exposed port capabilities onto graph borders",
+        "body": "Resolve public interfaces through the declaration-first chain. A graph border displays its declared ports as source handles, target sockets, or both. Views, declarations, node classes, portals, content, and glyphs reach the border only through a port capability.",
         "priority": "high",
         "status": "todo",
         "owner": "",
         "estimateHours": "",
         "acceptanceCriteria": [
-          "Unexposed internal nodes never become workspace handles.",
-          "Each handle retains source graphRef, source node and port identity, selected surface or view, type information, and authority.",
-          "Browse-mode plumbing stays hidden except for the derived border affordance."
+          "Only declared public ports appear on the workspace border.",
+          "Output capabilities render as draggable handles; input capabilities render as accepting sockets.",
+          "Each projection retains its source graph, workspace instance, port, surface or view, type, authority, and capability contract.",
+          "Bridge apertures remain incoming adjacency projections and are not silently converted into creation capabilities."
         ],
         "definitionKey": "task",
         "_classBinding": {
@@ -4157,7 +4161,7 @@
     {
       "id": "workspace-graph-node-projection-task-render-handles",
       "type": "task",
-      "label": "Render stable handles on graph borders",
+      "label": "Render scale-stable handles and accepting surfaces",
       "root": false,
       "position": {
         "x": 520,
@@ -4234,16 +4238,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Render stable handles on graph borders",
-        "body": "Project eligible interfaces onto graph borders without using their graph-local node coordinates. Keep incoming bridge-related affordances on the top or left and outgoing or creatable exposures on the right or bottom.",
+        "title": "Render scale-stable handles and accepting surfaces",
+        "body": "Render projected port capabilities on graph frames and make both graph interiors and workspace space explicit drop surfaces. Keep incoming adjacency on the top or left and outgoing or creatable capabilities on the right or bottom.",
         "priority": "high",
         "status": "todo",
         "owner": "",
         "estimateHours": "",
         "acceptanceCriteria": [
-          "Handles remain attached to the owning graph frame while its internal semantic view changes.",
-          "Placement is deterministic, avoids header controls and resize handles, and remains legible at workspace zoom.",
-          "The graph border communicates the aperture and drag direction."
+          "Handles remain attached to graph frames while graph content semantic-zooms.",
+          "Hit testing distinguishes node endpoints, graph interiors, graph borders, and workspace space.",
+          "Placement remains deterministic and avoids headers, resize affordances, and overlapping handles.",
+          "The workspace minimap represents graph frames while graph-level navigation remains available."
         ],
         "definitionKey": "task",
         "_classBinding": {
@@ -4366,7 +4371,7 @@
     {
       "id": "workspace-graph-node-projection-task-drag-payload",
       "type": "task",
-      "label": "Define drag payload, preview, and target hit testing",
+      "label": "Define the scale-independent instantiate payload",
       "root": false,
       "position": {
         "x": -1100,
@@ -4443,16 +4448,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Define drag payload, preview, and target hit testing",
-        "body": "Create a typed drag session containing source graphRef, workspace instance, source node and port, surface or view, semantic type, allowed action, authority, and provenance. Preview the prospective node only while the pointer is over an eligible graph frame.",
+        "title": "Define the scale-independent instantiate payload",
+        "body": "Carry the offered capability and source provenance through one drag session. Resolve the deepest accepting target beneath the pointer, preview the exact result at that scope, and execute one typed transaction.",
         "priority": "high",
         "status": "todo",
         "owner": "",
         "estimateHours": "",
         "acceptanceCriteria": [
-          "The payload contains enough information to validate and execute the drop without rereading UI state.",
-          "Invalid targets explain why the drop is unavailable.",
-          "Cancel, focus loss, and Escape clear the drag session without mutating a graph."
+          "The payload states operation, semantic type, identity policy, representation policy, relationship policy, authority, and provenance.",
+          "Target resolution prefers a compatible endpoint, then a graph interior, then the workspace surface.",
+          "The preview says whether the result will be an edge operation, a graph-owned node, or a workspace graph and declaration.",
+          "Cancel, Escape, and focus loss clear the drag session without mutation."
         ],
         "definitionKey": "task",
         "_classBinding": {
@@ -4575,7 +4581,7 @@
     {
       "id": "workspace-graph-node-projection-task-instantiate-local",
       "type": "task",
-      "label": "Instantiate a locally owned node in the receiving graph",
+      "label": "Instantiate a capability inside a graph container",
       "root": false,
       "position": {
         "x": -560,
@@ -4652,16 +4658,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Instantiate a locally owned node in the receiving graph",
-        "body": "On a valid drop, create a node with a new target-local ID and position. Resolve permitted class defaults, semantic type, selected presentation, and source provenance. Never move, borrow, or mutate the source node.",
+        "title": "Instantiate a capability inside a graph container",
+        "body": "When the deepest accepting container is a graph interior, create a graph-owned node with a new graph-local ID and drop position. Resolve semantic type, class defaults, representation, authority, and provenance from the capability.",
         "priority": "high",
         "status": "todo",
         "owner": "",
         "estimateHours": "",
         "acceptanceCriteria": [
-          "The receiving graph owns the new node ID, position, and future edits.",
-          "The created node records enough provenance to identify the exposure and workspace instance that produced it.",
-          "One undo operation removes the whole target-graph transaction."
+          "Blank graph space creates a node rather than a graph or declaration.",
+          "The receiving graph owns the new node ID, position, edits, and persistence.",
+          "Identity mode can create a new identity or explicitly preserve semantic identity; scale does not decide it.",
+          "The source graph remains unchanged and one undo removes the complete transaction."
         ],
         "definitionKey": "task",
         "_classBinding": {
@@ -4784,7 +4791,7 @@
     {
       "id": "workspace-graph-node-projection-task-reconcile-edges",
       "type": "task",
-      "label": "Reconcile ports, portals, bridges, and edge creation",
+      "label": "Resolve endpoint drops as relationship operations",
       "root": false,
       "position": {
         "x": -20,
@@ -4861,16 +4868,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Reconcile ports, portals, bridges, and edge creation",
-        "body": "Favor the existing graph-local edge model. Decide from the explicit exposure contract whether a drop creates only a node, a portal-backed node, or a node plus a local edge. Do not infer mirrored cross-graph semantic edges from adjacency alone.",
+        "title": "Resolve endpoint drops as relationship operations",
+        "body": "When the deepest accepting target is a compatible node or graph port, execute the capability relationship policy. Favor existing graph-local edge semantics. Portal, bridge, and adjacency behavior must remain explicit rather than being inferred from crossing a frame boundary.",
         "priority": "high",
         "status": "todo",
         "owner": "",
         "estimateHours": "",
         "acceptanceCriteria": [
-          "No arbitrary edge crosses graph documents.",
-          "Any created edge is owned and serialized by the receiving graph using existing edge semantics.",
-          "Portal expansion and bridge adjacency remain compatible with the same projection vocabulary."
+          "An endpoint drop does not also perform empty-space instantiation unless the capability explicitly defines a compound transaction.",
+          "Every created edge is owned by the appropriate receiving graph and uses existing edge semantics.",
+          "No arbitrary semantic edge is serialized across graph documents.",
+          "Portal navigation, same-node declaration expansion, and workspace adjacency remain distinguishable operations."
         ],
         "definitionKey": "task",
         "_classBinding": {
@@ -4993,7 +5001,7 @@
     {
       "id": "workspace-graph-node-projection-task-persist-validate",
       "type": "task",
-      "label": "Integrate persistence, undo, minimap, zoom, and visual validation",
+      "label": "Validate recursive instantiation end to end",
       "root": false,
       "position": {
         "x": 520,
@@ -5070,16 +5078,18 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Integrate persistence, undo, minimap, zoom, and visual validation",
-        "body": "Complete the interaction across workspace state and graph persistence. Test duplicate instantiation, multiple instances of one source graph, read-only sources, Save All, close and reopen, and both graph-scale and workspace-scale navigation.",
+        "title": "Validate recursive instantiation end to end",
+        "body": "Test the abstraction at both scales: node-handle to blank graph, graph-border handle to another graph, graph-border handle to blank workspace, and endpoint-to-endpoint relationship creation. Include undo, dirty ownership, save, reload, focus, minimaps, and semantic zoom.",
         "priority": "high",
         "status": "todo",
         "owner": "",
         "estimateHours": "",
         "acceptanceCriteria": [
-          "Only the receiving graph becomes dirty after a successful drop.",
-          "Save and reload preserve semantic content while workspace arrangement remains session-owned.",
-          "Focused tests and browser smoke checks cover placement, handles, drop, undo, persistence, minimap, and semantic zoom."
+          "All three target classes resolve deterministically and produce the previewed primitive.",
+          "Only the owning graph document becomes dirty after graph-level mutation.",
+          "Workspace arrangement and graph instance placement remain workspace state.",
+          "Duplicate drops, multiple instances of one source graph, read-only sources, Save All, close, and reopen behave coherently.",
+          "Focused tests and browser smoke checks cover graph-scale and workspace-scale instantiation."
         ],
         "definitionKey": "task",
         "_classBinding": {
@@ -5202,7 +5212,7 @@
     {
       "id": "workspace-graph-node-projection-question-creation-result",
       "type": "open-question",
-      "label": "What exactly does each exposure instantiate?",
+      "label": "How does one capability instantiate at both scales?",
       "root": false,
       "position": {
         "x": -920,
@@ -5279,10 +5289,10 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Should the default result be a semantic node, a portal-backed carrier, a selected view projection, or a chooser determined by the port contract? The runtime must not guess from visual appearance alone.",
-        "status": "open",
+        "body": "Resolved provisionally: instantiate is scale-independent. The receiving container selects the concrete primitive, while the capability independently selects identity, representation, relationship, and authority policies.",
+        "status": "answered",
         "owner": "",
-        "resolutionPath": "",
+        "resolutionPath": "Use deepest accepting container resolution: graph interior creates a node; workspace surface creates a graph document and declaration; a compatible endpoint performs relationship behavior.",
         "prominence": "high",
         "definitionKey": "open-question",
         "_classBinding": {
@@ -5462,7 +5472,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Define the smallest authority vocabulary that distinguishes reading a surface, creating a local projection, creating a semantic instance, and creating a relationship.",
+        "body": "Define the smallest authority vocabulary for offering a capability, accepting it at graph or workspace scope, consuming a representation, preserving identity, and creating a relationship.",
         "status": "open",
         "owner": "",
         "resolutionPath": "",
@@ -5645,7 +5655,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Define the identity tuple when the same source exposure is dragged more than once or when multiple workspace instances show the same graph. A new node needs local identity without losing its source lineage.",
+        "body": "Define identity and provenance when a capability is instantiated repeatedly, at different container scales, or from multiple workspace instances of one source graph. Container scope must not accidentally determine semantic identity.",
         "status": "open",
         "owner": "",
         "resolutionPath": "",
@@ -5828,12 +5838,12 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "rationale": "Treat graph-as-node as a workspace presentation derived from the loaded graph and its declared interfaces. The graph document remains the semantic authority; border positions and frame placement remain workspace state.",
+        "rationale": "Treat graph-as-node as the recursive workspace presentation of a graph document. Graph ports become macro-node ports, and the workspace surface plays the same container role that graph space plays for ordinary nodes.",
         "status": "decided",
         "decidedAt": "2026-09-09T21:10:19.109Z",
         "owner": "Michael",
         "supersededBy": "",
-        "body": "Treat graph-as-node as a workspace presentation derived from the loaded graph and its declared interfaces. The graph document remains the semantic authority; border positions and frame placement remain workspace state.",
+        "body": "Treat graph-as-node as the recursive workspace presentation of a graph document. Graph ports become macro-node ports, and the workspace surface plays the same container role that graph space plays for ordinary nodes.",
         "definitionKey": "decision",
         "_classBinding": {
           "key": "decision",
@@ -5935,7 +5945,7 @@
     {
       "id": "workspace-graph-node-projection-decision-target-ownership",
       "type": "decision",
-      "label": "The receiving graph owns every instantiated node",
+      "label": "The deepest accepting container owns the instantiated result",
       "root": false,
       "position": {
         "x": -280,
@@ -6012,12 +6022,12 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "rationale": "A drop creates a new graph-local node and ID in the receiving graph. Source identity is provenance, not ownership, and the source graph is never mutated by the drop.",
+        "rationale": "A graph interior owns a newly instantiated node. The workspace owns a graph instance, while the created graph document owns its declaration and internal nodes. Source identity remains provenance unless the capability explicitly selects shared semantic identity.",
         "status": "decided",
         "decidedAt": "2026-09-09T21:10:19.109Z",
         "owner": "Michael",
         "supersededBy": "",
-        "body": "A drop creates a new graph-local node and ID in the receiving graph. Source identity is provenance, not ownership, and the source graph is never mutated by the drop.",
+        "body": "A graph interior owns a newly instantiated node. The workspace owns a graph instance, while the created graph document owns its declaration and internal nodes. Source identity remains provenance unless the capability explicitly selects shared semantic identity.",
         "definitionKey": "decision",
         "_classBinding": {
           "key": "decision",
@@ -6202,6 +6212,190 @@
         "owner": "Michael",
         "supersededBy": "",
         "body": "Derive border handles from declared exposures and workspace layout. Do not persist workspace border coordinates into the source graph or treat the affordance as a second semantic node.",
+        "definitionKey": "decision",
+        "_classBinding": {
+          "key": "decision",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+          "defaults": {
+            "label": "Decision",
+            "size": {
+              "width": 420,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+            "showLabel": false,
+            "data": {
+              "rationale": "State why this decision was made.",
+              "status": "decided",
+              "decidedAt": "",
+              "owner": "",
+              "supersededBy": "",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Gavel"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "decision",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Decision",
+              "size": {
+                "width": 420,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+              "showLabel": false,
+              "data": {
+                "rationale": "State why this decision was made.",
+                "status": "decided",
+                "decidedAt": "",
+                "owner": "",
+                "supersededBy": "",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Gavel"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "workspace-graph-node-projection-bridge-decision",
+          "sourceBridgeNodeId": "workspace-graph-node-projection-bridge-decision",
+          "sourceBridgeLabel": "Decision",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "decision",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node"
+        },
+        "identity": {
+          "graphId": "workspace-graph-node-projection-declaration"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Gavel"
+          }
+        }
+      }
+    },
+    {
+      "id": "workspace-graph-node-projection-decision-container-relative-instantiation",
+      "type": "decision",
+      "label": "Instantiation is container-relative and scale-independent",
+      "root": false,
+      "position": {
+        "x": 1000,
+        "y": 1680
+      },
+      "width": 420,
+      "height": 240,
+      "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "rationale": "Expose one instantiate capability. Blank graph space resolves it to a node; blank workspace resolves it to a graph document and declaration; a compatible endpoint resolves it to relationship behavior. Do not encode scale-specific action names in the offered capability.",
+        "status": "decided",
+        "decidedAt": "2026-09-09T21:10:19.109Z",
+        "owner": "Michael",
+        "supersededBy": "",
+        "body": "Expose one instantiate capability. Blank graph space resolves it to a node; blank workspace resolves it to a graph document and declaration; a compatible endpoint resolves it to relationship behavior. Do not encode scale-specific action names in the offered capability.",
         "definitionKey": "decision",
         "_classBinding": {
           "key": "decision",
@@ -6563,6 +6757,17 @@
       "type": "reference",
       "source": "workspace-graph-node-projection-task-define-projection",
       "target": "workspace-graph-node-projection-decision-derived-handles",
+      "label": "decision",
+      "style": {},
+      "data": {},
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "id": "workspace-graph-node-projection-edge-projection-decision-04",
+      "type": "reference",
+      "source": "workspace-graph-node-projection-task-define-projection",
+      "target": "workspace-graph-node-projection-decision-container-relative-instantiation",
       "label": "decision",
       "style": {},
       "data": {},
