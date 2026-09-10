@@ -1,0 +1,124 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Wrong Import Identity",
+    "description": "Negative control: imports from the provider but names another export capability.",
+    "version": "0.1.0",
+    "kind": "validation",
+    "created": "2026-09-10T00:00:00.000Z",
+    "modified": "2026-09-10T00:00:00.000Z",
+    "tags": [
+      "smoke-test",
+      "workspace",
+      "bridge",
+      "portal",
+      "port"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "bridge-consumer-wrong-declaration",
+      "type": "declaration",
+      "label": "Wrong Import Identity",
+      "position": {
+        "x": -560,
+        "y": -520
+      },
+      "width": 400,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "bridge-consumer-wrong-declaration",
+          "nodeId": "bridge-consumer-wrong-declaration",
+          "name": "Wrong Import Identity",
+          "version": "0.1.0",
+          "description": "Negative reciprocal identity fixture.",
+          "createdAt": "2026-09-10T00:00:00.000Z",
+          "updatedAt": "2026-09-10T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "validation",
+          "scope": "local"
+        },
+        "document": {
+          "url": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/bridge-consumer-wrong/root.node"
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": "",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "declaration": {
+          "kind": "validation",
+          "targetMode": "artifact",
+          "defaultSurfaceId": "",
+          "surfaces": []
+        }
+      }
+    },
+    {
+      "id": "wrong-checks",
+      "type": "markdown",
+      "label": "Expected behavior",
+      "position": {
+        "x": -80,
+        "y": -480
+      },
+      "width": 720,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# PASS condition\n\nNo workspace edge appears. This import points to the provider graph but records `some-other-export`; graph address alone must not consume `export-mismatch`."
+      }
+    },
+    {
+      "id": "import-wrong-export",
+      "type": "bridge",
+      "label": "Import · wrong source identity",
+      "position": {
+        "x": -920,
+        "y": -80
+      },
+      "width": 280,
+      "height": 130,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/bridge-provider/root.node",
+          "role": "import",
+          "resourceKind": "smoke-capability",
+          "scope": "focused-graph",
+          "grants": [
+            "connect"
+          ],
+          "exposure": {}
+        },
+        "target": {
+          "kind": "graph",
+          "mode": "bridge",
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/bridge-provider/root.node",
+          "role": "import"
+        },
+        "_origin": {
+          "relation": "reciprocal-bridge",
+          "operation": "create-import-bridge",
+          "sourceGraphRef": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/bridge-provider/root.node",
+          "sourceNodeId": "some-other-export"
+        }
+      }
+    }
+  ],
+  "edges": [],
+  "clusters": [],
+  "settings": {},
+  "scripts": []
+}

@@ -1,0 +1,182 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Bridge Provider",
+    "description": "Offers matched, unconsumed, and mismatched export capabilities.",
+    "version": "0.1.0",
+    "kind": "validation",
+    "created": "2026-09-10T00:00:00.000Z",
+    "modified": "2026-09-10T00:00:00.000Z",
+    "tags": [
+      "smoke-test",
+      "workspace",
+      "bridge",
+      "portal",
+      "port"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "bridge-provider-declaration",
+      "type": "declaration",
+      "label": "Bridge Provider",
+      "position": {
+        "x": -560,
+        "y": -520
+      },
+      "width": 400,
+      "height": 250,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "bridge-provider-declaration",
+          "nodeId": "bridge-provider-declaration",
+          "name": "Bridge Provider",
+          "version": "0.1.0",
+          "description": "Three export bridge cases.",
+          "createdAt": "2026-09-10T00:00:00.000Z",
+          "updatedAt": "2026-09-10T00:00:00.000Z"
+        },
+        "intent": {
+          "kind": "validation",
+          "scope": "local"
+        },
+        "document": {
+          "url": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/bridge-provider/root.node"
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": "",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false
+        },
+        "declaration": {
+          "kind": "validation",
+          "targetMode": "artifact",
+          "defaultSurfaceId": "",
+          "surfaces": []
+        }
+      }
+    },
+    {
+      "id": "bridge-provider-checks",
+      "type": "markdown",
+      "label": "Expected behavior",
+      "position": {
+        "x": -80,
+        "y": -480
+      },
+      "width": 720,
+      "height": 320,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# Expected\n\n- All three exports appear as amber draggable capabilities.\n- No full workspace edge exists until a reciprocal import is open.\n- Matching Consumer adds exactly one edge.\n- The other consumers add none."
+      }
+    },
+    {
+      "id": "export-matched",
+      "type": "bridge",
+      "label": "Export · should connect",
+      "position": {
+        "x": 760,
+        "y": -340
+      },
+      "width": 280,
+      "height": 130,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/bridge-consumer-matched/root.node",
+          "role": "export",
+          "resourceKind": "smoke-capability",
+          "scope": "focused-graph",
+          "grants": [
+            "connect"
+          ],
+          "exposure": {}
+        },
+        "target": {
+          "kind": "graph",
+          "mode": "bridge",
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/bridge-consumer-matched/root.node",
+          "role": "export"
+        }
+      }
+    },
+    {
+      "id": "export-unconsumed",
+      "type": "bridge",
+      "label": "Export · no import",
+      "position": {
+        "x": 760,
+        "y": -80
+      },
+      "width": 280,
+      "height": 130,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/bridge-consumer-missing/root.node",
+          "role": "export",
+          "resourceKind": "smoke-capability",
+          "scope": "focused-graph",
+          "grants": [
+            "connect"
+          ],
+          "exposure": {}
+        },
+        "target": {
+          "kind": "graph",
+          "mode": "bridge",
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/bridge-consumer-missing/root.node",
+          "role": "export"
+        }
+      }
+    },
+    {
+      "id": "export-mismatch",
+      "type": "bridge",
+      "label": "Export · wrong identity",
+      "position": {
+        "x": 760,
+        "y": 180
+      },
+      "width": 280,
+      "height": 130,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/bridge-consumer-wrong/root.node",
+          "role": "export",
+          "resourceKind": "smoke-capability",
+          "scope": "focused-graph",
+          "grants": [
+            "connect"
+          ],
+          "exposure": {}
+        },
+        "target": {
+          "kind": "graph",
+          "mode": "bridge",
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/bridge-consumer-wrong/root.node",
+          "role": "export"
+        }
+      }
+    }
+  ],
+  "edges": [],
+  "clusters": [],
+  "settings": {},
+  "scripts": []
+}
