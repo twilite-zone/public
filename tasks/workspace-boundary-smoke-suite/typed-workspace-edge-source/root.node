@@ -1,7 +1,7 @@
 {
   "version": "2.0.0",
   "metadata": {
-    "title": "10 · Authored Typed Edge Source",
+    "title": "10 \u00b7 Authored Typed Edge Source",
     "kind": "validation",
     "version": "0.1.0",
     "preferredViewer": "https://twilite.zone"
@@ -10,7 +10,7 @@
     {
       "id": "declaration",
       "type": "declaration",
-      "label": "10 · Authored Typed Edge Source",
+      "label": "10 \u00b7 Authored Typed Edge Source",
       "position": {
         "x": 0,
         "y": 0
@@ -23,7 +23,7 @@
         "identity": {
           "graphId": "typed-workspace-edge-source",
           "nodeId": "typed-workspace-edge-source",
-          "name": "10 · Authored Typed Edge Source",
+          "name": "10 \u00b7 Authored Typed Edge Source",
           "version": "0.1.0",
           "description": "Source fixture for an explicitly authored typed workspace edge."
         },
@@ -43,9 +43,9 @@
       }
     },
     {
-      "id": "typed-output",
-      "type": "port",
-      "label": "Smoke Signal Output",
+      "id": "typed-export",
+      "type": "bridge",
+      "label": "Smoke Signal Export",
       "position": {
         "x": 120,
         "y": 340
@@ -68,21 +68,39 @@
         }
       ],
       "data": {
-        "direction": "output",
-        "dataType": "signal",
-        "edgeClass": {
-          "key": "smoke-signal",
-          "renderDefaults": {
-            "color": "#ff3bd4",
-            "width": 6,
-            "dash": [
-              14,
-              6
-            ],
-            "opacity": 1,
-            "showArrow": true,
-            "arrowPosition": "end"
+        "authority": "bridge",
+        "identity": {
+          "graphId": "typed-workspace-edge-source",
+          "nodeId": "typed-export"
+        },
+        "bridge": {
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/typed-workspace-edge-target/root.node",
+          "role": "export",
+          "resourceKind": "signal",
+          "scope": "workspace",
+          "grants": [
+            "connect"
+          ],
+          "relationship": {
+            "edgeClassKey": "smoke-signal",
+            "renderDefaults": {
+              "color": "#ff3bd4",
+              "width": 6,
+              "dash": [
+                14,
+                6
+              ],
+              "opacity": 1,
+              "showArrow": true,
+              "arrowPosition": "end"
+            }
           }
+        },
+        "target": {
+          "kind": "graph",
+          "mode": "bridge",
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/typed-workspace-edge-target/root.node",
+          "role": "export"
         }
       }
     },
@@ -99,7 +117,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Authored typed workspace edge\n\nOpen fixture 11 alongside. Choose **Connect graphs**.\n\n- From: this graph → Smoke Signal Output → smoke signal\n- To: fixture 11 → Smoke Signal Input → smoke signal\n- Leave **Edge class** blank so it inherits `smoke-signal`.\n\nZoom out. Expect one thick magenta dashed workspace edge plus derived **EX** and **IM** endpoint Bridges."
+        "markdown": "# Authored typed workspace edge\n\nOpen fixture 11 alongside. Drag the **Smoke Signal Export** handle on this graph's border into fixture 11.\n\nFixture 11 exposes an input that accepts `smoke-signal`. The drop authors one workspace-owned edge; it does not add an authored import Bridge to either child document.\n\nZoom out. Expect one thick magenta dashed workspace edge plus derived **EX** and **IM** endpoint Bridges."
       }
     }
   ],
