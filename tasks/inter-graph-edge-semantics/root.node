@@ -3,7 +3,7 @@
   "metadata": {
     "title": "Inter-Graph Edge Semantics Q&A",
     "kind": "investigation",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
@@ -24,7 +24,7 @@
           "graphId": "inter-graph-edge-semantics",
           "nodeId": "inter-graph-edge-semantics",
           "name": "Inter-Graph Edge Semantics",
-          "version": "0.2.0",
+          "version": "0.3.0",
           "description": "A recursive Q&A contract for graph-local edges, Bridge-projected handles, and ordinary workspace-owned edges between rendered graph-nodes."
         },
         "intent": {
@@ -111,7 +111,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Question\n\nDoes a Bridge own an edge, or does it expose/consume a place where an edge may connect?\n\n## Answer\n\nA Bridge is a graph-local boundary node. At the containing workspace level it projects as a typed handle on the rendered graph-node. The workspace edge connects projected handles; the Bridge does not own that outer edge."
+        "markdown": "# Question\n\nWhere do Bridges come from?\n\n## Answer\n\nThe parent edge is primary. When an endpoint graph-node unfolds, Twilite extrapolates an export Bridge at the source and an import Bridge at the target. Each is a deterministic node projection carrying the parent edge ID."
       }
     },
     {
@@ -255,7 +255,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Question\n\nHow does a Bridge participate in edge typing?\n\n## Answer\n\nA Bridge exposes or consumes a typed relationship capability. Its projected handle declares allowed or required edge classes. Compatibility governs whether the containing graph may create an edge; the created edge owns its selected class."
+        "markdown": "# Question\n\nHow does a Bridge participate in edge typing?\n\n## Answer\n\nDirection is fixed by the parent edge: source becomes export and target becomes import. The export Bridge reports the edge's actual class. Only the import Bridge declares accepted edge classes and can reject the incoming edge."
       }
     },
     {
@@ -279,7 +279,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Revised model — implementation target\n\n1. **Every edge is regular at the graph level that owns it.**\n2. **An authored edge never crosses its owning graph/document boundary.**\n3. **An inner edge terminates on a graph-local Bridge node.**\n4. **At the next zoom level, a rendered graph is a node and its Bridge is a projected handle.**\n5. **The containing workspace is a graph and owns ordinary edges between those handles.**\n6. **Each owning level gives its edge an ID, class, label, route, and lifecycle.**\n7. **Bridge compatibility constrains edge creation; it does not transfer edge ownership to child documents.**\n8. **Portal bindings remain navigational and visually distinct from edges.**\n9. **Same `nodeId` combines graph renderings inside one node boundary without erasing document ownership seams.**"
+        "markdown": "# Revised model — implementation target\n\n1. **Every edge is authored at the graph level that owns it.**\n2. **An authored edge never crosses its owning graph/document boundary.**\n3. **At workspace level, rendered graph-nodes are ordinary nodes and their relationship is an ordinary parent edge.**\n4. **When an endpoint graph unfolds, the parent edge extrapolates a Bridge node into that graph.**\n5. **The source endpoint always projects an export Bridge; the target always projects an import Bridge.**\n6. **The export Bridge reports the parent edge's actual class.**\n7. **Only the import Bridge declares accepted classes and validates the incoming edge.**\n8. **Both projections carry the parent edge ID, so pairing is identity-based rather than inferred from adjacency.**\n9. **Portal bindings remain navigational and visually distinct from edges.**\n10. **Same `nodeId` combines graph renderings inside one node boundary without erasing document ownership seams.**"
       }
     },
     {
@@ -327,7 +327,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Implementation plan\n\n1. Give workspace state its own ordinary `edges` collection.\n2. Store outer endpoints by workspace graph-node instance and projected Bridge handle.\n3. Stop writing newly created outer edges into child declarations.\n4. Persist workspace edges with workspace arrangement state; keep legacy `edgeReferences` readable during migration.\n5. Render workspace edges through the normal edge-style contract, including edge classes.\n6. Make Bridge projections advertise class compatibility to edge creation.\n7. Draw Portal bindings with a separate traversal presentation.\n8. Add fixtures for local-edge-to-Bridge, typed outer edge, closed endpoint, incompatible class, and same-node multi-document rendering."
+        "markdown": "# Implementation plan\n\n1. Give workspace state its own ordinary typed `edges` collection.\n2. Store endpoints by workspace graph-node instance, graph reference, and handle.\n3. Stop writing newly created outer edges into child declarations.\n4. Derive deterministic export/import Bridge-node projections from each parent edge ID when endpoint graphs are unfolded.\n5. Validate edge class only against the target import capability.\n6. Persist workspace edges with arrangement state and retain legacy `edgeReferences` as a compatibility reader.\n7. Render parent edges through the normal edge-style contract and show derived Bridge projections at unfolded boundaries.\n8. Keep Portal bindings on a separate traversal presentation.\n9. Add materialization only when child-level authoring attaches local structure or changes import policy."
       }
     },
     {
@@ -351,7 +351,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Acceptance contract\n\n- No newly authored edge names a node outside its owning graph.\n- Creating an outer edge dirties workspace state, not either child graph.\n- The outer edge survives layout changes and child focus changes.\n- Its selected edge class drives workspace rendering.\n- Bridge handles reject incompatible edge classes.\n- Closing and reopening a child graph preserves the workspace edge identity.\n- Portal lines cannot be mistaken for authored relationship edges.\n- The same edge abstraction works for node-to-node edges inside a graph and graph-node-to-graph-node edges inside a workspace."
+        "markdown": "# Acceptance contract\n\n- No newly authored edge names a node outside its owning graph.\n- Creating an outer edge changes workspace state, not either child graph.\n- Source and target derive export and import Bridges from the same parent edge ID.\n- Export imposes no acceptance policy; import alone accepts or rejects the edge class.\n- Closing a child hides its projection without deleting the workspace edge.\n- Reopening the addressed graph restores the derived Bridge endpoint.\n- Edge class drives the parent edge's workspace rendering.\n- Portal lines cannot be mistaken for authored relationship edges.\n- The same edge abstraction works inside graphs and at workspace scale."
       }
     }
   ],
