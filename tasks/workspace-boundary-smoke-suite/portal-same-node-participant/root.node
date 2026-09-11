@@ -1,0 +1,98 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Same-node Participant",
+    "kind": "validation",
+    "version": "0.1.0",
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "same-node-participant-declaration",
+      "type": "declaration",
+      "label": "Same-node Participant",
+      "position": {
+        "x": -480,
+        "y": -300
+      },
+      "width": 400,
+      "height": 250,
+      "data": {
+        "identity": {
+          "graphId": "portal-same-node-participant",
+          "nodeId": "portal-identity-subject",
+          "name": "Same-node Participant",
+          "version": "0.1.0",
+          "description": "A second graph declaring the Identity Dispatch semantic node."
+        },
+        "intent": {
+          "kind": "validation",
+          "scope": "local"
+        },
+        "document": {
+          "url": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/portal-same-node-participant/root.node"
+        },
+        "declaration": {
+          "kind": "validation",
+          "targetMode": "artifact",
+          "defaultSurfaceId": "",
+          "surfaces": []
+        }
+      }
+    },
+    {
+      "id": "same-node-landing",
+      "type": "markdown",
+      "label": "Expanded participant",
+      "position": {
+        "x": 40,
+        "y": -220
+      },
+      "width": 620,
+      "height": 300,
+      "data": {
+        "identity": {
+          "graphId": "portal-same-node-participant",
+          "nodeId": "same-node-landing"
+        },
+        "markdown": "# PASS: same-node participant expanded\n\nThis content should appear inside the Identity Dispatch graph frame. A separate workspace frame is a failure."
+      }
+    },
+    {
+      "id": "return-to-identity-dispatch",
+      "type": "portal",
+      "label": "Return participant",
+      "position": {
+        "x": -420,
+        "y": 80
+      },
+      "width": 240,
+      "height": 120,
+      "data": {
+        "authority": "navigate",
+        "intent": "internal",
+        "target": {
+          "kind": "graph",
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/portal-identity-dispatch/root.node",
+          "portId": "root"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "same-node-landing-edge",
+      "type": "reference",
+      "source": "same-node-participant-declaration",
+      "target": "same-node-landing",
+      "sourcePort": "landing-surface",
+      "targetPort": "root",
+      "data": {
+        "role": "landing-surface"
+      }
+    }
+  ],
+  "clusters": [],
+  "settings": {},
+  "scripts": []
+}

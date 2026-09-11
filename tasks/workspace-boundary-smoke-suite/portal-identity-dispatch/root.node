@@ -1,0 +1,104 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Portal Identity Dispatch",
+    "kind": "validation",
+    "version": "0.1.0",
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "identity-dispatch-declaration",
+      "type": "declaration",
+      "label": "Portal Identity Dispatch",
+      "position": {
+        "x": -520,
+        "y": -360
+      },
+      "width": 400,
+      "height": 250,
+      "data": {
+        "identity": {
+          "graphId": "portal-identity-dispatch",
+          "nodeId": "portal-identity-subject",
+          "name": "Portal Identity Dispatch",
+          "version": "0.1.0",
+          "description": "Tests automatic Portal dispatch by declaration nodeId."
+        },
+        "intent": {
+          "kind": "validation",
+          "scope": "local"
+        },
+        "document": {
+          "url": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/portal-identity-dispatch/root.node"
+        },
+        "declaration": {
+          "kind": "validation",
+          "targetMode": "artifact",
+          "defaultSurfaceId": "",
+          "surfaces": []
+        }
+      }
+    },
+    {
+      "id": "identity-dispatch-instructions",
+      "type": "markdown",
+      "label": "Expected behavior",
+      "position": {
+        "x": -40,
+        "y": -360
+      },
+      "width": 720,
+      "height": 300,
+      "data": {
+        "markdown": "# Identity decides the operation\n\n**Same nodeId** targets a graph whose Declaration also identifies `portal-identity-subject`. It must expand into this semantic node without adding a workspace frame.\n\n**Different nodeId** targets `portal-identity-other`. It must open alongside as another graph frame.\n\nNeither Portal contains `target.mode`."
+      }
+    },
+    {
+      "id": "open-same-node-participant",
+      "type": "portal",
+      "label": "Same nodeId",
+      "position": {
+        "x": -120,
+        "y": 40
+      },
+      "width": 260,
+      "height": 130,
+      "data": {
+        "authority": "navigate",
+        "intent": "internal",
+        "target": {
+          "kind": "graph",
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/portal-same-node-participant/root.node",
+          "portId": "root",
+          "label": "Same nodeId"
+        }
+      }
+    },
+    {
+      "id": "open-different-node-target",
+      "type": "portal",
+      "label": "Different nodeId",
+      "position": {
+        "x": 220,
+        "y": 40
+      },
+      "width": 260,
+      "height": 130,
+      "data": {
+        "authority": "navigate",
+        "intent": "internal",
+        "target": {
+          "kind": "graph",
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/portal-different-node-target/root.node",
+          "portId": "root",
+          "label": "Different nodeId"
+        }
+      }
+    }
+  ],
+  "edges": [],
+  "clusters": [],
+  "settings": {},
+  "scripts": []
+}
