@@ -75,7 +75,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Workspace Boundary Smoke Suite\n\nUse **Clear workspace** before each numbered scenario. Open the named fixtures with these Portal cards or **Open alongside**. Do not save mutations unless you intentionally want to inspect their JSON.\n\n## Bridge checks\n1. Open **Bridge Provider** alone: three export capabilities appear; no cross-graph edge appears.\n2. Add **Matching Consumer**: exactly one amber workspace edge connects `export-matched` to `import-provider`.\n3. Add **Consumer Without Import**: no additional edge appears.\n4. Add **Wrong Import Identity**: no additional edge appears.\n\n## Port and Portal checks\n5. Open **Port Provider** and **Creation Target**. Drag the cyan Task Port handle into Creation Target: one new Portal appears there, targeting the provider's `task-port`.\n6. Drag the same handle into empty workspace: a new graph appears containing one Declaration and one Portal.\n7. Open **Portal Navigation**, note its three authored nodes, then click its Portal: Port Provider opens alongside and Portal Navigation still has three nodes.\n\n## Portal identity dispatch\n8. Open **Identity Dispatch** and click **Same nodeId**: the participant graph must expand into the active semantic node; no new workspace frame appears.\n9. Return to **Identity Dispatch** and click **Different nodeId**: the target graph opens alongside as a separate workspace frame. The suite entry uses ordinary navigation. Inside the fixture, scenario 8 explicitly expands a reciprocal participant with the same declaration `nodeId`; scenario 9 explicitly opens a graph with a different declaration `nodeId` alongside. These explicit modes keep the fixture runnable while dispatch authority moves to declaration identity."
+        "markdown": "# Workspace Boundary Smoke Suite\n\nUse **Clear workspace** before each numbered scenario. Open the named fixtures with these Portal cards or **Open alongside**. Do not save mutations unless you intentionally want to inspect their JSON.\n\n## Bridge checks\n1. Open **Bridge Provider** alone: three export capabilities appear; no cross-graph edge appears.\n2. Add **Matching Consumer**: exactly one amber workspace edge connects `export-matched` to `import-provider`.\n3. Add **Consumer Without Import**: no additional edge appears.\n4. Add **Wrong Import Identity**: no additional edge appears.\n\n## Port and Portal checks\n5. Open **Port Provider** and **Creation Target**. Drag the cyan Task Port handle into Creation Target: one new Portal appears there, targeting the provider's `task-port`.\n6. Drag the same handle into empty workspace: a new graph appears containing one Declaration and one Portal.\n7. Open **Portal Navigation**, note its three authored nodes, then click its Portal: Port Provider opens alongside and Portal Navigation still has three nodes.\n\n## Portal identity dispatch\n8. Open **Identity Dispatch** and click **Same nodeId**: the participant graph must expand into the active semantic node; no new workspace frame appears.\n9. Return to **Identity Dispatch** and click **Different nodeId**: the target graph opens alongside as a separate workspace frame. The suite entry uses ordinary navigation. Inside the fixture, scenario 8 explicitly expands a reciprocal participant with the same declaration `nodeId`; scenario 9 explicitly opens a graph with a different declaration `nodeId` alongside. These explicit modes keep the fixture runnable while dispatch authority moves to declaration identity.\n\n## Typed workspace-edge checks\n10–11. Open **Authored Typed Edge Source** and **Target**, then use **Connect graphs** as instructed. Zoom out: expect a thick magenta dashed `smoke-signal` edge with EX/IM projections. Attempting class `default` must be rejected.\n12–13. Open **Typed Export Bridge** and **Typed Import Bridge** together. Zoom out: expect the Bridge-resolved route to use the same `smoke-signal` rendering vocabulary."
       }
     },
     {
@@ -267,6 +267,102 @@
           "portId": "root",
           "label": "8–9 · Identity Dispatch",
           "mode": "navigate"
+        }
+      }
+    },
+    {
+      "id": "open-typed-workspace-source",
+      "type": "portal",
+      "label": "10 · Authored Typed Edge Source",
+      "position": {
+        "x": 160,
+        "y": 580
+      },
+      "width": 280,
+      "height": 150,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "authority": "navigate",
+        "intent": "internal",
+        "target": {
+          "kind": "graph",
+          "mode": "navigate",
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/typed-workspace-edge-source/root.node",
+          "portId": "root",
+          "label": "10 · Authored Typed Edge Source"
+        }
+      }
+    },
+    {
+      "id": "open-typed-workspace-target",
+      "type": "portal",
+      "label": "11 · Authored Typed Edge Target",
+      "position": {
+        "x": -500,
+        "y": 760
+      },
+      "width": 280,
+      "height": 150,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "authority": "navigate",
+        "intent": "internal",
+        "target": {
+          "kind": "graph",
+          "mode": "navigate",
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/typed-workspace-edge-target/root.node",
+          "portId": "root",
+          "label": "11 · Authored Typed Edge Target"
+        }
+      }
+    },
+    {
+      "id": "open-typed-bridge-source",
+      "type": "portal",
+      "label": "12 · Typed Export Bridge",
+      "position": {
+        "x": -170,
+        "y": 760
+      },
+      "width": 280,
+      "height": 150,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "authority": "navigate",
+        "intent": "internal",
+        "target": {
+          "kind": "graph",
+          "mode": "navigate",
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/typed-bridge-edge-source/root.node",
+          "portId": "root",
+          "label": "12 · Typed Export Bridge"
+        }
+      }
+    },
+    {
+      "id": "open-typed-bridge-target",
+      "type": "portal",
+      "label": "13 · Typed Import Bridge",
+      "position": {
+        "x": 160,
+        "y": 760
+      },
+      "width": 280,
+      "height": 150,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "authority": "navigate",
+        "intent": "internal",
+        "target": {
+          "kind": "graph",
+          "mode": "navigate",
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/typed-bridge-edge-target/root.node",
+          "portId": "root",
+          "label": "13 · Typed Import Bridge"
         }
       }
     }

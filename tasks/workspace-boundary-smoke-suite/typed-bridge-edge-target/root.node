@@ -1,0 +1,107 @@
+{
+  "version": "2.0.0",
+  "metadata": {
+    "title": "13 · Typed Import Bridge",
+    "kind": "validation",
+    "version": "0.1.0",
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "declaration",
+      "type": "declaration",
+      "label": "13 · Typed Import Bridge",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 380,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "typed-bridge-edge-target",
+          "nodeId": "typed-bridge-edge-target",
+          "name": "13 · Typed Import Bridge",
+          "version": "0.1.0",
+          "description": "Import Bridge fixture accepting the smoke-signal class."
+        },
+        "intent": {
+          "kind": "validation",
+          "scope": "local"
+        },
+        "document": {
+          "url": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/typed-bridge-edge-target/root.node"
+        },
+        "declaration": {
+          "kind": "validation",
+          "targetMode": "artifact",
+          "defaultSurfaceId": "",
+          "surfaces": []
+        }
+      }
+    },
+    {
+      "id": "typed-import",
+      "type": "bridge",
+      "label": "Smoke Signal Import",
+      "position": {
+        "x": 180,
+        "y": 340
+      },
+      "width": 300,
+      "height": 150,
+      "visible": true,
+      "showLabel": true,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "import",
+          "direction": "input",
+          "dataType": "signal",
+          "angle": 180,
+          "allowedEdgeTypes": [
+            "smoke-signal"
+          ]
+        }
+      ],
+      "data": {
+        "acceptedEdgeClasses": [
+          "smoke-signal"
+        ],
+        "bridge": {
+          "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/typed-bridge-edge-source/root.node",
+          "role": "import",
+          "resourceKind": "signal",
+          "surfaceId": "smoke-signal",
+          "consumesBridgeNodeId": "typed-export",
+          "relationship": {
+            "acceptedEdgeClasses": [
+              "smoke-signal"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "expectation",
+      "type": "markdown",
+      "label": "Expected result",
+      "position": {
+        "x": 440,
+        "y": 0
+      },
+      "width": 480,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "# PASS\n\nThe Bridge-derived relationship has the same `smoke-signal` appearance as the authored workspace edge. The import accepts the class; the export imposes no acceptance policy."
+      }
+    }
+  ],
+  "edges": [],
+  "clusters": []
+}
