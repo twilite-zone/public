@@ -3,7 +3,7 @@
   "metadata": {
     "title": "Inter-Graph Edge Semantics Q&A",
     "kind": "investigation",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
@@ -24,8 +24,8 @@
           "graphId": "inter-graph-edge-semantics",
           "nodeId": "inter-graph-edge-semantics",
           "name": "Inter-Graph Edge Semantics",
-          "version": "0.1.0",
-          "description": "A provisional Q&A investigation into edge identity, bridge participation, and workspace rendering across graph documents and semantic node boundaries."
+          "version": "0.2.0",
+          "description": "A recursive Q&A contract for graph-local edges, Bridge-projected handles, and ordinary workspace-owned edges between rendered graph-nodes."
         },
         "intent": {
           "kind": "investigation",
@@ -87,7 +87,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Question\n\nIs every line drawn between node regions a graph edge?\n\n## Provisional answer\n\nNo. A Portal binding can visualize traversal or shared presentation without asserting a semantic relationship. Workspace geometry is a projection and cannot create an edge merely by being drawn."
+        "markdown": "# Question\n\nIs every line drawn between node regions a graph edge?\n\n## Answer\n\nNo. A Portal binding visualizes traversal or shared presentation. A relationship drawn between projected Bridge handles is a regular edge owned by the containing workspace graph. Geometry alone does not decide which one it is."
       }
     },
     {
@@ -111,7 +111,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Question\n\nDoes a Bridge own an edge, or does it expose/consume a place where an edge may cross?\n\n## Working hypothesis\n\nA Bridge is a graph-local boundary node. A matched export/import pair may be evidence that one authored relationship crosses the seam. An unmatched export is a capability, not yet an edge."
+        "markdown": "# Question\n\nDoes a Bridge own an edge, or does it expose/consume a place where an edge may connect?\n\n## Answer\n\nA Bridge is a graph-local boundary node. At the containing workspace level it projects as a typed handle on the rendered graph-node. The workspace edge connects projected handles; the Bridge does not own that outer edge."
       }
     },
     {
@@ -135,7 +135,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Question\n\nWhere does semantic edge-class identity belong?\n\n## Candidates\n\n1. The logical edge.\n2. The Bridge pair.\n3. Each graph-local edge segment.\n4. The workspace projection.\n\nThe answer must survive closing either graph and must not depend on the current layout."
+        "markdown": "# Question\n\nWhere does semantic edge-class identity belong?\n\n## Answer\n\nOn the edge at the graph level that owns it. An inner graph owns its local edge to a Bridge. The workspace graph owns its edge between rendered graph-nodes. A Bridge constrains the classes accepted by its projected handle."
       }
     },
     {
@@ -159,7 +159,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Question\n\nWhen a relationship crosses graph documents, is it one logical edge with two stored projections, or two edges joined by Bridges?\n\n## Test\n\nCan it have one label, one class, one deletion operation, and one stable identity while each document remains independently saveable?"
+        "markdown": "# Question\n\nWhen a relationship appears continuous across graph levels, is it one edge or several?\n\n## Answer\n\nIt is a recursive composition of ordinary edges. Each edge has one owning graph and never crosses that graph's boundary. Inner edges terminate on Bridge nodes; an outer workspace edge connects the Bridges' projected handles."
       }
     },
     {
@@ -183,7 +183,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Question\n\nIf two graph documents declare the same semantic `nodeId`, is an edge across their document seam inter-node at all?\n\n## Provisional answer\n\nIt may be an internal relationship within one rendered node. The graph seam still matters for persistence, but the workspace should not invent a semantic boundary that the node model does not contain."
+        "markdown": "# Question\n\nIf two graph documents declare the same semantic `nodeId`, what changes?\n\n## Answer\n\nThey render inside one semantic-node boundary, but each document remains an ownership seam. Authored edges remain local to their document. Any containing-level relationship still belongs to the containing graph, even when the visual node boundary is shared."
       }
     },
     {
@@ -207,7 +207,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Question\n\nWhat permits an edge between different rendered nodes?\n\n## Provisional answer\n\nThere must be real endpoint instances in both owning graphs and an authored relationship operation. Merely opening two graphs, following a Portal, or matching adjacency is insufficient."
+        "markdown": "# Question\n\nWhat permits an edge between different rendered semantic nodes?\n\n## Answer\n\nThe containing workspace graph authors a regular edge between compatible projected Bridge handles. Opening graphs, following a Portal, or matching adjacency does not itself create that edge."
       }
     },
     {
@@ -231,7 +231,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Question\n\nShould a Portal route inherit an edge class?\n\n## Provisional answer\n\nProbably not. A Portal identifies a destination Port and supports traversal. If following it also instantiates a relationship, that newly authored edge may have a class; the Portal itself remains navigational."
+        "markdown": "# Question\n\nDo Portals carry edge classes?\n\n## Answer\n\nNo. A Portal identifies and follows a destination Port. Its workspace line is traversal presentation. If a separate gesture authors a relationship, that creates an ordinary edge with its own class at the accepting graph level."
       }
     },
     {
@@ -255,7 +255,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Question\n\nWhat does an export Bridge say about edge type?\n\n## Candidate rule\n\nA Bridge can expose an allowed or required relationship capability. The import side must accept it. This constrains creation, but does not automatically make the Bridge the owner of the resulting edge class."
+        "markdown": "# Question\n\nHow does a Bridge participate in edge typing?\n\n## Answer\n\nA Bridge exposes or consumes a typed relationship capability. Its projected handle declares allowed or required edge classes. Compatibility governs whether the containing graph may create an edge; the created edge owns its selected class."
       }
     },
     {
@@ -279,7 +279,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Candidate synthesis\n\n1. **An edge exists only when an authored relationship exists.**\n2. **The relationship owns its semantic edge-class identity.**\n3. **Bridge nodes are persistent graph-local endpoints at document boundaries.**\n4. **A matched Bridge pair lets one relationship be reconstructed across documents.**\n5. **The workspace route is derived from that relationship and its open endpoint graphs.**\n6. **Portal/shared-surface routes remain a separate visual vocabulary.**\n7. **Same-node multi-graph expansion may cross a persistence seam without crossing a semantic node boundary.**\n\nThis is a hypothesis to test against current data, editing gestures, deletion, save isolation, and collapsed graphs."
+        "markdown": "# Revised model — implementation target\n\n1. **Every edge is regular at the graph level that owns it.**\n2. **An authored edge never crosses its owning graph/document boundary.**\n3. **An inner edge terminates on a graph-local Bridge node.**\n4. **At the next zoom level, a rendered graph is a node and its Bridge is a projected handle.**\n5. **The containing workspace is a graph and owns ordinary edges between those handles.**\n6. **Each owning level gives its edge an ID, class, label, route, and lifecycle.**\n7. **Bridge compatibility constrains edge creation; it does not transfer edge ownership to child documents.**\n8. **Portal bindings remain navigational and visually distinct from edges.**\n9. **Same `nodeId` combines graph renderings inside one node boundary without erasing document ownership seams.**"
       }
     },
     {
@@ -303,7 +303,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Try to break the synthesis\n\n- Can two edge instances of different classes use the same Bridge?\n- Can one export be consumed more than once?\n- Does an import Bridge exist before its edge?\n- What remains visible when one endpoint graph is closed?\n- Does same-node expansion require Bridges at all?\n- Which document owns label and route-pin edits?\n- Can an edge class require a particular Port type?\n- What happens when the two stored halves disagree?"
+        "markdown": "# Questions still open\n\n- Is the current workspace session itself a persistable graph document, or an ephemeral graph awaiting materialization?\n- How does an outer edge retain endpoints when one child graph closes?\n- Can one projected Bridge handle accept multiple outer edges?\n- May inner and outer edges use different classes?\n- How are edge-class constraints declared: allowed set, required class, or typed capability?\n- What happens when a restored workspace cannot load one endpoint graph?\n- When should a workspace graph be promoted to a durable authored graph?"
       }
     },
     {
@@ -327,7 +327,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# Plan\n\n1. Inventory actual persisted shapes for local edges, inter-graph `edgeReferences`, export/import Bridges, and Portal bindings.\n2. Build four tiny fixtures: Portal-only, unmatched Bridge, matched Bridge without edge, and typed authored edge across two documents.\n3. Write the expected create, open, close, save, reopen, change-class, and delete behavior for each.\n4. Decide the canonical owner of `logicalEdgeId` and edge-class identity only after comparing those fixtures.\n5. Implement one resolver that produces a renderable logical relationship.\n6. Let local canvas and workspace renderers consume that same result.\n7. Keep compatibility readers for current Bridge `relationship.edgeClass*` data until migration is deliberate."
+        "markdown": "# Implementation plan\n\n1. Give workspace state its own ordinary `edges` collection.\n2. Store outer endpoints by workspace graph-node instance and projected Bridge handle.\n3. Stop writing newly created outer edges into child declarations.\n4. Persist workspace edges with workspace arrangement state; keep legacy `edgeReferences` readable during migration.\n5. Render workspace edges through the normal edge-style contract, including edge classes.\n6. Make Bridge projections advertise class compatibility to edge creation.\n7. Draw Portal bindings with a separate traversal presentation.\n8. Add fixtures for local-edge-to-Bridge, typed outer edge, closed endpoint, incompatible class, and same-node multi-document rendering."
       }
     },
     {
@@ -351,7 +351,7 @@
         "borderRadius": 16
       },
       "data": {
-        "markdown": "# We are ready to implement when…\n\n- We can say whether matched Bridges without an authored edge draw anything.\n- We can distinguish navigation lines from relationship edges without color alone.\n- One edge-class change has an unambiguous persistence owner.\n- Closing a graph does not destroy or silently reclassify the relationship.\n- Same-node document seams and different-node boundaries behave intentionally.\n- Both graph-local and workspace-scale renderers receive the same semantic edge contract."
+        "markdown": "# Acceptance contract\n\n- No newly authored edge names a node outside its owning graph.\n- Creating an outer edge dirties workspace state, not either child graph.\n- The outer edge survives layout changes and child focus changes.\n- Its selected edge class drives workspace rendering.\n- Bridge handles reject incompatible edge classes.\n- Closing and reopening a child graph preserves the workspace edge identity.\n- Portal lines cannot be mistaken for authored relationship edges.\n- The same edge abstraction works for node-to-node edges inside a graph and graph-node-to-graph-node edges inside a workspace."
       }
     }
   ],
