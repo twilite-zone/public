@@ -3,7 +3,7 @@
   "metadata": {
     "title": "Workspace Capture Smoke Suite",
     "description": "Manual acceptance test for capturing an arranged multi-graph workspace as an ordinary graph document.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "kind": "validation",
     "created": "2026-09-11T00:00:00.000Z",
     "modified": "2026-09-11T00:00:00.000Z",
@@ -34,7 +34,7 @@
           "graphId": "workspace-capture-smoke-suite",
           "nodeId": "workspace-capture-smoke-suite",
           "name": "Workspace Capture Smoke Suite",
-          "version": "0.1.0",
+          "version": "0.2.0",
           "description": "Capture several addressed graphs, their arrangement, and a typed workspace edge as one ordinary parent graph.",
           "createdAt": "2026-09-11T00:00:00.000Z",
           "updatedAt": "2026-09-11T00:00:00.000Z"
@@ -75,7 +75,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Capture a workspace as a graph\n\n1. Start with **Clear workspace**, then reopen this suite.\n2. Expand the three fixture Portals below. Keep this suite open.\n3. Arrange the four graph frames so their borders and titles are plainly visible.\n4. On **10 · Authored Typed Edge Source**, drag **Smoke Signal Export** into **11 · Authored Typed Edge Target**.\n5. Confirm one thick magenta dashed `smoke-signal` edge appears between those frames.\n6. Choose **Capture as graph** and title it **Captured Workspace Smoke**.\n7. Expect the workspace to become one unsaved ordinary graph.\n8. Save it to a disposable destination of your choice, then reopen that saved graph.\n9. Expand each captured Portal and confirm all four referenced graphs reopen.\n\nThe destination is deliberately chosen during the test. Repeated runs therefore do not overwrite a shared public fixture."
+        "markdown": "# Save a workspace selection as a graph\n\n1. Start with **Clear workspace**, then reopen this suite.\n2. Expand the three fixture Portals below. Keep this suite open but do not select it for capture.\n3. Arrange the four graph frames so their borders and titles are plainly visible.\n4. On **10 · Authored Typed Edge Source**, drag **Smoke Signal Export** into **11 · Authored Typed Edge Target**.\n5. Confirm one thick magenta dashed `smoke-signal` edge appears between those frames.\n6. Marquee-select fixture frames 10, 11, and 5. Their cyan selection outlines should appear; this suite should remain unselected. Ctrl/Command/Shift-click may adjust the selection.\n7. Choose **Save selection as graph (3)** and title it **Captured Workspace Smoke**.\n8. Expect the workspace to become one unsaved ordinary graph.\n9. Save it to a disposable destination of your choice, then reopen that saved graph.\n10. Expand each captured Portal and confirm the three referenced fixture graphs reopen.\n\nThe destination is deliberately chosen during the test. Repeated runs therefore do not overwrite a shared public fixture."
       }
     },
     {
@@ -91,7 +91,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# PASS contract\n\nThe saved parent is an ordinary `.node` graph and contains:\n\n- the normal Declaration, View, Glyph, and Landing Surface machinery for a new graph;\n- exactly four local Portal-backed projections: this suite plus fixtures 10, 11, and 5;\n- durable `github://` document refs for those four graphs;\n- one ordinary local edge between the fixture 10 and fixture 11 projections;\n- edge class `smoke-signal` with the same thick magenta dashed rendering and arrow.\n\nIt must not contain:\n\n- copied child nodes or child edges;\n- embedded child graph payloads or snapshots;\n- saved derived export/import Bridge projections;\n- transient focus, zoom, selection, or loading state.\n\nAfter reopening the parent, its Portal expansion buttons must reconstruct the referenced workspace without changing the child documents."
+        "markdown": "# PASS contract\n\nThe saved parent is an ordinary `.node` graph and contains:\n\n- the normal Declaration, View, Glyph, and Landing Surface machinery for a new graph;\n- exactly three local Portal-backed projections: fixtures 10, 11, and 5;\n- durable `github://` document refs for those three graphs;\n- one ordinary local edge between the fixture 10 and fixture 11 projections;\n- edge class `smoke-signal` with the same thick magenta dashed rendering and arrow.\n\nIt must not contain:\n\n- a projection of this unselected smoke-suite graph;\n- workspace edges with an unselected endpoint;\n- copied child nodes or child edges;\n- embedded child graph payloads or snapshots;\n- saved derived export/import Bridge projections;\n- transient focus, zoom, selection, or loading state.\n\nAfter reopening the parent, its Portal expansion buttons must reconstruct the selected workspace without changing the child documents."
       }
     },
     {
