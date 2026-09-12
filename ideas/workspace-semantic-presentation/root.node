@@ -4,7 +4,7 @@
     "title": "Workspace Semantic Presentation",
     "description": "A reviewable proposal for recursive semantic presentation when graphs participate as workspace nodes.",
     "graphId": "workspace-semantic-presentation-declaration",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "kind": "idea",
     "created": "2026-09-12T00:00:00.000Z",
     "modified": "2026-09-12T00:00:00.000Z",
@@ -666,7 +666,7 @@
         "semanticLevel": "summary",
         "content": {
           "kind": "markdown",
-          "value": "Recursive graph presentation: expanded graph → Detail → Summary → Icon → Glyph, selected by readable screen footprint."
+          "value": "Recursive graph presentation: expanded graph \u2192 Detail \u2192 Summary \u2192 Icon \u2192 Glyph, selected by readable screen footprint."
         },
         "interfaceContract": {
           "version": 1,
@@ -794,7 +794,7 @@
         "semanticLevel": "icon",
         "content": {
           "kind": "markdown",
-          "value": "Graph\n⇣\nView"
+          "value": "Graph\n\u21e3\nView"
         },
         "interfaceContract": {
           "version": 1,
@@ -963,7 +963,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Proposed recursive rule\n\nA graph participating in a workspace is a node-like projection of its declaration.\n\n- Close: render expanded graph contents.\n- Medium: render the exposed Detail View.\n- Far: render the exposed Summary View.\n- Farther: render the exposed Icon or Glyph.\n- Extreme: use a dot only if the workspace still needs one.\n\nDetail replaces the expanded graph while Detail is still readable; it does not begin at the dot boundary."
+        "markdown": "## Proposed recursive rule\n\nA graph participating in a workspace is a node-like projection of its declaration.\n\n- Close: render expanded graph contents.\n- Medium: render the exposed Detail View.\n- Far: render the exposed Summary View.\n- Farther: render the exposed Icon View.\n- Extreme: render the exposed Glyph.\n\nGlyph is terminal. If the renderer has enough room for a dot, it has enough room to preserve authored identity with a glyph."
       }
     },
     {
@@ -979,7 +979,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Selection should use projected size\n\nChoose the graph presentation from its resulting screen footprint, with zoom as an input rather than the whole rule. A large graph and a small graph may cross bands at different camera zoom values.\n\nUse hysteresis around every boundary so cards do not flicker while the user zooms. Keep authored relative semantic scale as an optional offset."
+        "markdown": "## Selection uses projected size\n\nChoose the graph presentation from its resulting screen footprint, with zoom as an input rather than the whole rule. A large graph and a small graph may cross bands at different camera zoom values.\n\nUse centralized defaults first. Defer author-specific thresholds until the common behavior is understood. Add hysteresis around boundaries so views do not flicker."
       }
     },
     {
@@ -995,7 +995,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## The declaration authors the outside view\n\nThe declaration exposes Detail, Summary, Icon, Glyph, and Landing surfaces. Those are the graph’s authored representations when another workspace treats the graph as a node.\n\nEditing graph contents defines the inside. Editing exposed views defines how the graph appears from outside at each scale. Current new-graph defaults provide a complete publishable fallback."
+        "markdown": "## The declaration authors the outside view\n\nThe declaration exposes Detail, Summary, Icon, Glyph, and Landing surfaces. Those are the graph\u2019s authored representations when another workspace treats the graph as a node.\n\nEditing graph contents defines the inside. Editing exposed views defines how the graph appears from outside at each scale. Current new-graph defaults provide a complete publishable fallback."
       }
     },
     {
@@ -1011,7 +1011,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Render the real view\n\nWorkspace presentation should use the ordinary view renderer, including the authored payload, style, dimensions, and delegation rules. A special compact text preview is insufficient.\n\nOnce the level leaves Expanded, hide the graph’s internal node, edge, group, handle, and interface layers and render exactly one exposed representation."
+        "markdown": "## Render the real view\n\nWorkspace presentation should use the ordinary view renderer, including the authored payload, style, dimensions, and delegation rules. A special compact text preview is insufficient.\n\nOnce the level leaves Expanded, hide the graph\u2019s internal node, edge, group, handle, and interface layers and render exactly one exposed representation."
       }
     },
     {
@@ -1059,7 +1059,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Proposed implementation slices\n\n1. Replace the collapsed boolean with an explicit workspace presentation level.\n2. Resolve levels from projected screen bounds with hysteresis.\n3. Render the exposed view through the normal view pipeline.\n4. Route all workspace geometry through presentation bounds.\n5. Add declaration-level preview and exposure controls.\n6. Add recursive workspace smoke fixtures."
+        "markdown": "## Proposed implementation slices\n\n1. Replace the collapsed boolean with an explicit workspace presentation level.\n2. Resolve initial levels from centralized projected-size thresholds.\n3. Make Glyph terminal and promote the focused graph one level.\n4. Render exposed Detail, Summary, Icon, and Glyph projections.\n5. Route workspace geometry through presentation bounds.\n6. Add hysteresis and declaration-level preview controls.\n7. Explore declaration/landing viewport bounds as the next spatial slice."
       }
     },
     {
@@ -1091,7 +1091,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Questions for review\n\n- Which minimum screen dimensions make Detail, Summary, and Icon useful?\n- Should authors adjust thresholds per graph, or only set a relative semantic baseline?\n- Is Glyph the terminal workspace representation, or do we retain Dot for extremely large workspaces?\n- Should selecting a collapsed graph promote it, or should only zoom change its presentation?"
+        "markdown": "## Questions for review\n\n- Which minimum screen dimensions make Detail, Summary, and Icon useful?\n- Should authors eventually set only a relative semantic baseline?\n- Should focus promotion change layout bounds or render within a reserved footprint?\n- When does the declaration/landing viewport replace full graph extent as the workspace footprint?"
       }
     },
     {
@@ -1107,7 +1107,23 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Review checkpoint\n\nThis proposal is ready to implement when we agree that:\n\n1. Graph-level semantic presentation is recursive view selection.\n2. Screen readability determines transition points.\n3. Exposed declaration views are authoritative.\n4. Workspace interfaces survive every visual level.\n5. Authoring includes direct preview of every outside representation."
+        "markdown": "## Review checkpoint\n\nWorking decisions:\n\n1. Graph-level semantic presentation is recursive view selection.\n2. Screen readability determines transition points.\n3. Exposed declaration views are authoritative.\n4. Glyph is the terminal representation; graphs do not become anonymous dots.\n5. Focus, rather than selection, temporarily promotes one semantic level.\n6. Workspace interfaces survive every visual level."
+      }
+    },
+    {
+      "id": "workspace-semantic-presentation-viewport",
+      "type": "markdown",
+      "label": "Next slice \u00b7 authored viewport",
+      "position": {
+        "x": -1180,
+        "y": 810
+      },
+      "width": 520,
+      "height": 410,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "markdown": "## Next slice \u00b7 authored viewport\n\nThe containing workspace may not need the full internal graph extent. A declaration and its landing surface can define an authored viewport: the portion of the graph presented as the workspace node.\n\nThis could preserve a meaningful composition, reuse the viewport widget, and prevent distant internal plumbing from inflating the parent layout. Keep it separate from the first semantic-level implementation so we can test the presentation model before changing spatial ownership."
       }
     }
   ],
@@ -1171,7 +1187,7 @@
   "clusters": [],
   "settings": {},
   "scripts": [],
-  "nodeCount": 17,
+  "nodeCount": 18,
   "edgeCount": 5,
   "timestamp": "2026-09-12T00:00:00.000Z"
 }
