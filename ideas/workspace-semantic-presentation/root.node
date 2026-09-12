@@ -4,7 +4,7 @@
     "title": "Workspace Semantic Presentation",
     "description": "A reviewable proposal for recursive semantic presentation when graphs participate as workspace nodes.",
     "graphId": "workspace-semantic-presentation-declaration",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "kind": "idea",
     "created": "2026-09-12T00:00:00.000Z",
     "modified": "2026-09-12T00:00:00.000Z",
@@ -969,7 +969,7 @@
     {
       "id": "workspace-semantic-presentation-selection",
       "type": "markdown",
-      "label": "How a level is selected",
+      "label": "Shared bands, relative viewport later",
       "position": {
         "x": 20,
         "y": -140
@@ -979,7 +979,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Selection uses projected size\n\nChoose the graph presentation from its resulting screen footprint, with zoom as an input rather than the whole rule. A large graph and a small graph may cross bands at different camera zoom values.\n\nUse centralized defaults first. Defer author-specific thresholds until the common behavior is understood. Add hysteresis around boundaries so views do not flicker."
+        "markdown": "## Shared bands first\n\nAll graph-nodes in one workspace use the same camera zoom bands, so they respond together. Full internal graph extent must not decide whether a graph changes representation; distant nodes and plumbing would make otherwise equivalent graphs behave differently.\n\nThe later declaration/landing viewport can define a meaningful relative footprint and baseline without coupling presentation to the full document extent. Add hysteresis around the shared boundaries so views do not flicker."
       }
     },
     {
@@ -1059,7 +1059,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Proposed implementation slices\n\n1. Replace the collapsed boolean with an explicit workspace presentation level.\n2. Resolve initial levels from centralized projected-size thresholds.\n3. Make Glyph terminal and promote the focused graph one level.\n4. Render exposed Detail, Summary, Icon, and Glyph projections.\n5. Route workspace geometry through presentation bounds.\n6. Add hysteresis and declaration-level preview controls.\n7. Explore declaration/landing viewport bounds as the next spatial slice."
+        "markdown": "## Proposed implementation slices\n\n1. Replace the collapsed boolean with an explicit workspace presentation level.\n2. Resolve all graph-nodes through shared semantic zoom bands.\n3. Make Glyph terminal and promote the focused graph one level.\n4. Render the actual exposed Detail, Summary, Icon, and Glyph nodes through the normal renderer.\n5. Route workspace geometry through presentation bounds.\n6. Add hysteresis and declaration-level preview controls.\n7. Use the declaration/landing viewport as the later relative spatial baseline."
       }
     },
     {
@@ -1107,7 +1107,7 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Review checkpoint\n\nWorking decisions:\n\n1. Graph-level semantic presentation is recursive view selection.\n2. Screen readability determines transition points.\n3. Exposed declaration views are authoritative.\n4. Glyph is the terminal representation; graphs do not become anonymous dots.\n5. Focus, rather than selection, temporarily promotes one semantic level.\n6. Workspace interfaces survive every visual level."
+        "markdown": "## Review checkpoint\n\nWorking decisions:\n\n1. Graph-level semantic presentation is recursive view selection.\n2. Graph-nodes respond together to shared workspace zoom bands.\n3. Exposed declaration views are authoritative and render as themselves.\n4. Glyph is the terminal representation; graphs do not become anonymous dots.\n5. Focus, rather than selection, temporarily promotes one semantic level.\n6. Workspace interfaces survive every visual level.\n7. A later declaration/landing viewport may define relative spatial bounds."
       }
     },
     {
