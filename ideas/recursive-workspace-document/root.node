@@ -1,0 +1,776 @@
+{
+  "version": "2.0.0",
+  "metadata": {
+    "title": "Workspace as Recursive Graph Document",
+    "kind": "idea",
+    "version": "0.1.0",
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "declaration",
+      "type": "declaration",
+      "label": "Workspace as Recursive Graph Document",
+      "position": {
+        "x": -620,
+        "y": -520
+      },
+      "width": 430,
+      "height": 270,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "recursive-workspace-document",
+          "nodeId": "recursive-workspace-document",
+          "name": "Workspace as Recursive Graph Document",
+          "version": "0.1.0",
+          "description": "An Idea graph for saving a Twilite workspace as an ordinary .node graph containing graph references, parent-owned edges, and graph-level machinery."
+        },
+        "intent": {
+          "kind": "idea",
+          "scope": "local",
+          "status": "proposal"
+        },
+        "document": {
+          "url": "github://twilite-zone/public/ideas/recursive-workspace-document/root.node"
+        },
+        "declaration": {
+          "kind": "idea",
+          "targetMode": "artifact",
+          "defaultSurfaceId": "",
+          "surfaces": []
+        }
+      }
+    },
+    {
+      "id": "idea",
+      "type": "markdown",
+      "label": "The idea",
+      "position": {
+        "x": -100,
+        "y": -520
+      },
+      "width": 520,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#2a1d3b",
+        "color": "#eef4ff",
+        "borderColor": "#ad7aff",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# Idea \u00b7 workspace is a graph\n\nSave a workspace as an ordinary `.node` document. The workspace owns graph-reference nodes, their spatial arrangement, ordinary parent-level edges, and all graph machinery authored at that level.\n\nReferenced child graphs remain separate documents. Their contents are resolved when needed, never copied into the workspace file."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "id": "problem",
+      "type": "markdown",
+      "label": "Boundary we have reached",
+      "position": {
+        "x": 500,
+        "y": -520
+      },
+      "width": 520,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#172033",
+        "color": "#eef4ff",
+        "borderColor": "#52627d",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# Problem\n\nThe runtime workspace can arrange graphs and own typed edges, but it is not yet a complete graph-level authority. Consequently its edge classes do not have a proper Legend, its arrangement lives in session storage, and its Views, Ports, Portals, and Bridges have no durable containing document."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "id": "recursive-rule",
+      "type": "markdown",
+      "label": "Recursive rule",
+      "position": {
+        "x": -1080,
+        "y": -120
+      },
+      "width": 500,
+      "height": 310,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#17302c",
+        "color": "#eef4ff",
+        "borderColor": "#49c7a5",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# Proposed invariant\n\nEvery `.node` document saves only the structure authored at its own level. A referenced graph is represented by a local graph-reference node. Twilite may unfold that reference, but unfolding does not transfer ownership of the child document.\n\nThe same Declaration \u2192 View \u2192 Port \u2192 Portal \u2192 Bridge \u2192 Edge vocabulary applies at every level."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "id": "workspace-owns",
+      "type": "markdown",
+      "label": "The workspace document owns",
+      "position": {
+        "x": -520,
+        "y": -120
+      },
+      "width": 500,
+      "height": 360,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#17302c",
+        "color": "#eef4ff",
+        "borderColor": "#49c7a5",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# Authored in the workspace\n\n- its Declaration and identity\n- graph-reference nodes\n- placement, size, labels, and groups\n- ordinary edges between graph-reference nodes\n- edge-class references and Legend configuration\n- workspace Views and exposed Ports\n- workspace Portals and unbound export capabilities\n- any ordinary content authored in the workspace\n\nThese are normal graph data, not a parallel workspace schema."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "id": "child-owns",
+      "type": "markdown",
+      "label": "Referenced graphs retain",
+      "position": {
+        "x": 40,
+        "y": -120
+      },
+      "width": 500,
+      "height": 360,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#17302c",
+        "color": "#eef4ff",
+        "borderColor": "#49c7a5",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# Authored in each child\n\n- the child Declaration and semantic `nodeId`\n- child Views and surfaces\n- child Ports and Portals\n- child-local nodes and edges\n- unbound capabilities intentionally published by that graph\n\nThe workspace stores the reference and selected surface. It does not serialize the loaded child snapshot."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "id": "derived",
+      "type": "markdown",
+      "label": "Recompute, do not save",
+      "position": {
+        "x": 600,
+        "y": -120
+      },
+      "width": 500,
+      "height": 360,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#302717",
+        "color": "#eef4ff",
+        "borderColor": "#e2b45d",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# Derived presentation\n\n- export/import Bridge projections produced by a parent edge\n- boundary apertures and crossing geometry\n- reduced-detail graph presentations\n- shared-surface projections\n- loaded child snapshots and caches\n- dirty, loading, access, selection, focus, and active state\n\nDerived structures may look like nodes, but their authority remains the authored structure from which they were extrapolated."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "id": "reference-shape",
+      "type": "markdown",
+      "label": "Graph-reference node",
+      "position": {
+        "x": -1080,
+        "y": 330
+      },
+      "width": 500,
+      "height": 390,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#172033",
+        "color": "#eef4ff",
+        "borderColor": "#52627d",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# Candidate reference shape\n\n```json\n{\n  \"id\": \"graph-a-placement\",\n  \"type\": \"graph\",\n  \"position\": { \"x\": 800, \"y\": 240 },\n  \"width\": 900,\n  \"height\": 640,\n  \"data\": {\n    \"target\": {\n      \"kind\": \"graph\",\n      \"ref\": \"github://owner/repo/a/root.node\",\n      \"surfaceId\": \"summary\"\n    }\n  }\n}\n```\n\nThe local `id` identifies this placement. The referenced Declaration supplies graph and semantic-node identity."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "id": "views",
+      "type": "markdown",
+      "label": "Views across levels",
+      "position": {
+        "x": -520,
+        "y": 330
+      },
+      "width": 500,
+      "height": 390,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#172033",
+        "color": "#eef4ff",
+        "borderColor": "#52627d",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# View extrapolation\n\nA child graph owns its `summary`, `detail`, icon, or other Views. A graph-reference node selects one of the exposed surfaces. At a distant scale that surface represents the graph-node; zooming closer may reveal more child structure.\n\nThe workspace can independently own Views of its whole arrangement. No child View is copied into the parent."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "id": "edges",
+      "type": "markdown",
+      "label": "Edges and Bridges",
+      "position": {
+        "x": 40,
+        "y": 330
+      },
+      "width": 500,
+      "height": 390,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#172033",
+        "color": "#eef4ff",
+        "borderColor": "#52627d",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# Parent edge is authoritative\n\nAn edge between graph-reference nodes is an ordinary edge in the workspace document. Its edge class belongs in the workspace Legend.\n\nWhen an endpoint unfolds, Twilite derives export and import Bridge projections carrying the parent edge ID. An explicitly authored unbound export Bridge remains a capability until a parent edge is created."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "id": "load-save",
+      "type": "markdown",
+      "label": "Load and save lifecycle",
+      "position": {
+        "x": 600,
+        "y": 330
+      },
+      "width": 500,
+      "height": 390,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#172033",
+        "color": "#eef4ff",
+        "borderColor": "#52627d",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# Lifecycle\n\n1. Load the workspace document.\n2. Render graph-reference nodes from durable placement data.\n3. Resolve only the child surfaces required for the current presentation.\n4. Unfold a child without changing the parent document.\n5. Author parent-level gestures into the workspace graph.\n6. Save the workspace as ordinary graph JSON.\n7. Save dirty child documents separately through Save All."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "id": "identity-question",
+      "type": "markdown",
+      "label": "Open identity question",
+      "position": {
+        "x": -1080,
+        "y": 800
+      },
+      "width": 500,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#332033",
+        "color": "#eef4ff",
+        "borderColor": "#ef8ee5",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# Question \u00b7 repeated references\n\nCan one workspace contain several placements of the same graph reference?\n\n**Proposal:** yes. Each placement has a graph-local `id`; all placements may target the same document and semantic `nodeId`. Placement identity must not be confused with referenced semantic identity."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "id": "camera-question",
+      "type": "markdown",
+      "label": "Open presentation question",
+      "position": {
+        "x": -520,
+        "y": 800
+      },
+      "width": 500,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#332033",
+        "color": "#eef4ff",
+        "borderColor": "#ef8ee5",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# Question \u00b7 camera and named arrangements\n\nShould the current camera be saved?\n\n**Proposal:** focus and transient camera remain session state. Portable named presentations should be authored as ordinary workspace Views. A default View may establish an intentional opening camera without serializing incidental navigation."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "id": "cycle-risk",
+      "type": "markdown",
+      "label": "Risk \u00b7 recursive loading",
+      "position": {
+        "x": 40,
+        "y": 800
+      },
+      "width": 500,
+      "height": 300,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#3a2222",
+        "color": "#eef4ff",
+        "borderColor": "#f27d7d",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# Risk \u00b7 cycles and load cost\n\nWorkspace A may reference B while B eventually references A. Reference resolution must therefore be lazy, bounded, and cycle-aware. Saving must never expand references into embedded snapshots, or a small cyclic composition could become unbounded."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "id": "implementation",
+      "type": "markdown",
+      "label": "Proposed implementation slices",
+      "position": {
+        "x": 600,
+        "y": 800
+      },
+      "width": 500,
+      "height": 390,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#202a3d",
+        "color": "#eef4ff",
+        "borderColor": "#78a6ff",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# Implementation path\n\n1. Define graph-reference node serialization.\n2. Convert runtime workspace instances into graph-reference projections.\n3. Serialize workspace-owned edges as ordinary edges.\n4. Build a workspace Legend from its edge classes and capabilities.\n5. Load a workspace `.node` into the existing multi-graph runtime.\n6. Keep child saves independent.\n7. Migrate existing local-storage arrangements.\n8. Exercise recursive View, Port, Portal, Bridge, and edge behavior with smoke graphs.\n\nThis is an attempted solution for review, not a frozen contract."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "id": "acceptance",
+      "type": "markdown",
+      "label": "Review checkpoint",
+      "position": {
+        "x": -240,
+        "y": 1260
+      },
+      "width": 720,
+      "height": 350,
+      "visible": true,
+      "showLabel": true,
+      "style": {
+        "background": "#1e2f23",
+        "color": "#eef4ff",
+        "borderColor": "#7ed69b",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# What would make this convincing?\n\n- Opening one workspace file reconstructs the arrangement from references.\n- The file contains no child nodes, child edges, or cached snapshots.\n- `smoke-signal` appears in the workspace-level Legend.\n- Dragging fixture 10's export capability creates an ordinary workspace edge.\n- Unfolding either endpoint derives the same edge through Bridge projections.\n- Child graphs remain clean until directly edited.\n- A workspace can expose its own View or Port and itself become a graph-reference node in another workspace.\n\nIf these conditions hold, recursion is real rather than a special multi-document mode."
+      },
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "type": "default-view",
+      "source": "declaration",
+      "target": "idea",
+      "label": "declares",
+      "data": {
+        "edgeClassKey": "default-view"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e2",
+      "type": "motivates",
+      "source": "problem",
+      "target": "idea",
+      "label": "motivates",
+      "data": {
+        "edgeClassKey": "motivates"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e3",
+      "type": "informs",
+      "source": "recursive-rule",
+      "target": "workspace-owns",
+      "label": "governs",
+      "data": {
+        "edgeClassKey": "informs"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e4",
+      "type": "informs",
+      "source": "recursive-rule",
+      "target": "child-owns",
+      "label": "governs",
+      "data": {
+        "edgeClassKey": "informs"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e5",
+      "type": "informs",
+      "source": "recursive-rule",
+      "target": "derived",
+      "label": "governs",
+      "data": {
+        "edgeClassKey": "informs"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e6",
+      "type": "advances",
+      "source": "idea",
+      "target": "recursive-rule",
+      "label": "proposes",
+      "data": {
+        "edgeClassKey": "advances"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e7",
+      "type": "informs",
+      "source": "workspace-owns",
+      "target": "reference-shape",
+      "label": "shapes",
+      "data": {
+        "edgeClassKey": "informs"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e8",
+      "type": "supports",
+      "source": "child-owns",
+      "target": "views",
+      "label": "preserves",
+      "data": {
+        "edgeClassKey": "supports"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e9",
+      "type": "supports",
+      "source": "workspace-owns",
+      "target": "edges",
+      "label": "owns",
+      "data": {
+        "edgeClassKey": "supports"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e10",
+      "type": "informs",
+      "source": "derived",
+      "target": "edges",
+      "label": "constrains",
+      "data": {
+        "edgeClassKey": "informs"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e11",
+      "type": "advances",
+      "source": "reference-shape",
+      "target": "load-save",
+      "label": "loads through",
+      "data": {
+        "edgeClassKey": "advances"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e12",
+      "type": "advances",
+      "source": "views",
+      "target": "load-save",
+      "label": "renders through",
+      "data": {
+        "edgeClassKey": "advances"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e13",
+      "type": "advances",
+      "source": "edges",
+      "target": "load-save",
+      "label": "persists through",
+      "data": {
+        "edgeClassKey": "advances"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e14",
+      "type": "questions",
+      "source": "identity-question",
+      "target": "implementation",
+      "label": "questions",
+      "data": {
+        "edgeClassKey": "questions"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e15",
+      "type": "questions",
+      "source": "camera-question",
+      "target": "implementation",
+      "label": "questions",
+      "data": {
+        "edgeClassKey": "questions"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e16",
+      "type": "threatens",
+      "source": "cycle-risk",
+      "target": "implementation",
+      "label": "threatens",
+      "data": {
+        "edgeClassKey": "threatens"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e17",
+      "type": "advances",
+      "source": "load-save",
+      "target": "implementation",
+      "label": "enables",
+      "data": {
+        "edgeClassKey": "advances"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    },
+    {
+      "id": "e18",
+      "type": "tests",
+      "source": "implementation",
+      "target": "acceptance",
+      "label": "tested by",
+      "data": {
+        "edgeClassKey": "tests"
+      },
+      "sourcePort": "root",
+      "targetPort": "root"
+    }
+  ],
+  "clusters": []
+}
