@@ -3,7 +3,7 @@
   "metadata": {
     "title": "Workspace as Recursive Graph Document",
     "kind": "idea",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
@@ -24,7 +24,7 @@
           "graphId": "recursive-workspace-document",
           "nodeId": "recursive-workspace-document",
           "name": "Workspace as Recursive Graph Document",
-          "version": "0.2.0",
+          "version": "0.3.0",
           "description": "An Idea graph for saving a Twilite workspace as an ordinary .node graph containing Portal-backed projections of exposed nodes, parent-owned edges, and graph-level machinery."
         },
         "intent": {
@@ -552,6 +552,40 @@
           "angle": 0
         }
       ]
+    },
+    {
+      "id": "implementation-checkpoint",
+      "type": "markdown",
+      "label": "Implementation checkpoint",
+      "position": {
+        "x": 1160,
+        "y": 800
+      },
+      "width": 500,
+      "height": 390,
+      "visible": true,
+      "showLabel": true,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ],
+      "style": {
+        "background": "#1e2f23",
+        "color": "#eef4ff",
+        "borderColor": "#7ed69b",
+        "borderWidth": 1,
+        "borderStyle": "solid",
+        "borderRadius": 18
+      },
+      "data": {
+        "markdown": "# Implemented first slice\n\nThe workspace toolbar now offers **Capture as graph**. It requires clean, durably addressed child documents, then creates one unsaved ordinary parent graph containing:\n\n- the standard new-graph Declaration and View machinery\n- Portal-backed projections targeting each child's exposed Port and semantic node\n- parent-local placement and dimensions\n- ordinary typed edges between those projections\n\nNo child nodes, edges, snapshots, dirty state, focus, or loading state are copied. The resulting graph uses Twilite's existing save flow.\n\n## Still to inspect visually\n\nPortal View resolution, workspace Legend presentation, and reopen/unfold behavior need an interactive smoke pass."
+      }
     }
   ],
   "edges": [
@@ -770,6 +804,18 @@
       },
       "sourcePort": "root",
       "targetPort": "root"
+    },
+    {
+      "id": "e19",
+      "type": "advances",
+      "source": "implementation",
+      "target": "implementation-checkpoint",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "first slice",
+      "data": {
+        "edgeClassKey": "advances"
+      }
     }
   ],
   "clusters": []
