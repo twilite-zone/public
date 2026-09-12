@@ -1,70 +1,31 @@
 {
-  "version": "2.0.0",
+  "fileVersion": "1.0",
   "metadata": {
     "title": "Workspace Capture Smoke Suite",
-    "description": "Manual acceptance test for capturing an arranged multi-graph workspace as an ordinary graph document.",
+    "description": "Capture several addressed graphs, their arrangement, and a typed workspace edge as one ordinary parent graph.",
+    "graphId": "workspace-capture-smoke-suite",
     "version": "0.2.0",
     "kind": "validation",
-    "created": "2026-09-11T00:00:00.000Z",
-    "modified": "2026-09-12T00:00:00.000Z",
+    "created": "2026-09-12T16:45:01.004Z",
+    "modified": "2026-09-12T16:50:22.662Z",
+    "author": "",
     "tags": [
-      "smoke-test",
-      "workspace",
-      "capture",
-      "portal",
-      "typed-edge"
+      "validation"
     ],
-    "preferredViewer": "https://twilite.zone"
+    "preferredViewer": "https://dev.twilite.zone"
   },
   "nodes": [
     {
       "id": "workspace-capture-smoke-suite",
       "type": "declaration",
       "label": "Workspace Capture Smoke Suite",
+      "root": false,
       "position": {
         "x": -620,
         "y": -420
       },
       "width": 440,
       "height": 260,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "workspace-capture-smoke-suite",
-          "nodeId": "workspace-capture-smoke-suite",
-          "name": "Workspace Capture Smoke Suite",
-          "version": "0.2.0",
-          "description": "Capture several addressed graphs, their arrangement, and a typed workspace edge as one ordinary parent graph.",
-          "createdAt": "2026-09-11T00:00:00.000Z",
-          "updatedAt": "2026-09-12T00:00:00.000Z"
-        },
-        "intent": {
-          "kind": "validation",
-          "scope": "local"
-        },
-        "document": {
-          "url": "github://twilite-zone/public/tasks/workspace-capture-smoke-suite/root.node"
-        },
-        "settings": {
-          "theme": null,
-          "backgroundImage": "",
-          "snapToGrid": false,
-          "gridSize": 20,
-          "edgeRouting": "auto",
-          "autoSave": false
-        },
-        "declaration": {
-          "kind": "validation",
-          "targetMode": "artifact",
-          "defaultSurfaceId": "",
-          "surfaces": [],
-          "interfaceContract": {
-            "version": 1,
-            "implicitRootPort": true
-          }
-        }
-      },
       "ports": [
         {
           "id": "default-view",
@@ -399,43 +360,71 @@
           "portId": "landing-surface"
         }
       ],
-      "outputs": [
-        {
-          "key": "default-view",
-          "label": "default view",
-          "type": "any"
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workspace-capture-smoke-suite",
+          "nodeId": "workspace-capture-smoke-suite",
+          "name": "Workspace Capture Smoke Suite",
+          "version": "0.2.0",
+          "description": "Capture several addressed graphs, their arrangement, and a typed workspace edge as one ordinary parent graph.",
+          "createdAt": "2026-09-11T00:00:00.000Z",
+          "updatedAt": "2026-09-12T00:00:00.000Z"
         },
-        {
-          "key": "summary-view",
-          "label": "summary view",
-          "type": "any"
+        "intent": {
+          "kind": "validation",
+          "scope": "local"
         },
-        {
-          "key": "icon-view",
-          "label": "icon view",
-          "type": "any"
+        "document": {
+          "url": "github://twilite-zone/public/tasks/workspace-capture-smoke-suite/root.node"
         },
-        {
-          "key": "glyph",
-          "label": "glyph",
-          "type": "any"
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "",
+          "layout": {
+            "mode": "manual",
+            "defaultLayout": "layered",
+            "direction": "DOWN",
+            "edgeLaneGapPx": 18,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
+          }
         },
-        {
-          "key": "port",
-          "label": "port",
-          "type": "any"
-        },
-        {
-          "key": "landing-surface",
-          "label": "landing surface",
-          "type": "any"
+        "declaration": {
+          "kind": "validation",
+          "targetMode": "artifact",
+          "defaultSurfaceId": "",
+          "surfaces": [],
+          "interfaceContract": {
+            "version": 1,
+            "implicitRootPort": true
+          }
         }
-      ]
+      }
     },
     {
       "id": "run-workspace-capture-smoke",
       "type": "markdown",
       "label": "Run the capture smoke test",
+      "root": false,
       "position": {
         "x": -80,
         "y": -420
@@ -445,13 +434,17 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Save a workspace selection as a graph\n\n1. Start with **Clear workspace**, then reopen this suite.\n2. Expand the three fixture Portals below. Keep this suite open but do not select it for capture.\n3. Arrange the four graph frames so their borders and titles are plainly visible.\n4. On **10 · Authored Typed Edge Source**, drag **Smoke Signal Export** into **11 · Authored Typed Edge Target**.\n5. Confirm one thick magenta dashed `smoke-signal` edge appears between those frames.\n6. Marquee-select fixture frames 10, 11, and 5. Their cyan selection outlines should appear; this suite should remain unselected. Ctrl/Command/Shift-click may adjust the selection.\n7. Choose **Save selection as graph (3)** and title it **Captured Workspace Smoke**.\n8. Expect the workspace to become one unsaved ordinary graph.\n9. Save it to a disposable destination of your choice, then reopen that saved graph.\n10. Expand each captured Portal and confirm the three referenced fixture graphs reopen.\n\nThe destination is deliberately chosen during the test. Repeated runs therefore do not overwrite a shared public fixture."
+        "markdown": "# Save a workspace selection as a graph\n\n1. Start with **Clear workspace**, then reopen this suite.\n2. Expand the three fixture Portals below. Keep this suite open but do not select it for capture.\n3. Arrange the four graph frames so their borders and titles are plainly visible.\n4. On **10 · Authored Typed Edge Source**, drag **Smoke Signal Export** into **11 · Authored Typed Edge Target**.\n5. Confirm one thick magenta dashed `smoke-signal` edge appears between those frames.\n6. Marquee-select fixture frames 10, 11, and 5. Their cyan selection outlines should appear; this suite should remain unselected. Ctrl/Command/Shift-click may adjust the selection.\n7. Choose **Save selection as graph (3)** and title it **Captured Workspace Smoke**.\n8. Expect the workspace to become one unsaved ordinary graph.\n9. Save it to a disposable destination of your choice, then reopen that saved graph.\n10. Expand each captured Portal and confirm the three referenced fixture graphs reopen.\n\nThe destination is deliberately chosen during the test. Repeated runs therefore do not overwrite a shared public fixture.",
+        "identity": {
+          "graphId": "workspace-capture-smoke-suite"
+        }
       }
     },
     {
       "id": "captured-document-contract",
       "type": "markdown",
       "label": "Saved document contract",
+      "root": false,
       "position": {
         "x": 840,
         "y": -420
@@ -461,16 +454,20 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# PASS contract\n\nThe saved parent is an ordinary `.node` graph and contains:\n\n- the normal Declaration, View, Glyph, and Landing Surface machinery for a new graph;\n- exactly three local Portal-backed projections: fixtures 10, 11, and 5;\n- durable `github://` document refs for those three graphs;\n- one ordinary local edge between the fixture 10 and fixture 11 projections;\n- edge class `smoke-signal` with the same thick magenta dashed rendering and arrow.\n\nIt must not contain:\n\n- a projection of this unselected smoke-suite graph;\n- workspace edges with an unselected endpoint;\n- copied child nodes or child edges;\n- embedded child graph payloads or snapshots;\n- saved derived export/import Bridge projections;\n- transient focus, zoom, selection, or loading state.\n\nAfter reopening the parent, its Portal expansion buttons must reconstruct the selected workspace without changing the child documents."
+        "markdown": "# PASS contract\n\nThe saved parent is an ordinary `.node` graph and contains:\n\n- the normal Declaration, View, Glyph, and Landing Surface machinery for a new graph;\n- exactly three local Portal-backed projections: fixtures 10, 11, and 5;\n- durable `github://` document refs for those three graphs;\n- one ordinary local edge between the fixture 10 and fixture 11 projections;\n- edge class `smoke-signal` with the same thick magenta dashed rendering and arrow.\n\nIt must not contain:\n\n- a projection of this unselected smoke-suite graph;\n- workspace edges with an unselected endpoint;\n- copied child nodes or child edges;\n- embedded child graph payloads or snapshots;\n- saved derived export/import Bridge projections;\n- transient focus, zoom, selection, or loading state.\n\nAfter reopening the parent, its Portal expansion buttons must reconstruct the selected workspace without changing the child documents.",
+        "identity": {
+          "graphId": "workspace-capture-smoke-suite"
+        }
       }
     },
     {
       "id": "open-authored-typed-edge-source",
       "type": "portal",
       "label": "10 · Authored Typed Edge Source",
+      "root": false,
       "position": {
         "x": -540,
-        "y": 340
+        "y": 342.40078728131255
       },
       "width": 300,
       "height": 150,
@@ -485,6 +482,16 @@
           "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/typed-workspace-edge-source/root.node",
           "portId": "root",
           "label": "10 · Authored Typed Edge Source"
+        },
+        "identity": {
+          "graphId": "workspace-capture-smoke-suite"
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1789231611765,
+          "reason": "node-drag"
         }
       }
     },
@@ -492,6 +499,7 @@
       "id": "open-authored-typed-edge-target",
       "type": "portal",
       "label": "11 · Authored Typed Edge Target",
+      "root": false,
       "position": {
         "x": -160,
         "y": 340
@@ -509,6 +517,9 @@
           "ref": "github://twilite-zone/public/tasks/workspace-boundary-smoke-suite/typed-workspace-edge-target/root.node",
           "portId": "root",
           "label": "11 · Authored Typed Edge Target"
+        },
+        "identity": {
+          "graphId": "workspace-capture-smoke-suite"
         }
       }
     },
@@ -516,6 +527,7 @@
       "id": "open-port-provider",
       "type": "portal",
       "label": "5 · Port Provider",
+      "root": false,
       "position": {
         "x": 220,
         "y": 340
@@ -534,13 +546,17 @@
           "portId": "root",
           "surfaceId": "tasks",
           "label": "5 · Port Provider"
+        },
+        "identity": {
+          "graphId": "workspace-capture-smoke-suite"
         }
       }
     },
     {
       "id": "workspace-capture-smoke-suite--detail-view",
-      "label": "Detail View",
       "type": "view",
+      "label": "Detail View",
+      "root": false,
       "position": {
         "x": -1720,
         "y": -420
@@ -629,20 +645,8 @@
           "portId": "surface-delegate"
         }
       ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "surface-delegate",
-          "label": "surface delegate",
-          "type": "any"
-        }
-      ],
+      "visible": true,
+      "showLabel": true,
       "data": {
         "view": {
           "intent": "node",
@@ -665,8 +669,9 @@
     },
     {
       "id": "workspace-capture-smoke-suite--summary-view",
-      "label": "Summary View",
       "type": "view",
+      "label": "Summary View",
+      "root": false,
       "position": {
         "x": -1720,
         "y": -60
@@ -755,20 +760,8 @@
           "portId": "surface-delegate"
         }
       ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "surface-delegate",
-          "label": "surface delegate",
-          "type": "any"
-        }
-      ],
+      "visible": true,
+      "showLabel": true,
       "data": {
         "view": {
           "intent": "node",
@@ -793,8 +786,9 @@
     },
     {
       "id": "workspace-capture-smoke-suite--icon-view",
-      "label": "Icon View",
       "type": "view",
+      "label": "Icon View",
+      "root": false,
       "position": {
         "x": -1720,
         "y": 300
@@ -883,20 +877,8 @@
           "portId": "surface-delegate"
         }
       ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "surface-delegate",
-          "label": "surface delegate",
-          "type": "any"
-        }
-      ],
+      "visible": true,
+      "showLabel": true,
       "data": {
         "view": {
           "intent": "node",
@@ -921,8 +903,9 @@
     },
     {
       "id": "workspace-capture-smoke-suite--glyph",
-      "label": "Glyph",
       "type": "glyph",
+      "label": "Glyph",
+      "root": false,
       "position": {
         "x": -1240,
         "y": 300
@@ -960,13 +943,8 @@
           "portId": "root"
         }
       ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        }
-      ],
+      "visible": true,
+      "showLabel": true,
       "data": {
         "glyph": {
           "kind": "icon",
@@ -984,8 +962,9 @@
     },
     {
       "id": "workspace-capture-smoke-suite--landing-surface",
-      "label": "Landing Surface",
       "type": "content",
+      "label": "Landing Surface",
+      "root": false,
       "position": {
         "x": -1240,
         "y": -420
@@ -1023,13 +1002,8 @@
           "portId": "root"
         }
       ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        }
-      ],
+      "visible": true,
+      "showLabel": true,
       "data": {
         "content": {
           "kind": "markdown",
@@ -1052,8 +1026,10 @@
       "type": "default-view",
       "source": "workspace-capture-smoke-suite",
       "target": "workspace-capture-smoke-suite--detail-view",
-      "sourcePort": "default-view",
-      "targetPort": "root",
+      "sourceHandle": "default-view",
+      "targetHandle": "root",
+      "label": "",
+      "style": {},
       "data": {
         "role": "default-view"
       }
@@ -1063,8 +1039,10 @@
       "type": "reference",
       "source": "workspace-capture-smoke-suite",
       "target": "workspace-capture-smoke-suite--summary-view",
-      "sourcePort": "summary-view",
-      "targetPort": "root",
+      "sourceHandle": "summary-view",
+      "targetHandle": "root",
+      "label": "",
+      "style": {},
       "data": {
         "role": "shared-summary"
       }
@@ -1074,8 +1052,10 @@
       "type": "reference",
       "source": "workspace-capture-smoke-suite",
       "target": "workspace-capture-smoke-suite--icon-view",
-      "sourcePort": "icon-view",
-      "targetPort": "root",
+      "sourceHandle": "icon-view",
+      "targetHandle": "root",
+      "label": "",
+      "style": {},
       "data": {
         "role": "shared-icon"
       }
@@ -1085,8 +1065,10 @@
       "type": "reference",
       "source": "workspace-capture-smoke-suite",
       "target": "workspace-capture-smoke-suite--glyph",
-      "sourcePort": "glyph",
-      "targetPort": "root",
+      "sourceHandle": "glyph",
+      "targetHandle": "root",
+      "label": "",
+      "style": {},
       "data": {
         "role": "shared-glyph"
       }
@@ -1096,14 +1078,54 @@
       "type": "reference",
       "source": "workspace-capture-smoke-suite",
       "target": "workspace-capture-smoke-suite--landing-surface",
-      "sourcePort": "landing-surface",
-      "targetPort": "root",
+      "sourceHandle": "landing-surface",
+      "targetHandle": "root",
+      "label": "",
+      "style": {},
       "data": {
         "role": "landing-surface"
       }
     }
   ],
   "clusters": [],
-  "settings": {},
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "layout": {
+      "mode": "manual",
+      "defaultLayout": "layered",
+      "direction": "DOWN",
+      "edgeLaneGapPx": 18,
+      "serpentine": {
+        "maxPerRow": 6
+      },
+      "cycleFallback": {
+        "enabled": true
+      },
+      "elk": {
+        "algorithm": "fixed",
+        "edgeRouting": "ORTHOGONAL",
+        "portConstraints": "FIXED_SIDE",
+        "nodeSpacing": 120,
+        "layeredEdgeSpacing": 80
+      }
+    },
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "tasks/workspace-capture-smoke-suite/root.node",
+      "branch": "main",
+      "autoCreateRepo": true,
+      "repoVisibility": "private",
+      "seedOnCommit": false,
+      "enableGithubPages": false,
+      "installationId": "120403738"
+    },
+    "autoSave": false
+  },
   "scripts": []
 }
