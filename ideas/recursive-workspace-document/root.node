@@ -3,7 +3,7 @@
   "metadata": {
     "title": "Workspace as Recursive Graph Document",
     "kind": "idea",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "preferredViewer": "https://twilite.zone"
   },
   "nodes": [
@@ -24,8 +24,8 @@
           "graphId": "recursive-workspace-document",
           "nodeId": "recursive-workspace-document",
           "name": "Workspace as Recursive Graph Document",
-          "version": "0.1.0",
-          "description": "An Idea graph for saving a Twilite workspace as an ordinary .node graph containing graph references, parent-owned edges, and graph-level machinery."
+          "version": "0.2.0",
+          "description": "An Idea graph for saving a Twilite workspace as an ordinary .node graph containing Portal-backed projections of exposed nodes, parent-owned edges, and graph-level machinery."
         },
         "intent": {
           "kind": "idea",
@@ -64,7 +64,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Idea \u00b7 workspace is a graph\n\nSave a workspace as an ordinary `.node` document. The workspace owns graph-reference nodes, their spatial arrangement, ordinary parent-level edges, and all graph machinery authored at that level.\n\nReferenced child graphs remain separate documents. Their contents are resolved when needed, never copied into the workspace file."
+        "markdown": "# Idea \u00b7 workspace is a graph\n\nSave a workspace as an ordinary `.node` document. The workspace owns Portal-backed instances of nodes exposed by other documents, their spatial arrangement, ordinary parent-level edges, and all graph machinery authored at that level.\n\nChild documents remain separate authorities. Their contents are resolved when needed, never copied into the workspace file."
       },
       "ports": [
         {
@@ -132,7 +132,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Proposed invariant\n\nEvery `.node` document saves only the structure authored at its own level. A referenced graph is represented by a local graph-reference node. Twilite may unfold that reference, but unfolding does not transfer ownership of the child document.\n\nThe same Declaration \u2192 View \u2192 Port \u2192 Portal \u2192 Bridge \u2192 Edge vocabulary applies at every level."
+        "markdown": "# Proposed invariant\n\nEvery `.node` document saves only the structure authored at its own level. A child document exposes a semantic node through a Port; the parent stores a Portal-backed instance that resolves that exposure and renders one of the node's Views. Unfolding does not transfer ownership of the child document.\n\nThe same Declaration \u2192 View \u2192 Port \u2192 Portal \u2192 Bridge \u2192 Edge vocabulary applies at every level. No new `graph` node primitive is required."
       },
       "ports": [
         {
@@ -166,7 +166,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Authored in the workspace\n\n- its Declaration and identity\n- graph-reference nodes\n- placement, size, labels, and groups\n- ordinary edges between graph-reference nodes\n- edge-class references and Legend configuration\n- workspace Views and exposed Ports\n- workspace Portals and unbound export capabilities\n- any ordinary content authored in the workspace\n\nThese are normal graph data, not a parallel workspace schema."
+        "markdown": "# Authored in the workspace\n\n- its Declaration and identity\n- Portal-backed instances targeting exposed nodes\n- placement, size, labels, and groups for those instances\n- ordinary edges between the resolved node instances\n- edge-class references and Legend configuration\n- workspace Views and exposed Ports\n- workspace Portals and unbound export capabilities\n- any ordinary content authored in the workspace\n\nThese are normal graph data, not a parallel workspace schema."
       },
       "ports": [
         {
@@ -200,7 +200,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Authored in each child\n\n- the child Declaration and semantic `nodeId`\n- child Views and surfaces\n- child Ports and Portals\n- child-local nodes and edges\n- unbound capabilities intentionally published by that graph\n\nThe workspace stores the reference and selected surface. It does not serialize the loaded child snapshot."
+        "markdown": "# Authored in each child document\n\n- the child Declaration and document authority\n- semantic node identity\n- Views and selectable surfaces\n- Ports that expose the node and its surfaces\n- child-local Portals, nodes, and edges\n- unbound capabilities intentionally published by that node\n\nThe workspace stores a document ref plus the exposed Port it consumes. The Port resolves the node and permitted View; the workspace does not serialize the loaded child snapshot."
       },
       "ports": [
         {
@@ -250,7 +250,7 @@
     {
       "id": "reference-shape",
       "type": "markdown",
-      "label": "Graph-reference node",
+      "label": "Portal-backed node instance",
       "position": {
         "x": -1080,
         "y": 330
@@ -268,7 +268,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Candidate reference shape\n\n```json\n{\n  \"id\": \"graph-a-placement\",\n  \"type\": \"graph\",\n  \"position\": { \"x\": 800, \"y\": 240 },\n  \"width\": 900,\n  \"height\": 640,\n  \"data\": {\n    \"target\": {\n      \"kind\": \"graph\",\n      \"ref\": \"github://owner/repo/a/root.node\",\n      \"surfaceId\": \"summary\"\n    }\n  }\n}\n```\n\nThe local `id` identifies this placement. The referenced Declaration supplies graph and semantic-node identity."
+        "markdown": "# Candidate instance shape\n\n```json\n{\n  \"id\": \"customer-placement\",\n  \"type\": \"portal\",\n  \"position\": { \"x\": 800, \"y\": 240 },\n  \"width\": 900,\n  \"height\": 640,\n  \"data\": {\n    \"target\": {\n      \"kind\": \"node\",\n      \"ref\": \"github://owner/repo/customers/root.node\",\n      \"portId\": \"customer-summary\",\n      \"surfaceId\": \"summary\"\n    }\n  }\n}\n```\n\nThe local `id` identifies this placement. `ref` locates document authority; the exposed Port resolves semantic `nodeId` and the permitted View. Resolved fields need not be redundantly authored."
       },
       "ports": [
         {
@@ -302,7 +302,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# View extrapolation\n\nA child graph owns its `summary`, `detail`, icon, or other Views. A graph-reference node selects one of the exposed surfaces. At a distant scale that surface represents the graph-node; zooming closer may reveal more child structure.\n\nThe workspace can independently own Views of its whole arrangement. No child View is copied into the parent."
+        "markdown": "# View extrapolation\n\nA child document owns the `summary`, `detail`, icon, or other Views of its semantic node. Its exposed Port selects or permits those surfaces. A Portal-backed parent instance consumes that exposure. At a distant scale the selected View represents the node; zooming closer may reveal more child structure.\n\nThe workspace can independently own Views of its whole arrangement. No child View is copied into the parent."
       },
       "ports": [
         {
@@ -336,7 +336,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Parent edge is authoritative\n\nAn edge between graph-reference nodes is an ordinary edge in the workspace document. Its edge class belongs in the workspace Legend.\n\nWhen an endpoint unfolds, Twilite derives export and import Bridge projections carrying the parent edge ID. An explicitly authored unbound export Bridge remains a capability until a parent edge is created."
+        "markdown": "# Parent edge is authoritative\n\nAn edge between resolved node instances is an ordinary edge in the workspace document. Its edge class belongs in the workspace Legend. The endpoints are parent-local instance IDs whose Portal targets preserve child provenance and semantic identity.\n\nWhen an endpoint unfolds, Twilite derives export and import Bridge projections carrying the parent edge ID. An explicitly authored unbound export Bridge remains a capability until a parent edge is created."
       },
       "ports": [
         {
@@ -370,7 +370,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Lifecycle\n\n1. Load the workspace document.\n2. Render graph-reference nodes from durable placement data.\n3. Resolve only the child surfaces required for the current presentation.\n4. Unfold a child without changing the parent document.\n5. Author parent-level gestures into the workspace graph.\n6. Save the workspace as ordinary graph JSON.\n7. Save dirty child documents separately through Save All."
+        "markdown": "# Lifecycle\n\n1. Load the workspace document.\n2. Render its local Portal-backed instances from durable placement data.\n3. Resolve each target document's exposed Port, semantic node, and required View.\n4. Unfold a child without changing the parent document.\n5. Author parent-level gestures into the workspace graph.\n6. Save the workspace as ordinary graph JSON.\n7. Save dirty child documents separately through Save All."
       },
       "ports": [
         {
@@ -404,7 +404,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Question \u00b7 repeated references\n\nCan one workspace contain several placements of the same graph reference?\n\n**Proposal:** yes. Each placement has a graph-local `id`; all placements may target the same document and semantic `nodeId`. Placement identity must not be confused with referenced semantic identity."
+        "markdown": "# Question \u00b7 repeated projections\n\nCan one workspace contain several local instances consuming the same exposed Port?\n\n**Proposal:** yes. Each placement has a graph-local `id`; all may resolve the same document, Port, semantic `nodeId`, and View. Placement identity must not be confused with referenced semantic identity."
       },
       "ports": [
         {
@@ -506,7 +506,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Implementation path\n\n1. Define graph-reference node serialization.\n2. Convert runtime workspace instances into graph-reference projections.\n3. Serialize workspace-owned edges as ordinary edges.\n4. Build a workspace Legend from its edge classes and capabilities.\n5. Load a workspace `.node` into the existing multi-graph runtime.\n6. Keep child saves independent.\n7. Migrate existing local-storage arrangements.\n8. Exercise recursive View, Port, Portal, Bridge, and edge behavior with smoke graphs.\n\nThis is an attempted solution for review, not a frozen contract."
+        "markdown": "# Implementation path\n\n1. Define durable Portal-backed instance serialization for exposed nodes.\n2. Convert runtime workspace instances into those ordinary parent graph nodes.\n3. Resolve `ref` \u2192 Port \u2192 semantic node \u2192 View without introducing a `graph` node type.\n4. Serialize workspace-owned edges as ordinary edges.\n5. Build a workspace Legend from its edge classes and capabilities.\n6. Load the workspace `.node` into the existing multi-document runtime.\n7. Keep child saves independent and migrate existing local-storage arrangements.\n8. Exercise recursive View, Port, Portal, Bridge, and edge behavior with smoke graphs.\n\nThis is an attempted solution for review, not a frozen contract."
       },
       "ports": [
         {
@@ -540,7 +540,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# What would make this convincing?\n\n- Opening one workspace file reconstructs the arrangement from references.\n- The file contains no child nodes, child edges, or cached snapshots.\n- `smoke-signal` appears in the workspace-level Legend.\n- Dragging fixture 10's export capability creates an ordinary workspace edge.\n- Unfolding either endpoint derives the same edge through Bridge projections.\n- Child graphs remain clean until directly edited.\n- A workspace can expose its own View or Port and itself become a graph-reference node in another workspace.\n\nIf these conditions hold, recursion is real rather than a special multi-document mode."
+        "markdown": "# What would make this convincing?\n\n- Opening one workspace file reconstructs the arrangement from Portal targets and exposed Ports.\n- The file contains no child nodes, child edges, or cached snapshots.\n- Every rendered child instance resolves a semantic node and one of its exposed Views.\n- `smoke-signal` appears in the workspace-level Legend.\n- Dragging fixture 10's export capability creates an ordinary workspace edge.\n- Unfolding either endpoint derives the same edge through Bridge projections.\n- Child graphs remain clean until directly edited.\n- A workspace can expose one of its own nodes through a Port, allowing another graph to consume and render that node recursively.\n\nIf these conditions hold, recursion is real rather than a special multi-document mode."
       },
       "ports": [
         {
