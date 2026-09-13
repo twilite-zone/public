@@ -6,7 +6,7 @@ This is the current write-new authoring model for graph-backed Twilite nodes. Ol
 
 - A `declaration` is the node's implicit root Port. Do not add a separate root Port node.
 - A `port` is a named connection endpoint. Its `label` is its authored public name.
-- A `view` is a renderable surface. Semantic role comes from its relationship to a Declaration or Port, not from an independently authored level field.
+- A `view` is a renderable surface. Semantic role comes from its relationship to a Declaration or Port, not from an independently authored level field. One View may serve several roles.
 - A `content` node owns durable material through `data.content.kind` and `data.content.value`.
 - A `glyph` node defines symbolic identity. It is not an icon View.
 - A `portal` consumes an exposed Port or navigates into it. It is not a View or a Port.
@@ -18,13 +18,13 @@ A new Declaration has five singular relationships plus one optional repeatable P
 | Endpoint | Role | Required | Repeatable | Default target |
 | --- | --- | --- | --- | --- |
 | `default-view` | default detail View | yes | no | `view.root` |
-| `summary-view` | shared summary View | yes | no | `view.root` |
-| `icon-view` | shared icon View | yes | no | `view.root` |
-| `glyph` | shared glyph definition | yes | no | `glyph.root` |
+| `summary-view` | shared summary View | no | no | `view.root` |
+| `icon-view` | shared icon View | no | no | `view.root` |
+| `glyph` | shared glyph definition | no | no | `glyph.root` |
 | `port` | exposes an additional named Port | no | yes | `port.root` |
 | `landing-surface` | navigation and frame anchor | yes | no | `content.root` or another focusable surface |
 
-Use the runtime-authored placement: the three View relationships are grouped on the left; landing surface is on the right; glyph is on top; repeatable Port creation is on the bottom. The Declaration-to-landing-surface geometry defines the authored interface frame and minimap viewport. The default View selects presentation; it does not size the node.
+Use the runtime-authored placement: the three View relationships are grouped on the left; landing surface is on the right; glyph is on top; repeatable Port creation is on the bottom. The Declaration-to-landing-surface geometry defines the authored interface frame and minimap viewport. The landing surface and render-size contract will define the preferred graph-node viewport; that contract is still provisional.
 
 ## Port contract
 
@@ -34,7 +34,9 @@ A Port has:
 - `default-view`, `summary-view`, `icon-view`, `glyph`, and `landing-surface` relationships;
 - optional behaviors, such as `drag-create`, when interaction should do more than connect.
 
-The three View relationships sit together on the left. Landing surface sits on the right. On a Port, the root interface is on top and glyph is on the bottom. A Port points to Views; it does not store inline View content. Detail is required by structure, while summary and icon may resolve through shared fallback. A behavior creates or acts; the Port itself remains the connection endpoint.
+The three View relationships sit together on the left. Landing surface sits on the right. On a Port, the root interface is on top and glyph is on the bottom. A Port points to Views; it does not store inline View content. A behavior creates or acts; the Port itself remains the connection endpoint.
+
+The semantic View collection may be sparse. The resolver uses the nearest available authored View across missing bands. If no authored View is usable, it falls back to the graph-local Minimap and then the Glyph at the smallest representation.
 
 ## View and Content contract
 
@@ -72,9 +74,9 @@ Do not duplicate those roles as unrelated editor fields. Do not infer a View's s
 Before calling a graph-backed node or template current:
 
 1. Start from a Declaration with the six authored relationship endpoints.
-2. Supply default, summary, and icon Views, one Glyph, and one landing surface.
+2. Supply a default View and one landing surface. Add Summary, Icon, and Glyph representations when they convey useful additional information; reuse one View across roles when appropriate.
 3. Leave `port` unoccupied when the implicit root interface is sufficient; add each additional named Port through the repeatable `port` relationship.
 4. Give Views owned Content or an explicit `surface-delegate` edge.
 5. Keep Port behavior separate from View and Content ownership.
-6. Verify the interface widget, landing-surface frame, semantic zoom, navigation, and save/reload.
+6. Verify the interface widget, landing-surface frame, sparse semantic View resolution, navigation, and save/reload.
 7. Preserve old fields only for reading; write the current model.

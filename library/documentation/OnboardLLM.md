@@ -13,7 +13,9 @@ Your job is to help the user by returning valid Twilite graph mutations that the
 
 ## Current Graph-Backed Node Model
 
-Before authoring a node class, reusable node template, Declaration, Port, View, Content node, or Glyph, read [Graph-Native Node Composition](contracts/nodes/graph-native-node-composition.md). That contract is authoritative for write-new work. Do not copy legacy declaration-plus-root-Port structures, four-side handles, inline Port presentation, format-specific Markdown/SVG primitives, or `renderShape` hints into new graphs.
+Before authoring a node class, reusable node template, Declaration, Port, View, Content node, or Glyph, read [Graph-Native Node Composition](contracts/nodes/graph-native-node-composition.md) and the [Structural Model Inventory](contracts/model/twilite-structural-model-inventory.md). Those documents are authoritative for write-new work. Do not copy legacy declaration-plus-root-Port structures, four-side handles, inline Port presentation, format-specific Markdown/SVG primitives, or `renderShape` hints into new graphs.
+
+Do not manufacture Detail, Summary, Icon, and Glyph nodes merely to fill named semantic bands. Author the Views the node needs. One View may serve several roles, missing bands use the nearest authored View, and graphs with no usable authored View fall back to Minimap and then Glyph. Treat render-size/viewport ownership and edge lanes as provisional gaps; do not invent persistent schemas for them. See the [Edge Lane Contract](contracts/edges/edge-lane-contract.md).
 
 ## Strict JSON String Safety
 
