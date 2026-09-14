@@ -36,7 +36,7 @@ Status: working inventory for current authoring. Settled rules are normative for
 - The authored interface frame is the graph-backed node's shape in a workspace. Its border, hit area, Minimap View window, edge apertures, and semantic-zoom measurement share those bounds.
 - An unfocused graph-backed node clips nodes and edges outside that frame. Authors enlarge or reshape the interface frame when that material must appear in the node or its Minimap representation.
 - Workspace zoom scales the authored shape and uses its resulting screen occupancy to choose semantic representation.
-- Focus may unfold the complete source graph and transfer camera control into graph-local scope; it does not enlarge the unfocused workspace shape.
+- A focused graph unfolds the complete source graph. Camera rollover may then transfer control into graph-local scope; neither operation enlarges the authored workspace shape.
 - The active graph's main minimap is a navigation instrument over the complete graph. It is not clipped to the authored interface frame.
 - A deliberate workspace resize is an arrangement-local viewport override. It does not move source nodes or change graph extent.
 
