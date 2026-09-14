@@ -45,10 +45,12 @@ The landing surface and Declaration geometry currently author the interface fram
 ## Remaining model gaps
 
 ### P0 — View fitting and camera rollover
+### P0 — View fitting and camera rollover
 
 Define:
 
 - whether a View uses responsive, contain, cover, or fixed-aspect fitting;
+- the exact hysteresis and anchor rules when zoom crosses between workspace and graph-local camera scope.
 - the exact hysteresis and anchor rules when zoom crosses between workspace and graph-local camera scope.
 
 ### P0 — Edge lanes
