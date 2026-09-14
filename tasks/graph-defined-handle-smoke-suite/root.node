@@ -2,12 +2,12 @@
   "fileVersion": "1.0",
   "metadata": {
     "title": "Graph-Defined Handle Smoke Suite",
-    "description": "Graph-Defined Handle Smoke Suite",
+    "description": "Visual proof for graph-defined HTML, SVG, and Canvas Handles with Declaration inheritance and Port overrides.",
     "graphId": "graph-defined-handle-smoke",
     "version": "0.1.0",
     "kind": "validation",
     "created": "2026-09-14T19:20:03.285Z",
-    "modified": "2026-09-14T19:20:03.285Z",
+    "modified": "2026-09-14T20:09:16.674Z",
     "tags": [
       "validation",
       "handles"
@@ -30,11 +30,6 @@
         "identity": {
           "nodeId": "graph-defined-handle-smoke",
           "graphId": "graph-defined-handle-smoke"
-        },
-        "defaultHandle": {
-          "sourceRef": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/html-handle/root.node",
-          "sourceNodeId": "declaration",
-          "sourcePayload": "handle.web"
         }
       }
     },
@@ -44,29 +39,29 @@
       "label": "Smoke Test",
       "position": {
         "x": 80,
-        "y": 330
+        "y": 300
       },
-      "width": 520,
-      "height": 260,
+      "width": 500,
+      "height": 310,
       "data": {
-        "markdown": "# Graph-Defined Handles\n\nThe top endpoint inherits the Declaration HTML Handle. The middle Port overrides it with SVG. The bottom Port overrides it with Canvas. Each visual is transparent and passive; drag from the same endpoint hotspot to verify the separate interaction target."
+        "markdown": "# Graph-Defined Handle Smoke Test\n\nThree nodes expose the same semantic `signal` Port.\n\n1. **HTML** inherits its node Declaration default.\n2. **SVG** overrides that default at the Port.\n3. **Canvas** overrides that default at the Port.\n\nThe authored art remains visible in browse mode. Switch to edit mode and focus a node to verify that the same visual hotspot becomes the connection target."
       }
     },
     {
       "id": "html-node",
-      "type": "content",
+      "type": "markdown",
       "label": "Declaration default · HTML",
       "position": {
-        "x": 720,
-        "y": 100
+        "x": 700,
+        "y": 80
       },
-      "width": 320,
-      "height": 150,
+      "width": 390,
+      "height": 160,
       "ports": [
         {
           "id": "signal",
           "key": "signal",
-          "label": "HTML default",
+          "label": "signal",
           "direction": "output",
           "dataType": "signal",
           "angle": 0,
@@ -75,23 +70,47 @@
           ],
           "metadata": {}
         }
+      ],
+      "data": {
+        "title": "Declaration default · HTML",
+        "markdown": "## Declaration default · HTML\n\nThe H badge is inherited from this node’s declared default Handle.",
+        "defaultHandle": {
+          "sourceRef": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/html-handle/root.node",
+          "sourceNodeId": "declaration",
+          "sourcePayload": "handle.web"
+        }
+      },
+      "handles": [
+        {
+          "id": "signal",
+          "key": "signal",
+          "label": "signal",
+          "direction": "output",
+          "dataType": "signal",
+          "angle": 0,
+          "allowedEdgeTypes": [
+            "default"
+          ],
+          "metadata": {},
+          "portId": "signal"
+        }
       ]
     },
     {
       "id": "svg-node",
-      "type": "content",
+      "type": "markdown",
       "label": "Port override · SVG",
       "position": {
-        "x": 720,
-        "y": 330
+        "x": 700,
+        "y": 310
       },
-      "width": 320,
-      "height": 150,
+      "width": 390,
+      "height": 160,
       "ports": [
         {
           "id": "signal",
           "key": "signal",
-          "label": "SVG override",
+          "label": "signal",
           "direction": "output",
           "dataType": "signal",
           "angle": 0,
@@ -99,26 +118,60 @@
             "default"
           ],
           "metadata": {
-            "portNodeId": "svg-port"
+            "handlePresentation": {
+              "sourceRef": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/svg-handle/root.node",
+              "sourceNodeId": "declaration",
+              "sourcePayload": "handle.web"
+            }
           }
+        }
+      ],
+      "data": {
+        "title": "Port override · SVG",
+        "markdown": "## Port override · SVG\n\nThe arrow replaces the declared HTML Handle for this Port.",
+        "defaultHandle": {
+          "sourceRef": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/html-handle/root.node",
+          "sourceNodeId": "declaration",
+          "sourcePayload": "handle.web"
+        }
+      },
+      "handles": [
+        {
+          "id": "signal",
+          "key": "signal",
+          "label": "signal",
+          "direction": "output",
+          "dataType": "signal",
+          "angle": 0,
+          "allowedEdgeTypes": [
+            "default"
+          ],
+          "metadata": {
+            "handlePresentation": {
+              "sourceRef": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/svg-handle/root.node",
+              "sourceNodeId": "declaration",
+              "sourcePayload": "handle.web"
+            }
+          },
+          "portId": "signal"
         }
       ]
     },
     {
       "id": "canvas-node",
-      "type": "content",
+      "type": "markdown",
       "label": "Port override · Canvas",
       "position": {
-        "x": 720,
-        "y": 560
+        "x": 700,
+        "y": 540
       },
-      "width": 320,
-      "height": 150,
+      "width": 390,
+      "height": 160,
       "ports": [
         {
           "id": "signal",
           "key": "signal",
-          "label": "Canvas override",
+          "label": "signal",
           "direction": "output",
           "dataType": "signal",
           "angle": 0,
@@ -126,205 +179,47 @@
             "default"
           ],
           "metadata": {
-            "portNodeId": "canvas-port"
+            "handlePresentation": {
+              "sourceRef": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/canvas-handle/root.node",
+              "sourceNodeId": "declaration",
+              "sourcePayload": "handle.web"
+            }
           }
         }
-      ]
-    },
-    {
-      "id": "svg-port",
-      "type": "port",
-      "label": "SVG Port",
-      "visible": false,
-      "position": {
-        "x": 1160,
-        "y": 350
-      },
-      "width": 80,
-      "height": 60,
+      ],
       "data": {
-        "handlePresentation": {
-          "sourceRef": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/svg-handle/root.node",
+        "title": "Port override · Canvas",
+        "markdown": "## Port override · Canvas\n\nThe violet C replaces the declared HTML Handle for this Port.",
+        "defaultHandle": {
+          "sourceRef": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/html-handle/root.node",
           "sourceNodeId": "declaration",
           "sourcePayload": "handle.web"
         }
       },
-      "ports": [
-        {
-          "id": "handle",
-          "key": "handle",
-          "label": "handle",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 270,
-          "allowedEdgeTypes": [
-            "reference"
-          ],
-          "metadata": {
-            "structural": true,
-            "relationship": true,
-            "role": "handle",
-            "required": false
-          }
-        }
-      ],
       "handles": [
         {
-          "id": "handle",
-          "key": "handle",
-          "label": "handle",
+          "id": "signal",
+          "key": "signal",
+          "label": "signal",
           "direction": "output",
-          "dataType": "any",
-          "angle": 270,
+          "dataType": "signal",
+          "angle": 0,
           "allowedEdgeTypes": [
-            "reference"
+            "default"
           ],
           "metadata": {
-            "structural": true,
-            "relationship": true,
-            "role": "handle",
-            "required": false
+            "handlePresentation": {
+              "sourceRef": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/canvas-handle/root.node",
+              "sourceNodeId": "declaration",
+              "sourcePayload": "handle.web"
+            }
           },
-          "portId": "handle"
+          "portId": "signal"
         }
       ]
-    },
-    {
-      "id": "canvas-port",
-      "type": "port",
-      "label": "Canvas Port",
-      "visible": false,
-      "position": {
-        "x": 1160,
-        "y": 580
-      },
-      "width": 80,
-      "height": 60,
-      "data": {
-        "handlePresentation": {
-          "sourceRef": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/canvas-handle/root.node",
-          "sourceNodeId": "declaration",
-          "sourcePayload": "handle.web"
-        }
-      },
-      "ports": [
-        {
-          "id": "handle",
-          "key": "handle",
-          "label": "handle",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 270,
-          "allowedEdgeTypes": [
-            "reference"
-          ],
-          "metadata": {
-            "structural": true,
-            "relationship": true,
-            "role": "handle",
-            "required": false
-          }
-        }
-      ],
-      "handles": [
-        {
-          "id": "handle",
-          "key": "handle",
-          "label": "handle",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 270,
-          "allowedEdgeTypes": [
-            "reference"
-          ],
-          "metadata": {
-            "structural": true,
-            "relationship": true,
-            "role": "handle",
-            "required": false
-          },
-          "portId": "handle"
-        }
-      ]
-    },
-    {
-      "id": "html-handle-ref",
-      "type": "graphReference",
-      "label": "HTML Handle Definition",
-      "visible": false,
-      "position": {
-        "x": 1260,
-        "y": 100
-      },
-      "data": {
-        "ref": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/html-handle/root.node",
-        "target": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/html-handle/root.node"
-      }
-    },
-    {
-      "id": "svg-handle-ref",
-      "type": "graphReference",
-      "label": "SVG Handle Definition",
-      "visible": false,
-      "position": {
-        "x": 1260,
-        "y": 330
-      },
-      "data": {
-        "ref": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/svg-handle/root.node",
-        "target": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/svg-handle/root.node"
-      }
-    },
-    {
-      "id": "canvas-handle-ref",
-      "type": "graphReference",
-      "label": "Canvas Handle Definition",
-      "visible": false,
-      "position": {
-        "x": 1260,
-        "y": 560
-      },
-      "data": {
-        "ref": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/canvas-handle/root.node",
-        "target": "github://twilite-zone/public/tasks/graph-defined-handle-smoke-suite/canvas-handle/root.node"
-      }
     }
   ],
-  "edges": [
-    {
-      "id": "default-handle-ref",
-      "source": "declaration",
-      "target": "html-handle-ref",
-      "sourcePort": "default-handle",
-      "targetPort": "root",
-      "type": "reference",
-      "data": {
-        "semanticRole": "default-handle"
-      }
-    },
-    {
-      "id": "svg-port-handle",
-      "source": "svg-port",
-      "target": "svg-handle-ref",
-      "sourcePort": "handle",
-      "targetPort": "root",
-      "type": "reference",
-      "data": {
-        "semanticRole": "handle"
-      }
-    },
-    {
-      "id": "canvas-port-handle",
-      "source": "canvas-port",
-      "target": "canvas-handle-ref",
-      "sourcePort": "handle",
-      "targetPort": "root",
-      "type": "reference",
-      "data": {
-        "semanticRole": "handle"
-      }
-    }
-  ],
+  "edges": [],
   "viewport": {
     "x": 0,
     "y": 0,
