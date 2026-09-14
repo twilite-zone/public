@@ -24,7 +24,7 @@ A new Declaration has five singular relationships plus one optional repeatable P
 | `port` | exposes an additional named Port | no | yes | `port.root` |
 | `landing-surface` | navigation and frame anchor | yes | no | `content.root` or another focusable surface |
 
-Use the runtime-authored placement: the three View relationships are grouped on the left; landing surface is on the right; glyph is on top; repeatable Port creation is on the bottom. The Declaration-to-landing-surface geometry defines the authored interface frame and minimap viewport. The landing surface and render-size contract will define the preferred graph-node viewport; that contract is still provisional.
+Use the runtime-authored placement: the three View relationships are grouped on the left; landing surface is on the right; glyph is on top; repeatable Port creation is on the bottom. The Declaration-to-landing-surface geometry defines the authored interface frame. That frame is the graph-backed node's workspace shape and Minimap View window. Unfocused rendering clips content outside it, and semantic zoom measures the frame's scaled screen size. Size the authored frame to include every node that must remain visible in those representations. The active graph's main minimap remains a navigation instrument over the complete graph.
 
 ## Port contract
 

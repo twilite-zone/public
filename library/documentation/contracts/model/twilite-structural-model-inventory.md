@@ -33,23 +33,23 @@ Status: working inventory for current authoring. Settled rules are normative for
 
 - Graph extent, graph-node frame, semantic View bounds, and internal graph camera are distinct values.
 - Node `width` and `height` size the node shell in its owning graph.
-- Workspace zoom uses rendered screen occupancy to choose semantic representation.
-- The graph-node border must wrap the allocated rendered View rather than the complete hidden source-graph extent.
+- The authored interface frame is the graph-backed node's shape in a workspace. Its border, hit area, Minimap View window, edge apertures, and semantic-zoom measurement share those bounds.
+- An unfocused graph-backed node clips nodes and edges outside that frame. Authors enlarge or reshape the interface frame when that material must appear in the node or its Minimap representation.
+- Workspace zoom scales the authored shape and uses its resulting screen occupancy to choose semantic representation.
+- Focus may unfold the complete source graph and transfer camera control into graph-local scope; it does not enlarge the unfocused workspace shape.
+- The active graph's main minimap is a navigation instrument over the complete graph. It is not clipped to the authored interface frame.
+- A deliberate workspace resize is an arrangement-local viewport override. It does not move source nodes or change graph extent.
 
-The final authoring contract between the landing surface, render-size widget, workspace graph-node frame, View fitting mode, and graph-local camera remains provisional. Until it is ratified, do not rewrite source node positions to make a workspace preview fit.
+The landing surface and Declaration geometry currently author the interface frame. View fitting policy and detailed graph-camera behavior remain provisional. Do not rewrite source node positions to make a workspace preview fit.
 
 ## Remaining model gaps
 
-### P0 — Render-size and viewport ownership
+### P0 — View fitting and camera rollover
 
 Define:
 
-- how the landing surface authors preferred width, height, and aspect ratio;
-- how a workspace graph-node receives its initial frame;
 - whether a View uses responsive, contain, cover, or fixed-aspect fitting;
-- how manual resize changes the allocated viewport without changing source graph extent;
-- when zoom crosses from workspace camera scope into graph-local camera scope;
-- which values persist in a graph document and which persist only in a workspace arrangement.
+- the exact hysteresis and anchor rules when zoom crosses between workspace and graph-local camera scope.
 
 ### P0 — Edge lanes
 
