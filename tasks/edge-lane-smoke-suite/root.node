@@ -2,17 +2,17 @@
   "fileVersion": "1.0",
   "metadata": {
     "title": "Edge Lane Smoke Suite",
-    "kind": "validation",
+    "description": "Open each fixture from this index. The suite compares the same routing grammar inside a graph and between graph-shaped workspace nodes.",
+    "graphId": "declaration",
     "version": "0.1.0",
-    "preferredViewer": "https://twilite.zone",
-    "modified": "2026-09-14T00:00:00.000Z",
+    "kind": "graph",
+    "created": "2026-09-16T02:48:29.436Z",
+    "modified": "2026-09-16T02:49:14.669Z",
+    "author": "",
     "tags": [
-      "smoke-test",
-      "edge-lanes",
-      "routing",
-      "smoke-test-template"
+      "graph"
     ],
-    "description": "Manual smoke suite for source shoulders, deterministic parallel lanes, crossings, and shared graph/workspace routing."
+    "preferredViewer": "https://dev.twilite.zone"
   },
   "nodes": [
     {
@@ -256,7 +256,7 @@
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "index",
+          "graphId": "declaration",
           "nodeId": "index",
           "name": "Edge Lane Smoke Suite",
           "version": "0.1.0",
@@ -327,10 +327,10 @@
           "layout": {
             "mode": "manual",
             "defaultLayout": "layered",
-            "direction": "DOWN",
-            "edgeLaneGapPx": 12,
+            "direction": "RIGHT",
+            "edgeLaneGapPx": 18,
             "serpentine": {
-              "maxPerRow": 5
+              "maxPerRow": 4
             },
             "cycleFallback": {
               "enabled": true
@@ -823,44 +823,7 @@
           "nodeId": "setup"
         },
         "markdown": "## Setup\n\nEstablish the stated focus, zoom, and graph arrangement before judging the route."
-      },
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ]
+      }
     },
     {
       "id": "expected",
@@ -868,8 +831,8 @@
       "label": "Expected Result",
       "root": false,
       "position": {
-        "x": 460,
-        "y": -40
+        "x": 559.8317553311538,
+        "y": -394.6654465712038
       },
       "width": 420,
       "height": 230,
@@ -917,45 +880,15 @@
           "graphId": "index",
           "nodeId": "expected"
         },
-        "markdown": "## Expected Result\n\nOpen each fixture from this index. The suite compares the same routing grammar inside a graph and between graph-shaped workspace nodes."
-      },
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
+        "markdown": "## Expected Result\n\nOpen each fixture from this index. The suite compares the same routing grammar inside a graph and between graph-shaped workspace nodes.",
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1789526933179,
+          "reason": "node-drag"
         }
-      ]
+      }
     },
     {
       "id": "observations",
@@ -1013,49 +946,13 @@
           "nodeId": "observations"
         },
         "markdown": "## Observations\n\nRecord node movement, resizing, attachment, route ordering, and the build under test."
-      },
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ]
+      }
     },
     {
       "id": "instructions",
       "type": "markdown",
       "label": "Run the suite",
+      "root": false,
       "position": {
         "x": 420,
         "y": 0
@@ -1065,21 +962,23 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Edge Lane Smoke Suite\n\n1. Open **Graph-Level Lanes** and inspect the four typed routes. Crossings use hops and never form junctions.\n2. Move and resize nodes. Source shoulders and lane order remain stable.\n3. Return here; open **Workspace Lane Source**, then **Workspace Lane Target** alongside.\n4. Zoom out. The three typed workspace edges remain parallel and use the same renderer.\n5. Focus either graph and zoom in. Graph-local edges retain the same route grammar.\n\nPASS: endpoints stay attached; edge identity and type survive; unrelated crossings do not imply relationships; route order is deterministic at both scales."
+        "markdown": "# Edge Lane Smoke Suite\n\n1. Open **Graph-Level Lanes** and inspect the four typed routes. Crossings use hops and never form junctions.\n2. Move and resize nodes. Source shoulders and lane order remain stable.\n3. Return here; open **Workspace Lane Source**, then **Workspace Lane Target** alongside.\n4. Zoom out. The three typed workspace edges remain parallel and use the same renderer.\n5. Focus either graph and zoom in. Graph-local edges retain the same route grammar.\n\nPASS: endpoints stay attached; edge identity and type survive; unrelated crossings do not imply relationships; route order is deterministic at both scales.",
+        "identity": {
+          "graphId": "declaration"
+        }
       }
     },
     {
       "id": "open-graph-level",
       "type": "portal",
       "label": "1 · Graph-Level Lanes",
+      "root": false,
       "position": {
         "x": -440,
         "y": 620
       },
       "width": 280,
       "height": 160,
-      "visible": true,
-      "showLabel": true,
       "ports": [
         {
           "id": "root",
@@ -1107,6 +1006,8 @@
           "portId": "root"
         }
       ],
+      "visible": true,
+      "showLabel": true,
       "data": {
         "target": {
           "kind": "graph",
@@ -1114,21 +1015,23 @@
           "ref": "github://twilite-zone/public/tasks/edge-lane-smoke-suite/graph-level/root.node"
         },
         "intent": "internal",
-        "security": "trusted"
+        "security": "trusted",
+        "identity": {
+          "graphId": "declaration"
+        }
       }
     },
     {
       "id": "open-workspace-source",
       "type": "portal",
       "label": "2 · Workspace Lane Source",
+      "root": false,
       "position": {
         "x": -80,
         "y": 620
       },
       "width": 280,
       "height": 160,
-      "visible": true,
-      "showLabel": true,
       "ports": [
         {
           "id": "root",
@@ -1156,6 +1059,8 @@
           "portId": "root"
         }
       ],
+      "visible": true,
+      "showLabel": true,
       "data": {
         "target": {
           "kind": "graph",
@@ -1163,21 +1068,23 @@
           "ref": "github://twilite-zone/public/tasks/edge-lane-smoke-suite/workspace-source/root.node"
         },
         "intent": "internal",
-        "security": "trusted"
+        "security": "trusted",
+        "identity": {
+          "graphId": "declaration"
+        }
       }
     },
     {
       "id": "open-workspace-target",
       "type": "portal",
       "label": "3 · Workspace Lane Target",
+      "root": false,
       "position": {
         "x": 280,
         "y": 620
       },
       "width": 280,
       "height": 160,
-      "visible": true,
-      "showLabel": true,
       "ports": [
         {
           "id": "root",
@@ -1205,6 +1112,8 @@
           "portId": "root"
         }
       ],
+      "visible": true,
+      "showLabel": true,
       "data": {
         "target": {
           "kind": "graph",
@@ -1212,7 +1121,10 @@
           "ref": "github://twilite-zone/public/tasks/edge-lane-smoke-suite/workspace-target/root.node"
         },
         "intent": "internal",
-        "security": "trusted"
+        "security": "trusted",
+        "identity": {
+          "graphId": "declaration"
+        }
       }
     }
   ],
@@ -1222,76 +1134,78 @@
       "type": "default-view",
       "source": "declaration",
       "target": "detail-view",
+      "sourceHandle": "default-view",
+      "targetHandle": "root",
       "label": "default view",
       "style": {},
       "data": {
         "role": "default-view",
         "semanticRole": "default-view"
-      },
-      "sourceHandle": "default-view",
-      "targetHandle": "root"
+      }
     },
     {
       "id": "summary-view-edge",
       "type": "reference",
       "source": "declaration",
       "target": "summary-view",
+      "sourceHandle": "summary-view",
+      "targetHandle": "root",
       "label": "summary view",
       "style": {},
       "data": {
         "role": "shared-summary",
         "semanticRole": "shared-summary"
-      },
-      "sourceHandle": "summary-view",
-      "targetHandle": "root"
+      }
     },
     {
       "id": "icon-view-edge",
       "type": "reference",
       "source": "declaration",
       "target": "icon-view",
+      "sourceHandle": "icon-view",
+      "targetHandle": "root",
       "label": "icon view",
       "style": {},
       "data": {
         "role": "shared-icon",
         "semanticRole": "shared-icon"
-      },
-      "sourceHandle": "icon-view",
-      "targetHandle": "root"
+      }
     },
     {
       "id": "glyph-edge",
       "type": "reference",
       "source": "declaration",
       "target": "glyph",
+      "sourceHandle": "glyph",
+      "targetHandle": "root",
       "label": "glyph",
       "style": {},
       "data": {
         "role": "shared-glyph",
         "semanticRole": "shared-glyph"
-      },
-      "sourceHandle": "glyph",
-      "targetHandle": "root"
+      }
     },
     {
       "id": "landing-surface-edge",
       "type": "reference",
       "source": "declaration",
       "target": "landing-surface",
+      "sourceHandle": "landing-surface",
+      "targetHandle": "root",
       "label": "landing surface",
       "style": {},
       "data": {
         "role": "landing-surface",
         "semanticRole": "landing-surface"
-      },
-      "sourceHandle": "landing-surface",
-      "targetHandle": "root"
+      }
     },
     {
       "id": "enter-subject",
       "type": "reference",
       "source": "landing-surface",
       "target": "instructions",
+      "sourceHandle": "enter",
+      "targetHandle": "root",
       "label": "Enter test bench",
       "style": {
         "route": "orthogonal",
@@ -1300,18 +1214,16 @@
       "data": {
         "role": "navigation",
         "semanticRole": "navigation"
-      },
-      "sourceHandle": "enter",
-      "targetHandle": "root"
+      }
     }
   ],
   "clusters": [],
   "settings": {
     "theme": null,
     "backgroundImage": null,
-    "defaultNodeColor": "#334155",
-    "defaultEdgeColor": "#64748b",
-    "snapToGrid": true,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "",
+    "snapToGrid": false,
     "gridSize": 20,
     "edgeRouting": "auto",
     "layout": {
@@ -1338,7 +1250,7 @@
       "path": "tasks/edge-lane-smoke-suite/root.node",
       "branch": "main",
       "autoCreateRepo": true,
-      "repoVisibility": "public",
+      "repoVisibility": "private",
       "seedOnCommit": false,
       "enableGithubPages": false,
       "installationId": "120403738"
