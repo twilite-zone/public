@@ -4,7 +4,6 @@ const path = require('path');
 const root = __dirname;
 const template = JSON.parse(fs.readFileSync(path.resolve(root, '../../../../mikemartinez1974/public/templates/smoke-test-template/root.node'), 'utf8'));
 const address = 'github://twilite-zone/public/tasks/edge-definition-smoke-suite/root.node';
-const classAddress = 'github://twilite-zone/public/tasks/edge-definition-smoke-suite/multi-stroke.edge-class.node';
 const graph = structuredClone(template);
 const prefix = 'smoke-test-template-';
 for (const node of graph.nodes) node.id = node.id.replace(prefix, 'edge-definition-smoke-');
@@ -25,9 +24,9 @@ const byId = id => graph.nodes.find(node => node.id === `edge-definition-smoke-$
 byId('declaration').label = 'Edge Definition Smoke Suite';
 byId('declaration').data.identity = { ...byId('declaration').data.identity, name: 'Edge Definition Smoke Suite' };
 byId('declaration').data.document.url = address;
-byId('landing-surface').data.content.value = '# Edge Definition Smoke Suite\n\nInspect class and instance stroke stacks, route modes, and node clearance. Use **Enter test bench**.';
+byId('landing-surface').data.content.value = '# Edge Definition Smoke Suite\n\nInspect class and instance stroke stacks, route modes, and node clearance. The bench is derived from [authored edge definitions](github://twilite-zone/public/tasks/edge-definition-smoke-suite/edge-definitions.node). Use **Enter test bench**.';
 byId('test-subject').label = 'Edge definition matrix';
-byId('test-subject').data.markdown = '# Edge definition matrix\n\nClass stack · instance override · straight dash · curved avoidance. Follow each labeled edge to its target.';
+byId('test-subject').data.markdown = '# Edge definition matrix\n\nClass stack · instance override · straight dash · curved avoidance. Follow each labeled edge to its target. [Inspect the source definitions](github://twilite-zone/public/tasks/edge-definition-smoke-suite/edge-definitions.node).';
 byId('setup').data.markdown = '## Setup\n\nOpen the test bench at Detail zoom. Inspect the four colored relationships below, then move the gray obstacle into and out of the fourth route. Select an edge to inspect its definition.';
 byId('expected').data.markdown = '## Expected Result\n\n**Class stack:** dark outer stroke and cyan center. **Override:** violet outer stroke and white dashed center instead of class colors. **Straight:** two parallel-looking stacked paints on one straight route. **Avoidance:** two-stroke curved route detours around the gray node with air between them. Labels and arrows stay on their own edges.';
 byId('observations').data.markdown = '## Observations\n\nRecord the build, zoom, stroke order, label position, route clearance, and whether class or instance styles won. Visual verification is pending.';
@@ -43,39 +42,54 @@ const output = port('out', 'output', 0), input = port('in', 'input', 180);
   ['avoid-source', 'Curved avoidance', -410, 1450, [output]], ['avoid-target', 'Avoidance target', 420, 1450, [input]],
   ['obstacle', 'Move me: obstacle', 0, 1410, []]
 ].forEach(args => graph.nodes.push(fixture(...args)));
-const edge = (id, source, target, label, style, data = {}) => ({ id, type: 'reference', source, sourceHandle: 'out', target, targetHandle: 'in', label,
-  style, data });
-const classData = { edgeClassKey: 'smoke.multi-stroke', edgeClassRef: classAddress };
-graph.edges.push(
-  edge('class-stack', 'class-source', 'class-target', 'class stack', {}, classData),
-  edge('instance-override', 'override-source', 'override-target', 'instance override', {
-    route: 'orthogonal', strokes: [{ color: '#8b5cf6', width: 10 }, { color: '#ffffff', width: 3, dash: [7, 5] }], showArrow: true, arrowPosition: 'end'
-  }, classData),
-  edge('straight-stack', 'straight-source', 'straight-target', 'straight stack', {
-    route: 'straight', strokes: [{ color: '#0f766e', width: 9 }, { color: '#facc15', width: 3, dash: [10, 5] }], showArrow: true, arrowPosition: 'end'
-  }),
-  edge('curved-detour', 'avoid-source', 'avoid-target', 'avoids node', {
-    route: 'curved', strokes: [{ color: '#be123c', width: 10 }, { color: '#fda4af', width: 3 }], showArrow: true, arrowPosition: 'end'
-  })
-);
-
-// This deliberately small class graph exercises the current field-node
-// contract rather than hiding the style only in a legacy manifest object.
-const classGraph = {
-  fileVersion: '1.0', metadata: { title: 'Smoke Multi-Stroke Edge Class', graphId: 'smoke-multi-stroke-edge-class', kind: 'edge-class',
-    preferredViewer: 'https://dev.twilite.zone', tags: ['smoke-test', 'edge-class'] },
-  nodes: [
-    { id: 'declaration', type: 'declaration', label: 'Smoke Multi-Stroke Edge Class', position: { x: -420, y: 0 }, width: 300, height: 180,
-      data: { identity: { graphId: 'smoke-multi-stroke-edge-class', nodeId: 'smoke-multi-stroke-edge-class', name: 'Smoke Multi-Stroke Edge Class' },
-        document: { url: classAddress } } },
-    ...Object.entries({ key: 'smoke.multi-stroke', label: 'Smoke multi-stroke', meaning: 'One semantic edge with an ordered paint stack',
-      defaultEdgeType: 'reference', 'renderDefaults.route': 'curved',
-      'renderDefaults.strokes': [{ color: '#0f172a', width: 10 }, { color: '#22d3ee', width: 3 }],
-      'renderDefaults.showArrow': true, 'renderDefaults.arrowPosition': 'end' }).map(([key, value], index) => ({
-        id: `field-${index}`, type: 'field', label: key, position: { x: 0, y: index * 100 }, width: 330, height: 80,
-        data: { title: key, fieldType: Array.isArray(value) ? 'json' : 'text', value }
-      }))
-  ], edges: [], settings: { github: { repo: 'twilite-zone/public', path: 'tasks/edge-definition-smoke-suite/multi-stroke.edge-class.node', branch: 'main' } }
-};
-fs.writeFileSync(path.join(root, 'root.node'), JSON.stringify(graph, null, 2) + '\n');
-fs.writeFileSync(path.join(root, 'multi-stroke.edge-class.node'), JSON.stringify(classGraph, null, 2) + '\n');
+// The source graphs own all paint and routing values. This generator only
+// materializes their four cases into the template's visual test bench.
+async function deriveFixtureEdges() {
+  const { pathToFileURL } = require('url');
+  const runtimeRoot = path.resolve(root, '../../../../twilite/components/GraphEditor/utils');
+  const { deriveEdgeClassFromGraphPayload } = await import(pathToFileURL(path.join(runtimeRoot, 'edgeClass.js')).href);
+  const { normalizeEdgeStyleContract } = await import(pathToFileURL(path.join(runtimeRoot, 'edgeStyleContract.js')).href);
+  const { validateGraphInvariants } = await import(pathToFileURL(path.join(runtimeRoot, '../validators/validateGraphInvariants.js')).href);
+  const definitionGraph = JSON.parse(fs.readFileSync(path.join(root, 'edge-definitions.node'), 'utf8'));
+  const validate = (payload, name) => {
+    const report = validateGraphInvariants({ nodes: payload.nodes, edges: payload.edges, mode: 'load' });
+    if (report.errors.length || report.warnings.length) throw new Error(`${name}: ${JSON.stringify(report)}`);
+  };
+  validate(definitionGraph, 'edge-definitions.node');
+  const prefix = 'github://twilite-zone/public/tasks/edge-definition-smoke-suite/';
+  const cases = definitionGraph.nodes.filter(node => node.type === 'field');
+  for (const node of cases) {
+    const definition = node.data?.value;
+    if (!definition || typeof definition !== 'object' || !definition.edgeClassRef?.startsWith(prefix)) {
+      throw new Error(`Invalid edge definition: ${node.id}`);
+    }
+    const classFile = path.basename(definition.edgeClassRef.slice(prefix.length));
+    if (graph.edges.some(edge => edge.id === definition.edgeId)) throw new Error(`Duplicate edge ID: ${definition.edgeId}`);
+    if (!graph.nodes.some(item => item.id === definition.source) || !graph.nodes.some(item => item.id === definition.target)) {
+      throw new Error(`Missing fixture endpoint: ${definition.edgeId}`);
+    }
+    const classGraph = JSON.parse(fs.readFileSync(path.join(root, classFile), 'utf8'));
+    validate(classGraph, classFile);
+    const edgeClass = deriveEdgeClassFromGraphPayload(classGraph);
+    if (!edgeClass?.key) throw new Error(`Missing edge class: ${classFile}`);
+    const classStyle = normalizeEdgeStyleContract(edgeClass.renderDefaults || {}, { context: 'class', preserveUnknown: false });
+    const override = normalizeEdgeStyleContract(definition.styleOverride || {}, { preserveUnknown: false });
+    graph.edges.push({
+      id: definition.edgeId, type: edgeClass.defaultEdgeType || 'reference',
+      source: definition.source, sourceHandle: 'out', target: definition.target, targetHandle: 'in',
+      label: definition.label, style: { ...classStyle, ...override },
+      data: { edgeClassKey: edgeClass.key, edgeClassRef: definition.edgeClassRef,
+        definitionRef: 'github://twilite-zone/public/tasks/edge-definition-smoke-suite/edge-definitions.node', definitionNodeId: node.id }
+    });
+  }
+  validate(graph, 'root.node');
+  const generated = JSON.stringify(graph, null, 2) + '\n';
+  const outputPath = path.join(root, 'root.node');
+  if (process.argv.includes('--check')) {
+    if (fs.readFileSync(outputPath, 'utf8') !== generated) throw new Error('root.node is stale; run node build-suite.cjs');
+    console.log('Edge smoke fixture matches its authored definitions.');
+  } else {
+    fs.writeFileSync(outputPath, generated);
+  }
+}
+deriveFixtureEdges().catch(error => { console.error(error); process.exitCode = 1; });
