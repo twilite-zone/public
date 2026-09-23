@@ -53,7 +53,7 @@
           "version": "0.1.0",
           "description": "Separate \"which graph anchors the workspace layout\" from \"which node is selected inside a graph\" — a stray click on a node inside a passive graph currently triggers both at once.",
           "nodeId": "workspace-focus-vs-graph-focus",
-          "updatedAt": "2026-09-23T21:10:06.236Z"
+          "updatedAt": "2026-09-23T21:51:53.360Z"
         },
         "intent": {
           "kind": "task",
@@ -93,7 +93,8 @@
         },
         "document": {
           "url": "github://twilite-zone/public/tasks/interaction-policy/workspace-focus-vs-graph-focus/root.node"
-        }
+        },
+        "summaryNodeId": "wfvgf-summary"
       }
     },
     {
@@ -119,9 +120,9 @@
       "showLabel": false,
       "data": {
         "title": "Workspace Focus vs. Graph Focus",
-        "subtitle": "Clicking a node inside a passive graph sometimes relocates a different, unrelated graph in the workspace. Root cause: one function conflates two unrelated kinds of focus.",
+        "subtitle": "Node selection changes the editing session without changing the workspace layout anchor. Deliberate focus and graph loading still focus, select, and center their destination.",
         "intent": "headline",
-        "status": "active",
+        "status": "done",
         "_classBinding": {
           "key": "title",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
@@ -270,7 +271,7 @@
       "data": {
         "title": "Selecting a node inside a graph must not, by itself, change which graph anchors the workspace layout",
         "body": "Bug report: \"sometimes when I click on a graph, it moves the entire graph across the workspace.\"\n\nRoot cause, traced and confirmed by static analysis (not yet live-reproduced):\n\n`components/GraphEditor/hooks/useGraphWorkspace.js`'s `activate(instanceId, nodeId)` sets THREE unrelated things in one call:\n1. `store.current.activeGraphInstanceId` — which graph's editing session is live (a real dependency: a passive graph is read-only via PassiveGraph, so selecting a node inside it does need this).\n2. `store.current.focusedGraphInstanceId` — read by `reflowWorkspaceInstances()` in `graphWorkspace.js` as the anchor for its force-directed layout, AND by `presentWorkspaceInstances()` to decide who renders at full expanded size instead of a collapsed card.\n3. `live.current.state.setFocusedNodeId(nodeId)` / `setSelectedNodeIds([nodeId])` — which node is selected inside that graph's own canvas.\n\n`components/GraphEditor/components/WorkspaceLayer.js`'s `activateAt` hit-tests the click against the graph's own node positions. Land on a node -> calls `workspace.activate(instance.instanceId, node.id)`, the full three-way call. Land on empty card space -> only `selectInstances()`, no focus change.\n\nSo: whether a click lands a few pixels onto a node or a few pixels off it decides whether `focusedGraphInstanceId` (and therefore the reflow anchor) changes at all. When it does change, every OTHER open, ready graph that the user hasn't hand-dragged (`instance.manuallyPlaced === false`, the default) gets pushed through `reflowWorkspaceInstances()`'s 200+30 iterations of force-directed relaxation and resettles around the new anchor — visibly relocating a graph the user never touched. That's the reported symptom.\n\n`focusWorkspace()` already proves `activeGraphInstanceId` and `focusedGraphInstanceId` can diverge (it clears the latter, keeps the former) — this isn't fighting the model, it's completing a distinction the code already half-draws.\n\nConstraint: commits eb950a55/e2a77db8/f68272b9 (see docs/release-readiness.md) deliberately made load/create/reopen ALSO focus, where previously only the explicit Focus button did. This fix must not roll that back — it's specifically about the implicit node-click-inside-a-passive-graph path, not about narrowing focus everywhere.",
-        "status": "open",
+        "status": "done",
         "owner": "",
         "priority": "high",
         "estimateHours": "",
@@ -411,7 +412,9 @@
         },
         "definitionKey": "goal",
         "isRoot": false,
-        "root": false
+        "root": false,
+        "completedAt": "2026-09-23T21:51:53.360Z",
+        "outcome": "Implemented and verified with 987 passing tests and a live Chromium click-through against the local app. Selecting a passive node preserves the layout anchor and both graph positions; explicit Focus still changes the anchor."
       }
     },
     {
@@ -438,7 +441,7 @@
       "data": {
         "title": "Add a node-select path that does not touch focusedGraphInstanceId",
         "body": "In useGraphWorkspace.js, split what activate() currently does into two primitives:\n- activateInstance(instanceId) — today's full behavior: sets activeGraphInstanceId AND focusedGraphInstanceId, centers camera. Used by deliberate focus (the Focus button) and the existing load/create/reopen-focuses paths. Keep its call sites there unchanged.\n- selectNodeInInstance(instanceId, nodeId) — new, narrower: sets activeGraphInstanceId (so the node can actually be selected/edited), sets the node focus/selection state, but leaves focusedGraphInstanceId untouched if the instance isn't already the focused one.\n\nCamera behavior is an open question (see the open question node) — decide there whether selectNodeInInstance should still call centerOnInstance.",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "priority": "high",
         "estimateHours": "",
@@ -580,7 +583,9 @@
         },
         "definitionKey": "task",
         "isRoot": false,
-        "root": false
+        "root": false,
+        "outcome": "Implemented activateInstance for deliberate focus and selectNodeInInstance for editing/node selection. The latter preserves focusedGraphInstanceId and centers the selected graph at the current zoom. The activate alias remains compatible.",
+        "resolutionPath": "components/GraphEditor/hooks/useGraphWorkspace.js"
       }
     },
     {
@@ -607,7 +612,7 @@
       "data": {
         "title": "Point the node-click hit-test at the new path",
         "body": "In WorkspaceLayer.js's activateAt: when the click hit-tests onto a node inside a passive graph (the \"if (node) { workspace.activate(instance.instanceId, node.id); return; }\" branch), call the new selectNodeInInstance instead of activate. Leave the empty-card-space branch (selectInstances only) exactly as is.",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "priority": "high",
         "estimateHours": "",
@@ -749,7 +754,9 @@
         },
         "definitionKey": "task",
         "isRoot": false,
-        "root": false
+        "root": false,
+        "outcome": "Passive-node hits call selectNodeInInstance. Empty-card selection retains selectInstances. Passive rendering and interior scroll synchronization follow editing ownership independently of workspace focus.",
+        "resolutionPath": "components/GraphEditor/components/WorkspaceLayer.js"
       }
     },
     {
@@ -776,7 +783,7 @@
       "data": {
         "title": "Audit every other activate() call site",
         "body": "grep all callers of workspace.activate() across the app (WorkspaceLayer.js's header onActivate/Focus button, portal-endpoint focus in focusLoadedInstance, focusAtScreenPoint, the load/create/reopen-focuses paths from commits eb950a55/e2a77db8/f68272b9, and any others). Decide per call site which of the two new primitives it actually means — most should stay on the full activateInstance, since they represent deliberate \"take over the workspace\" actions, not incidental node selection.",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "priority": "high",
         "estimateHours": "",
@@ -917,7 +924,9 @@
         },
         "definitionKey": "task",
         "isRoot": false,
-        "root": false
+        "root": false,
+        "outcome": "Audited all runtime activation callers. Explicit Focus, card save/context menu, portal/bridge navigation, endpoint navigation, load/create/reopen/reload, and capability materialization retain full activation.",
+        "resolutionPath": "components/GraphEditor/hooks/useGraphWorkspace.js"
       }
     },
     {
@@ -944,7 +953,7 @@
       "data": {
         "title": "Prove the reflow no longer fires from a stray node click",
         "body": "Add or extend a test (tests/workspaceLoadFocus.test.js is the closest existing precedent) asserting: given two ready, non-manually-placed instances, clicking a node inside the non-anchor one does not change store.current.focusedGraphInstanceId and does not reposition the other instance. Then live-verify once against a running app (two graphs open in the workspace, click a node in the one that isn't focused, confirm the other one no longer jumps) — this bug was reported live and static analysis alone hasn't confirmed the fix yet.",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "priority": "high",
         "estimateHours": "",
@@ -1086,7 +1095,10 @@
         },
         "definitionKey": "task",
         "isRoot": false,
-        "root": false
+        "root": false,
+        "outcome": "Full suite: 987 passed, 0 failed. Live Chromium smoke passed: passive-node click preserves anchor and world bounds, focused graph remains visible, edits stay in the selected graph, explicit Focus changes anchor, and semantic reflow stays stable. Fixture reads and writes were isolated; no remote documents changed.",
+        "resolutionPath": "tests/browser/workspaceNodeSelection.smoke.cjs",
+        "completedAt": "2026-09-23T21:51:53.360Z"
       }
     },
     {
@@ -1113,7 +1125,7 @@
       "data": {
         "title": "Should selecting a node in a passive graph still pan the camera to center on it?",
         "body": "activate() and selectInstances() both call centerOnInstance() today. If selectNodeInInstance() keeps that call, the camera still visibly moves when you click a node in a passive graph — just without dragging any OTHER graph along with it. Is that still desired (bring the clicked graph into view) or should node-select leave the camera alone entirely and rely on the graph already being visible enough to click in the first place?",
-        "status": "open",
+        "status": "answered",
         "owner": "",
         "prominence": "high",
         "_classBinding": {
@@ -1241,7 +1253,9 @@
         },
         "definitionKey": "open-question",
         "isRoot": false,
-        "root": false
+        "root": false,
+        "resolutionPath": "components/GraphEditor/hooks/useGraphWorkspace.js#selectNodeInInstance",
+        "resolution": "Keep centering the selected graph at the current zoom, as requested. Centering moves only the shared camera; it does not change the workspace focus or layout anchor."
       }
     },
     {
@@ -1267,13 +1281,13 @@
       "showLabel": false,
       "data": {
         "goal": "Selecting a node inside a graph must not, by itself, change which graph anchors the workspace layout",
-        "status": "open",
+        "status": "done",
         "taskProgress": {
-          "completed": 0,
+          "completed": 4,
           "total": 4
         },
         "questionProgress": {
-          "answered": 0,
+          "answered": 1,
           "total": 1
         },
         "taskTitles": [
@@ -1398,12 +1412,23 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
         },
         "definitionKey": "summary",
-        "updatedAt": "2026-09-23T21:10:06.236Z",
-        "title": "Workspace Focus vs. Graph Focus",
+        "updatedAt": "2026-09-23T21:51:53.362Z",
+        "title": "Selecting a node inside a graph must not, by itself, change which graph anchors the workspace layout",
         "sourceGraphRef": "github://twilite-zone/public/tasks/interaction-policy/workspace-focus-vs-graph-focus/root.node",
         "sourceGraphId": "workspace-focus-vs-graph-focus-root",
         "isRoot": false,
-        "root": false
+        "root": false,
+        "priority": "high",
+        "owner": "",
+        "targetDate": "",
+        "body": "Goal: Selecting a node inside a graph must not, by itself, change which graph anchors the workspace layout\nStatus: done\n\nTasks in scope:\n1. Add a node-select path that does not touch focusedGraphInstanceId\n2. Point the node-click hit-test at the new path\n3. Audit every other activate() call site\n4. Prove the reflow no longer fires from a stray node click\n\nOpen questions:\n1. Should selecting a node in a passive graph still pan the camera to center on it?",
+        "estimateHours": "",
+        "startedAt": "",
+        "completedAt": "2026-09-23T21:51:53.360Z",
+        "externalRef": "",
+        "acceptanceCriteria": [
+          "Review the graph-owned task summary for current scope and progress"
+        ]
       }
     },
     {
@@ -1849,6 +1874,169 @@
         },
         "isRoot": false,
         "root": false
+      }
+    },
+    {
+      "id": "wfvgf-updater",
+      "type": "script",
+      "label": "Node Updater",
+      "root": false,
+      "position": {
+        "x": -1600,
+        "y": 1160
+      },
+      "width": 320,
+      "height": 190,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "top"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "left"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "bottom"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "right"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "scriptName": "Task Node Updater",
+        "summaryNodeId": "wfvgf-summary",
+        "autoRun": true,
+        "autoRunOnGraphChange": false,
+        "autoRunOnLoad": true,
+        "allowMutations": true,
+        "dryRun": false,
+        "source": "const SUMMARY_NODE_ID = 'wfvgf-summary';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst normalizeSummaryStatus = (value) => {\n  const status = normalize(value);\n  if (['open', 'todo', 'backlog'].includes(status)) return 'todo';\n  if (['active', 'in-progress', 'in progress'].includes(status)) return 'in-progress';\n  if (['achieved', 'done', 'complete', 'completed', 'closed', 'resolved'].includes(status)) return 'done';\n  if (status === 'blocked') return 'blocked';\n  if (['waiting', 'deferred', 'paused'].includes(status)) return 'waiting';\n  if (['cancelled', 'canceled', 'abandoned'].includes(status)) return 'cancelled';\n  return status || 'todo';\n};\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel, maxItems = 4) => {\n  const visible = items.filter(Boolean).slice(0, maxItems);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst fetchJson = async (ref) => {\n  const normalizedRef = String(ref || '').trim();\n  if (!normalizedRef) return null;\n  try {\n    const response = await fetch(normalizedRef, { cache: 'no-store' });\n    if (!response.ok) return null;\n    return await response.json();\n  } catch (error) {\n    return null;\n  }\n};\nconst summaryStatusCache = new Map();\nconst getExternalSummaryStatus = async (entry) => {\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  if (!sourceRef || !sourceNodeId || sourceNodeId === SUMMARY_NODE_ID) return '';\n  const cacheKey = sourceRef + '#' + sourceNodeId;\n  if (summaryStatusCache.has(cacheKey)) return summaryStatusCache.get(cacheKey);\n  const graphData = await fetchJson(sourceRef);\n  const sourceNode = Array.isArray(graphData?.nodes)\n    ? graphData.nodes.find((node) => node?.id === sourceNodeId)\n    : null;\n  const status = normalizeSummaryStatus(sourceNode?.data?.status);\n  summaryStatusCache.set(cacheKey, status);\n  return status;\n};\nconst isEqual = (a, b) => {\n  if (a === b) return true;\n  if (!a || !b || typeof a !== 'object' || typeof b !== 'object') return false;\n  const aKeys = Object.keys(a);\n  const bKeys = Object.keys(b);\n  if (aKeys.length != bKeys.length) return false;\n  for (const key of aKeys) {\n    if (!Object.prototype.hasOwnProperty.call(b, key)) return false;\n    const aVal = a[key];\n    const bVal = b[key];\n    if (Array.isArray(aVal) || Array.isArray(bVal)) {\n      if (JSON.stringify(aVal) != JSON.stringify(bVal)) return false;\n      continue;\n    }\n    if (aVal && typeof aVal === 'object') {\n      if (!isEqual(aVal, bVal)) return false;\n      continue;\n    }\n    if (aVal != bVal) return false;\n  }\n  return true;\n};\n\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nif (!summaryNode) {\n  return { success: false, error: 'Summary node missing' };\n}\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\n\nconst taskLikeNodes = nodes.filter((entry) => {\n  if (!entry) return false;\n  if (entry?.id === SUMMARY_NODE_ID) return false;\n  if (entry?.data?.countAsTask === false) return false;\n  if (entry?.type === 'task' || entry?.type === 'task-summary') return true;\n  return entry?.data?.countAsTask === true;\n});\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst taskItems = (await Promise.all(taskLikeNodes.map(async (entry) => {\n  const fallback = entry?.type === 'task-summary' ? 'Untitled task summary' : 'Untitled task';\n  const title = toTitle(entry, fallback);\n  let status = normalizeSummaryStatus(entry?.data?.status);\n  if (entry?.type === 'task-summary') {\n    const externalStatus = await getExternalSummaryStatus(entry);\n    if (externalStatus) status = externalStatus;\n  }\n  return { title, status };\n}))).filter((entry) => entry?.title);\n\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst activeTaskCount = taskItems.filter((entry) => normalize(entry.status) === 'in-progress').length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalizeSummaryStatus(goalNode?.data?.status);\nconst derivedStatus = goalStatus === 'done'\n  ? (allTasksDone ? 'done' : 'in-progress')\n  : (goalStatus === 'todo' && (completedTaskCount > 0 || activeTaskCount > 0) ? 'in-progress' : goalStatus);\n\nconst taskListText = toListText(taskTitles, 'No tasks listed.', taskTitles.length || 4);\nconst questionListText = toListText(questionTitles, 'No open questions.');\nconst nextData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.data?.title || goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  priority: goalNode?.data?.priority || summaryNode?.data?.priority || 'medium',\n  owner: goalNode?.data?.owner || summaryNode?.data?.owner || '',\n  targetDate: goalNode?.data?.targetDate || summaryNode?.data?.targetDate || '',\n  taskProgress: {\n    completed: completedTaskCount,\n    total: taskItems.length\n  },\n  questionProgress: {\n    answered: questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length,\n    total: questions.length\n  },\n  taskTitles,\n  questionTitles,\n  taskListText,\n  questionListText,\n  title: goalNode?.data?.title || goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  body: `Goal: ${goalNode?.data?.title || goalNode?.label || summaryNode?.data?.goal || 'Task graph'}\\nStatus: ${derivedStatus}\\n\\nTasks in scope:\\n${toListText(taskTitles, 'No tasks listed.')}\\n\\nOpen questions:\\n${toListText(questionTitles, 'No open questions.')}`,\n  estimateHours: summaryNode?.data?.estimateHours || '',\n  startedAt: summaryNode?.data?.startedAt || '',\n  completedAt: summaryNode?.data?.completedAt || '',\n  externalRef: summaryNode?.data?.externalRef || '',\n  acceptanceCriteria: Array.isArray(summaryNode?.data?.acceptanceCriteria) ? summaryNode.data.acceptanceCriteria : ['Review the graph-owned task summary for current scope and progress'],\n  summarySource: 'node-updater',\n  updatedAt: new Date().toISOString()\n};\n\nconst summaryData = summaryNode.data || {};\nif (!isEqual(summaryData, nextData)) {\n  await api.updateNode(SUMMARY_NODE_ID, { data: nextData });\n}\n\nreturn { success: true, summary: nextData };",
+        "_semanticLevel": "detail",
+        "scriptId": "",
+        "identity": {
+          "graphId": "workspace-focus-vs-graph-focus-root"
+        },
+        "scriptRef": ""
       }
     }
   ],
