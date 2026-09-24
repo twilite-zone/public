@@ -6,8 +6,8 @@
     "graphId": "declaration-surfaces-root",
     "version": "0.1.0",
     "kind": "task-graph",
-    "created": "2026-09-24T18:53:17.222Z",
-    "modified": "2026-09-24T18:53:17.222Z",
+    "created": "2026-09-24T19:17:32.195Z",
+    "modified": "2026-09-24T19:17:32.195Z",
     "author": "",
     "tags": [
       "task",
@@ -54,7 +54,7 @@
           "version": "0.1.0",
           "description": "What has to change in code, edge classes, validators, defaults, UI and docs for the Declaration primitive graph (primitives/declaration/root.node) to be an accurate description of the app.",
           "nodeId": "declaration-surfaces",
-          "updatedAt": "2026-09-24T18:53:17.222Z"
+          "updatedAt": "2026-09-24T19:17:32.195Z"
         },
         "intent": {
           "kind": "task",
@@ -270,12 +270,13 @@
       "showLabel": false,
       "data": {
         "title": "A Declaration exposes one repeatable surface port; each Surface is a View chain ending in a Glyph; and the Declaration resolves views like any class or template node",
-        "body": "The target model is written down in `primitives/declaration/root.node` (mikemartinez1974/public): the Declaration has ONE repeatable `surface` port; each edge from it points at the first View of a Surface; a Surface is a chain View → View → … → Glyph, so every Surface has its own glyph; and a Declaration takes part in view resolution exactly as a class or template node does, with no special path. That replaces five relationships: `default-view`, `summary-view`, `icon-view`, `view-sequence` and the standalone `glyph`.\n\n**What is true today (verified by reading the code, not by running it):**\n\n1. **Grammar.** `components/GraphEditor/utils/declarationRelationshipHandles.js` defines ten relationships. `default-view`/`summary-view`/`icon-view` come from `PORT_SEMANTIC_RELATIONSHIPS.slice(0, 3)` in `portRelationshipHandles.js`, which Port nodes also use. `view-sequence` and `glyph` are separate entries. There is no `surface` relationship.\n2. **Edge classes** (content repo, `mikemartinez1974/public/classes/edges/`, read by the app from `DEFAULT_EDGE_CLASSES_REF`). `view-sequence` is declaration|view → view with `maxOutgoing 1`, so the Declaration can point at only one head and a chain cannot end in a Glyph. `shared-glyph` is declaration|port → glyph, max 1. A Glyph node has only a `root` input port (`createDefaultGlyphNode`), and Views get `sequence-in`/`sequence-out` from `createViewSequencePorts` (`portDeclarations.js`).\n3. **Chain walking.** `utils/viewSequence.js` `collectViewSequence` follows one head chain, views only, then appends the role-wired default/summary/icon views. No glyph, one chain.\n4. **Graph-level ladder.** `utils/graphViewPresentation.js` `collectGraphViewBands` scans EVERY node in the graph for Views: one graph-wide ladder, not per chain.\n5. **Glyph resolution is done three separate ways**, none chain-aware: `graphNodeContract.js` `getSharedGlyph`, the glyph fallbacks inside `resolvePercentageGraphView` (`declaration.data.glyph`, else the first glyph node anywhere in the graph), and `WorkspaceLayer.js` `resolveWorkspaceGraphIdentity`.\n6. **Validator.** `validators/validateGraphInvariants.js` `requiredRootRoles` warns `DECLARATION_ROOT_RELATIONSHIP_MISSING` unless an implicit-root Declaration has default-view, summary-view, icon-view, glyph and landing-surface. A Declaration authored in the new model would warn on all four.\n7. **Defaults.** `createDefaultGraph` (`utils/systemNodeDefaults.js`) wires default/summary/icon role edges plus a landing surface.\n8. **The Declaration is special-cased.** `nodeTypeRegistry.js` registers `declaration` with `component: ManifestNode`, and `GraphEditorContent.js` `resolveNodeComponent` returns null for a registered type with no class binding (`nodeTypes?.[node.type] && !hasClassBinding`). Class and template nodes instead go through `resolveNodeClassContract` → `viewDefinitions` → `selectViewAtResolution`. The Declaration never reaches that path.\n9. **Authoring UI** keys off the old handle ids: `GraphEditor.js` handle-drag creation (`startHandleKey === 'summary-view'` etc.), the declaration view-binding fields in `PropertiesPanel.js` and `DynamicViewNode.js`, and label/role lists in `FixedNode.js`, `PortNode.js`, `nodeVisibilityRoles.js`.\n10. **`declaration.surfaces[]` / `defaultSurfaceId`** exist as data (`{id, kind, label, portNodeId, viewNodeId, exposes}`) but are used for bridge export selection (`selectDeclarationSurface` in `creationVocabulary.js`), not presentation.\n\n**Constraints for whoever implements this:**\n- Do not grow `GraphEditorContent.js` (about 9.7k lines, excluded from lint). New logic goes in small pure modules under `utils/` with tests, then gets wired in (`utils/viewChrome.js` + `tests/viewChrome.test.js` is the pattern).\n- Existing graphs must keep working. About 131 graphs in `public/` use `summary-view` and 146 use `icon-view`. AGENTS.md's rewrite rule applies: never bulk-normalize by shape; preserve graphId, nodeId and addresses.\n- The edge class graphs are in the CONTENT repo, not this one, and the app fetches them from github at startup. Changing them is a separate publish, and the code has to tolerate the old classes until it lands.\n- Baseline is `npm test` 988/988 as of authoring.\n- The Ports question (open question 4) decides whether `PORT_SEMANTIC_RELATIONSHIPS` may change at all. Until it is answered, the Declaration must stop reading that shared list without altering what Ports get.",
+        "body": "**Progress, 2026-09-24:** tasks 1 to 4 are built and tested; 5, 6, 9 and 10 are partly done (each task says what is and is not); 7, 8, 11 and 12 are not started. `npm test` is 1010/1010.\n\nThe target model is written down in `primitives/declaration/root.node` (mikemartinez1974/public): the Declaration has ONE repeatable `surface` port; each edge from it points at the first View of a Surface; a Surface is a chain View → View → … → Glyph, so every Surface has its own glyph; and a Declaration takes part in view resolution exactly as a class or template node does, with no special path. That supersedes five relationships (`default-view`, `summary-view`, `icon-view`, `view-sequence` and the standalone `glyph`), which stay readable as legacy.\n\n**What was true when this was written (before tasks 1 to 6; verified by reading the code, not by running it):**\n\n1. **Grammar.** `components/GraphEditor/utils/declarationRelationshipHandles.js` defines ten relationships. `default-view`/`summary-view`/`icon-view` come from `PORT_SEMANTIC_RELATIONSHIPS.slice(0, 3)` in `portRelationshipHandles.js`, which Port nodes also use. `view-sequence` and `glyph` are separate entries. There is no `surface` relationship.\n2. **Edge classes** (content repo, `mikemartinez1974/public/classes/edges/`, read by the app from `DEFAULT_EDGE_CLASSES_REF`). `view-sequence` is declaration|view → view with `maxOutgoing 1`, so the Declaration can point at only one head and a chain cannot end in a Glyph. `shared-glyph` is declaration|port → glyph, max 1. A Glyph node has only a `root` input port (`createDefaultGlyphNode`), and Views get `sequence-in`/`sequence-out` from `createViewSequencePorts` (`portDeclarations.js`).\n3. **Chain walking.** `utils/viewSequence.js` `collectViewSequence` follows one head chain, views only, then appends the role-wired default/summary/icon views. No glyph, one chain.\n4. **Graph-level ladder.** `utils/graphViewPresentation.js` `collectGraphViewBands` scans EVERY node in the graph for Views: one graph-wide ladder, not per chain.\n5. **Glyph resolution is done three separate ways**, none chain-aware: `graphNodeContract.js` `getSharedGlyph`, the glyph fallbacks inside `resolvePercentageGraphView` (`declaration.data.glyph`, else the first glyph node anywhere in the graph), and `WorkspaceLayer.js` `resolveWorkspaceGraphIdentity`.\n6. **Validator.** `validators/validateGraphInvariants.js` `requiredRootRoles` warns `DECLARATION_ROOT_RELATIONSHIP_MISSING` unless an implicit-root Declaration has default-view, summary-view, icon-view, glyph and landing-surface. A Declaration authored in the new model would warn on all four.\n7. **Defaults.** `createDefaultGraph` (`utils/systemNodeDefaults.js`) wires default/summary/icon role edges plus a landing surface.\n8. **The Declaration is special-cased.** `nodeTypeRegistry.js` registers `declaration` with `component: ManifestNode`, and `GraphEditorContent.js` `resolveNodeComponent` returns null for a registered type with no class binding (`nodeTypes?.[node.type] && !hasClassBinding`). Class and template nodes instead go through `resolveNodeClassContract` → `viewDefinitions` → `selectViewAtResolution`. The Declaration never reaches that path.\n9. **Authoring UI** keys off the old handle ids: `GraphEditor.js` handle-drag creation (`startHandleKey === 'summary-view'` etc.), the declaration view-binding fields in `PropertiesPanel.js` and `DynamicViewNode.js`, and label/role lists in `FixedNode.js`, `PortNode.js`, `nodeVisibilityRoles.js`.\n10. **`declaration.surfaces[]` / `defaultSurfaceId`** exist as data (`{id, kind, label, portNodeId, viewNodeId, exposes}`) but are used for bridge export selection (`selectDeclarationSurface` in `creationVocabulary.js`), not presentation.\n\n**Decisions (2026-09-24, from review with the owner and a second review by Codex):**\n- **Every Surface begins with a View.** A graph that wants to show as just a glyph authors an icon View that renders a glyph, and ends its chain with its ordinary Glyph. There is no glyph-only Surface and no `surface` edge to a Glyph.\n- **Surface identity has one authority: the `surface` edge.** It carries a stable `data.surfaceId`, and chain membership decides which Views belong. Rename = change that one field. Delete = remove the edge (its Views stay in the graph, in no Surface). Duplicate ids: the first edge in graph order wins, later ones are ignored with a warning. `defaultSurfaceId` must name an existing Surface, else the first Surface is the default (warning). `declaration.surfaces[]` entries of `kind:'export'` are untouched; entries of kind view/port are read as legacy and never written for presentation.\n- **A Surface picks what renders inside the graph's frame; it never changes the frame.** Changing Surface, resolution or focus must not resize the frame, reflow neighbors or move the camera.\n- **Legacy relationships are preserved, not remapped.** The old default-view/summary-view/icon-view/view-sequence/glyph relationships keep working exactly as written; a compatibility resolver synthesizes ONE default Surface from them. They are never turned into three Surfaces.\n- **Two presentations, two owners.** The Surfaces on a Declaration describe how the GRAPH presents (embedded, opened). How the Declaration node presents itself on a canvas is a separate question, answered by its own default View through the same resolver. A Declaration is never rendered by the chains it exposes, so there is no recursion.\n- **Host context is not host capability.** An explicit Surface request wins; a host's context only picks a default; capability (can this host render HTML, 3D) filters out Surfaces it cannot render.\n- **Malformed chains:** visible fallback plus diagnostics, and the resolver itself is deterministic for branches, cycles and a glyph mid-chain, because imported files do not pass through the editor's edge-class rules.\n\n**Constraints for whoever implements this:**\n- Do not grow `GraphEditorContent.js` (about 9.7k lines, excluded from lint). New logic goes in small pure modules under `utils/` with tests, then gets wired in (`utils/viewChrome.js` + `tests/viewChrome.test.js` is the pattern).\n- Existing graphs must keep working. About 131 graphs in `public/` use `summary-view` and 146 use `icon-view`. AGENTS.md's rewrite rule applies: never bulk-normalize by shape; preserve graphId, nodeId and addresses.\n- The edge class graphs are in the CONTENT repo, not this one, and the app fetches them from github at startup. Changing them is a separate publish, and the code has to tolerate the old classes until it lands.\n- Baseline was `npm test` 988/988 at authoring; it is 1010/1010 after tasks 1 to 6.\n- Ports keep `PORT_SEMANTIC_RELATIONSHIPS` exactly as is (question 4). The Declaration stops reading the shared list without altering what Ports get.",
         "status": "open",
         "owner": "",
         "priority": "high",
         "estimateHours": "",
         "acceptanceCriteria": [
+          "Choosing a Surface, a resolution or a focus never changes a graph frame size, moves neighbors or moves the camera",
           "A Declaration can carry any number of Surfaces through one `surface` port; each Surface is a View chain that ends in a Glyph; the app renders, validates and authors it",
           "Graphs written in the old default-view/summary-view/icon-view/glyph shape still load and render as they do today, as one default Surface",
           "The Declaration node resolves its own presentation through the same resolver as class and template nodes, with its identity card as an ordinary default View",
@@ -438,15 +439,15 @@
       "showLabel": false,
       "data": {
         "title": "1. Grammar: one repeatable surface relationship",
-        "body": "In `utils/declarationRelationshipHandles.js`, replace the `default-view`, `summary-view`, `icon-view`, `view-sequence` and `glyph` entries of `DECLARATION_RELATIONSHIPS` with one `surface` relationship (`nodeType: 'view'`, `repeatable: true`). Keep `default-handle`, `boundary-begin`, `boundary-end`, `port` and `landing-surface` exactly as they are. Stop building the Declaration list from `PORT_SEMANTIC_RELATIONSHIPS.slice(0, 3)` (Ports keep that list unchanged; see open question 4).\n\nOld ids must stay readable: extend `normalizeDeclarationRelationshipId` (it already maps `primary-view` to `default-view`) so the retired ids resolve to `surface` when READING existing graphs. Update `createDeclarationRelationshipPorts/Handles`, `DECLARATION_PRIMARY_VIEW_*` and the legacy-default-view handling in `utils/portDeclarations.js` (about lines 74 and 190) accordingly.\n\nDepends on: open questions 1 and 4.",
-        "status": "todo",
+        "body": "In `utils/declarationRelationshipHandles.js`, replace the `default-view`, `summary-view`, `icon-view`, `view-sequence` and `glyph` entries of `DECLARATION_RELATIONSHIPS` with one `surface` relationship (`nodeType: 'view'`, `repeatable: true`). Keep `default-handle`, `boundary-begin`, `boundary-end`, `port` and `landing-surface` exactly as they are. Stop building the Declaration list from `PORT_SEMANTIC_RELATIONSHIPS.slice(0, 3)` (Ports keep that list unchanged; see open question 4).\n\nLegacy is preserved, NOT remapped. Declaration ports are synthesized from this list (`getNodePortDeclarations` in `utils/portDeclarations.js`), so removing the old five would orphan every legacy edge. Keep them as legacy entries (`metadata.legacy: true`): still synthesized so old edges resolve, hidden from creation UI (task 8), and never converted into `surface`. Do not touch `normalizeDeclarationRelationshipId` except for the existing `primary-view` alias. The compatibility resolver (task 3) is what reads them as one default Surface.\n\nAdd the `surface` relationship (repeatable, edge type `surface`) and stop building the Declaration list from `PORT_SEMANTIC_RELATIONSHIPS.slice(0, 3)` by naming those entries in the Declaration list itself.\n\n**Built (2026-09-24):** Added the `surface` relationship (angle 120, role `surface`, edge type `surface`, repeatable, drag-creates a View) to `DECLARATION_RELATIONSHIPS`. The five old entries stay, each marked `metadata.legacy` on its port and handle (as copies, so the Port list they share is untouched), so every old edge still lands. The list is still built from `PORT_SEMANTIC_RELATIONSHIPS.slice(0, 3)` rather than restating those three definitions, so Ports and Declarations cannot drift apart. Tests updated: `declarationDefaults.test.js`, `portDeclarations.test.js`.",
+        "status": "done",
         "owner": "",
         "priority": "high",
         "estimateHours": "",
         "acceptanceCriteria": [
-          "DECLARATION_RELATIONSHIPS has exactly one surface entry and it is repeatable; the five retired entries are gone",
+          "DECLARATION_RELATIONSHIPS has one repeatable surface entry; the five old entries remain, marked legacy, so old edges keep their ports",
           "Port nodes get exactly the relationships they get today",
-          "A graph whose edges use the retired handle ids still resolves them (no edge is orphaned on load)",
+          "A graph whose edges use the old handle ids still resolves them (no edge is orphaned on load) and is never converted to surface edges",
           "tests/portDeclarations.test.js and tests/dynamicPortDeclarations.test.js updated and green"
         ],
         "_classBinding": {
@@ -608,8 +609,8 @@
       "showLabel": false,
       "data": {
         "title": "2. Edge classes and the Glyph port (content repo)",
-        "body": "In `mikemartinez1974/public/classes/edges/`: add a `surface` edge class (declaration → view, NO `maxOutgoing`, so many Surfaces are legal), and change `view-sequence` so `targetKinds` is `view, glyph` (a chain may end in a Glyph). Keep `maxOutgoing 1` on `view-sequence` so a chain cannot branch. Register both in the collection `classes/edges/root.node`. `shared-glyph` becomes legacy: keep it so old graphs still validate, and say so in its meaning.\n\nIn this repo: give the Glyph node an input port that accepts `view-sequence` edges (today `createDefaultGlyphNode` in `utils/systemNodeDefaults.js` only has `root`; Views get theirs from `createViewSequencePorts`). Check `utils/edgeLegality.js` and `tests/coreEdgeClasses.test.js`.\n\nOrdering matters: the app fetches these classes from github, so the content-repo change must be published before or with the app change, and the app must behave sensibly when it reads the OLD classes (see task 9).",
-        "status": "todo",
+        "body": "In `mikemartinez1974/public/classes/edges/`: add a `surface` edge class (declaration → view, NO `maxOutgoing`, so many Surfaces are legal), and change `view-sequence` so `targetKinds` is `view, glyph` (a chain may end in a Glyph). Keep `maxOutgoing 1` on `view-sequence` so a chain cannot branch. Register both in the collection `classes/edges/root.node`. `shared-glyph` becomes legacy: keep it so old graphs still validate, and say so in its meaning.\n\nIn this repo: give the Glyph node an input port that accepts `view-sequence` edges (today `createDefaultGlyphNode` in `utils/systemNodeDefaults.js` only has `root`; Views get theirs from `createViewSequencePorts`). Check `utils/edgeLegality.js` and `tests/coreEdgeClasses.test.js`.\n\nOrdering matters: the app fetches these classes from github, so the content-repo change must be published before or with the app change, and the app must behave sensibly when it reads the OLD classes (see task 9).\n\n**Built (2026-09-24):** Added `classes/edges/surface/root.node` (declaration → view, no limit) and changed `view-sequence` to end at `view, glyph` (still one out, one in, so a chain cannot branch). The collection lists `surface` first. Generated with the same generator as the other core classes; the six untouched classes were verified identical (timestamps aside) and were not rewritten. A Glyph now gets a `sequence-in` port (`utils/portDeclarations.js`). `tests/coreEdgeClasses.test.js` and `tests/edgeLegality.test.js` updated, with new cases for a second Surface, a glyph-first Surface being refused, and a chain ending in a glyph.\n\nNOT DONE: publishing. The content repo change is local. Until it is published the app finds no `surface` class and refuses nothing (`edgeClassCatalog`), which is safe.",
+        "status": "done",
         "owner": "",
         "priority": "high",
         "estimateHours": "",
@@ -778,14 +779,14 @@
       "showLabel": false,
       "data": {
         "title": "3. One chain resolver, per Surface",
-        "body": "Add a pure module (extend `utils/viewSequence.js` or a sibling) exposing `collectSurfaceChains(graph)`: for each `surface` edge from the Declaration, walk `view-sequence` edges from its head and return `{ surfaceId, head, views[], glyph }`. Reuse the existing loop guard (stops at a node already seen). The glyph is the chain's terminal node; malformed chains follow the rule chosen in open question 2.\n\nLegacy synthesis is the compatibility layer: a graph with NO `surface` edges but with role-wired default/summary/icon views (and `shared-glyph` or `declaration.data.glyph`) yields one default Surface built from them. `collectViewSequence` already does the view part of this through `ROLE_SEQUENCE`; extend it, do not duplicate it. Keep `collectViewSequence` and `resolveViewByName` working for their current callers (`addressedView.js`, `graphNodeContract.js`) by implementing them on top of the new function.\n\nDepends on: tasks 1, 2 and open questions 1, 2.",
-        "status": "todo",
+        "body": "Add a pure module (extend `utils/viewSequence.js` or a sibling) exposing `collectSurfaceChains(graph)`: for each `surface` edge from the Declaration, walk `view-sequence` edges from its head and return `{ surfaceId, head, views[], glyph }`. Reuse the existing loop guard (stops at a node already seen). The glyph is the chain's terminal node; malformed chains follow the rule chosen in open question 2.\n\nDeterminism is the resolver's job, not the edge classes': an imported file bypasses the editor's rules, so a chain that branches (follow the first outgoing edge in graph order, diagnose), cycles (stop at the first repeated node), has a glyph mid-chain (the glyph ends the walk) or has a `surface` edge whose head is not a View (skip it, diagnose) must all resolve without exception and identically every time.\n\nLegacy synthesis is the compatibility layer: a graph with NO `surface` edges but with role-wired default/summary/icon views (and `shared-glyph` or `declaration.data.glyph`) yields exactly ONE default Surface built from them, never one Surface per relationship. `collectViewSequence` already does the view part of this through `ROLE_SEQUENCE`; extend it, do not duplicate it. Keep `collectViewSequence` and `resolveViewByName` working for their current callers (`addressedView.js`, `graphNodeContract.js`) by implementing them on top of the new function.\n\nDepends on: tasks 1, 2.\n\n**Built (2026-09-24):** New pure module `utils/surfaceChains.js`: `collectSurfaceChains`, `resolveSurface`, `surfaceViewNodes`, `resolveSurfaceViewByName`. The Surface id is `edge.data.surfaceId` (else the edge id). Legacy synthesis yields exactly one default Surface from `collectViewSequence` plus the shared glyph. Every malformed case resolves deterministically and never throws: a cycle stops at the first repeated node, a branch follows the first outgoing edge, a glyph ends the walk, a chain reaching a non-View stops, a head that is not a View is skipped, a duplicate id keeps the first, and a missing default falls to the first Surface. Each is diagnosed with a `SURFACE_*` code. `graphNodeContract.js` and `addressedView.js` now call `resolveSurfaceViewByName`; `collectViewSequence` is unchanged. `tests/surfaceChains.test.js` (15 tests).",
+        "status": "done",
         "owner": "",
         "priority": "high",
         "estimateHours": "",
         "acceptanceCriteria": [
           "A graph with two `surface` edges returns two chains, each with its own views and glyph",
-          "A legacy default/summary/icon graph returns one chain equivalent to what collectViewSequence returns today, plus its glyph",
+          "A legacy default/summary/icon graph returns exactly one chain equivalent to what collectViewSequence returns today, plus its glyph",
           "Cycles, a glyph mid-chain, views after the glyph and a chain with no glyph all resolve deterministically per the rule in open question 2, with no exception",
           "tests/viewSequence.test.js keeps passing; new cases cover the above"
         ],
@@ -948,8 +949,8 @@
       "showLabel": false,
       "data": {
         "title": "4. One glyph resolver: the end of the chain",
-        "body": "Today three places each decide which glyph a graph shows: `graphNodeContract.js` `getSharedGlyph` / `resolveGraphPortGlyph`, the glyph fallbacks inside `resolvePercentageGraphView` in `utils/graphViewPresentation.js` (they take `declaration.data.glyph`, else the FIRST `glyph` node anywhere in the graph, which is wrong once a graph has several), and `resolveWorkspaceGraphIdentity` in `components/WorkspaceLayer.js`.\n\nReplace all three with one function, `resolveSurfaceGlyph(graph, surfaceId)`, that returns the terminal Glyph of that Surface's chain, then `declaration.data.glyph`, then the generic mark. Port-level glyph resolution (`resolveGraphPortGlyph`) keeps its port-owned lookup first, then falls through to this.\n\nDepends on: task 3.",
-        "status": "todo",
+        "body": "Today three places each decide which glyph a graph shows: `graphNodeContract.js` `getSharedGlyph` / `resolveGraphPortGlyph`, the glyph fallbacks inside `resolvePercentageGraphView` in `utils/graphViewPresentation.js` (they take `declaration.data.glyph`, else the FIRST `glyph` node anywhere in the graph, which is wrong once a graph has several), and `resolveWorkspaceGraphIdentity` in `components/WorkspaceLayer.js`.\n\nReplace all three with one function, `resolveSurfaceGlyph(graph, surfaceId)`, that returns the terminal Glyph of that Surface's chain, then `declaration.data.glyph`, then the generic mark. Port-level glyph resolution (`resolveGraphPortGlyph`) keeps its port-owned lookup first, then falls through to this.\n\nDepends on: task 3.\n\n**Built (2026-09-24):** One resolver, `resolveSurfaceGlyph` / `resolveSurfaceGlyphNode` in `surfaceChains.js`: a Surface answers with the Glyph that ends its chain, then the Declaration's own glyph. All three old scanners now call it (`getSharedGlyph` in `graphNodeContract.js`, both glyph fallbacks in `resolvePercentageGraphView`, and `resolveWorkspaceGraphIdentity` in `WorkspaceLayer.js`). A legacy graph keeps its old order, and searching the whole graph for any glyph is now opt-in (`{ scan: true }`), used only by the two callers that did it before. One deliberate change: a legacy graph with several glyph nodes now prefers the glyph its Declaration wires over the first one in the file, which was the ambiguity this task was about. Compared against the old logic over all 546 Declaration graphs in `twilite/public`: zero differences.",
+        "status": "done",
         "owner": "",
         "priority": "high",
         "estimateHours": "",
@@ -1118,8 +1119,8 @@
       "showLabel": false,
       "data": {
         "title": "5. Scope the resolution ladder to a Surface",
-        "body": "`collectGraphViewBands` in `utils/graphViewPresentation.js` takes every node in the graph that looks like a View and builds one ladder. Change it to build the ladder from ONE chain (`collectSurfaceChains`), so a second Surface's Views never mix into the first's decision. Thread an optional `surfaceId` through `resolvePercentageGraphView` and its callers in `utils/graphWorkspace.js` (`presentWorkspaceInstances`, `hasNumericViews`) and `utils/workspaceCamera.js`; the default is `declaration.defaultSurfaceId`, else the first Surface.\n\nDo NOT change the resolution math: `viewResolution.js` (`authoredViewResolution`, `selectViewAtResolution`, `occupancyResolution`) is already continuous and unbounded. Only which Views are candidates changes. A host that asks for a Surface the graph does not have falls back to the default Surface.\n\nDepends on: task 3; open question 6 decides how a host names the Surface it wants.",
-        "status": "todo",
+        "body": "`collectGraphViewBands` in `utils/graphViewPresentation.js` takes every node in the graph that looks like a View and builds one ladder. Change it to build the ladder from ONE chain (`collectSurfaceChains`), so a second Surface's Views never mix into the first's decision. Thread an optional `surfaceId` through `resolvePercentageGraphView` and its callers in `utils/graphWorkspace.js` (`presentWorkspaceInstances`, `hasNumericViews`) and `utils/workspaceCamera.js`; the default is `declaration.defaultSurfaceId`, else the first Surface.\n\nDo NOT change the resolution math: `viewResolution.js` (`authoredViewResolution`, `selectViewAtResolution`, `occupancyResolution`) is already continuous and unbounded. Only which Views are candidates changes. A host that asks for a Surface the graph does not have falls back to the default Surface.\n\nA Surface chooses what renders INSIDE the graph's frame and nothing else: it must never resize the frame, reflow neighbors or move the camera (the workspace reflow, focus and camera work of 2026-09-22 to 24 depends on that).\n\nDepends on: task 3. A host names the Surface it wants explicitly; its context only picks a default; capability filters (decided, see goal).\n\n**Built (2026-09-24):** `collectGraphViewBands` now builds the ladder from the chosen Surface's chain when the graph draws Surfaces, and from the whole graph exactly as before when it does not. `resolvePercentageGraphView(graph, occupancy, { surfaceId })` and `resolveGraphBackgroundPresentation` take the option; an unknown Surface falls back to the default; below every rung the Surface's own Glyph is shown. The resolution math (`viewResolution.js`) is untouched. No frame, reflow or camera code was changed, and `graphRenderBounds` is asserted unaffected.\n\nNOT DONE: `presentWorkspaceInstances` and `workspaceCamera.js` do not pass a `surfaceId` yet (they use the default Surface), because how a host names the Surface it wants is settled in principle but has no caller until task 11. No test yet drives `reflowWorkspaceInstances` / `resolveWorkspaceCamera` across a Surface change.",
+        "status": "in-progress",
         "owner": "",
         "priority": "high",
         "estimateHours": "",
@@ -1127,6 +1128,7 @@
           "A graph with two Surfaces resolves each one independently at the same occupancy",
           "A graph with one Surface (or legacy roles) resolves exactly as before at every occupancy; tests/viewResolution.test.js, tests/graphViewPresentation.test.js, tests/semanticPresentation.test.js green",
           "Asking for a missing Surface returns the default Surface",
+          "Switching Surface, resolution or focus leaves frame size, neighbor positions and the camera unchanged (test with reflowWorkspaceInstances and resolveWorkspaceCamera)",
           "The workspace camera targets and the renderer still agree on card size (workspaceCamera.js comment: they must use the same layout)"
         ],
         "_classBinding": {
@@ -1288,8 +1290,8 @@
       "showLabel": false,
       "data": {
         "title": "6. Validator and defaults",
-        "body": "`validators/validateGraphInvariants.js` `requiredRootRoles`: stop requiring default-view, summary-view, icon-view and glyph as separate relationships. Require at least one Surface (a legacy role-wired one counts) and keep `landing-surface`. Add warnings, not errors, for a chain problem: `SURFACE_CHAIN_NO_GLYPH` (chain does not end in a Glyph), `SURFACE_CHAIN_GLYPH_NOT_LAST` (nodes after a Glyph), and a duplicate Surface id. Exact behavior comes from open question 2. Keep `LANDING_SURFACE_MULTIPLE`.\n\n`createDefaultGraph` and `createDefaultDeclarationNode` in `utils/systemNodeDefaults.js` should author the new shape: a `surface` edge to a detail View that chains through summary and icon Views to a Glyph, plus the landing surface. Check `GraphCrud.js` (about line 1451 lists the view roles) and the MCP tools in `scripts/mcp/` for anything that authors the old edges.\n\nDepends on: tasks 1, 3.",
-        "status": "todo",
+        "body": "`validators/validateGraphInvariants.js` `requiredRootRoles`: stop requiring default-view, summary-view, icon-view and glyph as separate relationships. Require at least one Surface (a legacy role-wired one counts) and keep `landing-surface`. Add warnings, not errors, for a chain problem: `SURFACE_CHAIN_NO_GLYPH` (chain does not end in a Glyph), `SURFACE_CHAIN_GLYPH_NOT_LAST` (nodes after a Glyph), `SURFACE_CHAIN_BRANCH`, `SURFACE_CHAIN_CYCLE`, `SURFACE_HEAD_NOT_VIEW`, `SURFACE_DUPLICATE_ID` and `SURFACE_DEFAULT_MISSING` (defaultSurfaceId names no Surface). Keep `LANDING_SURFACE_MULTIPLE`.\n\n`createDefaultGraph` and `createDefaultDeclarationNode` in `utils/systemNodeDefaults.js` should author the new shape: a `surface` edge to a detail View that chains through summary and icon Views to a Glyph, plus the landing surface. Check `GraphCrud.js` (about line 1451 lists the view roles) and the MCP tools in `scripts/mcp/` for anything that authors the old edges.\n\nDepends on: tasks 1, 3.\n\n**Built (2026-09-24):** Validator done: `validateGraphInvariants.js` reads `collectSurfaceChains`. A graph that draws Surfaces is no longer asked for default-view, summary-view, icon-view and glyph, but still owes `landing-surface`; a legacy graph is held to exactly what it was. Chain problems are warnings, never errors: `SURFACE_CHAIN_NO_GLYPH`, `_GLYPH_NOT_LAST`, `_BRANCH`, `_CYCLE`, `_NOT_VIEW`, `SURFACE_HEAD_NOT_VIEW`, `SURFACE_DUPLICATE_ID`, `SURFACE_DEFAULT_MISSING`.\n\nNOT DONE, on purpose: `createDefaultGraph` still authors the legacy shape. A default graph in the new shape would use `surface` edges that no published edge class covers yet and that no editor UI can draw or show (task 8), so it waits for the content-repo publish and task 8. `GraphCrud.js` and the MCP tools were not audited for old-shape authoring.",
+        "status": "in-progress",
         "owner": "",
         "priority": "high",
         "estimateHours": "",
@@ -1458,7 +1460,7 @@
       "showLabel": false,
       "data": {
         "title": "7. Route the Declaration through view resolution",
-        "body": "Remove the special path. Today `nodeTypeRegistry.js` registers `declaration` with `component: ManifestNode`, and `resolveNodeComponent` in `GraphEditorContent.js` returns null for it, so it never reaches `resolveNodeClassContract` / `selectViewAtResolution` the way class and template nodes do. Give the Declaration a default View for its identity card (name, description, version, drawn from what `ManifestNode.js` draws today), let it resolve through the same path, and keep `ManifestNode` only as the last-resort fallback when nothing resolves and for the editor.\n\nThe card is a Declaration-shaped View, not a new node type. Where that default View definition lives is open question 5.\n\nPut the new logic in a pure module under `utils/` with a test and wire it in with a small change; do not add to `GraphEditorContent.js` beyond that call.\n\nDepends on: open question 5, task 4 (collapsed state shows the chain's Glyph).",
+        "body": "Remove the special path. Today `nodeTypeRegistry.js` registers `declaration` with `component: ManifestNode`, and `resolveNodeComponent` in `GraphEditorContent.js` returns null for it, so it never reaches `resolveNodeClassContract` / `selectViewAtResolution` the way class and template nodes do. Give the Declaration a default View for its identity card (name, description, version, drawn from what `ManifestNode.js` draws today), let it resolve through the same path, and keep `ManifestNode` only as the last-resort fallback when nothing resolves and for the editor.\n\nOwnership rule: the Surfaces on a Declaration describe how the GRAPH presents. The Declaration NODE's own card is a different presentation with its own default View, resolved by the same function. The Declaration is never rendered by the chains it exposes, so no rendering can recurse into itself. How an author overrides the card with their own Views is open question 8, and is not part of this task.\n\nThe card is a Declaration-shaped View, not a new node type. It ships in the app (question 5).\n\nPut the new logic in a pure module under `utils/` with a test and wire it in with a small change; do not add to `GraphEditorContent.js` beyond that call.\n\nDepends on: task 4.",
         "status": "todo",
         "owner": "",
         "priority": "high",
@@ -1466,7 +1468,8 @@
         "acceptanceCriteria": [
           "Selecting a View for a Declaration node uses the same function as a class node does (one code path, not two)",
           "A Declaration with no authored Views renders the same identity card as today",
-          "A Declaration with authored Views renders them, richest-fitting, and collapses to its Glyph",
+          "A Declaration node is never drawn by the chains it exposes (a graph whose Surface chain contains its own Declaration does not recurse)",
+          "Resolving the Declaration card does not change its frame size or the camera",
           "Inline editing of the Declaration (DeclarationEditorHostEditor) still works",
           "tests/nodeClassTemplate.test.js and any ManifestNode tests green"
         ],
@@ -1799,8 +1802,8 @@
       "showLabel": false,
       "data": {
         "title": "9. Legacy graphs: read-compat, optional migration",
-        "body": "Old graphs must keep working with no rewrite. Verify the synthesis in task 3 against real graphs: pick a spread from `public/` (roughly 131 use summary-view, 146 use icon-view, 7 use default-view), load each, and check they resolve the same views and the same glyph as before. Add a test that a legacy graph and its hand-migrated `surface`-chain equivalent resolve identically at several occupancies.\n\nPer AGENTS.md's rewrite rule there is no bulk normalization. If open question 3 chooses to offer migration, add an opt-in script modeled on `npm run migrate:events` (`utils/eventMigration.js`): dry-run by default, `--write` to apply, preserves graphId, nodeId and addresses, and refuses a graph it cannot migrate losslessly.\n\nDepends on: tasks 3, 4, 5; open question 3.",
-        "status": "todo",
+        "body": "Old graphs must keep working with no rewrite. Verify the synthesis in task 3 against real graphs: pick a spread from `public/` (roughly 131 use summary-view, 146 use icon-view, 7 use default-view), load each, and check they resolve the same views and the same glyph as before. Add a test that a legacy graph and its hand-migrated `surface`-chain equivalent resolve identically at several occupancies.\n\nPer AGENTS.md's rewrite rule there is no bulk normalization. If open question 3 chooses to offer migration, add an opt-in script modeled on `npm run migrate:events` (`utils/eventMigration.js`): dry-run by default, `--write` to apply, preserves graphId, nodeId and addresses, and refuses a graph it cannot migrate losslessly.\n\nDepends on: tasks 3, 4, 5; open question 3.\n\n**Built (2026-09-24):** Read-compat verified against the real library: over all 546 Declaration graphs in `twilite/public` none uses `surface` edges, none threw, the legacy Surface's views match `collectViewSequence` in every case, and glyph resolution matches the old logic exactly. Only one of those graphs has Views wired through the old roles, so most graphs get their presentation from the graph-wide scan, which is unchanged. `tests/surfaceChains.test.js` covers a legacy graph resolving identically with and without a Surface requested.\n\nNOT DONE: the opt-in migration script (question 3 made it optional), and a visual check that sampled graphs still render the same.",
+        "status": "in-progress",
         "owner": "",
         "priority": "high",
         "estimateHours": "",
@@ -1968,8 +1971,8 @@
       "showLabel": false,
       "data": {
         "title": "10. Smoke test: two Surfaces, bad chains",
-        "body": "The smoke test the Declaration graph asks for. Build a fixture graph (in `tests/`, not the public library) with two Surfaces, each chain ending in its own Glyph, and assert the unit-level behavior of tasks 3 to 6. Then a live check in the running app (the repo has a pattern in `tests/browser/*.smoke.cjs`): open it in the workspace and step through every zoom level, confirming each Surface's ladder resolves independently and each shows its own Glyph at the smallest.\n\nThen deliberately do it wrong, and record what actually happens for each: Glyph mid-chain, Views after the Glyph, no Glyph, a cycle, two Surfaces sharing a View, a `surface` edge to a non-View. The results settle open question 2 and go back into the Declaration graph's Ports node, where the malformed-chain rule is currently marked as a guess.\n\nDepends on: tasks 3 to 6 (unit level), plus task 8 for authoring the fixtures by hand.",
-        "status": "todo",
+        "body": "The smoke test the Declaration graph asks for. Build a fixture graph (in `tests/`, not the public library) with two Surfaces, each chain ending in its own Glyph, and assert the unit-level behavior of tasks 3 to 6. Then a live check in the running app (the repo has a pattern in `tests/browser/*.smoke.cjs`): open it in the workspace and step through every zoom level, confirming each Surface's ladder resolves independently and each shows its own Glyph at the smallest.\n\nThen deliberately do it wrong, and record what actually happens for each: Glyph mid-chain, Views after the Glyph, no Glyph, a cycle, two Surfaces sharing a View, a `surface` edge to a non-View. The results settle open question 2 and go back into the Declaration graph's Ports node, where the malformed-chain rule is currently marked as a guess.\n\nDepends on: tasks 3 to 6 (unit level), plus task 8 for authoring the fixtures by hand.\n\n**Built (2026-09-24):** Unit level done in `tests/surfaceChains.test.js`: a two-Surface, two-Glyph fixture, and every malformed case above has a recorded deterministic outcome with a test. Those outcomes are the rule now written into the Declaration primitive graph.\n\nNOT DONE: the live check (open the fixture in the workspace and walk every zoom level) and the one malformed case not yet recorded, two Surfaces sharing one View.",
+        "status": "in-progress",
         "owner": "",
         "priority": "high",
         "estimateHours": "",
@@ -2137,7 +2140,7 @@
       "showLabel": false,
       "data": {
         "title": "11. Web view and 3D view as Surfaces",
-        "body": "The reason for all of this: the web view and the planned 3D view are Surfaces, and they should share this one mechanism instead of each having its own. This task is BLOCKED on open question 6 and has not been investigated: nobody has yet read `Nodes/ThreeDNode.js` or how the web view (`components/PersistentIframe.js`, the `embed` node type, `Nodes/DynamicViewNode.js` web payloads) picks its content.\n\nStart by writing down how each of those two picks what to show today, then express each as a Surface on the Declaration model: a chain of Views (payload kind `web` / `3d`) ending in a Glyph, asked for by a host that names it. The `context` field proposed by the Surface primitive graph (`declaration.surfaces[].context`) is the likely place a host says which Surface it wants.\n\nDepends on: tasks 3, 5, 7; open question 6.",
+        "body": "The reason for all of this: the web view and the planned 3D view are Surfaces, and they should share this one mechanism instead of each having its own. This task is BLOCKED on open question 6 and has not been investigated: nobody has yet read `Nodes/ThreeDNode.js` or how the web view (`components/PersistentIframe.js`, the `embed` node type, `Nodes/DynamicViewNode.js` web payloads) picks its content.\n\nStart by writing down how each of those two picks what to show today, then express each as a Surface on the Declaration model: a chain of Views (payload kind `web` / `3d`) ending in a Glyph, asked for by a host that names it. The `context` field proposed by the Surface primitive graph (`declaration.surfaces[].context`) is the likely place a host says which Surface it wants.\n\nDepends on: tasks 3, 5, 7. Question 6 is decided: an explicit Surface request wins, context picks a default, capability filters.",
         "status": "todo",
         "owner": "",
         "priority": "high",
@@ -2476,7 +2479,8 @@
       "data": {
         "title": "1. How does a surface edge name its Surface, and what happens to declaration.surfaces[]?",
         "body": "A Surface needs an id (`defaultSurfaceId` already refers to one). Three places could carry it:\n(a) the `surface` edge itself (`edge.data.surfaceId`), so the relationship lives on the edge as the Declaration graph says roles do;\n(b) the existing `declaration.surfaces[]` entry, using its `viewNodeId` field as the chain head, with the edge derived from it;\n(c) the head View's `data.surfaceId`, which is what the Surface primitive graph currently proposes.\n\nRecommendation: (a). It matches \"the role lives on the Declaration's edge\", and it means membership comes from being in the chain, so Views need no `surfaceId` tag of their own. `declaration.surfaces[]` would keep only what an edge cannot say (label, `context`, and the `kind:'export'` entries that serve bridges, which this work must not disturb). Decide before task 1, and note it changes what the Surface primitive graph says.",
-        "status": "open",
+        "status": "resolved",
+        "resolutionPath": "Decided: a stable id on the surface edge (edge.data.surfaceId); membership comes from the chain. Rename, delete, duplicate and default rules are in the goal's Decisions. Views need no surfaceId tag. declaration.surfaces[] keeps only kind:'export' entries for bridges.",
         "owner": "",
         "prominence": "high",
         "_classBinding": {
@@ -2631,7 +2635,8 @@
       "data": {
         "title": "2. What does a host do with a badly ordered chain?",
         "body": "Nothing yet defines this. Cases: a Glyph in the middle, Views after the Glyph, no Glyph, a cycle, a chain that branches, a `surface` edge that points at a non-View.\n\nRecommendation, to be checked by the smoke test (task 10): the walk stops at the first Glyph and ignores anything after it (validator warns); a chain with no Glyph falls back to `declaration.data.glyph` and then to the generic mark (warns); a cycle stops at the first repeated node (already how `collectViewSequence` behaves); branching is prevented by `maxOutgoing 1` on `view-sequence`; a `surface` edge to a non-View is illegal by edge class. All of these degrade to something visible rather than to nothing.",
-        "status": "open",
+        "status": "resolved",
+        "resolutionPath": "Decided: visible fallback plus diagnostics, and a deterministic resolver for branches, cycles and a glyph mid-chain (imported files bypass edge-class rules). The smoke test (task 10) records the verified outcomes.",
         "owner": "",
         "prominence": "high",
         "_classBinding": {
@@ -2786,7 +2791,8 @@
       "data": {
         "title": "3. Legacy graphs: read-compat only, or also a migration script?",
         "body": "About 131 graphs in `public/` use `summary-view` and 146 use `icon-view`, and the content repo holds more. Task 3's synthesis makes them all keep working with no change, which is the safe minimum.\n\nRecommendation: read-compat only for now, with an opt-in dry-run-by-default script available but not run over the library, because AGENTS.md forbids bulk-normalizing by shape and a lossless conversion has to preserve node ids and view resolution values. Say if you want the library migrated, and in which order (the primitives and classes first, say).",
-        "status": "open",
+        "status": "resolved",
+        "resolutionPath": "Decided: read-compat only. Old relationships are preserved when reading and exactly one default Surface is synthesized from them. No bulk migration of the library; an opt-in dry-run script is optional.",
         "owner": "",
         "prominence": "high",
         "_classBinding": {
@@ -2941,7 +2947,8 @@
       "data": {
         "title": "4. Do Port nodes move to Surfaces too?",
         "body": "Port nodes share the Declaration's default-view / summary-view / icon-view / glyph relationships (`PORT_SEMANTIC_RELATIONSHIPS`) and have their own per-level presentation (`resolveGraphPortPresentation` in `graphNodeContract.js`). The Declaration graph only speaks about the Declaration.\n\nRecommendation: leave Ports exactly as they are in this pass. Ports resolve per level for a specific exposed entry point, which is a different question from how the graph as a whole presents. Task 1 only needs to stop the Declaration reading the shared list. Revisit once Surfaces are working, since two vocabularies for the same idea will eventually feel wrong.",
-        "status": "open",
+        "status": "resolved",
+        "resolutionPath": "Decided: Port nodes are unchanged in this pass.",
         "owner": "",
         "prominence": "high",
         "_classBinding": {
@@ -3096,7 +3103,8 @@
       "data": {
         "title": "5. Where does the Declaration's default identity-card View live?",
         "body": "To resolve \"like any class node\", the Declaration needs a View definition. Options: (a) built into the app, shipped as code and used through the same resolver; (b) a class graph in the content library, fetched like the edge classes.\n\nRecommendation: (a). A Declaration is needed to read any graph at all, including the collection that would supply (b), and the app already lives with \"until it has been read there are no default classes\" for edge classes. A library override can be layered on later without changing the resolver. Decide before task 7.",
-        "status": "open",
+        "status": "resolved",
+        "resolutionPath": "Decided: the Declaration's default identity-card View ships in the app and resolves through the same resolver. A library override can come later.",
         "owner": "",
         "prominence": "high",
         "_classBinding": {
@@ -3251,6 +3259,318 @@
       "data": {
         "title": "6. How does a host say which Surface it wants, and do web and 3D map one-to-one?",
         "body": "You said the web view and the 3D view are both Surfaces. What is not yet written down is how a host asks: by Surface id, by a `context` value (the field the Surface primitive graph proposes as `declaration.surfaces[].context`), or by the View payload kind (`web`, `3d`). And whether each is exactly one Surface, or a Surface can hold Views of more than one kind.\n\nRecommendation: a host asks by `context` and falls back to the default Surface; a Surface's Views can carry any payload kind, so \"3D\" is a Surface whose Views happen to be 3D. Needs your call before task 5 is finished and before task 11 starts. I have not read the web view or 3D code yet (see task 11).",
+        "status": "resolved",
+        "resolutionPath": "Decided: an explicit Surface request wins; host context only picks a default; capability (HTML, 3D) filters out Surfaces the host cannot render. Web and 3D are each a Surface; their Views carry the payload kind.",
+        "owner": "",
+        "prominence": "high",
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "identity": {
+            "graphId": "open-question-class",
+            "name": "Open Question Class",
+            "version": "0.1.0",
+            "description": "Unresolved question node for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Unresolved question node for planning graphs.",
+          "description": "Unresolved question node for planning graphs.",
+          "defaults": {
+            "label": "Open Question",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+            "showLabel": false,
+            "data": {
+              "body": "State what is still unclear.",
+              "status": "open",
+              "owner": "",
+              "resolutionPath": "",
+              "prominence": "high"
+            }
+          },
+          "nodeDef": {
+            "key": "open-question",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Open Question",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+              "showLabel": false,
+              "data": {
+                "body": "State what is still unclear.",
+                "status": "open",
+                "owner": "",
+                "resolutionPath": "",
+                "prominence": "high"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "open-question",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "open-question",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "open-question",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "dsc-bridge-open-question",
+          "sourceBridgeLabel": "Open Question",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "definitionKey": "open-question",
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "dsc-question-7",
+      "type": "open-question",
+      "label": "Open Question",
+      "position": {
+        "x": -1600,
+        "y": 2800
+      },
+      "width": 340,
+      "height": 340,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "7. Can a graph expose only a Glyph, with no View?",
+        "body": "A chain is View → … → Glyph, and a `surface` edge points at the first View. That rule leaves no way to say \"this graph is only a glyph\".",
+        "status": "resolved",
+        "resolutionPath": "Decided by the owner: no. Every Surface begins with a View. A graph that wants to show as just a glyph authors an icon View that renders a glyph and ends its chain with its ordinary Glyph.",
+        "owner": "",
+        "prominence": "high",
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "identity": {
+            "graphId": "open-question-class",
+            "name": "Open Question Class",
+            "version": "0.1.0",
+            "description": "Unresolved question node for planning graphs.",
+            "createdAt": "2026-03-15T20:30:00.000Z",
+            "updatedAt": "2026-03-24T01:10:00.000Z"
+          },
+          "intent": "node-class",
+          "meaning": "Unresolved question node for planning graphs.",
+          "description": "Unresolved question node for planning graphs.",
+          "defaults": {
+            "label": "Open Question",
+            "size": {
+              "width": 340,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+            "showLabel": false,
+            "data": {
+              "body": "State what is still unclear.",
+              "status": "open",
+              "owner": "",
+              "resolutionPath": "",
+              "prominence": "high"
+            }
+          },
+          "nodeDef": {
+            "key": "open-question",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Open Question",
+              "size": {
+                "width": 340,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+              "showLabel": false,
+              "data": {
+                "body": "State what is still unclear.",
+                "status": "open",
+                "owner": "",
+                "resolutionPath": "",
+                "prominence": "high"
+              }
+            }
+          },
+          "views": [
+            {
+              "key": "open-question",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            },
+            {
+              "key": "open-question",
+              "intent": "node",
+              "payload": "node.web",
+              "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0"
+            }
+          ],
+          "nodeView": {
+            "key": "open-question",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "open-question",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "",
+          "sourceBridgeNodeId": "dsc-bridge-open-question",
+          "sourceBridgeLabel": "Open Question",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "definitionKey": "open-question",
+        "isRoot": false,
+        "root": false
+      }
+    },
+    {
+      "id": "dsc-question-8",
+      "type": "open-question",
+      "label": "Open Question",
+      "position": {
+        "x": -1200,
+        "y": 2800
+      },
+      "width": 340,
+      "height": 340,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "title": "8. How does an author give the Declaration node its own Views?",
+        "body": "Decided so far: the Declaration node's own card is a separate presentation from the graph's Surfaces, has a built-in default View, and resolves through the same resolver as class and template nodes. Not decided: how an author overrides it with Views of their own. A relationship on the Declaration (for example a `node-view` port), a field naming a View, or a class-style binding are all possible, and each has different consequences for the Declaration primitive graph. Not needed for task 7; only for letting authors customize the card.",
         "status": "open",
         "owner": "",
         "prominence": "high",
@@ -3388,7 +3708,7 @@
       "label": "Summary",
       "position": {
         "x": -1600,
-        "y": 2840
+        "y": 3240
       },
       "width": 420,
       "height": 300,
@@ -3407,12 +3727,12 @@
         "goal": "A Declaration exposes one repeatable surface port; each Surface is a View chain ending in a Glyph; and the Declaration resolves views like any class or template node",
         "status": "open",
         "taskProgress": {
-          "completed": 0,
+          "completed": 4,
           "total": 12
         },
         "questionProgress": {
-          "answered": 0,
-          "total": 6
+          "answered": 7,
+          "total": 8
         },
         "taskTitles": [
           "1. Grammar: one repeatable surface relationship",
@@ -3434,10 +3754,12 @@
           "3. Legacy graphs: read-compat only, or also a migration script?",
           "4. Do Port nodes move to Surfaces too?",
           "5. Where does the Declaration's default identity-card View live?",
-          "6. How does a host say which Surface it wants, and do web and 3D map one-to-one?"
+          "6. How does a host say which Surface it wants, and do web and 3D map one-to-one?",
+          "7. Can a graph expose only a Glyph, with no View?",
+          "8. How does an author give the Declaration node its own Views?"
         ],
         "taskListText": "1. Grammar: one repeatable surface relationship\n2. Edge classes and the Glyph port (content repo)\n3. One chain resolver, per Surface\n4. One glyph resolver: the end of the chain\n5. Scope the resolution ladder to a Surface\n6. Validator and defaults\n7. Route the Declaration through view resolution\n8. Authoring UI for Surfaces and chains\n9. Legacy graphs: read-compat, optional migration\n10. Smoke test: two Surfaces, bad chains\n11. Web view and 3D view as Surfaces\n12. Docs, LLM prompt, and the Surface primitive",
-        "questionListText": "1. How does a surface edge name its Surface, and what happens to declaration.surfaces[]?\n2. What does a host do with a badly ordered chain?\n3. Legacy graphs: read-compat only, or also a migration script?\n4. Do Port nodes move to Surfaces too?\n5. Where does the Declaration's default identity-card View live?\n6. How does a host say which Surface it wants, and do web and 3D map one-to-one?",
+        "questionListText": "1. How does a surface edge name its Surface, and what happens to declaration.surfaces[]?\n2. What does a host do with a badly ordered chain?\n3. Legacy graphs: read-compat only, or also a migration script?\n4. Do Port nodes move to Surfaces too?\n5. Where does the Declaration's default identity-card View live?\n6. How does a host say which Surface it wants, and do web and 3D map one-to-one?\n7. Can a graph expose only a Glyph, with no View?\n8. How does an author give the Declaration node its own Views?",
         "summarySource": "node-updater",
         "_classBinding": {
           "key": "summary",
@@ -3549,7 +3871,7 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
         },
         "definitionKey": "summary",
-        "updatedAt": "2026-09-24T18:53:17.222Z",
+        "updatedAt": "2026-09-24T19:17:32.195Z",
         "title": "Declaration Surfaces: Make the Spec True",
         "sourceGraphRef": "github://twilite-zone/public/tasks/declaration-surfaces/root.node",
         "sourceGraphId": "declaration-surfaces-root",
@@ -4253,6 +4575,32 @@
       "type": "reference",
       "source": "dsc-goal",
       "target": "dsc-question-6",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "open question",
+      "style": {
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "dsc-goal-dsc-question-7",
+      "type": "reference",
+      "source": "dsc-goal",
+      "target": "dsc-question-7",
+      "sourcePort": "root",
+      "targetPort": "root",
+      "label": "open question",
+      "style": {
+        "curved": true
+      },
+      "data": {}
+    },
+    {
+      "id": "dsc-goal-dsc-question-8",
+      "type": "reference",
+      "source": "dsc-goal",
+      "target": "dsc-question-8",
       "sourcePort": "root",
       "targetPort": "root",
       "label": "open question",
