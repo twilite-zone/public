@@ -6,8 +6,8 @@
     "graphId": "declaration-surfaces-root",
     "version": "0.1.0",
     "kind": "task-graph",
-    "created": "2026-09-24T20:55:20.673Z",
-    "modified": "2026-09-24T20:55:20.673Z",
+    "created": "2026-09-24T22:42:00.992Z",
+    "modified": "2026-09-24T22:42:00.992Z",
     "author": "",
     "tags": [
       "task",
@@ -54,7 +54,7 @@
           "version": "0.1.0",
           "description": "What has to change in code, edge classes, validators, defaults, UI and docs for the Declaration primitive graph (primitives/declaration/root.node) to be an accurate description of the app.",
           "nodeId": "declaration-surfaces",
-          "updatedAt": "2026-09-24T20:55:20.673Z"
+          "updatedAt": "2026-09-24T22:42:00.992Z"
         },
         "intent": {
           "kind": "task",
@@ -1460,7 +1460,7 @@
       "showLabel": false,
       "data": {
         "title": "7. Route the Declaration through view resolution",
-        "body": "Remove the special path. Today `nodeTypeRegistry.js` registers `declaration` with `component: ManifestNode`, and `resolveNodeComponent` in `GraphEditorContent.js` returns null for it, so it never reaches `resolveNodeClassContract` / `selectViewAtResolution` the way class and template nodes do. Give the Declaration a default View for its identity card (name, description, version, drawn from what `ManifestNode.js` draws today), let it resolve through the same path, and keep `ManifestNode` only as the last-resort fallback when nothing resolves and for the editor.\n\nOwnership rule: the Surfaces on a Declaration describe how the GRAPH presents. The Declaration NODE's own card is a different presentation with its own default View, resolved by the same function. The Declaration is never rendered by the chains it exposes, so no rendering can recurse into itself. Decided (question 8): no new relationship. The Declaration node's own presentation comes from a Declaration template graph, which will hold all of its parts, and resolves through that graph by the ordinary class binding (`_classBinding` → `resolveNodeClassContract` → the template's Views), exactly as any class or template node does. An author who wants a different card uses a different template.\n\nA draft of the template now exists: `templates/declaration-template/root.node` in the content repo, a page with a tutorial built from the Page Template and laid out by the canonical layout. This task waits until the template is final and a Declaration can resolve through it. Until then the identity card ships in the app as the default View (question 5) and `ManifestNode` stays as the fallback. The work here is to make a Declaration take the class-binding path when it has a template, and the built-in card when it does not.\n\nPut the new logic in a pure module under `utils/` with a test and wire it in with a small change; do not add to `GraphEditorContent.js` beyond that call.\n\nDepends on: task 4, and the Declaration template.\n\n**Built (2026-09-24):** NOT STARTED, by design: it waits for the Declaration template to be final (question 8). A draft exists (`templates/declaration-template/root.node`). Nothing is wired to it. When the template exists, a Declaration resolves through it by the ordinary class binding; today the built-in card is the only View there is, so routing it through the resolver would change no behavior. The reserved-Surface-id idea from the earlier note is withdrawn.",
+        "body": "Remove the special path. Today `nodeTypeRegistry.js` registers `declaration` with `component: ManifestNode`, and `resolveNodeComponent` in `GraphEditorContent.js` returns null for it, so it never reaches `resolveNodeClassContract` / `selectViewAtResolution` the way class and template nodes do. Give the Declaration a default View for its identity card (name, description, version, drawn from what `ManifestNode.js` draws today), let it resolve through the same path, and keep `ManifestNode` only as the last-resort fallback when nothing resolves and for the editor.\n\nOwnership rule: the Surfaces on a Declaration describe how the GRAPH presents. The Declaration NODE's own card is a different presentation with its own default View, resolved by the same function. The Declaration is never rendered by the chains it exposes, so no rendering can recurse into itself. Decided (question 8): no new relationship. The Declaration node's own presentation comes from a Declaration template graph, which will hold all of its parts, and resolves through that graph by the ordinary class binding (`_classBinding` → `resolveNodeClassContract` → the template's Views), exactly as any class or template node does. An author who wants a different card uses a different template.\n\nA draft of the template now exists: `templates/declaration-template/root.node` in the content repo, a page with a tutorial built from the Page Template and laid out by the canonical layout. This task waits until the template is final and a Declaration can resolve through it. Until then the identity card ships in the app as the default View (question 5) and `ManifestNode` stays as the fallback. The work here is to make a Declaration take the class-binding path when it has a template, and the built-in card when it does not.\n\nPut the new logic in a pure module under `utils/` with a test and wire it in with a small change; do not add to `GraphEditorContent.js` beyond that call.\n\nDepends on: task 4, and the Declaration template.\n\n**Built (2026-09-24):** NOT STARTED, by design: it waits for the Declaration template to be final (question 8). A draft exists (`templates/declaration-template/root.node`) with a page, a tutorial and an editor for every Declaration field (identity, kind, Surfaces, authority, settings, address), exposed as the Declaration's editor port and checked in the live Declaration editor. Nothing is wired to it yet. When the template exists, a Declaration resolves through it by the ordinary class binding; today the built-in card is the only View there is, so routing it through the resolver would change no behavior. The reserved-Surface-id idea from the earlier note is withdrawn.",
         "status": "todo",
         "owner": "",
         "priority": "high",
@@ -3872,7 +3872,7 @@
           "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
         },
         "definitionKey": "summary",
-        "updatedAt": "2026-09-24T20:55:20.673Z",
+        "updatedAt": "2026-09-24T22:42:00.992Z",
         "title": "Declaration Surfaces: Make the Spec True",
         "sourceGraphRef": "github://twilite-zone/public/tasks/declaration-surfaces/root.node",
         "sourceGraphId": "declaration-surfaces-root",
