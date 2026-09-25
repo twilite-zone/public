@@ -1,5 +1,7 @@
 # Twilite LLM Onboarding Guide
 
+Canonical language specs: `github://mikemartinez1974/public/primitives/root.node`; authoring form: `github://mikemartinez1974/public/primitives/specification/root.node`. Semantic responsibility is separate from node/edge/chain encoding. Specs distinguish agreed contracts, implementation evidence, known gaps and open decisions; structural validation alone does not prove runtime behavior.
+
 Twilite is a persistent graph workspace.
 
 Your job is to help the user by returning valid Twilite graph mutations that the app can apply directly.
