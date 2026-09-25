@@ -1,0 +1,5711 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Focus-sized documents in the workspace",
+    "description": "A graph is a combined document: Views, nodes and relationships render together as authored. Paid workspace focus expands one graph to its document size inside its own boundary; the previous graph contracts and neighboring graphs settle around the changed frames. Free mode has no surrounding workspace: the focused graph is the entire environment. This task supersedes fixed-frame-on-focus behavior, not the protection against repeated-click or zoom-driven reflow.",
+    "graphId": "focus-sized-workspace",
+    "version": "0.2.0",
+    "kind": "task",
+    "created": "2026-07-17T22:49:00.548Z",
+    "modified": "2026-07-22T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "template"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "focus-sized-workspace-declaration",
+      "type": "declaration",
+      "label": "Focus-sized documents in the workspace",
+      "position": {
+        "x": -2400,
+        "y": -1500
+      },
+      "width": 520,
+      "height": 340,
+      "handles": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "portId": "default-view",
+          "label": "default view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 165,
+          "role": "default-view"
+        },
+        {
+          "id": "summary-view",
+          "key": "summary-view",
+          "portId": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary"
+        },
+        {
+          "id": "icon-view",
+          "key": "icon-view",
+          "portId": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon"
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "portId": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph"
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "portId": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port"
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "portId": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface"
+        }
+      ],
+      "ports": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 165,
+          "role": "default-view",
+          "allowedEdgeTypes": [
+            "default-view"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-view",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-summary",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-icon",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-glyph",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "glyph",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "landing-surface",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "inputs": [],
+      "outputs": [
+        {
+          "key": "default-view",
+          "label": "default view",
+          "type": "any"
+        },
+        {
+          "key": "summary-view",
+          "label": "summary view",
+          "type": "any"
+        },
+        {
+          "key": "icon-view",
+          "label": "icon view",
+          "type": "any"
+        },
+        {
+          "key": "glyph",
+          "label": "glyph",
+          "type": "any"
+        },
+        {
+          "key": "port",
+          "label": "port",
+          "type": "any"
+        },
+        {
+          "key": "landing-surface",
+          "label": "landing surface",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "focus-sized-workspace",
+          "name": "Focus-sized documents in the workspace",
+          "version": "1.0.0",
+          "description": "A graph is a combined document: Views, nodes and relationships render together as authored. Paid workspace focus expands one graph to its document size inside its own boundary; the previous graph contracts and neighboring graphs settle around the changed frames. Free mode has no surrounding workspace: the focused graph is the entire environment. This task supersedes fixed-frame-on-focus behavior, not the protection against repeated-click or zoom-driven reflow.",
+          "updatedAt": "2026-07-22T00:00:00.000Z",
+          "nodeId": "focus-sized-workspace"
+        },
+        "intent": {
+          "kind": "task",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "declaration",
+            "view",
+            "content",
+            "glyph",
+            "port",
+            "bridge",
+            "goal",
+            "task",
+            "open-question",
+            "decision",
+            "script",
+            "summary"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [
+            "twilite-planning-graphs"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "document": {
+          "url": "github://twilite-zone/public/tasks/focus-sized-workspace/root.node"
+        },
+        "summaryNodeId": "focus-sized-workspace-summary",
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "autoSave": false,
+          "expansion": {
+            "allowGraphEntry": true
+          },
+          "layout": {
+            "mode": "autoOnMissingPositions",
+            "defaultLayout": "layered",
+            "direction": "DOWN",
+            "edgeLaneGapPx": 10,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
+          }
+        },
+        "name": "Focus-sized documents in the workspace",
+        "declaresKind": "task",
+        "purpose": "A graph is a combined document: Views, nodes and relationships render together as authored. Paid workspace focus expands one graph to its document size inside its own boundary; the previous graph contracts and neighboring graphs settle around the changed frames. Free mode has no surrounding workspace: the focused graph is the entire environment. This task supersedes fixed-frame-on-focus behavior, not the protection against repeated-click or zoom-driven reflow.",
+        "primaryNodeViewId": "focus-sized-workspace-detail-view",
+        "declaration": {
+          "kind": "task",
+          "targetMode": "artifact",
+          "artifactKind": "task",
+          "interfaceContract": {
+            "version": 1,
+            "implicitRootPort": true
+          },
+          "defaultSurfaceId": "",
+          "surfaces": [
+            {
+              "id": "summary",
+              "kind": "port",
+              "label": "Task Summary",
+              "portNodeId": "focus-sized-workspace-summary-port",
+              "viewNodeId": "focus-sized-workspace-summary-view",
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              }
+            }
+          ]
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1784321996391,
+          "reason": "node-drag"
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-goal",
+      "type": "goal",
+      "label": "Focus-sized documents in the workspace",
+      "root": false,
+      "position": {
+        "x": -1200,
+        "y": -1500
+      },
+      "width": 520,
+      "height": 340,
+      "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "A graph is a combined document: Views, nodes and relationships render together as authored. Paid workspace focus expands one graph to its document size inside its own boundary; the previous graph contracts and neighboring graphs settle around the changed frames. Free mode has no surrounding workspace: the focused graph is the entire environment. This task supersedes fixed-frame-on-focus behavior, not the protection against repeated-click or zoom-driven reflow.",
+        "priority": "critical",
+        "status": "todo",
+        "owner": "Michael",
+        "targetDate": "",
+        "successMetrics": [
+          "One focused document in paid workspace; no simultaneous detail consumption",
+          "Focus changes expand/contract frames without changing graph content positions or camera zoom",
+          "Free mode presents the document as the environment, with no workspace cards or controls",
+          "Manual document dimensions and graph ownership survive save/reload"
+        ],
+        "definitionKey": "goal",
+        "_classBinding": {
+          "key": "goal",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+          "defaults": {
+            "label": "Goal",
+            "size": {
+              "width": 420,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+            "showLabel": false,
+            "data": {
+              "body": "Define the outcome this plan should achieve.",
+              "priority": "high",
+              "status": "open",
+              "owner": "",
+              "targetDate": "",
+              "successMetrics": [
+                "Describe a measurable success signal"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Flag"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "goal",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Goal",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+              "showLabel": false,
+              "data": {
+                "body": "Define the outcome this plan should achieve.",
+                "priority": "high",
+                "status": "open",
+                "owner": "",
+                "targetDate": "",
+                "successMetrics": [
+                  "Describe a measurable success signal"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Flag"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "focus-sized-workspace-bridge-goal",
+          "sourceBridgeNodeId": "focus-sized-workspace-bridge-goal",
+          "sourceBridgeLabel": "Goal",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "goal",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Flag"
+          }
+        },
+        "title": "Focus-sized documents in the workspace"
+      }
+    },
+    {
+      "id": "focus-sized-workspace-summary",
+      "type": "summary",
+      "label": "Template Summary",
+      "root": false,
+      "position": {
+        "x": -600,
+        "y": -1500
+      },
+      "width": 520,
+      "height": 340,
+      "color": "linear-gradient(135deg, #f4e2ff, #bfa1ef)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "goal": "Focus-sized documents in the workspace",
+        "status": "todo",
+        "viewRole": "document",
+        "taskProgress": {
+          "completed": 0,
+          "total": 8
+        },
+        "questionProgress": {
+          "answered": 0,
+          "total": 3
+        },
+        "summarySource": "node-updater",
+        "nodeViewPayload": "node.web",
+        "taskTitles": [
+          "Define frame ownership and defaults",
+          "Implement a single focus transition",
+          "Lay out around expanded and compact frames",
+          "Coordinate camera and animation",
+          "Render the combined graph within its frame",
+          "Implement free-mode document hosting",
+          "Persist and validate layout behavior",
+          "Review page template and reconcile documentation"
+        ],
+        "questionTitles": [
+          "What determines document size when it is not authored?",
+          "What compact frame should an unfocused graph use?",
+          "How should expansion treat pinned or manually placed neighbors?"
+        ],
+        "taskListText": "1. Define frame ownership and defaults\n2. Implement a single focus transition\n3. Lay out around expanded and compact frames\n4. Coordinate camera and animation\n5. Render the combined graph within its frame\n6. Implement free-mode document hosting\n7. Persist and validate layout behavior\n8. Review page template and reconcile documentation",
+        "questionListText": "1. What determines document size when it is not authored?\n2. What compact frame should an unfocused graph use?\n3. How should expansion treat pinned or manually placed neighbors?",
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 380,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "targetDate": "",
+              "startedAt": "",
+              "completedAt": "",
+              "externalRef": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Checklist"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 380,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "targetDate": "",
+                "startedAt": "",
+                "completedAt": "",
+                "externalRef": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Checklist"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "sourceNodeId": "focus-sized-workspace-bridge-summary",
+          "sourceBridgeNodeId": "focus-sized-workspace-bridge-summary",
+          "sourceBridgeLabel": "Task Graph Summary"
+        },
+        "updatedAt": "2026-09-25T22:25:19.538Z",
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1784322159134,
+          "reason": "node-drag"
+        },
+        "memo": "",
+        "link": "",
+        "priority": "critical",
+        "owner": "Michael",
+        "targetDate": "",
+        "nextAction": "Review the frame-sizing and pinned-neighbor decisions, then implement the focus transition.",
+        "blockedReason": "",
+        "health": "unknown",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Checklist"
+          }
+        },
+        "title": "Focus-sized documents in the workspace",
+        "body": "Goal: Focus-sized documents in the workspace\nStatus: todo\n\nTasks in scope:\n1. Define frame ownership and defaults\n2. Implement a single focus transition\n3. Lay out around expanded and compact frames\n4. Coordinate camera and animation\n\nOpen questions:\n1. What determines document size when it is not authored?\n2. What compact frame should an unfocused graph use?\n3. How should expansion treat pinned or manually placed neighbors?",
+        "estimateHours": "",
+        "startedAt": "",
+        "completedAt": "",
+        "externalRef": "",
+        "acceptanceCriteria": [
+          "Review the graph-owned task summary for current scope and progress"
+        ],
+        "sourceGraphRef": "github://twilite-zone/public/tasks/focus-sized-workspace/root.node",
+        "sourceGraphId": "focus-sized-workspace"
+      }
+    },
+    {
+      "id": "focus-sized-workspace-decision",
+      "type": "decision",
+      "label": "Accepted interaction contract",
+      "root": false,
+      "position": {
+        "x": -1800,
+        "y": -1080
+      },
+      "width": 520,
+      "height": 340,
+      "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "rationale": "This keeps the conversation anchored to a real graph artifact instead of a floating abstraction.",
+        "status": "accepted",
+        "decidedAt": "",
+        "owner": "",
+        "supersededBy": "",
+        "body": "Detail is focused consumption of the combined graph, not a page-only substitute or a numeric resolution rung. Summary is the largest represented View, Icon the smallest; intermediate representations are allowed, then Glyph and Dot fallbacks. Paid graph document size is in workspace coordinates, not fullscreen. Only a focus transition changes compact/document frame mode. Repeated focused clicks and ordinary zoom do not resize or reflow. Keep camera zoom fixed; pan may bring a newly focused graph into view. Expansion must stay clipped to graph bounds, keep public handles accessible, and preserve manual sizes. Animate frame and neighbor movement together; reduced motion applies.",
+        "definitionKey": "decision",
+        "_classBinding": {
+          "key": "decision",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+          "defaults": {
+            "label": "Decision",
+            "size": {
+              "width": 420,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+            "showLabel": false,
+            "data": {
+              "rationale": "State why this decision was made.",
+              "status": "decided",
+              "decidedAt": "",
+              "owner": "",
+              "supersededBy": "",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Gavel"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "decision",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Decision",
+              "size": {
+                "width": 420,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+              "showLabel": false,
+              "data": {
+                "rationale": "State why this decision was made.",
+                "status": "decided",
+                "decidedAt": "",
+                "owner": "",
+                "supersededBy": "",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Gavel"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "focus-sized-workspace-bridge-decision",
+          "sourceBridgeNodeId": "focus-sized-workspace-bridge-decision",
+          "sourceBridgeLabel": "Decision",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "decision",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1784322332554,
+          "reason": "node-drag"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Gavel"
+          }
+        },
+        "title": "Accepted interaction contract"
+      }
+    },
+    {
+      "id": "focus-sized-workspace-updater",
+      "type": "script",
+      "label": "Node Updater",
+      "root": false,
+      "position": {
+        "x": -1200,
+        "y": -1080
+      },
+      "width": 520,
+      "height": 340,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "top"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "left"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "bottom"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "right"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "scriptName": "Task Node Updater",
+        "summaryNodeId": "focus-sized-workspace-summary",
+        "autoRun": true,
+        "autoRunOnGraphChange": false,
+        "autoRunOnLoad": true,
+        "allowMutations": true,
+        "dryRun": false,
+        "source": "const SUMMARY_NODE_ID = 'focus-sized-workspace-summary';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst normalizeSummaryStatus = (value) => {\n  const status = normalize(value);\n  if (['open', 'todo', 'backlog'].includes(status)) return 'todo';\n  if (['active', 'in-progress', 'in progress'].includes(status)) return 'in-progress';\n  if (['achieved', 'done', 'complete', 'completed', 'closed', 'resolved'].includes(status)) return 'done';\n  if (status === 'blocked') return 'blocked';\n  if (['waiting', 'deferred', 'paused'].includes(status)) return 'waiting';\n  if (['cancelled', 'canceled', 'abandoned'].includes(status)) return 'cancelled';\n  return status || 'todo';\n};\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || entry?.data?.summary || entry?.data?.body || fallback || '').trim();\nconst toListText = (items, emptyLabel, maxItems = 4) => {\n  const visible = items.filter(Boolean).slice(0, maxItems);\n  if (!visible.length) return emptyLabel;\n  return visible.map((item, index) => `${index + 1}. ${item}`).join('\\n');\n};\nconst fetchJson = async (ref) => {\n  const normalizedRef = String(ref || '').trim();\n  if (!normalizedRef) return null;\n  try {\n    const response = await fetch(normalizedRef, { cache: 'no-store' });\n    if (!response.ok) return null;\n    return await response.json();\n  } catch (error) {\n    return null;\n  }\n};\nconst summaryStatusCache = new Map();\nconst getExternalSummaryStatus = async (entry) => {\n  const sourceRef = String(entry?.data?.sourceRef || '').trim();\n  const sourceNodeId = String(entry?.data?.sourceNodeId || '').trim();\n  if (!sourceRef || !sourceNodeId || sourceNodeId === SUMMARY_NODE_ID) return '';\n  const cacheKey = sourceRef + '#' + sourceNodeId;\n  if (summaryStatusCache.has(cacheKey)) return summaryStatusCache.get(cacheKey);\n  const graphData = await fetchJson(sourceRef);\n  const sourceNode = Array.isArray(graphData?.nodes)\n    ? graphData.nodes.find((node) => node?.id === sourceNodeId)\n    : null;\n  const status = normalizeSummaryStatus(sourceNode?.data?.status);\n  summaryStatusCache.set(cacheKey, status);\n  return status;\n};\nconst isEqual = (a, b) => {\n  if (a === b) return true;\n  if (!a || !b || typeof a !== 'object' || typeof b !== 'object') return false;\n  const aKeys = Object.keys(a);\n  const bKeys = Object.keys(b);\n  if (aKeys.length != bKeys.length) return false;\n  for (const key of aKeys) {\n    if (!Object.prototype.hasOwnProperty.call(b, key)) return false;\n    const aVal = a[key];\n    const bVal = b[key];\n    if (Array.isArray(aVal) || Array.isArray(bVal)) {\n      if (JSON.stringify(aVal) != JSON.stringify(bVal)) return false;\n      continue;\n    }\n    if (aVal && typeof aVal === 'object') {\n      if (!isEqual(aVal, bVal)) return false;\n      continue;\n    }\n    if (aVal != bVal) return false;\n  }\n  return true;\n};\n\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nif (!summaryNode) {\n  return { success: false, error: 'Summary node missing' };\n}\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\n\nconst taskLikeNodes = nodes.filter((entry) => {\n  if (!entry) return false;\n  if (entry?.id === SUMMARY_NODE_ID) return false;\n  if (entry?.data?.countAsTask === false) return false;\n  if (entry?.type === 'task' || entry?.type === 'task-summary') return true;\n  return entry?.data?.countAsTask === true;\n});\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst taskItems = (await Promise.all(taskLikeNodes.map(async (entry) => {\n  const fallback = entry?.type === 'task-summary' ? 'Untitled task summary' : 'Untitled task';\n  const title = toTitle(entry, fallback);\n  let status = normalizeSummaryStatus(entry?.data?.status);\n  if (entry?.type === 'task-summary') {\n    const externalStatus = await getExternalSummaryStatus(entry);\n    if (externalStatus) status = externalStatus;\n  }\n  return { title, status };\n}))).filter((entry) => entry?.title);\n\nconst taskTitles = taskItems.map((entry) => entry.title);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completedTaskCount = taskItems.filter((entry) => DONE_TASK_STATUSES.has(entry.status)).length;\nconst activeTaskCount = taskItems.filter((entry) => normalize(entry.status) === 'in-progress').length;\nconst allTasksDone = taskItems.length > 0 && completedTaskCount === taskItems.length;\nconst goalStatus = normalizeSummaryStatus(goalNode?.data?.status);\nconst derivedStatus = goalStatus === 'done'\n  ? (allTasksDone ? 'done' : 'in-progress')\n  : (goalStatus === 'todo' && (completedTaskCount > 0 || activeTaskCount > 0) ? 'in-progress' : goalStatus);\n\nconst taskListText = toListText(taskTitles, 'No tasks listed.', taskTitles.length || 4);\nconst questionListText = toListText(questionTitles, 'No open questions.');\nconst nextData = {\n  ...(summaryNode.data || {}),\n  goal: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  status: derivedStatus,\n  priority: goalNode?.data?.priority || summaryNode?.data?.priority || 'medium',\n  owner: goalNode?.data?.owner || summaryNode?.data?.owner || '',\n  targetDate: goalNode?.data?.targetDate || summaryNode?.data?.targetDate || '',\n  taskProgress: {\n    completed: completedTaskCount,\n    total: taskItems.length\n  },\n  questionProgress: {\n    answered: questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length,\n    total: questions.length\n  },\n  taskTitles,\n  questionTitles,\n  taskListText,\n  questionListText,\n  title: goalNode?.label || summaryNode?.data?.goal || 'Task graph',\n  body: `Goal: ${goalNode?.label || summaryNode?.data?.goal || 'Task graph'}\\nStatus: ${derivedStatus}\\n\\nTasks in scope:\\n${toListText(taskTitles, 'No tasks listed.')}\\n\\nOpen questions:\\n${toListText(questionTitles, 'No open questions.')}`,\n  estimateHours: summaryNode?.data?.estimateHours || '',\n  startedAt: summaryNode?.data?.startedAt || '',\n  completedAt: summaryNode?.data?.completedAt || '',\n  externalRef: summaryNode?.data?.externalRef || '',\n  acceptanceCriteria: Array.isArray(summaryNode?.data?.acceptanceCriteria) ? summaryNode.data.acceptanceCriteria : ['Review the graph-owned task summary for current scope and progress'],\n  summarySource: 'node-updater',\n  updatedAt: new Date().toISOString()\n};\n\nconst summaryData = summaryNode.data || {};\nif (!isEqual(summaryData, nextData)) {\n  await api.updateNode(SUMMARY_NODE_ID, { data: nextData });\n}\n\nreturn { success: true, summary: nextData };",
+        "_semanticLevel": "detail",
+        "scriptId": "",
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "scriptRef": "",
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1784322245587,
+          "reason": "node-drag"
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-bridge-goal",
+      "type": "bridge",
+      "label": "Goal",
+      "root": false,
+      "position": {
+        "x": -600,
+        "y": -1080
+      },
+      "width": 520,
+      "height": 340,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "top"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "left"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "bottom"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "right"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Goal.",
+        "target": {
+          "mode": "bridge",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "goal",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "goal",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+          "defaults": {
+            "label": "Goal",
+            "size": {
+              "width": 420,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+            "showLabel": false,
+            "data": {
+              "body": "Define the outcome this plan should achieve.",
+              "priority": "high",
+              "status": "open",
+              "owner": "",
+              "targetDate": "",
+              "successMetrics": [
+                "Describe a measurable success signal"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Flag"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "goal",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Goal",
+              "size": {
+                "width": 420,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #f8e18a, #d19a00)",
+              "showLabel": false,
+              "data": {
+                "body": "Define the outcome this plan should achieve.",
+                "priority": "high",
+                "status": "open",
+                "owner": "",
+                "targetDate": "",
+                "successMetrics": [
+                  "Describe a measurable success signal"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Flag"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "goal",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/goal.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Flag"
+          }
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-bridge-task",
+      "type": "bridge",
+      "label": "Task",
+      "root": false,
+      "position": {
+        "x": -1800,
+        "y": -660
+      },
+      "width": 520,
+      "height": 340,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "top"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "left"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "bottom"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "right"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Task.",
+        "target": {
+          "mode": "bridge",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "task",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 380,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "targetDate": "",
+              "startedAt": "",
+              "completedAt": "",
+              "externalRef": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Checklist"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 380,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "targetDate": "",
+                "startedAt": "",
+                "completedAt": "",
+                "externalRef": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Checklist"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Checklist"
+          }
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-bridge-question",
+      "type": "bridge",
+      "label": "Open Question",
+      "root": false,
+      "position": {
+        "x": -1200,
+        "y": -660
+      },
+      "width": 520,
+      "height": 340,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "top"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "left"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "bottom"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "right"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Open Question.",
+        "target": {
+          "mode": "bridge",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "open-question",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "defaults": {
+            "label": "Open Question",
+            "size": {
+              "width": 420,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+            "showLabel": false,
+            "data": {
+              "body": "State what is still unclear.",
+              "status": "open",
+              "owner": "",
+              "resolutionPath": "",
+              "prominence": "high",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "HelpOutline"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "open-question",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Open Question",
+              "size": {
+                "width": 420,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+              "showLabel": false,
+              "data": {
+                "body": "State what is still unclear.",
+                "status": "open",
+                "owner": "",
+                "resolutionPath": "",
+                "prominence": "high",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "HelpOutline"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "HelpOutline"
+          }
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-bridge-decision",
+      "type": "bridge",
+      "label": "Decision",
+      "root": false,
+      "position": {
+        "x": -600,
+        "y": -660
+      },
+      "width": 520,
+      "height": 340,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "top"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "left"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "bottom"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "right"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Decision.",
+        "target": {
+          "mode": "bridge",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "decision",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "decision",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+          "defaults": {
+            "label": "Decision",
+            "size": {
+              "width": 420,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+            "showLabel": false,
+            "data": {
+              "rationale": "State why this decision was made.",
+              "status": "decided",
+              "decidedAt": "",
+              "owner": "",
+              "supersededBy": "",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Gavel"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "decision",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Decision",
+              "size": {
+                "width": 420,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #b9d7ff, #2b6fd6)",
+              "showLabel": false,
+              "data": {
+                "rationale": "State why this decision was made.",
+                "status": "decided",
+                "decidedAt": "",
+                "owner": "",
+                "supersededBy": "",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Gavel"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "decision",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/decision.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Gavel"
+          }
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-detail-view",
+      "type": "view",
+      "label": "Task Graph Detail",
+      "position": {
+        "x": -1800,
+        "y": -240
+      },
+      "width": 520,
+      "height": 340,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "semanticLevel": "detail",
+        "content": {
+          "kind": "markdown",
+          "value": "# Task Graph\\n\\nA coordinated unit of work with a goal, concrete tasks or questions, decisions, and a durable summary."
+        },
+        "interfaceContract": {
+          "version": 1,
+          "ownsContent": true,
+          "surfaceDelegation": true
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-summary-view",
+      "type": "view",
+      "label": "Task Graph Summary View",
+      "position": {
+        "x": -1200,
+        "y": -240
+      },
+      "width": 520,
+      "height": 340,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "semanticLevel": "summary",
+        "content": {
+          "kind": "markdown",
+          "value": "## Task Graph\\n\\nGoal, progress, next action, blockers, and unresolved questions."
+        },
+        "interfaceContract": {
+          "version": 1,
+          "ownsContent": true,
+          "surfaceDelegation": true
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-icon-view",
+      "type": "view",
+      "label": "Task Graph Icon View",
+      "position": {
+        "x": -600,
+        "y": -240
+      },
+      "width": 520,
+      "height": 340,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "semanticLevel": "icon",
+        "content": {
+          "kind": "svg",
+          "value": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 220'><rect width='320' height='220' rx='28' fill='#172554'/><circle cx='160' cy='92' r='54' fill='#dbeafe'/><path d='M132 92l18 18 40-44' fill='none' stroke='#2563eb' stroke-width='14' stroke-linecap='round' stroke-linejoin='round'/><text x='160' y='184' text-anchor='middle' fill='#fff' font-family='system-ui' font-size='20' font-weight='800'>TASK</text></svg>"
+        },
+        "interfaceContract": {
+          "version": 1,
+          "ownsContent": true,
+          "surfaceDelegation": true
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-glyph",
+      "type": "glyph",
+      "label": "Task Glyph",
+      "position": {
+        "x": -1800,
+        "y": 180
+      },
+      "width": 520,
+      "height": 340,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "glyph": {
+          "kind": "icon",
+          "name": "TaskAlt"
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesGlyphDefinition": true
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-landing-surface",
+      "type": "content",
+      "label": "Task Graph Landing Surface",
+      "position": {
+        "x": -1200,
+        "y": 180
+      },
+      "width": 520,
+      "height": 340,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "content": {
+          "kind": "markdown",
+          "value": "# Focus-sized documents in the workspace\n\nA graph is a combined document: Views, nodes and relationships render together as authored. Paid workspace focus expands one graph to its document size inside its own boundary; the previous graph contracts and neighboring graphs settle around the changed frames. Free mode has no surrounding workspace: the focused graph is the entire environment. This task supersedes fixed-frame-on-focus behavior, not the protection against repeated-click or zoom-driven reflow.\n\nImplementation is planned, not complete. Eight tasks and three sizing/layout decisions are recorded in this graph."
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesViewContent": true
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-summary-port",
+      "type": "port",
+      "label": "Task Summary",
+      "position": {
+        "x": -600,
+        "y": 180
+      },
+      "width": 520,
+      "height": 340,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "surfaceId": "summary",
+        "direction": "output",
+        "dataType": "task",
+        "sourceNodeId": "focus-sized-workspace-summary",
+        "sourcePayload": "node.web",
+        "presentation": {
+          "detail": {
+            "mode": "own",
+            "viewNodeId": "focus-sized-workspace-summary"
+          },
+          "summary": {
+            "mode": "own",
+            "viewNodeId": "focus-sized-workspace-summary"
+          },
+          "icon": {
+            "mode": "own",
+            "viewNodeId": "focus-sized-workspace-summary"
+          },
+          "glyph": {
+            "mode": "own",
+            "viewNodeId": "focus-sized-workspace-summary"
+          }
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "authority": "consume-view",
+        "sourceScope": "graph",
+        "renderedNodeType": "task",
+        "view": {
+          "intent": "node",
+          "payload": "node.web",
+          "nodeType": "task"
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-bridge-summary",
+      "type": "bridge",
+      "label": "Task Graph Summary",
+      "root": false,
+      "position": {
+        "x": -1800,
+        "y": 600
+      },
+      "width": 520,
+      "height": 340,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "top"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "left"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "bottom"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "right"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "Visible node-class bridge for Task.",
+        "target": {
+          "mode": "bridge",
+          "label": "Create",
+          "kind": "node-class",
+          "key": "summary",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "intent": "external",
+        "resourceKind": "node-class",
+        "scope": "focused-graph",
+        "grants": [
+          "create"
+        ],
+        "authority": "bridge",
+        "bridge": {
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "create"
+          ]
+        },
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 380,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "targetDate": "",
+              "startedAt": "",
+              "completedAt": "",
+              "externalRef": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Checklist"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 380,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "targetDate": "",
+                "startedAt": "",
+                "completedAt": "",
+                "externalRef": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Checklist"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "summary",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task-graph-summary.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Checklist"
+          }
+        },
+        "_placement": {
+          "updatedAt": 1787934590006,
+          "reason": "handle-port-contract-migration"
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-task-1",
+      "type": "task",
+      "label": "Define frame ownership and defaults",
+      "root": false,
+      "position": {
+        "x": 0,
+        "y": 600
+      },
+      "width": 580,
+      "height": 440,
+      "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Define frame ownership and defaults",
+        "body": "Separate authored document bounds, compact workspace frame, transient presentation geometry and camera state. Use the current Declaration/landing-surface/membrane contracts; do not store automatic layout in node positions. Resolve Q1 and Q2 before choosing new persistent fields. Inspect graphWorkspace.js, workspaceCamera.js and graphViewPresentation.js.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "acceptanceCriteria": [
+          "Document size precedence and compact-frame policy are explicit",
+          "Legacy graphs have deterministic fallbacks; manual resize remains authoritative"
+        ],
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 380,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "targetDate": "",
+              "startedAt": "",
+              "completedAt": "",
+              "externalRef": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Checklist"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 380,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "targetDate": "",
+                "startedAt": "",
+                "completedAt": "",
+                "externalRef": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Checklist"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "targetDate": "",
+        "startedAt": "",
+        "completedAt": "",
+        "externalRef": "",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Checklist"
+          }
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-task-2",
+      "type": "task",
+      "label": "Implement a single focus transition",
+      "root": false,
+      "position": {
+        "x": 650,
+        "y": 600
+      },
+      "width": 580,
+      "height": 440,
+      "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Implement a single focus transition",
+        "body": "In useGraphWorkspace.js, unify click, explicit focus, link/Portal navigation, open, reload and #nodeId entry. Expand the new focus and contract the old focus in one update. Preserve editing-session versus focused-graph identity.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "acceptanceCriteria": [
+          "Only the destination consumes detail",
+          "Repeated activation of the same graph is geometrically idempotent",
+          "Right-click opens its menu without centering or triggering expansion; explicit menu focus remains separate"
+        ],
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 380,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "targetDate": "",
+              "startedAt": "",
+              "completedAt": "",
+              "externalRef": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Checklist"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 380,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "targetDate": "",
+                "startedAt": "",
+                "completedAt": "",
+                "externalRef": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Checklist"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "targetDate": "",
+        "startedAt": "",
+        "completedAt": "",
+        "externalRef": "",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Checklist"
+          }
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-task-3",
+      "type": "task",
+      "label": "Lay out around expanded and compact frames",
+      "root": false,
+      "position": {
+        "x": 0,
+        "y": 1120
+      },
+      "width": 580,
+      "height": 440,
+      "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Lay out around expanded and compact frames",
+        "body": "Update layoutWorkspaceInstances and placement helpers to use focus-dependent frames. Settle automatic neighbors around the focused document; resolve Q3 for manually positioned/pinned neighbors. Preserve graph-local content and stable identities.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "acceptanceCriteria": [
+          "No overlap among automatically placed frames after settling",
+          "Alternating focus settles deterministically without cumulative drift",
+          "Zoom changes represented View selection but never invokes frame/layout transitions"
+        ],
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 380,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "targetDate": "",
+              "startedAt": "",
+              "completedAt": "",
+              "externalRef": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Checklist"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 380,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "targetDate": "",
+                "startedAt": "",
+                "completedAt": "",
+                "externalRef": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Checklist"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "targetDate": "",
+        "startedAt": "",
+        "completedAt": "",
+        "externalRef": "",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Checklist"
+          }
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-task-4",
+      "type": "task",
+      "label": "Coordinate camera and animation",
+      "root": false,
+      "position": {
+        "x": 650,
+        "y": 1120
+      },
+      "width": 580,
+      "height": 440,
+      "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Coordinate camera and animation",
+        "body": "Animate frame and neighboring placement together. Keep workspace camera zoom constant through focus changes; allow intentional centering of a newly focused graph. Handle interrupted transitions and reduced-motion preference.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "acceptanceCriteria": [
+          "Rapid A/B/A focus ends at the last requested state",
+          "Pointer hit testing, minimap and edge anchors match displayed geometry throughout transition",
+          "No snap-back or camera jump on repeated focused clicks"
+        ],
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 380,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "targetDate": "",
+              "startedAt": "",
+              "completedAt": "",
+              "externalRef": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Checklist"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 380,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "targetDate": "",
+                "startedAt": "",
+                "completedAt": "",
+                "externalRef": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Checklist"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "targetDate": "",
+        "startedAt": "",
+        "completedAt": "",
+        "externalRef": "",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Checklist"
+          }
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-task-5",
+      "type": "task",
+      "label": "Render the combined graph within its frame",
+      "root": false,
+      "position": {
+        "x": 0,
+        "y": 1640
+      },
+      "width": 580,
+      "height": 440,
+      "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Render the combined graph within its frame",
+        "body": "Keep authored Views, nodes and relationships together at document scale; clip interiors while keeping boundary controls accessible. Update WorkspaceLayer/NodeGraph integration and preserve the explicit resize control.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "acceptanceCriteria": [
+          "No content bleeds into neighboring workspace",
+          "Manual document resizing updates the expanded size without changing node positions",
+          "Represented Views remain authored-size choices; no highest-View reservation for focus"
+        ],
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 380,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "targetDate": "",
+              "startedAt": "",
+              "completedAt": "",
+              "externalRef": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Checklist"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 380,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "targetDate": "",
+                "startedAt": "",
+                "completedAt": "",
+                "externalRef": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Checklist"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "targetDate": "",
+        "startedAt": "",
+        "completedAt": "",
+        "externalRef": "",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Checklist"
+          }
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-task-6",
+      "type": "task",
+      "label": "Implement free-mode document hosting",
+      "root": false,
+      "position": {
+        "x": 650,
+        "y": 1640
+      },
+      "width": 580,
+      "height": 440,
+      "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Implement free-mode document hosting",
+        "body": "Separate entitlement-based host behavior: paid mode hosts document frames in a workspace; free mode uses the whole environment for the focused graph. Audit single-slot workspace emulation, navigation, toolbar controls and resize affordances.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "acceptanceCriteria": [
+          "Free mode has no workspace frame arrangement or workspace-only controls",
+          "The same combined document and deep links work in both modes",
+          "Changing entitlement does not lose graph data or bypass access controls"
+        ],
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 380,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "targetDate": "",
+              "startedAt": "",
+              "completedAt": "",
+              "externalRef": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Checklist"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 380,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "targetDate": "",
+                "startedAt": "",
+                "completedAt": "",
+                "externalRef": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Checklist"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "targetDate": "",
+        "startedAt": "",
+        "completedAt": "",
+        "externalRef": "",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Checklist"
+          }
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-task-7",
+      "type": "task",
+      "label": "Persist and validate layout behavior",
+      "root": false,
+      "position": {
+        "x": 0,
+        "y": 2160
+      },
+      "width": 580,
+      "height": 440,
+      "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Persist and validate layout behavior",
+        "body": "Persist only authored/user-owned dimensions and appropriate workspace placement. Test focus/open/close/move/resize, save/reload, #nodeId links, missing targets, rapid focus, multiple graphs and reduced motion.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "acceptanceCriteria": [
+          "Unit tests cover frame transitions, idempotency, ownership and deterministic layout",
+          "Browser smoke demonstrates paid and free behavior at small/large zoom, including visible clipping",
+          "Save/reload preserves each graph address, manual dimensions and content; structural validation alone is not completion"
+        ],
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 380,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "targetDate": "",
+              "startedAt": "",
+              "completedAt": "",
+              "externalRef": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Checklist"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 380,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "targetDate": "",
+                "startedAt": "",
+                "completedAt": "",
+                "externalRef": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Checklist"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "targetDate": "",
+        "startedAt": "",
+        "completedAt": "",
+        "externalRef": "",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Checklist"
+          }
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-task-8",
+      "type": "task",
+      "label": "Review page template and reconcile documentation",
+      "root": false,
+      "position": {
+        "x": 650,
+        "y": 2160
+      },
+      "width": 580,
+      "height": 440,
+      "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Review page template and reconcile documentation",
+        "body": "Review github://mikemartinez1974/public/templates/page-template/root.node after host behavior is established. Current Views are 760x900 Page, 420x200 Summary, 220x120 Icon. Keep focused consumption as the combined graph, not just its HTML page. Update runtime documentation and task summaries to supersede the old focus-fixed-frame rule.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "",
+        "estimateHours": "",
+        "acceptanceCriteria": [
+          "Page-template review states intended document bounds versus represented View sizes",
+          "Template changes are scoped and reviewed separately before authoring",
+          "Documentation distinguishes implemented behavior, proposals and remaining gaps"
+        ],
+        "definitionKey": "task",
+        "_classBinding": {
+          "key": "task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "defaults": {
+            "label": "Task",
+            "size": {
+              "width": 380,
+              "height": 260
+            },
+            "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+            "showLabel": false,
+            "data": {
+              "title": "",
+              "body": "Describe the concrete work to execute.",
+              "priority": "high",
+              "status": "todo",
+              "owner": "",
+              "estimateHours": "",
+              "targetDate": "",
+              "startedAt": "",
+              "completedAt": "",
+              "externalRef": "",
+              "acceptanceCriteria": [
+                "Describe what done looks like"
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Checklist"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "task",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Task",
+              "size": {
+                "width": 380,
+                "height": 260
+              },
+              "color": "linear-gradient(135deg, #9be7c4, #1f9d67)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "Describe the concrete work to execute.",
+                "priority": "high",
+                "status": "todo",
+                "owner": "",
+                "estimateHours": "",
+                "targetDate": "",
+                "startedAt": "",
+                "completedAt": "",
+                "externalRef": "",
+                "acceptanceCriteria": [
+                  "Describe what done looks like"
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Checklist"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeNodeId": "focus-sized-workspace-bridge-task",
+          "sourceBridgeLabel": "Task",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "task",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "targetDate": "",
+        "startedAt": "",
+        "completedAt": "",
+        "externalRef": "",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Checklist"
+          }
+        }
+      }
+    },
+    {
+      "id": "focus-sized-workspace-question-1",
+      "type": "open-question",
+      "label": "What determines document size when it is not authored?",
+      "root": false,
+      "position": {
+        "x": 1400,
+        "y": 600
+      },
+      "width": 560,
+      "height": 440,
+      "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Recommendation: manual/authored document bounds first, then existing Declaration-to-landing-surface frame, then a bounded legacy fallback. Full size means graph units, not viewport fill. Confirm how to handle content extending beyond the declared membrane.",
+        "status": "open",
+        "owner": "",
+        "resolutionPath": "",
+        "prominence": "high",
+        "definitionKey": "open-question",
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "defaults": {
+            "label": "Open Question",
+            "size": {
+              "width": 420,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+            "showLabel": false,
+            "data": {
+              "body": "State what is still unclear.",
+              "status": "open",
+              "owner": "",
+              "resolutionPath": "",
+              "prominence": "high",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "HelpOutline"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "open-question",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Open Question",
+              "size": {
+                "width": 420,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+              "showLabel": false,
+              "data": {
+                "body": "State what is still unclear.",
+                "status": "open",
+                "owner": "",
+                "resolutionPath": "",
+                "prominence": "high",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "HelpOutline"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "focus-sized-workspace-bridge-question",
+          "sourceBridgeNodeId": "focus-sized-workspace-bridge-question",
+          "sourceBridgeLabel": "Open Question",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1784322329096,
+          "reason": "node-drag"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "HelpOutline"
+          }
+        },
+        "title": "What determines document size when it is not authored?"
+      }
+    },
+    {
+      "id": "focus-sized-workspace-question-2",
+      "type": "open-question",
+      "label": "What compact frame should an unfocused graph use?",
+      "root": false,
+      "position": {
+        "x": 1400,
+        "y": 1120
+      },
+      "width": 560,
+      "height": 440,
+      "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Decide whether to restore its previous compact dimensions or use a stable authored/default compact frame. Recommendation: retain user-chosen compact size; select representations to fit it. Do not derive frame changes from zoom or the selected View.",
+        "status": "open",
+        "owner": "",
+        "resolutionPath": "",
+        "prominence": "high",
+        "definitionKey": "open-question",
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "defaults": {
+            "label": "Open Question",
+            "size": {
+              "width": 420,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+            "showLabel": false,
+            "data": {
+              "body": "State what is still unclear.",
+              "status": "open",
+              "owner": "",
+              "resolutionPath": "",
+              "prominence": "high",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "HelpOutline"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "open-question",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Open Question",
+              "size": {
+                "width": 420,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+              "showLabel": false,
+              "data": {
+                "body": "State what is still unclear.",
+                "status": "open",
+                "owner": "",
+                "resolutionPath": "",
+                "prominence": "high",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "HelpOutline"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "focus-sized-workspace-bridge-question",
+          "sourceBridgeNodeId": "focus-sized-workspace-bridge-question",
+          "sourceBridgeLabel": "Open Question",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1784322329096,
+          "reason": "node-drag"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "HelpOutline"
+          }
+        },
+        "title": "What compact frame should an unfocused graph use?"
+      }
+    },
+    {
+      "id": "focus-sized-workspace-question-3",
+      "type": "open-question",
+      "label": "How should expansion treat pinned or manually placed neighbors?",
+      "root": false,
+      "position": {
+        "x": 1400,
+        "y": 1640
+      },
+      "width": 560,
+      "height": 440,
+      "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210,
+          "portId": "root"
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180,
+          "portId": "root"
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90,
+          "portId": "root"
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 360,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Recommendation: keep pinned/manual positions fixed and move automatic neighbors; when constraints conflict, use an explicit bounded policy rather than silently rewriting manual placement. Decide whether any overlap is acceptable in constrained layouts.",
+        "status": "open",
+        "owner": "",
+        "resolutionPath": "",
+        "prominence": "high",
+        "definitionKey": "open-question",
+        "_classBinding": {
+          "key": "open-question",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "defaults": {
+            "label": "Open Question",
+            "size": {
+              "width": 420,
+              "height": 240
+            },
+            "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+            "showLabel": false,
+            "data": {
+              "body": "State what is still unclear.",
+              "status": "open",
+              "owner": "",
+              "resolutionPath": "",
+              "prominence": "high",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "HelpOutline"
+                }
+              }
+            },
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 180
+              }
+            ]
+          },
+          "nodeDef": {
+            "key": "open-question",
+            "ref": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Open Question",
+              "size": {
+                "width": 420,
+                "height": 240
+              },
+              "color": "linear-gradient(135deg, #ead6ff, #8750c7)",
+              "showLabel": false,
+              "data": {
+                "body": "State what is still unclear.",
+                "status": "open",
+                "owner": "",
+                "resolutionPath": "",
+                "prominence": "high",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "HelpOutline"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 180
+                }
+              ]
+            }
+          }
+        },
+        "_bridge": {
+          "sourceNodeId": "focus-sized-workspace-bridge-question",
+          "sourceBridgeNodeId": "focus-sized-workspace-bridge-question",
+          "sourceBridgeLabel": "Open Question",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "classKey": "open-question",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/open-question.node-class.node"
+        },
+        "identity": {
+          "graphId": "focus-sized-workspace"
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1784322329096,
+          "reason": "node-drag"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "HelpOutline"
+          }
+        },
+        "title": "How should expansion treat pinned or manually placed neighbors?"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "focus-sized-workspace-edge-004",
+      "type": "reference",
+      "source": "focus-sized-workspace-goal",
+      "target": "focus-sized-workspace-summary",
+      "label": "document",
+      "style": {},
+      "data": {},
+      "sourceHandle": "root",
+      "targetHandle": "root"
+    },
+    {
+      "id": "focus-sized-workspace-edge-005",
+      "type": "reference",
+      "source": "focus-sized-workspace-summary",
+      "target": "focus-sized-workspace-decision",
+      "label": "placement",
+      "style": {},
+      "data": {},
+      "sourceHandle": "root",
+      "targetHandle": "root"
+    },
+    {
+      "id": "focus-sized-workspace-edge-008",
+      "type": "reference",
+      "source": "focus-sized-workspace-updater",
+      "target": "focus-sized-workspace-summary",
+      "label": "updates",
+      "style": {},
+      "data": {},
+      "sourceHandle": "root",
+      "targetHandle": "root"
+    },
+    {
+      "id": "focus-sized-workspace-default-view",
+      "type": "default-view",
+      "source": "focus-sized-workspace-declaration",
+      "target": "focus-sized-workspace-detail-view",
+      "label": "default view",
+      "data": {
+        "role": "default-view",
+        "semanticRole": "default-view"
+      },
+      "sourceHandle": "default-view",
+      "targetHandle": "root"
+    },
+    {
+      "id": "focus-sized-workspace-summary-view-edge",
+      "type": "reference",
+      "source": "focus-sized-workspace-declaration",
+      "target": "focus-sized-workspace-summary-view",
+      "label": "summary view",
+      "data": {
+        "role": "shared-summary",
+        "semanticRole": "shared-summary"
+      },
+      "sourceHandle": "summary-view",
+      "targetHandle": "root"
+    },
+    {
+      "id": "focus-sized-workspace-icon-view-edge",
+      "type": "reference",
+      "source": "focus-sized-workspace-declaration",
+      "target": "focus-sized-workspace-icon-view",
+      "label": "icon view",
+      "data": {
+        "role": "shared-icon",
+        "semanticRole": "shared-icon"
+      },
+      "sourceHandle": "icon-view",
+      "targetHandle": "root"
+    },
+    {
+      "id": "focus-sized-workspace-glyph-edge",
+      "type": "reference",
+      "source": "focus-sized-workspace-declaration",
+      "target": "focus-sized-workspace-glyph",
+      "label": "glyph",
+      "data": {
+        "role": "shared-glyph",
+        "semanticRole": "shared-glyph"
+      },
+      "sourceHandle": "glyph",
+      "targetHandle": "root"
+    },
+    {
+      "id": "focus-sized-workspace-landing-edge",
+      "type": "reference",
+      "source": "focus-sized-workspace-declaration",
+      "target": "focus-sized-workspace-landing-surface",
+      "label": "landing surface",
+      "data": {
+        "role": "landing-surface",
+        "semanticRole": "landing-surface"
+      },
+      "sourceHandle": "landing-surface",
+      "targetHandle": "root"
+    },
+    {
+      "id": "focus-sized-workspace-summary-port-edge",
+      "type": "reference",
+      "source": "focus-sized-workspace-declaration",
+      "target": "focus-sized-workspace-summary-port",
+      "label": "port",
+      "data": {
+        "role": "exposes-port",
+        "semanticRole": "exposes-port"
+      },
+      "sourceHandle": "port",
+      "targetHandle": "root"
+    },
+    {
+      "id": "focus-sized-workspace-owns-1",
+      "type": "reference",
+      "source": "focus-sized-workspace-goal",
+      "target": "focus-sized-workspace-task-1",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "task",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-owns-2",
+      "type": "reference",
+      "source": "focus-sized-workspace-goal",
+      "target": "focus-sized-workspace-task-2",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "task",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-sequence-2",
+      "type": "reference",
+      "source": "focus-sized-workspace-task-1",
+      "target": "focus-sized-workspace-task-2",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "precedes",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-owns-3",
+      "type": "reference",
+      "source": "focus-sized-workspace-goal",
+      "target": "focus-sized-workspace-task-3",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "task",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-sequence-3",
+      "type": "reference",
+      "source": "focus-sized-workspace-task-2",
+      "target": "focus-sized-workspace-task-3",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "precedes",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-owns-4",
+      "type": "reference",
+      "source": "focus-sized-workspace-goal",
+      "target": "focus-sized-workspace-task-4",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "task",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-sequence-4",
+      "type": "reference",
+      "source": "focus-sized-workspace-task-3",
+      "target": "focus-sized-workspace-task-4",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "precedes",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-owns-5",
+      "type": "reference",
+      "source": "focus-sized-workspace-goal",
+      "target": "focus-sized-workspace-task-5",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "task",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-sequence-5",
+      "type": "reference",
+      "source": "focus-sized-workspace-task-4",
+      "target": "focus-sized-workspace-task-5",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "precedes",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-owns-6",
+      "type": "reference",
+      "source": "focus-sized-workspace-goal",
+      "target": "focus-sized-workspace-task-6",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "task",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-sequence-6",
+      "type": "reference",
+      "source": "focus-sized-workspace-task-5",
+      "target": "focus-sized-workspace-task-6",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "precedes",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-owns-7",
+      "type": "reference",
+      "source": "focus-sized-workspace-goal",
+      "target": "focus-sized-workspace-task-7",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "task",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-sequence-7",
+      "type": "reference",
+      "source": "focus-sized-workspace-task-6",
+      "target": "focus-sized-workspace-task-7",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "precedes",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-owns-8",
+      "type": "reference",
+      "source": "focus-sized-workspace-goal",
+      "target": "focus-sized-workspace-task-8",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "task",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-sequence-8",
+      "type": "reference",
+      "source": "focus-sized-workspace-task-7",
+      "target": "focus-sized-workspace-task-8",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "precedes",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-asks-1",
+      "type": "reference",
+      "source": "focus-sized-workspace-goal",
+      "target": "focus-sized-workspace-question-1",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "question",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-asks-2",
+      "type": "reference",
+      "source": "focus-sized-workspace-goal",
+      "target": "focus-sized-workspace-question-2",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "question",
+      "data": {}
+    },
+    {
+      "id": "focus-sized-workspace-asks-3",
+      "type": "reference",
+      "source": "focus-sized-workspace-goal",
+      "target": "focus-sized-workspace-question-3",
+      "sourceHandle": "root",
+      "targetHandle": "root",
+      "label": "question",
+      "data": {}
+    }
+  ],
+  "clusters": [],
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "#666666",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "layout": {
+      "mode": "autoOnMissingPositions",
+      "defaultLayout": "layered",
+      "direction": "DOWN",
+      "edgeLaneGapPx": 10,
+      "serpentine": {
+        "maxPerRow": 6
+      },
+      "cycleFallback": {
+        "enabled": true
+      },
+      "elk": {
+        "algorithm": "fixed",
+        "edgeRouting": "ORTHOGONAL",
+        "portConstraints": "FIXED_SIDE",
+        "nodeSpacing": 120,
+        "layeredEdgeSpacing": 80
+      }
+    },
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "tasks/focus-sized-workspace/root.node",
+      "branch": "main",
+      "autoCreateRepo": true,
+      "repoVisibility": "private",
+      "seedOnCommit": false,
+      "enableGithubPages": false,
+      "installationId": "120403738"
+    },
+    "autoSave": false
+  },
+  "scripts": [
+    {
+      "id": "script_1761684730975",
+      "name": "New Script",
+      "source": "// Write your script here\n// Available API:\n//   api.getNodes()\n//   api.getNode(id)\n//   api.getEdges()\n//   api.createNode(data)\n//   api.updateNode(id, patch)\n//   api.deleteNode(id)\n//   api.createEdge(data)\n//   api.deleteEdge(id)\n//   api.log(level, message)\n\nconst nodes = await api.getNodes();\nreturn { count: nodes.length };",
+      "tags": ""
+    },
+    {
+      "id": "script_1761684295367",
+      "name": "Mike",
+      "source": "console.clear();\nconst nodes = await api.getNodes();\nconsole.log(\"Mike\");\nreturn { count: nodes.length };",
+      "tags": ""
+    }
+  ],
+  "nodeCount": 27,
+  "edgeCount": 27,
+  "timestamp": "2026-08-28T16:29:50.006Z"
+}
