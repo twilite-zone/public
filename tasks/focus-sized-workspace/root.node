@@ -3194,9 +3194,9 @@
       "showLabel": true,
       "data": {
         "title": "Define frame ownership and defaults",
-        "body": "Separate authored document bounds, compact workspace frame, transient presentation geometry and camera state. Use the current Declaration/landing-surface/membrane contracts; do not store automatic layout in node positions. Resolve Q1 and Q2 before choosing new persistent fields. Inspect graphWorkspace.js, workspaceCamera.js and graphViewPresentation.js.",
+        "body": "Separate authored document bounds, compact workspace frame, transient presentation geometry and camera state. Use the current Declaration/landing-surface/membrane contracts; do not store automatic layout in node positions. Resolve Q1 and Q2 before choosing new persistent fields. Inspect graphWorkspace.js, workspaceCamera.js and graphViewPresentation.js.\n\nStarted 2026-09-25. Reviewed against the current code: graphRenderBounds() (authored bounds), instance.frame/resizeGraphMembrane() (manual size), and _workspacePresentationFrame (transient) already exist as separate things in graphWorkspace.js — this task is mostly naming and precedence, not new plumbing. The real blocker for Tasks 2-4 is workspaceCamera.js layoutWorkspaceInstances(), which currently keeps focus from resizing anything on purpose.\n\nBuilt (2026-09-25): authoredDocumentBounds(), defaultCompactFrame(), resolveCompactFrame() and setCompactFrame() in graphWorkspace.js, with a frame-ownership contract comment naming and ordering all four concepts (authored document bounds, compact workspace frame, transient presentation geometry, camera). The compact frame persists on instance.frame with mode \"workspace\" (previously an unused stub value the parser already recognized), separate from the authored mode \"authored\" resizeGraphMembrane() writes. setCompactFrame() never touches the graph itself, so it carries no document authority, matching resizeGraphMembrane()'s does. Default compact size reuses the existing LEVEL_BOX_SIZE.summary constant rather than inventing a new one. 5 new tests in graphWorkspace.test.js (60/60 passing); full suite 1078/1078. Deliberately NOT wired into regionBounds()/rendering yet -- every instance still occupies its authored size regardless of focus at runtime. Wiring focus-dependence into layoutWorkspaceInstances and the placement helpers is task 3's job, not this one.",
         "priority": "high",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "estimateHours": "",
         "acceptanceCriteria": [
@@ -3402,9 +3402,9 @@
       "showLabel": true,
       "data": {
         "title": "Implement a single focus transition",
-        "body": "In useGraphWorkspace.js, unify click, explicit focus, link/Portal navigation, open, reload and #nodeId entry. Expand the new focus and contract the old focus in one update. Preserve editing-session versus focused-graph identity.",
+        "body": "In useGraphWorkspace.js, unify click, explicit focus, link/Portal navigation, open, reload and #nodeId entry. Expand the new focus and contract the old focus in one update. Preserve editing-session versus focused-graph identity.\n\nBuilt (2026-09-25): activateInstance() in useGraphWorkspace.js was already the real funnel most callers (click, the header's Focus button, Portal/link navigation via focusLoadedInstance, #nodeId entry) go through -- the earlier \"9 files\" count was mostly consumers of that one API, not 9 independent implementations. Two concrete violations of this task's own acceptance criteria were found by reading the code and fixed: (1) right-click on a workspace instance (WorkspaceLayer.js) called workspace.activateInstance() before opening its context menu, swapping the editing session merely to show a menu -- removed; the menu still receives { scope: \"graph\", instanceId }, so explicit focus from within it stays possible. (2) focusAtScreenPoint()'s miss branch (clicking empty canvas) only cleared focusedGraphInstanceId, leaving a stale focused node/fragment and, if the camera had rolled over into a graph-local scope, no way back to workspace scope -- it now calls the one focusWorkspace() defocus path instead of a second, partial reset. 2 new regression tests in graphWorkspace.test.js (62/62); full suite 1080/1080. Editing-session (activeGraphInstanceId) versus focused-graph (focusedGraphInstanceId) identity was already distinct (selectNodeInInstance can set the former without the latter) and is unchanged. Frame expansion/contraction on focus is still task 3's job -- this task was about the transition mechanism, not sizing.",
         "priority": "high",
-        "status": "todo",
+        "status": "done",
         "owner": "",
         "estimateHours": "",
         "acceptanceCriteria": [
@@ -4865,9 +4865,9 @@
       "showLabel": true,
       "data": {
         "body": "Recommendation: manual/authored document bounds first, then existing Declaration-to-landing-surface frame, then a bounded legacy fallback. Full size means graph units, not viewport fill. Confirm how to handle content extending beyond the declared membrane.",
-        "status": "open",
+        "status": "resolved",
         "owner": "",
-        "resolutionPath": "",
+        "resolutionPath": "components/GraphEditor/utils/graphWorkspace.js",
         "prominence": "high",
         "definitionKey": "open-question",
         "_classBinding": {
@@ -5056,9 +5056,9 @@
       "showLabel": true,
       "data": {
         "body": "Decide whether to restore its previous compact dimensions or use a stable authored/default compact frame. Recommendation: retain user-chosen compact size; select representations to fit it. Do not derive frame changes from zoom or the selected View.",
-        "status": "open",
+        "status": "resolved",
         "owner": "",
-        "resolutionPath": "",
+        "resolutionPath": "components/GraphEditor/utils/graphWorkspace.js",
         "prominence": "high",
         "definitionKey": "open-question",
         "_classBinding": {
