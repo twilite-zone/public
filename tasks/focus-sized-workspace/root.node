@@ -3611,9 +3611,9 @@
       "showLabel": true,
       "data": {
         "title": "Lay out around expanded and compact frames",
-        "body": "Update layoutWorkspaceInstances and placement helpers to use focus-dependent frames. Settle automatic neighbors around the focused document; resolve Q3 for manually positioned/pinned neighbors. Preserve graph-local content and stable identities.",
+        "body": "Update layoutWorkspaceInstances and placement helpers to use focus-dependent frames. Settle automatic neighbors around the focused document; resolve Q3 for manually positioned/pinned neighbors. Preserve graph-local content and stable identities.\n\nStarted 2026-09-25, resolving Q3 first: placementFootprint() now governs both nextRegionOffset() and reflowWorkspaceInstances(), reserving each instance's authored/expansion-plan size (not its current draw size) from its neighbors, with the existing minimum gap. 6 new tests in graphWorkspace.test.js proving a compact neighbor still reserves its authored footprint, a newly placed graph clears that reserved footprint (not just the neighbor's compact box), and settling draws each neighbor at its own current size while still planning around footprints. Full suite 1083/1083. Remaining: layoutWorkspaceInstances() still has to actually choose compact vs authored per focus (this only made the room for that choice safe to make); the goal text's \"neighboring graphs settle around the changed frames\" should be read as the corrective, rare case now, not the routine one.",
         "priority": "high",
-        "status": "todo",
+        "status": "in-progress",
         "owner": "",
         "estimateHours": "",
         "acceptanceCriteria": [
@@ -5246,10 +5246,10 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "body": "Recommendation: keep pinned/manual positions fixed and move automatic neighbors; when constraints conflict, use an explicit bounded policy rather than silently rewriting manual placement. Decide whether any overlap is acceptable in constrained layouts.",
-        "status": "open",
+        "body": "Recommendation: keep pinned/manual positions fixed and move automatic neighbors; when constraints conflict, use an explicit bounded policy rather than silently rewriting manual placement. Decide whether any overlap is acceptable in constrained layouts.\n\nRESOLVED (2026-09-25), and reframed by the owner: expansion should not be a traumatic event for the layout at all, pinned or not. Built: placementFootprint() -- every instance reserves its authored (potentially-focused) size from its neighbors, never its current compact or transient draw size, plus the existing 120-unit minimum gap. nextRegionOffset() (new-graph placement) and reflowWorkspaceInstances() (live settling) both plan around this now, so a graph drawn small still keeps the room its own expansion plan needs. In the common case this means focusing something later needs to displace nobody, pinned or automatic, because the distance was already reserved when things were placed. manuallyPlaced still distinguishes what the live settle pass may reposition -- that is a separate concern (whether the system may move something at all) from whether expansion is disruptive when it does.",
+        "status": "resolved",
         "owner": "",
-        "resolutionPath": "",
+        "resolutionPath": "components/GraphEditor/utils/graphWorkspace.js",
         "prominence": "high",
         "definitionKey": "open-question",
         "_classBinding": {
