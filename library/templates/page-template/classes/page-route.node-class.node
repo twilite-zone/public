@@ -1,8 +1,8 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Page Masthead Node Class",
-    "description": "Says whose page this is: an eyebrow, a title and a subtitle.",
+    "title": "Page Route Node Class",
+    "description": "A place to go next. It is a navigable node, so leaving the page stays graph-native.",
     "version": "0.5.0",
     "kind": "node-class",
     "preferredViewer": "https://dev.twilite.zone",
@@ -10,9 +10,9 @@
   },
   "nodes": [
     {
-      "id": "page-masthead-declaration",
+      "id": "page-route-declaration",
       "type": "declaration",
-      "label": "Page Masthead Class",
+      "label": "Page Route Class",
       "position": {
         "x": -760,
         "y": -420
@@ -120,9 +120,9 @@
       ],
       "data": {
         "identity": {
-          "graphId": "page-masthead-class-canon-demo",
-          "nodeId": "page-masthead-canon-demo",
-          "name": "Page Masthead",
+          "graphId": "page-route-class",
+          "nodeId": "page-route",
+          "name": "Page Route",
           "version": "0.5.0"
         },
         "intent": {
@@ -172,53 +172,56 @@
               "id": "detail",
               "kind": "view",
               "payload": "node.web.detail",
-              "portNodeId": "page-masthead-detail-view",
-              "viewNodeId": "page-masthead-detail-view"
+              "portNodeId": "page-route-detail-view",
+              "viewNodeId": "page-route-detail-view"
             },
             {
               "id": "summary",
               "kind": "view",
               "payload": "node.web.summary",
-              "portNodeId": "page-masthead-summary-view",
-              "viewNodeId": "page-masthead-summary-view"
+              "portNodeId": "page-route-summary-view",
+              "viewNodeId": "page-route-summary-view"
             },
             {
               "id": "icon",
               "kind": "view",
               "payload": "node.web.icon",
-              "portNodeId": "page-masthead-icon-view",
-              "viewNodeId": "page-masthead-icon-view"
+              "portNodeId": "page-route-icon-view",
+              "viewNodeId": "page-route-icon-view"
             }
           ]
         },
         "nodeClass": {
           "contractVersion": "1.0.0",
-          "key": "page-masthead",
-          "label": "Page Masthead",
-          "meaning": "Says whose page this is: an eyebrow, a title and a subtitle.",
+          "key": "page-route",
+          "label": "Page Route",
+          "meaning": "A place to go next. It is a navigable node, so leaving the page stays graph-native.",
           "requiredDataKeys": [
-            "title"
+            "title",
+            "destinationRef"
           ],
           "nodeDef": {
-            "key": "page-masthead",
-            "ref": "tlz://twilite.zone/library/demo-canon/page-template/classes/page-masthead.node-class.node",
+            "key": "page-route",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-route.node-class.node",
             "source": "local",
             "version": ">=0.1.0",
             "defaults": {
-              "label": "Page Masthead",
+              "label": "Page Route",
               "size": {
-                "width": 520,
-                "height": 260
+                "width": 460,
+                "height": 280
               },
               "showLabel": false,
               "data": {
-                "eyebrow": "",
-                "title": "Page title",
-                "subtitle": "",
+                "title": "Where to next",
+                "body": "",
+                "destinationRef": "",
+                "destinationLabel": "Open",
+                "prominence": "primary",
                 "presentation": {
                   "glyph": {
                     "kind": "icon",
-                    "name": "Abc"
+                    "name": "AltRoute"
                   }
                 }
               },
@@ -234,12 +237,24 @@
                     "side": "top",
                     "offset": 0.2
                   }
+                },
+                {
+                  "id": "destination",
+                  "key": "destination",
+                  "label": "destination",
+                  "direction": "output",
+                  "dataType": "graph",
+                  "angle": 90,
+                  "position": {
+                    "side": "bottom",
+                    "offset": 0.5
+                  }
                 }
               ],
               "events": [
                 {
                   "eventKey": "node.changed",
-                  "label": "Page Masthead changed",
+                  "label": "Page Route changed",
                   "payloadContract": {
                     "type": "object"
                   }
@@ -247,14 +262,11 @@
               ]
             }
           }
-        },
-        "document": {
-          "url": "tlz://twilite.zone/library/demo-canon/page-template/classes/page-masthead.node-class.node"
         }
       }
     },
     {
-      "id": "page-masthead-glyph",
+      "id": "page-route-glyph",
       "type": "glyph",
       "label": "Glyph",
       "position": {
@@ -294,12 +306,12 @@
       ],
       "data": {
         "identity": {
-          "graphId": "page-masthead-class",
+          "graphId": "page-route-class",
           "portId": "glyph"
         },
         "glyph": {
           "kind": "icon",
-          "name": "Abc"
+          "name": "AltRoute"
         },
         "view": {
           "payload": "node.web.glyph"
@@ -307,7 +319,7 @@
       }
     },
     {
-      "id": "page-masthead-detail-view",
+      "id": "page-route-detail-view",
       "type": "view",
       "label": "Detail",
       "root": false,
@@ -325,12 +337,12 @@
           "payload": "node.web.detail"
         },
         "identity": {
-          "graphId": "page-masthead-class",
-          "nodeId": "page-masthead-detail-view"
+          "graphId": "page-route-class",
+          "nodeId": "page-route-detail-view"
         },
         "content": {
           "kind": "html",
-          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:clamp(18px,6.09cqw,41px);background:#ffffff;border-radius:16px;border:1px solid #e2e8f0;font-family:system-ui;color:#0f172a;overflow:auto'><div style='font-weight:800;font-size:clamp(8px,2.61cqw,17px);font-family:system-ui;letter-spacing:2px;color:#7c3aed;text-transform:uppercase;margin-bottom:10px'>Page Masthead</div><p style='margin:0 0 12px;max-width:52ch;font-weight:400;font-size:clamp(10px,3.26cqw,22px);line-height:1.7;font-family:system-ui;color:#334155'>A page's one headline block, always first. Its optional <strong>eyebrow</strong> becomes a small kicker above the title; its <strong>title</strong> becomes the big heading; its optional <strong>subtitle</strong> becomes the line beneath it.</p><p style='margin:0;max-width:52ch;font-weight:400;font-size:clamp(10px,3.26cqw,22px);line-height:1.7;font-family:system-ui;color:#334155'>A page has at most one masthead, and it always renders first.</p></div>"
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:clamp(18px,6.09cqw,41px);background:#ffffff;border-radius:16px;border:1px solid #e2e8f0;font-family:system-ui;color:#0f172a;overflow:auto'><div style='font-weight:800;font-size:clamp(8px,2.61cqw,17px);font-family:system-ui;letter-spacing:2px;color:#7c3aed;text-transform:uppercase;margin-bottom:10px'>Page Route</div><p style='margin:0 0 12px;max-width:52ch;font-weight:400;font-size:clamp(10px,3.26cqw,22px);line-height:1.7;font-family:system-ui;color:#334155'>A single destination card: a <strong>title</strong>, an optional one-line <strong>body</strong>, and a label for where it points. Several can sit side by side on the page.</p><p style='margin:0;max-width:52ch;font-weight:400;font-size:clamp(10px,3.26cqw,22px);line-height:1.7;font-family:system-ui;color:#334155'><strong>Prominence</strong> decides its weight: primary routes stand out in violet; secondary routes sit quieter in slate.</p></div>"
         },
         "_placement": {
           "version": 1,
@@ -342,7 +354,7 @@
       }
     },
     {
-      "id": "page-masthead-summary-view",
+      "id": "page-route-summary-view",
       "type": "view",
       "label": "Summary",
       "root": false,
@@ -360,12 +372,12 @@
           "payload": "node.web.summary"
         },
         "identity": {
-          "graphId": "page-masthead-class",
-          "nodeId": "page-masthead-summary-view"
+          "graphId": "page-route-class",
+          "nodeId": "page-route-summary-view"
         },
         "content": {
           "kind": "html",
-          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:clamp(13px,5.56cqw,29px);background:#ffffff;border-radius:16px;border:1px solid #e2e8f0;overflow:auto'><div style='font-weight:800;font-size:clamp(8px,3.33cqw,17px);line-height:1;font-family:system-ui;letter-spacing:.18em;color:#7c3aed;margin-bottom:12px'>{{data.eyebrow}}</div><h1 style='margin:0 0 10px;font-weight:850;font-size:clamp(17px,7.22cqw,38px);line-height:1.2;font-family:system-ui;color:#0f172a'>{{data.title || label || \"Page title\"}}</h1><p style='margin:0;font-weight:400;font-size:clamp(10px,4.17cqw,22px);line-height:1.5;font-family:system-ui;color:#475569'>{{data.subtitle}}</p></div>"
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:20px 22px;border-radius:16px;background:{{eq(data.prominence, \"secondary\", \"#f8fafc\", \"#ede9fe\")}};border:1px solid {{eq(data.prominence, \"secondary\", \"#e2e8f0\", \"#c4b5fd\")}};overflow:auto'><h2 style='margin:0 0 8px;font-weight:800;font-size:clamp(13px,5.56cqw,29px);line-height:1.2;font-family:system-ui;color:#0f172a'>{{data.title || label || \"Where to next\"}}</h2><p style='margin:0 0 12px;font-weight:400;font-size:clamp(9px,3.89cqw,20px);line-height:1.55;font-family:system-ui;color:#475569'>{{data.body}}</p><span style='font-weight:700;font-size:clamp(8px,3.61cqw,19px);line-height:1;font-family:system-ui;color:#6d28d9'>{{data.destinationLabel || \"Open\"}} →</span></div>"
         },
         "_placement": {
           "version": 1,
@@ -377,7 +389,7 @@
       }
     },
     {
-      "id": "page-masthead-icon-view",
+      "id": "page-route-icon-view",
       "type": "view",
       "label": "Icon",
       "root": false,
@@ -395,12 +407,12 @@
           "payload": "node.web.icon"
         },
         "identity": {
-          "graphId": "page-masthead-class",
-          "nodeId": "page-masthead-icon-view"
+          "graphId": "page-route-class",
+          "nodeId": "page-route-icon-view"
         },
         "content": {
           "kind": "html",
-          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:clamp(10px,7.27cqw,23px);background:linear-gradient(135deg,#7c3aed,#5b21b6);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-family:system-ui;color:#ffffff'><div style='font-weight:800;font-size:clamp(20px,13.64cqw,44px);line-height:1;font-family:system-ui'>Aa</div><div style='font-weight:800;font-size:clamp(8px,5.91cqw,19px);font-family:system-ui;letter-spacing:1.5px;text-transform:uppercase;color:#ffffff'>Page Masthead</div></div>"
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:clamp(10px,7.27cqw,23px);background:linear-gradient(135deg,#7c3aed,#5b21b6);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-family:system-ui;color:#ffffff'><svg width='34' height='34' viewBox='0 0 24 24' fill='none' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='6' cy='6' r='2.3'/><circle cx='6' cy='18' r='2.3'/><circle cx='18' cy='12' r='2.3'/><path d='M8.1 7.1 15.9 11M8.1 16.9 15.9 13'/></svg><div style='font-weight:800;font-size:clamp(8px,5.91cqw,19px);font-family:system-ui;letter-spacing:1.5px;text-transform:uppercase;color:#ffffff'>Page Route</div></div>"
         },
         "_placement": {
           "version": 1,
@@ -412,7 +424,7 @@
       }
     },
     {
-      "id": "page-masthead-editor-view",
+      "id": "page-route-editor-view",
       "type": "view",
       "label": "Editor",
       "root": false,
@@ -430,8 +442,8 @@
           "payload": "editor.web"
         },
         "identity": {
-          "graphId": "page-masthead-class",
-          "nodeId": "page-masthead-editor-view"
+          "graphId": "page-route-class",
+          "nodeId": "page-route-editor-view"
         },
         "editor": {
           "web": {
@@ -440,28 +452,37 @@
             },
             "fields": [
               {
-                "key": "eyebrow",
-                "label": "Eyebrow",
-                "type": "text",
-                "path": "data.eyebrow",
-                "variant": "body",
-                "placeholder": "Optional kicker"
-              },
-              {
                 "key": "title",
                 "label": "Title",
                 "type": "text",
                 "path": "data.title",
                 "variant": "heading",
-                "placeholder": "Page title"
+                "placeholder": "Where to next"
               },
               {
-                "key": "subtitle",
-                "label": "Subtitle",
-                "type": "text",
-                "path": "data.subtitle",
+                "key": "body",
+                "label": "Body",
+                "type": "textarea",
+                "path": "data.body",
                 "variant": "body",
-                "placeholder": "Optional subtitle"
+                "rows": 3,
+                "placeholder": "One short line about this destination."
+              },
+              {
+                "key": "destinationLabel",
+                "label": "Link label",
+                "type": "text",
+                "path": "data.destinationLabel",
+                "variant": "body",
+                "placeholder": "Open"
+              },
+              {
+                "key": "prominence",
+                "label": "Prominence (primary or secondary)",
+                "type": "text",
+                "path": "data.prominence",
+                "variant": "body",
+                "placeholder": "primary"
               }
             ]
           }
@@ -478,9 +499,9 @@
   ],
   "edges": [
     {
-      "id": "page-masthead-surface",
-      "source": "page-masthead-declaration",
-      "target": "page-masthead-detail-view",
+      "id": "page-route-surface",
+      "source": "page-route-declaration",
+      "target": "page-route-detail-view",
       "sourceHandle": "surfaces",
       "sourcePort": "surfaces",
       "targetHandle": "root",
@@ -494,9 +515,9 @@
       }
     },
     {
-      "id": "page-masthead-detail-summary",
-      "source": "page-masthead-detail-view",
-      "target": "page-masthead-summary-view",
+      "id": "page-route-detail-summary",
+      "source": "page-route-detail-view",
+      "target": "page-route-summary-view",
       "sourceHandle": "sequence-out",
       "sourcePort": "sequence-out",
       "targetHandle": "sequence-in",
@@ -509,9 +530,9 @@
       }
     },
     {
-      "id": "page-masthead-summary-icon",
-      "source": "page-masthead-summary-view",
-      "target": "page-masthead-icon-view",
+      "id": "page-route-summary-icon",
+      "source": "page-route-summary-view",
+      "target": "page-route-icon-view",
       "sourceHandle": "sequence-out",
       "sourcePort": "sequence-out",
       "targetHandle": "sequence-in",
@@ -524,9 +545,9 @@
       }
     },
     {
-      "id": "page-masthead-icon-glyph",
-      "source": "page-masthead-icon-view",
-      "target": "page-masthead-glyph",
+      "id": "page-route-icon-glyph",
+      "source": "page-route-icon-view",
+      "target": "page-route-glyph",
       "sourceHandle": "sequence-out",
       "sourcePort": "sequence-out",
       "targetHandle": "root",

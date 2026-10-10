@@ -1,18 +1,18 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "Page Settings Node Class",
-    "description": "A titled list of settings: labels and their values.",
-    "version": "0.5.0",
+    "title": "Page Section Node Class",
+    "description": "A titled block of content.",
+    "version": "0.8.1",
     "kind": "node-class",
     "preferredViewer": "https://dev.twilite.zone",
     "modified": "2026-10-08T23:57:08.331Z"
   },
   "nodes": [
     {
-      "id": "page-settings-declaration",
+      "id": "page-section-declaration",
       "type": "declaration",
-      "label": "Page Settings Class",
+      "label": "Page Section Class",
       "position": {
         "x": -760,
         "y": -420
@@ -120,10 +120,10 @@
       ],
       "data": {
         "identity": {
-          "graphId": "page-settings-class-canon-demo",
-          "nodeId": "page-settings-canon-demo",
-          "name": "Page Settings",
-          "version": "0.5.0"
+          "graphId": "page-section-class",
+          "nodeId": "page-section",
+          "name": "Page Section",
+          "version": "0.8.1"
         },
         "intent": {
           "kind": "node-class",
@@ -133,6 +133,7 @@
           "nodeTypes": [
             "declaration",
             "view",
+            "content",
             "glyph"
           ],
           "portContracts": [
@@ -172,58 +173,53 @@
               "id": "detail",
               "kind": "view",
               "payload": "node.web.detail",
-              "portNodeId": "page-settings-detail-view",
-              "viewNodeId": "page-settings-detail-view"
+              "portNodeId": "page-section-detail-view",
+              "viewNodeId": "page-section-detail-view"
             },
             {
               "id": "summary",
               "kind": "view",
               "payload": "node.web.summary",
-              "portNodeId": "page-settings-summary-view",
-              "viewNodeId": "page-settings-summary-view"
+              "portNodeId": "page-section-summary-view",
+              "viewNodeId": "page-section-summary-view"
             },
             {
               "id": "icon",
               "kind": "view",
               "payload": "node.web.icon",
-              "portNodeId": "page-settings-icon-view",
-              "viewNodeId": "page-settings-icon-view"
+              "portNodeId": "page-section-icon-view",
+              "viewNodeId": "page-section-icon-view"
             }
           ]
         },
         "nodeClass": {
           "contractVersion": "1.0.0",
-          "key": "page-settings",
-          "label": "Page Settings",
-          "meaning": "A titled list of settings: labels and their values.",
+          "key": "page-section",
+          "label": "Page Section",
+          "meaning": "A titled block of content.",
           "requiredDataKeys": [
             "title",
-            "rows"
+            "body"
           ],
           "nodeDef": {
-            "key": "page-settings",
-            "ref": "tlz://twilite.zone/library/demo-canon/page-template/classes/page-settings.node-class.node",
+            "key": "page-section",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
             "source": "local",
             "version": ">=0.1.0",
             "defaults": {
-              "label": "Page Settings",
+              "label": "Page Section",
               "size": {
                 "width": 520,
                 "height": 320
               },
               "showLabel": false,
               "data": {
-                "title": "Settings",
-                "rows": [
-                  {
-                    "label": "Setting",
-                    "value": "Value"
-                  }
-                ],
+                "title": "Section title",
+                "body": "What this section says.",
                 "presentation": {
                   "glyph": {
                     "kind": "icon",
-                    "name": "Settings"
+                    "name": "Article"
                   }
                 }
               },
@@ -244,7 +240,7 @@
               "events": [
                 {
                   "eventKey": "node.changed",
-                  "label": "Page Settings changed",
+                  "label": "Page Section changed",
                   "payloadContract": {
                     "type": "object"
                   }
@@ -252,14 +248,11 @@
               ]
             }
           }
-        },
-        "document": {
-          "url": "tlz://twilite.zone/library/demo-canon/page-template/classes/page-settings.node-class.node"
         }
       }
     },
     {
-      "id": "page-settings-glyph",
+      "id": "page-section-glyph",
       "type": "glyph",
       "label": "Glyph",
       "position": {
@@ -299,12 +292,12 @@
       ],
       "data": {
         "identity": {
-          "graphId": "page-settings-class",
+          "graphId": "page-section-class",
           "portId": "glyph"
         },
         "glyph": {
           "kind": "icon",
-          "name": "Settings"
+          "name": "Article"
         },
         "view": {
           "payload": "node.web.glyph"
@@ -312,7 +305,7 @@
       }
     },
     {
-      "id": "page-settings-detail-view",
+      "id": "page-section-detail-view",
       "type": "view",
       "label": "Detail",
       "root": false,
@@ -330,24 +323,24 @@
           "payload": "node.web.detail"
         },
         "identity": {
-          "graphId": "page-settings-class",
-          "nodeId": "page-settings-detail-view"
+          "graphId": "page-section-class",
+          "nodeId": "page-section-detail-view"
         },
         "content": {
           "kind": "html",
-          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:clamp(18px,6.09cqw,41px);background:#ffffff;border-radius:16px;border:1px solid #e2e8f0;font-family:system-ui;color:#0f172a;overflow:auto'><div style='font-weight:800;font-size:clamp(8px,2.61cqw,17px);font-family:system-ui;letter-spacing:2px;color:#7c3aed;text-transform:uppercase;margin-bottom:10px'>Page Settings</div><p style='margin:0 0 12px;max-width:52ch;font-weight:400;font-size:clamp(10px,3.26cqw,22px);line-height:1.7;font-family:system-ui;color:#334155'>A small table of facts about the page itself, rendered as a labeled list. Each <strong>row</strong> is a label and a value.</p><p style='margin:0;max-width:52ch;font-weight:400;font-size:clamp(10px,3.26cqw,22px);line-height:1.7;font-family:system-ui;color:#334155'>A page has at most one settings piece, and it renders last.</p></div>"
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:clamp(18px,6.09cqw,41px);background:#ffffff;border-radius:16px;border:1px solid #e2e8f0;font-family:system-ui;color:#0f172a;overflow:auto'><div style='font-weight:800;font-size:clamp(8px,2.61cqw,17px);font-family:system-ui;letter-spacing:2px;color:#7c3aed;text-transform:uppercase;margin-bottom:10px'>Page Section</div><p style='margin:0 0 12px;max-width:52ch;font-weight:400;font-size:clamp(10px,3.26cqw,22px);line-height:1.7;font-family:system-ui;color:#334155'>A titled block of prose. Its <strong>title</strong> becomes a heading; its <strong>body</strong> renders as the paragraph (or paragraphs, split on a blank line) below it.</p><p style='margin:0;max-width:52ch;font-weight:400;font-size:clamp(10px,3.26cqw,22px);line-height:1.7;font-family:system-ui;color:#334155'>A page is simply its pieces in graph order -- this one renders wherever it sits among the others. Nothing here is decided by this view; edit the piece to change what it says.</p></div>"
         },
         "_placement": {
           "version": 1,
           "state": "manually-shaped",
           "source": "manual",
-          "updatedAt": 1791496022567,
+          "updatedAt": 1791481414573,
           "reason": "node-drag"
         }
       }
     },
     {
-      "id": "page-settings-summary-view",
+      "id": "page-section-summary-view",
       "type": "view",
       "label": "Summary",
       "root": false,
@@ -365,24 +358,24 @@
           "payload": "node.web.summary"
         },
         "identity": {
-          "graphId": "page-settings-class",
-          "nodeId": "page-settings-summary-view"
+          "graphId": "page-section-class",
+          "nodeId": "page-section-summary-view"
         },
         "content": {
           "kind": "html",
-          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:clamp(13px,5.56cqw,29px);background:#ffffff;border-radius:16px;border:1px solid #e2e8f0;overflow:auto'><h2 style='margin:0 0 10px;font-weight:800;font-size:clamp(13px,5.56cqw,29px);line-height:1.2;font-family:system-ui;color:#0f172a'>{{data.title || label || \"Settings\"}}</h2><div style='font-weight:600;font-size:clamp(8px,3.61cqw,19px);line-height:1.6;font-family:system-ui;color:#64748b'>{{data.rows.length}} {{eq(data.rows.length, \"1\", \"setting\", \"settings\")}}</div></div>"
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:clamp(13px,5.56cqw,29px);background:#ffffff;border-radius:16px;border:1px solid #e2e8f0;overflow:auto'><section style='padding:0'><h2 style='margin:0 0 12px;font-weight:800;font-size:clamp(13px,5.56cqw,29px);line-height:1.2;font-family:system-ui;color:#0f172a'>{{data.title || label || \"Section\"}}</h2><p style='margin:0;max-width:60ch;font-weight:400;font-size:clamp(10px,4.44cqw,23px);line-height:1.6;font-family:system-ui;color:#334155;white-space:pre-wrap'>{{data.body}}</p></section></div>"
         },
         "_placement": {
           "version": 1,
           "state": "manually-shaped",
           "source": "manual",
-          "updatedAt": 1791496022567,
+          "updatedAt": 1791481414573,
           "reason": "node-drag"
         }
       }
     },
     {
-      "id": "page-settings-icon-view",
+      "id": "page-section-icon-view",
       "type": "view",
       "label": "Icon",
       "root": false,
@@ -400,33 +393,64 @@
           "payload": "node.web.icon"
         },
         "identity": {
-          "graphId": "page-settings-class",
-          "nodeId": "page-settings-icon-view"
+          "graphId": "page-section-class",
+          "nodeId": "page-section-icon-view"
         },
         "content": {
           "kind": "html",
-          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:clamp(10px,7.27cqw,23px);background:linear-gradient(135deg,#7c3aed,#5b21b6);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-family:system-ui;color:#ffffff'><svg width='34' height='34' viewBox='0 0 24 24' fill='none' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='3'/><path d='M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1'/></svg><div style='font-weight:800;font-size:clamp(8px,5.91cqw,19px);font-family:system-ui;letter-spacing:1.5px;text-transform:uppercase;color:#ffffff'>Page Settings</div></div>"
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:clamp(10px,7.27cqw,23px);background:linear-gradient(135deg,#7c3aed,#5b21b6);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-family:system-ui;color:#ffffff'><svg width='34' height='34' viewBox='0 0 24 24' fill='none' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 4h16v16H4z' opacity='0'/><path d='M6 4h9l5 5v11H6z'/><path d='M15 4v5h5'/><path d='M9 13h6'/><path d='M9 17h6'/><path d='M9 9h3'/></svg><div style='font-weight:800;font-size:clamp(8px,5.91cqw,19px);font-family:system-ui;letter-spacing:1.5px;text-transform:uppercase;color:#ffffff'>Page Section</div></div>"
         },
         "_placement": {
           "version": 1,
           "state": "manually-shaped",
           "source": "manual",
-          "updatedAt": 1791496022567,
+          "updatedAt": 1791481414573,
           "reason": "node-drag"
         }
       }
     },
     {
-      "id": "page-settings-editor-view",
+      "id": "page-section-landing",
+      "type": "content",
+      "label": "Landing Content",
+      "root": false,
+      "position": {
+        "x": -760,
+        "y": -80
+      },
+      "width": 460,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "page-section-class",
+          "nodeId": "page-section-landing"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "# Page Section\n\nA titled block of prose, placed in order on a page. Each one carries a title and a body; together, in graph order, they make up what a page's Detail view renders below its drawing and its settings."
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1791481414573,
+          "reason": "node-drag"
+        }
+      }
+    },
+    {
+      "id": "page-section-editor-view",
       "type": "view",
       "label": "Editor",
       "root": false,
       "position": {
         "x": 0,
-        "y": 240
+        "y": 120
       },
-      "width": 440,
-      "height": 360,
+      "width": 460,
+      "height": 280,
       "visible": true,
       "showLabel": true,
       "data": {
@@ -435,8 +459,8 @@
           "payload": "editor.web"
         },
         "identity": {
-          "graphId": "page-settings-class",
-          "nodeId": "page-settings-editor-view"
+          "graphId": "page-section-class",
+          "nodeId": "page-section-editor-view"
         },
         "editor": {
           "web": {
@@ -450,7 +474,16 @@
                 "type": "text",
                 "path": "data.title",
                 "variant": "heading",
-                "placeholder": "Settings"
+                "placeholder": "Section title"
+              },
+              {
+                "key": "body",
+                "label": "Body",
+                "type": "textarea",
+                "path": "data.body",
+                "variant": "body",
+                "rows": 8,
+                "placeholder": "What this section says."
               }
             ]
           }
@@ -459,7 +492,7 @@
           "version": 1,
           "state": "manually-shaped",
           "source": "manual",
-          "updatedAt": 1791496022567,
+          "updatedAt": 1791487440598,
           "reason": "node-drag"
         }
       }
@@ -467,14 +500,12 @@
   ],
   "edges": [
     {
-      "id": "page-settings-surface",
-      "source": "page-settings-declaration",
-      "target": "page-settings-detail-view",
-      "sourceHandle": "surfaces",
-      "sourcePort": "surfaces",
-      "targetHandle": "root",
-      "targetPort": "root",
+      "id": "page-section-surface",
       "type": "surface",
+      "source": "page-section-declaration",
+      "sourceHandle": "surfaces",
+      "target": "page-section-detail-view",
+      "targetHandle": "root",
       "label": "",
       "style": {},
       "data": {
@@ -483,14 +514,12 @@
       }
     },
     {
-      "id": "page-settings-detail-summary",
-      "source": "page-settings-detail-view",
-      "target": "page-settings-summary-view",
-      "sourceHandle": "sequence-out",
-      "sourcePort": "sequence-out",
-      "targetHandle": "sequence-in",
-      "targetPort": "sequence-in",
+      "id": "page-section-detail-summary",
       "type": "view-sequence",
+      "source": "page-section-detail-view",
+      "sourceHandle": "sequence-out",
+      "target": "page-section-summary-view",
+      "targetHandle": "sequence-in",
       "label": "",
       "style": {},
       "data": {
@@ -498,14 +527,12 @@
       }
     },
     {
-      "id": "page-settings-summary-icon",
-      "source": "page-settings-summary-view",
-      "target": "page-settings-icon-view",
-      "sourceHandle": "sequence-out",
-      "sourcePort": "sequence-out",
-      "targetHandle": "sequence-in",
-      "targetPort": "sequence-in",
+      "id": "page-section-summary-icon",
       "type": "view-sequence",
+      "source": "page-section-summary-view",
+      "sourceHandle": "sequence-out",
+      "target": "page-section-icon-view",
+      "targetHandle": "sequence-in",
       "label": "",
       "style": {},
       "data": {
@@ -513,18 +540,30 @@
       }
     },
     {
-      "id": "page-settings-icon-glyph",
-      "source": "page-settings-icon-view",
-      "target": "page-settings-glyph",
+      "id": "page-section-icon-glyph",
+      "type": "view-sequence",
+      "source": "page-section-icon-view",
       "sourceHandle": "sequence-out",
-      "sourcePort": "sequence-out",
+      "target": "page-section-glyph",
       "targetHandle": "root",
-      "targetPort": "root",
-      "type": "view-sequence",
       "label": "",
       "style": {},
       "data": {
         "role": "view-sequence"
+      }
+    },
+    {
+      "id": "page-section-landing-surface",
+      "type": "reference",
+      "source": "page-section-declaration",
+      "sourceHandle": "landing-surface",
+      "target": "page-section-landing",
+      "targetHandle": "root",
+      "label": "",
+      "style": {},
+      "data": {
+        "role": "landing-surface",
+        "semanticRole": "landing-surface"
       }
     }
   ],
