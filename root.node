@@ -2,63 +2,141 @@
   "fileVersion": "1.0",
   "metadata": {
     "title": "Twilite Zone",
-    "description": "Keep your ideas, evidence, and next steps connected. Explore an example, build your first Twilite graph, and return to work you can keep growing.",
+    "description": "The front door of the Twilite Zone: the library, what others have shared, and Twilite itself.",
     "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1",
-    "version": "2.0.0",
-    "kind": "public arrival",
+    "version": "3.0.0",
+    "kind": "graph",
     "created": "2026-08-25T21:27:02.336Z",
-    "modified": "2026-09-07T06:17:40.373Z",
-    "author": "",
+    "modified": "2026-10-11T21:57:06.109Z",
     "tags": [
       "public",
-      "arrival",
-      "twilite"
-    ],
-    "preferredViewer": "https://dev.twilite.zone",
-    "template": {
-      "ref": "github://mikemartinez1974/public/templates/public-arrival-template/root.node",
-      "version": "0.2.1"
-    }
+      "root",
+      "scene"
+    ]
   },
   "nodes": [
     {
       "id": "a53f044e-f584-4395-9868-c83ceb05aff1",
-      "type": "declaration",
       "label": "Twilite Zone",
-      "root": false,
+      "type": "declaration",
       "position": {
-        "x": -1180,
-        "y": -560
+        "x": -2100,
+        "y": -1000
       },
-      "width": 520,
-      "height": 390,
+      "width": 420,
+      "height": 300,
       "ports": [
         {
           "id": "default-view",
           "key": "default-view",
-          "label": "default-view",
+          "label": "default view",
           "direction": "output",
           "dataType": "any",
-          "angle": 55,
-          "role": "default-view"
+          "angle": 165,
+          "role": "default-view",
+          "allowedEdgeTypes": [
+            "default-view"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-view",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          }
         },
         {
           "id": "summary-view",
           "key": "summary-view",
-          "label": "summary-view",
+          "label": "summary view",
           "direction": "output",
           "dataType": "any",
-          "angle": 70,
-          "role": "shared-summary"
+          "angle": 180,
+          "role": "shared-summary",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-summary",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          }
         },
         {
           "id": "icon-view",
           "key": "icon-view",
-          "label": "icon-view",
+          "label": "icon view",
           "direction": "output",
           "dataType": "any",
-          "angle": 85,
-          "role": "shared-icon"
+          "angle": 195,
+          "role": "shared-icon",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-icon",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          }
+        },
+        {
+          "id": "view-sequence",
+          "key": "view-sequence",
+          "label": "first view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 150,
+          "role": "view-sequence",
+          "allowedEdgeTypes": [
+            "view-sequence"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view-sequence",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          }
         },
         {
           "id": "glyph",
@@ -66,17 +144,135 @@
           "label": "glyph",
           "direction": "output",
           "dataType": "any",
-          "angle": 100,
-          "role": "shared-glyph"
+          "angle": 270,
+          "role": "shared-glyph",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-glyph",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "glyph",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          }
         },
         {
-          "id": "landing-surface",
-          "key": "landing-surface",
-          "label": "landing-surface",
+          "id": "surface",
+          "key": "surface",
+          "label": "surface",
           "direction": "output",
           "dataType": "any",
-          "angle": 115,
-          "role": "landing-surface"
+          "angle": 120,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "default-handle",
+          "key": "default-handle",
+          "label": "default handle",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 315,
+          "role": "default-handle",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-handle",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "graphReference",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "boundary-begin",
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 135,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "boundary-end",
+          "key": "boundary-end",
+          "label": "boundary end",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 225,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          }
         },
         {
           "id": "port",
@@ -84,40 +280,171 @@
           "label": "port",
           "direction": "output",
           "dataType": "any",
-          "angle": 130,
-          "role": "exposes-port"
+          "angle": 90,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "landing-surface",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
         }
       ],
       "handles": [
         {
           "id": "default-view",
           "key": "default-view",
-          "label": "default-view",
+          "label": "default view",
           "direction": "output",
           "dataType": "any",
-          "angle": 55,
+          "angle": 165,
           "role": "default-view",
+          "allowedEdgeTypes": [
+            "default-view"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-view",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
           "portId": "default-view"
         },
         {
           "id": "summary-view",
           "key": "summary-view",
-          "label": "summary-view",
+          "label": "summary view",
           "direction": "output",
           "dataType": "any",
-          "angle": 70,
+          "angle": 180,
           "role": "shared-summary",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-summary",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
           "portId": "summary-view"
         },
         {
           "id": "icon-view",
           "key": "icon-view",
-          "label": "icon-view",
+          "label": "icon view",
           "direction": "output",
           "dataType": "any",
-          "angle": 85,
+          "angle": 195,
           "role": "shared-icon",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-icon",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
           "portId": "icon-view"
+        },
+        {
+          "id": "view-sequence",
+          "key": "view-sequence",
+          "label": "first view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 150,
+          "role": "view-sequence",
+          "allowedEdgeTypes": [
+            "view-sequence"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view-sequence",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
+          "portId": "view-sequence"
         },
         {
           "id": "glyph",
@@ -125,19 +452,140 @@
           "label": "glyph",
           "direction": "output",
           "dataType": "any",
-          "angle": 100,
+          "angle": 270,
           "role": "shared-glyph",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-glyph",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "glyph",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
           "portId": "glyph"
         },
         {
-          "id": "landing-surface",
-          "key": "landing-surface",
-          "label": "landing-surface",
+          "id": "surface",
+          "key": "surface",
+          "label": "surface",
           "direction": "output",
           "dataType": "any",
-          "angle": 115,
-          "role": "landing-surface",
-          "portId": "landing-surface"
+          "angle": 120,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "surface"
+        },
+        {
+          "id": "default-handle",
+          "key": "default-handle",
+          "label": "default handle",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 315,
+          "role": "default-handle",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-handle",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "graphReference",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "default-handle"
+        },
+        {
+          "id": "boundary-begin",
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 135,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "boundary-begin"
+        },
+        {
+          "id": "boundary-end",
+          "key": "boundary-end",
+          "label": "boundary end",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 225,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "boundary-end"
         },
         {
           "id": "port",
@@ -145,166 +593,295 @@
           "label": "port",
           "direction": "output",
           "dataType": "any",
-          "angle": 130,
+          "angle": 90,
           "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          },
           "portId": "port"
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "landing-surface",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "landing-surface"
         }
       ],
-      "visible": true,
-      "showLabel": true,
+      "outputs": [
+        {
+          "key": "default-view",
+          "label": "default view",
+          "type": "any"
+        },
+        {
+          "key": "summary-view",
+          "label": "summary view",
+          "type": "any"
+        },
+        {
+          "key": "icon-view",
+          "label": "icon view",
+          "type": "any"
+        },
+        {
+          "key": "view-sequence",
+          "label": "first view",
+          "type": "any"
+        },
+        {
+          "key": "glyph",
+          "label": "glyph",
+          "type": "any"
+        },
+        {
+          "key": "surface",
+          "label": "surface",
+          "type": "any"
+        },
+        {
+          "key": "default-handle",
+          "label": "default handle",
+          "type": "any"
+        },
+        {
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "type": "any"
+        },
+        {
+          "key": "boundary-end",
+          "label": "boundary end",
+          "type": "any"
+        },
+        {
+          "key": "port",
+          "label": "port",
+          "type": "any"
+        },
+        {
+          "key": "landing-surface",
+          "label": "landing surface",
+          "type": "any"
+        }
+      ],
       "data": {
         "identity": {
           "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1",
           "nodeId": "twilite-zone",
           "name": "Twilite Zone",
-          "version": "2.0.0",
-          "description": "Keep your ideas, evidence, and next steps connected. Explore an example, build your first Twilite graph, and return to work you can keep growing."
+          "version": "3.0.0",
+          "description": "The front door of the Twilite Zone: the library, what others have shared, and Twilite itself."
         },
         "intent": {
-          "kind": "public arrival",
-          "scope": "public-repo-home"
-        },
-        "dependencies": {
-          "nodeTypes": [
-            "declaration",
-            "view",
-            "port",
-            "glyph",
-            "content",
-            "bridge",
-            "arrival",
-            "arrival-route",
-            "arrival-section",
-            "arrival-utility"
-          ],
-          "portContracts": [
-            "core"
-          ],
-          "schemaVersions": {
-            "nodes": ">=1.0.0",
-            "ports": ">=1.0.0"
-          },
-          "optional": []
-        },
-        "authority": {
-          "mutation": {
-            "allowCreate": true,
-            "allowUpdate": true,
-            "allowDelete": true,
-            "appendOnly": false
-          },
-          "actors": {
-            "humans": true,
-            "agents": true,
-            "tools": true
-          },
-          "styleAuthority": "descriptive",
-          "history": {
-            "rewriteAllowed": false,
-            "squashAllowed": false
-          }
+          "kind": "scene",
+          "scope": "public"
         },
         "declaration": {
           "kind": "graph",
-          "targetMode": "artifact",
-          "artifactKind": "public-arrival",
           "interfaceContract": {
             "version": 1,
             "implicitRootPort": true
           },
-          "defaultSurfaceId": "detail",
-          "landingSurfaceId": "landing",
+          "defaultSurfaceId": "web",
           "surfaces": [
             {
               "id": "detail",
               "kind": "view",
               "payload": "node.web.detail",
-              "viewNodeId": "twilite-zone-detail"
+              "viewNodeId": "root-detail"
             },
             {
               "id": "summary",
               "kind": "view",
               "payload": "node.web.summary",
-              "viewNodeId": "twilite-zone-summary"
+              "viewNodeId": "root-summary"
             },
             {
               "id": "icon",
               "kind": "view",
               "payload": "node.web.icon",
-              "viewNodeId": "twilite-zone-icon"
+              "viewNodeId": "root-icon"
             },
             {
               "id": "glyph",
               "kind": "glyph",
               "payload": "node.web.glyph",
-              "viewNodeId": "twilite-zone-glyph"
+              "viewNodeId": "root-glyph"
             },
             {
               "id": "landing",
-              "kind": "node",
-              "payload": "node.web.detail",
-              "viewNodeId": "twilite-zone-arrival"
-            },
-            {
-              "id": "public-summary",
-              "kind": "port",
-              "payload": "node.web.summary",
-              "portNodeId": "twilite-zone-summary-port",
-              "viewNodeId": "twilite-zone-summary"
+              "kind": "content",
+              "payload": "node.web.landing",
+              "viewNodeId": "root-landing"
             }
-          ]
+          ],
+          "landingSurfaceId": "landing"
         },
-        "settings": {
-          "autoSave": false,
-          "layout": {
-            "mode": "manual",
-            "direction": "DOWN",
-            "defaultLayout": "layered",
-            "edgeLaneGapPx": 10,
-            "serpentine": {
-              "maxPerRow": 6
-            },
-            "cycleFallback": {
-              "enabled": true
-            },
-            "elk": {
-              "algorithm": "fixed",
-              "edgeRouting": "ORTHOGONAL",
-              "portConstraints": "FIXED_SIDE",
-              "nodeSpacing": 120,
-              "layeredEdgeSpacing": 80
-            }
-          },
-          "theme": null,
-          "backgroundImage": null,
-          "defaultNodeColor": "#1976d2",
-          "defaultEdgeColor": "",
-          "snapToGrid": false,
-          "gridSize": 20,
-          "edgeRouting": "auto"
+        "glyph": {
+          "kind": "icon",
+          "name": "Hub"
         },
-        "document": {
-          "url": "github://twilite-zone/public/root.node"
-        },
-        "visibilityRole": "editor"
-      },
-      "identity": {
-        "nodeId": "twilite-zone",
         "name": "Twilite Zone",
-        "version": "2.0.0"
+        "document": {
+          "url": "tlz://twilite.zone/root.node"
+        }
       }
     },
     {
-      "id": "twilite-zone-detail",
+      "id": "root-glyph",
+      "label": "Twilite Zone glyph",
+      "type": "glyph",
+      "position": {
+        "x": -2100,
+        "y": -640
+      },
+      "width": 220,
+      "height": 140,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "metadata": {
+            "interface": true,
+            "structural": true,
+            "role": "shared-glyph"
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "metadata": {
+            "interface": true,
+            "structural": true,
+            "role": "shared-glyph"
+          },
+          "portId": "root"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "data": {
+        "glyph": {
+          "kind": "icon",
+          "name": "Hub"
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesGlyphDefinition": true
+        },
+        "identity": {
+          "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
+        }
+      }
+    },
+    {
+      "id": "root-landing",
+      "type": "content",
+      "label": "Twilite Zone",
+      "root": true,
+      "position": {
+        "x": -1000,
+        "y": -1000
+      },
+      "width": 1480,
+      "height": 1280,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='position:relative;width:1440px;height:1240px;background:#ffffff;color:#0f172a;overflow:hidden'><div style='position:absolute;left:40px;top:30px;width:1360px;border-top:3px solid #0f172a'></div><div style='position:absolute;left:40px;top:42px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Twilite Zone</div><div style='position:absolute;left:40px;top:70px;width:1360px;border-top:1px solid #0f172a'></div><div style='position:absolute;left:40px;top:96px;width:1360px;font:500 64px/66px Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.025em'>Build knowledge that outlives the conversation.</div><div style='position:absolute;left:40px;top:260px;width:1360px;border-top:3px solid #6d28d9'></div><div style='position:absolute;left:40px;top:282px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Build</div><div style='position:absolute;left:40px;top:550px;width:1360px;border-top:1px solid #0f172a'></div><div style='position:absolute;left:40px;top:572px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#0f172a'>Explore</div><div style='position:absolute;left:40px;top:840px;width:1360px;border-top:1px solid #0f172a'></div><div style='position:absolute;left:40px;top:862px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#0f172a'>About</div><div style='position:absolute;left:40px;top:1130px;width:1360px;border-top:1px solid #0f172a'></div><div style='position:absolute;left:40px;top:1152px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#0f172a'>Learn</div><div style='position:absolute;left:220px;top:1148px;width:900px;font:400 17px/24px system-ui;color:#475569'>The tutorials are being rewritten. They will open from here.</div></div>"
+        }
+      },
+      "positionLocked": true
+    },
+    {
+      "id": "root-detail",
       "type": "view",
-      "label": "Twilite Zone detail",
+      "label": "Twilite Zone page",
       "root": false,
       "position": {
-        "x": -600,
-        "y": -520
+        "x": -3000,
+        "y": -1000
       },
-      "width": 520,
-      "height": 300,
+      "width": 760,
+      "height": 900,
       "ports": [
         {
           "id": "root",
@@ -336,20 +913,26 @@
           "intent": "node",
           "payload": "node.web.detail"
         },
-        "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:26px;border-radius:20px;background:#111827;border:1px solid #475569;box-shadow:0 18px 38px rgba(0,0,0,.28);font-family:system-ui;color:#f8fafc'><div style='font:800 11px/1 system-ui;color:#67e8f9'>PUBLIC GRAPH</div><div style='font:850 32px/1.05 system-ui;margin:15px 0'>Twilite Zone</div><div style='font:500 16px/1.6 system-ui;color:#cbd5e1'>Keep ideas, evidence, and next steps connected. Explore an example and build your first graph.</div></div>"
+        "semanticLevel": "detail",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:8cqw;background:#ffffff;border-radius:18px;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column;justify-content:center'><div style='margin-bottom:3cqw;font:800 clamp(8px,3.4cqw,14px)/1.3 system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Twilite Zone</div><div style='font:500 clamp(11px,8cqw,96px)/1.02 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>Build knowledge that outlives the conversation.</div></div>"
+        },
+        "memo": "",
+        "link": ""
       }
     },
     {
-      "id": "twilite-zone-summary",
+      "id": "root-summary",
       "type": "view",
       "label": "Twilite Zone summary",
       "root": false,
       "position": {
-        "x": 0,
-        "y": -520
+        "x": -3000,
+        "y": -40
       },
-      "width": 420,
-      "height": 240,
+      "width": 300,
+      "height": 170,
       "ports": [
         {
           "id": "root",
@@ -381,20 +964,26 @@
           "intent": "node",
           "payload": "node.web.summary"
         },
-        "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:20px;border-radius:18px;background:#111827;border:1px solid #475569;box-shadow:0 12px 28px rgba(0,0,0,.24);font-family:system-ui;color:#f8fafc'><div style='font:800 10px/1 system-ui;color:#67e8f9'>PUBLIC FRONT DOOR</div><div style='font:850 24px/1.08 system-ui;margin:14px 0'>Twilite Zone</div><div style='font:500 14px/1.55 system-ui;color:#cbd5e1'>Build knowledge that outlives the conversation. Start with one useful connection.</div></div>"
+        "semanticLevel": "summary",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:8cqw;background:#ffffff;border-radius:18px;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column;justify-content:center'><div style='margin-bottom:3cqw;font:800 clamp(8px,3.4cqw,14px)/1.3 system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Twilite Zone</div><div style='font:500 clamp(11px,8cqw,96px)/1.02 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>Build knowledge that outlives the conversation.</div></div>"
+        },
+        "memo": "",
+        "link": ""
       }
     },
     {
-      "id": "twilite-zone-icon",
+      "id": "root-icon",
       "type": "view",
       "label": "Twilite Zone icon",
       "root": false,
       "position": {
-        "x": 480,
-        "y": -520
+        "x": -2640,
+        "y": -40
       },
-      "width": 240,
-      "height": 170,
+      "width": 120,
+      "height": 110,
       "ports": [
         {
           "id": "root",
@@ -426,39 +1015,40 @@
           "intent": "node",
           "payload": "node.web.icon"
         },
-        "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:16px;border-radius:16px;background:#111827;border:1px solid #475569;font-family:system-ui;color:#f8fafc;display:flex;flex-direction:column;justify-content:space-between'><div style='width:44px;height:44px;border-radius:10px;background:#0891b2;display:flex;align-items:center;justify-content:center;font-size:22px'>⌂</div><div style='font:800 16px/1.15 system-ui'>Twilite Zone</div></div>"
+        "semanticLevel": "icon",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:8cqw;background:#ffffff;border-radius:18px;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column;justify-content:center'><div style='font:500 clamp(11px,14cqw,96px)/1.02 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>Twilite Zone</div></div>"
+        },
+        "memo": "",
+        "link": ""
       }
     },
     {
-      "id": "twilite-zone-glyph",
-      "type": "glyph",
-      "label": "Twilite Zone",
+      "id": "portal-primitives",
+      "type": "portal",
+      "label": "Primitives",
       "root": false,
       "position": {
-        "x": 780,
-        "y": -520
+        "x": -760,
+        "y": -696
       },
-      "width": 90,
-      "height": 90,
+      "width": 360,
+      "height": 240,
       "ports": [
         {
           "id": "root",
-          "key": "root",
           "label": "root",
-          "direction": "input",
+          "direction": "bidirectional",
           "dataType": "any",
-          "angle": 270
-        }
-      ],
-      "handles": [
+          "angle": 210
+        },
         {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270,
-          "portId": "root"
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
         }
       ],
       "visible": true,
@@ -467,1902 +1057,50 @@
         "identity": {
           "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
         },
-        "glyph": "⌂",
-        "view": {
-          "payload": "node.web.glyph"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-summary-port",
-      "type": "port",
-      "label": "Public Summary",
-      "root": false,
-      "position": {
-        "x": 498.11764218494415,
-        "y": -60.8629302839945
-      },
-      "width": 280,
-      "height": 150,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270,
-          "portId": "root"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1",
-          "portId": "public-summary"
-        },
-        "sourceNodeId": "twilite-zone-summary",
-        "sourcePayload": "node.web.summary",
-        "payload": "node.web.summary",
-        "view": {
-          "intent": "node",
-          "payload": "node.web.summary"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1788393630711,
-          "reason": "node-drag"
-        }
-      },
-      "identity": {
-        "portId": "public-summary"
-      }
-    },
-    {
-      "id": "twilite-zone-arrival-class-bridge",
-      "type": "bridge",
-      "label": "Arrival Class",
-      "root": false,
-      "position": {
-        "x": -1180,
-        "y": 0
-      },
-      "width": 300,
-      "height": 160,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "route-1",
-          "key": "route-1",
-          "label": "route 1",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.15
-          }
-        },
-        {
-          "id": "route-2",
-          "key": "route-2",
-          "label": "route 2",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.38
-          }
-        },
-        {
-          "id": "route-3",
-          "key": "route-3",
-          "label": "route 3",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.62
-          }
-        },
-        {
-          "id": "utilities",
-          "key": "utilities",
-          "label": "utilities",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.85
-          }
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 270,
-          "portId": "root"
-        }
-      ],
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
-        },
-        "authority": "bridge",
+        "memo": "The sixteen parts every graph is made of.",
+        "authority": "navigate",
+        "intent": "external",
+        "src": "tlz://twilite.zone/library/primitives/root.node",
+        "ref": "tlz://twilite.zone/library/primitives/root.node",
+        "endpoint": "tlz://twilite.zone/library/primitives/root.node",
+        "sourceRef": "tlz://twilite.zone/library/primitives/root.node",
+        "sourcePayload": "node.web.detail",
+        "surfaceId": "root",
         "target": {
-          "mode": "bridge",
-          "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ],
-          "key": "arrival"
-        },
-        "_classBinding": {
-          "key": "arrival",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-          "defaults": {
-            "label": "Arrival",
-            "size": {
-              "width": 640,
-              "height": 340
-            },
-            "showLabel": false,
-            "data": {
-              "eyebrow": "PUBLIC GRAPH",
-              "title": "Welcome",
-              "body": "Orient the visitor, explain the world in one breath, and offer a small number of clear routes."
-            },
-            "ports": [
-              {
-                "id": "root",
-                "key": "root",
-                "label": "root",
-                "direction": "bidirectional",
-                "dataType": "any",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.5
-                }
-              },
-              {
-                "id": "route-1",
-                "key": "route-1",
-                "label": "route 1",
-                "direction": "output",
-                "dataType": "navigation",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.15
-                }
-              },
-              {
-                "id": "route-2",
-                "key": "route-2",
-                "label": "route 2",
-                "direction": "output",
-                "dataType": "navigation",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.38
-                }
-              },
-              {
-                "id": "route-3",
-                "key": "route-3",
-                "label": "route 3",
-                "direction": "output",
-                "dataType": "navigation",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.62
-                }
-              },
-              {
-                "id": "utilities",
-                "key": "utilities",
-                "label": "utilities",
-                "direction": "output",
-                "dataType": "navigation",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.85
-                }
-              }
-            ]
-          },
-          "nodeDef": {
-            "key": "arrival",
-            "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Arrival",
-              "size": {
-                "width": 640,
-                "height": 340
-              },
-              "showLabel": false,
-              "data": {
-                "eyebrow": "PUBLIC GRAPH",
-                "title": "Welcome",
-                "body": "Orient the visitor, explain the world in one breath, and offer a small number of clear routes."
-              },
-              "ports": [
-                {
-                  "id": "root",
-                  "key": "root",
-                  "label": "root",
-                  "direction": "bidirectional",
-                  "dataType": "any",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.5
-                  }
-                },
-                {
-                  "id": "route-1",
-                  "key": "route-1",
-                  "label": "route 1",
-                  "direction": "output",
-                  "dataType": "navigation",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.15
-                  }
-                },
-                {
-                  "id": "route-2",
-                  "key": "route-2",
-                  "label": "route 2",
-                  "direction": "output",
-                  "dataType": "navigation",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.38
-                  }
-                },
-                {
-                  "id": "route-3",
-                  "key": "route-3",
-                  "label": "route 3",
-                  "direction": "output",
-                  "dataType": "navigation",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.62
-                  }
-                },
-                {
-                  "id": "utilities",
-                  "key": "utilities",
-                  "label": "utilities",
-                  "direction": "output",
-                  "dataType": "navigation",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.85
-                  }
-                }
-              ]
-            }
-          },
-          "views": [
-            {
-              "key": "arrival",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            }
-          ]
-        },
-        "_bridge": {
-          "classKey": "arrival",
-          "classRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-          "targetKind": "node-class"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-arrival-route-class-bridge",
-      "type": "bridge",
-      "label": "Arrival Route Class",
-      "root": false,
-      "position": {
-        "x": -1180,
-        "y": 190
-      },
-      "width": 300,
-      "height": 160,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.2
-          }
-        },
-        {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "destination",
-          "key": "destination",
-          "label": "destination",
-          "direction": "output",
-          "dataType": "graph",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 270,
-          "portId": "root"
-        }
-      ],
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
-        },
-        "authority": "bridge",
-        "target": {
-          "mode": "bridge",
-          "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ],
-          "key": "arrival-route"
-        },
-        "_classBinding": {
-          "key": "arrival-route",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-          "defaults": {
-            "label": "Arrival Route",
-            "size": {
-              "width": 460,
-              "height": 280
-            },
-            "showLabel": false,
-            "data": {
-              "eyebrow": "ROUTE",
-              "title": "Explore",
-              "body": "A clear reason to continue into this part of the graph.",
-              "destinationRef": "",
-              "destinationLabel": "Open",
-              "routeKind": "discovery",
-              "prominence": "primary",
-              "status": "active"
-            },
-            "ports": [
-              {
-                "id": "root",
-                "key": "root",
-                "label": "root",
-                "direction": "bidirectional",
-                "dataType": "any",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.2
-                }
-              },
-              {
-                "id": "parent",
-                "key": "parent",
-                "label": "parent",
-                "direction": "input",
-                "dataType": "navigation",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.5
-                }
-              },
-              {
-                "id": "destination",
-                "key": "destination",
-                "label": "destination",
-                "direction": "output",
-                "dataType": "graph",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.5
-                }
-              }
-            ]
-          },
-          "nodeDef": {
-            "key": "arrival-route",
-            "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Arrival Route",
-              "size": {
-                "width": 460,
-                "height": 280
-              },
-              "showLabel": false,
-              "data": {
-                "eyebrow": "ROUTE",
-                "title": "Explore",
-                "body": "A clear reason to continue into this part of the graph.",
-                "destinationRef": "",
-                "destinationLabel": "Open",
-                "routeKind": "discovery",
-                "prominence": "primary",
-                "status": "active"
-              },
-              "ports": [
-                {
-                  "id": "root",
-                  "key": "root",
-                  "label": "root",
-                  "direction": "bidirectional",
-                  "dataType": "any",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.2
-                  }
-                },
-                {
-                  "id": "parent",
-                  "key": "parent",
-                  "label": "parent",
-                  "direction": "input",
-                  "dataType": "navigation",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.5
-                  }
-                },
-                {
-                  "id": "destination",
-                  "key": "destination",
-                  "label": "destination",
-                  "direction": "output",
-                  "dataType": "graph",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.5
-                  }
-                }
-              ]
-            }
-          },
-          "views": [
-            {
-              "key": "arrival-route",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-route",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-route",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-route",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            }
-          ]
-        },
-        "_bridge": {
-          "classKey": "arrival-route",
-          "classRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-          "targetKind": "node-class"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-arrival-section-class-bridge",
-      "type": "bridge",
-      "label": "Arrival Section Class",
-      "root": false,
-      "position": {
-        "x": -1180,
-        "y": 380
-      },
-      "width": 300,
-      "height": 160,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.2
-          }
-        },
-        {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "item-1",
-          "key": "item-1",
-          "label": "item 1",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.2
-          }
-        },
-        {
-          "id": "item-2",
-          "key": "item-2",
-          "label": "item 2",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "item-3",
-          "key": "item-3",
-          "label": "item 3",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.8
-          }
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 270,
-          "portId": "root"
-        }
-      ],
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
-        },
-        "authority": "bridge",
-        "target": {
-          "mode": "bridge",
-          "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ],
-          "key": "arrival-section"
-        },
-        "_classBinding": {
-          "key": "arrival-section",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-          "defaults": {
-            "label": "Arrival Section",
-            "size": {
-              "width": 400,
-              "height": 230
-            },
-            "showLabel": false,
-            "data": {
-              "eyebrow": "SECTION",
-              "title": "More to explore",
-              "body": "A quieter grouping below the primary routes."
-            },
-            "ports": [
-              {
-                "id": "root",
-                "key": "root",
-                "label": "root",
-                "direction": "bidirectional",
-                "dataType": "any",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.2
-                }
-              },
-              {
-                "id": "parent",
-                "key": "parent",
-                "label": "parent",
-                "direction": "input",
-                "dataType": "navigation",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.5
-                }
-              },
-              {
-                "id": "item-1",
-                "key": "item-1",
-                "label": "item 1",
-                "direction": "output",
-                "dataType": "navigation",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.2
-                }
-              },
-              {
-                "id": "item-2",
-                "key": "item-2",
-                "label": "item 2",
-                "direction": "output",
-                "dataType": "navigation",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.5
-                }
-              },
-              {
-                "id": "item-3",
-                "key": "item-3",
-                "label": "item 3",
-                "direction": "output",
-                "dataType": "navigation",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.8
-                }
-              }
-            ]
-          },
-          "nodeDef": {
-            "key": "arrival-section",
-            "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Arrival Section",
-              "size": {
-                "width": 400,
-                "height": 230
-              },
-              "showLabel": false,
-              "data": {
-                "eyebrow": "SECTION",
-                "title": "More to explore",
-                "body": "A quieter grouping below the primary routes."
-              },
-              "ports": [
-                {
-                  "id": "root",
-                  "key": "root",
-                  "label": "root",
-                  "direction": "bidirectional",
-                  "dataType": "any",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.2
-                  }
-                },
-                {
-                  "id": "parent",
-                  "key": "parent",
-                  "label": "parent",
-                  "direction": "input",
-                  "dataType": "navigation",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.5
-                  }
-                },
-                {
-                  "id": "item-1",
-                  "key": "item-1",
-                  "label": "item 1",
-                  "direction": "output",
-                  "dataType": "navigation",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.2
-                  }
-                },
-                {
-                  "id": "item-2",
-                  "key": "item-2",
-                  "label": "item 2",
-                  "direction": "output",
-                  "dataType": "navigation",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.5
-                  }
-                },
-                {
-                  "id": "item-3",
-                  "key": "item-3",
-                  "label": "item 3",
-                  "direction": "output",
-                  "dataType": "navigation",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.8
-                  }
-                }
-              ]
-            }
-          },
-          "views": [
-            {
-              "key": "arrival-section",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-section",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-section",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-section",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            }
-          ]
-        },
-        "_bridge": {
-          "classKey": "arrival-section",
-          "classRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-          "targetKind": "node-class"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-arrival-utility-class-bridge",
-      "type": "bridge",
-      "label": "Arrival Utility Class",
-      "root": false,
-      "position": {
-        "x": -1180,
-        "y": 570
-      },
-      "width": 300,
-      "height": 160,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.2
-          }
-        },
-        {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "destination",
-          "key": "destination",
-          "label": "destination",
-          "direction": "output",
-          "dataType": "graph",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 270,
-          "portId": "root"
-        }
-      ],
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
-        },
-        "authority": "bridge",
-        "target": {
-          "mode": "bridge",
-          "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ],
-          "key": "arrival-utility"
-        },
-        "_classBinding": {
-          "key": "arrival-utility",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-          "defaults": {
-            "label": "Arrival Utility",
-            "size": {
-              "width": 300,
-              "height": 180
-            },
-            "showLabel": false,
-            "data": {
-              "title": "Docs",
-              "body": "Supporting destination.",
-              "destinationRef": "",
-              "destinationLabel": "Open"
-            },
-            "ports": [
-              {
-                "id": "root",
-                "key": "root",
-                "label": "root",
-                "direction": "bidirectional",
-                "dataType": "any",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.2
-                }
-              },
-              {
-                "id": "parent",
-                "key": "parent",
-                "label": "parent",
-                "direction": "input",
-                "dataType": "navigation",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.5
-                }
-              },
-              {
-                "id": "destination",
-                "key": "destination",
-                "label": "destination",
-                "direction": "output",
-                "dataType": "graph",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.5
-                }
-              }
-            ]
-          },
-          "nodeDef": {
-            "key": "arrival-utility",
-            "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Arrival Utility",
-              "size": {
-                "width": 300,
-                "height": 180
-              },
-              "showLabel": false,
-              "data": {
-                "title": "Docs",
-                "body": "Supporting destination.",
-                "destinationRef": "",
-                "destinationLabel": "Open"
-              },
-              "ports": [
-                {
-                  "id": "root",
-                  "key": "root",
-                  "label": "root",
-                  "direction": "bidirectional",
-                  "dataType": "any",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.2
-                  }
-                },
-                {
-                  "id": "parent",
-                  "key": "parent",
-                  "label": "parent",
-                  "direction": "input",
-                  "dataType": "navigation",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.5
-                  }
-                },
-                {
-                  "id": "destination",
-                  "key": "destination",
-                  "label": "destination",
-                  "direction": "output",
-                  "dataType": "graph",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.5
-                  }
-                }
-              ]
-            }
-          },
-          "views": [
-            {
-              "key": "arrival-utility",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-utility",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-utility",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-utility",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            }
-          ]
-        },
-        "_bridge": {
-          "classKey": "arrival-utility",
-          "classRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-          "targetKind": "node-class"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-arrival",
-      "type": "arrival",
-      "label": "Build knowledge that outlives the conversation",
-      "root": true,
-      "position": {
-        "x": 180,
-        "y": 0
-      },
-      "width": 760,
-      "height": 400,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "route-1",
-          "key": "route-1",
-          "label": "route 1",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.15
-          }
-        },
-        {
-          "id": "route-2",
-          "key": "route-2",
-          "label": "route 2",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.38
-          }
-        },
-        {
-          "id": "route-3",
-          "key": "route-3",
-          "label": "route-3",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 125
-        },
-        {
-          "id": "route-4",
-          "key": "route-4",
-          "label": "route-4",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 145
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 270,
-          "portId": "root"
-        },
-        {
-          "id": "route-1",
-          "key": "route-1",
-          "label": "learn more",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 55,
-          "portId": "route-1"
-        },
-        {
-          "id": "route-2",
-          "key": "route-2",
-          "label": "explore",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 78,
-          "portId": "route-2"
-        },
-        {
-          "id": "route-3",
-          "key": "route-3",
-          "label": "route-3",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 125,
-          "portId": "route-3"
-        },
-        {
-          "id": "route-4",
-          "key": "route-4",
-          "label": "route-4",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 145,
-          "portId": "route-4"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
-        },
-        "eyebrow": "TWILITE · CONNECTED KNOWLEDGE",
-        "title": "Build knowledge that outlives the conversation.",
-        "body": "Twilite is a visual workspace for ideas, evidence, and plans. Connect what you learn to what you decide and what you do next. Explore it yourself, or work with AI on the same connected material.",
-        "definitionKey": "arrival",
-        "_classBinding": {
-          "key": "arrival",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-          "defaults": {
-            "label": "Arrival",
-            "size": {
-              "width": 640,
-              "height": 340
-            },
-            "showLabel": false,
-            "data": {
-              "eyebrow": "PUBLIC GRAPH",
-              "title": "Welcome",
-              "body": "Orient the visitor, explain the world in one breath, and offer a small number of clear routes."
-            },
-            "ports": [
-              {
-                "id": "root",
-                "key": "root",
-                "label": "root",
-                "direction": "bidirectional",
-                "dataType": "any",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.5
-                }
-              },
-              {
-                "id": "route-1",
-                "key": "route-1",
-                "label": "route 1",
-                "direction": "output",
-                "dataType": "navigation",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.15
-                }
-              },
-              {
-                "id": "route-2",
-                "key": "route-2",
-                "label": "route 2",
-                "direction": "output",
-                "dataType": "navigation",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.38
-                }
-              },
-              {
-                "id": "route-3",
-                "key": "route-3",
-                "label": "route 3",
-                "direction": "output",
-                "dataType": "navigation",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.62
-                }
-              },
-              {
-                "id": "utilities",
-                "key": "utilities",
-                "label": "utilities",
-                "direction": "output",
-                "dataType": "navigation",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.85
-                }
-              }
-            ]
-          },
-          "nodeDef": {
-            "key": "arrival",
-            "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Arrival",
-              "size": {
-                "width": 640,
-                "height": 340
-              },
-              "showLabel": false,
-              "data": {
-                "eyebrow": "PUBLIC GRAPH",
-                "title": "Welcome",
-                "body": "Orient the visitor, explain the world in one breath, and offer a small number of clear routes."
-              },
-              "ports": [
-                {
-                  "id": "root",
-                  "key": "root",
-                  "label": "root",
-                  "direction": "bidirectional",
-                  "dataType": "any",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.5
-                  }
-                },
-                {
-                  "id": "route-1",
-                  "key": "route-1",
-                  "label": "route 1",
-                  "direction": "output",
-                  "dataType": "navigation",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.15
-                  }
-                },
-                {
-                  "id": "route-2",
-                  "key": "route-2",
-                  "label": "route 2",
-                  "direction": "output",
-                  "dataType": "navigation",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.38
-                  }
-                },
-                {
-                  "id": "route-3",
-                  "key": "route-3",
-                  "label": "route 3",
-                  "direction": "output",
-                  "dataType": "navigation",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.62
-                  }
-                },
-                {
-                  "id": "utilities",
-                  "key": "utilities",
-                  "label": "utilities",
-                  "direction": "output",
-                  "dataType": "navigation",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.85
-                  }
-                }
-              ]
-            }
-          },
-          "views": [
-            {
-              "key": "arrival",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            }
-          ]
-        },
-        "_bridge": {
-          "classKey": "arrival",
-          "classRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival.node-class.node",
-          "targetKind": "node-class"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1788393614955,
-          "reason": "node-drag"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-learn",
-      "type": "arrival-route",
-      "label": "Start here",
-      "root": false,
-      "position": {
-        "x": -80,
-        "y": 520
-      },
-      "width": 420,
-      "height": 280,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.2
-          }
-        },
-        {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "destination",
-          "key": "destination",
-          "label": "destination",
-          "direction": "output",
-          "dataType": "graph",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 245,
-          "portId": "root"
-        },
-        {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "portId": "parent"
-        },
-        {
-          "id": "destination",
-          "key": "destination",
-          "label": "destination",
-          "direction": "output",
-          "dataType": "graph",
-          "angle": 90,
-          "portId": "destination"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
-        },
-        "eyebrow": "START HERE",
-        "title": "Make your first connection",
-        "body": "Explore a small example, then turn a question of your own into a connected graph. No graph vocabulary needed to begin.",
-        "destinationRef": "github://twilite-zone/public/tutorial/start-here/root.node",
-        "destinationLabel": "Start here",
-        "routeKind": "Guided introduction",
-        "prominence": "primary",
-        "status": "Free to explore",
-        "target": {
+          "ref": "tlz://twilite.zone/library/primitives/root.node",
           "mode": "navigate",
-          "kind": "graph",
-          "ref": "github://twilite-zone/public/tutorial/start-here/root.node",
-          "entryPort": "root"
+          "portId": "root",
+          "surfaceId": "root",
+          "label": "Open Primitives"
         },
-        "definitionKey": "arrival-route",
-        "_classBinding": {
-          "key": "arrival-route",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-          "defaults": {
-            "label": "Arrival Route",
-            "size": {
-              "width": 460,
-              "height": 280
-            },
-            "showLabel": false,
-            "data": {
-              "eyebrow": "ROUTE",
-              "title": "Explore",
-              "body": "A clear reason to continue into this part of the graph.",
-              "destinationRef": "",
-              "destinationLabel": "Open",
-              "routeKind": "discovery",
-              "prominence": "primary",
-              "status": "active"
-            },
-            "ports": [
-              {
-                "id": "root",
-                "key": "root",
-                "label": "root",
-                "direction": "bidirectional",
-                "dataType": "any",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.2
-                }
-              },
-              {
-                "id": "parent",
-                "key": "parent",
-                "label": "parent",
-                "direction": "input",
-                "dataType": "navigation",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.5
-                }
-              },
-              {
-                "id": "destination",
-                "key": "destination",
-                "label": "destination",
-                "direction": "output",
-                "dataType": "graph",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.5
-                }
-              }
-            ]
-          },
-          "nodeDef": {
-            "key": "arrival-route",
-            "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Arrival Route",
-              "size": {
-                "width": 460,
-                "height": 280
-              },
-              "showLabel": false,
-              "data": {
-                "eyebrow": "ROUTE",
-                "title": "Explore",
-                "body": "A clear reason to continue into this part of the graph.",
-                "destinationRef": "",
-                "destinationLabel": "Open",
-                "routeKind": "discovery",
-                "prominence": "primary",
-                "status": "active"
-              },
-              "ports": [
-                {
-                  "id": "root",
-                  "key": "root",
-                  "label": "root",
-                  "direction": "bidirectional",
-                  "dataType": "any",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.2
-                  }
-                },
-                {
-                  "id": "parent",
-                  "key": "parent",
-                  "label": "parent",
-                  "direction": "input",
-                  "dataType": "navigation",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.5
-                  }
-                },
-                {
-                  "id": "destination",
-                  "key": "destination",
-                  "label": "destination",
-                  "direction": "output",
-                  "dataType": "graph",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.5
-                  }
-                }
-              ]
-            }
-          },
-          "views": [
-            {
-              "key": "arrival-route",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-route",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-route",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-route",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            }
-          ]
-        },
-        "_bridge": {
-          "classKey": "arrival-route",
-          "classRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-          "targetKind": "node-class"
-        }
+        "visibilityRole": "browser"
       }
     },
     {
-      "id": "twilite-zone-explore",
-      "type": "arrival-section",
-      "label": "Explore",
+      "id": "portal-edge-classes",
+      "type": "portal",
+      "label": "Edge classes",
       "root": false,
       "position": {
-        "x": 160,
-        "y": 1440
+        "x": -350,
+        "y": -696
       },
-      "width": 680,
-      "height": 230,
+      "width": 360,
+      "height": 240,
       "ports": [
         {
           "id": "root",
-          "key": "root",
           "label": "root",
           "direction": "bidirectional",
           "dataType": "any",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.2
-          }
+          "angle": 210
         },
         {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "item-1",
-          "key": "item-1",
-          "label": "item 1",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.2
-          }
-        },
-        {
-          "id": "item-2",
-          "key": "item-2",
-          "label": "item 2",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "item-3",
-          "key": "item-3",
-          "label": "item 3",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.8
-          }
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
+          "id": "left",
+          "label": "left",
           "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 245,
-          "portId": "root"
-        },
-        {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "portId": "parent"
-        },
-        {
-          "id": "item-1",
-          "key": "item-1",
-          "label": "docs",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 65,
-          "portId": "item-1"
-        },
-        {
-          "id": "item-2",
-          "key": "item-2",
-          "label": "github",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 90,
-          "portId": "item-2"
-        },
-        {
-          "id": "item-3",
-          "key": "item-3",
-          "label": "item 3",
-          "direction": "output",
-          "dataType": "navigation",
-          "angle": 115,
-          "portId": "item-3"
+          "dataType": "value",
+          "angle": 180
         }
       ],
       "visible": true,
@@ -2371,558 +1109,50 @@
         "identity": {
           "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
         },
-        "eyebrow": "KEEP EXPLORING",
-        "title": "Bring something worth connecting.",
-        "body": "A research question. A project decision. A world you are creating. Start small, then connect each useful piece to the next.",
-        "definitionKey": "arrival-section",
-        "_classBinding": {
-          "key": "arrival-section",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-          "defaults": {
-            "label": "Arrival Section",
-            "size": {
-              "width": 400,
-              "height": 230
-            },
-            "showLabel": false,
-            "data": {
-              "eyebrow": "SECTION",
-              "title": "More to explore",
-              "body": "A quieter grouping below the primary routes."
-            },
-            "ports": [
-              {
-                "id": "root",
-                "key": "root",
-                "label": "root",
-                "direction": "bidirectional",
-                "dataType": "any",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.2
-                }
-              },
-              {
-                "id": "parent",
-                "key": "parent",
-                "label": "parent",
-                "direction": "input",
-                "dataType": "navigation",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.5
-                }
-              },
-              {
-                "id": "item-1",
-                "key": "item-1",
-                "label": "item 1",
-                "direction": "output",
-                "dataType": "navigation",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.2
-                }
-              },
-              {
-                "id": "item-2",
-                "key": "item-2",
-                "label": "item 2",
-                "direction": "output",
-                "dataType": "navigation",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.5
-                }
-              },
-              {
-                "id": "item-3",
-                "key": "item-3",
-                "label": "item 3",
-                "direction": "output",
-                "dataType": "navigation",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.8
-                }
-              }
-            ]
-          },
-          "nodeDef": {
-            "key": "arrival-section",
-            "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Arrival Section",
-              "size": {
-                "width": 400,
-                "height": 230
-              },
-              "showLabel": false,
-              "data": {
-                "eyebrow": "SECTION",
-                "title": "More to explore",
-                "body": "A quieter grouping below the primary routes."
-              },
-              "ports": [
-                {
-                  "id": "root",
-                  "key": "root",
-                  "label": "root",
-                  "direction": "bidirectional",
-                  "dataType": "any",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.2
-                  }
-                },
-                {
-                  "id": "parent",
-                  "key": "parent",
-                  "label": "parent",
-                  "direction": "input",
-                  "dataType": "navigation",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.5
-                  }
-                },
-                {
-                  "id": "item-1",
-                  "key": "item-1",
-                  "label": "item 1",
-                  "direction": "output",
-                  "dataType": "navigation",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.2
-                  }
-                },
-                {
-                  "id": "item-2",
-                  "key": "item-2",
-                  "label": "item 2",
-                  "direction": "output",
-                  "dataType": "navigation",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.5
-                  }
-                },
-                {
-                  "id": "item-3",
-                  "key": "item-3",
-                  "label": "item 3",
-                  "direction": "output",
-                  "dataType": "navigation",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.8
-                  }
-                }
-              ]
-            }
-          },
-          "views": [
-            {
-              "key": "arrival-section",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-section",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-section",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-section",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            }
-          ]
-        },
-        "_bridge": {
-          "classKey": "arrival-section",
-          "classRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-section.node-class.node",
-          "targetKind": "node-class"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1788393574309,
-          "reason": "node-drag"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-twilite",
-      "type": "arrival-utility",
-      "label": "Twilite",
-      "root": false,
-      "position": {
-        "x": -180,
-        "y": 1840
-      },
-      "width": 300,
-      "height": 180,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.2
-          }
-        },
-        {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "destination",
-          "key": "destination",
-          "label": "destination",
-          "direction": "output",
-          "dataType": "graph",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 245,
-          "portId": "root"
-        },
-        {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "portId": "parent"
-        },
-        {
-          "id": "destination",
-          "key": "destination",
-          "label": "destination",
-          "direction": "output",
-          "dataType": "graph",
-          "angle": 90,
-          "portId": "destination"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
-        },
-        "title": "What you can build",
-        "body": "See how Twilite brings research, planning, publishing, and AI-assisted work together.",
-        "destinationRef": "github://twilite-zone/public/products/twilite/root.node",
-        "destinationLabel": "Explore Twilite",
+        "memo": "The connections the library defines.",
+        "authority": "navigate",
+        "intent": "external",
+        "src": "tlz://twilite.zone/library/edges/root.node",
+        "ref": "tlz://twilite.zone/library/edges/root.node",
+        "endpoint": "tlz://twilite.zone/library/edges/root.node",
+        "sourceRef": "tlz://twilite.zone/library/edges/root.node",
+        "sourcePayload": "node.web.detail",
+        "surfaceId": "root",
         "target": {
+          "ref": "tlz://twilite.zone/library/edges/root.node",
           "mode": "navigate",
-          "kind": "graph",
-          "ref": "github://twilite-zone/public/products/twilite/root.node",
-          "entryPort": "root"
+          "portId": "root",
+          "surfaceId": "root",
+          "label": "Open Edge classes"
         },
-        "definitionKey": "arrival-utility",
-        "_classBinding": {
-          "key": "arrival-utility",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-          "defaults": {
-            "label": "Arrival Utility",
-            "size": {
-              "width": 300,
-              "height": 180
-            },
-            "showLabel": false,
-            "data": {
-              "title": "Docs",
-              "body": "Supporting destination.",
-              "destinationRef": "",
-              "destinationLabel": "Open"
-            },
-            "ports": [
-              {
-                "id": "root",
-                "key": "root",
-                "label": "root",
-                "direction": "bidirectional",
-                "dataType": "any",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.2
-                }
-              },
-              {
-                "id": "parent",
-                "key": "parent",
-                "label": "parent",
-                "direction": "input",
-                "dataType": "navigation",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.5
-                }
-              },
-              {
-                "id": "destination",
-                "key": "destination",
-                "label": "destination",
-                "direction": "output",
-                "dataType": "graph",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.5
-                }
-              }
-            ]
-          },
-          "nodeDef": {
-            "key": "arrival-utility",
-            "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Arrival Utility",
-              "size": {
-                "width": 300,
-                "height": 180
-              },
-              "showLabel": false,
-              "data": {
-                "title": "Docs",
-                "body": "Supporting destination.",
-                "destinationRef": "",
-                "destinationLabel": "Open"
-              },
-              "ports": [
-                {
-                  "id": "root",
-                  "key": "root",
-                  "label": "root",
-                  "direction": "bidirectional",
-                  "dataType": "any",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.2
-                  }
-                },
-                {
-                  "id": "parent",
-                  "key": "parent",
-                  "label": "parent",
-                  "direction": "input",
-                  "dataType": "navigation",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.5
-                  }
-                },
-                {
-                  "id": "destination",
-                  "key": "destination",
-                  "label": "destination",
-                  "direction": "output",
-                  "dataType": "graph",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.5
-                  }
-                }
-              ]
-            }
-          },
-          "views": [
-            {
-              "key": "arrival-utility",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-utility",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-utility",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-utility",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            }
-          ]
-        },
-        "_bridge": {
-          "classKey": "arrival-utility",
-          "classRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-          "targetKind": "node-class"
-        }
+        "visibilityRole": "browser"
       }
     },
     {
-      "id": "twilite-zone-commons",
-      "type": "arrival-utility",
-      "label": "Public Commons",
+      "id": "portal-page-template",
+      "type": "portal",
+      "label": "Page Template",
       "root": false,
       "position": {
-        "x": 280,
-        "y": 1840
+        "x": 60,
+        "y": -696
       },
-      "width": 300,
-      "height": 180,
+      "width": 360,
+      "height": 240,
       "ports": [
         {
           "id": "root",
-          "key": "root",
           "label": "root",
           "direction": "bidirectional",
           "dataType": "any",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.2
-          }
+          "angle": 210
         },
         {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "destination",
-          "key": "destination",
-          "label": "destination",
-          "direction": "output",
-          "dataType": "graph",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
+          "id": "left",
+          "label": "left",
           "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 245,
-          "portId": "root"
-        },
-        {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "portId": "parent"
-        },
-        {
-          "id": "destination",
-          "key": "destination",
-          "label": "destination",
-          "direction": "output",
-          "dataType": "graph",
-          "angle": 90,
-          "portId": "destination"
+          "dataType": "value",
+          "angle": 180
         }
       ],
       "visible": true,
@@ -2931,255 +1161,102 @@
         "identity": {
           "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
         },
-        "title": "Explore shared work",
-        "body": "Browse public repositories and reusable resources in the Commons.",
-        "destinationRef": "github://twilite-zone/public/github/the-commons/root.node",
-        "destinationLabel": "Browse the Commons",
+        "memo": "For graphs whose content is prose.",
+        "authority": "navigate",
+        "intent": "external",
+        "src": "tlz://twilite.zone/library/templates/page-template/root.node",
+        "ref": "tlz://twilite.zone/library/templates/page-template/root.node",
+        "endpoint": "tlz://twilite.zone/library/templates/page-template/root.node",
+        "sourceRef": "tlz://twilite.zone/library/templates/page-template/root.node",
+        "sourcePayload": "node.web.detail",
+        "surfaceId": "root",
         "target": {
+          "ref": "tlz://twilite.zone/library/templates/page-template/root.node",
           "mode": "navigate",
-          "kind": "graph",
-          "ref": "github://twilite-zone/public/github/the-commons/root.node",
-          "entryPort": "root"
+          "portId": "root",
+          "surfaceId": "root",
+          "label": "Open Page Template"
         },
-        "definitionKey": "arrival-utility",
-        "_classBinding": {
-          "key": "arrival-utility",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-          "defaults": {
-            "label": "Arrival Utility",
-            "size": {
-              "width": 300,
-              "height": 180
-            },
-            "showLabel": false,
-            "data": {
-              "title": "Docs",
-              "body": "Supporting destination.",
-              "destinationRef": "",
-              "destinationLabel": "Open"
-            },
-            "ports": [
-              {
-                "id": "root",
-                "key": "root",
-                "label": "root",
-                "direction": "bidirectional",
-                "dataType": "any",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.2
-                }
-              },
-              {
-                "id": "parent",
-                "key": "parent",
-                "label": "parent",
-                "direction": "input",
-                "dataType": "navigation",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.5
-                }
-              },
-              {
-                "id": "destination",
-                "key": "destination",
-                "label": "destination",
-                "direction": "output",
-                "dataType": "graph",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.5
-                }
-              }
-            ]
-          },
-          "nodeDef": {
-            "key": "arrival-utility",
-            "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Arrival Utility",
-              "size": {
-                "width": 300,
-                "height": 180
-              },
-              "showLabel": false,
-              "data": {
-                "title": "Docs",
-                "body": "Supporting destination.",
-                "destinationRef": "",
-                "destinationLabel": "Open"
-              },
-              "ports": [
-                {
-                  "id": "root",
-                  "key": "root",
-                  "label": "root",
-                  "direction": "bidirectional",
-                  "dataType": "any",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.2
-                  }
-                },
-                {
-                  "id": "parent",
-                  "key": "parent",
-                  "label": "parent",
-                  "direction": "input",
-                  "dataType": "navigation",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.5
-                  }
-                },
-                {
-                  "id": "destination",
-                  "key": "destination",
-                  "label": "destination",
-                  "direction": "output",
-                  "dataType": "graph",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.5
-                  }
-                }
-              ]
-            }
-          },
-          "views": [
-            {
-              "key": "arrival-utility",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-utility",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-utility",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-utility",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            }
-          ]
-        },
-        "_bridge": {
-          "classKey": "arrival-utility",
-          "classRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-          "targetKind": "node-class"
-        }
+        "visibilityRole": "browser"
       }
     },
     {
-      "id": "twilite-zone-boulevard",
-      "type": "arrival-utility",
+      "id": "portal-commons",
+      "type": "portal",
+      "label": "The Commons",
+      "root": false,
+      "position": {
+        "x": -760,
+        "y": -406
+      },
+      "width": 360,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
+        },
+        "memo": "Shared work from other people.",
+        "authority": "navigate",
+        "intent": "external",
+        "src": "tlz://twilite.zone/github/the-commons/root.node",
+        "ref": "tlz://twilite.zone/github/the-commons/root.node",
+        "endpoint": "tlz://twilite.zone/github/the-commons/root.node",
+        "sourceRef": "tlz://twilite.zone/github/the-commons/root.node",
+        "sourcePayload": "node.web.detail",
+        "surfaceId": "root",
+        "target": {
+          "ref": "tlz://twilite.zone/github/the-commons/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "surfaceId": "root",
+          "label": "Open The Commons"
+        },
+        "visibilityRole": "browser"
+      }
+    },
+    {
+      "id": "portal-boulevard",
+      "type": "portal",
       "label": "The Boulevard",
       "root": false,
       "position": {
-        "x": 740,
-        "y": 1840
+        "x": -350,
+        "y": -406
       },
-      "width": 300,
-      "height": 180,
+      "width": 360,
+      "height": 240,
       "ports": [
         {
           "id": "root",
-          "key": "root",
           "label": "root",
           "direction": "bidirectional",
           "dataType": "any",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.2
-          }
+          "angle": 210
         },
         {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "destination",
-          "key": "destination",
-          "label": "destination",
-          "direction": "output",
-          "dataType": "graph",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
+          "id": "left",
+          "label": "left",
           "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 245,
-          "portId": "root"
-        },
-        {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "portId": "parent"
-        },
-        {
-          "id": "destination",
-          "key": "destination",
-          "label": "destination",
-          "direction": "output",
-          "dataType": "graph",
-          "angle": 90,
-          "portId": "destination"
+          "dataType": "value",
+          "angle": 180
         }
       ],
       "visible": true,
@@ -3188,255 +1265,50 @@
         "identity": {
           "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
         },
-        "title": "Beyond this collection",
-        "body": "Follow the Boulevard into more public content and connected work.",
-        "destinationRef": "github://twilite-zone/public/boulevard/root.node",
-        "destinationLabel": "Explore the Boulevard",
+        "memo": "Beyond this collection.",
+        "authority": "navigate",
+        "intent": "external",
+        "src": "tlz://twilite.zone/boulevard/root.node",
+        "ref": "tlz://twilite.zone/boulevard/root.node",
+        "endpoint": "tlz://twilite.zone/boulevard/root.node",
+        "sourceRef": "tlz://twilite.zone/boulevard/root.node",
+        "sourcePayload": "node.web.detail",
+        "surfaceId": "root",
         "target": {
+          "ref": "tlz://twilite.zone/boulevard/root.node",
           "mode": "navigate",
-          "kind": "graph",
-          "ref": "github://twilite-zone/public/boulevard/root.node",
-          "entryPort": "root"
+          "portId": "root",
+          "surfaceId": "root",
+          "label": "Open The Boulevard"
         },
-        "definitionKey": "arrival-utility",
-        "_classBinding": {
-          "key": "arrival-utility",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-          "defaults": {
-            "label": "Arrival Utility",
-            "size": {
-              "width": 300,
-              "height": 180
-            },
-            "showLabel": false,
-            "data": {
-              "title": "Docs",
-              "body": "Supporting destination.",
-              "destinationRef": "",
-              "destinationLabel": "Open"
-            },
-            "ports": [
-              {
-                "id": "root",
-                "key": "root",
-                "label": "root",
-                "direction": "bidirectional",
-                "dataType": "any",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.2
-                }
-              },
-              {
-                "id": "parent",
-                "key": "parent",
-                "label": "parent",
-                "direction": "input",
-                "dataType": "navigation",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.5
-                }
-              },
-              {
-                "id": "destination",
-                "key": "destination",
-                "label": "destination",
-                "direction": "output",
-                "dataType": "graph",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.5
-                }
-              }
-            ]
-          },
-          "nodeDef": {
-            "key": "arrival-utility",
-            "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Arrival Utility",
-              "size": {
-                "width": 300,
-                "height": 180
-              },
-              "showLabel": false,
-              "data": {
-                "title": "Docs",
-                "body": "Supporting destination.",
-                "destinationRef": "",
-                "destinationLabel": "Open"
-              },
-              "ports": [
-                {
-                  "id": "root",
-                  "key": "root",
-                  "label": "root",
-                  "direction": "bidirectional",
-                  "dataType": "any",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.2
-                  }
-                },
-                {
-                  "id": "parent",
-                  "key": "parent",
-                  "label": "parent",
-                  "direction": "input",
-                  "dataType": "navigation",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.5
-                  }
-                },
-                {
-                  "id": "destination",
-                  "key": "destination",
-                  "label": "destination",
-                  "direction": "output",
-                  "dataType": "graph",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.5
-                  }
-                }
-              ]
-            }
-          },
-          "views": [
-            {
-              "key": "arrival-utility",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-utility",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-utility",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-utility",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            }
-          ]
-        },
-        "_bridge": {
-          "classKey": "arrival-utility",
-          "classRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-utility.node-class.node",
-          "targetKind": "node-class"
-        }
+        "visibilityRole": "browser"
       }
     },
     {
-      "id": "twilite-zone-example",
-      "type": "arrival-route",
-      "label": "See a connected example",
+      "id": "portal-twilite",
+      "type": "portal",
+      "label": "Twilite",
       "root": false,
       "position": {
-        "x": 480,
-        "y": 520
+        "x": -760,
+        "y": -116
       },
-      "width": 420,
-      "height": 280,
+      "width": 360,
+      "height": 240,
       "ports": [
         {
           "id": "root",
-          "key": "root",
           "label": "root",
           "direction": "bidirectional",
           "dataType": "any",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.2
-          }
+          "angle": 210
         },
         {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "destination",
-          "key": "destination",
-          "label": "destination",
-          "direction": "output",
-          "dataType": "graph",
-          "angle": 90,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
+          "id": "left",
+          "label": "left",
           "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 245,
-          "portId": "root"
-        },
-        {
-          "id": "parent",
-          "key": "parent",
-          "label": "parent",
-          "direction": "input",
-          "dataType": "navigation",
-          "angle": 270,
-          "portId": "parent"
-        },
-        {
-          "id": "destination",
-          "key": "destination",
-          "label": "destination",
-          "direction": "output",
-          "dataType": "graph",
-          "angle": 90,
-          "portId": "destination"
+          "dataType": "value",
+          "angle": 180
         }
       ],
       "visible": true,
@@ -3445,333 +1317,36 @@
         "identity": {
           "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
         },
-        "eyebrow": "SEE IT IN ACTION",
-        "title": "A decision with its reasons attached",
-        "body": "Follow a workshop plan from evidence to decision to next step. See how the connections preserve the why behind the work.",
-        "destinationRef": "github://twilite-zone/public/tutorial/first-graph/root.node",
-        "destinationLabel": "Explore the example",
-        "routeKind": "Worked example",
-        "prominence": "secondary",
-        "status": "No setup needed",
+        "memo": "What you can build.",
+        "authority": "navigate",
+        "intent": "external",
+        "src": "tlz://twilite.zone/products/twilite/root.node",
+        "ref": "tlz://twilite.zone/products/twilite/root.node",
+        "endpoint": "tlz://twilite.zone/products/twilite/root.node",
+        "sourceRef": "tlz://twilite.zone/products/twilite/root.node",
+        "sourcePayload": "node.web.detail",
+        "surfaceId": "root",
         "target": {
+          "ref": "tlz://twilite.zone/products/twilite/root.node",
           "mode": "navigate",
-          "kind": "graph",
-          "ref": "github://twilite-zone/public/tutorial/first-graph/root.node",
-          "entryPort": "root"
+          "portId": "root",
+          "surfaceId": "root",
+          "label": "Open Twilite"
         },
-        "definitionKey": "arrival-route",
-        "_classBinding": {
-          "key": "arrival-route",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-          "defaults": {
-            "label": "Arrival Route",
-            "size": {
-              "width": 460,
-              "height": 280
-            },
-            "showLabel": false,
-            "data": {
-              "eyebrow": "ROUTE",
-              "title": "Explore",
-              "body": "A clear reason to continue into this part of the graph.",
-              "destinationRef": "",
-              "destinationLabel": "Open",
-              "routeKind": "discovery",
-              "prominence": "primary",
-              "status": "active"
-            },
-            "ports": [
-              {
-                "id": "root",
-                "key": "root",
-                "label": "root",
-                "direction": "bidirectional",
-                "dataType": "any",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.2
-                }
-              },
-              {
-                "id": "parent",
-                "key": "parent",
-                "label": "parent",
-                "direction": "input",
-                "dataType": "navigation",
-                "angle": 270,
-                "position": {
-                  "side": "top",
-                  "offset": 0.5
-                }
-              },
-              {
-                "id": "destination",
-                "key": "destination",
-                "label": "destination",
-                "direction": "output",
-                "dataType": "graph",
-                "angle": 90,
-                "position": {
-                  "side": "bottom",
-                  "offset": 0.5
-                }
-              }
-            ]
-          },
-          "nodeDef": {
-            "key": "arrival-route",
-            "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Arrival Route",
-              "size": {
-                "width": 460,
-                "height": 280
-              },
-              "showLabel": false,
-              "data": {
-                "eyebrow": "ROUTE",
-                "title": "Explore",
-                "body": "A clear reason to continue into this part of the graph.",
-                "destinationRef": "",
-                "destinationLabel": "Open",
-                "routeKind": "discovery",
-                "prominence": "primary",
-                "status": "active"
-              },
-              "ports": [
-                {
-                  "id": "root",
-                  "key": "root",
-                  "label": "root",
-                  "direction": "bidirectional",
-                  "dataType": "any",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.2
-                  }
-                },
-                {
-                  "id": "parent",
-                  "key": "parent",
-                  "label": "parent",
-                  "direction": "input",
-                  "dataType": "navigation",
-                  "angle": 270,
-                  "position": {
-                    "side": "top",
-                    "offset": 0.5
-                  }
-                },
-                {
-                  "id": "destination",
-                  "key": "destination",
-                  "label": "destination",
-                  "direction": "output",
-                  "dataType": "graph",
-                  "angle": 90,
-                  "position": {
-                    "side": "bottom",
-                    "offset": 0.5
-                  }
-                }
-              ]
-            }
-          },
-          "views": [
-            {
-              "key": "arrival-route",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-route",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-route",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            },
-            {
-              "key": "arrival-route",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0",
-              "defaultPorts": []
-            }
-          ]
-        },
-        "_bridge": {
-          "classKey": "arrival-route",
-          "classRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "sourceRef": "github://mikemartinez1974/public/templates/public-arrival-template/classes/arrival-route.node-class.node",
-          "targetKind": "node-class"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-why",
-      "type": "content",
-      "label": "Why keep your work connected?",
-      "position": {
-        "x": -80,
-        "y": 940
-      },
-      "width": 980,
-      "height": 380,
-      "visible": true,
-      "showLabel": false,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270
-        }
-      ],
-      "data": {
-        "identity": {
-          "graphId": "a53f044e-f584-4395-9868-c83ceb05aff1"
-        },
-        "content": {
-          "kind": "markdown",
-          "value": "## Keep the context. Keep building.\n\n**Research with the evidence attached.** Connect a finding to the source and question it answers.\n\n**Plan with the reasons in view.** Keep a decision beside the evidence behind it and the next step it leads to.\n\n**Give AI something you can keep improving.** Use your chatbot or agent to help create and revise the graph, then inspect the result yourself. Your work lives in a portable file you can return to and build on.\n\n### Try it before you commit\n\nBrowse public graphs and try authoring freely. **Saving requires production access.** Open **Document actions → Unlock production tools** to see the account options when you are ready to keep your own work.\n\n[Start your first graph](github://twilite-zone/public/tutorial/start-here/root.node) · [See the subscription details](github://twilite-zone/public/products/twilite/subscription/root.node)\n"
-        }
+        "visibilityRole": "browser"
       }
     }
   ],
   "edges": [
     {
-      "id": "twilite-zone-detail-edge",
-      "type": "default-view",
-      "label": "",
-      "source": "a53f044e-f584-4395-9868-c83ceb05aff1",
-      "sourcePort": "default-view",
-      "sourceHandle": "default-view",
-      "target": "twilite-zone-detail",
-      "targetPort": "root",
-      "targetHandle": "root",
-      "style": {
-        "stroke": "#64748b",
-        "strokeWidth": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {
-        "semanticRole": "default-view",
-        "presentation": {
-          "layer": "contract"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-summary-edge",
+      "id": "root-landing-edge",
       "type": "reference",
-      "label": "",
       "source": "a53f044e-f584-4395-9868-c83ceb05aff1",
-      "sourcePort": "summary-view",
-      "sourceHandle": "summary-view",
-      "target": "twilite-zone-summary",
-      "targetPort": "root",
-      "targetHandle": "root",
-      "style": {
-        "stroke": "#64748b",
-        "strokeWidth": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {
-        "semanticRole": "shared-summary",
-        "presentation": {
-          "layer": "contract"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-icon-edge",
-      "type": "reference",
-      "label": "",
-      "source": "a53f044e-f584-4395-9868-c83ceb05aff1",
-      "sourcePort": "icon-view",
-      "sourceHandle": "icon-view",
-      "target": "twilite-zone-icon",
-      "targetPort": "root",
-      "targetHandle": "root",
-      "style": {
-        "stroke": "#64748b",
-        "strokeWidth": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {
-        "semanticRole": "shared-icon",
-        "presentation": {
-          "layer": "contract"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-glyph-edge",
-      "type": "reference",
-      "label": "",
-      "source": "a53f044e-f584-4395-9868-c83ceb05aff1",
-      "sourcePort": "glyph",
-      "sourceHandle": "glyph",
-      "target": "twilite-zone-glyph",
-      "targetPort": "root",
-      "targetHandle": "root",
-      "style": {
-        "stroke": "#64748b",
-        "strokeWidth": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {
-        "semanticRole": "shared-glyph",
-        "presentation": {
-          "layer": "contract"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-landing-edge",
-      "type": "reference",
-      "label": "",
-      "source": "a53f044e-f584-4395-9868-c83ceb05aff1",
-      "sourcePort": "landing-surface",
+      "target": "root-landing",
       "sourceHandle": "landing-surface",
-      "target": "twilite-zone-arrival",
-      "targetPort": "root",
       "targetHandle": "root",
-      "style": {
-        "stroke": "#64748b",
-        "strokeWidth": 2,
-        "dash": [],
-        "curved": true
-      },
+      "label": "",
+      "style": {},
       "data": {
         "semanticRole": "landing-surface",
         "presentation": {
@@ -3780,229 +1355,65 @@
       }
     },
     {
-      "id": "twilite-zone-port-edge",
-      "type": "reference",
-      "label": "",
+      "id": "root-surface",
+      "type": "surface",
       "source": "a53f044e-f584-4395-9868-c83ceb05aff1",
-      "sourcePort": "port",
-      "sourceHandle": "port",
-      "target": "twilite-zone-summary-port",
-      "targetPort": "root",
+      "target": "root-detail",
+      "sourceHandle": "surfaces",
       "targetHandle": "root",
-      "style": {
-        "stroke": "#64748b",
-        "strokeWidth": 2,
-        "dash": [],
-        "curved": true
-      },
+      "label": "",
+      "style": {},
       "data": {
-        "semanticRole": "exposes-port",
-        "presentation": {
-          "layer": "contract"
-        }
+        "role": "surface",
+        "surfaceId": "web"
       }
     },
     {
-      "id": "twilite-zone-learn-edge",
-      "type": "arrival.offers-route",
-      "label": "start here",
-      "source": "twilite-zone-arrival",
-      "sourcePort": "route-1",
-      "sourceHandle": "route-1",
-      "target": "twilite-zone-learn",
-      "targetPort": "parent",
-      "targetHandle": "parent",
-      "style": {
-        "stroke": "#64748b",
-        "strokeWidth": 2,
-        "dash": [],
-        "curved": true
-      },
+      "id": "root-detail-summary",
+      "type": "view-sequence",
+      "source": "root-detail",
+      "target": "root-summary",
+      "sourceHandle": "sequence-out",
+      "targetHandle": "sequence-in",
+      "label": "",
+      "style": {},
       "data": {
-        "semanticRole": "arrival.offers-route",
-        "presentation": {
-          "layer": "semantic"
-        }
+        "role": "view-sequence"
       }
     },
     {
-      "id": "twilite-zone-example-edge",
-      "type": "arrival.offers-route",
-      "label": "see an example",
-      "source": "twilite-zone-arrival",
-      "sourcePort": "route-2",
-      "sourceHandle": "route-2",
-      "target": "twilite-zone-example",
-      "targetPort": "parent",
-      "targetHandle": "parent",
-      "style": {
-        "stroke": "#64748b",
-        "strokeWidth": 2,
-        "dash": [],
-        "curved": true
-      },
+      "id": "root-summary-icon",
+      "type": "view-sequence",
+      "source": "root-summary",
+      "target": "root-icon",
+      "sourceHandle": "sequence-out",
+      "targetHandle": "sequence-in",
+      "label": "",
+      "style": {},
       "data": {
-        "semanticRole": "arrival.offers-route",
-        "presentation": {
-          "layer": "semantic"
-        }
+        "role": "view-sequence"
       }
     },
     {
-      "id": "twilite-zone-twilite-edge",
-      "type": "arrival.contains",
-      "label": "twilite",
-      "source": "twilite-zone-explore",
-      "sourcePort": "item-1",
-      "sourceHandle": "item-1",
-      "target": "twilite-zone-twilite",
-      "targetPort": "parent",
-      "targetHandle": "parent",
-      "style": {
-        "stroke": "#64748b",
-        "strokeWidth": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {
-        "semanticRole": "arrival.contains",
-        "presentation": {
-          "layer": "semantic"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-commons-edge",
-      "type": "arrival.contains",
-      "label": "commons",
-      "source": "twilite-zone-explore",
-      "sourcePort": "item-2",
-      "sourceHandle": "item-2",
-      "target": "twilite-zone-commons",
-      "targetPort": "parent",
-      "targetHandle": "parent",
-      "style": {
-        "stroke": "#64748b",
-        "strokeWidth": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {
-        "semanticRole": "arrival.contains",
-        "presentation": {
-          "layer": "semantic"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-boulevard-edge",
-      "type": "arrival.contains",
-      "label": "boulevard",
-      "source": "twilite-zone-explore",
-      "sourcePort": "item-3",
-      "sourceHandle": "item-3",
-      "target": "twilite-zone-boulevard",
-      "targetPort": "parent",
-      "targetHandle": "parent",
-      "style": {
-        "stroke": "#64748b",
-        "strokeWidth": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {
-        "semanticRole": "arrival.contains",
-        "presentation": {
-          "layer": "semantic"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-why-edge",
-      "type": "arrival.offers-route",
-      "label": "why Twilite",
-      "source": "twilite-zone-arrival",
-      "sourcePort": "route-3",
-      "sourceHandle": "route-3",
-      "target": "twilite-zone-why",
-      "targetPort": "root",
+      "id": "root-icon-glyph",
+      "type": "view-sequence",
+      "source": "root-icon",
+      "target": "root-glyph",
+      "sourceHandle": "sequence-out",
       "targetHandle": "root",
-      "style": {
-        "stroke": "#64748b",
-        "strokeWidth": 2,
-        "dash": [],
-        "curved": true
-      },
+      "label": "",
+      "style": {},
       "data": {
-        "semanticRole": "arrival.offers-route",
-        "presentation": {
-          "layer": "semantic"
-        }
-      }
-    },
-    {
-      "id": "twilite-zone-explore-edge",
-      "type": "arrival.offers-route",
-      "label": "keep exploring",
-      "source": "twilite-zone-arrival",
-      "sourcePort": "route-4",
-      "sourceHandle": "route-4",
-      "target": "twilite-zone-explore",
-      "targetPort": "parent",
-      "targetHandle": "parent",
-      "style": {
-        "stroke": "#64748b",
-        "strokeWidth": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {
-        "semanticRole": "arrival.offers-route",
-        "presentation": {
-          "layer": "semantic"
-        }
+        "role": "view-sequence"
       }
     }
   ],
   "clusters": [],
   "settings": {
-    "theme": null,
-    "backgroundImage": null,
-    "defaultNodeColor": "#1976d2",
-    "defaultEdgeColor": "",
-    "snapToGrid": true,
-    "gridSize": 20,
-    "edgeRouting": "orthogonal",
-    "layout": {
-      "mode": "manual",
-      "defaultLayout": "layered",
-      "direction": "DOWN",
-      "edgeLaneGapPx": 18,
-      "serpentine": {
-        "maxPerRow": 6
-      },
-      "cycleFallback": {
-        "enabled": true
-      },
-      "elk": {
-        "algorithm": "fixed",
-        "edgeRouting": "ORTHOGONAL",
-        "portConstraints": "FIXED_SIDE",
-        "nodeSpacing": 120,
-        "layeredEdgeSpacing": 80
-      }
-    },
     "github": {
       "repo": "twilite-zone/public",
       "path": "root.node",
-      "branch": "main",
-      "autoCreateRepo": true,
-      "repoVisibility": "private",
-      "seedOnCommit": false,
-      "enableGithubPages": false,
-      "installationId": "120403738"
-    },
-    "autoSave": false
-  },
-  "scripts": []
+      "branch": "main"
+    }
+  }
 }
