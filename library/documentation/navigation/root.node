@@ -1,0 +1,4440 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "title": "Navigation",
+    "description": "One scheme for moving around the workspace, a graph, and what a graph holds: what a click does to each kind of thing, at each distance.",
+    "graphId": "navigation-scheme",
+    "kind": "graph",
+    "version": "0.1.0",
+    "created": "2026-10-12T17:32:08.025Z",
+    "modified": "2026-10-12T17:32:08.025Z",
+    "tags": [
+      "canon",
+      "navigation",
+      "specification"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "navigation-scheme",
+      "label": "Navigation",
+      "type": "declaration",
+      "position": {
+        "x": -1600,
+        "y": -1000
+      },
+      "width": 420,
+      "height": 300,
+      "ports": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 165,
+          "role": "default-view",
+          "allowedEdgeTypes": [
+            "default-view"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-view",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          }
+        },
+        {
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-summary",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          }
+        },
+        {
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-icon",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          }
+        },
+        {
+          "id": "view-sequence",
+          "key": "view-sequence",
+          "label": "first view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 150,
+          "role": "view-sequence",
+          "allowedEdgeTypes": [
+            "view-sequence"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view-sequence",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          }
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-glyph",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "glyph",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          }
+        },
+        {
+          "id": "surface",
+          "key": "surface",
+          "label": "surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 120,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "default-handle",
+          "key": "default-handle",
+          "label": "default handle",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 315,
+          "role": "default-handle",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-handle",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "graphReference",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "boundary-begin",
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 135,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "boundary-end",
+          "key": "boundary-end",
+          "label": "boundary end",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 225,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "landing-surface",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 165,
+          "role": "default-view",
+          "allowedEdgeTypes": [
+            "default-view"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-view",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
+          "portId": "default-view"
+        },
+        {
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-summary",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
+          "portId": "summary-view"
+        },
+        {
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-icon",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
+          "portId": "icon-view"
+        },
+        {
+          "id": "view-sequence",
+          "key": "view-sequence",
+          "label": "first view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 150,
+          "role": "view-sequence",
+          "allowedEdgeTypes": [
+            "view-sequence"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view-sequence",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
+          "portId": "view-sequence"
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-glyph",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "glyph",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
+          "portId": "glyph"
+        },
+        {
+          "id": "surface",
+          "key": "surface",
+          "label": "surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 120,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "surface"
+        },
+        {
+          "id": "default-handle",
+          "key": "default-handle",
+          "label": "default handle",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 315,
+          "role": "default-handle",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-handle",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "graphReference",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "default-handle"
+        },
+        {
+          "id": "boundary-begin",
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 135,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "boundary-begin"
+        },
+        {
+          "id": "boundary-end",
+          "key": "boundary-end",
+          "label": "boundary end",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 225,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "boundary-end"
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "port"
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "landing-surface",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "landing-surface"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "default-view",
+          "label": "default view",
+          "type": "any"
+        },
+        {
+          "key": "summary-view",
+          "label": "summary view",
+          "type": "any"
+        },
+        {
+          "key": "icon-view",
+          "label": "icon view",
+          "type": "any"
+        },
+        {
+          "key": "view-sequence",
+          "label": "first view",
+          "type": "any"
+        },
+        {
+          "key": "glyph",
+          "label": "glyph",
+          "type": "any"
+        },
+        {
+          "key": "surface",
+          "label": "surface",
+          "type": "any"
+        },
+        {
+          "key": "default-handle",
+          "label": "default handle",
+          "type": "any"
+        },
+        {
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "type": "any"
+        },
+        {
+          "key": "boundary-end",
+          "label": "boundary end",
+          "type": "any"
+        },
+        {
+          "key": "port",
+          "label": "port",
+          "type": "any"
+        },
+        {
+          "key": "landing-surface",
+          "label": "landing surface",
+          "type": "any"
+        }
+      ],
+      "data": {
+        "identity": {
+          "graphId": "navigation-scheme",
+          "nodeId": "navigation",
+          "name": "Navigation",
+          "version": "0.1.0",
+          "description": "One scheme for moving around the workspace, a graph, and what a graph holds: what a click does to each kind of thing, at each distance."
+        },
+        "intent": {
+          "kind": "specification",
+          "scope": "navigation"
+        },
+        "declaration": {
+          "kind": "graph",
+          "interfaceContract": {
+            "version": 1,
+            "implicitRootPort": true
+          },
+          "defaultSurfaceId": "web",
+          "surfaces": [
+            {
+              "id": "detail",
+              "kind": "view",
+              "payload": "node.web.detail",
+              "viewNodeId": "navigation-detail"
+            },
+            {
+              "id": "summary",
+              "kind": "view",
+              "payload": "node.web.summary",
+              "viewNodeId": "navigation-summary"
+            },
+            {
+              "id": "icon",
+              "kind": "view",
+              "payload": "node.web.icon",
+              "viewNodeId": "navigation-icon"
+            },
+            {
+              "id": "glyph",
+              "kind": "glyph",
+              "payload": "node.web.glyph",
+              "viewNodeId": "navigation-glyph"
+            },
+            {
+              "id": "landing",
+              "kind": "content",
+              "payload": "node.web.landing",
+              "viewNodeId": "navigation-landing"
+            }
+          ],
+          "landingSurfaceId": "landing"
+        },
+        "glyph": {
+          "kind": "icon",
+          "name": "Explore"
+        },
+        "name": "Navigation",
+        "document": {
+          "url": "tlz://twilite.zone/library/documentation/navigation/root.node"
+        },
+        "events": [
+          {
+            "eventKey": "graph.structure.changed",
+            "label": "Graph structure changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "navigation-glyph",
+      "label": "Navigation glyph",
+      "type": "glyph",
+      "position": {
+        "x": -1600,
+        "y": -640
+      },
+      "width": 220,
+      "height": 140,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "metadata": {
+            "interface": true,
+            "structural": true,
+            "role": "shared-glyph"
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "metadata": {
+            "interface": true,
+            "structural": true,
+            "role": "shared-glyph"
+          },
+          "portId": "root"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
+      "data": {
+        "glyph": {
+          "kind": "icon",
+          "name": "Explore"
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesGlyphDefinition": true
+        },
+        "identity": {
+          "graphId": "navigation-scheme"
+        }
+      }
+    },
+    {
+      "id": "navigation-page-template",
+      "type": "bridge",
+      "label": "Page Template",
+      "root": false,
+      "position": {
+        "x": -1600,
+        "y": -420
+      },
+      "width": 320,
+      "height": 140,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "navigation-scheme"
+        },
+        "memo": "The one Bridge to the Page Template: the masthead, route, settings and section classes all come through it.",
+        "authority": "bridge",
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/templates/page-template/root.node",
+          "role": "import",
+          "resourceKind": "graph",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update",
+            "execute"
+          ]
+        },
+        "target": {
+          "mode": "bridge",
+          "ref": "tlz://twilite.zone/library/templates/page-template/root.node",
+          "kind": "graph",
+          "resourceKind": "graph",
+          "role": "import",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update",
+            "execute"
+          ]
+        }
+      }
+    },
+    {
+      "id": "navigation-landing",
+      "type": "content",
+      "label": "Navigation",
+      "root": true,
+      "position": {
+        "x": -1100,
+        "y": -1000
+      },
+      "width": 820,
+      "height": 1100,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "navigation-scheme"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='width:100%;min-height:100%;box-sizing:border-box;container-type:inline-size;background:#ffffff;font-family:Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#0f172a'><div style='box-sizing:border-box;max-width:900px;margin:0 auto;padding:0 clamp(20px,5cqw,40px) 64px'><div style='padding-top:32px'><header data-role='masthead'><div style='padding:10px 0;border-top:3px solid #0f172a;border-bottom:1px solid #0f172a;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>TWILITE ZONE · NAVIGATION</div><h1 style='margin:40px 0 0;font:500 clamp(40px,9.5cqw,72px)/.98 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.025em;text-wrap:balance;color:#0f172a'>A click means closer</h1><p style='margin:18px 0 0;max-width:36ch;font:italic 400 clamp(20px,3.6cqw,26px)/1.35 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#475569'>One scheme for moving around the workspace, a graph, and what a graph holds. It says what a click does to each kind of thing, at each distance.</p></header></div><div style='padding-top:48px'><div style='display:flex;flex-wrap:wrap;align-items:flex-start;gap:32px 40px'><div style='flex:999 1 380px;min-width:0'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>The idea</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><span style='float:left;padding:6px 10px 0 0;font:500 68px/54px Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#0f172a'>E</span>verything in Twilite is seen at some distance. Far away a graph is a mark; nearer, a card; nearer still, a place with things in it. The same is true of a node inside a graph.</p><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>So one rule can cover all of it. <strong>A click on a thing brings you one step closer to that thing.</strong> Stepping out takes you one step back. Nothing else is needed to move around, and nothing has to be learned twice.</p></section></div><div style='flex:1 1 220px;min-width:0'><section data-role='settings' style='padding-top:10px;border-top:3px solid #0f172a'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#0f172a'>About this scheme</h2><dl style='margin:0;display:grid;grid-template-columns:max-content 1fr;column-gap:12px;border-bottom:1px solid #cbd5e1'><dt style='padding:9px 0 9px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Status</dt><dd style='margin:0;padding:9px 0;border-top:1px solid #cbd5e1;text-align:right;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Agreed. Not yet built.</dd><dt style='padding:9px 0 9px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Agreed</dt><dd style='margin:0;padding:9px 0;border-top:1px solid #cbd5e1;text-align:right;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>12 October 2026</dd><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Built so far</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Nothing. Navigation is being built to this page.</dd><dt style='padding:9px 0 9px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Open questions</dt><dd style='margin:0;padding:9px 0;border-top:1px solid #cbd5e1;text-align:right;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Five, at the end</dd></dl></section></div></div></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Five rules</h2><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>1. A click means closer</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>If the thing is far or small, the camera comes to it. If it is in view, it takes focus. If it already has focus, you go into it. The same three steps for a graph, a node and a Portal.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>2. Stepping out means further</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Escape, the Step out button, or a click on empty space takes you back one step: out of a node to its graph, out of a graph to the workspace. It is always the reverse of the click that got you there.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>3. Going through never closes anything</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Following a Portal or a link opens the other graph beside the one you are in, placed by its relation, and the camera travels to it. The graph you left stays open. Graphs are closed on purpose, never as a side effect.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>4. The app keeps the way back</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Every move is remembered. Back returns you to exactly where you were: the same graph, the same node, the same distance. No graph has to draw a way back for you.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>5. A drag moves, a click travels</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Dragging never navigates. It moves the thing, or pans the view if the thing is pinned or is empty space. Clicking never moves anything.</p></section></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Four distances</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>These are the steps a click moves through. Each is something you can see on screen, not a mode.</p><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Workspace.</strong> Several graphs in view. Each is a mark, an icon or a card, with trunks between them.</li><li style='margin:0 0 6px'><strong>Graph.</strong> One graph fills the view. Its ground, its nodes and its edges are what you see.</li><li style='margin:0 0 6px'><strong>Node.</strong> One node has focus and is large enough to read.</li><li style='margin:0 0 6px'><strong>Inside.</strong> You are working with what the node holds: scrolling its text, following its links.</li></ul></section></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>What a click does</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>For each kind of thing: what a click does at each of the three steps of rule 1, and what a drag does.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A graph’s tile</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> The camera comes to it and frames it.</li><li style='margin:0 0 6px'><strong>In view:</strong> You enter it. It becomes the graph you are in.</li><li style='margin:0 0 6px'><strong>Already has focus:</strong> Nothing more.</li><li style='margin:0 0 6px'><strong>Drag:</strong> By its title bar, moves the tile. By its body, pans.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A tile’s title bar</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> Selects the graph without entering it, for closing, tidying or capturing.</li><li style='margin:0 0 6px'><strong>In view:</strong> The same.</li><li style='margin:0 0 6px'><strong>Already has focus:</strong> The same.</li><li style='margin:0 0 6px'><strong>Drag:</strong> Moves the tile.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A node</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> The camera comes to it.</li><li style='margin:0 0 6px'><strong>In view:</strong> It takes focus and is brought to reading size.</li><li style='margin:0 0 6px'><strong>Already has focus:</strong> You are inside it: its text scrolls, its links answer.</li><li style='margin:0 0 6px'><strong>Drag:</strong> Moves it. If it is pinned, pans.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A Portal</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> The camera comes to it.</li><li style='margin:0 0 6px'><strong>In view:</strong> It takes focus, and shows the face of the graph it opens.</li><li style='margin:0 0 6px'><strong>Already has focus:</strong> You go through. The graph opens beside this one and the camera travels to it.</li><li style='margin:0 0 6px'><strong>Drag:</strong> Moves it.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A link in text, or a Portal-style card</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>A click:</strong> you go through, as with a Portal. One click, because you are already inside the page.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>The ground</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> As a click on its graph’s tile.</li><li style='margin:0 0 6px'><strong>In view:</strong> Focus returns to the graph as a whole. No node is selected.</li><li style='margin:0 0 6px'><strong>Already has focus:</strong> The same.</li><li style='margin:0 0 6px'><strong>Drag:</strong> Pans. By its title bar, moves it.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>An edge inside a graph</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> The camera frames both of its ends.</li><li style='margin:0 0 6px'><strong>In view:</strong> It is selected, and its two ends are lit.</li><li style='margin:0 0 6px'><strong>Already has focus:</strong> You travel to the end you are not at.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A port on a node</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> As a click on its node.</li><li style='margin:0 0 6px'><strong>In view, or already in focus:</strong> You follow its edge to the node at the other end.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A trunk between two graphs</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> The camera frames both graphs.</li><li style='margin:0 0 6px'><strong>In view:</strong> The stroke under the pointer is selected. Its wraps and ports are lit.</li><li style='margin:0 0 6px'><strong>Already has focus:</strong> You travel to the graph you are not in.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A handle on a tile’s border</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>A click, at any distance:</strong> you travel to the graph it faces.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A port on a tile’s border</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>A click, at any distance:</strong> you travel to the node that owns it, inside its graph.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>Empty space</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> Clears the selection.</li><li style='margin:0 0 6px'><strong>In view:</strong> Steps out one level.</li><li style='margin:0 0 6px'><strong>Drag:</strong> Pans.</li></ul></section></div><div style='padding-top:48px'><div style='display:flex;flex-wrap:wrap;align-items:flex-start;gap:32px 40px'><div style='flex:999 1 380px;min-width:0'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Going back, out, up and home</h2><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>Step out</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>One step further: out of a node to its graph, out of a graph to the workspace. Escape does the same. It is rule 2.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>Back and Forward</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Along the path you have travelled. Each stop is a graph, a node and a distance. Nothing opens or closes. This replaces a way-back Portal drawn into each graph.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>The trail</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>A line near the address bar that names the graphs you came through, oldest first. A click on a name travels there.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>Up</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>There is no separate “up”. In the workspace you can see what this graph was opened from, by the trunk between them, and click it. So no graph has to declare a parent.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>Home</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Travels to the root. Opens it if it is not open.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>The address bar</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Shows the address of the graph you are in. An address typed there opens beside what is already open, and the camera travels to it. The workspace is never replaced by accident.</p></section></div><div style='flex:1 1 220px;min-width:0'><section data-role='settings' style='padding-top:10px;border-top:3px solid #0f172a'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#0f172a'>Keys and modifiers</h2><dl style='margin:0;display:grid;grid-template-columns:max-content 1fr;column-gap:12px;border-bottom:1px solid #cbd5e1'><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Ctrl or ⌘ + click</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Opens what you clicked beside this graph, and leaves you where you are.</dd><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Shift + click</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Adds to the selection, or takes away from it. Never travels.</dd><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Middle click</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Opens it in a new browser tab.</dd><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>→ and ←</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Walk: to the next node along the edge leaving the one in focus, and back again. Where there is more than one way on, the edges are offered by name.</dd><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Enter</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>The same as a click on the thing in focus: one step closer.</dd><dt style='padding:9px 0 9px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Escape</dt><dd style='margin:0;padding:9px 0;border-top:1px solid #cbd5e1;text-align:right;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Step out.</dd></dl></section></div></div></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>When editing</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Editing adds to this; it does not change it. The first two steps are the same: the camera comes to a thing, then it takes focus. The third step is where editing differs: going into a node means editing it, not reading it.</p><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>So in edit mode a Portal is not gone through by clicking it a third time. It is gone through by the Open control in its title bar, or by Ctrl-click. That keeps a click from ever leaving the graph you are working on by surprise.</p></section></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>What this removes</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Things graphs or people do today that the scheme makes unnecessary.</p><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'>The “way back” Portal beside every scene. Back, the trail and the trunks do that job.</li><li style='margin:0 0 6px'>The choice between “open” and “open alongside”. Going through always opens beside; Ctrl-click only decides whether you travel.</li><li style='margin:0 0 6px'>Double-click as a way to enter. Two clicks do it, at any speed.</li><li style='margin:0 0 6px'>Different behaviour for a Portal, a link and a card. They are one thing: a way through.</li></ul></section></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Still to decide</h2><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>One click or two for a Portal.</strong> This scheme takes two once it is in view: one to look at it, one to go through. A link in text takes one. If a Portal should also take one, it stops being a thing you can look at without leaving.</li><li style='margin:0 0 6px'><strong>How many graphs stay open.</strong> If nothing closes by itself, a long walk leaves a long row of graphs. They could fade to marks with distance, or the oldest could close after some number.</li><li style='margin:0 0 6px'><strong>Whether editing really needs a different third step,</strong> or whether a Portal should be gone through the same way in both modes.</li><li style='margin:0 0 6px'><strong>What the trail shows</strong> when you have looped back to a graph you already visited.</li><li style='margin:0 0 6px'><strong>Whether walking belongs on the arrow keys,</strong> which also nudge a selected node when editing.</li></ul></section></div></div></div>"
+        }
+      },
+      "positionLocked": true
+    },
+    {
+      "id": "navigation-detail",
+      "type": "view",
+      "label": "Navigation page",
+      "root": false,
+      "position": {
+        "x": -1600,
+        "y": 880
+      },
+      "width": 760,
+      "height": 900,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "navigation-scheme"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "semanticLevel": "detail",
+        "content": {
+          "kind": "html",
+          "value": "<div style='width:100%;min-height:100%;box-sizing:border-box;container-type:inline-size;background:#ffffff;font-family:Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#0f172a'><div style='box-sizing:border-box;max-width:900px;margin:0 auto;padding:0 clamp(20px,5cqw,40px) 64px'><div style='padding-top:32px'><header data-role='masthead'><div style='padding:10px 0;border-top:3px solid #0f172a;border-bottom:1px solid #0f172a;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>TWILITE ZONE · NAVIGATION</div><h1 style='margin:40px 0 0;font:500 clamp(40px,9.5cqw,72px)/.98 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.025em;text-wrap:balance;color:#0f172a'>A click means closer</h1><p style='margin:18px 0 0;max-width:36ch;font:italic 400 clamp(20px,3.6cqw,26px)/1.35 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#475569'>One scheme for moving around the workspace, a graph, and what a graph holds. It says what a click does to each kind of thing, at each distance.</p></header></div><div style='padding-top:48px'><div style='display:flex;flex-wrap:wrap;align-items:flex-start;gap:32px 40px'><div style='flex:999 1 380px;min-width:0'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>The idea</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><span style='float:left;padding:6px 10px 0 0;font:500 68px/54px Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#0f172a'>E</span>verything in Twilite is seen at some distance. Far away a graph is a mark; nearer, a card; nearer still, a place with things in it. The same is true of a node inside a graph.</p><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>So one rule can cover all of it. <strong>A click on a thing brings you one step closer to that thing.</strong> Stepping out takes you one step back. Nothing else is needed to move around, and nothing has to be learned twice.</p></section></div><div style='flex:1 1 220px;min-width:0'><section data-role='settings' style='padding-top:10px;border-top:3px solid #0f172a'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#0f172a'>About this scheme</h2><dl style='margin:0;display:grid;grid-template-columns:max-content 1fr;column-gap:12px;border-bottom:1px solid #cbd5e1'><dt style='padding:9px 0 9px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Status</dt><dd style='margin:0;padding:9px 0;border-top:1px solid #cbd5e1;text-align:right;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Agreed. Not yet built.</dd><dt style='padding:9px 0 9px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Agreed</dt><dd style='margin:0;padding:9px 0;border-top:1px solid #cbd5e1;text-align:right;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>12 October 2026</dd><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Built so far</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Nothing. Navigation is being built to this page.</dd><dt style='padding:9px 0 9px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Open questions</dt><dd style='margin:0;padding:9px 0;border-top:1px solid #cbd5e1;text-align:right;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Five, at the end</dd></dl></section></div></div></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Five rules</h2><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>1. A click means closer</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>If the thing is far or small, the camera comes to it. If it is in view, it takes focus. If it already has focus, you go into it. The same three steps for a graph, a node and a Portal.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>2. Stepping out means further</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Escape, the Step out button, or a click on empty space takes you back one step: out of a node to its graph, out of a graph to the workspace. It is always the reverse of the click that got you there.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>3. Going through never closes anything</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Following a Portal or a link opens the other graph beside the one you are in, placed by its relation, and the camera travels to it. The graph you left stays open. Graphs are closed on purpose, never as a side effect.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>4. The app keeps the way back</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Every move is remembered. Back returns you to exactly where you were: the same graph, the same node, the same distance. No graph has to draw a way back for you.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>5. A drag moves, a click travels</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Dragging never navigates. It moves the thing, or pans the view if the thing is pinned or is empty space. Clicking never moves anything.</p></section></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Four distances</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>These are the steps a click moves through. Each is something you can see on screen, not a mode.</p><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Workspace.</strong> Several graphs in view. Each is a mark, an icon or a card, with trunks between them.</li><li style='margin:0 0 6px'><strong>Graph.</strong> One graph fills the view. Its ground, its nodes and its edges are what you see.</li><li style='margin:0 0 6px'><strong>Node.</strong> One node has focus and is large enough to read.</li><li style='margin:0 0 6px'><strong>Inside.</strong> You are working with what the node holds: scrolling its text, following its links.</li></ul></section></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>What a click does</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>For each kind of thing: what a click does at each of the three steps of rule 1, and what a drag does.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A graph’s tile</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> The camera comes to it and frames it.</li><li style='margin:0 0 6px'><strong>In view:</strong> You enter it. It becomes the graph you are in.</li><li style='margin:0 0 6px'><strong>Already has focus:</strong> Nothing more.</li><li style='margin:0 0 6px'><strong>Drag:</strong> By its title bar, moves the tile. By its body, pans.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A tile’s title bar</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> Selects the graph without entering it, for closing, tidying or capturing.</li><li style='margin:0 0 6px'><strong>In view:</strong> The same.</li><li style='margin:0 0 6px'><strong>Already has focus:</strong> The same.</li><li style='margin:0 0 6px'><strong>Drag:</strong> Moves the tile.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A node</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> The camera comes to it.</li><li style='margin:0 0 6px'><strong>In view:</strong> It takes focus and is brought to reading size.</li><li style='margin:0 0 6px'><strong>Already has focus:</strong> You are inside it: its text scrolls, its links answer.</li><li style='margin:0 0 6px'><strong>Drag:</strong> Moves it. If it is pinned, pans.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A Portal</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> The camera comes to it.</li><li style='margin:0 0 6px'><strong>In view:</strong> It takes focus, and shows the face of the graph it opens.</li><li style='margin:0 0 6px'><strong>Already has focus:</strong> You go through. The graph opens beside this one and the camera travels to it.</li><li style='margin:0 0 6px'><strong>Drag:</strong> Moves it.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A link in text, or a Portal-style card</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>A click:</strong> you go through, as with a Portal. One click, because you are already inside the page.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>The ground</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> As a click on its graph’s tile.</li><li style='margin:0 0 6px'><strong>In view:</strong> Focus returns to the graph as a whole. No node is selected.</li><li style='margin:0 0 6px'><strong>Already has focus:</strong> The same.</li><li style='margin:0 0 6px'><strong>Drag:</strong> Pans. By its title bar, moves it.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>An edge inside a graph</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> The camera frames both of its ends.</li><li style='margin:0 0 6px'><strong>In view:</strong> It is selected, and its two ends are lit.</li><li style='margin:0 0 6px'><strong>Already has focus:</strong> You travel to the end you are not at.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A port on a node</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> As a click on its node.</li><li style='margin:0 0 6px'><strong>In view, or already in focus:</strong> You follow its edge to the node at the other end.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A trunk between two graphs</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> The camera frames both graphs.</li><li style='margin:0 0 6px'><strong>In view:</strong> The stroke under the pointer is selected. Its wraps and ports are lit.</li><li style='margin:0 0 6px'><strong>Already has focus:</strong> You travel to the graph you are not in.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A handle on a tile’s border</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>A click, at any distance:</strong> you travel to the graph it faces.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>A port on a tile’s border</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>A click, at any distance:</strong> you travel to the node that owns it, inside its graph.</li></ul><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>Empty space</h3><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Far or small:</strong> Clears the selection.</li><li style='margin:0 0 6px'><strong>In view:</strong> Steps out one level.</li><li style='margin:0 0 6px'><strong>Drag:</strong> Pans.</li></ul></section></div><div style='padding-top:48px'><div style='display:flex;flex-wrap:wrap;align-items:flex-start;gap:32px 40px'><div style='flex:999 1 380px;min-width:0'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Going back, out, up and home</h2><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>Step out</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>One step further: out of a node to its graph, out of a graph to the workspace. Escape does the same. It is rule 2.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>Back and Forward</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Along the path you have travelled. Each stop is a graph, a node and a distance. Nothing opens or closes. This replaces a way-back Portal drawn into each graph.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>The trail</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>A line near the address bar that names the graphs you came through, oldest first. A click on a name travels there.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>Up</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>There is no separate “up”. In the workspace you can see what this graph was opened from, by the trunk between them, and click it. So no graph has to declare a parent.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>Home</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Travels to the root. Opens it if it is not open.</p><h3 style='margin:22px 0 8px;font:700 15px/20px system-ui;color:#0f172a'>The address bar</h3><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Shows the address of the graph you are in. An address typed there opens beside what is already open, and the camera travels to it. The workspace is never replaced by accident.</p></section></div><div style='flex:1 1 220px;min-width:0'><section data-role='settings' style='padding-top:10px;border-top:3px solid #0f172a'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#0f172a'>Keys and modifiers</h2><dl style='margin:0;display:grid;grid-template-columns:max-content 1fr;column-gap:12px;border-bottom:1px solid #cbd5e1'><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Ctrl or ⌘ + click</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Opens what you clicked beside this graph, and leaves you where you are.</dd><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Shift + click</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Adds to the selection, or takes away from it. Never travels.</dd><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Middle click</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Opens it in a new browser tab.</dd><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>→ and ←</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Walk: to the next node along the edge leaving the one in focus, and back again. Where there is more than one way on, the edges are offered by name.</dd><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Enter</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>The same as a click on the thing in focus: one step closer.</dd><dt style='padding:9px 0 9px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Escape</dt><dd style='margin:0;padding:9px 0;border-top:1px solid #cbd5e1;text-align:right;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>Step out.</dd></dl></section></div></div></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>When editing</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Editing adds to this; it does not change it. The first two steps are the same: the camera comes to a thing, then it takes focus. The third step is where editing differs: going into a node means editing it, not reading it.</p><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>So in edit mode a Portal is not gone through by clicking it a third time. It is gone through by the Open control in its title bar, or by Ctrl-click. That keeps a click from ever leaving the graph you are working on by surprise.</p></section></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>What this removes</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Things graphs or people do today that the scheme makes unnecessary.</p><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'>The “way back” Portal beside every scene. Back, the trail and the trunks do that job.</li><li style='margin:0 0 6px'>The choice between “open” and “open alongside”. Going through always opens beside; Ctrl-click only decides whether you travel.</li><li style='margin:0 0 6px'>Double-click as a way to enter. Two clicks do it, at any speed.</li><li style='margin:0 0 6px'>Different behaviour for a Portal, a link and a card. They are one thing: a way through.</li></ul></section></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Still to decide</h2><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>One click or two for a Portal.</strong> This scheme takes two once it is in view: one to look at it, one to go through. A link in text takes one. If a Portal should also take one, it stops being a thing you can look at without leaving.</li><li style='margin:0 0 6px'><strong>How many graphs stay open.</strong> If nothing closes by itself, a long walk leaves a long row of graphs. They could fade to marks with distance, or the oldest could close after some number.</li><li style='margin:0 0 6px'><strong>Whether editing really needs a different third step,</strong> or whether a Portal should be gone through the same way in both modes.</li><li style='margin:0 0 6px'><strong>What the trail shows</strong> when you have looped back to a graph you already visited.</li><li style='margin:0 0 6px'><strong>Whether walking belongs on the arrow keys,</strong> which also nudge a selected node when editing.</li></ul></section></div></div></div>"
+        },
+        "memo": "",
+        "link": ""
+      }
+    },
+    {
+      "id": "navigation-summary",
+      "type": "view",
+      "label": "Navigation summary",
+      "root": false,
+      "position": {
+        "x": -780,
+        "y": 880
+      },
+      "width": 300,
+      "height": 170,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "navigation-scheme"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "semanticLevel": "summary",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;min-height:100%;padding:clamp(14px,7.33cqw,33px) clamp(16px,8.00cqw,36px);border-radius:18px;background:#ffffff;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column'><div style='margin-bottom:clamp(7px,3.33cqw,15px);font-weight:800;font-size:clamp(7px,3.67cqw,17px);line-height:1.3;font-family:system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>TWILITE ZONE · NAVIGATION</div><div style='font-weight:500;font-size:clamp(21px,10.67cqw,48px);line-height:1;font-family:Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>A click means closer</div><div style='margin-top:auto;padding-top:clamp(5px,2.67cqw,12px);font-weight:400;font-size:clamp(8px,4.00cqw,18px);line-height:1.3;font-family:system-ui;color:#475569'>11 pieces</div></div>"
+        },
+        "memo": "",
+        "link": ""
+      }
+    },
+    {
+      "id": "navigation-icon",
+      "type": "view",
+      "label": "Navigation icon",
+      "root": false,
+      "position": {
+        "x": -420,
+        "y": 880
+      },
+      "width": 120,
+      "height": 110,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "navigation-scheme"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "semanticLevel": "icon",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;min-height:100%;padding:clamp(9px,11.67cqw,21px);border-radius:18px;background:#ede9fe;border:1px solid #ddd6fe;color:#0f172a;overflow:hidden;display:flex;flex-direction:column;justify-content:center'><div style='font-weight:800;font-size:clamp(20px,25.00cqw,45px);line-height:1;font-family:system-ui;color:#6d28d9'>A</div><div style='margin-top:clamp(5px,6.67cqw,12px);font-weight:800;font-size:clamp(8px,10.83cqw,20px);line-height:1.2;font-family:system-ui'>A click means closer</div></div>"
+        },
+        "memo": "",
+        "link": ""
+      }
+    },
+    {
+      "id": "on-masthead-changed",
+      "type": "event-handler",
+      "label": "Any masthead changed",
+      "root": false,
+      "position": {
+        "x": 1480,
+        "y": -1000
+      },
+      "width": 400,
+      "height": 280,
+      "ports": [
+        {
+          "id": "trigger",
+          "key": "trigger",
+          "label": "Event",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Invocation",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0
+        }
+      ],
+      "handles": [
+        {
+          "id": "trigger",
+          "key": "trigger",
+          "label": "Event",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180,
+          "portId": "trigger"
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Invocation",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0,
+          "portId": "result"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "navigation-scheme"
+        },
+        "enabled": true,
+        "trigger": {
+          "sourceClassKey": "page-masthead",
+          "eventKey": "node.changed"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Bolt"
+          }
+        }
+      }
+    },
+    {
+      "id": "on-route-changed",
+      "type": "event-handler",
+      "label": "Any route changed",
+      "root": false,
+      "position": {
+        "x": 1480,
+        "y": -660
+      },
+      "width": 400,
+      "height": 280,
+      "ports": [
+        {
+          "id": "trigger",
+          "key": "trigger",
+          "label": "Event",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Invocation",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0
+        }
+      ],
+      "handles": [
+        {
+          "id": "trigger",
+          "key": "trigger",
+          "label": "Event",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180,
+          "portId": "trigger"
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Invocation",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0,
+          "portId": "result"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "navigation-scheme"
+        },
+        "enabled": true,
+        "trigger": {
+          "sourceClassKey": "page-route",
+          "eventKey": "node.changed"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Bolt"
+          }
+        }
+      }
+    },
+    {
+      "id": "on-section-changed",
+      "type": "event-handler",
+      "label": "Any section changed",
+      "root": false,
+      "position": {
+        "x": 1480,
+        "y": -320
+      },
+      "width": 400,
+      "height": 280,
+      "ports": [
+        {
+          "id": "trigger",
+          "key": "trigger",
+          "label": "Event",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Invocation",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0
+        }
+      ],
+      "handles": [
+        {
+          "id": "trigger",
+          "key": "trigger",
+          "label": "Event",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180,
+          "portId": "trigger"
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Invocation",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0,
+          "portId": "result"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "navigation-scheme"
+        },
+        "enabled": true,
+        "trigger": {
+          "sourceClassKey": "page-section",
+          "eventKey": "node.changed"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Bolt"
+          }
+        }
+      }
+    },
+    {
+      "id": "on-settings-changed",
+      "type": "event-handler",
+      "label": "Any settings list changed",
+      "root": false,
+      "position": {
+        "x": 1480,
+        "y": 20
+      },
+      "width": 400,
+      "height": 280,
+      "ports": [
+        {
+          "id": "trigger",
+          "key": "trigger",
+          "label": "Event",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Invocation",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0
+        }
+      ],
+      "handles": [
+        {
+          "id": "trigger",
+          "key": "trigger",
+          "label": "Event",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180,
+          "portId": "trigger"
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Invocation",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0,
+          "portId": "result"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "navigation-scheme"
+        },
+        "enabled": true,
+        "trigger": {
+          "sourceClassKey": "page-settings",
+          "eventKey": "node.changed"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Bolt"
+          }
+        }
+      }
+    },
+    {
+      "id": "on-structure-changed",
+      "type": "event-handler",
+      "label": "Graph structure changed",
+      "root": false,
+      "position": {
+        "x": 1480,
+        "y": 360
+      },
+      "width": 400,
+      "height": 280,
+      "ports": [
+        {
+          "id": "trigger",
+          "key": "trigger",
+          "label": "Event",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Invocation",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0
+        }
+      ],
+      "handles": [
+        {
+          "id": "trigger",
+          "key": "trigger",
+          "label": "Event",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180,
+          "portId": "trigger"
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Invocation",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0,
+          "portId": "result"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "navigation-scheme"
+        },
+        "enabled": true,
+        "trigger": {
+          "sourceNodeId": "navigation-scheme",
+          "eventKey": "graph.structure.changed"
+        },
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Bolt"
+          }
+        }
+      }
+    },
+    {
+      "id": "assemble-page-method",
+      "type": "method",
+      "label": "Assemble the page",
+      "root": false,
+      "position": {
+        "x": 1960,
+        "y": -320
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "call",
+          "key": "call",
+          "label": "Call",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Result",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0
+        }
+      ],
+      "handles": [
+        {
+          "id": "call",
+          "key": "call",
+          "label": "Call",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180,
+          "portId": "call"
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Result",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0,
+          "portId": "result"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "scriptName": "Assemble the page",
+        "parameters": [],
+        "source": "",
+        "effects": [
+          {
+            "kind": "update-node",
+            "targets": [
+              "navigation-icon",
+              "navigation-summary",
+              "navigation-detail",
+              "navigation-landing"
+            ]
+          }
+        ],
+        "allowMutations": true,
+        "dryRun": false,
+        "identity": {
+          "graphId": "navigation-scheme"
+        },
+        "bridgedMethod": {
+          "bridgeNodeId": "navigation-page-template",
+          "key": "assemble-page-method"
+        }
+      }
+    },
+    {
+      "id": "navigation-masthead",
+      "type": "page-masthead",
+      "label": "A click means closer",
+      "position": {
+        "x": -180,
+        "y": -1000
+      },
+      "width": 520,
+      "height": 260,
+      "data": {
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Abc"
+          },
+          "baseLevel": "detail"
+        },
+        "definitionKey": "page-masthead",
+        "_classBinding": {
+          "key": "page-masthead",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-masthead.node-class.node",
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-masthead.node-class.node",
+          "identity": {
+            "graphId": "page-masthead-class",
+            "name": "Page Masthead",
+            "version": "0.5.0",
+            "description": ""
+          },
+          "intent": "node-class",
+          "meaning": "",
+          "description": "",
+          "defaults": {
+            "label": "Page Masthead",
+            "size": {
+              "width": 520,
+              "height": 260
+            },
+            "showLabel": false,
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 270,
+                "position": {
+                  "side": "top",
+                  "offset": 0.2
+                }
+              }
+            ],
+            "data": {
+              "eyebrow": "",
+              "title": "Page title",
+              "subtitle": "",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Abc"
+                }
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "page-masthead",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-masthead.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Page Masthead",
+              "size": {
+                "width": 520,
+                "height": 260
+              },
+              "showLabel": false,
+              "data": {
+                "eyebrow": "",
+                "title": "Page title",
+                "subtitle": "",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Abc"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.2
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Page Masthead changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          },
+          "views": [
+            {
+              "key": "page-masthead",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-masthead.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-masthead",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-masthead.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-masthead",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-masthead.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-masthead",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-masthead.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            }
+          ],
+          "nodeView": {
+            "key": "page-masthead",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-masthead.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "page-masthead",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-masthead.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "bridge": {
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-masthead.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "navigation-page-template",
+          "sourceBridgeNodeId": "navigation-page-template",
+          "sourceBridgeLabel": "Page Template",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-masthead.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "classKey": "page-masthead",
+          "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-masthead.node-class.node"
+        },
+        "eyebrow": "TWILITE ZONE · NAVIGATION",
+        "title": "A click means closer",
+        "subtitle": "One scheme for moving around the workspace, a graph, and what a graph holds. It says what a click does to each kind of thing, at each distance.",
+        "identity": {
+          "graphId": "navigation-scheme"
+        }
+      },
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "side": "top",
+          "offset": 0.2,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "visible": false,
+      "resizable": true,
+      "portPosition": "center",
+      "showLabel": false
+    },
+    {
+      "id": "navigation-idea",
+      "type": "page-section",
+      "label": "The idea",
+      "position": {
+        "x": -180,
+        "y": -640
+      },
+      "width": 520,
+      "height": 320,
+      "data": {
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Article"
+          },
+          "baseLevel": "detail"
+        },
+        "definitionKey": "page-section",
+        "_classBinding": {
+          "key": "page-section",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "identity": {
+            "graphId": "page-section-class",
+            "name": "Page Section",
+            "version": "0.8.1",
+            "description": ""
+          },
+          "intent": "node-class",
+          "meaning": "",
+          "description": "",
+          "defaults": {
+            "label": "Page Section",
+            "size": {
+              "width": 520,
+              "height": 320
+            },
+            "showLabel": false,
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 270,
+                "position": {
+                  "side": "top",
+                  "offset": 0.2
+                }
+              }
+            ],
+            "data": {
+              "title": "Section title",
+              "body": "What this section says.",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Article"
+                }
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "page-section",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Page Section",
+              "size": {
+                "width": 520,
+                "height": 320
+              },
+              "showLabel": false,
+              "data": {
+                "title": "Section title",
+                "body": "What this section says.",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Article"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.2
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Page Section changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          },
+          "views": [
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            }
+          ],
+          "nodeView": {
+            "key": "page-section",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "page-section",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "bridge": {
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "navigation-page-template",
+          "sourceBridgeNodeId": "navigation-page-template",
+          "sourceBridgeLabel": "Page Template",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "classKey": "page-section",
+          "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "title": "The idea",
+        "body": "Everything in Twilite is seen at some distance. Far away a graph is a mark; nearer, a card; nearer still, a place with things in it. The same is true of a node inside a graph.\n\nSo one rule can cover all of it. **A click on a thing brings you one step closer to that thing.** Stepping out takes you one step back. Nothing else is needed to move around, and nothing has to be learned twice.",
+        "identity": {
+          "graphId": "navigation-scheme"
+        }
+      },
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "side": "top",
+          "offset": 0.2,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "visible": false,
+      "resizable": true,
+      "portPosition": "center",
+      "showLabel": false
+    },
+    {
+      "id": "navigation-about",
+      "type": "page-settings",
+      "label": "About this scheme",
+      "position": {
+        "x": 380,
+        "y": -1000
+      },
+      "width": 520,
+      "height": 320,
+      "data": {
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Settings"
+          },
+          "baseLevel": "detail"
+        },
+        "definitionKey": "page-settings",
+        "_classBinding": {
+          "key": "page-settings",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+          "identity": {
+            "graphId": "page-settings-class",
+            "name": "Page Settings",
+            "version": "0.5.0",
+            "description": ""
+          },
+          "intent": "node-class",
+          "meaning": "",
+          "description": "",
+          "defaults": {
+            "label": "Page Settings",
+            "size": {
+              "width": 520,
+              "height": 320
+            },
+            "showLabel": false,
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 270,
+                "position": {
+                  "side": "top",
+                  "offset": 0.2
+                }
+              }
+            ],
+            "data": {
+              "title": "Settings",
+              "rows": [
+                {
+                  "label": "Setting",
+                  "value": "Value"
+                }
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Settings"
+                }
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "page-settings",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Page Settings",
+              "size": {
+                "width": 520,
+                "height": 320
+              },
+              "showLabel": false,
+              "data": {
+                "title": "Settings",
+                "rows": [
+                  {
+                    "label": "Setting",
+                    "value": "Value"
+                  }
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Settings"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.2
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Page Settings changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          },
+          "views": [
+            {
+              "key": "page-settings",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-settings",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-settings",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-settings",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            }
+          ],
+          "nodeView": {
+            "key": "page-settings",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "page-settings",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "bridge": {
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "navigation-page-template",
+          "sourceBridgeNodeId": "navigation-page-template",
+          "sourceBridgeLabel": "Page Template",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "classKey": "page-settings",
+          "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node"
+        },
+        "title": "About this scheme",
+        "rows": [
+          {
+            "label": "Status",
+            "value": "Agreed. Not yet built."
+          },
+          {
+            "label": "Agreed",
+            "value": "12 October 2026"
+          },
+          {
+            "label": "Built so far",
+            "value": "Nothing. Navigation is being built to this page."
+          },
+          {
+            "label": "Open questions",
+            "value": "Five, at the end"
+          }
+        ],
+        "identity": {
+          "graphId": "navigation-scheme"
+        }
+      },
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "side": "top",
+          "offset": 0.2,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "visible": false,
+      "resizable": true,
+      "portPosition": "center",
+      "showLabel": false
+    },
+    {
+      "id": "navigation-rules",
+      "type": "page-section",
+      "label": "Five rules",
+      "position": {
+        "x": 380,
+        "y": -640
+      },
+      "width": 520,
+      "height": 320,
+      "data": {
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Article"
+          },
+          "baseLevel": "detail"
+        },
+        "definitionKey": "page-section",
+        "_classBinding": {
+          "key": "page-section",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "identity": {
+            "graphId": "page-section-class",
+            "name": "Page Section",
+            "version": "0.8.1",
+            "description": ""
+          },
+          "intent": "node-class",
+          "meaning": "",
+          "description": "",
+          "defaults": {
+            "label": "Page Section",
+            "size": {
+              "width": 520,
+              "height": 320
+            },
+            "showLabel": false,
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 270,
+                "position": {
+                  "side": "top",
+                  "offset": 0.2
+                }
+              }
+            ],
+            "data": {
+              "title": "Section title",
+              "body": "What this section says.",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Article"
+                }
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "page-section",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Page Section",
+              "size": {
+                "width": 520,
+                "height": 320
+              },
+              "showLabel": false,
+              "data": {
+                "title": "Section title",
+                "body": "What this section says.",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Article"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.2
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Page Section changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          },
+          "views": [
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            }
+          ],
+          "nodeView": {
+            "key": "page-section",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "page-section",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "bridge": {
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "navigation-page-template",
+          "sourceBridgeNodeId": "navigation-page-template",
+          "sourceBridgeLabel": "Page Template",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "classKey": "page-section",
+          "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "title": "Five rules",
+        "body": "## 1. A click means closer\n\nIf the thing is far or small, the camera comes to it. If it is in view, it takes focus. If it already has focus, you go into it. The same three steps for a graph, a node and a Portal.\n\n## 2. Stepping out means further\n\nEscape, the Step out button, or a click on empty space takes you back one step: out of a node to its graph, out of a graph to the workspace. It is always the reverse of the click that got you there.\n\n## 3. Going through never closes anything\n\nFollowing a Portal or a link opens the other graph beside the one you are in, placed by its relation, and the camera travels to it. The graph you left stays open. Graphs are closed on purpose, never as a side effect.\n\n## 4. The app keeps the way back\n\nEvery move is remembered. Back returns you to exactly where you were: the same graph, the same node, the same distance. No graph has to draw a way back for you.\n\n## 5. A drag moves, a click travels\n\nDragging never navigates. It moves the thing, or pans the view if the thing is pinned or is empty space. Clicking never moves anything.",
+        "identity": {
+          "graphId": "navigation-scheme"
+        }
+      },
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "side": "top",
+          "offset": 0.2,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "visible": false,
+      "resizable": true,
+      "portPosition": "center",
+      "showLabel": false
+    },
+    {
+      "id": "navigation-distances",
+      "type": "page-section",
+      "label": "Four distances",
+      "position": {
+        "x": -180,
+        "y": -280
+      },
+      "width": 520,
+      "height": 320,
+      "data": {
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Article"
+          },
+          "baseLevel": "detail"
+        },
+        "definitionKey": "page-section",
+        "_classBinding": {
+          "key": "page-section",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "identity": {
+            "graphId": "page-section-class",
+            "name": "Page Section",
+            "version": "0.8.1",
+            "description": ""
+          },
+          "intent": "node-class",
+          "meaning": "",
+          "description": "",
+          "defaults": {
+            "label": "Page Section",
+            "size": {
+              "width": 520,
+              "height": 320
+            },
+            "showLabel": false,
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 270,
+                "position": {
+                  "side": "top",
+                  "offset": 0.2
+                }
+              }
+            ],
+            "data": {
+              "title": "Section title",
+              "body": "What this section says.",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Article"
+                }
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "page-section",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Page Section",
+              "size": {
+                "width": 520,
+                "height": 320
+              },
+              "showLabel": false,
+              "data": {
+                "title": "Section title",
+                "body": "What this section says.",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Article"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.2
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Page Section changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          },
+          "views": [
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            }
+          ],
+          "nodeView": {
+            "key": "page-section",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "page-section",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "bridge": {
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "navigation-page-template",
+          "sourceBridgeNodeId": "navigation-page-template",
+          "sourceBridgeLabel": "Page Template",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "classKey": "page-section",
+          "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "title": "Four distances",
+        "body": "These are the steps a click moves through. Each is something you can see on screen, not a mode.\n\n- **Workspace.** Several graphs in view. Each is a mark, an icon or a card, with trunks between them.\n- **Graph.** One graph fills the view. Its ground, its nodes and its edges are what you see.\n- **Node.** One node has focus and is large enough to read.\n- **Inside.** You are working with what the node holds: scrolling its text, following its links.",
+        "identity": {
+          "graphId": "navigation-scheme"
+        }
+      },
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "side": "top",
+          "offset": 0.2,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "visible": false,
+      "resizable": true,
+      "portPosition": "center",
+      "showLabel": false
+    },
+    {
+      "id": "navigation-click",
+      "type": "page-section",
+      "label": "What a click does",
+      "position": {
+        "x": 380,
+        "y": -280
+      },
+      "width": 520,
+      "height": 320,
+      "data": {
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Article"
+          },
+          "baseLevel": "detail"
+        },
+        "definitionKey": "page-section",
+        "_classBinding": {
+          "key": "page-section",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "identity": {
+            "graphId": "page-section-class",
+            "name": "Page Section",
+            "version": "0.8.1",
+            "description": ""
+          },
+          "intent": "node-class",
+          "meaning": "",
+          "description": "",
+          "defaults": {
+            "label": "Page Section",
+            "size": {
+              "width": 520,
+              "height": 320
+            },
+            "showLabel": false,
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 270,
+                "position": {
+                  "side": "top",
+                  "offset": 0.2
+                }
+              }
+            ],
+            "data": {
+              "title": "Section title",
+              "body": "What this section says.",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Article"
+                }
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "page-section",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Page Section",
+              "size": {
+                "width": 520,
+                "height": 320
+              },
+              "showLabel": false,
+              "data": {
+                "title": "Section title",
+                "body": "What this section says.",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Article"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.2
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Page Section changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          },
+          "views": [
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            }
+          ],
+          "nodeView": {
+            "key": "page-section",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "page-section",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "bridge": {
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "navigation-page-template",
+          "sourceBridgeNodeId": "navigation-page-template",
+          "sourceBridgeLabel": "Page Template",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "classKey": "page-section",
+          "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "title": "What a click does",
+        "body": "For each kind of thing: what a click does at each of the three steps of rule 1, and what a drag does.\n\n## A graph’s tile\n\n- **Far or small:** The camera comes to it and frames it.\n- **In view:** You enter it. It becomes the graph you are in.\n- **Already has focus:** Nothing more.\n- **Drag:** By its title bar, moves the tile. By its body, pans.\n\n## A tile’s title bar\n\n- **Far or small:** Selects the graph without entering it, for closing, tidying or capturing.\n- **In view:** The same.\n- **Already has focus:** The same.\n- **Drag:** Moves the tile.\n\n## A node\n\n- **Far or small:** The camera comes to it.\n- **In view:** It takes focus and is brought to reading size.\n- **Already has focus:** You are inside it: its text scrolls, its links answer.\n- **Drag:** Moves it. If it is pinned, pans.\n\n## A Portal\n\n- **Far or small:** The camera comes to it.\n- **In view:** It takes focus, and shows the face of the graph it opens.\n- **Already has focus:** You go through. The graph opens beside this one and the camera travels to it.\n- **Drag:** Moves it.\n\n## A link in text, or a Portal-style card\n\n- **A click:** you go through, as with a Portal. One click, because you are already inside the page.\n\n## The ground\n\n- **Far or small:** As a click on its graph’s tile.\n- **In view:** Focus returns to the graph as a whole. No node is selected.\n- **Already has focus:** The same.\n- **Drag:** Pans. By its title bar, moves it.\n\n## An edge inside a graph\n\n- **Far or small:** The camera frames both of its ends.\n- **In view:** It is selected, and its two ends are lit.\n- **Already has focus:** You travel to the end you are not at.\n\n## A port on a node\n\n- **Far or small:** As a click on its node.\n- **In view, or already in focus:** You follow its edge to the node at the other end.\n\n## A trunk between two graphs\n\n- **Far or small:** The camera frames both graphs.\n- **In view:** The stroke under the pointer is selected. Its wraps and ports are lit.\n- **Already has focus:** You travel to the graph you are not in.\n\n## A handle on a tile’s border\n\n- **A click, at any distance:** you travel to the graph it faces.\n\n## A port on a tile’s border\n\n- **A click, at any distance:** you travel to the node that owns it, inside its graph.\n\n## Empty space\n\n- **Far or small:** Clears the selection.\n- **In view:** Steps out one level.\n- **Drag:** Pans.",
+        "identity": {
+          "graphId": "navigation-scheme"
+        }
+      },
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "side": "top",
+          "offset": 0.2,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "visible": false,
+      "resizable": true,
+      "portPosition": "center",
+      "showLabel": false
+    },
+    {
+      "id": "navigation-back",
+      "type": "page-section",
+      "label": "Going back, out, up and home",
+      "position": {
+        "x": -180,
+        "y": 80
+      },
+      "width": 520,
+      "height": 320,
+      "data": {
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Article"
+          },
+          "baseLevel": "detail"
+        },
+        "definitionKey": "page-section",
+        "_classBinding": {
+          "key": "page-section",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "identity": {
+            "graphId": "page-section-class",
+            "name": "Page Section",
+            "version": "0.8.1",
+            "description": ""
+          },
+          "intent": "node-class",
+          "meaning": "",
+          "description": "",
+          "defaults": {
+            "label": "Page Section",
+            "size": {
+              "width": 520,
+              "height": 320
+            },
+            "showLabel": false,
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 270,
+                "position": {
+                  "side": "top",
+                  "offset": 0.2
+                }
+              }
+            ],
+            "data": {
+              "title": "Section title",
+              "body": "What this section says.",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Article"
+                }
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "page-section",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Page Section",
+              "size": {
+                "width": 520,
+                "height": 320
+              },
+              "showLabel": false,
+              "data": {
+                "title": "Section title",
+                "body": "What this section says.",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Article"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.2
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Page Section changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          },
+          "views": [
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            }
+          ],
+          "nodeView": {
+            "key": "page-section",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "page-section",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "bridge": {
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "navigation-page-template",
+          "sourceBridgeNodeId": "navigation-page-template",
+          "sourceBridgeLabel": "Page Template",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "classKey": "page-section",
+          "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "title": "Going back, out, up and home",
+        "body": "## Step out\n\nOne step further: out of a node to its graph, out of a graph to the workspace. Escape does the same. It is rule 2.\n\n## Back and Forward\n\nAlong the path you have travelled. Each stop is a graph, a node and a distance. Nothing opens or closes. This replaces a way-back Portal drawn into each graph.\n\n## The trail\n\nA line near the address bar that names the graphs you came through, oldest first. A click on a name travels there.\n\n## Up\n\nThere is no separate “up”. In the workspace you can see what this graph was opened from, by the trunk between them, and click it. So no graph has to declare a parent.\n\n## Home\n\nTravels to the root. Opens it if it is not open.\n\n## The address bar\n\nShows the address of the graph you are in. An address typed there opens beside what is already open, and the camera travels to it. The workspace is never replaced by accident.",
+        "identity": {
+          "graphId": "navigation-scheme"
+        }
+      },
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "side": "top",
+          "offset": 0.2,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "visible": false,
+      "resizable": true,
+      "portPosition": "center",
+      "showLabel": false
+    },
+    {
+      "id": "navigation-keys",
+      "type": "page-settings",
+      "label": "Keys and modifiers",
+      "position": {
+        "x": 940,
+        "y": -1000
+      },
+      "width": 520,
+      "height": 320,
+      "data": {
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Settings"
+          },
+          "baseLevel": "detail"
+        },
+        "definitionKey": "page-settings",
+        "_classBinding": {
+          "key": "page-settings",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+          "identity": {
+            "graphId": "page-settings-class",
+            "name": "Page Settings",
+            "version": "0.5.0",
+            "description": ""
+          },
+          "intent": "node-class",
+          "meaning": "",
+          "description": "",
+          "defaults": {
+            "label": "Page Settings",
+            "size": {
+              "width": 520,
+              "height": 320
+            },
+            "showLabel": false,
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 270,
+                "position": {
+                  "side": "top",
+                  "offset": 0.2
+                }
+              }
+            ],
+            "data": {
+              "title": "Settings",
+              "rows": [
+                {
+                  "label": "Setting",
+                  "value": "Value"
+                }
+              ],
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Settings"
+                }
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "page-settings",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Page Settings",
+              "size": {
+                "width": 520,
+                "height": 320
+              },
+              "showLabel": false,
+              "data": {
+                "title": "Settings",
+                "rows": [
+                  {
+                    "label": "Setting",
+                    "value": "Value"
+                  }
+                ],
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Settings"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.2
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Page Settings changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          },
+          "views": [
+            {
+              "key": "page-settings",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-settings",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-settings",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-settings",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            }
+          ],
+          "nodeView": {
+            "key": "page-settings",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "page-settings",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "bridge": {
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "navigation-page-template",
+          "sourceBridgeNodeId": "navigation-page-template",
+          "sourceBridgeLabel": "Page Template",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "classKey": "page-settings",
+          "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node"
+        },
+        "title": "Keys and modifiers",
+        "rows": [
+          {
+            "label": "Ctrl or ⌘ + click",
+            "value": "Opens what you clicked beside this graph, and leaves you where you are."
+          },
+          {
+            "label": "Shift + click",
+            "value": "Adds to the selection, or takes away from it. Never travels."
+          },
+          {
+            "label": "Middle click",
+            "value": "Opens it in a new browser tab."
+          },
+          {
+            "label": "→ and ←",
+            "value": "Walk: to the next node along the edge leaving the one in focus, and back again. Where there is more than one way on, the edges are offered by name."
+          },
+          {
+            "label": "Enter",
+            "value": "The same as a click on the thing in focus: one step closer."
+          },
+          {
+            "label": "Escape",
+            "value": "Step out."
+          }
+        ],
+        "identity": {
+          "graphId": "navigation-scheme"
+        }
+      },
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "side": "top",
+          "offset": 0.2,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "visible": false,
+      "resizable": true,
+      "portPosition": "center",
+      "showLabel": false
+    },
+    {
+      "id": "navigation-editing",
+      "type": "page-section",
+      "label": "When editing",
+      "position": {
+        "x": 380,
+        "y": 80
+      },
+      "width": 520,
+      "height": 320,
+      "data": {
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Article"
+          },
+          "baseLevel": "detail"
+        },
+        "definitionKey": "page-section",
+        "_classBinding": {
+          "key": "page-section",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "identity": {
+            "graphId": "page-section-class",
+            "name": "Page Section",
+            "version": "0.8.1",
+            "description": ""
+          },
+          "intent": "node-class",
+          "meaning": "",
+          "description": "",
+          "defaults": {
+            "label": "Page Section",
+            "size": {
+              "width": 520,
+              "height": 320
+            },
+            "showLabel": false,
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 270,
+                "position": {
+                  "side": "top",
+                  "offset": 0.2
+                }
+              }
+            ],
+            "data": {
+              "title": "Section title",
+              "body": "What this section says.",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Article"
+                }
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "page-section",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Page Section",
+              "size": {
+                "width": 520,
+                "height": 320
+              },
+              "showLabel": false,
+              "data": {
+                "title": "Section title",
+                "body": "What this section says.",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Article"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.2
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Page Section changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          },
+          "views": [
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            }
+          ],
+          "nodeView": {
+            "key": "page-section",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "page-section",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "bridge": {
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "navigation-page-template",
+          "sourceBridgeNodeId": "navigation-page-template",
+          "sourceBridgeLabel": "Page Template",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "classKey": "page-section",
+          "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "title": "When editing",
+        "body": "Editing adds to this; it does not change it. The first two steps are the same: the camera comes to a thing, then it takes focus. The third step is where editing differs: going into a node means editing it, not reading it.\n\nSo in edit mode a Portal is not gone through by clicking it a third time. It is gone through by the Open control in its title bar, or by Ctrl-click. That keeps a click from ever leaving the graph you are working on by surprise.",
+        "identity": {
+          "graphId": "navigation-scheme"
+        }
+      },
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "side": "top",
+          "offset": 0.2,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "visible": false,
+      "resizable": true,
+      "portPosition": "center",
+      "showLabel": false
+    },
+    {
+      "id": "navigation-removes",
+      "type": "page-section",
+      "label": "What this removes",
+      "position": {
+        "x": -180,
+        "y": 440
+      },
+      "width": 520,
+      "height": 320,
+      "data": {
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Article"
+          },
+          "baseLevel": "detail"
+        },
+        "definitionKey": "page-section",
+        "_classBinding": {
+          "key": "page-section",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "identity": {
+            "graphId": "page-section-class",
+            "name": "Page Section",
+            "version": "0.8.1",
+            "description": ""
+          },
+          "intent": "node-class",
+          "meaning": "",
+          "description": "",
+          "defaults": {
+            "label": "Page Section",
+            "size": {
+              "width": 520,
+              "height": 320
+            },
+            "showLabel": false,
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 270,
+                "position": {
+                  "side": "top",
+                  "offset": 0.2
+                }
+              }
+            ],
+            "data": {
+              "title": "Section title",
+              "body": "What this section says.",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Article"
+                }
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "page-section",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Page Section",
+              "size": {
+                "width": 520,
+                "height": 320
+              },
+              "showLabel": false,
+              "data": {
+                "title": "Section title",
+                "body": "What this section says.",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Article"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.2
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Page Section changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          },
+          "views": [
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            }
+          ],
+          "nodeView": {
+            "key": "page-section",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "page-section",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "bridge": {
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "navigation-page-template",
+          "sourceBridgeNodeId": "navigation-page-template",
+          "sourceBridgeLabel": "Page Template",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "classKey": "page-section",
+          "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "title": "What this removes",
+        "body": "Things graphs or people do today that the scheme makes unnecessary.\n\n- The “way back” Portal beside every scene. Back, the trail and the trunks do that job.\n- The choice between “open” and “open alongside”. Going through always opens beside; Ctrl-click only decides whether you travel.\n- Double-click as a way to enter. Two clicks do it, at any speed.\n- Different behaviour for a Portal, a link and a card. They are one thing: a way through.",
+        "identity": {
+          "graphId": "navigation-scheme"
+        }
+      },
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "side": "top",
+          "offset": 0.2,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "visible": false,
+      "resizable": true,
+      "portPosition": "center",
+      "showLabel": false
+    },
+    {
+      "id": "navigation-open",
+      "type": "page-section",
+      "label": "Still to decide",
+      "position": {
+        "x": 380,
+        "y": 440
+      },
+      "width": 520,
+      "height": 320,
+      "data": {
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "Article"
+          },
+          "baseLevel": "detail"
+        },
+        "definitionKey": "page-section",
+        "_classBinding": {
+          "key": "page-section",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "identity": {
+            "graphId": "page-section-class",
+            "name": "Page Section",
+            "version": "0.8.1",
+            "description": ""
+          },
+          "intent": "node-class",
+          "meaning": "",
+          "description": "",
+          "defaults": {
+            "label": "Page Section",
+            "size": {
+              "width": 520,
+              "height": 320
+            },
+            "showLabel": false,
+            "ports": [
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 270,
+                "position": {
+                  "side": "top",
+                  "offset": 0.2
+                }
+              }
+            ],
+            "data": {
+              "title": "Section title",
+              "body": "What this section says.",
+              "presentation": {
+                "glyph": {
+                  "kind": "icon",
+                  "name": "Article"
+                }
+              }
+            }
+          },
+          "nodeDef": {
+            "key": "page-section",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Page Section",
+              "size": {
+                "width": 520,
+                "height": 320
+              },
+              "showLabel": false,
+              "data": {
+                "title": "Section title",
+                "body": "What this section says.",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Article"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.2
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Page Section changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          },
+          "views": [
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.detail",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.summary",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "node",
+              "payload": "node.web.icon",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            },
+            {
+              "key": "page-section",
+              "intent": "editor",
+              "payload": "editor.web",
+              "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+              "source": "local",
+              "version": ">=0.1.0",
+              "defaultPorts": []
+            }
+          ],
+          "nodeView": {
+            "key": "page-section",
+            "intent": "node",
+            "payload": "node.web.detail",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          },
+          "editorView": {
+            "key": "page-section",
+            "intent": "editor",
+            "payload": "editor.web",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0"
+          }
+        },
+        "bridge": {
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "_bridge": {
+          "sourceNodeId": "navigation-page-template",
+          "sourceBridgeNodeId": "navigation-page-template",
+          "sourceBridgeLabel": "Page Template",
+          "sourceRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node",
+          "entryPort": "root",
+          "kind": "node-class",
+          "targetKind": "node-class",
+          "resourceKind": "node-class",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "classKey": "page-section",
+          "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        },
+        "title": "Still to decide",
+        "body": "- **One click or two for a Portal.** This scheme takes two once it is in view: one to look at it, one to go through. A link in text takes one. If a Portal should also take one, it stops being a thing you can look at without leaving.\n- **How many graphs stay open.** If nothing closes by itself, a long walk leaves a long row of graphs. They could fade to marks with distance, or the oldest could close after some number.\n- **Whether editing really needs a different third step,** or whether a Portal should be gone through the same way in both modes.\n- **What the trail shows** when you have looped back to a graph you already visited.\n- **Whether walking belongs on the arrow keys,** which also nudge a selected node when editing.",
+        "identity": {
+          "graphId": "navigation-scheme"
+        }
+      },
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any",
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "side": "top",
+          "offset": 0.2,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "visible": false,
+      "resizable": true,
+      "portPosition": "center",
+      "showLabel": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "navigation-landing-edge",
+      "type": "reference",
+      "source": "navigation-scheme",
+      "target": "navigation-landing",
+      "sourceHandle": "landing-surface",
+      "targetHandle": "root",
+      "label": "",
+      "style": {},
+      "data": {
+        "semanticRole": "landing-surface",
+        "presentation": {
+          "layer": "contract"
+        }
+      }
+    },
+    {
+      "id": "on-masthead-changed-invokes-assemble",
+      "type": "invokes",
+      "source": "on-masthead-changed",
+      "target": "assemble-page-method",
+      "sourceHandle": "action-method",
+      "targetHandle": "invoke",
+      "label": "invokes",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "semanticRole": "method-action"
+      }
+    },
+    {
+      "id": "on-route-changed-invokes-assemble",
+      "type": "invokes",
+      "source": "on-route-changed",
+      "target": "assemble-page-method",
+      "sourceHandle": "action-method",
+      "targetHandle": "invoke",
+      "label": "invokes",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "semanticRole": "method-action"
+      }
+    },
+    {
+      "id": "on-section-changed-invokes-assemble",
+      "type": "invokes",
+      "source": "on-section-changed",
+      "target": "assemble-page-method",
+      "sourceHandle": "action-method",
+      "targetHandle": "invoke",
+      "label": "invokes",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "semanticRole": "method-action"
+      }
+    },
+    {
+      "id": "on-settings-changed-invokes-assemble",
+      "type": "invokes",
+      "source": "on-settings-changed",
+      "target": "assemble-page-method",
+      "sourceHandle": "action-method",
+      "targetHandle": "invoke",
+      "label": "invokes",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "semanticRole": "method-action"
+      }
+    },
+    {
+      "id": "on-structure-changed-invokes-assemble",
+      "type": "invokes",
+      "source": "on-structure-changed",
+      "target": "assemble-page-method",
+      "sourceHandle": "action-method",
+      "targetHandle": "invoke",
+      "label": "invokes",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "semanticRole": "method-action"
+      }
+    },
+    {
+      "id": "assemble-updates-icon",
+      "type": "reference",
+      "source": "assemble-page-method",
+      "target": "navigation-icon",
+      "sourceHandle": "result",
+      "targetHandle": "root",
+      "label": "refreshes",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "semanticRole": "derived-view"
+      }
+    },
+    {
+      "id": "assemble-updates-summary",
+      "type": "reference",
+      "source": "assemble-page-method",
+      "target": "navigation-summary",
+      "sourceHandle": "result",
+      "targetHandle": "root",
+      "label": "refreshes",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "semanticRole": "derived-view"
+      }
+    },
+    {
+      "id": "assemble-updates-detail",
+      "type": "reference",
+      "source": "assemble-page-method",
+      "target": "navigation-detail",
+      "sourceHandle": "result",
+      "targetHandle": "root",
+      "label": "refreshes",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "semanticRole": "derived-view"
+      }
+    },
+    {
+      "id": "navigation-surface",
+      "type": "surface",
+      "source": "navigation-scheme",
+      "target": "navigation-detail",
+      "sourceHandle": "surfaces",
+      "targetHandle": "root",
+      "label": "",
+      "style": {},
+      "data": {
+        "role": "surface",
+        "surfaceId": "web"
+      }
+    },
+    {
+      "id": "navigation-detail-summary",
+      "type": "view-sequence",
+      "source": "navigation-detail",
+      "target": "navigation-summary",
+      "sourceHandle": "sequence-out",
+      "targetHandle": "sequence-in",
+      "label": "",
+      "style": {},
+      "data": {
+        "role": "view-sequence"
+      }
+    },
+    {
+      "id": "navigation-summary-icon",
+      "type": "view-sequence",
+      "source": "navigation-summary",
+      "target": "navigation-icon",
+      "sourceHandle": "sequence-out",
+      "targetHandle": "sequence-in",
+      "label": "",
+      "style": {},
+      "data": {
+        "role": "view-sequence"
+      }
+    },
+    {
+      "id": "navigation-icon-glyph",
+      "type": "view-sequence",
+      "source": "navigation-icon",
+      "target": "navigation-glyph",
+      "sourceHandle": "sequence-out",
+      "targetHandle": "root",
+      "label": "",
+      "style": {},
+      "data": {
+        "role": "view-sequence"
+      }
+    }
+  ],
+  "clusters": [],
+  "settings": {
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "library/documentation/navigation/root.node",
+      "branch": "main"
+    }
+  }
+}
