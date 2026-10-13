@@ -2,30 +2,28 @@
   "fileVersion": "1.0",
   "metadata": {
     "title": "The Commons",
-    "description": "A public commons for collecting and sharing public repository cards.",
-    "graphId": "root",
-    "version": "1.0.0",
+    "description": "Shared work from other people: public spaces you can walk into.",
+    "graphId": "the-commons",
+    "version": "0.1.0",
     "kind": "graph",
-    "created": "2026-07-24T05:24:18.542Z",
-    "modified": "2026-08-25T16:54:10.965Z",
-    "author": "",
+    "created": "2026-10-12T16:13:27.275Z",
+    "modified": "2026-10-13T04:14:31.843Z",
     "tags": [
-      "graph"
-    ],
-    "preferredViewer": "https://twilite.zone"
+      "scene",
+      "the-commons"
+    ]
   },
   "nodes": [
     {
-      "id": "commons-declaration",
+      "id": "the-commons",
+      "label": "The Commons",
       "type": "declaration",
-      "label": "Declaration",
-      "root": false,
       "position": {
-        "x": -1040,
-        "y": -180
+        "x": -2100,
+        "y": -1000
       },
-      "width": 360,
-      "height": 220,
+      "width": 420,
+      "height": 300,
       "ports": [
         {
           "id": "default-view",
@@ -51,7 +49,8 @@
                 "nodeType": "view",
                 "targetPort": "root"
               }
-            ]
+            ],
+            "legacy": true
           }
         },
         {
@@ -78,7 +77,8 @@
                 "nodeType": "view",
                 "targetPort": "root"
               }
-            ]
+            ],
+            "legacy": true
           }
         },
         {
@@ -105,7 +105,36 @@
                 "nodeType": "view",
                 "targetPort": "root"
               }
-            ]
+            ],
+            "legacy": true
+          }
+        },
+        {
+          "id": "view-sequence",
+          "key": "view-sequence",
+          "label": "first view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 150,
+          "role": "view-sequence",
+          "allowedEdgeTypes": [
+            "view-sequence"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view-sequence",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
           }
         },
         {
@@ -130,6 +159,115 @@
                 "trigger": "drag-create",
                 "action": "create-node",
                 "nodeType": "glyph",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          }
+        },
+        {
+          "id": "surface",
+          "key": "surface",
+          "label": "surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 120,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "default-handle",
+          "key": "default-handle",
+          "label": "default handle",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 315,
+          "role": "default-handle",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-handle",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "graphReference",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "boundary-begin",
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 135,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "boundary-end",
+          "key": "boundary-end",
+          "label": "boundary end",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 225,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
                 "targetPort": "root"
               }
             ]
@@ -190,892 +328,448 @@
           }
         }
       ],
-      "inputs": [
+      "handles": [
         {
-          "key": "root",
-          "label": "root",
-          "type": "value"
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 165,
+          "role": "default-view",
+          "allowedEdgeTypes": [
+            "default-view"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-view",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
+          "portId": "default-view"
         },
         {
-          "key": "top",
-          "label": "top",
-          "type": "value"
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-summary",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-summary",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
+          "portId": "summary-view"
         },
         {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "shared-icon",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-icon",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
+          "portId": "icon-view"
         },
         {
-          "key": "left",
-          "label": "left",
-          "type": "value"
+          "id": "view-sequence",
+          "key": "view-sequence",
+          "label": "first view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 150,
+          "role": "view-sequence",
+          "allowedEdgeTypes": [
+            "view-sequence"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view-sequence",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
+          "portId": "view-sequence"
         },
         {
-          "key": "right",
-          "label": "right",
-          "type": "value"
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "role": "shared-glyph",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "shared-glyph",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "glyph",
+                "targetPort": "root"
+              }
+            ],
+            "legacy": true
+          },
+          "portId": "glyph"
+        },
+        {
+          "id": "surface",
+          "key": "surface",
+          "label": "surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 120,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "surface"
+        },
+        {
+          "id": "default-handle",
+          "key": "default-handle",
+          "label": "default handle",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 315,
+          "role": "default-handle",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-handle",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "graphReference",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "default-handle"
+        },
+        {
+          "id": "boundary-begin",
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 135,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "boundary-begin"
+        },
+        {
+          "id": "boundary-end",
+          "key": "boundary-end",
+          "label": "boundary end",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 225,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "boundary-end"
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "port"
+        },
+        {
+          "id": "landing-surface",
+          "key": "landing-surface",
+          "label": "landing surface",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "landing-surface",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "landing-surface",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "landing-surface"
         }
       ],
       "outputs": [
         {
-          "key": "root",
-          "label": "root",
-          "type": "value"
+          "key": "default-view",
+          "label": "default view",
+          "type": "any"
         },
         {
-          "key": "top",
-          "label": "top",
-          "type": "value"
+          "key": "summary-view",
+          "label": "summary view",
+          "type": "any"
         },
         {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
+          "key": "icon-view",
+          "label": "icon view",
+          "type": "any"
         },
         {
-          "key": "left",
-          "label": "left",
-          "type": "value"
+          "key": "view-sequence",
+          "label": "first view",
+          "type": "any"
         },
         {
-          "key": "right",
-          "label": "right",
-          "type": "value"
+          "key": "glyph",
+          "label": "glyph",
+          "type": "any"
+        },
+        {
+          "key": "surface",
+          "label": "surface",
+          "type": "any"
+        },
+        {
+          "key": "default-handle",
+          "label": "default handle",
+          "type": "any"
+        },
+        {
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "type": "any"
+        },
+        {
+          "key": "boundary-end",
+          "label": "boundary end",
+          "type": "any"
+        },
+        {
+          "key": "port",
+          "label": "port",
+          "type": "any"
+        },
+        {
+          "key": "landing-surface",
+          "label": "landing surface",
+          "type": "any"
         }
       ],
-      "visible": true,
-      "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "root",
+          "graphId": "the-commons",
+          "nodeId": "the-commons",
           "name": "The Commons",
           "version": "1.0.0",
-          "description": "A public commons for collecting and sharing public repository cards.",
-          "createdAt": "2026-05-16T00:00:00.000Z",
-          "updatedAt": "2026-08-25T16:54:10.965Z",
-          "nodeId": "commons"
+          "description": "Shared work from other people: public spaces you can walk into."
         },
         "intent": {
-          "kind": "graph",
-          "scope": "mixed"
+          "kind": "scene",
+          "scope": "public"
         },
-        "dependencies": {
-          "nodeTypes": [
-            "declaration",
-            "title",
-            "type-definition",
-            "port",
-            "markdown",
-            "bridge",
-            "view",
-            "content",
-            "glyph",
-            "portal"
-          ],
-          "portContracts": [
-            "core"
-          ],
-          "skills": [],
-          "schemaVersions": {
-            "nodes": ">=1.0.0",
-            "ports": ">=1.0.0"
-          },
-          "optional": []
-        },
-        "authority": {
-          "mutation": {
-            "allowCreate": true,
-            "allowUpdate": true,
-            "allowDelete": true,
-            "appendOnly": false
-          },
-          "actors": {
-            "humans": true,
-            "agents": true,
-            "tools": true
-          },
-          "styleAuthority": "descriptive",
-          "history": {
-            "rewriteAllowed": false,
-            "squashAllowed": false
-          }
-        },
-        "document": {
-          "url": ""
-        },
-        "settings": {
-          "theme": null,
-          "backgroundImage": null,
-          "uiDensity": "comfortable",
-          "defaultNodeColor": "#1976d2",
-          "defaultEdgeColor": "#666666",
-          "snapToGrid": false,
-          "gridSize": 20,
-          "edgeRouting": "auto",
-          "autoSave": false,
-          "layout": {
-            "mode": "autoOnMissingPositions",
-            "defaultLayout": "layered",
-            "direction": "DOWN",
-            "edgeLaneGapPx": 10,
-            "serpentine": {
-              "maxPerRow": 6
-            },
-            "cycleFallback": {
-              "enabled": true
-            },
-            "elk": {
-              "algorithm": "fixed",
-              "edgeRouting": "ORTHOGONAL",
-              "portConstraints": "FIXED_SIDE",
-              "nodeSpacing": 120,
-              "layeredEdgeSpacing": 80
-            }
-          }
-        },
-        "name": "Graph Declaration",
-        "declaresKind": "graph",
-        "purpose": "Declare the primary authority and export surface for The Commons.",
         "declaration": {
           "kind": "graph",
-          "graphViewRole": "authoring",
-          "targetMode": "artifact",
-          "artifactKind": "graph",
-          "defaultSurfaceId": "",
-          "surfaces": [],
           "interfaceContract": {
             "version": 1,
             "implicitRootPort": true
-          }
-        },
-        "_classBinding": {
-          "key": "declaration",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node"
-        },
-        "_bridge": {
-          "classKey": "declaration",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node"
-        },
-        "definitionKey": "declaration"
-      }
-    },
-    {
-      "id": "commons-title",
-      "type": "title",
-      "label": "Title",
-      "root": true,
-      "position": {
-        "x": 380.87786903490377,
-        "y": 118.24426193019242
-      },
-      "width": 560,
-      "height": 240,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 200
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 360
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 200
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 360
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "any"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "The Commons",
-        "subtitle": "A curated public shelf for repositories, references, and adjacent work that is easier to appreciate when it is seen together.",
-        "intent": "headline",
-        "status": "active",
-        "definitionKey": "title",
-        "_classBinding": {
-          "key": "title",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
-        },
-        "_bridge": {
-          "classKey": "title",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
-        },
-        "identity": {
-          "graphId": "commons-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1784873771874,
-          "reason": "node-drag"
-        }
-      }
-    },
-    {
-      "id": "commons-type",
-      "type": "type-definition",
-      "label": "Type",
-      "root": false,
-      "position": {
-        "x": -500,
-        "y": 140
-      },
-      "width": 360,
-      "height": 220,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "name": "Commons",
-        "key": "commons",
-        "classRef": "/github/the-commons/root.node",
-        "meaning": "A public landing graph for gathering public repository cards in one shared place.",
-        "description": "Use this graph as the commons for public repos that should be easy to discover together.",
-        "category": "public",
-        "status": "active",
-        "definitionKey": "type-definition",
-        "_classBinding": {
-          "key": "type-definition",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-        },
-        "_bridge": {
-          "classKey": "type-definition",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-        },
-        "identity": {
-          "graphId": "commons-declaration"
-        }
-      }
-    },
-    {
-      "id": "commons-view",
-      "type": "port",
-      "label": "Commons",
-      "root": false,
-      "position": {
-        "x": -500,
-        "y": 460
-      },
-      "width": 420,
-      "height": 280,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "The Commons",
-        "purpose": "Default public surface for the shared public repository commons.",
-        "viewRole": "page",
-        "view": {
-          "intent": "node",
-          "payload": "node.web.summary",
-          "label": "UI View"
-        },
-        "titleSourceNodeId": "commons-title",
-        "typeSourceNodeId": "commons-type",
-        "audience": "Public",
-        "status": "active",
-        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"10\" y=\"10\" width=\"200\" height=\"140\" rx=\"22\" fill=\"#fffdf7\" stroke=\"#1f2937\" stroke-width=\"4\"/><rect x=\"24\" y=\"28\" width=\"172\" height=\"18\" rx=\"9\" fill=\"#0f172a\" opacity=\"0.08\"/><rect x=\"24\" y=\"60\" width=\"50\" height=\"50\" rx=\"12\" fill=\"#111827\"/><rect x=\"84\" y=\"60\" width=\"50\" height=\"50\" rx=\"12\" fill=\"#2563eb\" opacity=\"0.9\"/><rect x=\"144\" y=\"60\" width=\"50\" height=\"50\" rx=\"12\" fill=\"#f59e0b\" opacity=\"0.9\"/><text x=\"110\" y=\"145\" text-anchor=\"middle\" font-family=\"ui-sans-serif, system-ui, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#1f2937\">THE COMMONS</text></svg>",
-        "definitionKey": "ui-view",
-        "_classBinding": {
-          "key": "ui-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
-        },
-        "_bridge": {
-          "classKey": "ui-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
-        },
-        "identity": {
-          "graphId": "commons-declaration"
-        }
-      }
-    },
-    {
-      "id": "commons-back",
-      "type": "portal",
-      "label": "Back to GitHub",
-      "root": false,
-      "position": {
-        "x": 357.70958951439115,
-        "y": -362.6920067480492
-      },
-      "width": 320,
-      "height": 220,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "endpoint": "github://twilite-zone/public/github/root.node:root",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open GitHub",
-          "ref": "github://twilite-zone/public/github/root.node",
-          "handleId": "root"
-        },
-        "memo": "Return to the GitHub section root.",
-        "authority": "navigate",
-        "sourceRef": "github://twilite-zone/public/github/root.node",
-        "sourceNodeId": "github-view",
-        "sourcePayload": "node.web.summary",
-        "intent": "external",
-        "security": "prompt",
-        "ref": "github://twilite-zone/public/github/root.node",
-        "src": "github://twilite-zone/public/github/root.node",
-        "endpoint": "github://twilite-zone/public/github/root.node:root",
-        "identity": {
-          "graphId": "commons-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1784873533343,
-          "reason": "node-drag"
-        }
-      }
-    },
-    {
-      "id": "commons-github-repo-bridge",
-      "type": "bridge",
-      "label": "GitHub Repo",
-      "root": false,
-      "position": {
-        "x": 300,
-        "y": -430
-      },
-      "width": 280,
-      "height": 120,
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "memo": "Bridge for the GitHub Repo node class.",
-        "intent": "external",
-        "target": {
-          "mode": "bridge",
-          "ref": "github://twilite-zone/public/library/classes/nodes/github-repo.node-class.node",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
+          },
+          "defaultSurfaceId": "web",
+          "surfaces": [
+            {
+              "id": "detail",
+              "kind": "view",
+              "payload": "node.web.detail",
+              "viewNodeId": "commons-detail"
+            },
+            {
+              "id": "summary",
+              "kind": "view",
+              "payload": "node.web.summary",
+              "viewNodeId": "commons-summary"
+            },
+            {
+              "id": "icon",
+              "kind": "view",
+              "payload": "node.web.icon",
+              "viewNodeId": "commons-icon"
+            },
+            {
+              "id": "glyph",
+              "kind": "glyph",
+              "payload": "node.web.glyph",
+              "viewNodeId": "commons-glyph"
+            },
+            {
+              "id": "landing",
+              "kind": "content",
+              "payload": "node.web.landing",
+              "viewNodeId": "commons-landing"
+            }
           ],
-          "label": "GitHub Repo",
-          "key": "github-repo"
+          "landingSurfaceId": "landing"
         },
-        "resourceKind": "node-class",
-        "scope": "focused-graph",
-        "grants": [
-          "create"
-        ],
-        "authority": "bridge",
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/github-repo.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
+        "glyph": {
+          "kind": "icon",
+          "name": "Hub"
         },
-        "_classBinding": {
-          "key": "github-repo",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/github-repo.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/github-repo.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "github-repo",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/github-repo.node-class.node"
-        },
-        "identity": {
-          "graphId": "commons-declaration"
+        "name": "The Commons",
+        "document": {
+          "url": "tlz://twilite.zone/github/the-commons/root.node"
         }
       }
     },
     {
-      "id": "50e81a72-ea73-416d-9f46-6333ede967dd",
-      "type": "portal",
-      "label": "Mike Martinez Public Space",
-      "root": false,
-      "position": {
-        "x": 1168.4264722640874,
-        "y": 308.37041834595584
-      },
-      "width": 571.8511804739499,
-      "height": 375.33183417895737,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "left",
-            "offset": 0.2
-          }
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "value"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "value"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Open Mike Martinez's public graph space.",
-        "link": "",
-        "authority": "navigate",
-        "src": "github://mikemartinez1974/public/root.node",
-        "ref": "github://mikemartinez1974/public/root.node",
-        "endpoint": "github://mikemartinez1974/public/root.node:root",
-        "intent": "external",
-        "target": {
-          "endpoint": "github://mikemartinez1974/public/root.node:root",
-          "ref": "github://mikemartinez1974/public/root.node",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open Mike Martinez Public Space",
-          "handleId": "root",
-          "surfaceId": ""
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1784873935798,
-          "reason": "node-drag"
-        },
-        "security": "prompt",
-        "sourceRef": "github://mikemartinez1974/public/root.node",
-        "sourceNodeId": "public-home-view",
-        "sourcePayload": "node.web.summary",
-        "surfaceId": "",
-        "identity": {
-          "graphId": "commons-declaration"
-        }
-      }
-    },
-    {
-      "id": "release-commons-detail-view",
-      "type": "view",
-      "label": "The Commons Detail",
-      "position": {
-        "x": -540,
-        "y": -410
-      },
-      "width": 420,
-      "height": 300,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270,
-          "metadata": {
-            "interface": true,
-            "structural": true
-          }
-        },
-        {
-          "id": "surface-delegate",
-          "key": "surface-delegate",
-          "label": "surface delegate",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90,
-          "role": "view.content",
-          "allowedEdgeTypes": [
-            "reference"
-          ],
-          "metadata": {
-            "structural": true,
-            "relationship": true,
-            "role": "view.content",
-            "required": false,
-            "behaviors": [
-              {
-                "trigger": "drag-create",
-                "action": "create-node",
-                "nodeType": "content",
-                "targetPort": "root"
-              }
-            ]
-          }
-        }
-      ],
-      "data": {
-        "view": {
-          "intent": "node",
-          "payload": "node.web.detail"
-        },
-        "content": {
-          "kind": "markdown",
-          "value": ""
-        },
-        "interfaceContract": {
-          "version": 1,
-          "ownsContent": true,
-          "surfaceDelegation": true
-        },
-        "identity": {
-          "graphId": "root",
-          "nodeId": "commons"
-        }
-      }
-    },
-    {
-      "id": "release-commons-summary-view",
-      "type": "view",
-      "label": "The Commons Summary",
-      "position": {
-        "x": -540,
-        "y": -50
-      },
-      "width": 380,
-      "height": 240,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270,
-          "metadata": {
-            "interface": true,
-            "structural": true
-          }
-        },
-        {
-          "id": "surface-delegate",
-          "key": "surface-delegate",
-          "label": "surface delegate",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90,
-          "role": "view.content",
-          "allowedEdgeTypes": [
-            "reference"
-          ],
-          "metadata": {
-            "structural": true,
-            "relationship": true,
-            "role": "view.content",
-            "required": false,
-            "behaviors": [
-              {
-                "trigger": "drag-create",
-                "action": "create-node",
-                "nodeType": "content",
-                "targetPort": "root"
-              }
-            ]
-          }
-        }
-      ],
-      "data": {
-        "view": {
-          "intent": "node",
-          "payload": "node.web.summary"
-        },
-        "content": {
-          "kind": "markdown",
-          "value": ""
-        },
-        "interfaceContract": {
-          "version": 1,
-          "ownsContent": true,
-          "surfaceDelegation": true
-        },
-        "identity": {
-          "graphId": "root",
-          "nodeId": "commons"
-        }
-      }
-    },
-    {
-      "id": "release-commons-icon-view",
-      "type": "view",
-      "label": "The Commons Icon",
-      "position": {
-        "x": -540,
-        "y": 250
-      },
-      "width": 320,
-      "height": 220,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270,
-          "metadata": {
-            "interface": true,
-            "structural": true
-          }
-        },
-        {
-          "id": "surface-delegate",
-          "key": "surface-delegate",
-          "label": "surface delegate",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90,
-          "role": "view.content",
-          "allowedEdgeTypes": [
-            "reference"
-          ],
-          "metadata": {
-            "structural": true,
-            "relationship": true,
-            "role": "view.content",
-            "required": false,
-            "behaviors": [
-              {
-                "trigger": "drag-create",
-                "action": "create-node",
-                "nodeType": "content",
-                "targetPort": "root"
-              }
-            ]
-          }
-        }
-      ],
-      "data": {
-        "view": {
-          "intent": "node",
-          "payload": "node.web.icon"
-        },
-        "content": {
-          "kind": "markdown",
-          "value": ""
-        },
-        "interfaceContract": {
-          "version": 1,
-          "ownsContent": true,
-          "surfaceDelegation": true
-        },
-        "identity": {
-          "graphId": "root",
-          "nodeId": "commons"
-        }
-      }
-    },
-    {
-      "id": "release-commons-glyph",
+      "id": "commons-glyph",
+      "label": "The Commons glyph",
       "type": "glyph",
-      "label": "The Commons Glyph",
       "position": {
-        "x": -1040,
-        "y": -560
+        "x": -2100,
+        "y": -640
       },
       "width": 220,
       "height": 140,
@@ -1094,31 +788,99 @@
           }
         }
       ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "metadata": {
+            "interface": true,
+            "structural": true,
+            "role": "shared-glyph"
+          },
+          "portId": "root"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
       "data": {
         "glyph": {
           "kind": "icon",
-          "name": "Users"
+          "name": "Hub"
         },
         "interfaceContract": {
           "version": 1,
           "receivesGlyphDefinition": true
         },
         "identity": {
-          "graphId": "root",
-          "nodeId": "commons"
+          "graphId": "the-commons"
         }
       }
     },
     {
-      "id": "release-commons-landing",
+      "id": "commons-landing",
       "type": "content",
-      "label": "The Commons Landing Surface",
+      "label": "The Commons",
+      "root": true,
       "position": {
-        "x": 10,
-        "y": -350
+        "x": -1000,
+        "y": -1000
       },
-      "width": 520,
-      "height": 320,
+      "width": 1500,
+      "height": 730,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "the-commons"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='position:relative;width:1460px;height:690px;background:#ffffff;color:#0f172a;overflow:hidden'><div style='position:absolute;left:40px;top:30px;width:1380px;border-top:3px solid #0f172a'></div><div style='position:absolute;left:40px;top:42px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Twilite Zone · The Commons</div><div style='position:absolute;left:40px;top:70px;width:1380px;border-top:1px solid #0f172a'></div><div style='position:absolute;left:40px;top:96px;font:500 72px/74px Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.025em'>The Commons</div><div style='position:absolute;left:40px;top:188px;width:900px;font:italic 400 22px/30px Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#475569'>Shared work from other people: public spaces you can walk into.</div><div style='position:absolute;left:40px;top:290px;width:1380px;border-top:3px solid #6d28d9'></div><div style='position:absolute;left:40px;top:312px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Public spaces</div><div style='position:absolute;left:40px;top:338px;width:170px;font:400 14px/20px system-ui;color:#475569'>Each opens someone’s own library.</div><div style='position:absolute;left:650px;top:314px;width:360px;height:240px;box-sizing:border-box;border:2px dashed #64748b;border-radius:12px;background:#f8fafc;display:flex;align-items:center;justify-content:center;font:400 16px/22px system-ui;color:#475569'>Room for the next</div><div style='position:absolute;left:1060px;top:314px;width:360px;height:240px;box-sizing:border-box;border:2px dashed #64748b;border-radius:12px;background:#f8fafc;display:flex;align-items:center;justify-content:center;font:400 16px/22px system-ui;color:#475569'>Room for the next</div><div style='position:absolute;left:40px;top:580px;width:1380px;border-top:1px solid #0f172a'></div><div style='position:absolute;left:40px;top:602px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#0f172a'>Be listed</div><div style='position:absolute;left:240px;top:598px;width:900px;font:400 17px/24px system-ui;color:#475569'>[How a public space comes to be listed here.]</div></div>"
+        }
+      },
+      "positionLocked": true
+    },
+    {
+      "id": "commons-detail",
+      "type": "view",
+      "label": "The Commons page",
+      "root": false,
+      "position": {
+        "x": -3000,
+        "y": -1000
+      },
+      "width": 760,
+      "height": 900,
       "ports": [
         {
           "id": "root",
@@ -1126,353 +888,265 @@
           "label": "root",
           "direction": "input",
           "dataType": "any",
-          "angle": 270,
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content"
-          }
+          "angle": 270
         }
       ],
-      "data": {
-        "content": {
-          "kind": "markdown",
-          "value": "# The Commons\n\nA public commons for collecting and sharing public repository cards."
-        },
-        "interfaceContract": {
-          "version": 1,
-          "receivesViewContent": true
-        },
-        "identity": {
-          "graphId": "root",
-          "nodeId": "commons"
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
         }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "the-commons"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "semanticLevel": "detail",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:8cqw;background:#ffffff;border-radius:18px;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column;justify-content:center'><div style='margin-bottom:3cqw;font:800 clamp(8px,3.4cqw,14px)/1.3 system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Twilite Zone · The Commons</div><div style='font:500 clamp(11px,14cqw,96px)/1.02 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>The Commons</div></div>"
+        },
+        "memo": "",
+        "link": ""
       }
     },
     {
-      "id": "release-commons-summary-content",
-      "type": "content",
-      "label": "The Commons Summary Content",
+      "id": "commons-summary",
+      "type": "view",
+      "label": "The Commons summary",
+      "root": false,
       "position": {
-        "x": -60,
-        "y": 10
+        "x": -3000,
+        "y": -40
       },
-      "width": 420,
+      "width": 300,
+      "height": 170,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "the-commons"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "semanticLevel": "summary",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:8cqw;background:#ffffff;border-radius:18px;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column;justify-content:center'><div style='margin-bottom:3cqw;font:800 clamp(8px,3.4cqw,14px)/1.3 system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Twilite Zone · The Commons</div><div style='font:500 clamp(11px,14cqw,96px)/1.02 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>The Commons</div></div>"
+        },
+        "memo": "",
+        "link": ""
+      }
+    },
+    {
+      "id": "commons-icon",
+      "type": "view",
+      "label": "The Commons icon",
+      "root": false,
+      "position": {
+        "x": -2640,
+        "y": -40
+      },
+      "width": 120,
+      "height": 110,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "the-commons"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "semanticLevel": "icon",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;padding:8cqw;background:#ffffff;border-radius:18px;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column;justify-content:center'><div style='font:500 clamp(11px,14cqw,96px)/1.02 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>The Commons</div></div>"
+        },
+        "memo": "",
+        "link": ""
+      }
+    },
+    {
+      "id": "portal-mike-martinez",
+      "type": "portal",
+      "label": "Mike Martinez",
+      "root": false,
+      "position": {
+        "x": -740,
+        "y": -666
+      },
+      "width": 360,
       "height": 240,
       "ports": [
         {
           "id": "root",
-          "key": "root",
           "label": "root",
-          "direction": "input",
+          "direction": "bidirectional",
           "dataType": "any",
-          "angle": 270,
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content"
-          }
-        }
-      ],
-      "data": {
-        "content": {
-          "kind": "markdown",
-          "value": "## The Commons\n\nA public commons for collecting and sharing public repository cards."
+          "angle": 210
         },
-        "interfaceContract": {
-          "version": 1,
-          "receivesViewContent": true
-        },
-        "identity": {
-          "graphId": "root",
-          "nodeId": "commons"
-        }
-      }
-    },
-    {
-      "id": "release-commons-icon-content",
-      "type": "content",
-      "label": "The Commons Icon Content",
-      "position": {
-        "x": -100,
-        "y": 310
-      },
-      "width": 320,
-      "height": 220,
-      "ports": [
         {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270,
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content"
-          }
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
         }
       ],
+      "visible": true,
+      "showLabel": true,
       "data": {
-        "content": {
-          "kind": "svg",
-          "value": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 220\" role=\"img\" aria-label=\"The Commons\"><rect width=\"320\" height=\"220\" rx=\"28\" fill=\"#082f49\"/><circle cx=\"160\" cy=\"92\" r=\"58\" fill=\"#0369a1\"/><circle cx=\"160\" cy=\"92\" r=\"38\" fill=\"none\" stroke=\"#fff\" stroke-width=\"8\"/><path d=\"M122 92h76M160 54v76\" stroke=\"#fff\" stroke-width=\"8\" stroke-linecap=\"round\"/><text x=\"160\" y=\"184\" text-anchor=\"middle\" fill=\"#fff\" font-family=\"system-ui,sans-serif\" font-size=\"18\" font-weight=\"800\">THE COMMONS</text></svg>"
-        },
-        "interfaceContract": {
-          "version": 1,
-          "receivesViewContent": true
-        },
         "identity": {
-          "graphId": "root",
-          "nodeId": "commons"
-        }
+          "graphId": "the-commons"
+        },
+        "memo": "Mike Martinez’s public graph space.",
+        "authority": "navigate",
+        "intent": "external",
+        "src": "github://mikemartinez1974/public/root.node",
+        "ref": "github://mikemartinez1974/public/root.node",
+        "endpoint": "github://mikemartinez1974/public/root.node",
+        "sourceRef": "github://mikemartinez1974/public/root.node",
+        "sourcePayload": "node.web.detail",
+        "surfaceId": "root",
+        "target": {
+          "ref": "github://mikemartinez1974/public/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "surfaceId": "root",
+          "label": "Open Mike Martinez"
+        },
+        "visibilityRole": "browser"
       }
     }
   ],
   "edges": [
     {
-      "id": "commons-edge-title-type",
+      "id": "commons-landing-edge",
       "type": "reference",
-      "source": "commons-title",
-      "target": "commons-type",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "names",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "commons-edge-type-view",
-      "type": "reference",
-      "source": "commons-type",
-      "target": "commons-view",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "declares type",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "commons-edge-title-view",
-      "type": "reference",
-      "source": "commons-title",
-      "target": "commons-view",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "host view",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "commons-edge-title-back",
-      "type": "reference",
-      "source": "commons-title",
-      "target": "commons-back",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "back",
-      "style": {
-        "curved": true,
-        "route": "curved"
-      },
-      "data": {}
-    },
-    {
-      "id": "edge_1784873834057",
-      "type": "default",
-      "source": "commons-title",
-      "target": "50e81a72-ea73-416d-9f46-6333ede967dd",
-      "sourcePort": "right",
-      "targetPort": "top",
-      "portMeta": {
-        "source": {
-          "label": "right",
-          "type": "any"
-        },
-        "target": {
-          "label": "top",
-          "type": "value"
-        }
-      },
+      "source": "the-commons",
+      "target": "commons-landing",
+      "sourceHandle": "landing-surface",
+      "targetHandle": "root",
       "label": "",
       "style": {},
-      "data": {}
-    },
-    {
-      "id": "release-commons-default",
-      "type": "default-view",
-      "source": "commons-declaration",
-      "target": "release-commons-detail-view",
-      "sourcePort": "default-view",
-      "targetPort": "root",
-      "label": "default view",
-      "style": {},
       "data": {
-        "role": "default-view",
-        "semanticRole": "default-view"
+        "semanticRole": "landing-surface",
+        "presentation": {
+          "layer": "contract"
+        }
       }
     },
     {
-      "id": "release-commons-summary",
-      "type": "reference",
-      "source": "commons-declaration",
-      "target": "release-commons-summary-view",
-      "sourcePort": "summary-view",
-      "targetPort": "root",
-      "label": "summary view",
+      "id": "commons-surface",
+      "type": "surface",
+      "source": "the-commons",
+      "target": "commons-detail",
+      "sourceHandle": "surfaces",
+      "targetHandle": "root",
+      "label": "",
       "style": {},
       "data": {
-        "role": "shared-summary",
-        "semanticRole": "shared-summary"
+        "role": "surface",
+        "surfaceId": "web"
       }
     },
     {
-      "id": "release-commons-icon",
-      "type": "reference",
-      "source": "commons-declaration",
-      "target": "release-commons-icon-view",
-      "sourcePort": "icon-view",
-      "targetPort": "root",
-      "label": "icon view",
+      "id": "commons-detail-summary",
+      "type": "view-sequence",
+      "source": "commons-detail",
+      "target": "commons-summary",
+      "sourceHandle": "sequence-out",
+      "targetHandle": "sequence-in",
+      "label": "",
       "style": {},
       "data": {
-        "role": "shared-icon",
-        "semanticRole": "shared-icon"
+        "role": "view-sequence"
       }
     },
     {
-      "id": "release-commons-glyph-edge",
-      "type": "reference",
-      "source": "commons-declaration",
-      "target": "release-commons-glyph",
-      "sourcePort": "glyph",
-      "targetPort": "root",
-      "label": "glyph",
+      "id": "commons-summary-icon",
+      "type": "view-sequence",
+      "source": "commons-summary",
+      "target": "commons-icon",
+      "sourceHandle": "sequence-out",
+      "targetHandle": "sequence-in",
+      "label": "",
       "style": {},
       "data": {
-        "role": "shared-glyph",
-        "semanticRole": "shared-glyph"
+        "role": "view-sequence"
       }
     },
     {
-      "id": "release-commons-landing-edge",
-      "type": "reference",
-      "source": "commons-declaration",
-      "target": "release-commons-landing",
-      "sourcePort": "landing-surface",
-      "targetPort": "root",
-      "label": "landing surface",
+      "id": "commons-icon-glyph",
+      "type": "view-sequence",
+      "source": "commons-icon",
+      "target": "commons-glyph",
+      "sourceHandle": "sequence-out",
+      "targetHandle": "root",
+      "label": "",
       "style": {},
       "data": {
-        "role": "landing-surface",
-        "semanticRole": "landing-surface"
-      }
-    },
-    {
-      "id": "release-commons-detail-content",
-      "type": "reference",
-      "source": "release-commons-detail-view",
-      "target": "release-commons-landing",
-      "sourcePort": "surface-delegate",
-      "targetPort": "root",
-      "label": "content",
-      "style": {},
-      "data": {
-        "role": "view.content",
-        "semanticRole": "view.content"
-      }
-    },
-    {
-      "id": "release-commons-summary-content-edge",
-      "type": "reference",
-      "source": "release-commons-summary-view",
-      "target": "release-commons-summary-content",
-      "sourcePort": "surface-delegate",
-      "targetPort": "root",
-      "label": "content",
-      "style": {},
-      "data": {
-        "role": "view.content",
-        "semanticRole": "view.content"
-      }
-    },
-    {
-      "id": "release-commons-icon-content-edge",
-      "type": "reference",
-      "source": "release-commons-icon-view",
-      "target": "release-commons-icon-content",
-      "sourcePort": "surface-delegate",
-      "targetPort": "root",
-      "label": "content",
-      "style": {},
-      "data": {
-        "role": "view.content",
-        "semanticRole": "view.content"
+        "role": "view-sequence"
       }
     }
   ],
   "clusters": [],
-  "settings": {
-    "theme": null,
-    "backgroundImage": null,
-    "defaultNodeColor": "#1976d2",
-    "defaultEdgeColor": "#666666",
-    "snapToGrid": false,
-    "gridSize": 20,
-    "edgeRouting": "auto",
-    "layout": {
-      "mode": "autoOnMissingPositions",
-      "defaultLayout": "layered",
-      "direction": "DOWN",
-      "edgeLaneGapPx": 10,
-      "serpentine": {
-        "maxPerRow": 6
-      },
-      "cycleFallback": {
-        "enabled": true
-      },
-      "elk": {
-        "algorithm": "fixed",
-        "edgeRouting": "ORTHOGONAL",
-        "portConstraints": "FIXED_SIDE",
-        "nodeSpacing": 120,
-        "layeredEdgeSpacing": 80
-      }
-    },
-    "github": {
-      "repo": "twilite-zone/public",
-      "path": "github/the-commons/root.node",
-      "branch": "main",
-      "autoCreateRepo": true,
-      "repoVisibility": "private",
-      "seedOnCommit": false,
-      "enableGithubPages": false,
-      "installationId": "120403738"
-    },
-    "autoSave": false
-  },
-  "scripts": [
-    {
-      "id": "script_1761684730975",
-      "name": "New Script",
-      "source": "// Write your script here\n// Available API:\n//   api.getNodes()\n//   api.getNode(id)\n//   api.getEdges()\n//   api.createNode(data)\n//   api.updateNode(id, patch)\n//   api.deleteNode(id)\n//   api.createEdge(data)\n//   api.deleteEdge(id)\n//   api.log(level, message)\n\nconst nodes = await api.getNodes();\nreturn { count: nodes.length };",
-      "tags": ""
-    },
-    {
-      "id": "script_1761684295367",
-      "name": "Mike",
-      "source": "console.clear();\nconst nodes = await api.getNodes();\nconsole.log(\"Mike\");\nreturn { count: nodes.length };",
-      "tags": ""
-    }
-  ]
+  "settings": {}
 }
