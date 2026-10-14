@@ -64,7 +64,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Idea \u00b7 workspace is a graph\n\nSave a workspace as an ordinary `.node` document. The workspace owns Portal-backed instances of nodes exposed by other documents, their spatial arrangement, ordinary parent-level edges, and all graph machinery authored at that level.\n\nChild documents remain separate authorities. Their contents are resolved when needed, never copied into the workspace file."
+        "markdown": "# Idea · workspace is a graph\n\nSave a workspace as an ordinary `.node` document. The workspace owns Portal-backed instances of nodes exposed by other documents, their spatial arrangement, ordinary parent-level edges, and all graph machinery authored at that level.\n\nChild documents remain separate authorities. Their contents are resolved when needed, never copied into the workspace file."
       },
       "ports": [
         {
@@ -132,7 +132,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Proposed invariant\n\nEvery `.node` document saves only the structure authored at its own level. A child document exposes a semantic node through a Port; the parent stores a Portal-backed instance that resolves that exposure and renders one of the node's Views. Unfolding does not transfer ownership of the child document.\n\nThe same Declaration \u2192 View \u2192 Port \u2192 Portal \u2192 Bridge \u2192 Edge vocabulary applies at every level. No new `graph` node primitive is required."
+        "markdown": "# Proposed invariant\n\nEvery `.node` document saves only the structure authored at its own level. A child document exposes a semantic node through a Port; the parent stores a Portal-backed instance that resolves that exposure and renders one of the node's Views. Unfolding does not transfer ownership of the child document.\n\nThe same Declaration → View → Port → Portal → Bridge → Edge vocabulary applies at every level. No new `graph` node primitive is required."
       },
       "ports": [
         {
@@ -404,7 +404,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Question \u00b7 repeated projections\n\nCan one workspace contain several local instances consuming the same exposed Port?\n\n**Proposal:** yes. Each placement has a graph-local `id`; all may resolve the same document, Port, semantic `nodeId`, and View. Placement identity must not be confused with referenced semantic identity."
+        "markdown": "# Question · repeated projections\n\nCan one workspace contain several local instances consuming the same exposed Port?\n\n**Proposal:** yes. Each placement has a graph-local `id`; all may resolve the same document, Port, semantic `nodeId`, and View. Placement identity must not be confused with referenced semantic identity."
       },
       "ports": [
         {
@@ -438,7 +438,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Question \u00b7 camera and named arrangements\n\nShould the current camera be saved?\n\n**Proposal:** focus and transient camera remain session state. Portable named presentations should be authored as ordinary workspace Views. A default View may establish an intentional opening camera without serializing incidental navigation."
+        "markdown": "# Question · camera and named arrangements\n\nShould the current camera be saved?\n\n**Proposal:** focus and transient camera remain session state. Portable named presentations should be authored as ordinary workspace Views. A default View may establish an intentional opening camera without serializing incidental navigation."
       },
       "ports": [
         {
@@ -454,7 +454,7 @@
     {
       "id": "cycle-risk",
       "type": "markdown",
-      "label": "Risk \u00b7 recursive loading",
+      "label": "Risk · recursive loading",
       "position": {
         "x": 40,
         "y": 800
@@ -472,7 +472,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Risk \u00b7 cycles and load cost\n\nWorkspace A may reference B while B eventually references A. Reference resolution must therefore be lazy, bounded, and cycle-aware. Saving must never expand references into embedded snapshots, or a small cyclic composition could become unbounded."
+        "markdown": "# Risk · cycles and load cost\n\nWorkspace A may reference B while B eventually references A. Reference resolution must therefore be lazy, bounded, and cycle-aware. Saving must never expand references into embedded snapshots, or a small cyclic composition could become unbounded."
       },
       "ports": [
         {
@@ -506,7 +506,7 @@
         "borderRadius": 18
       },
       "data": {
-        "markdown": "# Implementation path\n\n1. Define durable Portal-backed instance serialization for exposed nodes.\n2. Convert runtime workspace instances into those ordinary parent graph nodes.\n3. Resolve `ref` \u2192 Port \u2192 semantic node \u2192 View without introducing a `graph` node type.\n4. Serialize workspace-owned edges as ordinary edges.\n5. Build a workspace Legend from its edge classes and capabilities.\n6. Load the workspace `.node` into the existing multi-document runtime.\n7. Keep child saves independent and migrate existing local-storage arrangements.\n8. Exercise recursive View, Port, Portal, Bridge, and edge behavior with smoke graphs.\n\nThis is an attempted solution for review, not a frozen contract."
+        "markdown": "# Implementation path\n\n1. Define durable Portal-backed instance serialization for exposed nodes.\n2. Convert runtime workspace instances into those ordinary parent graph nodes.\n3. Resolve `ref` → Port → semantic node → View without introducing a `graph` node type.\n4. Serialize workspace-owned edges as ordinary edges.\n5. Build a workspace Legend from its edge classes and capabilities.\n6. Load the workspace `.node` into the existing multi-document runtime.\n7. Keep child saves independent and migrate existing local-storage arrangements.\n8. Exercise recursive View, Port, Portal, Bridge, and edge behavior with smoke graphs.\n\nThis is an attempted solution for review, not a frozen contract."
       },
       "ports": [
         {
