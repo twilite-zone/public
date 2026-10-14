@@ -1472,71 +1472,61 @@
       "type": "surface",
       "source": "edge-definition-smoke-declaration",
       "target": "edge-definition-smoke-detail-view",
-      "sourceHandle": "surfaces",
-      "targetHandle": "root",
       "label": "",
       "style": {},
       "data": {
-        "role": "surface",
         "surfaceId": "web"
-      }
+      },
+      "sourcePort": "surfaces",
+      "targetPort": "root"
     },
     {
       "id": "edge-definition-smoke-detail-view-next",
       "type": "view-sequence",
       "source": "edge-definition-smoke-detail-view",
       "target": "edge-definition-smoke-summary-view",
-      "sourceHandle": "sequence-out",
-      "targetHandle": "sequence-in",
       "label": "",
       "style": {},
-      "data": {
-        "role": "view-sequence"
-      }
+      "data": {},
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in"
     },
     {
       "id": "edge-definition-smoke-summary-view-next",
       "type": "view-sequence",
       "source": "edge-definition-smoke-summary-view",
       "target": "edge-definition-smoke-icon-view",
-      "sourceHandle": "sequence-out",
-      "targetHandle": "sequence-in",
       "label": "",
       "style": {},
-      "data": {
-        "role": "view-sequence"
-      }
+      "data": {},
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in"
     },
     {
       "id": "edge-definition-smoke-icon-view-next",
       "type": "view-sequence",
       "source": "edge-definition-smoke-icon-view",
       "target": "edge-definition-smoke-glyph",
-      "sourceHandle": "sequence-out",
-      "targetHandle": "root",
       "label": "",
       "style": {},
-      "data": {
-        "role": "view-sequence"
-      }
+      "data": {},
+      "sourcePort": "sequence-out",
+      "targetPort": "root"
     },
     {
       "id": "edge-definition-smoke-landing-surface-edge",
-      "type": "reference",
+      "type": "landing-surface",
       "source": "edge-definition-smoke-declaration",
       "target": "edge-definition-smoke-landing-surface",
       "label": "landing surface",
       "style": {},
-      "data": {
-        "role": "landing-surface",
-        "semanticRole": "landing-surface"
-      },
-      "sourceHandle": "landing-surface",
-      "targetHandle": "root"
+      "data": {},
+      "sourcePort": "landing-surface",
+      "targetPort": "root"
     },
     {
       "id": "edge-definition-smoke-enter-subject",
-      "type": "reference",
+      "type": "navigation",
       "source": "edge-definition-smoke-landing-surface",
       "target": "edge-definition-smoke-test-subject",
       "label": "Enter test bench",
@@ -1544,20 +1534,15 @@
         "route": "orthogonal",
         "orthogonal": true
       },
-      "data": {
-        "role": "navigation",
-        "semanticRole": "navigation"
-      },
-      "sourceHandle": "enter",
-      "targetHandle": "root"
+      "data": {},
+      "sourcePort": "enter",
+      "targetPort": "root"
     },
     {
       "id": "class-stack",
-      "type": "reference",
+      "type": "smoke.multi-stroke",
       "source": "class-source",
-      "sourceHandle": "out",
       "target": "class-target",
-      "targetHandle": "in",
       "label": "class stack",
       "style": {
         "route": "curved",
@@ -1577,19 +1562,18 @@
         ]
       },
       "data": {
-        "edgeClassKey": "smoke.multi-stroke",
-        "edgeClassRef": "github://twilite-zone/public/tasks/edge-definition-smoke-suite/multi-stroke.edge-class.node",
         "definitionRef": "github://twilite-zone/public/tasks/edge-definition-smoke-suite/edge-definitions.node",
-        "definitionNodeId": "class-stack"
-      }
+        "definitionNodeId": "class-stack",
+        "classRef": "github://twilite-zone/public/tasks/edge-definition-smoke-suite/multi-stroke.edge-class.node"
+      },
+      "sourcePort": "out",
+      "targetPort": "in"
     },
     {
       "id": "instance-override",
-      "type": "reference",
+      "type": "smoke.multi-stroke",
       "source": "override-source",
-      "sourceHandle": "out",
       "target": "override-target",
-      "targetHandle": "in",
       "label": "instance override",
       "style": {
         "route": "orthogonal",
@@ -1613,19 +1597,18 @@
         ]
       },
       "data": {
-        "edgeClassKey": "smoke.multi-stroke",
-        "edgeClassRef": "github://twilite-zone/public/tasks/edge-definition-smoke-suite/multi-stroke.edge-class.node",
         "definitionRef": "github://twilite-zone/public/tasks/edge-definition-smoke-suite/edge-definitions.node",
-        "definitionNodeId": "instance-override"
-      }
+        "definitionNodeId": "instance-override",
+        "classRef": "github://twilite-zone/public/tasks/edge-definition-smoke-suite/multi-stroke.edge-class.node"
+      },
+      "sourcePort": "out",
+      "targetPort": "in"
     },
     {
       "id": "straight-stack",
-      "type": "reference",
+      "type": "smoke.straight-stack",
       "source": "straight-source",
-      "sourceHandle": "out",
       "target": "straight-target",
-      "targetHandle": "in",
       "label": "straight stack",
       "style": {
         "route": "straight",
@@ -1649,19 +1632,18 @@
         ]
       },
       "data": {
-        "edgeClassKey": "smoke.straight-stack",
-        "edgeClassRef": "github://twilite-zone/public/tasks/edge-definition-smoke-suite/straight-stack.edge-class.node",
         "definitionRef": "github://twilite-zone/public/tasks/edge-definition-smoke-suite/edge-definitions.node",
-        "definitionNodeId": "straight-stack"
-      }
+        "definitionNodeId": "straight-stack",
+        "classRef": "github://twilite-zone/public/tasks/edge-definition-smoke-suite/straight-stack.edge-class.node"
+      },
+      "sourcePort": "out",
+      "targetPort": "in"
     },
     {
       "id": "curved-detour",
-      "type": "reference",
+      "type": "smoke.curved-detour",
       "source": "avoid-source",
-      "sourceHandle": "out",
       "target": "avoid-target",
-      "targetHandle": "in",
       "label": "avoids node",
       "style": {
         "route": "curved",
@@ -1681,11 +1663,12 @@
         ]
       },
       "data": {
-        "edgeClassKey": "smoke.curved-detour",
-        "edgeClassRef": "github://twilite-zone/public/tasks/edge-definition-smoke-suite/curved-detour.edge-class.node",
         "definitionRef": "github://twilite-zone/public/tasks/edge-definition-smoke-suite/edge-definitions.node",
-        "definitionNodeId": "curved-detour"
-      }
+        "definitionNodeId": "curved-detour",
+        "classRef": "github://twilite-zone/public/tasks/edge-definition-smoke-suite/curved-detour.edge-class.node"
+      },
+      "sourcePort": "out",
+      "targetPort": "in"
     }
   ],
   "settings": {
