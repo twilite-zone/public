@@ -377,7 +377,7 @@
     },
     {
       "id": "edge-class-contract-overview",
-      "type": "markdown",
+      "type": "content",
       "label": "Contract Boundary",
       "position": {
         "x": 740,
@@ -388,7 +388,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Edge Classes Add Meaning\n\nA plain edge is valid when its endpoints and handles resolve. An **edge class** is optional reusable semantic identity layered onto that edge.\n\nAn authored edge class makes a small executable promise:\n\n- one authority-bearing `declaration` with `declaresKind: \"edge-class\"`\n- one canonical declared `root` surface backed by a real graph-owned port\n- a stable `data.edgeClass.key`\n- a human-readable label and meaning\n- durable resolution when an edge assigns the class\n\nThe canonical edge-class declaration object lives at `data.edgeClass`. Older Field-node representations remain readable compatibility data, but new templates should not generate them.\n\nEdge instances may override class defaults. Otherwise, declared class defaults apply. With no class assignment, the edge remains plain.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -398,12 +397,16 @@
           "classKey": "markdown",
           "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
         },
-        "definitionKey": "markdown"
+        "definitionKey": "markdown",
+        "content": {
+          "kind": "markdown",
+          "value": "# Edge Classes Add Meaning\n\nA plain edge is valid when its endpoints and handles resolve. An **edge class** is optional reusable semantic identity layered onto that edge.\n\nAn authored edge class makes a small executable promise:\n\n- one authority-bearing `declaration` with `declaresKind: \"edge-class\"`\n- one canonical declared `root` surface backed by a real graph-owned port\n- a stable `data.edgeClass.key`\n- a human-readable label and meaning\n- durable resolution when an edge assigns the class\n\nThe canonical edge-class declaration object lives at `data.edgeClass`. Older Field-node representations remain readable compatibility data, but new templates should not generate them.\n\nEdge instances may override class defaults. Otherwise, declared class defaults apply. With no class assignment, the edge remains plain."
+        }
       }
     },
     {
       "id": "edge-class-contract-promise",
-      "type": "markdown",
+      "type": "content",
       "label": "Minimum Promise",
       "position": {
         "x": 740,
@@ -414,7 +417,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Minimum Promise\n\n```json\n{\n  \"type\": \"declaration\",\n  \"data\": {\n    \"declaresKind\": \"edge-class\",\n    \"declaration\": {\n      \"kind\": \"edge-class\",\n      \"defaultSurfaceId\": \"root\",\n      \"surfaces\": [\n        { \"id\": \"root\", \"kind\": \"port\", \"portNodeId\": \"root-port-node-id\" }\n      ]\n    },\n    \"edgeClass\": {\n      \"key\": \"domain.relationship\",\n      \"label\": \"Relationship\",\n      \"meaning\": \"What this relationship asserts\"\n    }\n  }\n}\n```\n\nThe root port must exist. The key must be stable for durable assignment and resolution. Label and meaning explain the semantic assertion rather than its styling.\n\nOptional source or target constraints become promises only when declared.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -424,12 +426,16 @@
           "classKey": "markdown",
           "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
         },
-        "definitionKey": "markdown"
+        "definitionKey": "markdown",
+        "content": {
+          "kind": "markdown",
+          "value": "## Minimum Promise\n\n```json\n{\n  \"type\": \"declaration\",\n  \"data\": {\n    \"declaresKind\": \"edge-class\",\n    \"declaration\": {\n      \"kind\": \"edge-class\",\n      \"defaultSurfaceId\": \"root\",\n      \"surfaces\": [\n        { \"id\": \"root\", \"kind\": \"port\", \"portNodeId\": \"root-port-node-id\" }\n      ]\n    },\n    \"edgeClass\": {\n      \"key\": \"domain.relationship\",\n      \"label\": \"Relationship\",\n      \"meaning\": \"What this relationship asserts\"\n    }\n  }\n}\n```\n\nThe root port must exist. The key must be stable for durable assignment and resolution. Label and meaning explain the semantic assertion rather than its styling.\n\nOptional source or target constraints become promises only when declared."
+        }
       }
     },
     {
       "id": "edge-class-contract-diagnostics",
-      "type": "markdown",
+      "type": "content",
       "label": "Diagnostics",
       "position": {
         "x": 1420,
@@ -440,13 +446,16 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Diagnostics Report Broken Promises\n\nValidators report:\n\n- a missing or ambiguous edge-class declaration\n- a missing canonical root port or other declared target\n- a missing or malformed edge-class key\n- an assigned class that cannot resolve\n- invalid endpoints or named handles\n- a violated source or target constraint explicitly declared by the class\n- a missing view, export, renderer, or preview explicitly promised by the class\n\nValidators remain silent when optional render defaults, previews, additional views, exports, constraints, or visual metadata were never declared.\n\nCompatibility notes may explain legacy representations separately. They are not invariant-core failures.",
-        "definitionKey": "markdown"
+        "definitionKey": "markdown",
+        "content": {
+          "kind": "markdown",
+          "value": "# Diagnostics Report Broken Promises\n\nValidators report:\n\n- a missing or ambiguous edge-class declaration\n- a missing canonical root port or other declared target\n- a missing or malformed edge-class key\n- an assigned class that cannot resolve\n- invalid endpoints or named handles\n- a violated source or target constraint explicitly declared by the class\n- a missing view, export, renderer, or preview explicitly promised by the class\n\nValidators remain silent when optional render defaults, previews, additional views, exports, constraints, or visual metadata were never declared.\n\nCompatibility notes may explain legacy representations separately. They are not invariant-core failures."
+        }
       }
     },
     {
       "id": "edge-class-contract-template-boundary",
-      "type": "markdown",
+      "type": "content",
       "label": "Template Boundary",
       "position": {
         "x": 1420,
@@ -457,7 +466,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Richness Comes From Templates\n\nEdge-class templates should create useful graphs, not merely the minimum valid declaration.\n\nA strong new edge-class graph may include:\n\n- title, type definition, and node-view surfaces\n- meaning, direction, and assignment examples\n- source and target constraints\n- rendering defaults and preview\n- export surfaces\n- semantic edges that explain how its sections relate\n- a return portal to the containing collection\n\nThose are generated authoring affordances and composition guidance. Their absence from an older or deliberately minimal edge class is not a warning.\n\nThe rule is:\n\n1. validate every promise the graph actually makes\n2. preserve plain-edge fallback\n3. let templates supply richer starting structure\n4. let authors add capabilities deliberately",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -467,7 +475,11 @@
           "classKey": "markdown",
           "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
         },
-        "definitionKey": "markdown"
+        "definitionKey": "markdown",
+        "content": {
+          "kind": "markdown",
+          "value": "## Richness Comes From Templates\n\nEdge-class templates should create useful graphs, not merely the minimum valid declaration.\n\nA strong new edge-class graph may include:\n\n- title, type definition, and node-view surfaces\n- meaning, direction, and assignment examples\n- source and target constraints\n- rendering defaults and preview\n- export surfaces\n- semantic edges that explain how its sections relate\n- a return portal to the containing collection\n\nThose are generated authoring affordances and composition guidance. Their absence from an older or deliberately minimal edge class is not a warning.\n\nThe rule is:\n\n1. validate every promise the graph actually makes\n2. preserve plain-edge fallback\n3. let templates supply richer starting structure\n4. let authors add capabilities deliberately"
+        }
       }
     },
     {

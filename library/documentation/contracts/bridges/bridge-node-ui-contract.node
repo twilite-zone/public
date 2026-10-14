@@ -230,7 +230,7 @@
     },
     {
       "id": "bridge-node-ui-contract-overview",
-      "type": "markdown",
+      "type": "content",
       "label": "Overview",
       "position": {
         "x": -260,
@@ -241,12 +241,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Bridge UI Overview\n\nA bridge is editor-facing plumbing.\n\nThe UI must:\n\n- communicate what resource is targeted\n- communicate whether the bridge is an **import** or an **export**\n- communicate what actions are granted\n- communicate what *subset* of a library/graph is exposed\n- keep the on-canvas representation compact\n- keep the editor representation explicit and authority-sectioned\n\nA bridge should be hidden in browser mode."
+        "content": {
+          "kind": "markdown",
+          "value": "# Bridge UI Overview\n\nA bridge is editor-facing plumbing.\n\nThe UI must:\n\n- communicate what resource is targeted\n- communicate whether the bridge is an **import** or an **export**\n- communicate what actions are granted\n- communicate what *subset* of a library/graph is exposed\n- keep the on-canvas representation compact\n- keep the editor representation explicit and authority-sectioned\n\nA bridge should be hidden in browser mode."
+        }
       }
     },
     {
       "id": "bridge-node-ui-contract-chrome",
-      "type": "markdown",
+      "type": "content",
       "label": "On-Canvas Chrome",
       "position": {
         "x": 260,
@@ -257,12 +260,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# On-Canvas Chrome (Bridge Node)\n\nRequired elements:\n\n- type badge: `bridge`\n- **bridge role chip**: `import` or `export`\n- **target icon** (sourced from the referenced artifact's icon view)\n- primary target label (derived from `target.label` or resolved ref)\n- grants chips (e.g. `create`, `consume-view`)\n- a short ref line (`/library/...`) or endpoint hint\n\nRole semantics:\n\n- `import` means the bridge brings capability into the current graph\n- `export` means the bridge republishes capability outward as part of a library or other export surface\n\nTarget icon resolution (contract):\n\n- Canonical source is `icon-view` (payload `node.web.icon`).\n- `node-view` / `graph-view` are not substitutes and must not be interpreted as icon providers.\n- If no `icon-view` exists: render a deterministic fallback glyph based on the target's observed semantic type (`type-definition`, else `graph`) and emit `MISSING_ICON_VIEW` in diagnostics.\n\nAvoid:\n\n- long JSON dumps\n- duplicate navigation affordances (legend already creates; bridge config lives in editor)\n\nOptional:\n\n- subtle scope hint (`focused-graph`, `global`) when it changes behavior."
+        "content": {
+          "kind": "markdown",
+          "value": "# On-Canvas Chrome (Bridge Node)\n\nRequired elements:\n\n- type badge: `bridge`\n- **bridge role chip**: `import` or `export`\n- **target icon** (sourced from the referenced artifact's icon view)\n- primary target label (derived from `target.label` or resolved ref)\n- grants chips (e.g. `create`, `consume-view`)\n- a short ref line (`/library/...`) or endpoint hint\n\nRole semantics:\n\n- `import` means the bridge brings capability into the current graph\n- `export` means the bridge republishes capability outward as part of a library or other export surface\n\nTarget icon resolution (contract):\n\n- Canonical source is `icon-view` (payload `node.web.icon`).\n- `node-view` / `graph-view` are not substitutes and must not be interpreted as icon providers.\n- If no `icon-view` exists: render a deterministic fallback glyph based on the target's observed semantic type (`type-definition`, else `graph`) and emit `MISSING_ICON_VIEW` in diagnostics.\n\nAvoid:\n\n- long JSON dumps\n- duplicate navigation affordances (legend already creates; bridge config lives in editor)\n\nOptional:\n\n- subtle scope hint (`focused-graph`, `global`) when it changes behavior."
+        }
       }
     },
     {
       "id": "bridge-node-ui-contract-editor",
-      "type": "markdown",
+      "type": "content",
       "label": "Editor Surface",
       "position": {
         "x": 740,
@@ -273,12 +279,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Editor Surface (Bridge)\n\nThe bridge editor should be sectioned by authority, in this order:\n\n1. **Source**\n   - choose the referenced resource (graph/class ref)\n   - preview resolved identity\n2. **Role**\n   - choose whether the bridge is `import` or `export`\n   - export bridges are counted by library enumeration\n   - import bridges are consumer-facing and should not be re-exported accidentally\n3. **Grants**\n   - choose allowed actions (`create`, `consume-view`, ...)\n4. **Exposure**\n   - allow/deny per family: nodes, edges, views, scripts, declarations\n   - allowlist/denylist when needed\n5. **Effective Result**\n   - show what a consumer will actually see in legend/type selectors\n6. **Diagnostics** (last)\n   - validation errors, conflicts, missing refs\n\nThe editor must support least-authority. Default should be minimal exposure."
+        "content": {
+          "kind": "markdown",
+          "value": "# Editor Surface (Bridge)\n\nThe bridge editor should be sectioned by authority, in this order:\n\n1. **Source**\n   - choose the referenced resource (graph/class ref)\n   - preview resolved identity\n2. **Role**\n   - choose whether the bridge is `import` or `export`\n   - export bridges are counted by library enumeration\n   - import bridges are consumer-facing and should not be re-exported accidentally\n3. **Grants**\n   - choose allowed actions (`create`, `consume-view`, ...)\n4. **Exposure**\n   - allow/deny per family: nodes, edges, views, scripts, declarations\n   - allowlist/denylist when needed\n5. **Effective Result**\n   - show what a consumer will actually see in legend/type selectors\n6. **Diagnostics** (last)\n   - validation errors, conflicts, missing refs\n\nThe editor must support least-authority. Default should be minimal exposure."
+        }
       }
     },
     {
       "id": "bridge-node-ui-contract-browser-mode",
-      "type": "markdown",
+      "type": "content",
       "label": "Browser Mode",
       "position": {
         "x": -260,
@@ -289,7 +298,10 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Browser Mode Rules\n\n- Bridge nodes are **editor nodes**.\n- In browser mode: bridge nodes should be hidden (or collapsed to a non-interactive placeholder if needed for layout).\n- The legend remains functional because it derives from effective bridge exposure, not from visible bridge nodes.\n- Export vs import role is authorship metadata, not browser-mode chrome."
+        "content": {
+          "kind": "markdown",
+          "value": "# Browser Mode Rules\n\n- Bridge nodes are **editor nodes**.\n- In browser mode: bridge nodes should be hidden (or collapsed to a non-interactive placeholder if needed for layout).\n- The legend remains functional because it derives from effective bridge exposure, not from visible bridge nodes.\n- Export vs import role is authorship metadata, not browser-mode chrome."
+        }
       }
     },
     {

@@ -541,7 +541,7 @@
     },
     {
       "id": "plain-node-template-contract",
-      "type": "markdown",
+      "type": "content",
       "label": "Contract Note",
       "position": {
         "x": 680,
@@ -552,7 +552,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Plain Node Baseline Contract\n\nThis template is the minimum authored node waiting for content.\n\n## Required Parts\n\n- `declaration`: the first authoritative reader target for the graph.\n- `title`: graph-view framing for humans.\n- `node-view`: defines the on-canvas surface.\n- `editor-view`: defines the bottom-panel edit surface.\n- `markdown`: optional note/example content for the authoring graph itself.\n\n## Not Required\n\n- `type-definition` is intentionally omitted here.\n- without a type-definition, observed type falls back to `graph` until the node is upgraded.\n\n## Default Content Model\n\nThe default content mode is `text`.\n\nRules:\n- `text` supports markdown syntax ambiently.\n- plain text remains valid without a separate markdown selector.\n- `html` and `svg` are explicit alternate content modes.\n\n## Expected Content Shape\n\nA plain node should usually carry:\n\n- `label`\n- `data.contentType` with one of:\n  - `text`\n  - `html`\n  - `svg`\n- one active content field such as:\n  - `data.text`\n  - `data.html`\n  - `data.svg`\n\n## Render Shape\n\nThe node view should declare rendering explicitly instead of inferring from field names alone.\n\n```json\n{\n  \"view\": {\n    \"intent\": \"node\",\n    \"payload\": \"render.text\",\n    \"renderShape\": {\n      \"kind\": \"markdown\",\n      \"sourcePath\": \"data.text\",\n      \"renderRole\": \"node\",\n      \"presentationProfile\": \"markdown.default\"\n    }\n  }\n}\n```\n\nAlternate declarations should switch to `kind: \"html\"` or `kind: \"svg\"` and point at the matching source path.\n\n## Editor Shape\n\nThe editor view should expose at least:\n\n- `label`\n- a content-type selector\n- the active content field for the selected mode\n\nThat is enough to make the minimum node editable without creating duplicate author-facing text vs markdown modes.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -565,7 +564,11 @@
           "classKey": "markdown",
           "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
         },
-        "definitionKey": "markdown"
+        "definitionKey": "markdown",
+        "content": {
+          "kind": "markdown",
+          "value": "# Plain Node Baseline Contract\n\nThis template is the minimum authored node waiting for content.\n\n## Required Parts\n\n- `declaration`: the first authoritative reader target for the graph.\n- `title`: graph-view framing for humans.\n- `node-view`: defines the on-canvas surface.\n- `editor-view`: defines the bottom-panel edit surface.\n- `markdown`: optional note/example content for the authoring graph itself.\n\n## Not Required\n\n- `type-definition` is intentionally omitted here.\n- without a type-definition, observed type falls back to `graph` until the node is upgraded.\n\n## Default Content Model\n\nThe default content mode is `text`.\n\nRules:\n- `text` supports markdown syntax ambiently.\n- plain text remains valid without a separate markdown selector.\n- `html` and `svg` are explicit alternate content modes.\n\n## Expected Content Shape\n\nA plain node should usually carry:\n\n- `label`\n- `data.contentType` with one of:\n  - `text`\n  - `html`\n  - `svg`\n- one active content field such as:\n  - `data.text`\n  - `data.html`\n  - `data.svg`\n\n## Render Shape\n\nThe node view should declare rendering explicitly instead of inferring from field names alone.\n\n```json\n{\n  \"view\": {\n    \"intent\": \"node\",\n    \"payload\": \"render.text\",\n    \"renderShape\": {\n      \"kind\": \"markdown\",\n      \"sourcePath\": \"data.text\",\n      \"renderRole\": \"node\",\n      \"presentationProfile\": \"markdown.default\"\n    }\n  }\n}\n```\n\nAlternate declarations should switch to `kind: \"html\"` or `kind: \"svg\"` and point at the matching source path.\n\n## Editor Shape\n\nThe editor view should expose at least:\n\n- `label`\n- a content-type selector\n- the active content field for the selected mode\n\nThat is enough to make the minimum node editable without creating duplicate author-facing text vs markdown modes."
+        }
       }
     }
   ],

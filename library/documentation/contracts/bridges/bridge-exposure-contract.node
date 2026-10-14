@@ -194,7 +194,7 @@
     },
     {
       "id": "bridge-exposure-contract-overview",
-      "type": "markdown",
+      "type": "content",
       "label": "Overview",
       "position": {
         "x": 780,
@@ -205,12 +205,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Bridge Exposure Policy\n\nA bridge is not a blind import hose. It is an editor-facing authority surface that grants controlled access to parts of another graph or library.\n\nThe bridge owns both:\n\n- what kind of operations are granted\n- what resource families are actually exposed\n\nDefault law: expose the smallest useful set."
+        "content": {
+          "kind": "markdown",
+          "value": "# Bridge Exposure Policy\n\nA bridge is not a blind import hose. It is an editor-facing authority surface that grants controlled access to parts of another graph or library.\n\nThe bridge owns both:\n\n- what kind of operations are granted\n- what resource families are actually exposed\n\nDefault law: expose the smallest useful set."
+        }
       }
     },
     {
       "id": "bridge-exposure-contract-families",
-      "type": "markdown",
+      "type": "content",
       "label": "Exposure Families",
       "position": {
         "x": 780,
@@ -221,12 +224,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Exposure Families\n\nA bridge may expose any subset of these resource families:\n\n- `nodes`\n- `edges`\n- `views`\n- `scripts`\n- `declarations`\n\nA consumer should not gain access to a family unless the bridge allows it explicitly."
+        "content": {
+          "kind": "markdown",
+          "value": "# Exposure Families\n\nA bridge may expose any subset of these resource families:\n\n- `nodes`\n- `edges`\n- `views`\n- `scripts`\n- `declarations`\n\nA consumer should not gain access to a family unless the bridge allows it explicitly."
+        }
       }
     },
     {
       "id": "bridge-exposure-contract-shape",
-      "type": "markdown",
+      "type": "content",
       "label": "Canonical Shape",
       "position": {
         "x": 780,
@@ -237,12 +243,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Canonical Shape\n\n```json\n{\n  \"bridge\": {\n    \"ref\": \"github://twilite-zone/public/library/feature/root.node\",\n    \"resourceKind\": \"graph\",\n    \"scope\": \"focused-graph\",\n    \"grants\": [\"create\", \"consume-view\"],\n    \"exposure\": {\n      \"nodes\": { \"mode\": \"allowlist\", \"include\": [\"task\", \"goal\"] },\n      \"edges\": { \"mode\": \"allowlist\", \"include\": [\"task.depends-on\"] },\n      \"views\": { \"mode\": \"allowlist\", \"include\": [\"node.web.summary\", \"editor.web\"] },\n      \"scripts\": { \"mode\": \"deny\" },\n      \"declarations\": { \"mode\": \"allow\" }\n    }\n  }\n}\n```\n\n`grants` authorize actions. `exposure` filters what those actions can touch."
+        "content": {
+          "kind": "markdown",
+          "value": "# Canonical Shape\n\n```json\n{\n  \"bridge\": {\n    \"ref\": \"github://twilite-zone/public/library/feature/root.node\",\n    \"resourceKind\": \"graph\",\n    \"scope\": \"focused-graph\",\n    \"grants\": [\"create\", \"consume-view\"],\n    \"exposure\": {\n      \"nodes\": { \"mode\": \"allowlist\", \"include\": [\"task\", \"goal\"] },\n      \"edges\": { \"mode\": \"allowlist\", \"include\": [\"task.depends-on\"] },\n      \"views\": { \"mode\": \"allowlist\", \"include\": [\"node.web.summary\", \"editor.web\"] },\n      \"scripts\": { \"mode\": \"deny\" },\n      \"declarations\": { \"mode\": \"allow\" }\n    }\n  }\n}\n```\n\n`grants` authorize actions. `exposure` filters what those actions can touch."
+        }
       }
     },
     {
       "id": "bridge-exposure-contract-modes",
-      "type": "markdown",
+      "type": "content",
       "label": "Policy Modes",
       "position": {
         "x": 1260,
@@ -253,12 +262,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Policy Modes\n\nEach family should carry its own exposure policy.\n\nRecommended modes:\n\n- `allow`\n- `deny`\n- `allowlist`\n- `denylist`\n\nWhere a bridge uses allowlist or denylist, the include or exclude set belongs on the bridge data shape itself."
+        "content": {
+          "kind": "markdown",
+          "value": "# Policy Modes\n\nEach family should carry its own exposure policy.\n\nRecommended modes:\n\n- `allow`\n- `deny`\n- `allowlist`\n- `denylist`\n\nWhere a bridge uses allowlist or denylist, the include or exclude set belongs on the bridge data shape itself."
+        }
       }
     },
     {
       "id": "bridge-exposure-contract-boundary",
-      "type": "markdown",
+      "type": "content",
       "label": "Boundary Rule",
       "position": {
         "x": 1260,
@@ -269,7 +281,10 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Boundary Rule\n\n`grants` and `exposure` are different layers.\n\n- `grants` say what actions are permitted\n- `exposure` says what artifacts are available for those actions\n\nA bridge may grant `consume-view` while exposing only one named view. A bridge may grant `create` while exposing only one node class and one edge class."
+        "content": {
+          "kind": "markdown",
+          "value": "# Boundary Rule\n\n`grants` and `exposure` are different layers.\n\n- `grants` say what actions are permitted\n- `exposure` says what artifacts are available for those actions\n\nA bridge may grant `consume-view` while exposing only one named view. A bridge may grant `create` while exposing only one node class and one edge class."
+        }
       }
     },
     {

@@ -194,7 +194,7 @@
     },
     {
       "id": "library-graph-contract-definition",
-      "type": "markdown",
+      "type": "content",
       "label": "Definition",
       "position": {
         "x": 860,
@@ -205,12 +205,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Definition\n\nA **library graph** is a graph whose primary job is to organize and expose reusable artifacts.\n\nIt is usually **not** itself the thing being placed or consumed.\n\nThe library root provides identity, browsing views, and explicit exports to member artifacts such as:\n\n- node classes\n- edge classes\n- script nodes\n- views\n\nA bridge to a library should point at the library root."
+        "content": {
+          "kind": "markdown",
+          "value": "# Definition\n\nA **library graph** is a graph whose primary job is to organize and expose reusable artifacts.\n\nIt is usually **not** itself the thing being placed or consumed.\n\nThe library root provides identity, browsing views, and explicit exports to member artifacts such as:\n\n- node classes\n- edge classes\n- script nodes\n- views\n\nA bridge to a library should point at the library root."
+        }
       }
     },
     {
       "id": "library-graph-contract-required-shape",
-      "type": "markdown",
+      "type": "content",
       "label": "Required Shape",
       "position": {
         "x": 860,
@@ -221,12 +224,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Required Shape\n\nA contract-complete library graph should have:\n\n- one declaration identifying the graph and its intent\n- one root-facing identity surface, usually a title and optionally a type-definition if that graph truly needs one\n- at least one host-facing representation on the root (`node.web.detail`, `node.web.icon`, or a port-facing surface as appropriate)\n- explicit export bridges whose targets identify what is being exposed\n\nIf export entries do not declare their target kind clearly, only root representations and declaration-level authority are guaranteed to be discoverable."
+        "content": {
+          "kind": "markdown",
+          "value": "# Required Shape\n\nA contract-complete library graph should have:\n\n- one declaration identifying the graph and its intent\n- one root-facing identity surface, usually a title and optionally a type-definition if that graph truly needs one\n- at least one host-facing representation on the root (`node.web.detail`, `node.web.icon`, or a port-facing surface as appropriate)\n- explicit export bridges whose targets identify what is being exposed\n\nIf export entries do not declare their target kind clearly, only root representations and declaration-level authority are guaranteed to be discoverable."
+        }
       }
     },
     {
       "id": "library-graph-contract-target-mode",
-      "type": "markdown",
+      "type": "content",
       "label": "Target Mode",
       "position": {
         "x": 860,
@@ -237,12 +243,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Target Mode\n\nA bridge should resolve the target graph in two steps.\n\n## 1. Target Mode\n\nThe target graph declares whether it is:\n\n- an **artifact**: one thing with many surfaces\n- a **library**: many things through one export surface\n\n## 2. Artifact Kind\n\nIf the target mode is `artifact`, the declaration can further say what kind of thing it is, such as:\n\n- contract\n- node-class\n- edge-class\n- script\n- graph"
+        "content": {
+          "kind": "markdown",
+          "value": "# Target Mode\n\nA bridge should resolve the target graph in two steps.\n\n## 1. Target Mode\n\nThe target graph declares whether it is:\n\n- an **artifact**: one thing with many surfaces\n- a **library**: many things through one export surface\n\n## 2. Artifact Kind\n\nIf the target mode is `artifact`, the declaration can further say what kind of thing it is, such as:\n\n- contract\n- node-class\n- edge-class\n- script\n- graph"
+        }
       }
     },
     {
       "id": "library-graph-contract-bridge-rules",
-      "type": "markdown",
+      "type": "content",
       "label": "Bridge Rules",
       "position": {
         "x": 1380,
@@ -253,12 +262,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Bridge Interpretation Rules\n\nWhen a bridge targets a library graph:\n\n1. the bridge points at the **library root**\n2. the root's declaration and views establish library identity\n3. the library's **export bridges** enumerate what the library republishes\n4. the consumer bridge reads those export bridges and filters them through local exposure policy before they reach legend, add-node, or view selectors\n\nA library graph is therefore a graph-level export surface, not a disguised node class."
+        "content": {
+          "kind": "markdown",
+          "value": "# Bridge Interpretation Rules\n\nWhen a bridge targets a library graph:\n\n1. the bridge points at the **library root**\n2. the root's declaration and views establish library identity\n3. the library's **export bridges** enumerate what the library republishes\n4. the consumer bridge reads those export bridges and filters them through local exposure policy before they reach legend, add-node, or view selectors\n\nA library graph is therefore a graph-level export surface, not a disguised node class."
+        }
       }
     },
     {
       "id": "library-graph-contract-artifact-note",
-      "type": "markdown",
+      "type": "content",
       "label": "Artifact Note",
       "position": {
         "x": 1380,
@@ -269,12 +281,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# One Thing, Many Surfaces\n\nAn artifact graph may expose many views, ports, scripts, and support nodes.\n\nThat does **not** make it a library.\n\nIf those surfaces all belong to one declared thing, the bridge should still treat the target as one artifact.\n\nExample:\n\n- a contract exposes contract views\n- a node class exposes node-view, editor-view, icon-view, and related support surfaces\n\nThose are different surfaces of one thing, not multiple exported artifacts."
+        "content": {
+          "kind": "markdown",
+          "value": "# One Thing, Many Surfaces\n\nAn artifact graph may expose many views, ports, scripts, and support nodes.\n\nThat does **not** make it a library.\n\nIf those surfaces all belong to one declared thing, the bridge should still treat the target as one artifact.\n\nExample:\n\n- a contract exposes contract views\n- a node class exposes node-view, editor-view, icon-view, and related support surfaces\n\nThose are different surfaces of one thing, not multiple exported artifacts."
+        }
       }
     },
     {
       "id": "library-graph-contract-path",
-      "type": "markdown",
+      "type": "content",
       "label": "Path To Use",
       "position": {
         "x": 1380,
@@ -285,12 +300,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Path From Class To Use\n\nThe intended path is:\n\n1. a class graph defines the artifact\n2. a library graph places a **bridge** to that class\n3. that bridge republishes the class as part of the library's export surface\n4. a consumer graph places a bridge to the library root\n5. the consumer bridge exposes the exported artifact locally\n6. the author places or selects the artifact in the local graph\n\nShort version:\n\n`class -> library bridge -> library -> consumer bridge -> local use`"
+        "content": {
+          "kind": "markdown",
+          "value": "# Path From Class To Use\n\nThe intended path is:\n\n1. a class graph defines the artifact\n2. a library graph places a **bridge** to that class\n3. that bridge republishes the class as part of the library's export surface\n4. a consumer graph places a bridge to the library root\n5. the consumer bridge exposes the exported artifact locally\n6. the author places or selects the artifact in the local graph\n\nShort version:\n\n`class -> library bridge -> library -> consumer bridge -> local use`"
+        }
       }
     },
     {
       "id": "library-graph-contract-export-law",
-      "type": "markdown",
+      "type": "content",
       "label": "Export Law",
       "position": {
         "x": 1380,
@@ -301,12 +319,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Export Law\n\nA modern library should enumerate its reusable exports through **bridge nodes**.\n\nPreferred rule:\n\n- each export bridge points at one artifact graph or reusable surface\n- each export bridge declares the relevant grants and scope\n- the library root does not rely on random canvas contents to imply exports\n\nIf a library relies on legacy export nodes or ports that omit kind information, bridge behavior should degrade gracefully, but the graph is not contract-complete."
+        "content": {
+          "kind": "markdown",
+          "value": "# Export Law\n\nA modern library should enumerate its reusable exports through **bridge nodes**.\n\nPreferred rule:\n\n- each export bridge points at one artifact graph or reusable surface\n- each export bridge declares the relevant grants and scope\n- the library root does not rely on random canvas contents to imply exports\n\nIf a library relies on legacy export nodes or ports that omit kind information, bridge behavior should degrade gracefully, but the graph is not contract-complete."
+        }
       }
     },
     {
       "id": "library-graph-contract-declaration-note",
-      "type": "markdown",
+      "type": "content",
       "label": "Declaration Across Bridge",
       "position": {
         "x": 860,
@@ -317,12 +338,15 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Declaration Across The Bridge\n\nThe declaration of a bridged library graph should remain visible for identity, diagnostics, and authority inspection.\n\nThat does **not** make declaration a normal author-facing export family on parity with nodes, edges, views, or scripts.\n\nIt means a consumer can still inspect what the target graph says it is."
+        "content": {
+          "kind": "markdown",
+          "value": "# Declaration Across The Bridge\n\nThe declaration of a bridged library graph should remain visible for identity, diagnostics, and authority inspection.\n\nThat does **not** make declaration a normal author-facing export family on parity with nodes, edges, views, or scripts.\n\nIt means a consumer can still inspect what the target graph says it is."
+        }
       }
     },
     {
       "id": "library-graph-contract-export-bridge-note",
-      "type": "markdown",
+      "type": "content",
       "label": "Export Bridges",
       "position": {
         "x": 860,
@@ -333,7 +357,10 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Export Bridges\n\nA library is best understood as an enumeration of bridges.\n\nThose bridges are the library-facing statements of:\n\n- what artifact is being republished\n- under what grants\n- with what scope and exposure expectations\n\nThat keeps export authority in one mechanism instead of inventing a second export system."
+        "content": {
+          "kind": "markdown",
+          "value": "# Export Bridges\n\nA library is best understood as an enumeration of bridges.\n\nThose bridges are the library-facing statements of:\n\n- what artifact is being republished\n- under what grants\n- with what scope and exposure expectations\n\nThat keeps export authority in one mechanism instead of inventing a second export system."
+        }
       }
     },
     {

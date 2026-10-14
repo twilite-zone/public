@@ -5415,7 +5415,7 @@
     },
     {
       "id": "payments-readiness-webhooks-events",
-      "type": "markdown",
+      "type": "content",
       "label": "Webhook Events To Prove",
       "root": false,
       "position": {
@@ -5555,17 +5555,20 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Events To Prove\n\nThe live Stripe webhook route currently handles:\n\n- `checkout.session.completed`\n- `customer.subscription.created`\n- `customer.subscription.updated`\n- `customer.subscription.deleted`\n\nTwo important notes:\n\n- browser return confirmation is a separate fast path, not the webhook itself\n- entitlement sync currently treats `active`, `trialing`, and `past_due` as active states",
         "memo": "",
         "link": "",
         "identity": {
           "graphId": "payments-readiness-declaration"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "## Events To Prove\n\nThe live Stripe webhook route currently handles:\n\n- `checkout.session.completed`\n- `customer.subscription.created`\n- `customer.subscription.updated`\n- `customer.subscription.deleted`\n\nTwo important notes:\n\n- browser return confirmation is a separate fast path, not the webhook itself\n- entitlement sync currently treats `active`, `trialing`, and `past_due` as active states"
         }
       }
     },
     {
       "id": "payments-readiness-webhooks-procedure",
-      "type": "markdown",
+      "type": "content",
       "label": "Webhook Test Procedure",
       "root": false,
       "position": {
@@ -5705,17 +5708,20 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Test Procedure\n\n1. Start with a fresh unpaid account.\n2. Complete checkout and verify the browser return path unlocks immediately.\n3. Re-deliver `checkout.session.completed` and confirm nothing is double-granted or corrupted.\n4. Trigger a subscription update or cancellation in Stripe and verify account session reflects the change.\n5. Simulate a missed return flow by reloading or re-signing-in after webhook delivery and confirm the account repairs itself.",
         "memo": "",
         "link": "",
         "identity": {
           "graphId": "payments-readiness-declaration"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "## Test Procedure\n\n1. Start with a fresh unpaid account.\n2. Complete checkout and verify the browser return path unlocks immediately.\n3. Re-deliver `checkout.session.completed` and confirm nothing is double-granted or corrupted.\n4. Trigger a subscription update or cancellation in Stripe and verify account session reflects the change.\n5. Simulate a missed return flow by reloading or re-signing-in after webhook delivery and confirm the account repairs itself."
         }
       }
     },
     {
       "id": "payments-readiness-webhooks-states",
-      "type": "markdown",
+      "type": "content",
       "label": "Expected Account States",
       "root": false,
       "position": {
@@ -5855,11 +5861,14 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Expected States\n\n- paid checkout returns as active without manual repair\n- duplicate webhook delivery leaves billing rows and entitlements stable\n- `cancel_at_period_end` is preserved in billing metadata\n- deleted subscriptions remove paid entitlement cleanly\n- failed-payment and expiration behavior must be explicit because `past_due` is currently treated as active",
         "memo": "",
         "link": "",
         "identity": {
           "graphId": "payments-readiness-declaration"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "## Expected States\n\n- paid checkout returns as active without manual repair\n- duplicate webhook delivery leaves billing rows and entitlements stable\n- `cancel_at_period_end` is preserved in billing metadata\n- deleted subscriptions remove paid entitlement cleanly\n- failed-payment and expiration behavior must be explicit because `past_due` is currently treated as active"
         }
       }
     }

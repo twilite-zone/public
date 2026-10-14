@@ -1266,7 +1266,7 @@
     },
     {
       "id": "edge-contract-root",
-      "type": "markdown",
+      "type": "content",
       "label": "Overview",
       "root": false,
       "position": {
@@ -1406,7 +1406,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "# Edge Contract\n\n**Authority:** Normative\n\nThis contract defines the durable stored shape for Twilite edges. It governs endpoint identity, optional metadata, edge typing, class assignment, validation, mutation policy, and transport portability.\n\nPlain edges remain valid without classes. Edge classes are the canonical semantic upgrade path.\n\nThis graph is the contract.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -1485,12 +1484,16 @@
           "source": "layout",
           "updatedAt": 1781653851678,
           "reason": "auto-layout"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "# Edge Contract\n\n**Authority:** Normative\n\nThis contract defines the durable stored shape for Twilite edges. It governs endpoint identity, optional metadata, edge typing, class assignment, validation, mutation policy, and transport portability.\n\nPlain edges remain valid without classes. Edge classes are the canonical semantic upgrade path.\n\nThis graph is the contract."
         }
       }
     },
     {
       "id": "edge-required",
-      "type": "markdown",
+      "type": "content",
       "label": "Required Structure",
       "root": false,
       "position": {
@@ -1630,7 +1633,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Required Structure\n\nEvery persisted edge MUST include:\n\n```json\n{\n  \"id\": \"string\",\n  \"source\": \"node-id\",\n  \"target\": \"node-id\",\n  \"sourcePort\": \"handle-or-port-id\",\n  \"targetPort\": \"handle-or-port-id\"\n}\n```\n\n- `id` must be unique within the graph\n- readable stable ids are valid; UUIDs are allowed but not required\n- `source` and `target` must reference existing nodes\n- `sourcePort` and `targetPort` are the stored semantic endpoints\n- the canonical default endpoint is explicit `root`\n- if `type` is omitted, the renderer still resolves the edge using plain defaults",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -1709,12 +1711,16 @@
           "source": "manual",
           "updatedAt": 1781660352026,
           "reason": "node-drag"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "## Required Structure\n\nEvery persisted edge MUST include:\n\n```json\n{\n  \"id\": \"string\",\n  \"source\": \"node-id\",\n  \"target\": \"node-id\",\n  \"sourcePort\": \"handle-or-port-id\",\n  \"targetPort\": \"handle-or-port-id\"\n}\n```\n\n- `id` must be unique within the graph\n- readable stable ids are valid; UUIDs are allowed but not required\n- `source` and `target` must reference existing nodes\n- `sourcePort` and `targetPort` are the stored semantic endpoints\n- the canonical default endpoint is explicit `root`\n- if `type` is omitted, the renderer still resolves the edge using plain defaults"
         }
       }
     },
     {
       "id": "edge-optional",
-      "type": "markdown",
+      "type": "content",
       "label": "Optional Structure",
       "root": false,
       "position": {
@@ -1854,7 +1860,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Optional Structure\n\n```json\n{\n  \"label\": \"string\",\n  \"showLabel\": true,\n  \"data\": {\n    \"edgeClassRef\": \"github://twilite-zone/public/library/classes/edges/task-depends-on.edge-class.node\",\n    \"edgeClassKey\": \"task.depends-on\",\n    \"edgeClassMeaning\": \"target must happen before source can complete\"\n  },\n  \"style\": {},\n  \"state\": {},\n  \"routing\": {},\n  \"extensions\": {}\n}\n```\n\n- `label` is human-readable only\n- `showLabel` controls label visibility when supported by the renderer\n- `data` holds semantic attributes and optional edge-class assignment metadata\n- `style`, `state`, `routing`, and `extensions` are optional edge metadata surfaces\n- persisted edges should store explicit endpoint fields instead of relying on omission",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -1933,12 +1938,16 @@
           "source": "manual",
           "updatedAt": 1781660121634,
           "reason": "node-drag"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "## Optional Structure\n\n```json\n{\n  \"label\": \"string\",\n  \"showLabel\": true,\n  \"data\": {\n    \"edgeClassRef\": \"github://twilite-zone/public/library/classes/edges/task-depends-on.edge-class.node\",\n    \"edgeClassKey\": \"task.depends-on\",\n    \"edgeClassMeaning\": \"target must happen before source can complete\"\n  },\n  \"style\": {},\n  \"state\": {},\n  \"routing\": {},\n  \"extensions\": {}\n}\n```\n\n- `label` is human-readable only\n- `showLabel` controls label visibility when supported by the renderer\n- `data` holds semantic attributes and optional edge-class assignment metadata\n- `style`, `state`, `routing`, and `extensions` are optional edge metadata surfaces\n- persisted edges should store explicit endpoint fields instead of relying on omission"
         }
       }
     },
     {
       "id": "edge-forbidden",
-      "type": "markdown",
+      "type": "content",
       "label": "Forbidden States",
       "root": false,
       "position": {
@@ -2078,7 +2087,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Forbidden States (HARD ERROR)\n\nEdges must never:\n- reference missing nodes\n- reuse an existing edge id\n- invent non-existent ports\n- violate port contracts\n- contradict declaration authority\n- carry `edgeClassRef` that points at a missing edge-class artifact\n- carry both `edgeClassRef` and `edgeClassKey` with mismatched class identity",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -2157,12 +2165,16 @@
           "source": "manual",
           "updatedAt": 1781660357278,
           "reason": "node-drag"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "## Forbidden States (HARD ERROR)\n\nEdges must never:\n- reference missing nodes\n- reuse an existing edge id\n- invent non-existent ports\n- violate port contracts\n- contradict declaration authority\n- carry `edgeClassRef` that points at a missing edge-class artifact\n- carry both `edgeClassRef` and `edgeClassKey` with mismatched class identity"
         }
       }
     },
     {
       "id": "edge-validation",
-      "type": "markdown",
+      "type": "content",
       "label": "Validation",
       "root": false,
       "position": {
@@ -2302,7 +2314,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Validation\n\nValidators MUST enforce:\n\n1. `id`, `source`, and `target` exist\n2. source and target exist\n3. persisted edges carry `sourcePort` and `targetPort`, or a loader explicitly normalizes omission before persistence\n4. provided endpoints satisfy node port or handle contracts\n5. if `type` exists, it is a string\n6. if `edgeClassRef` exists, the referenced edge-class artifact exists\n7. if both `edgeClassRef` and `edgeClassKey` exist, they agree\n8. declaration authority allows mutation\n\nFailure blocks persistence.\n\nMigration tolerance is allowed during load, import, or repair flows, but the saved graph should converge to explicit endpoint ids.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -2381,12 +2392,16 @@
           "source": "manual",
           "updatedAt": 1781660344026,
           "reason": "node-drag"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "## Validation\n\nValidators MUST enforce:\n\n1. `id`, `source`, and `target` exist\n2. source and target exist\n3. persisted edges carry `sourcePort` and `targetPort`, or a loader explicitly normalizes omission before persistence\n4. provided endpoints satisfy node port or handle contracts\n5. if `type` exists, it is a string\n6. if `edgeClassRef` exists, the referenced edge-class artifact exists\n7. if both `edgeClassRef` and `edgeClassKey` exist, they agree\n8. declaration authority allows mutation\n\nFailure blocks persistence.\n\nMigration tolerance is allowed during load, import, or repair flows, but the saved graph should converge to explicit endpoint ids."
         }
       }
     },
     {
       "id": "edge-mutations",
-      "type": "markdown",
+      "type": "content",
       "label": "Mutation Policy",
       "root": false,
       "position": {
@@ -2526,7 +2541,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Mutation Policy\n\n- add edge: allowed\n- remove edge: allowed (unless appendOnly)\n- add, remove, or change runtime `type`: allowed if compatible\n- assign or remove edge class: allowed\n- update instance style overrides: allowed\n- update instance label, state, routing, or extensions: allowed\n- rewire edge endpoints: platform-capable, but discouraged as a durable authoring policy\n\nAuthoring policy:\n- prefer delete + recreate over silent rewiring when relationship identity changes\n- only preserve edge identity across endpoint changes when the workflow is explicitly performing a retarget operation\n\nMutations not listed remain undefined and should be treated cautiously.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -2605,12 +2619,16 @@
           "source": "layout",
           "updatedAt": 1781653851678,
           "reason": "auto-layout"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "## Mutation Policy\n\n- add edge: allowed\n- remove edge: allowed (unless appendOnly)\n- add, remove, or change runtime `type`: allowed if compatible\n- assign or remove edge class: allowed\n- update instance style overrides: allowed\n- update instance label, state, routing, or extensions: allowed\n- rewire edge endpoints: platform-capable, but discouraged as a durable authoring policy\n\nAuthoring policy:\n- prefer delete + recreate over silent rewiring when relationship identity changes\n- only preserve edge identity across endpoint changes when the workflow is explicitly performing a retarget operation\n\nMutations not listed remain undefined and should be treated cautiously."
         }
       }
     },
     {
       "id": "edge-compatibility",
-      "type": "markdown",
+      "type": "content",
       "label": "Compatibility",
       "root": false,
       "position": {
@@ -2750,7 +2768,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Compatibility\n\n- persisted edges SHOULD carry explicit `sourcePort` and `targetPort`\n- the canonical default endpoint is explicit `root`\n- if endpoint ids are provided, they MUST exist on the node\n- tools and agents MUST NOT invent non-existent ports or handles\n- some runtime paths and legacy readers may still tolerate omitted ports and interpret them as `root`, but that is migration tolerance, not the preferred stored shape\n\nThe portable authoring rule is therefore: write explicit `root`, validate explicit non-root endpoints, and treat omission as legacy compatibility only.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -2829,12 +2846,16 @@
           "source": "manual",
           "updatedAt": 1781659818000,
           "reason": "node-drag"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "## Compatibility\n\n- persisted edges SHOULD carry explicit `sourcePort` and `targetPort`\n- the canonical default endpoint is explicit `root`\n- if endpoint ids are provided, they MUST exist on the node\n- tools and agents MUST NOT invent non-existent ports or handles\n- some runtime paths and legacy readers may still tolerate omitted ports and interpret them as `root`, but that is migration tolerance, not the preferred stored shape\n\nThe portable authoring rule is therefore: write explicit `root`, validate explicit non-root endpoints, and treat omission as legacy compatibility only."
         }
       }
     },
     {
       "id": "edge-portability",
-      "type": "markdown",
+      "type": "content",
       "label": "Portability",
       "root": false,
       "position": {
@@ -2974,7 +2995,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Portability Guarantee\n\nEdges remain portable when:\n- endpoint ids are explicit, especially explicit `root`\n- styles are ignored\n- editors differ\n- renderers change\n- class defaults are unavailable and only instance data remains\n\nLegacy omission of endpoint ids may still be repairable in tolerant readers, but explicit endpoint storage is the durable transport shape.\n\nMeaning must survive transport.\n\nWhere possible, carry both `edgeClassRef` and `edgeClassKey` so transport can preserve both durable authority and lightweight local discoverability.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -3053,12 +3073,16 @@
           "source": "manual",
           "updatedAt": 1781659824107,
           "reason": "node-drag"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "## Portability Guarantee\n\nEdges remain portable when:\n- endpoint ids are explicit, especially explicit `root`\n- styles are ignored\n- editors differ\n- renderers change\n- class defaults are unavailable and only instance data remains\n\nLegacy omission of endpoint ids may still be repairable in tolerant readers, but explicit endpoint storage is the durable transport shape.\n\nMeaning must survive transport.\n\nWhere possible, carry both `edgeClassRef` and `edgeClassKey` so transport can preserve both durable authority and lightweight local discoverability."
         }
       }
     },
     {
       "id": "edge-agent-rules",
-      "type": "markdown",
+      "type": "content",
       "label": "Agent Rules",
       "root": false,
       "position": {
@@ -3198,7 +3222,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Agent Rules (REQUIRED)\n\nAgents MUST:\n- read edge + port contracts\n- refuse incompatible edges\n- write explicit endpoint ids, including explicit `root` when using the default endpoint\n- prefer add/remove over rewire unless the task explicitly calls for retargeting an existing edge\n- emit errors, never guess\n- preserve edge identity only when the user or workflow clearly intends a true edge update",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -3277,12 +3300,16 @@
           "source": "manual",
           "updatedAt": 1781660359572,
           "reason": "node-drag"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "## Agent Rules (REQUIRED)\n\nAgents MUST:\n- read edge + port contracts\n- refuse incompatible edges\n- write explicit endpoint ids, including explicit `root` when using the default endpoint\n- prefer add/remove over rewire unless the task explicitly calls for retargeting an existing edge\n- emit errors, never guess\n- preserve edge identity only when the user or workflow clearly intends a true edge update"
         }
       }
     },
     {
       "id": "edge-examples",
-      "type": "markdown",
+      "type": "content",
       "label": "Examples",
       "root": false,
       "position": {
@@ -3422,7 +3449,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Examples\n\n**Runtime edge typing:**\n\n`type` MAY be provided as a string runtime render primitive. It controls how the edge is drawn or routed, not the full semantic contract by itself.\n\nExamples currently in use include:\n- `reference`\n- `relates`\n- `default`\n- `straight`\n- `governs`\n\nMoving forward:\n- a plain edge remains valid without a class or type\n- if `type` is omitted, the renderer falls back to a simple line\n- when an edge class is assigned, the class may provide `defaultEdgeType`\n- an instance-level `type` override wins when both are present",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -3501,12 +3527,16 @@
           "source": "layout",
           "updatedAt": 1781653851678,
           "reason": "auto-layout"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "## Examples\n\n**Runtime edge typing:**\n\n`type` MAY be provided as a string runtime render primitive. It controls how the edge is drawn or routed, not the full semantic contract by itself.\n\nExamples currently in use include:\n- `reference`\n- `relates`\n- `default`\n- `straight`\n- `governs`\n\nMoving forward:\n- a plain edge remains valid without a class or type\n- if `type` is omitted, the renderer falls back to a simple line\n- when an edge class is assigned, the class may provide `defaultEdgeType`\n- an instance-level `type` override wins when both are present"
         }
       }
     },
     {
       "id": "edge-references",
-      "type": "markdown",
+      "type": "content",
       "label": "References",
       "root": false,
       "position": {
@@ -3646,7 +3676,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## References\n\n**Edge class assignment**\n\nWhen an edge is classified, the canonical structure is:\n\n```json\n{\n  \"data\": {\n    \"edgeClassRef\": \"github://twilite-zone/public/library/classes/edges/task-depends-on.edge-class.node\",\n    \"edgeClassKey\": \"task.depends-on\",\n    \"edgeClassMeaning\": \"target must happen before source can complete\"\n  }\n}\n```\n\nRules:\n- `data.edgeClassRef` is the authoritative class reference moving forward\n- `data.edgeClassKey` is the stable human/search key and should match the referenced class when both are present\n- `data.edgeClassMeaning` is mirrored display metadata only; it is not the semantic authority\n- the edge-class artifact's **Field nodes** own `meaning`, `defaultEdgeType`, and `renderDefaults`\n- instance `style`, `label`, and explicit `type` may override class defaults\n- if neither instance `type` nor class `defaultEdgeType` is present, the renderer falls back to a plain line\n\nSee also: the edge-class library and the dedicated edge-class contract.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -3725,12 +3754,16 @@
           "source": "layout",
           "updatedAt": 1781653851678,
           "reason": "auto-layout"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "## References\n\n**Edge class assignment**\n\nWhen an edge is classified, the canonical structure is:\n\n```json\n{\n  \"data\": {\n    \"edgeClassRef\": \"github://twilite-zone/public/library/classes/edges/task-depends-on.edge-class.node\",\n    \"edgeClassKey\": \"task.depends-on\",\n    \"edgeClassMeaning\": \"target must happen before source can complete\"\n  }\n}\n```\n\nRules:\n- `data.edgeClassRef` is the authoritative class reference moving forward\n- `data.edgeClassKey` is the stable human/search key and should match the referenced class when both are present\n- `data.edgeClassMeaning` is mirrored display metadata only; it is not the semantic authority\n- the edge-class artifact's **Field nodes** own `meaning`, `defaultEdgeType`, and `renderDefaults`\n- instance `style`, `label`, and explicit `type` may override class defaults\n- if neither instance `type` nor class `defaultEdgeType` is present, the renderer falls back to a plain line\n\nSee also: the edge-class library and the dedicated edge-class contract."
         }
       }
     },
     {
       "id": "edge-meta",
-      "type": "markdown",
+      "type": "content",
       "label": "Metadata Note",
       "root": false,
       "position": {
@@ -3870,7 +3903,6 @@
       "visible": true,
       "showLabel": true,
       "data": {
-        "markdown": "## Metadata Note\n\n- Contract ID: `edge-contract`\n- Scope: all persisted edges\n- Declared in: `public/library/documentation/contracts/edges/edge-contract.node`\n- Versioning and authority live on the declaration and scalar contract fields\n\nUse this note for human-facing metadata that should not be confused with the law itself.",
         "_classBinding": {
           "key": "markdown",
           "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
@@ -3949,6 +3981,10 @@
           "source": "manual",
           "updatedAt": 1781659757153,
           "reason": "node-drag"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "## Metadata Note\n\n- Contract ID: `edge-contract`\n- Scope: all persisted edges\n- Declared in: `public/library/documentation/contracts/edges/edge-contract.node`\n- Versioning and authority live on the declaration and scalar contract fields\n\nUse this note for human-facing metadata that should not be confused with the law itself."
         }
       }
     },
