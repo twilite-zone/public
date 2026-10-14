@@ -32,46 +32,6 @@
       "height": 240,
       "handles": [
         {
-          "id": "default-view",
-          "key": "default-view",
-          "portId": "default-view",
-          "label": "default view",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 165,
-          "role": "default-view"
-        },
-        {
-          "id": "summary-view",
-          "key": "summary-view",
-          "portId": "summary-view",
-          "label": "summary view",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 180,
-          "role": "shared-summary"
-        },
-        {
-          "id": "icon-view",
-          "key": "icon-view",
-          "portId": "icon-view",
-          "label": "icon view",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 195,
-          "role": "shared-icon"
-        },
-        {
-          "id": "glyph",
-          "key": "glyph",
-          "portId": "glyph",
-          "label": "glyph",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 270,
-          "role": "shared-glyph"
-        },
-        {
           "id": "port",
           "key": "port",
           "portId": "port",
@@ -90,117 +50,37 @@
           "dataType": "any",
           "angle": 0,
           "role": "landing-surface"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "surfaces"
         }
       ],
       "ports": [
-        {
-          "id": "default-view",
-          "key": "default-view",
-          "label": "default view",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 165,
-          "role": "default-view",
-          "allowedEdgeTypes": [
-            "default-view"
-          ],
-          "metadata": {
-            "structural": true,
-            "relationship": true,
-            "role": "default-view",
-            "required": true,
-            "repeatable": false,
-            "behaviors": [
-              {
-                "trigger": "drag-create",
-                "action": "create-node",
-                "nodeType": "view",
-                "targetPort": "root"
-              }
-            ]
-          }
-        },
-        {
-          "id": "summary-view",
-          "key": "summary-view",
-          "label": "summary view",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 180,
-          "role": "shared-summary",
-          "allowedEdgeTypes": [
-            "reference"
-          ],
-          "metadata": {
-            "structural": true,
-            "relationship": true,
-            "role": "shared-summary",
-            "required": true,
-            "repeatable": false,
-            "behaviors": [
-              {
-                "trigger": "drag-create",
-                "action": "create-node",
-                "nodeType": "view",
-                "targetPort": "root"
-              }
-            ]
-          }
-        },
-        {
-          "id": "icon-view",
-          "key": "icon-view",
-          "label": "icon view",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 195,
-          "role": "shared-icon",
-          "allowedEdgeTypes": [
-            "reference"
-          ],
-          "metadata": {
-            "structural": true,
-            "relationship": true,
-            "role": "shared-icon",
-            "required": true,
-            "repeatable": false,
-            "behaviors": [
-              {
-                "trigger": "drag-create",
-                "action": "create-node",
-                "nodeType": "view",
-                "targetPort": "root"
-              }
-            ]
-          }
-        },
-        {
-          "id": "glyph",
-          "key": "glyph",
-          "label": "glyph",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 270,
-          "role": "shared-glyph",
-          "allowedEdgeTypes": [
-            "reference"
-          ],
-          "metadata": {
-            "structural": true,
-            "relationship": true,
-            "role": "shared-glyph",
-            "required": true,
-            "repeatable": false,
-            "behaviors": [
-              {
-                "trigger": "drag-create",
-                "action": "create-node",
-                "nodeType": "glyph",
-                "targetPort": "root"
-              }
-            ]
-          }
-        },
         {
           "id": "port",
           "key": "port",
@@ -250,6 +130,33 @@
                 "trigger": "drag-create",
                 "action": "create-node",
                 "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
                 "targetPort": "root"
               }
             ]
@@ -398,11 +305,11 @@
             "version": 1,
             "implicitRootPort": true
           },
-          "defaultSurfaceId": "",
+          "defaultSurfaceId": "web",
           "surfaces": [
             {
               "id": "summary",
-              "kind": "port",
+              "kind": "view",
               "label": "Task Summary",
               "portNodeId": "workspace-bridge-apertures-summary-port",
               "viewNodeId": "workspace-bridge-apertures-summary-view",
@@ -6288,6 +6195,59 @@
   ],
   "edges": [
     {
+      "id": "workspace-bridge-apertures-detail-view-surface",
+      "type": "surface",
+      "source": "workspace-bridge-apertures-declaration",
+      "target": "workspace-bridge-apertures-detail-view",
+      "sourceHandle": "surfaces",
+      "targetHandle": "root",
+      "label": "",
+      "style": {},
+      "data": {
+        "role": "surface",
+        "surfaceId": "web"
+      }
+    },
+    {
+      "id": "workspace-bridge-apertures-detail-view-next",
+      "type": "view-sequence",
+      "source": "workspace-bridge-apertures-detail-view",
+      "target": "workspace-bridge-apertures-summary-view",
+      "sourceHandle": "sequence-out",
+      "targetHandle": "sequence-in",
+      "label": "",
+      "style": {},
+      "data": {
+        "role": "view-sequence"
+      }
+    },
+    {
+      "id": "workspace-bridge-apertures-summary-view-next",
+      "type": "view-sequence",
+      "source": "workspace-bridge-apertures-summary-view",
+      "target": "workspace-bridge-apertures-icon-view",
+      "sourceHandle": "sequence-out",
+      "targetHandle": "sequence-in",
+      "label": "",
+      "style": {},
+      "data": {
+        "role": "view-sequence"
+      }
+    },
+    {
+      "id": "workspace-bridge-apertures-icon-view-next",
+      "type": "view-sequence",
+      "source": "workspace-bridge-apertures-icon-view",
+      "target": "workspace-bridge-apertures-glyph",
+      "sourceHandle": "sequence-out",
+      "targetHandle": "root",
+      "label": "",
+      "style": {},
+      "data": {
+        "role": "view-sequence"
+      }
+    },
+    {
       "id": "workspace-bridge-apertures-edge-008",
       "type": "reference",
       "source": "workspace-bridge-apertures-updater",
@@ -6297,58 +6257,6 @@
       "data": {},
       "sourceHandle": "top",
       "targetHandle": "bottom"
-    },
-    {
-      "id": "workspace-bridge-apertures-default-view",
-      "type": "default-view",
-      "source": "workspace-bridge-apertures-declaration",
-      "target": "workspace-bridge-apertures-detail-view",
-      "label": "default view",
-      "data": {
-        "role": "default-view",
-        "semanticRole": "default-view"
-      },
-      "sourceHandle": "default-view",
-      "targetHandle": "root"
-    },
-    {
-      "id": "workspace-bridge-apertures-summary-view-edge",
-      "type": "reference",
-      "source": "workspace-bridge-apertures-declaration",
-      "target": "workspace-bridge-apertures-summary-view",
-      "label": "summary view",
-      "data": {
-        "role": "shared-summary",
-        "semanticRole": "shared-summary"
-      },
-      "sourceHandle": "summary-view",
-      "targetHandle": "root"
-    },
-    {
-      "id": "workspace-bridge-apertures-icon-view-edge",
-      "type": "reference",
-      "source": "workspace-bridge-apertures-declaration",
-      "target": "workspace-bridge-apertures-icon-view",
-      "label": "icon view",
-      "data": {
-        "role": "shared-icon",
-        "semanticRole": "shared-icon"
-      },
-      "sourceHandle": "icon-view",
-      "targetHandle": "root"
-    },
-    {
-      "id": "workspace-bridge-apertures-glyph-edge",
-      "type": "reference",
-      "source": "workspace-bridge-apertures-declaration",
-      "target": "workspace-bridge-apertures-glyph",
-      "label": "glyph",
-      "data": {
-        "role": "shared-glyph",
-        "semanticRole": "shared-glyph"
-      },
-      "sourceHandle": "glyph",
-      "targetHandle": "root"
     },
     {
       "id": "workspace-bridge-apertures-landing-edge",
