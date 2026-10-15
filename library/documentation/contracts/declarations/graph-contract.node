@@ -18,7 +18,7 @@
   "nodes": [
     {
       "id": "graph-contract-declaration",
-      "type": "declaration",
+      "type": "root",
       "label": "Declaration",
       "position": {
         "x": -900,
@@ -97,7 +97,17 @@
         "declaresKind": "graph",
         "purpose": "Normative minimum-graph contract for the Twilite graph artifact itself; template requirements are separate.",
         "primaryNodeViewId": "graph-contract-node-view",
-        "declaration": {
+        "_classBinding": {
+          "key": "declaration",
+          "sourceRef": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node",
+          "ref": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node"
+        },
+        "_bridge": {
+          "classKey": "declaration",
+          "classRef": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node"
+        },
+        "definitionKey": "declaration",
+        "root": {
           "kind": "graph",
           "targetMode": "artifact",
           "artifactKind": "graph",
@@ -134,17 +144,7 @@
           "primaryEditorViewId": "",
           "iconViewNodeId": "",
           "portViewNodeId": ""
-        },
-        "_classBinding": {
-          "key": "declaration",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node"
-        },
-        "_bridge": {
-          "classKey": "declaration",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/declaration.node-class.node"
-        },
-        "definitionKey": "declaration"
+        }
       }
     },
     {
@@ -399,7 +399,7 @@
         "definitionKey": "markdown",
         "content": {
           "kind": "markdown",
-          "value": "# Ratified Invariant Core\n\nA `.node` artifact becomes a **graph** when it contains one authority-bearing **declaration** node and one canonical declared `root` surface.\n\nThe root is the graph's stable routing boundary and normal entry. `data.declaration.defaultSurfaceId` must be `root`, and the declared root must resolve to a real graph-owned port. The root may own its presentation or explicitly delegate to another graph-owned view; it does not prescribe one universal card design.\n\nLayer 1 requires:\n- one canonical declaration with stable graph identity\n- one declared `root` surface backed by a real `port`\n- every target promised by that surface, and every authored named handle, to exist\n- explicit authority through real `bridge` primitives for non-native node and edge classes\n- ports to expose graph-owned surfaces and portals to consume external surfaces; neither impersonates a bridge\n- durable cross-graph references and explicit source ownership\n- `dependencies.nodeTypes` that describe the graph's actual vocabulary\n\nThese are executable validity rules. Validators report broken declarations and broken promises; they do not report the absence of optional decoration, semantic edges, or unclaimed capabilities.\n\n## Compatibility\n\n`manifest` remains readable as compatibility data but should not be created by new templates. Compatibility behavior must be reported separately from invariant-core errors.\n\n## Analytics Is Not Graph-ness\n\n`data.analytics` is optional policy metadata. It does not determine graph validity, saveability, publication, or navigation. Measurement occurs only for a focused eligible graph view; preview, embed, bridge, class-resolution, and background loads are not graph page views."
+          "value": "# Ratified Invariant Core\n\nA `.node` artifact becomes a **graph** when it contains one authority-bearing **declaration** node and one canonical declared `root` surface.\n\nThe root is the graph's stable routing boundary and normal entry. `data.root.defaultSurfaceId` must be `root`, and the declared root must resolve to a real graph-owned port. The root may own its presentation or explicitly delegate to another graph-owned view; it does not prescribe one universal card design.\n\nLayer 1 requires:\n- one canonical declaration with stable graph identity\n- one declared `root` surface backed by a real `port`\n- every target promised by that surface, and every authored named handle, to exist\n- explicit authority through real `bridge` primitives for non-native node and edge classes\n- ports to expose graph-owned surfaces and portals to consume external surfaces; neither impersonates a bridge\n- durable cross-graph references and explicit source ownership\n- `dependencies.nodeTypes` that describe the graph's actual vocabulary\n\nThese are executable validity rules. Validators report broken declarations and broken promises; they do not report the absence of optional decoration, semantic edges, or unclaimed capabilities.\n\n## Compatibility\n\n`manifest` remains readable as compatibility data but should not be created by new templates. Compatibility behavior must be reported separately from invariant-core errors.\n\n## Analytics Is Not Graph-ness\n\n`data.analytics` is optional policy metadata. It does not determine graph validity, saveability, publication, or navigation. Measurement occurs only for a focused eligible graph view; preview, embed, bridge, class-resolution, and background loads are not graph page views."
         }
       }
     },
