@@ -528,14 +528,14 @@ There are lower-level aliases in internal runtime layers such as `createNode`, `
 - Do not make `updates` an array.
 - Do not put per-node entries inside `updateNodes`.
 
-## Markdown Styling Rules
+## Content Styling Rules
 
-- Treat `data.markdown` as content, not as a CSS styling channel
-- Do not try to change markdown node text color with inline HTML like `<div style="color:#172033">...`
+- Treat `data.content` as authored material, not as a CSS styling channel
+- Do not try to change content text color with inline HTML like `<div style="color:#172033">...`
 - Twilite sanitizes markdown HTML, so inline CSS is the wrong authoring path even when the JSON is otherwise valid
-- For markdown node presentation, use node-level style fields such as `style.color`, `style.background`, `style.borderColor`, and related node chrome properties
+- For content presentation, use node-level style fields such as `style.color`, `style.background`, `style.borderColor`, and related node chrome properties
 - If the user really needs richly styled inline content, switch to a node or surface contract that explicitly supports `html` or `svg`
-- If you place HTML inside `data.markdown`, keep it structurally simple and do not rely on `style=` attributes surviving sanitization
+- If you place HTML inside `data.content.value`, keep it structurally simple and do not rely on `style=` attributes surviving sanitization
 
 Wrong:
 
@@ -545,7 +545,10 @@ Wrong:
   "id": "classic-rag",
   "updates": {
     "data": {
-      "markdown": "<div style=\"color:#172033\"><h1>Classic RAG</h1></div>"
+      "content": {
+        "kind": "markdown",
+        "value": "<div style=\"color:#172033\"><h1>Classic RAG</h1></div>"
+      }
     }
   }
 }
@@ -553,7 +556,7 @@ Wrong:
 
 Why it is wrong:
 
-- it uses `data.markdown` as a presentation channel
+- it uses authored content as a presentation channel
 - inline CSS in markdown is sanitized and should be treated as unsupported
 - if the quotes are not escaped, the whole transaction becomes invalid JSON before Twilite can even apply it
 
@@ -568,7 +571,10 @@ Right:
       "color": "#172033"
     },
     "data": {
-      "markdown": "# Classic RAG\n\nBest for fast retrieval, FAQs, documentation, and semantic search."
+      "content": {
+        "kind": "markdown",
+        "value": "# Classic RAG\\n\\nBest for fast retrieval, FAQs, documentation, and semantic search."
+      }
     }
   }
 }
@@ -590,7 +596,7 @@ Right:
 
 ## Create Command Examples
 
-Create one markdown node:
+Create one content node:
 
 ```json
 {
@@ -601,13 +607,16 @@ Create one markdown node:
       "nodes": [
         {
           "id": "11111111-1111-4111-8111-111111111111",
-          "type": "markdown",
+          "type": "content",
           "label": "Note",
           "position": { "x": 120, "y": 180 },
           "visible": true,
           "showLabel": true,
           "data": {
-            "markdown": "## Note\\n\\nCreated through a valid Twilite transaction."
+            "content": {
+              "kind": "markdown",
+              "value": "## Note\\n\\nCreated through a valid Twilite transaction."
+            }
           }
         }
       ]
@@ -627,11 +636,14 @@ Create a node and then an edge in the same transaction:
       "nodes": [
         {
           "id": "11111111-1111-4111-8111-111111111111",
-          "type": "markdown",
+          "type": "content",
           "label": "Source",
           "position": { "x": 80, "y": 120 },
           "data": {
-            "markdown": "## Source"
+            "content": {
+              "kind": "markdown",
+              "value": "## Source"
+            }
           }
         }
       ]
@@ -689,7 +701,10 @@ Simple edit example:
       "updates": {
         "label": "Updated Note",
         "data": {
-          "markdown": "## Updated copy\\n\\nThis node was edited in place."
+          "content": {
+            "kind": "markdown",
+            "value": "## Updated copy\\n\\nThis node was edited in place."
+          }
         }
       }
     }
@@ -1255,15 +1270,13 @@ Do not use `metadata` as the main node payload field.
 
 Use these payload conventions:
 
-- markdown nodes:
-  - `data.markdown`
-- declaration nodes:
+- content nodes:
+  - `data.content.kind`
+  - `data.content.value`
+- root nodes:
   - `data.identity`
   - `data.intent`
-  - `data.dependencies`
-  - `data.authority`
-  - `data.document`
-  - `data.settings`
+  - `data.root`
 
 ## Node Appearance Rules
 
@@ -1524,7 +1537,7 @@ Safe styled markdown node example:
       "nodes": [
         {
           "id": "8b6ef7a2-0d47-4f2d-915d-1e2f0ac2c123",
-          "type": "markdown",
+          "type": "content",
           "label": "Styled Note",
           "position": { "x": 180, "y": 120 },
           "width": 320,
@@ -1539,7 +1552,10 @@ Safe styled markdown node example:
             "borderStyle": "solid"
           },
           "data": {
-            "markdown": "## Styled note\\n\\nThis example uses top-level node style."
+            "content": {
+              "kind": "markdown",
+              "value": "## Styled note\\n\\nThis example uses top-level node style."
+            }
           }
         }
       ]
@@ -1559,7 +1575,7 @@ Styled poster-card example:
       "nodes": [
         {
           "id": "95f3b464-61c3-4c34-8fc4-891ee76f9d11",
-          "type": "markdown",
+          "type": "content",
           "label": "Launch Board",
           "position": { "x": 120, "y": 80 },
           "width": 420,
@@ -1576,7 +1592,10 @@ Styled poster-card example:
             "boxShadow": "0 12px 30px rgba(124,45,18,0.12)"
           },
           "data": {
-            "markdown": "# Launch Board\\n\\nA strong headline card can anchor a poster-style graph and establish the palette for nearby nodes."
+            "content": {
+              "kind": "markdown",
+              "value": "# Launch Board\\n\\nA strong headline card can anchor a poster-style graph and establish the palette for nearby nodes."
+            }
           }
         }
       ]
@@ -1642,7 +1661,10 @@ Safe content-plus-style patch example:
       "id": "existing-markdown-node",
       "updates": {
         "data": {
-          "markdown": "## Updated copy\\n\\nThe markdown changed and the node styling changed with it."
+          "content": {
+            "kind": "markdown",
+            "value": "## Updated copy\\n\\nThe content changed and the node styling changed with it."
+          }
         },
         "style": {
           "background": "#ecfccb",
@@ -1689,9 +1711,9 @@ Rules:
 ### Public graph port navigation
 
 - Preserve the clean `.node` graph ref as durable identity and save location. Store a portal's declared selection separately in `data.target.surfaceId`.
-- Treat the graph ref without a separate surface selection as a request for the declaration's exposed `root` surface.
+- Treat the graph ref without a separate surface selection as a request for the root's default Surface.
 - The legacy `<graph-ref>:<surface-id>` input form may still be parsed, but it must be stripped back to the graph ref before the address bar or save workflow receives it.
-- Never address an internal node id as though it were a public port. A real `port` must be listed in `declaration.data.declaration.surfaces` to be externally navigable.
+- Never address an internal node id as though it were a public port. A real `port` must be exposed through a root `exposes-port` edge to be externally navigable.
 - Missing, hidden, ambiguous, and unexposed entries are load-blocking navigation failures; the viewer keeps the current graph instead of opening the destination and merely warning afterward.
 - Portal editors should resolve and store a declared surface selection, including `surfaceId`, rather than inventing a target node id.
 
@@ -1851,16 +1873,17 @@ For normal authoring inside an existing graph:
 
 For a fresh graph artifact:
 
-- include a `declaration` node as the system graph node
+- include one `root` node as the system graph node
+- include at least one `face` and a `surface` edge; end each Surface in a `glyph`
 - keep the first graph small and legible
 - add only the node types the graph actually needs
 - avoid unnecessary compatibility scaffolding
 
 ## Using Custom Node Classes In A New Graph
 
-Custom node types are not activated merely by naming them in the declaration.
+Custom node types are not activated merely by naming them in the root.
 
-A custom node-class file must also be a finished, inspectable graph artifact. Do not emit a loose `manifest` followed by chained `view` nodes merely because the resulting instance renders. Author one real `declaration`, one explanatory `markdown` contract node, and visible primitive `port` nodes for `editor.web`, `node.web.detail`, `node.web.summary`, and `node.web.icon`. Expose `root` through the detail port, keep named surfaces for all four roles, connect the declaration directly to the note and each surface, and use deliberate positions plus complete canonical port shapes. Every editor field must be represented by the detail surface; summary and icon surfaces may use intentional subsets.
+A custom node-class file must also be a finished, inspectable graph artifact. Author one real `root`, one explanatory `content` contract node, and visible primitive `port` nodes for the interfaces the class exposes. Expose the root through the primary face or port, keep only the Surfaces the class needs, connect the root directly to the contract content and each exposed port, and use deliberate positions plus complete canonical port shapes. Every editor field must be represented by the detail face; smaller faces may use intentional subsets.
 
 `data.dependencies.nodeTypes` is descriptive. It tells readers and validators which node types the graph uses, but it does not register those types or grant authority to create them. A node such as `{ "type": "person" }` is not class-resolved solely because `person` appears in that list.
 
@@ -1868,12 +1891,12 @@ For every external node class used by a new graph:
 
 - create or preserve a `bridge` node that points to the class's durable `.node-class.node` `github://` reference
 - give that bridge focused-graph creation authority through `scope: "focused-graph"` and `grants: ["create"]`
-- connect the declaration to the bridge with an explicit class-authority edge
+- connect the root to the import with an explicit class-authority edge
 - preserve `_classBinding` on every class instance, including its class key and source reference
 - preserve the instance's `_bridge` provenance when the template or source graph supplies it
 - connect the class bridge to each instance with the template's instantiation edge pattern
 
-The bridge is executable graph infrastructure. The declaration's dependency list is not a substitute for it.
+The import and Bridge are executable graph infrastructure. The root's dependency list is not a substitute for them.
 
 ### Template derivation rule
 
@@ -1881,8 +1904,8 @@ When creating a graph from a template, clone its executable structure before cha
 
 Preserve all of the following unless the relevant contract explicitly says they may be omitted:
 
-- the declaration node and declaration-first ordering
-- declared surfaces and their real `viewNodeId` targets
+- the root node and root-first ordering
+- Surface edges and their real face targets
 - class bridges and their grants
 - declaration-to-bridge authority edges
 - class-instance `_classBinding` and `_bridge` data
@@ -1892,7 +1915,7 @@ Replace or extend the example content only after that infrastructure is intact. 
 
 ### Minimal custom-class pattern
 
-This fragment assumes the graph's declaration and surface nodes already exist. It shows the required bridge, class-bound instance, authority edge, and instantiation edge:
+This fragment assumes the graph's root and Surface nodes already exist. It shows the required import, class-bound instance, authority edge, and instantiation edge:
 
 ```json
 {
@@ -2049,29 +2072,9 @@ Do not assume that a pretty `editor.web.html` specimen is enough.
 
 ## Handshake Example
 
-```json
-{
-  "action": "transaction",
-  "commands": [
-    {
-      "action": "createNodes",
-      "nodes": [
-        {
-          "id": "11111111-1111-4111-8111-111111111111",
-          "type": "markdown",
-          "label": "Handshake",
-          "position": { "x": 260, "y": 120 },
-          "width": 360,
-          "height": 220,
-          "data": {
-            "markdown": "# Handshake received\\n\\nI am ready to make small valid Twilite graph mutations."
-          }
-        }
-      ]
-    }
-  ]
-}
-```
+Use the canonical [Handshake Requirement](#handshake-requirement) above. The handshake is a transport proof, so it creates only two `content` nodes. It does not create a graph `root` or a `face`.
+
+When the next request is to create a graph, switch to the current graph vocabulary: create one `root`, add one or more `face` nodes through `surface` edges, order additional faces with `next-face`, and end each Surface in a `glyph`. Put authored material in `data.content` or in a `content` node. Do not copy retired declaration/view or format-specific node examples into a new transaction.
 
 ## Invalid Shapes To Avoid
 
@@ -2081,22 +2084,25 @@ These shapes are wrong in Twilite:
 - command objects like `{"command":"createNodes"}`
 - node ids stored as `uuid`
 - node payload stored in `metadata`
-- markdown content stored in `metadata.content`
+- authored material stored in `metadata.content`
 - titles stored only in `metadata.title`
 - edges that assume `sourcePort: "out"` and `targetPort: "in"` on nodes that do not declare those ports
 
-If you are creating a markdown node, it should look like this shape:
+If you are creating authored material, use a `content` node:
 
 ```json
 {
   "id": "11111111-1111-4111-8111-111111111111",
-  "type": "markdown",
+  "type": "content",
   "label": "Example",
   "position": { "x": 120, "y": 80 },
   "width": 360,
   "height": 220,
   "data": {
-    "markdown": "# Example\\n\\nValid Twilite markdown node."
+    "content": {
+      "kind": "markdown",
+      "value": "# Example\\n\\nValid Twilite content node."
+    }
   }
 }
 ```
@@ -2112,63 +2118,94 @@ If you are creating a markdown node, it should look like this shape:
       "nodes": [
         {
           "id": "11111111-1111-4111-8111-111111111111",
-          "type": "declaration",
-          "label": "Declaration",
+          "type": "root",
+          "label": "Starter Graph",
           "position": { "x": -520, "y": -220 },
           "width": 420,
           "height": 280,
+          "ports": [
+            { "id": "surfaces", "label": "surfaces", "direction": "output", "dataType": "any" },
+            { "id": "ground", "label": "ground", "direction": "output", "dataType": "any" }
+          ],
           "data": {
             "identity": {
               "graphId": "starter-graph",
               "name": "Starter Graph",
               "version": "0.1.0",
-              "description": "Starter graph",
-              "createdAt": "2026-02-22T00:00:00.000Z",
-              "updatedAt": "2026-02-22T00:00:00.000Z"
+              "description": "Starter graph"
             },
             "intent": { "kind": "graph", "scope": "local" },
-            "dependencies": {
-              "nodeTypes": ["declaration", "markdown"],
-              "portContracts": ["core"],
-              "skills": [],
-              "schemaVersions": { "nodes": ">=1.0.0", "ports": ">=1.0.0" },
-              "optional": []
-            },
-            "authority": {
-              "mutation": {
-                "allowCreate": true,
-                "allowUpdate": true,
-                "allowDelete": true,
-                "appendOnly": false
-              },
-              "actors": { "humans": true, "agents": true, "tools": true },
-              "styleAuthority": "descriptive",
-              "history": { "rewriteAllowed": false, "squashAllowed": false }
-            },
-            "document": { "url": "" },
-            "settings": {
-              "theme": null,
-              "backgroundImage": null,
-              "defaultNodeColor": "#1976d2",
-              "defaultEdgeColor": "#666666",
-              "snapToGrid": false,
-              "gridSize": 20,
-              "edgeRouting": "auto",
-              "github": { "repo": "", "path": "", "branch": "main" },
-              "autoSave": false
-            }
+            "root": { "kind": "graph", "defaultSurfaceId": "default" }
           }
         },
         {
           "id": "44444444-4444-4444-8444-444444444444",
-          "type": "markdown",
+          "type": "face",
           "label": "Start Here",
           "position": { "x": 40, "y": -40 },
           "width": 420,
           "height": 240,
           "data": {
-            "markdown": "# Twilite Starter\\n\\nThis graph is valid and ready for extension."
+            "content": {
+              "kind": "markdown",
+              "value": "# Twilite Starter\\n\\nThis graph is valid and ready for extension."
+            }
           }
+        },
+        {
+          "id": "55555555-5555-4555-8555-555555555555",
+          "type": "glyph",
+          "label": "Starter Glyph",
+          "position": { "x": 40, "y": 280 },
+          "width": 160,
+          "height": 120,
+          "data": { "glyph": { "kind": "icon", "name": "Document" } }
+        },
+        {
+          "id": "66666666-6666-4666-8666-666666666666",
+          "type": "content",
+          "label": "Ground",
+          "position": { "x": 560, "y": -40 },
+          "width": 420,
+          "height": 240,
+          "data": {
+            "content": {
+              "kind": "svg",
+              "value": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180' role='img' aria-label='Starter graph frame'><rect width='320' height='180' rx='20' fill='#0f172a'/><circle cx='96' cy='90' r='30' fill='#38bdf8'/><circle cx='224' cy='90' r='30' fill='#34d399'/><path d='M128 90h64' stroke='#f8fafc' stroke-width='6' stroke-linecap='round'/></svg>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "action": "createEdges",
+      "edges": [
+        {
+          "id": "77777777-7777-4777-8777-777777777777",
+          "type": "surface",
+          "source": "11111111-1111-4111-8111-111111111111",
+          "target": "44444444-4444-4444-8444-444444444444",
+          "sourcePort": "surfaces",
+          "targetPort": "root",
+          "data": { "surfaceId": "default" }
+        },
+        {
+          "id": "88888888-8888-4888-8888-888888888888",
+          "type": "next-face",
+          "source": "44444444-4444-4444-8444-444444444444",
+          "target": "55555555-5555-4555-8555-555555555555",
+          "sourcePort": "sequence-out",
+          "targetPort": "sequence-in",
+          "data": {}
+        },
+        {
+          "id": "99999999-9999-4999-8999-999999999999",
+          "type": "ground",
+          "source": "11111111-1111-4111-8111-111111111111",
+          "target": "66666666-6666-4666-8666-666666666666",
+          "sourcePort": "ground",
+          "targetPort": "root",
+          "data": {}
         }
       ]
     }

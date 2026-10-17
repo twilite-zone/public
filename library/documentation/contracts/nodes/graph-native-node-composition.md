@@ -1,82 +1,97 @@
 # Graph-Native Node Composition Contract
 
-This is the current write-new authoring model for graph-backed Twilite nodes. Older graphs remain readable, but agents must not copy their legacy root Port, side handles, inline Port presentation, or format-specific content primitives into new work.
+This is the current write-new authoring model for graph-backed Twilite nodes. Older graphs remain readable, but new mutations use the roles and relationships below.
 
 ## Structural roles
 
-- A `declaration` is the node's implicit root Port. Do not add a separate root Port node.
-- A `port` is a named connection endpoint. Its `label` is its authored public name.
-- A `view` is a renderable surface. Semantic role comes from its relationship to a Declaration or Port, not from an independently authored level field. One View may serve several roles.
+- A `root` is the one node a graph begins from. It owns graph identity, intent, authority, Surfaces, and the implicit root Port.
+- A `port` is an additional named connection endpoint. Its `label` is its authored public name.
+- A `face` is a renderable presentation in a Surface. Faces are ordered from richest to smallest by `next-face` edges.
 - A `content` node owns durable material through `data.content.kind` and `data.content.value`.
-- A `glyph` node defines symbolic identity. It is not an icon View.
-- A `portal` consumes an exposed Port or navigates into it. It is not a View or a Port.
+- A `glyph` node defines symbolic identity at the end of a Surface chain. It is not a face.
+- A `ground` edge points from the root to the graph's authored inside frame. Document graphs may omit it.
+- A `portal` consumes an exposed Port or follows a declared Surface in another graph.
+- An `import` or `export` is one end of a Bridge. A Bridge is the workspace connection, not a stored bridge node.
 
-## Declaration contract
+## Root contract
 
-A new Declaration has five singular relationships plus one optional repeatable Port relationship, and no legacy root or four-side handles:
-
-| Endpoint | Role | Required | Repeatable | Default target |
-| --- | --- | --- | --- | --- |
-| `default-view` | default detail View | yes | no | `view.root` |
-| `summary-view` | shared summary View | no | no | `view.root` |
-| `icon-view` | shared icon View | no | no | `view.root` |
-| `glyph` | shared glyph definition | no | no | `glyph.root` |
-| `port` | exposes an additional named Port | no | yes | `port.root` |
-| `landing-surface` | navigation and frame anchor | yes | no | `content.root` or another focusable surface |
-
-Use the runtime-authored placement: the three View relationships are grouped on the left; landing surface is on the right; glyph is on top; repeatable Port creation is on the bottom. The Declaration-to-landing-surface geometry defines the authored interface frame. That frame is the graph-backed node's workspace shape and Minimap View window. Unfocused rendering clips content outside it, and semantic zoom measures the frame's scaled screen size. Size the authored frame to include every node that must remain visible in those representations. The active graph's main minimap remains a navigation instrument over the complete graph.
-
-## Port contract
-
-A Port has:
-
-- one `root` interface endpoint whose direction is `input` or `output`;
-- `default-view`, `summary-view`, `icon-view`, `glyph`, and `landing-surface` relationships;
-- optional behaviors, such as `drag-create`, when interaction should do more than connect.
-
-The three View relationships sit together on the left. Landing surface sits on the right. On a Port, the root interface is on top and glyph is on the bottom. A Port points to Views; it does not store inline View content. A behavior creates or acts; the Port itself remains the connection endpoint.
-
-The semantic View collection may be sparse. The resolver uses the nearest available authored View across missing bands. If no authored View is usable, it falls back to the graph-local Minimap and then the Glyph at the smallest representation.
-
-## View and Content contract
-
-A View has an inbound `root` endpoint at the top and an optional outbound `surface-delegate` relationship at the bottom. It may own `data.content` directly or delegate to a Content node. A surface delegate creates or targets `content.root`.
-
-A Content node has one inbound `root` endpoint and owns:
+A new graph starts with one root and its identity and intent payloads:
 
 ```json
 {
-  "content": {
-    "kind": "markdown",
-    "value": "# Authored material"
+  "type": "root",
+  "data": {
+    "identity": {
+      "graphId": "example-graph",
+      "name": "Example Graph",
+      "version": "0.1.0",
+      "description": "A small graph."
+    },
+    "intent": { "kind": "graph", "scope": "local" },
+    "root": { "kind": "graph", "defaultSurfaceId": "default" }
   }
 }
 ```
 
-Use `kind` values such as `markdown`, `html`, `svg`, `text`, `json`, or `image`. Do not add `renderShape` presentation hints to new View or Content nodes; `content.kind` is authoritative. Legacy `renderShape`, Markdown, and SVG nodes remain readable.
+The root is the implicit root Port. Do not create a second root Port node. Author one `surface` edge for each Surface, an optional `ground` edge for the inside frame, and `exposes-port` edges only when additional named interfaces are needed.
+
+## Surface and face contract
+
+A Surface is an ordered chain:
+
+1. a `surface` edge leaves the root and targets the first `face`;
+2. each additional face follows through a `next-face` edge from `sequence-out` to `sequence-in`;
+3. the final face points to a `glyph` through the same chain relationship.
+
+One face is enough. Add another only when it conveys a useful smaller representation. Do not manufacture Detail, Summary, and Icon faces merely to fill named bands. The resolver uses the nearest authored face as the workspace becomes smaller.
+
+The root-to-ground geometry defines the authored interface frame when a graph has ground. Size that frame to include material that must remain visible in unfocused rendering and the Minimap representation. The active graph's main minimap covers the complete graph and is a navigation instrument.
+
+## Face and content contract
+
+A face may own `data.content` directly or point to a content node through an authored relationship. A content node stores material like this:
+
+```json
+{
+  "type": "content",
+  "data": {
+    "content": {
+      "kind": "markdown",
+      "value": "# Authored material"
+    }
+  }
+}
+```
+
+Use `kind` values such as `markdown`, `html`, `svg`, `text`, `json`, or `image`. Do not add `renderShape` hints or create format-specific Markdown/SVG node types; `content.kind` is authoritative.
+
+## Port and Bridge contract
+
+A Port exposes a typed capability or named Surface at a node boundary. Edges connect to semantic ports, never directly to UI handles. Handles are optional visual affordances and are not stored endpoints.
+
+A named Port becomes externally connectable only through an `exposes-port` edge from the root. A Portal consumes that exposed Surface. Cross-graph authority uses `import` and `export` nodes plus a Bridge; do not create a `bridge` node.
 
 ## Relationship authority
 
 Relationships define meaning:
 
-- `default-view`
-- `shared-summary`
-- `shared-icon`
-- `shared-glyph`
+- `surface`
+- `next-face`
+- `ground`
 - `exposes-port`
-- `landing-surface`
-- `view.content`
+- `invokes`
+- `imports` and `exports`
 
-Do not duplicate those roles as unrelated editor fields. Do not infer a View's semantic role from its label. Validate singular required relationships, edge endpoints, named ports, and save/reload stability.
+Edges store their kind in `type`, class graph in `data.classRef`, and endpoints in `sourcePort` and `targetPort`. `sourceHandle` and `targetHandle` are runtime compatibility copies and are not written.
 
 ## Agent checklist
 
-Before calling a graph-backed node or template current:
+Before calling a graph or template current:
 
-1. Start from a Declaration with the six authored relationship endpoints.
-2. Supply a default View and one landing surface. Add Summary, Icon, and Glyph representations when they convey useful additional information; reuse one View across roles when appropriate.
-3. Leave `port` unoccupied when the implicit root interface is sufficient; add each additional named Port through the repeatable `port` relationship.
-4. Give Views owned Content or an explicit `surface-delegate` edge.
-5. Keep Port behavior separate from View and Content ownership.
-6. Verify the interface widget, landing-surface frame, sparse semantic View resolution, navigation, and save/reload.
-7. Preserve old fields only for reading; write the current model.
+1. Start from one root with real identity, intent, and root payloads.
+2. Supply at least one Surface edge to a face; end each Surface in a glyph.
+3. Add ground only when the graph has an authored inside frame.
+4. Give faces owned content or an explicit content relationship.
+5. Add named ports and imports/exports only when the graph needs those interfaces.
+6. Validate edge endpoints, save/reload behavior, navigation, and semantic zoom.
+7. Preserve legacy fields only for reading; write the current model.

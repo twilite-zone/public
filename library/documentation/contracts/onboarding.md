@@ -71,7 +71,6 @@ Renderer and type payload
   data.src
   data.identity
   data.target
-  data.view
   data.classRef
 
 Graph semantics
@@ -275,7 +274,7 @@ Use the primitive that matches the job directly. Do not substitute a nearby conc
 ## Root-First Starter Pattern
 When creating a first real graph-backed node, begin with one `root`. The root is the implicit root Port; do not create a second root Port node. Give it at least one `surface` edge, optionally one `ground` edge, and repeatable `exposes-port` edges only when the graph needs additional named interfaces.
 
-### Declaration guidance
+### Root guidance
 - Put graph identity in `data.identity`
 - Always put non-empty `kind` and `scope` fields in `data.intent`
 - `data.intent.kind` describes the graph's subject or purpose, such as `person`, `organization`, `event`, `work`, `task-board`, `documentation`, or `graph`
@@ -286,7 +285,7 @@ When creating a first real graph-backed node, begin with one `root`. The root is
 - Author Surfaces as `surface` edges, the optional inside frame as a `ground` edge, and additional interfaces as `exposes-port` edges
 - Keep `data.root.defaultSurfaceId` aligned with a real `surface` edge
 - Keep `dependencies.nodeTypes` honest: list the node types the graph actually uses
-- Keep `identity.graphId` consistent across the declaration and graph-owned nodes
+- Keep `identity.graphId` consistent across the root and graph-owned nodes
 - Give the root at least one Surface and no more than one ground
 - Leave repeatable `exposes-port` unoccupied when the implicit root interface is sufficient
 
@@ -329,9 +328,9 @@ When creating a first real graph-backed node, begin with one `root`. The root is
 ### Root editor contract
 If you author a custom editor for a `root`, treat the built-in root editor as the minimum executable contract.
 
-- A custom declaration editor may choose its own layout, styling, grouping, and HTML
-- A custom declaration editor may present the fields in a different order
-- A custom declaration editor may use a class-backed editor surface instead of the stock visual layout
+- A custom root editor may choose its own layout, styling, grouping, and HTML
+- A custom root editor may present the fields in a different order
+- A custom root editor may use a class-backed editor surface instead of the stock visual layout
 - But if it claims to edit a `root`, it must still correctly edit the root contract
 
 Minimum required root fields:
@@ -349,13 +348,13 @@ Minimum required root fields:
 - `data.purpose`
 - optional `data.analytics` through the bounded analytics opt-out control
 
-Legacy declaration metadata remains readable when present but is not part of the authoring contract.
+Legacy declaration metadata remains readable when present but is not part of the root authoring contract.
 
-Required declaration-editor behaviors:
+Required root-editor behaviors:
 
 - `data.identity.graphId` is not just a text box:
   - changing it must participate in the graph id rename flow
-  - the declaration node id and canonical graph id must stay aligned
+  - the root node id and canonical graph id must stay aligned
 - `data.root.kind` is the graph's structural kind:
   - do not substitute `data.intent.kind` or legacy duplicates such as `data.declaresKind` and `data.declaration.artifactKind`
   - use a control that permits real graph kinds rather than a closed list
@@ -367,20 +366,20 @@ Required declaration-editor behaviors:
   - the editor should preserve valid graph relationships instead of downgrading them into opaque text
 - analytics is inherited repository policy with bounded reporting metadata:
   - verified public GitHub repositories participate under the default Commons policy; private, local, unresolved, and unrecognized sources fail closed
-  - declarations may provide optional `pageTitle`, `contentGroup`, and hosted `url` fields but cannot change participation
+  - roots may provide optional `pageTitle`, `contentGroup`, and hosted `url` fields but cannot change participation
   - do not reduce analytics authoring to an opaque JSON textarea
 
 Failure rule:
 
-- If a custom declaration editor cannot correctly edit those required fields and behaviors, it is not a valid declaration editor
-- Twilite injects omitted primitive baseline fields into class-backed editors so valid declarations remain editable
+- If a custom root editor cannot correctly edit those required fields and behaviors, it is not a valid root editor
+- Twilite injects omitted primitive baseline fields into class-backed editors so valid roots remain editable
 - Authored fields win at matching paths, and classes may add fields, sections, appearance, help, and specialized behavior
 - Class authors must still declare the complete baseline; fallback injection is a safety net, not alternate syntax
 - Unsupported extension field types remain authoring errors until the runtime explicitly implements them
 
 ### Graph analytics repository policy
 
-Focused graph page views inherit policy from their verified source repository. Analytics permission is not declaration-owned.
+Focused graph page views inherit policy from their verified source repository. Analytics permission is not root-owned.
 
 ```json
 "analytics": {
@@ -390,7 +389,7 @@ Focused graph page views inherit policy from their verified source repository. A
 }
 ```
 
-- Put the optional object on the declaration node at `data.analytics`
+- Put the optional object on the root node at `data.analytics`
 - Absence of `data.analytics` does not affect repository enrollment
 - Legacy `enabled` values are ignored for permission decisions
 - `pageTitle`, `contentGroup`, and `url` are the authored reporting fields currently supported; all are optional
@@ -424,7 +423,7 @@ Focused graph page views inherit policy from their verified source repository. A
 - Do not hand-type or rewrite the `xmlns` attribute unless you are pasting the exact raw XML namespace
 - Do not paste markdownified links such as `[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)` into SVG attributes
 - Do not emit placeholder inline render fields on ports or portals
-- `data.sourceNodeId` may delegate a port's view only to a node in the same graph
+- `data.sourceNodeId` may delegate a port's face only to a node in the same graph
 - `data.targetNodeId` may delegate a port's landing focus only to a visible node in the same graph
 - Do not invent `sourceNodeId`, `targetNodeId`, or edges to nodes that do not exist
 - Do not expect `title`, `description`, `icon`, or `cover` alone to render a port card body; expose a real face and content when a preview is needed
@@ -434,7 +433,7 @@ Focused graph page views inherit policy from their verified source repository. A
 - Make it graph-owned with `data.identity.graphId`
 - Every graph has exactly one implicit root Port: the root node itself. Do not create a second root Port node.
 - A named port points to its faces through explicit relationships and may carry behavior, but it does not own presentation inline.
-- Port delegation is graph-local. Do not put `data.sourceRef` on a port or delegate a port view or landing target to another graph; use a `portal` for every cross-graph consumer
+- Port delegation is graph-local. Do not put `data.sourceRef` on a port or delegate a port face or landing target to another graph; use a `portal` for every cross-graph consumer
 - Give non-root ports an explicit target only when their purpose requires navigation or connection
 - Give it a real preview payload if you want it to render as a card
 - Expose a named port deliberately with an `exposes-port` edge from the root; a port node's existence does not make it externally connectable
@@ -443,17 +442,17 @@ Focused graph page views inherit policy from their verified source repository. A
 ### Reference specimens in this repo
 - Primary tutorial reference: `github://twilite-zone/public/tutorial/basic-primitives/port/root.node`
   - Use this first when the task is to author or repair a `port`
-  - It now includes a markdown reader port, an SVG card port, an HTML port, a graph entry port, and a sample consumer portal
-  - Copy the pattern that matches the user request instead of inventing a new schema
+  - It contains older port specimens that are useful for reading and migration
+  - Use the current `port` plus `face` and `content` relationship pattern for new work
 - Visual card specimen: `github://mikemartinez1974/public/graphs/indiana-jones.node`
   - Look at the `port` node labeled `Indiana Jones Portal Card`
-  - This is a good example of a real `data.viewRole`, `data.renderShape.kind: "svg"`, and valid raw SVG payload
+  - This is a migration example for legacy inline presentation fields
 - Navigate-target specimen: `github://twilite/public/root.node`
   - Look at the `portal` node `port-github-root`
   - This is a good example of a real `data.target.endpoint` plus `data.target.mode: "navigate"`
 - Surface specimen: `github://twilite/public/root.node`
   - Look at the `port` node `public-root-view`
-  - This is a good example of a graph-owned rendered surface with valid SVG
+  - This is a migration example of a graph-owned rendered surface
 - If you need a graph entry `port`, combine those lessons:
   - use the tutorial graph first
   - use the real target shape from the navigate specimen when you need a portal-style opener
@@ -479,7 +478,8 @@ Focused graph page views inherit policy from their verified source repository. A
 - Do not add `data.html`, `data.svg`, `data.markdown`, or `data.text` unless the portal itself truly owns that inline content
 - Empty inline fields can mask the real remote surface and cause blank cards
 
-### Port card example
+### Legacy port card specimen (read-only compatibility)
+The following specimen preserves an older inline-preview shape so agents can recognize and migrate it. Do not copy its `data.view`, `data.viewRole`, `data.renderShape`, or raw `data.svg` fields into a new graph. Current write-new ports point to faces and content through graph relationships.
 Use a port like this when you want a declared card-style surface that another graph can open or render:
 
 ```json
@@ -515,7 +515,7 @@ Use a port like this when you want a declared card-style surface that another gr
 
 If this port is the graph's primary declared surface, point the declaration surface at this node with `viewNodeId`.
 
-### Minimal navigable port starter
+### Legacy navigable port specimen (read-only compatibility)
 Use this shape when the user asks for "a port for this graph" and the main goal is a working graph entry surface:
 
 ```json
@@ -549,8 +549,8 @@ Use this shape when the user asks for "a port for this graph" and the main goal 
 }
 ```
 
-### Complete SVG port transaction
-When the user asks to add a port to the current graph, create the real port and expose that same node through the declaration in one transaction. Inspect the declaration first, use its real id and graph id, and preserve every existing surface when supplying the complete `surfaces` array.
+### Legacy SVG port transaction (read-only compatibility)
+When the user asks to add a port to the current graph, create the real port and expose that same node through the root with an `exposes-port` edge in one transaction. Inspect the root first, use its real id and graph id, and preserve every existing Surface when adding the edge.
 
 ```json
 {
@@ -654,13 +654,13 @@ JSON transport -> one JSON decode -> unchanged data.source -> ScriptRunner
 If compilation fails, report it as a script compilation failure with the source
 node id. Do not silently rewrite the source and retry.
 
-## Markdown content versus node styling
+## Content versus node styling
 
-- `data.markdown` is for authored content, not for canvas styling
-- Do not use inline CSS inside markdown payloads to change text color, borders, or layout
+- `data.content` is for authored material, not for canvas styling
+- Do not use inline CSS inside markdown content to change text color, borders, or layout
 - Twilite sanitizes markdown HTML, so `style=` attributes inside markdown should be treated as unsupported authoring
 - Use node-level style fields like `style.color`, `style.background`, `style.borderColor`, and `style.boxShadow` for the node's presentation
-- If the authored content itself must be richly styled, use an `html` or `svg` render path instead of trying to smuggle CSS through markdown
+- If the authored content itself must be richly styled, use `data.content.kind: "html"` or `"svg"` instead of trying to smuggle CSS through markdown
 
 ### Markdown styling anti-pattern
 
@@ -672,7 +672,10 @@ Wrong:
   "id": "classic-rag",
   "updates": {
     "data": {
-      "markdown": "<div style=\"color:#172033\"><h1>Classic RAG</h1></div>"
+      "content": {
+        "kind": "markdown",
+        "value": "<div style=\"color:#172033\"><h1>Classic RAG</h1></div>"
+      }
     }
   }
 }
@@ -689,7 +692,10 @@ Correct intent-preserving alternative:
       "color": "#172033"
     },
     "data": {
-      "markdown": "# Classic RAG"
+      "content": {
+        "kind": "markdown",
+        "value": "# Classic RAG"
+      }
     }
   }
 }
