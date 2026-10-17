@@ -1,6 +1,6 @@
 # Twilite LLM Onboarding Guide
 
-Canonical language specs: `github://mikemartinez1974/public/primitives/root.node`; authoring form: `github://mikemartinez1974/public/primitives/specification/root.node`. Semantic responsibility is separate from node/edge/chain encoding. Specs distinguish agreed contracts, implementation evidence, known gaps and open decisions; structural validation alone does not prove runtime behavior.
+Canonical language specs: `tlz://twilite.zone/library/primitives/root.node`; authoring form: `tlz://twilite.zone/library/primitives/specification/root.node`. Semantic responsibility is separate from node/edge/chain encoding. Specs distinguish agreed contracts, implementation evidence, known gaps and open decisions; structural validation alone does not prove runtime behavior.
 
 Twilite is a persistent graph workspace.
 
@@ -13,11 +13,34 @@ Your job is to help the user by returning valid Twilite graph mutations that the
 - Return machine-usable output when the user is asking for graph mutations.
 - Keep responses structurally correct before trying to be clever.
 
+## Current vocabulary (write-new)
+
+The names below are settled for new graphs. Older files remain readable, but their older names are compatibility material and must not be copied into new mutations.
+
+| Current word | Meaning | Stored form |
+|---|---|---|
+| **root** | The one node a graph begins from. It owns graph identity, intent, and exposed surfaces. | node `type: "root"`; identity in `data.identity`; graph kind in `data.intent.kind` |
+| **face** | One authored way a node or graph looks. Faces are ordered from richest to smallest. | node `type: "face"`; ordered by `next-face` edges |
+| **content** | Durable material shown by a face or held on its own. | node `type: "content"`; `data.content = { kind, value }` |
+| **glyph** | The symbolic mark at the end of a Surface chain. It is not a face. | node `type: "glyph"` |
+| **ground** | The graph's authored inside frame, when it has one. A document graph may have no ground. | `ground` edge from the root's `ground` port |
+| **property** | One named value on a node. | node `type: "property"`; it announces `property.changed` |
+| **port** | A named connection endpoint. The root is the graph's implicit root Port. | node `type: "port"`; edges end at named ports |
+| **portal** | A consumer or opening that follows an exposed Port in another graph. | node `type: "portal"` |
+| **import / export** | The two ends of a Bridge. An import uses what an export offers. | node `type: "import"` or `type: "export"`; one record in `data.bridge` |
+| **Bridge** | The connection between an export and the import that uses it. | workspace connection; not a stored bridge node |
+| **next-face** | The edge that orders one face before the next face in a Surface. | edge `type: "next-face"` |
+| **invokes** | The edge from an event source to a Method. | edge `type: "invokes"`; events do not use Event Handler nodes |
+
+Edges store their kind in `type`, their class graph in `data.classRef`, and their endpoints in `sourcePort` and `targetPort`. `sourceHandle` and `targetHandle` are runtime compatibility copies and are not written. Graph metadata does not duplicate the root's name or description. Groups, Graph Reference, Markdown/SVG node types, Event Handler, `listens`, and the old per-view relationship names are retired for write-new work.
+
+For a new graph, start from one root, give it a `surface` edge (usually from the root's `surfaces` port) to the first face of each Surface, order faces with `next-face` edges, end each chain in a glyph, and add one `ground` edge only when the graph has an authored inside frame. Use `content` for all authored material, `property` for named values, and `import`/`export` for Bridge ends. Expose named ports with `exposes-port` edges, commonly from the root's `port` port. A class instance stores its class key in `type` and its class graph address in `data.classRef`; loaded `_classBinding` data is compatibility state and is not written.
+
 ## Current Graph-Backed Node Model
 
-Before authoring a node class, reusable node template, Declaration, Port, View, Content node, or Glyph, read [Graph-Native Node Composition](contracts/nodes/graph-native-node-composition.md) and the [Structural Model Inventory](contracts/model/twilite-structural-model-inventory.md). Those documents are authoritative for write-new work. Do not copy legacy declaration-plus-root-Port structures, four-side handles, inline Port presentation, format-specific Markdown/SVG primitives, or `renderShape` hints into new graphs.
+Before authoring a node class, reusable node template, root, port, face, content node, or glyph, read [Graph-Native Node Composition](contracts/nodes/graph-native-node-composition.md) and the [Structural Model Inventory](contracts/model/twilite-structural-model-inventory.md). Those documents are authoritative for write-new work. Do not copy legacy declaration-plus-root-Port structures, four-side handles, inline Port presentation, format-specific Markdown/SVG primitives, or `renderShape` hints into new graphs.
 
-Do not manufacture Detail, Summary, Icon, and Glyph nodes merely to fill named semantic bands. Author the Views the node needs. One View may serve several roles, missing bands use the nearest authored View, and graphs with no usable authored View fall back to Minimap and then Glyph. The Declaration-to-landing-surface interface frame is the graph-backed node's workspace shape: unfocused rendering and Minimap View cards clip to it, and semantic zoom uses its scaled screen occupancy. Size that frame to include the material the node should reveal. The active graph's main minimap always covers the complete graph because it is a navigation instrument. View fitting, camera rollover details, and edge lanes remain provisional; do not invent persistent schemas for them. See the [Edge Lane Contract](contracts/edges/edge-lane-contract.md).
+Do not manufacture Detail, Summary, and Icon faces merely to fill named semantic bands. Author the faces the node needs. One face may serve several roles, missing bands use the nearest authored face, and graphs with no usable authored face fall back to Minimap and then Glyph. The root-to-ground interface frame is the graph-backed node's workspace shape: unfocused rendering and Minimap cards clip to it, and semantic zoom uses its scaled screen occupancy. Size that frame to include the material the node should reveal. A document graph may omit ground because its first face is the page. The active graph's main minimap always covers the complete graph because it is a navigation instrument. View fitting, camera rollover details, and edge lanes remain provisional; do not invent persistent schemas for them. See the [Edge Lane Contract](contracts/edges/edge-lane-contract.md).
 
 ## Strict JSON String Safety
 
@@ -55,19 +78,19 @@ Node shell
   inputs / outputs (legacy-only compatibility)
 
 Renderer and type payload
-  data.markdown
-  data.svg
+  data.content
   data.src
   data.identity
   data.target
   data.view
-  data.renderShape
+  data.classRef
 
 Graph semantics
-  declaration
+  root
+  surfaces and ground
   edges
   exposed ports
-  class bridges and bindings
+  imports and exports
 ```
 
 For mutations, the same boundary remains in effect:
@@ -82,8 +105,8 @@ Canonical styled markdown node:
 
 ```json
 {
-  "id": "example-markdown",
-  "type": "markdown",
+  "id": "example-content",
+  "type": "content",
   "label": "Example",
   "position": { "x": 0, "y": 0 },
   "width": 600,
@@ -99,7 +122,10 @@ Canonical styled markdown node:
     "borderRadius": 24
   },
   "data": {
-    "markdown": "# Example\n\nContent goes here."
+    "content": {
+      "kind": "markdown",
+      "value": "# Example\n\nContent goes here."
+    }
   }
 }
 ```
@@ -109,7 +135,7 @@ Invalid for node presentation:
 ```json
 {
   "data": {
-    "markdown": "# Example",
+    "content": { "kind": "markdown", "value": "# Example" },
     "style": {
       "background": "#182018"
     }
@@ -121,21 +147,21 @@ Invalid for node presentation:
 
 ## First-Class Content Nodes
 
-Treat `markdown` and `svg` as peer authoring primitives:
+`content` is the material primitive; `data.content.kind` selects markdown, SVG, HTML, text, JSON, or image.
 
-- use `markdown` for prose, lists, links, instructions, and readable documents
-- use `svg` for diagrams, maps, visual explanations, icons, cards, and other authored vector graphics
+- use `content.kind: "markdown"` for prose, lists, links, instructions, and readable documents
+- use `content.kind: "svg"` for diagrams, maps, visual explanations, icons, cards, and other authored vector graphics
 - do not wrap SVG in markdown or create a port merely to display a graph-owned illustration
 - use a `port` when the graphic is an exposed graph surface, not merely because the content is visual
 
-An SVG node stores its graphic in `data.svg`. SVG presentation attributes inside that string belong to the vector artwork; node-shell presentation still belongs in top-level `style`.
+An SVG content node stores its graphic in `data.content.value` with `data.content.kind: "svg"`. SVG presentation attributes inside that string belong to the vector artwork; node-shell presentation still belongs in top-level `style`.
 
 Canonical SVG node:
 
 ```json
 {
-  "id": "example-svg",
-  "type": "svg",
+  "id": "example-svg-content",
+  "type": "content",
   "label": "Example Diagram",
   "position": { "x": 680, "y": 0 },
   "width": 420,
@@ -151,7 +177,10 @@ Canonical SVG node:
   },
   "data": {
     "altText": "Two labeled circles connected by an arrow.",
-    "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Two labeled circles connected by an arrow'><rect width='320' height='180' rx='20' fill='#0f172a'/><circle cx='80' cy='90' r='34' fill='#38bdf8'/><circle cx='240' cy='90' r='34' fill='#a78bfa'/><path d='M120 90h72' stroke='#f8fafc' stroke-width='6' stroke-linecap='round'/><path d='m182 76 18 14-18 14' fill='none' stroke='#f8fafc' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+    "content": {
+      "kind": "svg",
+      "value": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Two labeled circles connected by an arrow'><rect width='320' height='180' rx='20' fill='#0f172a'/><circle cx='80' cy='90' r='34' fill='#38bdf8'/><circle cx='240' cy='90' r='34' fill='#a78bfa'/><path d='M120 90h72' stroke='#f8fafc' stroke-width='6' stroke-linecap='round'/><path d='m182 76 18 14-18 14' fill='none' stroke='#f8fafc' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+    }
   }
 }
 ```
@@ -161,7 +190,7 @@ SVG authoring rules:
 - provide a real root `<svg>` element and a `viewBox`
 - prefer `width="100%"`, `height="100%"`, and `preserveAspectRatio`
 - include `role="img"` and an `aria-label` in the SVG, and put a plain-language description in `data.altText`
-- keep the JSON string valid by using single quotes for every SVG attribute inside `data.svg`
+- keep the JSON string valid by using single quotes for every SVG attribute inside `data.content.value`
 - never emit Markdown link syntax inside SVG markup
 - never include scripts, event-handler attributes, or executable embedded content
 - expect Twilite to sanitize SVG before rendering
@@ -245,14 +274,14 @@ The first time you are onboarded into a Twilite session, you must complete the h
 
 Complete the handshake by returning:
 
-- JSON only
+- JSON only, in one fenced `json` block, with no prose around it
 - one small additive `transaction`
 - one `createNodes` command
-- one or two simple nodes that acknowledge readiness
+- two `content` nodes that acknowledge readiness: one markdown payload and one SVG payload
 
 The handshake is not a full graph. It is proof that you understand how to speak Twilite’s mutation format.
 
-Use a markdown node for a prose handshake. An SVG node is equally valid when the user asks for a visual handshake or when a small diagram is the clearest proof of authoring readiness.
+There are no `markdown` or `svg` node types. Every authored item is a `content` node, and `data.content.kind` says what it holds. Use `content.kind: "markdown"` for the prose acknowledgement and `content.kind: "svg"` for the visual acknowledgement.
 
 ## Handshake Shape That Must Be Used
 
@@ -267,7 +296,7 @@ For the first handshake, use this exact structural pattern:
       "nodes": [
         {
           "id": "11111111-1111-4111-8111-111111111111",
-          "type": "markdown",
+          "type": "content",
           "label": "LLM Handshake",
           "position": { "x": 0, "y": 0 },
           "width": 420,
@@ -283,7 +312,34 @@ For the first handshake, use this exact structural pattern:
             "borderRadius": 24
           },
           "data": {
-            "markdown": "## LLM Handshake\\n\\nReady to collaborate through valid Twilite graph mutations."
+            "content": {
+              "kind": "markdown",
+              "value": "## LLM Handshake\\n\\nReady to collaborate through valid Twilite graph mutations."
+            }
+          }
+        },
+        {
+          "id": "22222222-2222-4222-8222-222222222222",
+          "type": "content",
+          "label": "Ready",
+          "position": { "x": 480, "y": 0 },
+          "width": 320,
+          "height": 240,
+          "visible": true,
+          "showLabel": true,
+          "style": {
+            "background": "#0f172a",
+            "borderColor": "#334155",
+            "borderWidth": 1,
+            "borderStyle": "solid",
+            "borderRadius": 24
+          },
+          "data": {
+            "altText": "A green check mark inside a circle.",
+            "content": {
+              "kind": "svg",
+              "value": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Ready'><circle cx='80' cy='80' r='48' fill='none' stroke='#34d399' stroke-width='8'/><path d='M58 82l16 16 30-34' fill='none' stroke='#34d399' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+            }
           }
         }
       ]
@@ -298,8 +354,9 @@ For the handshake:
 - `transaction` is the value of `action`, not a wrapper key
 - `commands` must be an array
 - `createNodes` must contain `nodes`, not `edges`
-- each created node should include a real `type`
-- for markdown nodes, the content should go in `data.markdown`
+- each created node must have the real type `content`
+- authored material goes in `data.content` as `{ "kind", "value" }`
+- do not use `data.markdown`, `data.svg`, `data.title`, or `data.body`
 - `label` is a node field, not a `data` field
 - include a `position`
 - put `width`, `height`, visibility, and presentation `style` on the node shell, never inside `data`
@@ -311,7 +368,8 @@ Do not return any of these shapes:
 - `{"transaction": { ... }}`
 - a `createNodes` command that also contains `edges`
 - a node with no `type`
-- a markdown node that uses `data.title` and `data.body` instead of `data.markdown`
+- a `markdown` or `svg` node type
+- a content node that uses `data.title` and `data.body` instead of `data.content`
 - a created node where `label` is only nested inside `data`
 
 Wrong:
@@ -1942,16 +2000,16 @@ This fragment assumes the graph's declaration and surface nodes already exist. I
 
 Before returning this pattern, replace the example class reference and declaration id with real values from the template or target graph. The one-port arrays above are only a minimal standalone specimen. When deriving from a real template, preserve its full canonical `ports` contract and any `handles` that add distinct placement or bindings; do not collapse them to `root` or invent `top` or `bottom` unless the inspected nodes actually expose those ports. Preserve legacy-only `inputs` and `outputs` only when no canonical `ports` exist.
 
-## Declaration Editor Contract
+## Root Editor Contract
 
-If you are authoring or repairing a custom editor for a `declaration`, use the built-in declaration editor as the minimum functional contract.
+If you are authoring or repairing a custom editor for a `root`, use the built-in root editor as the minimum functional contract.
 
 - A custom declaration editor may use a different layout
 - A custom declaration editor may use custom HTML or a class-backed editor surface
 - A custom declaration editor may group fields differently
-- But it still must correctly edit the declaration contract
+- But it still must correctly edit the root contract
 
-At minimum, a valid declaration editor must support:
+At minimum, a valid root editor must support:
 
 - `data.identity.name`
 - `data.identity.graphId`
@@ -1959,24 +2017,23 @@ At minimum, a valid declaration editor must support:
 - `data.identity.description`
 - `data.intent.kind`
 - `data.intent.scope`
-- `data.declaration.kind`
-- `data.declaration.targetMode`
-- `data.declaration.defaultSurfaceId` (required value: `root`)
-- `data.declaration.surfaces`
+- `data.root.kind`
+- `data.root.targetMode`
+- `data.root.defaultSurfaceId`
+- at least one `surface` edge and its `data.surfaceId`
 - `data.purpose`
 - optional `data.analytics` through bounded reporting metadata that cannot change repository participation
 
-Legacy classification and preferred-view aliases may still be read from existing graphs, but do not author them in new declarations.
+Legacy classification and preferred-view aliases may still be read from existing graphs, but do not author them in new roots.
 
 These fields are not just plain strings:
 
 - `data.identity.graphId` must participate in graph-id rename behavior
-- `data.declaration.kind` is the graph's extensible type; do not replace it with legacy duplicates such as `data.declaresKind` or `data.declaration.artifactKind`
-- `data.declaration.defaultSurfaceId` must be `root`
-- `data.declaration.surfaces` must preserve valid surface objects and contain exactly one root surface whose `portNodeId` resolves to the graph's required `Root Port` node
-- The root node of a graph is the declaration-bound Root Port. Do not author `root` or `isRoot` flags on any node; those fields are legacy compatibility only
-- A port may author its own view or delegate its view to another node in the same graph with `data.sourceScope: "graph"`, `data.sourceNodeId`, and `data.sourcePayload`
-- A port may independently delegate navigation focus to a visible node in the same graph with `data.targetNodeId`; when absent, navigation focuses the port itself
+- `data.root.kind` is the graph's extensible structural kind; do not replace it with legacy duplicates such as `data.declaresKind` or `data.declaration.artifactKind`
+- `data.root.defaultSurfaceId` must resolve to a real Surface edge
+- Surface and ground edges must preserve their real targets and ports
+- The root node itself is the graph's implicit Root Port. Do not author a second root Port node.
+- A named port points to faces through graph relationships and may independently expose navigation behavior
 - Do not put `data.sourceRef` on a port and do not delegate a port view or landing target across graphs. Cross-graph consumption belongs exclusively to a `portal`
 - Named ports require deliberate exposure and addressing; never promote a sole or named port to root by inference
 - declared surfaces are the sole authored presentation contract; do not add legacy preferred-view aliases

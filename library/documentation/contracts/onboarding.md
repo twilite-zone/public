@@ -14,7 +14,29 @@ When you open a graph, you become its steward.
 
 ## Current Node Composition Model
 
-For new graph-backed nodes and templates, follow [Graph-Native Node Composition](nodes/graph-native-node-composition.md). It is the write-new authority for Declarations, Ports, Views, Content, Glyphs, landing surfaces, and interface geometry. Older declaration-plus-root-Port, inline Port presentation, Markdown-node, SVG-node, and `renderShape` examples in this guide are compatibility references only.
+For new graph-backed nodes and templates, follow [Graph-Native Node Composition](nodes/graph-native-node-composition.md). It is the write-new authority for roots, ports, faces, content, glyphs, ground, and interface geometry. Older declaration-plus-root-Port, inline Port presentation, Markdown-node, SVG-node, and `renderShape` examples in this guide are compatibility references only.
+
+## Current vocabulary
+
+Use these names in new graph files and mutation transactions:
+
+| Word | Meaning | Stored form |
+|---|---|---|
+| `root` | The one node a graph begins from; it owns identity, intent, and surfaces. | node `type: "root"`; `data.identity`, `data.intent`, `data.root` |
+| `face` | One authored presentation, ordered inside a Surface. | node `type: "face"`; `next-face` edges |
+| `content` | Durable authored material. | node `type: "content"`; `data.content.kind` and `data.content.value` |
+| `glyph` | The symbolic mark that ends each Surface chain. | node `type: "glyph"` |
+| `ground` | The authored inside frame, optional for document graphs. | `ground` edge from the root's `ground` port |
+| `property` | One named value on a node. | node `type: "property"`; `name`, `valueType`, `value` |
+| `import` / `export` | The two ends of a Bridge. | node type `import` or `export`; one `data.bridge` record |
+| `next-face` | Orders faces in a Surface. | edge `type: "next-face"` |
+| `invokes` | Runs a Method from an event source in the same graph. | edge `type: "invokes"` |
+
+Edges store their kind in `type`, their class graph in `data.classRef`, and their endpoints in `sourcePort` and `targetPort`. Handles are runtime affordances, not stored endpoints. `declaration`, `view`, `view-sequence`, `landing-surface`, `field`, `bridge` nodes, `markdown`/`svg` node types, groups, and Event Handler/listens infrastructure are legacy names for reading only.
+
+## Agent handshake
+
+The first response in a newly onboarded Twilite session is a small additive transaction. Return JSON only in one fenced `json` block, with one `createNodes` command containing two `content` nodes: one with `data.content.kind: "markdown"` and one with `data.content.kind: "svg"`. The top level is `{ "action": "transaction", "commands": [...] }`; `transaction` is not a wrapper key. Put `label`, `position`, dimensions, visibility, and shell style on each node, and put authored material under `data.content`. Do not return `markdown` or `svg` node types, `data.markdown`, `data.svg`, or a `createNodes` command containing edges.
 
 ## Node Property Ownership
 
@@ -45,27 +67,27 @@ Node shell
   inputs / outputs (legacy-only compatibility)
 
 Renderer and type payload
-  data.markdown
-  data.svg
+  data.content
   data.src
   data.identity
   data.target
   data.view
-  data.renderShape
+  data.classRef
 
 Graph semantics
-  declaration
+  root
+  surfaces and ground
   edges
   exposed ports
-  class bridges and bindings
+  imports and exports
 ```
 
 Correct:
 
 ```json
 {
-  "id": "example-markdown",
-  "type": "markdown",
+  "id": "example-content",
+  "type": "content",
   "label": "Example",
   "position": { "x": 0, "y": 0 },
   "width": 600,
@@ -81,7 +103,10 @@ Correct:
     "borderRadius": 24
   },
   "data": {
-    "markdown": "# Example\n\nContent goes here."
+    "content": {
+      "kind": "markdown",
+      "value": "# Example\n\nContent goes here."
+    }
   }
 }
 ```
@@ -91,7 +116,7 @@ Wrong for presentation:
 ```json
 {
   "data": {
-    "markdown": "# Example",
+    "content": { "kind": "markdown", "value": "# Example" },
     "style": {
       "background": "#182018"
     }
@@ -103,19 +128,19 @@ Wrong for presentation:
 
 ## First-Class Content Nodes
 
-`markdown` and `svg` are peer content primitives.
+`content` is the material primitive; `data.content.kind` selects markdown, SVG, HTML, text, JSON, or image.
 
-- Use `markdown` for prose, links, lists, instructions, and documents.
-- Use `svg` for diagrams, visual explanations, icons, maps, cards, and authored vector graphics.
-- A normal graph-owned illustration does not need to be disguised as markdown or wrapped in a port.
+- Use `content.kind: "markdown"` for prose, links, lists, instructions, and documents.
+- Use `content.kind: "svg"` for diagrams, visual explanations, icons, maps, cards, and authored vector graphics.
+- A normal graph-owned illustration does not need to be wrapped in a port.
 - Use a `port` only when the visual is intended to be an exposed graph surface.
 
-Canonical SVG node:
+Canonical SVG content node:
 
 ```json
 {
-  "id": "example-svg",
-  "type": "svg",
+  "id": "example-svg-content",
+  "type": "content",
   "label": "Example Diagram",
   "position": { "x": 680, "y": 0 },
   "width": 420,
@@ -131,14 +156,17 @@ Canonical SVG node:
   },
   "data": {
     "altText": "Two labeled circles connected by an arrow.",
-    "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Two labeled circles connected by an arrow'><rect width='320' height='180' rx='20' fill='#0f172a'/><circle cx='80' cy='90' r='34' fill='#38bdf8'/><circle cx='240' cy='90' r='34' fill='#a78bfa'/><path d='M120 90h72' stroke='#f8fafc' stroke-width='6' stroke-linecap='round'/><path d='m182 76 18 14-18 14' fill='none' stroke='#f8fafc' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+    "content": {
+      "kind": "svg",
+      "value": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Two labeled circles connected by an arrow'><rect width='320' height='180' rx='20' fill='#0f172a'/><circle cx='80' cy='90' r='34' fill='#38bdf8'/><circle cx='240' cy='90' r='34' fill='#a78bfa'/><path d='M120 90h72' stroke='#f8fafc' stroke-width='6' stroke-linecap='round'/><path d='m182 76 18 14-18 14' fill='none' stroke='#f8fafc' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+    }
   }
 }
 ```
 
 SVG authoring rules:
 
-- Store the graphic in `data.svg`.
+- Store the graphic in `data.content.value` with `data.content.kind: "svg"`.
 - Give the SVG a `viewBox`, responsive dimensions, `preserveAspectRatio`, `role="img"`, and `aria-label`.
 - Put a plain-language description in `data.altText`.
 - Keep node dimensions and shell styling at the top level.
@@ -146,7 +174,7 @@ SVG authoring rules:
 - Twilite sanitizes SVG before rendering.
 
 ## How to Work in a Graph
-1. Read the Manifest first
+1. Read the root first
 2. Run validation before mutation
 3. Prefer transformation skills over manual edits
 4. Leave notes when intent changes
@@ -235,79 +263,78 @@ When that happens:
 ## Primitive Chooser
 Use the primitive that matches the job directly. Do not substitute a nearby concept just because it feels related.
 
-- `declaration`: use for graph identity, intent, authority, the implicit root interface, and its required View/Glyph/landing relationships
-- `port`: use for an additional named connection endpoint; it points to Views and may carry behaviors, but does not own inline presentation
-- `view`: use for a renderable surface; its incoming relationship defines detail, summary, or icon semantics
+- `root`: use for graph identity, intent, authority, the implicit root interface, and its Surfaces and optional ground
+- `port`: use for an additional named connection endpoint; it points to faces and may carry behaviors, but does not own inline presentation
+- `face`: use for a renderable surface; its place in a Surface chain determines its fallback order
 - `content`: use for durable markdown, HTML, SVG, text, JSON, or image material through `data.content.kind` and `data.content.value`
-- `glyph`: use for symbolic node identity independently from the icon View
+- `glyph`: use for symbolic node identity at the end of a Surface chain
 - `portal`: use for a consumer/opening node that targets another declared surface
-- `dictionary`: use only when the task is specifically about dictionary infrastructure or compatibility behavior, not as a substitute for `declaration` or `port`
-- `bridge`: use for import/export boundaries and explicit external authority
+- `dictionary`: use only when the task is specifically about dictionary infrastructure or compatibility behavior, not as a substitute for `root` or `port`
+- `import` / `export`: use for Bridge boundaries and explicit external authority
 
-## Declaration-First Starter Pattern
-When creating a first real graph-backed node, begin with one `declaration`. The Declaration is the implicit root Port; do not create a second root Port node. Occupy its five singular relationships—default View, summary View, icon View, Glyph, and landing surface. Use the optional repeatable `port` relationship only when the node needs an additional named interface.
+## Root-First Starter Pattern
+When creating a first real graph-backed node, begin with one `root`. The root is the implicit root Port; do not create a second root Port node. Give it at least one `surface` edge, optionally one `ground` edge, and repeatable `exposes-port` edges only when the graph needs additional named interfaces.
 
 ### Declaration guidance
 - Put graph identity in `data.identity`
 - Always put non-empty `kind` and `scope` fields in `data.intent`
 - `data.intent.kind` describes the graph's subject or purpose, such as `person`, `organization`, `event`, `work`, `task-board`, `documentation`, or `graph`
 - Use `data.intent.scope: "public"` for intentionally public content, `"local"` for graph-local infrastructure, `"shared"` for reusable shared resources, and `"mixed"` only when the graph genuinely spans scopes or a narrower scope cannot be determined
-- `data.declaration.kind` is the declaration's type. Set it to the type of artifact being declared, usually `graph`
-- Do not use `data.intent.kind` as a substitute for `data.declaration.kind`; a person graph normally has `intent.kind: "person"` and `declaration.kind: "graph"`
-- Set `data.declaration.targetMode` explicitly, usually `artifact`
-- Author default, summary, icon, glyph, landing, and optional Port semantics as graph relationships
-- Keep `data.declaration.surfaces` only for additional exposed Ports and compatibility metadata
+- `data.root.kind` describes the graph's structural kind, usually `graph`
+- `data.intent.kind` describes the graph's subject or purpose, such as `person`, `organization`, `work`, or `plan`
+- Set `data.root.targetMode` explicitly, usually `artifact`
+- Author Surfaces as `surface` edges, the optional inside frame as a `ground` edge, and additional interfaces as `exposes-port` edges
+- Keep `data.root.defaultSurfaceId` aligned with a real `surface` edge
 - Keep `dependencies.nodeTypes` honest: list the node types the graph actually uses
 - Keep `identity.graphId` consistent across the declaration and graph-owned nodes
-- Connect all five required singular Declaration relationships exactly once
-- Leave the repeatable `port` relationship unoccupied when the implicit root interface is sufficient
+- Give the root at least one Surface and no more than one ground
+- Leave repeatable `exposes-port` unoccupied when the implicit root interface is sufficient
 
-### Declaration checklist
+### Root checklist
 - `data.identity.graphId`, `name`, `version`, and `description` should be real values, not placeholders
 - `data.intent.kind` and `scope` are required, must be non-empty, and should describe the graph honestly
-- `data.declaration.kind` is required and is equivalent to the declared artifact's type
-- `data.declaration.targetMode` should usually be `artifact`
-- `data.declaration.defaultSurfaceId` must be `root`, and `data.declaration.surfaces` must contain that surface
-- The root surface must include `id: "root"`, `kind: "port"`, and a valid `portNodeId` whose node is the graph's `Root Port`
-- Do not author top-level `root`, `isRoot`, `data.root`, or `data.isRoot`; these are legacy compatibility fields, not the current root model
-- Named ports are optional and explicitly addressed. Never infer a named or sole port as root
-- Do not author legacy classification or view aliases in new declarations: `artifactKind`, `graphViewRole`, `declaresKind`, `primaryNodeViewId`, `primaryEditorViewId`, `iconViewNodeId`, or `portViewNodeId`
-- Twilite may still read those legacy fields from existing graphs as silent compatibility fallbacks; their presence or staleness must not make a declaration invalid
-- A graph with a partial declaration may load, but it can still trigger saveability or interpretation problems
+- `data.root.kind`, `targetMode`, and `defaultSurfaceId` should be real values, not placeholders
+- `data.root.defaultSurfaceId` must resolve to a real Surface edge
+- A Surface edge points to a face and carries its `data.surfaceId`; its chain ends in a glyph
+- A ground edge, when present, leaves from the root's `ground` port and points to the graph's authored frame
+- Named ports are optional and explicitly exposed. Never infer a named or sole port as root
+- Do not author legacy classification or view aliases in new roots: `artifactKind`, `graphViewRole`, `declaresKind`, `primaryNodeViewId`, `primaryEditorViewId`, `iconViewNodeId`, or `portViewNodeId`
+- Twilite may still read those legacy fields from existing graphs as silent compatibility fallbacks; their presence or staleness must not make a root invalid
+- A graph with a partial root may load, but it can still trigger saveability or interpretation problems
 
 ### Custom node classes are executable infrastructure
 
 - A `.node-class.node` file is itself an inspectable graph artifact; a working renderer does not excuse a poor definition graph
-- Author one real `declaration`, one explanatory `markdown` contract node, and visible primitive `port` nodes for `editor.web`, `node.web.detail`, `node.web.summary`, and `node.web.icon`
-- Expose `root` through the detail port, set `defaultSurfaceId: "root"`, and retain named detail, summary, icon, and editor surfaces with real `viewNodeId` targets
-- Connect the declaration directly to the contract note and each surface port with meaningful contract or surface edges; do not chain loose view nodes merely to make the graph connected
+- Author one real `root`, one explanatory `content` contract node, and visible primitive `port` nodes for the surfaces the class exposes
+- Expose the root through the class's primary face or port, set `data.root.defaultSurfaceId` to a real Surface id, and retain only the faces and surfaces the class actually needs
+- Connect the root directly to the contract content and each exposed port with meaningful edges; do not chain loose faces merely to make the graph connected
 - Give every definition node a deliberate position and complete canonical `ports`; include matching `inputs` and `outputs` when the class-artifact convention requires the full shape
 - Every authored editor field must have a meaningful representation in the detail surface. Summary and icon surfaces are deliberate smaller projections, not discarded editor data
 - `data.dependencies.nodeTypes` is descriptive; it does not register a custom type or grant runtime authority
-- Every external node class used by the graph requires a real `bridge` node pointing to its `.node-class.node` resource
-- Give the bridge focused-graph creation authority with `scope: "focused-graph"` and `grants: ["create"]`
-- Connect the declaration to the bridge using the graph's class-authority edge pattern
-- Keep `_classBinding.key` and the durable `github://` class reference on every class instance
-- Preserve `_bridge` provenance and the bridge-to-instance instantiation edge when the template supplies them
+- Every external node class used by the graph requires a real `import` node pointing to its `.node-class.node` resource
+- Give the import focused-graph creation authority with `scope: "focused-graph"` and `grants: ["create"]`
+- Connect the root to the import using the graph's class-authority edge pattern
+- Store each class instance's key in `type` and durable class address in `data.classRef`; loaded `_classBinding` is compatibility state and is not written
+- Preserve `data.bridge` provenance and the import-to-instance instantiation edge when the template supplies them
 - A node with `type: "person"`, `type: "role"`, or another custom type is not sufficiently class-resolved merely because that string appears in `dependencies.nodeTypes`
 
 ### Deriving a graph from a template
 
 - Clone the template structurally; do not recreate only what is visually apparent
-- Preserve the declaration, declared surfaces, real `viewNodeId` targets, class bridges, authority edges, class bindings, instantiation edges, and required port or handle contracts
+- Preserve the root, Surface edges and chains, real face targets, class imports, authority edges, class bindings, instantiation edges, and required port contracts
 - Replace or extend example content only after the executable infrastructure is intact
 - Omit infrastructure only when the relevant class or template contract explicitly says it is optional
 - Never infer that a custom node type is globally available
 
-### Declaration editor contract
-If you author a custom editor for a `declaration`, treat the built-in declaration editor as the minimum executable contract.
+### Root editor contract
+If you author a custom editor for a `root`, treat the built-in root editor as the minimum executable contract.
 
 - A custom declaration editor may choose its own layout, styling, grouping, and HTML
 - A custom declaration editor may present the fields in a different order
 - A custom declaration editor may use a class-backed editor surface instead of the stock visual layout
-- But if it claims to edit a `declaration`, it must still correctly edit the declaration contract
+- But if it claims to edit a `root`, it must still correctly edit the root contract
 
-Minimum required declaration fields:
+Minimum required root fields:
 
 - `data.identity.name`
 - `data.identity.graphId`
@@ -315,10 +342,10 @@ Minimum required declaration fields:
 - `data.identity.description`
 - `data.intent.kind`
 - `data.intent.scope`
-- `data.declaration.kind`
-- `data.declaration.targetMode`
-- `data.declaration.defaultSurfaceId`
-- `data.declaration.surfaces`
+- `data.root.kind`
+- `data.root.targetMode`
+- `data.root.defaultSurfaceId`
+- at least one `surface` edge and its `data.surfaceId`
 - `data.purpose`
 - optional `data.analytics` through the bounded analytics opt-out control
 
@@ -329,17 +356,15 @@ Required declaration-editor behaviors:
 - `data.identity.graphId` is not just a text box:
   - changing it must participate in the graph id rename flow
   - the declaration node id and canonical graph id must stay aligned
-- `data.declaration.kind` is the graph's extensible type:
+- `data.root.kind` is the graph's structural kind:
   - do not substitute `data.intent.kind` or legacy duplicates such as `data.declaresKind` and `data.declaration.artifactKind`
   - use a control that permits real graph kinds rather than a closed list
-- `data.declaration.defaultSurfaceId` is not a freeform string only:
-  - it should resolve against real declared surfaces
-  - it should not silently point at a missing surface
-- `data.declaration.surfaces` is not arbitrary JSON prose:
-  - surface `id`, `kind`, `label`, `memo`, `viewNodeId`, and exposure families must remain editable
-  - the editor should preserve valid surface objects instead of downgrading them into opaque text
-- `data.declaration.surfaces` is the sole authored presentation contract:
-  - use `defaultSurfaceId` and real surface `viewNodeId` bindings instead of legacy preferred-view aliases
+- `data.root.defaultSurfaceId` is not a freeform string only:
+  - it should resolve against a real Surface edge
+  - it should not silently point at a missing Surface
+- Surface and ground edges are the authored presentation contract:
+  - preserve each Surface id and target face, and preserve a valid ground edge when present
+  - the editor should preserve valid graph relationships instead of downgrading them into opaque text
 - analytics is inherited repository policy with bounded reporting metadata:
   - verified public GitHub repositories participate under the default Commons policy; private, local, unresolved, and unrecognized sources fail closed
   - declarations may provide optional `pageTitle`, `contentGroup`, and hosted `url` fields but cannot change participation
@@ -392,39 +417,27 @@ Focused graph page views inherit policy from their verified source repository. A
 - Put the graph id on the port too: `data.identity.graphId`
 - Give the port a real navigation target in `data.target`
 - For a graph-owned entry port, prefer `data.target.graphId` and `data.target.mode: "navigate"` unless the graph is using a more specific endpoint contract
-- Put the surface payload in `data.view`
-- Put the port role in `data.viewRole`
-- `card` is a good `data.viewRole`, but it is not a supported `data.renderShape.kind`
-- Use `data.renderShape.kind` to declare how the port renders
-- Supported authored render kinds are `markdown`, `html`, `svg`, `text`, `image`, and `canvas`
-- Do not use a bare string like `renderShape: "svg"`; use an object like `renderShape: { "kind": "svg" }`
-- If you use SVG, keep `data.svg` as raw SVG text only
-- For SVG roots, use a real XML namespace like `xmlns="http://www.w3.org/2000/svg"`
-- Inside a JSON `data.svg` string, use single quotes for every SVG/XML attribute rather than relying on repeated escaping
+- A port points to faces through graph edges; it does not own an inline face or content payload
+- If a port needs a preview, expose a face whose content is a separate `content` node
 - Before returning the transaction, parse the complete payload as strict JSON
 - When authoring inline SVG in JSON, copy a known-good SVG specimen and edit only the shapes, colors, labels, and geometry
 - Do not hand-type or rewrite the `xmlns` attribute unless you are pasting the exact raw XML namespace
 - Do not paste markdownified links such as `[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)` into SVG attributes
-- Only include inline render fields like `data.svg` or `data.html` when they contain real authored content
-- Do not emit placeholder fields like `html: ""` or `svg: ""`
-- Do not paste markdown links or prose into raw SVG markup
+- Do not emit placeholder inline render fields on ports or portals
 - `data.sourceNodeId` may delegate a port's view only to a node in the same graph
 - `data.targetNodeId` may delegate a port's landing focus only to a visible node in the same graph
 - Do not invent `sourceNodeId`, `targetNodeId`, or edges to nodes that do not exist
-- Do not expect `title`, `description`, `icon`, or `cover` alone to render a port card body; they are metadata unless you also provide a real inline payload such as `data.svg` or `data.markdown`
+- Do not expect `title`, `description`, `icon`, or `cover` alone to render a port card body; expose a real face and content when a preview is needed
 
 ### What "create a port" usually means
-- Create a real `port` node, not a `portal`, `markdown`, or `dictionary`
+- Create a real `port` node, not a `portal`, `content`, or `dictionary`
 - Make it graph-owned with `data.identity.graphId`
-- Every graph must have exactly one root port, and that port is the graph's only implicit entry point
-- A root port may carry its own presentation or delegate presentation to a local node through `data.sourceNodeId`
-- View delegation and landing delegation are independent: `data.sourceNodeId` supplies the rendered surface, while `data.targetNodeId` identifies the visible local node navigation should focus
-- Leave `data.targetNodeId` absent to focus the port itself
+- Every graph has exactly one implicit root Port: the root node itself. Do not create a second root Port node.
+- A named port points to its faces through explicit relationships and may carry behavior, but it does not own presentation inline.
 - Port delegation is graph-local. Do not put `data.sourceRef` on a port or delegate a port view or landing target to another graph; use a `portal` for every cross-graph consumer
 - Give non-root ports an explicit target only when their purpose requires navigation or connection
 - Give it a real preview payload if you want it to render as a card
-- Expose the root port through the declaration's `root` surface and keep `defaultSurfaceId: "root"`
-- Expose every additional port deliberately; a port node's existence does not make it externally connectable
+- Expose a named port deliberately with an `exposes-port` edge from the root; a port node's existence does not make it externally connectable
 - Do not stop at metadata-only fields such as `title`, `icon`, `description`, or `cover`
 
 ### Reference specimens in this repo
@@ -458,9 +471,9 @@ Focused graph page views inherit policy from their verified source repository. A
 - If the portal should preview a remote surface, bind it through `data.sourceRef`, `data.sourceNodeId`, `data.sourcePayload`, and `data.target`
 - If the portal should navigate only, keep the navigation target clean and omit inline payload fields entirely
 - Keep the durable graph/save address as the clean `.node` ref and store the selected declared port separately as `data.target.surfaceId`
-- A bare graph address resolves the declaration's exposed `root` surface; portal navigation passes any named surface as separate transient intent
+- A bare graph address resolves the root's default Surface; portal navigation passes any named Surface as separate transient intent
 - The older `<graph-ref>:<surface-id>` input form may be parsed for compatibility, but the viewer must normalize it back to the clean graph ref before updating the address bar or save target
-- A port node is not public merely because it exists. The declaration must expose it through `data.declaration.surfaces`
+- A port node is not public merely because it exists. The root must expose it through an `exposes-port` edge
 - When a requested port is missing, hidden, ambiguous, or not exposed, navigation fails before the destination replaces the current graph
 - In the portal editor, select from the destination graph's declared surfaces instead of typing an internal node id
 - Do not add `data.html`, `data.svg`, `data.markdown`, or `data.text` unless the portal itself truly owns that inline content
@@ -694,25 +707,24 @@ Correct intent-preserving alternative:
 - Treat a graph-adjacent `SKILL.md` and its neighboring template graph as one versioned derivation package.
 
 ### Do not substitute nearby primitives
-- If the user asks for a `declaration`, create a `declaration`, not a `dictionary`
-- If the user asks for a `port`, create a `port`, not a `markdown` node
+- If the user asks for a `root`, create a `root`, not a `dictionary`
+- If the user asks for a `port`, create a `port`, not a `content` node
 - Do not treat ad hoc `data.ports` on another node type as a replacement for a real `port` node
-- Do not satisfy a declaration-and-port request with only styling and a reference edge
-- Do not omit `targetMode`, `defaultSurfaceId`, or the declared `surfaces` array when authoring a real declaration
+- Do not satisfy a root-and-port request with only styling and a reference edge
+- Do not omit `data.root.targetMode`, `data.root.defaultSurfaceId`, or the real `surface` edges when authoring a root
 - Do not emit empty inline payload placeholders such as `html: ""` or `svg: ""` on `port` or `portal` nodes
 - Do not put the graph id at `data.graphId` when authoring a real port; use `data.identity.graphId`
 - Do not return a metadata-only card when the user asked for a working port back to the graph
-- Do not add an external delegated target to the root port. Root is the graph's safe entry boundary; use a named port for deliberate forwarding
-- Do not set `data.renderShape.kind: "card"` on a `port`; use `data.viewRole: "card"` plus a real render payload such as `data.svg` or `data.markdown`
+- Do not add an external delegated target to the root. Root is the graph's safe entry boundary; use a named port for deliberate forwarding
 - Do not assume `cover`, `icon`, and `description` will render a visual card body on their own
-- Do not author a normal graph declaration as:
-  - `data.declaration.kind: "knowledge-graph"`
-  - `data.declaration.targetMode: "graph"`
-  - surface `kind: "card"`
+- Do not author a normal graph root as:
+  - `data.root.kind: "knowledge-graph"`
+  - `data.root.targetMode: "graph"`
+  - a surface whose kind is only `card`
 - For a normal graph, prefer:
-  - `data.declaration.kind: "graph"`
-  - `data.declaration.targetMode: "artifact"`
-  - surface `kind: "view"`
+  - `data.root.kind: "graph"`
+  - `data.root.targetMode: "artifact"`
+  - a `surface` edge to a face
 
 You are now part of the graph’s memory.
 Care for it.
