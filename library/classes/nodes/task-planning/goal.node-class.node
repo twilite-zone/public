@@ -248,7 +248,161 @@
                   "angle": 180
                 }
               ]
-            }
+            },
+            "ports": [
+              {
+                "id": "previous",
+                "key": "previous",
+                "label": "previous",
+                "direction": "input",
+                "dataType": "any",
+                "angle": 180,
+                "allowedEdgeTypes": [
+                  "precedes"
+                ],
+                "metadata": {
+                  "semantic": true,
+                  "roles": [
+                    "precedes"
+                  ],
+                  "repeatable": true
+                }
+              },
+              {
+                "id": "next",
+                "key": "next",
+                "label": "next",
+                "direction": "output",
+                "dataType": "any",
+                "angle": 0,
+                "allowedEdgeTypes": [
+                  "precedes"
+                ],
+                "metadata": {
+                  "semantic": true,
+                  "roles": [
+                    "precedes"
+                  ],
+                  "repeatable": true
+                }
+              },
+              {
+                "id": "part-of",
+                "key": "part-of",
+                "label": "part-of",
+                "direction": "input",
+                "dataType": "any",
+                "angle": 270,
+                "allowedEdgeTypes": [
+                  "contains"
+                ],
+                "metadata": {
+                  "semantic": true,
+                  "roles": [
+                    "contains"
+                  ],
+                  "repeatable": false
+                }
+              },
+              {
+                "id": "contains",
+                "key": "contains",
+                "label": "contains",
+                "direction": "output",
+                "dataType": "any",
+                "angle": 90,
+                "allowedEdgeTypes": [
+                  "contains"
+                ],
+                "metadata": {
+                  "semantic": true,
+                  "roles": [
+                    "contains"
+                  ],
+                  "repeatable": true
+                }
+              },
+              {
+                "id": "blocked-by",
+                "key": "blocked-by",
+                "label": "blocked-by",
+                "direction": "output",
+                "dataType": "any",
+                "angle": 135,
+                "allowedEdgeTypes": [
+                  "blocked-by"
+                ],
+                "metadata": {
+                  "semantic": true,
+                  "roles": [
+                    "blocked-by"
+                  ],
+                  "repeatable": true
+                }
+              },
+              {
+                "id": "blocks",
+                "key": "blocks",
+                "label": "blocks",
+                "direction": "input",
+                "dataType": "any",
+                "angle": 225,
+                "allowedEdgeTypes": [
+                  "blocked-by"
+                ],
+                "metadata": {
+                  "semantic": true,
+                  "roles": [
+                    "blocked-by"
+                  ],
+                  "repeatable": true
+                }
+              },
+              {
+                "id": "questions",
+                "key": "questions",
+                "label": "questions",
+                "direction": "output",
+                "dataType": "any",
+                "angle": 45,
+                "allowedEdgeTypes": [
+                  "raises"
+                ],
+                "metadata": {
+                  "semantic": true,
+                  "roles": [
+                    "raises"
+                  ],
+                  "repeatable": true
+                }
+              },
+              {
+                "id": "decided-by",
+                "key": "decided-by",
+                "label": "decided-by",
+                "direction": "input",
+                "dataType": "any",
+                "angle": 315,
+                "allowedEdgeTypes": [
+                  "affects"
+                ],
+                "metadata": {
+                  "semantic": true,
+                  "roles": [
+                    "affects"
+                  ],
+                  "repeatable": true
+                }
+              },
+              {
+                "id": "root",
+                "key": "root",
+                "label": "root",
+                "direction": "bidirectional",
+                "dataType": "any",
+                "angle": 112
+              }
+            ]
           },
           "label": "Goal",
           "meaning": "Strategic or local outcome node for planning graphs.",
@@ -304,7 +458,8 @@
                 "declarations": {
                   "mode": "allow"
                 }
-              }
+              },
+              "portNodeId": "goal-root-port"
             }
           ],
           "artifactKind": "node-class",
@@ -787,6 +942,345 @@
           "nodeId": "goal"
         }
       }
+    },
+    {
+      "id": "goal-root-port",
+      "type": "port",
+      "label": "goal root port",
+      "position": {
+        "x": 520,
+        "y": -420
+      },
+      "width": 320,
+      "height": 180,
+      "ports": [
+        {
+          "id": "previous",
+          "key": "previous",
+          "label": "previous",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "allowedEdgeTypes": [
+            "precedes"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "precedes"
+            ],
+            "repeatable": true
+          }
+        },
+        {
+          "id": "next",
+          "key": "next",
+          "label": "next",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "allowedEdgeTypes": [
+            "precedes"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "precedes"
+            ],
+            "repeatable": true
+          }
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        },
+        {
+          "id": "contains",
+          "key": "contains",
+          "label": "contains",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": true
+          }
+        },
+        {
+          "id": "blocked-by",
+          "key": "blocked-by",
+          "label": "blocked-by",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 135,
+          "allowedEdgeTypes": [
+            "blocked-by"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "blocked-by"
+            ],
+            "repeatable": true
+          }
+        },
+        {
+          "id": "blocks",
+          "key": "blocks",
+          "label": "blocks",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 225,
+          "allowedEdgeTypes": [
+            "blocked-by"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "blocked-by"
+            ],
+            "repeatable": true
+          }
+        },
+        {
+          "id": "questions",
+          "key": "questions",
+          "label": "questions",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "allowedEdgeTypes": [
+            "raises"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "raises"
+            ],
+            "repeatable": true
+          }
+        },
+        {
+          "id": "decided-by",
+          "key": "decided-by",
+          "label": "decided-by",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 315,
+          "allowedEdgeTypes": [
+            "affects"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "affects"
+            ],
+            "repeatable": true
+          }
+        },
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 112
+        }
+      ],
+      "handles": [
+        {
+          "id": "previous",
+          "key": "previous",
+          "label": "previous",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "allowedEdgeTypes": [
+            "precedes"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "precedes"
+            ],
+            "repeatable": true
+          },
+          "portId": "previous"
+        },
+        {
+          "id": "next",
+          "key": "next",
+          "label": "next",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "allowedEdgeTypes": [
+            "precedes"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "precedes"
+            ],
+            "repeatable": true
+          },
+          "portId": "next"
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        },
+        {
+          "id": "contains",
+          "key": "contains",
+          "label": "contains",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": true
+          },
+          "portId": "contains"
+        },
+        {
+          "id": "blocked-by",
+          "key": "blocked-by",
+          "label": "blocked-by",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 135,
+          "allowedEdgeTypes": [
+            "blocked-by"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "blocked-by"
+            ],
+            "repeatable": true
+          },
+          "portId": "blocked-by"
+        },
+        {
+          "id": "blocks",
+          "key": "blocks",
+          "label": "blocks",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 225,
+          "allowedEdgeTypes": [
+            "blocked-by"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "blocked-by"
+            ],
+            "repeatable": true
+          },
+          "portId": "blocks"
+        },
+        {
+          "id": "questions",
+          "key": "questions",
+          "label": "questions",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "allowedEdgeTypes": [
+            "raises"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "raises"
+            ],
+            "repeatable": true
+          },
+          "portId": "questions"
+        },
+        {
+          "id": "decided-by",
+          "key": "decided-by",
+          "label": "decided-by",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 315,
+          "allowedEdgeTypes": [
+            "affects"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "affects"
+            ],
+            "repeatable": true
+          },
+          "portId": "decided-by"
+        },
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 112,
+          "portId": "root"
+        }
+      ],
+      "data": {
+        "identity": {
+          "graphId": "goal-class",
+          "nodeId": "goal"
+        },
+        "title": "Goal Declaration",
+        "interfaceContract": {
+          "version": 1,
+          "role": "class.root"
+        }
+      }
     }
   ],
   "edges": [
@@ -834,6 +1328,17 @@
       "targetPort": "root",
       "label": "ground",
       "data": {}
+    },
+    {
+      "type": "exposes-port",
+      "sourcePort": "port",
+      "targetPort": "root",
+      "label": "",
+      "style": {},
+      "data": {},
+      "id": "goal-exposes-root-port",
+      "source": "goal-declaration",
+      "target": "goal-root-port"
     }
   ]
 }
