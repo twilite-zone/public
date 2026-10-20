@@ -292,10 +292,6 @@
                 "summary": {
                   "mode": "shared",
                   "viewNodeId": "decision-summary-view"
-                },
-                "icon": {
-                  "mode": "shared",
-                  "viewNodeId": "decision-icon-view"
                 }
               },
               "exposes": {
@@ -313,12 +309,10 @@
           "sharedPresentation": {
             "detailViewNodeId": "decision-detail-view",
             "summaryViewNodeId": "decision-summary-view",
-            "iconViewNodeId": "decision-icon-view",
             "glyphNodeId": "decision-glyph"
           },
           "primaryNodeViewId": "decision-detail-view",
           "primaryEditorViewId": "decision-editor-view",
-          "iconViewNodeId": "decision-icon-view",
           "portViewNodeId": ""
         }
       }
@@ -702,96 +696,8 @@
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='width:100%;height:100%;display:flex;align-items:center;gap:10px;box-sizing:border-box;padding:8px 12px;border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(233,241,255,.94));color:#23160a;border:2px solid #2b6fd6;position:relative;overflow:hidden;'>\n  <div style='position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg, #b9d7ff, #2b6fd6);'></div>\n  <div style='width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(43,111,214,.14);color:#2b6fd6;font:800 13px system-ui,sans-serif;flex:0 0 auto;margin-left:4px;'>◆</div>\n  <div style='min-width:0;display:flex;flex-direction:column;gap:2px;flex:1;'>\n    <div style='font:800 14px/1.05 Georgia, \"Times New Roman\", serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#23160a;'>{{label}}</div>\n    <div style='display:flex;gap:6px;align-items:center;font:700 10px system-ui,sans-serif;text-transform:uppercase;opacity:.74;white-space:nowrap;overflow:hidden;color:#5b4731;'>\n      <span>{{data.status}}</span><span>•</span><span>Status {{data.status}}</span>\n    </div>\n  </div>\n</div>",
+        "html": "<div style='container-type:inline-size;position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#ffffff;border:2px solid #2b6fd6;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#2b6fd6'></i><div style='position:relative;display:flex;gap:2.4cqw;align-items:baseline;font-size:3.7cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase'><span style='color:#2b6fd6'>Decision</span><span>{{data.status}}</span></div><div style='position:relative;font-weight:600;font-size:6.4cqw;line-height:1.2;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='position:relative;margin-top:auto;display:flex;flex-direction:column;gap:1cqw;font-size:4cqw;color:#64748b'><div>{{data.owner}}</div></div></div>",
         "semanticLevel": "summary"
-      }
-    },
-    {
-      "id": "decision-icon-view",
-      "type": "face",
-      "label": "Icon",
-      "position": {
-        "x": -620,
-        "y": 500
-      },
-      "width": 420,
-      "height": 300,
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270,
-          "portId": "root"
-        },
-        {
-          "id": "surface-delegate",
-          "key": "surface-delegate",
-          "portId": "surface-delegate",
-          "label": "surface delegate",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90,
-          "role": "view.content"
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270
-        },
-        {
-          "id": "surface-delegate",
-          "key": "surface-delegate",
-          "label": "surface delegate",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90,
-          "role": "view.content",
-          "allowedEdgeTypes": [
-            "reference"
-          ],
-          "metadata": {
-            "structural": true,
-            "relationship": true,
-            "role": "view.content",
-            "required": false,
-            "behaviors": [
-              {
-                "trigger": "drag-create",
-                "action": "create-node",
-                "nodeType": "content",
-                "targetPort": "root"
-              }
-            ]
-          }
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "decision-class",
-          "nodeId": "decision"
-        },
-        "view": {
-          "intent": "node",
-          "payload": "node.web.icon",
-          "html": {
-            "chrome": true
-          }
-        },
-        "renderShape": {
-          "kind": "html"
-        },
-        "semanticLevel": "icon",
-        "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:16px;background:white;border:2px solid #2b6fd6;padding:12px;box-sizing:border-box;text-align:center;'><div style='font:700 10px/1.2 ui-sans-serif,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#2b6fd6;'>Decision</div><div style='font:700 14px/1.2 ui-sans-serif,system-ui,sans-serif;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;'>{{label}}</div></div>"
       }
     },
     {
@@ -830,7 +736,8 @@
       "data": {
         "glyph": {
           "kind": "icon",
-          "name": "Gavel"
+          "name": "Gavel",
+          "color": "#2b6fd6"
         },
         "interfaceContract": {
           "version": 1,
@@ -872,17 +779,6 @@
       "id": "decision-summary-view-next",
       "type": "next-face",
       "source": "decision-summary-view",
-      "target": "decision-icon-view",
-      "label": "",
-      "style": {},
-      "data": {},
-      "sourcePort": "sequence-out",
-      "targetPort": "sequence-in"
-    },
-    {
-      "id": "decision-icon-view-next",
-      "type": "next-face",
-      "source": "decision-icon-view",
       "target": "decision-glyph",
       "label": "",
       "style": {},

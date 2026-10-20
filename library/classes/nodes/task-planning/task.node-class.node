@@ -300,10 +300,6 @@
                 "summary": {
                   "mode": "shared",
                   "viewNodeId": "task-summary-view"
-                },
-                "icon": {
-                  "mode": "shared",
-                  "viewNodeId": "task-icon-view"
                 }
               },
               "exposes": {
@@ -321,12 +317,10 @@
           "sharedPresentation": {
             "detailViewNodeId": "task-detail-view",
             "summaryViewNodeId": "task-summary-view",
-            "iconViewNodeId": "task-icon-view",
             "glyphNodeId": "task-glyph"
           },
           "primaryNodeViewId": "task-detail-view",
           "primaryEditorViewId": "task-editor-view",
-          "iconViewNodeId": "task-icon-view",
           "portViewNodeId": ""
         }
       }
@@ -870,96 +864,8 @@
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='width:100%;height:100%;display:flex;align-items:center;gap:10px;box-sizing:border-box;padding:8px 12px;border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(228,247,239,.94));color:#23160a;border:2px solid #1f9d67;position:relative;overflow:hidden;'>\n  <div style='position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg, #9be7c4, #1f9d67);'></div>\n  <div style='width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:{{eq(data.status, \"done\", \"rgba(31,157,103,.14)\", \"rgba(255,255,255,.92)\")}};border:2px solid {{eq(data.status, \"done\", \"#1f9d67\", \"rgba(31,157,103,.45)\")}};color:#1f9d67;font:800 13px system-ui,sans-serif;flex:0 0 auto;margin-left:4px;'><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'in-progress', 'inline', 'none')}};color:#2563eb;\">◐</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'done', 'inline', 'none')}};color:#166534;\">✓</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'achieved', 'inline', 'none')}};color:#166534;\">✓</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'blocked', 'inline', 'none')}};color:#b91c1c;\">!</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'waiting', 'inline', 'none')}};color:#92400e;\">Ⅱ</span><span aria-hidden=\"true\" style=\"display:{{eq(data.status, 'cancelled', 'inline', 'none')}};color:#475569;\">×</span></div>\n  <div style='min-width:0;display:flex;flex-direction:column;gap:2px;flex:1;'>\n    <div style='font:800 14px/1.05 Georgia, \"Times New Roman\", serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#23160a;'>{{label}}</div>\n    <div style='font:600 10px/1.15 system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.78;color:#3b5b47;'>{{data.title}}</div>\n    <div style='display:flex;gap:6px;align-items:center;font:700 10px system-ui,sans-serif;text-transform:uppercase;opacity:.74;white-space:nowrap;overflow:hidden;color:#5b4731;'>\n      <span>{{data.status}}</span><span>•</span><span>Priority {{data.priority}}</span><span>•</span><span>Target {{data.targetDate}}</span>\n    </div>\n  </div>\n</div>",
+        "html": "<div style='container-type:inline-size;position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#ffffff;border:2px solid #1f9d67;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#1f9d67'></i><div style='position:absolute;inset:0;border-radius:6cqw;border:2px solid #cbd5e1;display:{{eq(data.status, 'todo', 'block', 'none')}};pointer-events:none'></div><div style='position:absolute;inset:0;border-radius:6cqw;border:2px solid #2563eb;display:{{eq(data.status, 'in-progress', 'block', 'none')}};pointer-events:none'></div><div style='position:absolute;inset:0;border-radius:6cqw;border:2px solid #dc2626;background:rgba(220,38,38,.07);display:{{eq(data.status, 'blocked', 'block', 'none')}};pointer-events:none'></div><div style='position:absolute;inset:0;border-radius:6cqw;border:2px dashed #d97706;display:{{eq(data.status, 'waiting', 'block', 'none')}};pointer-events:none'></div><div style='position:absolute;inset:0;border-radius:6cqw;border:2px solid #15803d;background:rgba(21,128,61,.07);display:{{eq(data.status, 'done', 'block', 'none')}};pointer-events:none'></div><div style='position:absolute;inset:0;border-radius:6cqw;border:2px solid #94a3b8;display:{{eq(data.status, 'cancelled', 'block', 'none')}};pointer-events:none'></div><div style='position:relative;display:flex;gap:2.4cqw;align-items:baseline;font-size:3.7cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase'><span style='color:#1f9d67'>Task</span><span style='display:{{eq(data.status, 'todo', 'inline-flex', 'none')}};align-items:center;gap:1.6cqw;color:#475569'><span style='font-size:5cqw;line-height:1'>○</span><span>To do</span></span><span style='display:{{eq(data.status, 'in-progress', 'inline-flex', 'none')}};align-items:center;gap:1.6cqw;color:#1d4ed8'><span style='font-size:5cqw;line-height:1'>▶</span><span>In progress</span></span><span style='display:{{eq(data.status, 'blocked', 'inline-flex', 'none')}};align-items:center;gap:1.6cqw;color:#b91c1c'><span style='font-size:5cqw;line-height:1'>■</span><span>Blocked</span></span><span style='display:{{eq(data.status, 'waiting', 'inline-flex', 'none')}};align-items:center;gap:1.6cqw;color:#b45309'><span style='font-size:5cqw;line-height:1'>…</span><span>Waiting</span></span><span style='display:{{eq(data.status, 'done', 'inline-flex', 'none')}};align-items:center;gap:1.6cqw;color:#15803d'><span style='font-size:5cqw;line-height:1'>✓</span><span>Done</span></span><span style='display:{{eq(data.status, 'cancelled', 'inline-flex', 'none')}};align-items:center;gap:1.6cqw;color:#64748b'><span style='font-size:5cqw;line-height:1'>×</span><span>Cancelled</span></span></div><div style='position:relative;font-weight:600;font-size:6.4cqw;line-height:1.2;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='position:relative;margin-top:auto;display:flex;flex-direction:column;gap:1cqw;font-size:4cqw;color:#64748b'><div style='display:{{eq(data.status, 'blocked', 'block', 'none')}};color:#b91c1c'>{{data.blockedReason}}</div><div>{{data.owner}}</div></div></div>",
         "semanticLevel": "summary"
-      }
-    },
-    {
-      "id": "task-icon-view",
-      "type": "face",
-      "label": "Icon",
-      "position": {
-        "x": -620,
-        "y": 500
-      },
-      "width": 420,
-      "height": 300,
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270,
-          "portId": "root"
-        },
-        {
-          "id": "surface-delegate",
-          "key": "surface-delegate",
-          "portId": "surface-delegate",
-          "label": "surface delegate",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90,
-          "role": "view.content"
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270
-        },
-        {
-          "id": "surface-delegate",
-          "key": "surface-delegate",
-          "label": "surface delegate",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90,
-          "role": "view.content",
-          "allowedEdgeTypes": [
-            "reference"
-          ],
-          "metadata": {
-            "structural": true,
-            "relationship": true,
-            "role": "view.content",
-            "required": false,
-            "behaviors": [
-              {
-                "trigger": "drag-create",
-                "action": "create-node",
-                "nodeType": "content",
-                "targetPort": "root"
-              }
-            ]
-          }
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "task-class",
-          "nodeId": "task"
-        },
-        "view": {
-          "intent": "node",
-          "payload": "node.web.icon",
-          "html": {
-            "chrome": true
-          }
-        },
-        "renderShape": {
-          "kind": "html"
-        },
-        "semanticLevel": "icon",
-        "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:16px;background:white;border:2px solid #1f9d67;padding:12px;box-sizing:border-box;text-align:center;'><div style='font:700 10px/1.2 ui-sans-serif,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#1f9d67;'>Task</div><div style='font:700 14px/1.2 ui-sans-serif,system-ui,sans-serif;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;'>{{data.title}}</div><div style='font:700 9px/1 ui-sans-serif,system-ui,sans-serif;text-transform:uppercase;color:#64748b;'>{{data.status}}</div></div>"
       }
     },
     {
@@ -998,7 +904,8 @@
       "data": {
         "glyph": {
           "kind": "icon",
-          "name": "Checklist"
+          "name": "Checklist",
+          "color": "#1f9d67"
         },
         "interfaceContract": {
           "version": 1,
@@ -1040,17 +947,6 @@
       "id": "task-summary-view-next",
       "type": "next-face",
       "source": "task-summary-view",
-      "target": "task-icon-view",
-      "label": "",
-      "style": {},
-      "data": {},
-      "sourcePort": "sequence-out",
-      "targetPort": "sequence-in"
-    },
-    {
-      "id": "task-icon-view-next",
-      "type": "next-face",
-      "source": "task-icon-view",
       "target": "task-glyph",
       "label": "",
       "style": {},
