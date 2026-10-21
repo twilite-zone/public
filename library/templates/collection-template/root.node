@@ -1,8 +1,8 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "created": "2026-10-21T20:40:26.996Z",
-    "modified": "2026-10-21T20:40:26.996Z",
+    "created": "2026-10-21T21:03:53.517Z",
+    "modified": "2026-10-21T21:03:53.517Z",
     "author": "",
     "tags": [
       "template"
@@ -256,6 +256,33 @@
               }
             ]
           }
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          }
         }
       ],
       "handles": [
@@ -506,6 +533,34 @@
             ]
           },
           "portId": "event:graph.structure.changed"
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "environment"
         }
       ],
       "visible": true,
@@ -517,7 +572,7 @@
           "name": "Collection Template",
           "version": "1.0.0",
           "description": "A collection is a graph that presents other graphs: each member is a portal it contains, and its views are derived from the graphs behind them.",
-          "updatedAt": "2026-10-21T20:40:26.996Z"
+          "updatedAt": "2026-10-21T21:03:53.517Z"
         },
         "intent": {
           "kind": "collection",
@@ -1444,6 +1499,53 @@
         },
         "security": "prompt"
       }
+    },
+    {
+      "id": "collection-template-environment",
+      "type": "face",
+      "label": "Collection environment",
+      "position": {
+        "x": -760,
+        "y": 560
+      },
+      "width": 400,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "collection-template"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.environment"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;background-color:#f5f3ff;background-image:repeating-linear-gradient(180deg,rgba(109,40,217,0) 0,rgba(109,40,217,0) 30cqw,rgba(109,40,217,.16) 30cqw,rgba(109,40,217,.16) 30.6cqw)'></div></div>"
+        }
+      }
     }
   ],
   "edges": [
@@ -1583,6 +1685,21 @@
       "label": "",
       "style": {},
       "data": {}
+    },
+    {
+      "id": "collection-template-edge-environment",
+      "type": "environment",
+      "source": "collection-template-declaration",
+      "target": "collection-template-environment",
+      "sourcePort": "environment",
+      "targetPort": "root",
+      "label": "",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "classRef": "tlz://twilite.zone/library/edges/environment/root.node"
+      }
     }
   ],
   "settings": {
