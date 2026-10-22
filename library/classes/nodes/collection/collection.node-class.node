@@ -202,7 +202,8 @@
                     "kind": "icon",
                     "name": "Folder"
                   }
-                }
+                },
+                "flipped": false
               },
               "ports": [
                 {
@@ -634,16 +635,57 @@
               "variant": "outlined",
               "priority": "high",
               "action": "openEditor"
+            },
+            {
+              "id": "flip",
+              "type": "toggle",
+              "label": "Settings",
+              "action": "toggle",
+              "bind": "data.flipped"
+            },
+            {
+              "id": "folder",
+              "type": "toggle",
+              "label": "Folder",
+              "action": "toggle",
+              "bind": "data.includeFolder"
+            },
+            {
+              "id": "sort-order",
+              "type": "button",
+              "label": "As listed",
+              "action": "setData",
+              "bind": "data.sort",
+              "value": "order"
+            },
+            {
+              "id": "sort-name",
+              "type": "button",
+              "label": "By name",
+              "action": "setData",
+              "bind": "data.sort",
+              "value": "name"
+            },
+            {
+              "id": "sort-kind",
+              "type": "button",
+              "label": "By kind",
+              "action": "setData",
+              "bind": "data.sort",
+              "value": "kind"
             }
           ],
           "html": {
             "chrome": true
+          },
+          "controlLayout": {
+            "placement": "content"
           }
         },
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#ffffff;border:2px solid #6d28d9;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#6d28d9'></i><div style='position:relative;font-size:3.7cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Collection</div><div style='position:relative;font-weight:600;font-size:6.4cqw;line-height:1.2;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='position:relative;font-size:4cqw;line-height:1.4;color:#475569;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden'>{{data.body}}</div></div></div>",
+        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#ffffff;border:2px solid #6d28d9;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#6d28d9'></i><div style='position:absolute;inset:0;display:{{eq(data.flipped,'true','none','flex')}};flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><div style='position:relative;font-size:3.7cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Collection</div><div style='position:relative;font-weight:600;font-size:6.4cqw;line-height:1.2;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='position:relative;font-size:4cqw;line-height:1.4;color:#475569;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.body}}</div><span data-twilite-control='flip' style='cursor:pointer;position:absolute;right:4cqw;top:3.5cqw;font-size:5.4cqw;line-height:1;color:#6d28d9;opacity:.75'>&#9881;</span></div><div style='position:absolute;inset:0;display:{{eq(data.flipped,'true','flex','none')}};flex-direction:column;gap:3cqw;padding:5cqw 6cqw 5cqw 8cqw;background:#f5f3ff'><div style='display:flex;justify-content:space-between;align-items:center'><span style='font-size:3.7cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Collection settings</span><span data-twilite-control='flip' style='cursor:pointer;font-size:3.8cqw;font-weight:600;color:#6d28d9;padding:1cqw 3.5cqw;border-radius:6cqw;border:1px solid #6d28d9;background:#ffffff'>Done</span></div><div style='display:flex;justify-content:space-between;align-items:center;gap:3cqw'><span style='font-size:4.2cqw;font-weight:600'>Graphs in this folder</span><span data-twilite-control='folder' style='cursor:pointer;padding:1cqw 4cqw;border-radius:6cqw;font-size:3.8cqw;font-weight:600;background:{{eq(data.includeFolder,'true','#6d28d9','#e9e5f5')}};color:{{eq(data.includeFolder,'true','#ffffff','#4c1d95')}}'>{{eq(data.includeFolder,'true','On','Off')}}</span></div><div style='display:flex;justify-content:space-between;align-items:center;gap:3cqw'><span style='font-size:4.2cqw;font-weight:600'>Order</span><span style='display:flex;gap:1.6cqw'><span data-twilite-control='sort-order' style='cursor:pointer;padding:1cqw 3cqw;border-radius:6cqw;font-size:3.6cqw;font-weight:600;background:{{eq(data.sort,'order','#6d28d9','#e9e5f5')}};color:{{eq(data.sort,'order','#ffffff','#4c1d95')}}'>As listed</span><span data-twilite-control='sort-name' style='cursor:pointer;padding:1cqw 3cqw;border-radius:6cqw;font-size:3.6cqw;font-weight:600;background:{{eq(data.sort,'name','#6d28d9','#e9e5f5')}};color:{{eq(data.sort,'name','#ffffff','#4c1d95')}}'>By name</span><span data-twilite-control='sort-kind' style='cursor:pointer;padding:1cqw 3cqw;border-radius:6cqw;font-size:3.6cqw;font-weight:600;background:{{eq(data.sort,'kind','#6d28d9','#e9e5f5')}};color:{{eq(data.sort,'kind','#ffffff','#4c1d95')}}'>By kind</span></span></div><div style='font-size:3.7cqw;line-height:1.4;color:#475569;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.sourcesSummary || 'Members come from the portals this collection contains.'}}</div><div style='font-size:3.4cqw;color:#64748b'>The list of graphs is edited with the pencil.</div></div></div></div>",
         "semanticLevel": "detail"
       }
     },
