@@ -1,0 +1,1748 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "created": "2026-10-21T21:59:19.432Z",
+    "modified": "2026-10-22T22:51:28.757Z",
+    "author": "",
+    "tags": [
+      "template",
+      "repo"
+    ],
+    "preferredViewer": "https://dev.twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "repo-template-declaration",
+      "type": "root",
+      "label": "Repo Template",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 520,
+      "height": 390,
+      "ports": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 55,
+          "role": "default-view"
+        },
+        {
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 70,
+          "role": "shared-summary"
+        },
+        {
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 85,
+          "role": "shared-icon"
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 100,
+          "role": "shared-glyph"
+        },
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 115,
+          "role": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "default-handle",
+          "key": "default-handle",
+          "label": "default handle",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "default-handle",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-handle",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "graphReference",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "boundary-begin",
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 300,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "boundary-end",
+          "key": "boundary-end",
+          "label": "boundary end",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 135,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 225,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "event:graph.changed",
+          "key": "event:graph.changed",
+          "label": "Graph changed",
+          "direction": "output",
+          "dataType": "event",
+          "role": "emits-event",
+          "allowedEdgeTypes": [
+            "invokes",
+            "listens"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "emits-event",
+            "required": false,
+            "repeatable": true,
+            "eventKey": "graph.changed",
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "method",
+                "targetPort": "invokes"
+              }
+            ]
+          }
+        },
+        {
+          "id": "event:graph.structure.changed",
+          "key": "event:graph.structure.changed",
+          "label": "Graph structure changed",
+          "direction": "output",
+          "dataType": "event",
+          "role": "emits-event",
+          "allowedEdgeTypes": [
+            "invokes",
+            "listens"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "emits-event",
+            "required": false,
+            "repeatable": true,
+            "eventKey": "graph.structure.changed",
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "method",
+                "targetPort": "invokes"
+              }
+            ]
+          }
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 55,
+          "role": "default-view",
+          "portId": "default-view"
+        },
+        {
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 70,
+          "role": "shared-summary",
+          "portId": "summary-view"
+        },
+        {
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 85,
+          "role": "shared-icon",
+          "portId": "icon-view"
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 100,
+          "role": "shared-glyph",
+          "portId": "glyph"
+        },
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 115,
+          "role": "ground",
+          "portId": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "surfaces"
+        },
+        {
+          "id": "default-handle",
+          "key": "default-handle",
+          "label": "default handle",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "default-handle",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-handle",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "graphReference",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "default-handle"
+        },
+        {
+          "id": "boundary-begin",
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 300,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "boundary-begin"
+        },
+        {
+          "id": "boundary-end",
+          "key": "boundary-end",
+          "label": "boundary end",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 135,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "boundary-end"
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 225,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "port"
+        },
+        {
+          "id": "event:graph.changed",
+          "key": "event:graph.changed",
+          "label": "Graph changed",
+          "direction": "output",
+          "dataType": "event",
+          "role": "emits-event",
+          "allowedEdgeTypes": [
+            "invokes",
+            "listens"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "emits-event",
+            "required": false,
+            "repeatable": true,
+            "eventKey": "graph.changed",
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "method",
+                "targetPort": "invokes"
+              }
+            ]
+          },
+          "portId": "event:graph.changed"
+        },
+        {
+          "id": "event:graph.structure.changed",
+          "key": "event:graph.structure.changed",
+          "label": "Graph structure changed",
+          "direction": "output",
+          "dataType": "event",
+          "role": "emits-event",
+          "allowedEdgeTypes": [
+            "invokes",
+            "listens"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "emits-event",
+            "required": false,
+            "repeatable": true,
+            "eventKey": "graph.structure.changed",
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "method",
+                "targetPort": "invokes"
+              }
+            ]
+          },
+          "portId": "event:graph.structure.changed"
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "environment"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "repo-template",
+          "nodeId": "repo-template",
+          "name": "Repo Template",
+          "version": "1.0.0",
+          "description": "A starter for a repository: a collection of shelves, and where it lives, what it is for, who it is for and where to start.",
+          "updatedAt": "2026-10-21T21:59:19.432Z"
+        },
+        "intent": {
+          "kind": "collection",
+          "scope": "public"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "declaration",
+            "view",
+            "glyph",
+            "content",
+            "bridge",
+            "method",
+            "collection",
+            "portal"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "settings": {
+          "autoSave": false,
+          "layout": {
+            "mode": "manual",
+            "direction": "DOWN",
+            "defaultLayout": "layered",
+            "edgeLaneGapPx": 10,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
+          },
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto"
+        },
+        "document": {
+          "url": "tlz://twilite.zone/library/templates/repo-template/root.node"
+        },
+        "visibilityRole": "editor",
+        "events": [
+          {
+            "eventKey": "graph.changed",
+            "label": "Graph changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          },
+          {
+            "eventKey": "graph.structure.changed",
+            "label": "Graph structure changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          }
+        ],
+        "root": {
+          "kind": "graph",
+          "targetMode": "artifact",
+          "artifactKind": "collection",
+          "interfaceContract": {
+            "version": 1,
+            "implicitRootPort": true
+          },
+          "defaultSurfaceId": "web",
+          "landingSurfaceId": "landing",
+          "surfaces": [
+            {
+              "id": "detail",
+              "kind": "view",
+              "payload": "node.web.detail",
+              "viewNodeId": "repo-template-detail"
+            },
+            {
+              "id": "summary",
+              "kind": "view",
+              "payload": "node.web.summary",
+              "viewNodeId": "repo-template-summary"
+            },
+            {
+              "id": "glyph",
+              "kind": "glyph",
+              "payload": "node.web.glyph",
+              "viewNodeId": "repo-template-glyph"
+            },
+            {
+              "id": "landing",
+              "kind": "content",
+              "payload": "node.web.landing",
+              "viewNodeId": "repo-template-landing"
+            }
+          ]
+        },
+        "membrane": {
+          "bounds": {
+            "x": -1300,
+            "y": -640,
+            "width": 3420,
+            "height": 2280
+          },
+          "clip": true
+        }
+      }
+    },
+    {
+      "id": "repo-template-detail",
+      "type": "face",
+      "label": "Library",
+      "position": {
+        "x": -760,
+        "y": -560
+      },
+      "width": 600,
+      "height": 400,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "repo-template"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail",
+          "scroll": "page"
+        },
+        "semanticLevel": "detail",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;font-family:system-ui,-apple-system,Segoe UI,sans-serif;padding:4cqw;border-radius:3cqw;background:#ffffff;border:1px solid #e2e8f0;display:flex;flex-direction:column;gap:2cqw'><div style='display:flex;flex-direction:column;gap:.9cqw'><div style='font-size:2.2cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Library</div><div style='font-weight:600;font-size:4.6cqw;line-height:1.2;color:#0f172a'>Name this library</div><div style='font-size:2.6cqw;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#6d28d9'>owner/repository · main</div><div style='font-size:2.4cqw;color:#64748b'>read from GitHub, through the app</div><div style='font-size:2.9cqw;line-height:1.4;color:#334155'>What this library is for.</div><div style='font-size:2.5cqw;line-height:1.35;color:#64748b'>Who it is for: readers, collaborators, or just you.</div><a href='tlz://twilite.zone/library/templates/repo-template/shelves/tasks/root.node' style='align-self:flex-start;margin-top:.4cqw;padding:1.1cqw 2.8cqw;border-radius:6cqw;background:#6d28d9;color:#ffffff;font-size:2.8cqw;font-weight:600;text-decoration:none'>Start here →</a></div><div style='flex:1;min-height:0;overflow:auto'><div style='display:grid;grid-template-columns:repeat(auto-fill,minmax(26.2cqw,1fr));gap:1.4cqw;align-content:start'><a href='tlz://twilite.zone/library/templates/repo-template/shelves/tasks/root.node' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:17cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'><span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:#6d28d922;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>T</span><span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>Tasks</span><span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>The work in progress, one graph to a task.</span><span style='display:block;margin-top:.6cqw;font-size:2.4cqw;font-weight:600;color:#6d28d9'>3 graphs</span></span></a><a href='tlz://twilite.zone/library/templates/repo-template/shelves/notes/root.node' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:17cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'><span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:#6d28d922;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>N</span><span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>Notes</span><span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>Loose thinking that is not a task yet.</span><span style='display:block;margin-top:.6cqw;font-size:2.4cqw;font-weight:600;color:#6d28d9'>0 graphs</span></span></a></div></div></div></div>"
+        },
+        "memo": "",
+        "link": ""
+      }
+    },
+    {
+      "id": "repo-template-summary",
+      "type": "face",
+      "label": "Library Summary",
+      "position": {
+        "x": -760,
+        "y": -100
+      },
+      "width": 320,
+      "height": 213,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "repo-template"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "semanticLevel": "summary",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;font-family:system-ui,-apple-system,Segoe UI,sans-serif;padding:6cqw 7cqw;border-radius:6cqw;background:#ffffff;border:1px solid #e2e8f0;display:flex;flex-direction:column;gap:2cqw;justify-content:center;overflow:hidden'><div style='font-size:3.6cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Library</div><div style='font-weight:600;font-size:7cqw;line-height:1.2;color:#0f172a;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden'>Name this library</div><div style='font-size:3.6cqw;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#6d28d9'>owner/repository</div><div style='font-size:4.2cqw;color:#475569'>2 shelves · 3 graphs</div><div style='font-size:3.6cqw;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis'><a href='tlz://twilite.zone/library/templates/repo-template/shelves/tasks/root.node' style='color:inherit;text-decoration:none'>Tasks</a>, <a href='tlz://twilite.zone/library/templates/repo-template/shelves/notes/root.node' style='color:inherit;text-decoration:none'>Notes</a></div></div></div>"
+        },
+        "memo": "",
+        "link": ""
+      }
+    },
+    {
+      "id": "repo-template-glyph",
+      "type": "glyph",
+      "label": "Library glyph",
+      "position": {
+        "x": -760,
+        "y": 400
+      },
+      "width": 90,
+      "height": 90,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "repo-template"
+        },
+        "glyph": {
+          "kind": "icon",
+          "name": "LibraryBooks",
+          "color": "#6d28d9"
+        },
+        "view": {
+          "payload": "node.web.glyph"
+        }
+      }
+    },
+    {
+      "id": "repo-template-landing",
+      "type": "content",
+      "label": "Collection Template landing",
+      "position": {
+        "x": 560,
+        "y": -420
+      },
+      "width": 633.5114535153646,
+      "height": 270.2697209374306,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "repo-template"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "# Repo Template\n\nA starter for a repository of graphs. A library is a **Collection of shelves** (each shelf a graph the library contains through a portal) plus the facts about where it lives: the owner, the repository and the branch, whether it is read from GitHub through the app or from a site, whether it is published, what it is for and who it is for.\n\nIts Method derives the library's **Detail** (the repo card, with each shelf and how many graphs it holds), its **Summary** and its **Glyph** from those, so nothing is typed twice. It also sets the graph's shape (the Detail's 3:2) and its window.\n\nIt exports one thing: the **Repo** class and the Method, through a single Bridge. A library made from it imports once.\n\n## How a library is laid out in a repository\n\n1. The repo root is the home: `public/root.node` is the Repo graph.\n2. A shelf is a folder with a root graph: `public/<shelf>/root.node`, a Collection that holds a portal to each graph on it.\n3. A graph is a folder: `public/<shelf>/<slug>/root.node`.\n4. Shelves are named for what they hold, plural and lower-case.\n5. Every graph's identity is its address: the root's `document.url` and `settings.github` say where it lives.\n6. The home is a collection of shelves, and membership is declared: a portal and a `contains` edge for each.\n7. `scripts/auditLibrary.mjs` reads a repository folder and reports each rule it breaks.\n\nThe two shelves here are placeholders: a Tasks shelf with three graphs in it and an empty Notes shelf, so both states show."
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1791502752029,
+          "reason": "node-drag"
+        }
+      }
+    },
+    {
+      "id": "repo-template-derive-method",
+      "type": "method",
+      "label": "Derive the library views",
+      "position": {
+        "x": 200,
+        "y": 1300
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "call",
+          "key": "call",
+          "label": "Call",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Result",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0
+        }
+      ],
+      "handles": [
+        {
+          "id": "call",
+          "key": "call",
+          "label": "Call",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180,
+          "portId": "call"
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Result",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0,
+          "portId": "result"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "scriptName": "Derive the library views",
+        "parameters": [],
+        "effects": [
+          {
+            "kind": "update-node",
+            "targets": [
+              "repo-template-detail",
+              "repo-template-summary",
+              "repo-template-glyph",
+              "repo-template-declaration",
+              "repo-template-repo"
+            ]
+          }
+        ],
+        "allowMutations": true,
+        "dryRun": false,
+        "identity": {
+          "graphId": "repo-template-declaration"
+        },
+        "source": "// Derives the library's views from what it holds and says about itself: nothing is typed into a summary. A library is a Collection of shelves\n// (each shelf a graph it contains through a portal) plus where it lives, what it is for, who it is for and where to start.\n// A member is a graph the collection holds, and nothing in the collection graph is one unless it was made one. There are two ways:\n//   - a Portal the collection contains (a `contains` edge from its members port);\n//   - a graph in its own folder, when it says so (data.includeFolder), for an address the host can list (github://).\n// The members are the union, without repeats. The member graphs are read through api.readGraph, which returns what the app has already\n// loaded to open them. The Method writes the Detail, the Summary and the Glyph, the size of the Detail and Summary (the Detail stretches\n// with its rows, up to a square), the window that holds them, and a line on the collection saying where its members come from.\nconst clean = (value) => String(value ?? '').trim();\nconst esc = (value) => clean(value)\n  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;');\nconst INK = '#6d28d9';\nconst MAX_READ = 100;\n\nconst nodes = await api.getNodes();\nconst edges = await api.getEdges();\nconst byId = new Map(nodes.map((node) => [node.id, node]));\nconst root = nodes.find((node) => clean(node.type) === 'root');\nconst collection = nodes.find((node) => clean(node.type) === 'repo');\nconst title = clean(collection?.data?.title || collection?.label) || 'Collection';\nconst sort = ['name', 'kind'].includes(clean(collection?.data?.sort)) ? clean(collection.data.sort) : 'order';\n\nconst keyOf = (address) => clean(address).replace(/#.*$/, '').replace(/^https?:\\/\\/twilite\\.zone\\//i, 'tlz://twilite.zone/');\n\n// The portals the collection contains, in the order of their edges.\nconst portals = edges\n  .filter((edge) => clean(edge.type) === 'contains' && collection && edge.source === collection.id)\n  .map((edge) => byId.get(edge.target))\n  .filter((node) => node && clean(node.type) === 'portal');\nconst refOf = (portal) => clean(portal.data?.target?.ref || portal.data?.sourceRef || portal.data?.ref);\n\n// The folder: the graphs one level below the folder this collection's own root sits in, for a collection the host can list.\nconst includeFolder = collection?.data?.includeFolder === true;\nlet folderAddresses = [];\nlet folderNote = '';\nif (includeFolder) {\n  const own = clean(root?.data?.document?.url);\n  const where = /^github:\\/\\/([^/]+)\\/([^/]+)\\/(?:(.*)\\/)?[^/]+$/.exec(own);\n  if (!where) {\n    folderNote = /^(tlz|https?):/i.test(own) ? 'a published site cannot list its folders' : 'this graph has no github:// address to list';\n  } else {\n    const [, owner, repository, directory = ''] = where;\n    try {\n      const entries = await api.listRepositoryDirectory({ repo: `${owner}/${repository}`, path: directory, branch: 'main' });\n      folderAddresses = entries.filter((entry) => clean(entry.type) === 'dir' && clean(entry.name))\n        .sort((a, b) => clean(a.name).localeCompare(clean(b.name)))\n        .map((entry) => `github://${owner}/${repository}/${[directory, clean(entry.name)].filter(Boolean).join('/')}/root.node`);\n    } catch (error) { folderNote = `the folder could not be listed (${clean(error?.message) || 'no reason given'})`; }\n  }\n}\n\n// The union, without repeats: the portals in their order, then the folder.\nconst entries = [];\nconst seen = new Set();\nconst add = (address, from, portal = null) => {\n  const key = keyOf(address) || `portal:${portal?.id}`;\n  if (seen.has(key)) return;\n  seen.add(key);\n  entries.push({ address, from, portal });\n};\nportals.forEach((portal) => add(refOf(portal), 'portal', portal));\nfolderAddresses.forEach((address) => add(address, 'folder'));\n\nconst kindWords = (kind) => { const words = clean(kind).replace(/-/g, ' '); return words ? words[0].toUpperCase() + words.slice(1) : 'Graph'; };\nconst slugOf = (address) => { const parts = clean(address).replace(/#.*$/, '').split('/').filter(Boolean); const last = parts[parts.length - 1] || ''; return /\\.node$/.test(last) && parts.length > 1 ? parts[parts.length - 2] : last; };\n\n// What a tile says about a member comes from the member itself: its name, its description (or its kind when it has none) and the\n// colour of its own glyph. Only the first MAX_READ are read, so a large folder does not read every graph in it; the rest show their\n// folder's name. A graph found in the folder that cannot be read is not a graph, and is left out.\nconst factsOf = async (entry, index) => {\n  let graph = null;\n  if (entry.address && index < MAX_READ) { try { graph = await api.readGraph(entry.address); } catch (error) { graph = null; } }\n  const found = Array.isArray(graph?.nodes);\n  const items = found ? graph.nodes : [];\n  const rootNode = items.find((node) => clean(node.type) === 'root');\n  const glyph = items.find((node) => clean(node.type) === 'glyph')?.data?.glyph;\n  const name = clean(rootNode?.data?.identity?.name) || clean(entry.portal?.label) || slugOf(entry.address) || entry.address;\n  const kind = kindWords(rootNode?.data?.intent?.kind);\n  // How many graphs the shelf holds: the portals its own collection contains.\n  const holder = items.find((node) => ['collection', 'repo'].includes(clean(node.type)));\n  const graphs = holder ? (found ? graph.edges || [] : []).filter((edge) => clean(edge.type) === 'contains' && edge.source === holder.id && items.some((node) => node.id === edge.target && clean(node.type) === 'portal')).length : 0;\n  return { ref: entry.address, from: entry.from, dropped: entry.from === 'folder' && index < MAX_READ && !found, name, kind, graphs,\n    description: clean(rootNode?.data?.identity?.description) || kind, tint: /^#[0-9a-f]{6}$/i.test(clean(glyph?.color)) ? clean(glyph.color) : INK };\n};\nlet members = (await Promise.all(entries.map(factsOf))).filter((member) => !member.dropped);\nif (sort === 'name') members = [...members].sort((a, b) => a.name.localeCompare(b.name));\nif (sort === 'kind') members = [...members].sort((a, b) => a.kind.localeCompare(b.kind) || a.name.localeCompare(b.name));\nconst count = members.length;\nconst countText = `${count} ${count === 1 ? 'graph' : 'graphs'}`;\n\n// Where the members come from, for the collection's editor to show.\nconst fromFolder = members.filter((member) => member.from === 'folder').length;\nconst sources = [\n  portals.length ? `${portals.length} portal${portals.length === 1 ? '' : 's'}` : '',\n  includeFolder && !folderNote ? `${fromFolder} in the folder` : '',\n  `${count} member${count === 1 ? '' : 's'}`\n].filter(Boolean).join(' · ');\nconst problems = [folderNote ? `folder: ${folderNote}` : ''].filter(Boolean);\nconst sourcesLine = problems.length ? `${sources} (${problems.join('; ')})` : sources;\nif (collection && clean(collection.data?.sourcesSummary) !== sourcesLine) await api.updateNode(collection.id, { data: { ...collection.data, sourcesSummary: sourcesLine } });\n\n// The facts about the library itself: where it lives, what it is for, who it is for, and where to start.\nconst data = collection?.data || {};\nconst owner = clean(data.owner);\nconst repository = clean(data.repo);\nconst branch = clean(data.branch) || 'main';\nconst readFrom = clean(data.readFrom) === 'site' ? 'site' : 'github';\nconst published = data.published === true;\nconst startPortal = nodes.find((node) => clean(node.type) === 'portal' && clean(node.data?.role) === 'start-here');\nconst startRef = refOf(startPortal) || clean(data.startHere) || clean(members[0]?.ref);\nconst totalGraphs = members.reduce((sum, member) => sum + (member.graphs || 0), 0);\nconst shelfText = `${count} ${count === 1 ? 'shelf' : 'shelves'}`;\nconst graphsText = `${totalGraphs} ${totalGraphs === 1 ? 'graph' : 'graphs'}`;\nconst readText = readFrom === 'site' ? `read from ${clean(data.host) || 'a site'}${published ? '' : ', not published'}` : 'read from GitHub, through the app';\nconst where = [owner, repository].filter(Boolean).join('/') || 'owner/repository';\n\n// The Detail is 100cqw wide. It starts at the regular 3:2 and stretches with its rows up to a square; beyond that the shelves scroll.\nconst TILE = 17; const GAP = 1.4; const MIN_TILE = 26.2; const PAD = 4; const HEAD = 36;\nconst columns = Math.max(2, Math.floor((100 - 2 * PAD + GAP) / (MIN_TILE + GAP)));\nconst rows = Math.ceil(count / columns);\nconst need = 2 * PAD + HEAD + (rows ? rows * (TILE + GAP) : 22);\nconst ratio = Math.min(1, Math.max(2 / 3, need / 100));\nconst DETAIL_WIDTH = 600; const SUMMARY_WIDTH = 320;\nconst MONO = 'ui-monospace,SFMono-Regular,Menlo,Consolas,monospace';\n\nconst frame = (inner, style) => `<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;font-family:system-ui,-apple-system,Segoe UI,sans-serif;${style}'>${inner}</div></div>`;\nconst tile = (member) => `<a href='${esc(member.ref)}' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:${TILE}cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'>`\n  + `<span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:${member.tint}22;color:${member.tint};display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>${esc(member.name.slice(0, 1).toUpperCase())}</span>`\n  + `<span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>${esc(member.name)}</span>`\n  + `<span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>${esc(member.description)}</span>`\n  + `<span style='display:block;margin-top:.6cqw;font-size:2.4cqw;font-weight:600;color:${INK}'>${member.graphs} ${member.graphs === 1 ? 'graph' : 'graphs'}</span></span></a>`;\nconst body = count\n  ? `<div style='display:grid;grid-template-columns:repeat(auto-fill,minmax(${MIN_TILE}cqw,1fr));gap:${GAP}cqw;align-content:start'>${members.map(tile).join('')}</div>`\n  : `<div style='display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4cqw;min-height:22cqw;border:1px dashed #cbd5e1;border-radius:2.4cqw;color:#64748b;font-size:2.8cqw;text-align:center;padding:2cqw'><span style='font-weight:600;color:#0f172a'>No shelves yet</span><span>A shelf is a collection this library contains. Add a portal to one and connect it.</span></div>`;\nconst start = startRef ? `<a href='${esc(startRef)}' style='align-self:flex-start;margin-top:.4cqw;padding:1.1cqw 2.8cqw;border-radius:6cqw;background:${INK};color:#ffffff;font-size:2.8cqw;font-weight:600;text-decoration:none'>Start here →</a>` : '';\nconst detail = frame(\n  `<div style='display:flex;flex-direction:column;gap:.9cqw'><div style='font-size:2.2cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${INK}'>Library</div>`\n  + `<div style='font-weight:600;font-size:4.6cqw;line-height:1.2;color:#0f172a'>${esc(title)}</div>`\n  + `<div style='font-size:2.6cqw;font-family:${MONO};color:${INK}'>${esc(where)} · ${esc(branch)}</div>`\n  + `<div style='font-size:2.4cqw;color:#64748b'>${esc(readText)}</div>`\n  + (clean(data.body) ? `<div style='font-size:2.9cqw;line-height:1.4;color:#334155'>${esc(data.body)}</div>` : '')\n  + (clean(data.audience) ? `<div style='font-size:2.5cqw;line-height:1.35;color:#64748b'>${esc(data.audience)}</div>` : '')\n  + `${start}</div>`\n  + `<div style='flex:1;min-height:0;overflow:auto'>${body}</div>`,\n  `padding:${PAD}cqw;border-radius:3cqw;background:#ffffff;border:1px solid #e2e8f0;display:flex;flex-direction:column;gap:2cqw`\n);\nconst names = members.slice(0, 3).map((member) => `<a href='${esc(member.ref)}' style='color:inherit;text-decoration:none'>${esc(member.name)}</a>`).join(', ');\nconst summary = frame(\n  `<div style='font-size:3.6cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${INK}'>Library</div>`\n  + `<div style='font-weight:600;font-size:7cqw;line-height:1.2;color:#0f172a;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden'>${esc(title)}</div>`\n  + `<div style='font-size:3.6cqw;font-family:${MONO};color:${INK}'>${esc(where)}</div>`\n  + `<div style='font-size:4.2cqw;color:#475569'>${shelfText} · ${graphsText}</div>`\n  + (names ? `<div style='font-size:3.6cqw;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis'>${names}</div>` : ''),\n  `padding:6cqw 7cqw;border-radius:6cqw;background:#ffffff;border:1px solid #e2e8f0;display:flex;flex-direction:column;gap:2cqw;justify-content:center;overflow:hidden`\n);\n\nconst faces = nodes.filter((node) => clean(node.type) === 'face');\nconst faceFor = (level) => faces.find((node) => clean(node.data?.semanticLevel) === level);\nconst glyph = nodes.find((node) => clean(node.type) === 'glyph');\nconst detailFace = faceFor('detail');\nconst summaryFace = faceFor('summary');\nconst size = (face, width) => ({ width, height: Math.round(width * ratio) });\nif (detailFace) {\n  await api.updateView(detailFace.id, { content: { kind: 'html', value: detail }, view: { ...(detailFace.data?.view || {}), scroll: 'page' } });\n  await api.updateNode(detailFace.id, size(detailFace, DETAIL_WIDTH));\n}\nif (summaryFace) {\n  await api.updateView(summaryFace.id, { content: { kind: 'html', value: summary } });\n  await api.updateNode(summaryFace.id, size(summaryFace, SUMMARY_WIDTH));\n}\nif (glyph) await api.updateNode(glyph.id, { data: { ...glyph.data, glyph: { kind: 'icon', name: 'LibraryBooks', color: INK } } });\n\n// The window is the Detail's shape and holds everything the graph has.\nif (root) {\n  const placed = nodes.filter((node) => node.position).map((node) => (node === detailFace ? { ...node, ...size(node, DETAIL_WIDTH) } : node === summaryFace ? { ...node, ...size(node, SUMMARY_WIDTH) } : node));\n  const pad = 80;\n  let x0 = Math.min(...placed.map((node) => node.position.x)) - pad;\n  let y0 = Math.min(...placed.map((node) => node.position.y)) - pad;\n  let w = Math.max(...placed.map((node) => node.position.x + node.width)) + pad - x0;\n  let h = Math.max(...placed.map((node) => node.position.y + node.height)) + pad - y0;\n  if (w / h < 1 / ratio) { const next = Math.round(h / ratio); x0 -= Math.round((next - w) / 2); w = next; } else { const next = Math.round(w * ratio); y0 -= Math.round((next - h) / 2); h = next; }\n  await api.updateNode(root.id, { data: { ...root.data, membrane: { ...(root.data?.membrane || {}), bounds: { x: Math.round(x0), y: Math.round(y0), width: w, height: h } } } });\n}\nreturn { shelves: count, graphs: totalGraphs, columns, rows, ratio: Math.round(ratio * 1000) / 1000 };\n"
+      }
+    },
+    {
+      "id": "repo-template-export",
+      "type": "export",
+      "label": "Collection Template (Export)",
+      "position": {
+        "x": 1200,
+        "y": 1300
+      },
+      "width": 320,
+      "height": 140,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0,
+          "position": {
+            "side": "right",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "memo": "The one export of this template: the Method that derives a collection's views, and the Collection class.",
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/templates/repo-template/root.node",
+          "resourceKind": "graph",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "repo"
+              ]
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "scripts": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            },
+            "methods": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "repo-template-derive-method"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "repo-template-bridge-repo",
+      "type": "import",
+      "label": "Repo Class",
+      "position": {
+        "x": 700,
+        "y": 1300
+      },
+      "width": 320,
+      "height": 140,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "repo-template-declaration"
+        },
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/classes/nodes/repo/repo.node-class.node",
+          "resourceKind": "node-class",
+          "key": "repo",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ]
+        },
+        "memo": "The Repo class this template hands on."
+      }
+    },
+    {
+      "id": "repo-template-repo",
+      "type": "repo",
+      "label": "Library",
+      "position": {
+        "x": 680,
+        "y": 200
+      },
+      "width": 420,
+      "height": 240,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "title": "Name this library",
+        "body": "What this library is for.",
+        "audience": "Who it is for: readers, collaborators, or just you.",
+        "owner": "owner",
+        "repo": "repository",
+        "branch": "main",
+        "readFrom": "github",
+        "host": "",
+        "published": false,
+        "startHere": "",
+        "sort": "order",
+        "includeFolder": false,
+        "sourcesSummary": "2 portals · 2 members",
+        "identity": {
+          "graphId": "repo-template",
+          "nodeId": "repo-template-repo"
+        },
+        "classRef": "tlz://twilite.zone/library/classes/nodes/repo/repo.node-class.node"
+      },
+      "ports": [
+        {
+          "id": "members",
+          "key": "members",
+          "label": "members",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": true,
+            "targetKinds": [
+              "portal"
+            ]
+          }
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        },
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 250
+        }
+      ],
+      "handles": [
+        {
+          "id": "members",
+          "key": "members",
+          "label": "members",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": true,
+            "targetKinds": [
+              "portal"
+            ]
+          },
+          "portId": "members"
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        },
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 250,
+          "portId": "root"
+        }
+      ]
+    },
+    {
+      "id": "repo-template-environment",
+      "type": "face",
+      "label": "Repo environment",
+      "position": {
+        "x": -760,
+        "y": 560
+      },
+      "width": 400,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "repo-template"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.environment"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;background-color:#f6f1e7;background-image:linear-gradient(rgba(120,100,70,.08) 0.08cqw,transparent 0.08cqw),linear-gradient(90deg,rgba(120,100,70,.08) 0.08cqw,transparent 0.08cqw);background-size:2cqw 2cqw'></div></div>"
+        }
+      }
+    },
+    {
+      "id": "repo-template-shelf-tasks",
+      "type": "portal",
+      "label": "Tasks",
+      "position": {
+        "x": 200,
+        "y": 560
+      },
+      "width": 420,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "sourceRef": "tlz://twilite.zone/library/templates/repo-template/shelves/tasks/root.node",
+        "sourceNodeId": "page-template",
+        "target": {
+          "ref": "tlz://twilite.zone/library/templates/repo-template/shelves/tasks/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Page Template"
+        },
+        "authority": "navigate",
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "repo-template"
+        },
+        "security": "prompt"
+      }
+    },
+    {
+      "id": "repo-template-shelf-notes",
+      "type": "portal",
+      "label": "Notes",
+      "position": {
+        "x": 680,
+        "y": 560
+      },
+      "width": 420,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "sourceRef": "tlz://twilite.zone/library/templates/repo-template/shelves/notes/root.node",
+        "sourceNodeId": "page-template",
+        "target": {
+          "ref": "tlz://twilite.zone/library/templates/repo-template/shelves/notes/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Page Template"
+        },
+        "authority": "navigate",
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "repo-template"
+        },
+        "security": "prompt"
+      }
+    },
+    {
+      "id": "repo-template-start-here",
+      "type": "portal",
+      "label": "Start here",
+      "position": {
+        "x": 1160,
+        "y": 560
+      },
+      "width": 420,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "sourceRef": "tlz://twilite.zone/library/templates/repo-template/shelves/tasks/root.node",
+        "sourceNodeId": "page-template",
+        "target": {
+          "ref": "tlz://twilite.zone/library/templates/repo-template/shelves/tasks/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Page Template"
+        },
+        "authority": "navigate",
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "repo-template"
+        },
+        "security": "prompt",
+        "role": "start-here"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "repo-template-landing-edge",
+      "type": "ground",
+      "source": "repo-template-declaration",
+      "target": "repo-template-landing",
+      "sourcePort": "ground",
+      "targetPort": "root",
+      "label": "",
+      "style": {},
+      "data": {
+        "presentation": {
+          "layer": "contract"
+        }
+      }
+    },
+    {
+      "id": "assemble-updates-summary",
+      "type": "derived-view",
+      "source": "repo-template-derive-method",
+      "target": "repo-template-summary",
+      "sourcePort": "result",
+      "targetPort": "root",
+      "label": "derives",
+      "style": {
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "assemble-updates-detail",
+      "type": "derived-view",
+      "source": "repo-template-derive-method",
+      "target": "repo-template-detail",
+      "sourcePort": "result",
+      "targetPort": "root",
+      "label": "derives",
+      "style": {
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "repo-template-surface",
+      "type": "surface",
+      "source": "repo-template-declaration",
+      "target": "repo-template-detail",
+      "sourcePort": "surfaces",
+      "targetPort": "root",
+      "label": "",
+      "style": {},
+      "data": {
+        "surfaceId": "web"
+      }
+    },
+    {
+      "id": "repo-template-detail-summary",
+      "type": "next-face",
+      "source": "repo-template-detail",
+      "target": "repo-template-summary",
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in",
+      "label": "",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "graph-changed-invokes-assemble",
+      "type": "invokes",
+      "source": "repo-template-declaration",
+      "target": "repo-template-derive-method",
+      "sourcePort": "event:graph.changed",
+      "targetPort": "invokes",
+      "label": "invokes",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "classRef": "tlz://twilite.zone/library/edges/invokes/root.node"
+      }
+    },
+    {
+      "id": "repo-template-derive-updates-glyph",
+      "type": "derived-view",
+      "source": "repo-template-derive-method",
+      "target": "repo-template-glyph",
+      "sourcePort": "result",
+      "targetPort": "root",
+      "label": "derives",
+      "style": {
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "repo-template-summary-to-glyph",
+      "type": "next-face",
+      "source": "repo-template-summary",
+      "target": "repo-template-glyph",
+      "sourcePort": "sequence-out",
+      "targetPort": "root",
+      "label": "",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "repo-template-edge-environment",
+      "type": "environment",
+      "source": "repo-template-declaration",
+      "target": "repo-template-environment",
+      "sourcePort": "environment",
+      "targetPort": "root",
+      "label": "",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "classRef": "tlz://twilite.zone/library/edges/environment/root.node"
+      }
+    },
+    {
+      "id": "repo-template-contains-1",
+      "type": "contains",
+      "source": "repo-template-repo",
+      "target": "repo-template-shelf-tasks",
+      "sourcePort": "members",
+      "targetPort": "part-of",
+      "label": "",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "repo-template-contains-2",
+      "type": "contains",
+      "source": "repo-template-repo",
+      "target": "repo-template-shelf-notes",
+      "sourcePort": "members",
+      "targetPort": "part-of",
+      "label": "",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "layout": {
+      "mode": "manual",
+      "defaultLayout": "layered",
+      "direction": "DOWN",
+      "edgeLaneGapPx": 10,
+      "serpentine": {
+        "maxPerRow": 6
+      },
+      "cycleFallback": {
+        "enabled": true
+      },
+      "elk": {
+        "algorithm": "fixed",
+        "edgeRouting": "ORTHOGONAL",
+        "portConstraints": "FIXED_SIDE",
+        "nodeSpacing": 120,
+        "layeredEdgeSpacing": 80
+      }
+    },
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "library/templates/repo-template/root.node",
+      "branch": "main",
+      "autoCreateRepo": true,
+      "repoVisibility": "private",
+      "seedOnCommit": false,
+      "enableGithubPages": false,
+      "installationId": ""
+    },
+    "autoSave": false
+  },
+  "scripts": []
+}
