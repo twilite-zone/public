@@ -28,6 +28,33 @@
           "direction": "bidirectional",
           "dataType": "any",
           "angle": 210
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          }
         }
       ],
       "visible": true,
@@ -1405,6 +1432,53 @@
       "resizable": true,
       "portPosition": "center",
       "showLabel": false
+    },
+    {
+      "id": "import-export-env-environment",
+      "type": "face",
+      "label": "Blueprint environment",
+      "position": {
+        "x": -1040,
+        "y": -1000
+      },
+      "width": 400,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "fe331a1c-0790-447b-ad05-83ddc1898214"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.environment"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;background-color:#0f172a;background-image:linear-gradient(rgba(109,40,217,.38) 0.12cqw,transparent 0.12cqw),linear-gradient(90deg,rgba(109,40,217,.38) 0.12cqw,transparent 0.12cqw),linear-gradient(rgba(148,163,184,.10) 0.08cqw,transparent 0.08cqw),linear-gradient(90deg,rgba(148,163,184,.10) 0.08cqw,transparent 0.08cqw);background-size:10cqw 10cqw,10cqw 10cqw,2cqw 2cqw,2cqw 2cqw'></div></div>"
+        }
+      }
     }
   ],
   "edges": [
@@ -1483,6 +1557,21 @@
       "data": {},
       "sourcePort": "sequence-out",
       "targetPort": "root"
+    },
+    {
+      "id": "import-export-env-edge-environment",
+      "type": "environment",
+      "source": "fe331a1c-0790-447b-ad05-83ddc1898214",
+      "target": "import-export-env-environment",
+      "sourcePort": "environment",
+      "targetPort": "root",
+      "label": "",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "classRef": "tlz://twilite.zone/library/edges/environment/root.node"
+      }
     }
   ],
   "settings": {
