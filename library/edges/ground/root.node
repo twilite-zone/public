@@ -81,6 +81,33 @@
               }
             ]
           }
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          }
         }
       ],
       "handles": [
@@ -148,6 +175,34 @@
             ]
           },
           "portId": "surfaces"
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "environment"
         }
       ],
       "visible": true,
@@ -1534,6 +1589,53 @@
           ]
         }
       }
+    },
+    {
+      "id": "edge-class-landing-surface-environment",
+      "type": "face",
+      "label": "Edge class environment",
+      "position": {
+        "x": -3510.97269642131,
+        "y": -667.6720679750829
+      },
+      "width": 400,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "edge-class-landing-surface"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.environment"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;background-color:#f1f5f9;background-image:linear-gradient(rgba(71,85,105,.18) 0.12cqw,transparent 0.12cqw),linear-gradient(90deg,rgba(71,85,105,.18) 0.12cqw,transparent 0.12cqw),linear-gradient(rgba(71,85,105,.08) 0.08cqw,transparent 0.08cqw),linear-gradient(90deg,rgba(71,85,105,.08) 0.08cqw,transparent 0.08cqw);background-size:10cqw 10cqw,10cqw 10cqw,2cqw 2cqw,2cqw 2cqw'></div></div>"
+        }
+      }
     }
   ],
   "edges": [
@@ -1816,6 +1918,21 @@
       },
       "sourcePort": "event:graph.changed",
       "targetPort": "invokes"
+    },
+    {
+      "id": "edge-class-landing-surface-edge-environment",
+      "type": "environment",
+      "source": "edge-class-template-declaration",
+      "target": "edge-class-landing-surface-environment",
+      "sourcePort": "environment",
+      "targetPort": "root",
+      "label": "",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "classRef": "tlz://twilite.zone/library/edges/environment/root.node"
+      }
     }
   ],
   "settings": {
