@@ -1,0 +1,384 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "preferredViewer": "https://dev.twilite.zone",
+    "modified": "2026-10-14T00:29:34.648Z"
+  },
+  "nodes": [
+    {
+      "id": "page-specimen-declaration",
+      "type": "root",
+      "label": "Page Specimen Class",
+      "position": {
+        "x": -760,
+        "y": -420
+      },
+      "width": 520,
+      "height": 390,
+      "ports": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "default-view"
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-glyph"
+        },
+        {
+          "id": "editor-view",
+          "key": "editor-view",
+          "label": "editor-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "editor"
+        }
+      ],
+      "handles": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "default-view",
+          "portId": "default-view"
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "shared-glyph",
+          "portId": "glyph"
+        },
+        {
+          "id": "editor-view",
+          "key": "editor-view",
+          "label": "editor-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 180,
+          "role": "editor",
+          "portId": "editor-view"
+        }
+      ],
+      "data": {
+        "identity": {
+          "graphId": "page-specimen-class",
+          "nodeId": "page-specimen",
+          "name": "Page Specimen",
+          "version": "0.1.0",
+          "description": "A card that stands for a thing on a poster: what kind of thing it is, its name, and a line on what it is doing there."
+        },
+        "intent": {
+          "kind": "node-class",
+          "scope": "shared"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "declaration",
+            "view",
+            "glyph"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "nodeClass": {
+          "contractVersion": "1.0.0",
+          "key": "page-specimen",
+          "label": "Page Specimen",
+          "meaning": "A card that stands for a thing on a poster: what kind of thing it is, its name, and a line on what it is doing there. Specimens joined by edges make a small diagram of real nodes.",
+          "requiredDataKeys": [
+            "title"
+          ],
+          "nodeDef": {
+            "key": "page-specimen",
+            "ref": "tlz://twilite.zone/library/templates/page-template/classes/page-specimen.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Page Specimen",
+              "size": {
+                "width": 460,
+                "height": 260
+              },
+              "showLabel": false,
+              "data": {
+                "kind": "Node",
+                "title": "Specimen",
+                "line": "",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Category"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 210,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.2
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Page Specimen changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "root": {
+          "kind": "node-class",
+          "targetMode": "artifact",
+          "artifactKind": "class-artifact",
+          "defaultSurfaceId": "web",
+          "surfaces": [
+            {
+              "id": "detail",
+              "kind": "view",
+              "payload": "node.web.detail",
+              "portNodeId": "page-specimen-detail-view",
+              "viewNodeId": "page-specimen-detail-view"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "page-specimen-glyph",
+      "type": "glyph",
+      "label": "Glyph",
+      "position": {
+        "x": 750,
+        "y": -80
+      },
+      "width": 90,
+      "height": 90,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "position": {
+            "side": "top",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "position": {
+            "side": "top",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "data": {
+        "identity": {
+          "graphId": "page-specimen-class",
+          "portId": "glyph"
+        },
+        "glyph": {
+          "kind": "icon",
+          "name": "Category"
+        },
+        "view": {
+          "payload": "node.web.glyph"
+        }
+      }
+    },
+    {
+      "id": "page-specimen-detail-view",
+      "type": "face",
+      "label": "Detail",
+      "position": {
+        "x": 0,
+        "y": -420
+      },
+      "width": 460,
+      "height": 260,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "identity": {
+          "graphId": "page-specimen-class",
+          "nodeId": "page-specimen-detail-view"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;padding:7cqw 8cqw;background:#ffffff;color:#0f172a;border-radius:6cqw;border-left:2.4cqw solid #f5c542;font-family:Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;overflow:hidden'><div style='font-size:4.6cqw;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6d28d9'>{{data.kind || \"Node\"}}</div><div style='margin-top:3cqw;font-size:10.5cqw;font-weight:700;line-height:1.1'>{{data.title || label}}</div><div style='margin-top:3cqw;font-size:5.4cqw;line-height:1.3;color:#475569'>{{data.line}}</div></div></div>"
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1791496022567,
+          "reason": "node-drag"
+        }
+      }
+    },
+    {
+      "id": "page-specimen-editor-view",
+      "type": "face",
+      "label": "Editor",
+      "position": {
+        "x": 0,
+        "y": 240
+      },
+      "width": 440,
+      "height": 360,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "view": {
+          "intent": "editor",
+          "payload": "editor.web"
+        },
+        "identity": {
+          "graphId": "page-specimen-class",
+          "nodeId": "page-specimen-editor-view"
+        },
+        "editor": {
+          "web": {
+            "host": {
+              "kind": "content-editor"
+            },
+            "fields": [
+              {
+                "key": "kind",
+                "label": "Kind (what sort of thing it stands for)",
+                "type": "text",
+                "path": "data.kind",
+                "variant": "body",
+                "placeholder": "Face"
+              },
+              {
+                "key": "title",
+                "label": "Name",
+                "type": "text",
+                "path": "data.title",
+                "variant": "heading",
+                "placeholder": "Detail"
+              },
+              {
+                "key": "line",
+                "label": "Line (what it is doing there)",
+                "type": "text",
+                "path": "data.line",
+                "variant": "body",
+                "placeholder": "the page"
+              }
+            ]
+          }
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1791496022567,
+          "reason": "node-drag"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "page-specimen-surface",
+      "source": "page-specimen-declaration",
+      "target": "page-specimen-detail-view",
+      "sourcePort": "surfaces",
+      "targetPort": "root",
+      "type": "surface",
+      "label": "",
+      "style": {},
+      "data": {
+        "surfaceId": "web"
+      }
+    },
+    {
+      "id": "page-specimen-icon-glyph",
+      "source": "page-specimen-detail-view",
+      "target": "page-specimen-glyph",
+      "sourcePort": "sequence-out",
+      "targetPort": "root",
+      "type": "next-face",
+      "label": "",
+      "style": {},
+      "data": {}
+    }
+  ],
+  "settings": {
+    "layout": {
+      "mode": "manual",
+      "direction": "RIGHT"
+    },
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto"
+  }
+}
