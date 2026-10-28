@@ -1,58 +1,597 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "title": "The Library",
-    "description": "Top-level index for library documentation and classes.",
-    "created": "2026-03-15T21:05:00.000Z",
-    "modified": "2026-03-15T21:05:00.000Z",
+    "created": "2026-10-28T16:39:38.527Z",
+    "modified": "2026-10-28T16:39:38.527Z",
     "author": "",
     "tags": [
-      "library"
-    ],
-    "preferredViewer": "https://twilite.zone"
+      "library",
+      "collection"
+    ]
   },
   "nodes": [
     {
-      "id": "library-root-manifest",
-      "type": "manifest",
-      "label": "Manifest",
+      "id": "library-root-declaration",
+      "type": "root",
+      "label": "The Library",
       "position": {
         "x": -640,
-        "y": -260
+        "y": 0
       },
-      "width": 360,
-      "height": 220,
+      "width": 300,
+      "height": 200,
+      "ports": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 55,
+          "role": "default-view"
+        },
+        {
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 70,
+          "role": "shared-summary"
+        },
+        {
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 85,
+          "role": "shared-icon"
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 100,
+          "role": "shared-glyph"
+        },
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 115,
+          "role": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "default-handle",
+          "key": "default-handle",
+          "label": "default handle",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "default-handle",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-handle",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "graphReference",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "boundary-begin",
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 300,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "boundary-end",
+          "key": "boundary-end",
+          "label": "boundary end",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 135,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 225,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "event:graph.changed",
+          "key": "event:graph.changed",
+          "label": "Graph changed",
+          "direction": "output",
+          "dataType": "event",
+          "role": "emits-event",
+          "allowedEdgeTypes": [
+            "invokes",
+            "listens"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "emits-event",
+            "required": false,
+            "repeatable": true,
+            "eventKey": "graph.changed",
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "method",
+                "targetPort": "invokes"
+              }
+            ]
+          }
+        },
+        {
+          "id": "event:graph.structure.changed",
+          "key": "event:graph.structure.changed",
+          "label": "Graph structure changed",
+          "direction": "output",
+          "dataType": "event",
+          "role": "emits-event",
+          "allowedEdgeTypes": [
+            "invokes",
+            "listens"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "emits-event",
+            "required": false,
+            "repeatable": true,
+            "eventKey": "graph.structure.changed",
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "method",
+                "targetPort": "invokes"
+              }
+            ]
+          }
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 55,
+          "role": "default-view",
+          "portId": "default-view"
+        },
+        {
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 70,
+          "role": "shared-summary",
+          "portId": "summary-view"
+        },
+        {
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 85,
+          "role": "shared-icon",
+          "portId": "icon-view"
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 100,
+          "role": "shared-glyph",
+          "portId": "glyph"
+        },
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 115,
+          "role": "ground",
+          "portId": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "surfaces"
+        },
+        {
+          "id": "default-handle",
+          "key": "default-handle",
+          "label": "default handle",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "default-handle",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-handle",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "graphReference",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "default-handle"
+        },
+        {
+          "id": "boundary-begin",
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 300,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "boundary-begin"
+        },
+        {
+          "id": "boundary-end",
+          "key": "boundary-end",
+          "label": "boundary end",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 135,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "boundary-end"
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 225,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "port"
+        },
+        {
+          "id": "event:graph.changed",
+          "key": "event:graph.changed",
+          "label": "Graph changed",
+          "direction": "output",
+          "dataType": "event",
+          "role": "emits-event",
+          "allowedEdgeTypes": [
+            "invokes",
+            "listens"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "emits-event",
+            "required": false,
+            "repeatable": true,
+            "eventKey": "graph.changed",
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "method",
+                "targetPort": "invokes"
+              }
+            ]
+          },
+          "portId": "event:graph.changed"
+        },
+        {
+          "id": "event:graph.structure.changed",
+          "key": "event:graph.structure.changed",
+          "label": "Graph structure changed",
+          "direction": "output",
+          "dataType": "event",
+          "role": "emits-event",
+          "allowedEdgeTypes": [
+            "invokes",
+            "listens"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "emits-event",
+            "required": false,
+            "repeatable": true,
+            "eventKey": "graph.structure.changed",
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "method",
+                "targetPort": "invokes"
+              }
+            ]
+          },
+          "portId": "event:graph.structure.changed"
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "environment"
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "library-root",
+          "graphId": "library-root-declaration",
+          "nodeId": "library-root",
           "name": "The Library",
-          "version": "0.1.0",
-          "description": "Top-level index for library documentation and classes.",
-          "createdAt": "2026-03-15T21:05:00.000Z",
-          "updatedAt": "2026-03-15T21:05:00.000Z"
+          "version": "1.0.0",
+          "description": "What the Twilite Zone publishes: the language, the templates a graph begins from, and the guides to read.",
+          "updatedAt": "2026-10-28T16:39:38.527Z"
         },
         "intent": {
-          "kind": "graph",
-          "scope": "mixed"
+          "kind": "collection",
+          "scope": "public"
         },
         "dependencies": {
           "nodeTypes": [
-            "manifest",
-            "legend",
-            "markdown",
-            "port",
-            "title",
-            "type-definition",
-            "field",
-            "port",
-            "bridge"
+            "declaration",
+            "view",
+            "glyph",
+            "content",
+            "bridge",
+            "method",
+            "collection",
+            "portal"
           ],
           "portContracts": [
             "core"
           ],
-          "skills": [],
           "schemaVersions": {
             "nodes": ">=1.0.0",
             "ports": ">=1.0.0"
@@ -77,1172 +616,1655 @@
             "squashAllowed": false
           }
         },
-        "document": {
-          "url": ""
-        },
         "settings": {
+          "layout": {
+            "mode": "manual",
+            "direction": "DOWN",
+            "defaultLayout": "layered",
+            "edgeLaneGapPx": 10,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
+          },
           "theme": null,
           "backgroundImage": null,
           "defaultNodeColor": "#1976d2",
-          "defaultEdgeColor": "#666666",
+          "defaultEdgeColor": "",
           "snapToGrid": false,
           "gridSize": 20,
-          "edgeRouting": "auto",
-          "github": {
-            "repo": "",
-            "path": "",
-            "branch": "main",
-            "autoCreateRepo": true,
-            "repoVisibility": "private",
-            "seedOnCommit": false,
-            "enableGithubPages": false
-          },
-          "autoSave": false,
-          "expansion": {
-            "allowGraphEntry": true
-          }
+          "edgeRouting": "auto"
         },
-        "isRoot": false,
-        "root": false
-      }
-    },
-    {
-      "id": "library-root-legend",
-      "type": "legend",
-      "label": "Legend",
-      "position": {
-        "x": -240,
-        "y": -260
-      },
-      "width": 320,
-      "height": 180,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "entries": [
+        "document": {
+          "url": "tlz://twilite.zone/library/root.node"
+        },
+        "visibilityRole": "editor",
+        "events": [
           {
-            "key": "entry",
-            "intent": "reference",
-            "implementation": "port node",
-            "dictionaryKey": "default"
+            "eventKey": "graph.changed",
+            "label": "Graph changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          },
+          {
+            "eventKey": "graph.structure.changed",
+            "label": "Graph structure changed",
+            "payloadContract": {
+              "type": "object"
+            }
           }
         ],
-        "markdown": "## Legend\n- entry: open a library graph",
-        "isRoot": false,
-        "root": false
-      }
-    },
-    {
-      "id": "library-root-overview",
-      "type": "markdown",
-      "label": "The Library",
-      "position": {
-        "x": -520,
-        "y": 40
-      },
-      "width": 460,
-      "height": 220,
-      "color": "#1976d2",
-      "ports": [
-        {
-          "id": "in",
-          "label": "In",
-          "direction": "input",
-          "dataType": "flow",
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "out",
-          "label": "Out",
-          "direction": "output",
-          "dataType": "content",
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
-        }
-      ],
-      "inputs": [
-        {
-          "key": "in",
-          "label": "In",
-          "type": "flow"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "out",
-          "label": "Out",
-          "type": "content"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "markdown": "# The Library\n\nBrowse public documentation and templates from GitHub-backed content, while core classes remain bundled with the app for runtime safety.",
-        "memo": "",
-        "link": "",
-        "isRoot": true,
-        "root": true,
-        "_classBinding": {
-          "key": "markdown",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "identity": {
-            "graphId": "markdown_class",
-            "name": "markdown Node Class",
-            "version": "0.1.0",
-            "description": "Canonical markdown content node.",
-            "createdAt": "2026-02-24T20:05:15Z",
-            "updatedAt": "2026-03-24T01:20:00.000Z"
+        "root": {
+          "kind": "graph",
+          "targetMode": "artifact",
+          "artifactKind": "collection",
+          "interfaceContract": {
+            "version": 1,
+            "implicitRootPort": true
           },
-          "intent": "graph",
-          "meaning": "Canonical markdown content node.",
-          "description": "Canonical markdown content node.",
-          "defaults": {},
-          "nodeDef": {
-            "key": "markdown",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "views": [
+          "defaultSurfaceId": "web",
+          "landingSurfaceId": "landing",
+          "surfaces": [
             {
-              "key": "markdown",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
+              "id": "detail",
+              "kind": "view",
+              "payload": "node.web.detail",
+              "viewNodeId": "library-root-detail"
             },
             {
-              "key": "markdown",
-              "intent": "node",
-              "payload": "node.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
+              "id": "summary",
+              "kind": "view",
+              "payload": "node.web.summary",
+              "viewNodeId": "library-root-summary"
+            },
+            {
+              "id": "glyph",
+              "kind": "glyph",
+              "payload": "node.web.glyph",
+              "viewNodeId": "library-root-glyph"
+            },
+            {
+              "id": "landing",
+              "kind": "content",
+              "payload": "node.web.landing",
+              "viewNodeId": "library-root-landing"
             }
-          ],
-          "nodeView": {
-            "key": "markdown",
-            "intent": "node",
-            "payload": "node.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
+          ]
+        },
+        "membrane": {
+          "bounds": {
+            "x": -720,
+            "y": -359,
+            "width": 2720,
+            "height": 1817
           },
-          "editorView": {
-            "key": "markdown",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceNodeId": "",
-          "sourceBridgeNodeId": "",
-          "sourceBridgeLabel": "Migrated class binding",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "markdown",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/markdown.node-class.node"
-        },
-        "definitionKey": "markdown"
+          "clip": true
+        }
       }
     },
     {
-      "id": "library-root-port-1",
-      "type": "bridge",
-      "label": "Documentation",
-      "position": {
-        "x": 40,
-        "y": 40
-      },
-      "width": 280,
-      "height": 110,
-      "ports": [],
-      "inputs": [],
-      "outputs": [],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "endpoint": "github://twilite-zone/public/library/documentation/root.node:root",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open"
-        },
-        "memo": "",
-        "link": "",
-        "isRoot": false,
-        "root": false
-      }
-    },
-    {
-      "id": "library-root-port-2",
-      "type": "port",
-      "label": "Classes",
-      "position": {
-        "x": 360,
-        "y": 40
-      },
-      "width": 280,
-      "height": 110,
-      "ports": [],
-      "inputs": [],
-      "outputs": [],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/root.node:root",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open"
-        },
-        "memo": "",
-        "link": "",
-        "isRoot": false,
-        "root": false
-      }
-    },
-    {
-      "id": "library-root-port-3",
-      "type": "port",
-      "label": "Node Classes",
-      "position": {
-        "x": 680,
-        "y": 40
-      },
-      "width": 280,
-      "height": 110,
-      "ports": [],
-      "inputs": [],
-      "outputs": [],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/root.node:root",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open"
-        },
-        "memo": "",
-        "link": "",
-        "isRoot": false,
-        "root": false
-      }
-    },
-    {
-      "id": "library-root-port-4",
-      "type": "port",
-      "label": "Task Planning Classes",
-      "position": {
-        "x": 40,
-        "y": 190
-      },
-      "width": 280,
-      "height": 110,
-      "ports": [],
-      "inputs": [],
-      "outputs": [],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "endpoint": "github://twilite-zone/public/library/classes/nodes/task-planning/root.node:root",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open"
-        },
-        "memo": "",
-        "link": "",
-        "isRoot": false,
-        "root": false
-      }
-    },
-    {
-      "id": "library-root-port-graph-theory",
-      "type": "port",
-      "label": "Graph Theory",
-      "position": {
-        "x": 760,
-        "y": 190
-      },
-      "width": 280,
-      "height": 110,
-      "ports": [],
-      "inputs": [],
-      "outputs": [],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "endpoint": "github://twilite-zone/public/graph-theory/root.node:root",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open"
-        },
-        "memo": "Open the Graph Theory section.",
-        "authority": "consume-view",
-        "sourceRef": "github://twilite-zone/public/graph-theory/root.node",
-        "sourceNodeId": "graph-theory-view",
-        "sourcePayload": "node.web.detail",
-        "link": "",
-        "isRoot": false,
-        "root": false
-      }
-    },
-    {
-      "id": "library-root-port-contracts",
-      "type": "port",
-      "label": "Contracts",
-      "position": {
-        "x": 360,
-        "y": 190
-      },
-      "width": 340,
-      "height": 220,
-      "ports": [],
-      "inputs": [],
-      "outputs": [],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "endpoint": "github://twilite-zone/public/library/documentation/contracts/root.node:root",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open"
-        },
-        "memo": "Preview and open the contracts index.",
-        "sourceRef": "github://twilite-zone/public/library/documentation/contracts/root.node",
-        "sourceNodeId": "contracts-view",
-        "sourcePayload": "node.web.summary",
-        "link": "",
-        "isRoot": false,
-        "root": false
-      }
-    },
-    {
-      "id": "library-root-title-port",
-      "type": "bridge",
-      "label": "Title",
+      "id": "library-root-detail",
+      "type": "face",
+      "label": "The Library",
       "position": {
         "x": -640,
-        "y": 340
+        "y": 240
       },
-      "width": 280,
-      "height": 120,
+      "width": 600,
+      "height": 401,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "library-root"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail",
+          "scroll": "page"
+        },
+        "semanticLevel": "detail",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;font-family:system-ui,-apple-system,Segoe UI,sans-serif;padding:4cqw;border-radius:3cqw;background:#ffffff;border:1px solid #e2e8f0;display:flex;flex-direction:column;gap:2cqw'><div style='display:flex;justify-content:space-between;align-items:baseline;gap:2cqw'><div style='min-width:0'><div style='font-size:2.2cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Collection</div><div style='font-weight:600;font-size:4cqw;line-height:1.2;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis'>The Library</div></div><div style='font-size:2.2cqw;color:#64748b;white-space:nowrap'>9 graphs</div></div><div style='flex:1;min-height:0;overflow:auto'><div style='display:grid;grid-template-columns:repeat(auto-fill,minmax(26.2cqw,1fr));gap:1.4cqw;align-content:start'><a href='tlz://twilite.zone/library/glossary/root.node' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:14.2cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'><span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:#6d28d922;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>G</span><span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>Glossary</span><span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>The words of the Twilite Zone, in three layers: what a reader needs, what an author needs, and what a builder needs.</span></span></a><a href='tlz://twilite.zone/library/primitives/root.node' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:14.2cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'><span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:#6d28d922;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>P</span><span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>Primitives</span><span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>The sixteen parts every graph is made of, each with a page of its own.</span></span></a><a href='tlz://twilite.zone/library/edges/root.node' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:14.2cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'><span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:#6d28d922;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>C</span><span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>Canon Edge Classes</span><span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>The edge classes the primitives declare.</span></span></a><a href='tlz://twilite.zone/library/templates/root.node' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:14.2cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'><span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:#6d28d922;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>C</span><span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>Canon Templates</span><span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>The templates in the Twilite Zone library, and the standard a canon template meets.</span></span></a><a href='tlz://twilite.zone/library/templates/starter/root.node' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:14.2cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'><span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:#6d28d922;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>S</span><span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>Starter Template</span><span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>A new graph: a poster page with a worked example and what to do first.</span></span></a><a href='tlz://twilite.zone/library/classes/nodes/root.node' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:14.2cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'><span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:#6d28d922;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>N</span><span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>Node Class Library</span><span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>Graph</span></span></a><a href='tlz://twilite.zone/library/documentation/navigation/root.node' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:14.2cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'><span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:#6d28d922;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>N</span><span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>Navigation</span><span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>One scheme for moving around the workspace, a graph, and what a graph holds: what a click does to each kind of thing, at each distance.</span></span></a><a href='tlz://twilite.zone/library/documentation/authoring-contract/root.node' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:14.2cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'><span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:#6d28d922;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>A</span><span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>Authoring contract</span><span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>Everything that can be set on a node, an edge, a handle or a graph, described once: what each switch is, where it is written, and the decisions the app makes for it.</span></span></a><a href='tlz://twilite.zone/library/documentation/contracts/root.node' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:14.2cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'><span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:#6d28d922;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>C</span><span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>Contracts Index</span><span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>Index of contract specs for the Twilite graph ecosystem.</span></span></a></div></div></div></div>"
+        },
+        "memo": "",
+        "link": ""
+      }
+    },
+    {
+      "id": "library-root-summary",
+      "type": "face",
+      "label": "The Library Summary",
+      "position": {
+        "x": 1440,
+        "y": 0
+      },
+      "width": 480,
+      "height": 321,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "library-root"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "semanticLevel": "summary",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;font-family:system-ui,-apple-system,Segoe UI,sans-serif;padding:5cqw;border-radius:4cqw;background:#ffffff;border:1px solid #e2e8f0;display:flex;flex-direction:column;gap:2cqw;overflow:hidden'><div style='display:flex;justify-content:space-between;align-items:flex-end;gap:2cqw'><div style='min-width:0'><div style='font-size:2.8cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Collection</div><div style='font-weight:600;font-size:5.4cqw;line-height:1.2;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis'>The Library</div></div><div style='font-size:3.4cqw;color:#475569;white-space:nowrap'>9 graphs</div></div><div style='position:relative;margin:auto -5cqw'><div style='display:flex;align-items:flex-end;gap:2.5cqw;overflow-x:auto;overflow-y:hidden;padding:0 5cqw;scroll-snap-type:x proximity;scroll-padding:0 5cqw;scrollbar-width:thin;scrollbar-color:#64748b #cbd5e1'><div style='position:relative;flex:none;width:39.6cqw;height:26.4cqw;scroll-snap-align:start'><div style='container-type:inline-size;width:100%;height:100%'><div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;min-height:100%;padding:clamp(0.5px,7.33cqw,33px) clamp(0.5px,8.00cqw,36px);border-radius:min(18px,6cqw);background:#ffffff;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column'><div style='margin-bottom:clamp(0.5px,3.33cqw,15px);font-weight:800;font-size:clamp(0.5px,3.67cqw,17px);line-height:1.3;font-family:system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>LIBRARY · glossary</div><div style='font-weight:500;font-size:clamp(0.5px,10.67cqw,48px);line-height:1;font-family:Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>Glossary</div><div style='margin-top:auto;padding-top:clamp(0.5px,2.67cqw,12px);font-weight:400;font-size:clamp(0.5px,4.00cqw,18px);line-height:1.3;font-family:system-ui;color:#475569'>8 pieces</div></div></div></div><a href='tlz://twilite.zone/library/glossary/root.node' title='Glossary' aria-label='Glossary' style='position:absolute;inset:0'></a></div><div style='position:relative;flex:none;width:39.6cqw;height:26.4cqw;scroll-snap-align:start'><div style='container-type:inline-size;width:100%;height:100%'><div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;padding:8cqw;background:#ffffff;border-radius:min(18px,6cqw);border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column;justify-content:center'><div style='margin-bottom:3cqw;font:800 clamp(0.5px,3.4cqw,14px)/1.3 system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Twilite Zone · Library</div><div style='font:500 clamp(0.5px,14cqw,96px)/1.02 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>Primitives</div></div></div></div><a href='tlz://twilite.zone/library/primitives/root.node' title='Primitives' aria-label='Primitives' style='position:absolute;inset:0'></a></div><div style='position:relative;flex:none;width:39.6cqw;height:26.4cqw;scroll-snap-align:start'><div style='container-type:inline-size;width:100%;height:100%'><div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;padding:8cqw;background:#ffffff;border-radius:min(18px,6cqw);border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column;justify-content:center'><div style='margin-bottom:3cqw;font:800 clamp(0.5px,3.4cqw,14px)/1.3 system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Twilite Zone · Library</div><div style='font:500 clamp(0.5px,14cqw,96px)/1.02 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>Edge classes</div></div></div></div><a href='tlz://twilite.zone/library/edges/root.node' title='Canon Edge Classes' aria-label='Canon Edge Classes' style='position:absolute;inset:0'></a></div><div style='position:relative;flex:none;width:39.6cqw;height:26.4cqw;scroll-snap-align:start'><div style='container-type:inline-size;width:100%;height:100%'><div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;overflow:hidden;font-family:system-ui,-apple-system,Segoe UI,sans-serif;padding:5cqw 6cqw;border-radius:5cqw;background:#ffffff;border:1px solid #e2e8f0;color:#0f172a;display:flex;flex-direction:column;gap:2.6cqw'><div style='font-size:3.6cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Canon</div><div style='font-weight:600;font-size:6cqw;line-height:1.2'>Templates</div><div style='font-size:3.8cqw;line-height:1.35;color:#334155'>The starter graphs in the Twilite Zone library, and the thirteen rules a canon template meets.</div></div></div></div><a href='tlz://twilite.zone/library/templates/root.node' title='Canon Templates' aria-label='Canon Templates' style='position:absolute;inset:0'></a></div><div style='position:relative;flex:none;width:39.6cqw;height:26.4cqw;scroll-snap-align:start'><div style='container-type:inline-size;width:100%;height:100%'><div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;min-height:100%;padding:clamp(0.5px,7.33cqw,33px) clamp(0.5px,8.00cqw,36px);border-radius:min(18px,6cqw);background:#ffffff;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column'><div style='margin-bottom:clamp(0.5px,3.33cqw,15px);font-weight:800;font-size:clamp(0.5px,3.67cqw,17px);line-height:1.3;font-family:system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>START HERE</div><div style='font-weight:500;font-size:clamp(0.5px,10.67cqw,48px);line-height:1;font-family:Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>Your first graph</div><div style='margin-top:clamp(0.5px,3.33cqw,15px);font-weight:600;font-size:clamp(0.5px,4.33cqw,20px);line-height:1.4;font-family:system-ui;color:#6d28d9'>Start here · What a graph is · The Twilite Zone</div><div style='margin-top:auto;padding-top:clamp(0.5px,2.67cqw,12px);font-weight:400;font-size:clamp(0.5px,4.00cqw,18px);line-height:1.3;font-family:system-ui;color:#475569'>10 pieces</div></div></div></div><a href='tlz://twilite.zone/library/templates/starter/root.node' title='Starter Template' aria-label='Starter Template' style='position:absolute;inset:0'></a></div><div style='position:relative;flex:none;width:39.6cqw;height:26.4cqw;scroll-snap-align:start'><div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;padding:5cqw;border:1px solid #e2e8f0;border-radius:5cqw;background:#ffffff;font-family:system-ui,sans-serif;overflow:hidden'><div style='font-size:3.4cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Graph</div><div style='margin-top:2cqw;font-size:6.4cqw;font-weight:600;line-height:1.2;color:#0f172a'>Node Class Library</div></div></div><a href='tlz://twilite.zone/library/classes/nodes/root.node' title='Node Class Library' aria-label='Node Class Library' style='position:absolute;inset:0'></a></div><div style='position:relative;flex:none;width:39.6cqw;height:26.4cqw;scroll-snap-align:start'><div style='container-type:inline-size;width:100%;height:100%'><div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;min-height:100%;padding:clamp(0.5px,7.33cqw,33px) clamp(0.5px,8.00cqw,36px);border-radius:min(18px,6cqw);background:#ffffff;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column'><div style='margin-bottom:clamp(0.5px,3.33cqw,15px);font-weight:800;font-size:clamp(0.5px,3.67cqw,17px);line-height:1.3;font-family:system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>TWILITE ZONE · NAVIGATION</div><div style='font-weight:500;font-size:clamp(0.5px,10.67cqw,48px);line-height:1;font-family:Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>A click means closer</div><div style='margin-top:auto;padding-top:clamp(0.5px,2.67cqw,12px);font-weight:400;font-size:clamp(0.5px,4.00cqw,18px);line-height:1.3;font-family:system-ui;color:#475569'>12 pieces</div></div></div></div><a href='tlz://twilite.zone/library/documentation/navigation/root.node' title='Navigation' aria-label='Navigation' style='position:absolute;inset:0'></a></div><div style='position:relative;flex:none;width:39.6cqw;height:26.4cqw;scroll-snap-align:start'><div style='container-type:inline-size;width:100%;height:100%'><div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;min-height:100%;padding:clamp(0.5px,7.33cqw,33px) clamp(0.5px,8.00cqw,36px);border-radius:min(18px,6cqw);background:#ffffff;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column'><div style='margin-bottom:clamp(0.5px,3.33cqw,15px);font-weight:800;font-size:clamp(0.5px,3.67cqw,17px);line-height:1.3;font-family:system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>TWILITE ZONE · AUTHORING</div><div style='font-weight:500;font-size:clamp(0.5px,10.67cqw,48px);line-height:1;font-family:Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>The authoring contract</div><div style='margin-top:clamp(0.5px,3.33cqw,15px);font-weight:600;font-size:clamp(0.5px,4.33cqw,20px);line-height:1.4;font-family:system-ui;color:#6d28d9'>The switches</div><div style='margin-top:auto;padding-top:clamp(0.5px,2.67cqw,12px);font-weight:400;font-size:clamp(0.5px,4.00cqw,18px);line-height:1.3;font-family:system-ui;color:#475569'>9 pieces</div></div></div></div><a href='tlz://twilite.zone/library/documentation/authoring-contract/root.node' title='Authoring contract' aria-label='Authoring contract' style='position:absolute;inset:0'></a></div><div style='position:relative;flex:none;width:39.6cqw;height:26.4cqw;scroll-snap-align:start'><div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;padding:5cqw;border:1px solid #e2e8f0;border-radius:5cqw;background:#ffffff;font-family:system-ui,sans-serif;overflow:hidden'><div style='font-size:3.4cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Artifact</div><div style='margin-top:2cqw;font-size:6.4cqw;font-weight:600;line-height:1.2;color:#0f172a'>Contracts Index</div></div></div><a href='tlz://twilite.zone/library/documentation/contracts/root.node' title='Contracts Index' aria-label='Contracts Index' style='position:absolute;inset:0'></a></div></div><div style='position:absolute;right:0;top:0;bottom:12px;width:6cqw;pointer-events:none;background:linear-gradient(270deg,#ffffff,rgba(255,255,255,0))'></div></div></div></div>"
+        },
+        "memo": "",
+        "link": ""
+      }
+    },
+    {
+      "id": "library-root-glyph",
+      "type": "glyph",
+      "label": "The Library glyph",
+      "position": {
+        "x": -640,
+        "y": 680
+      },
+      "width": 90,
+      "height": 90,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "library-root"
+        },
+        "glyph": {
+          "kind": "icon",
+          "name": "Folder",
+          "color": "#6d28d9"
+        },
+        "view": {
+          "payload": "node.web.glyph"
+        }
+      }
+    },
+    {
+      "id": "library-root-landing",
+      "type": "content",
+      "label": "The Library landing",
+      "position": {
+        "x": 1440,
+        "y": 360
+      },
+      "width": 420,
+      "height": 220,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
       "visible": false,
       "showLabel": true,
       "data": {
-        "memo": "Bridge for the Title class.",
-        "intent": "external",
-        "resourceKind": "node-class",
-        "scope": "focused-graph",
-        "grants": [
-          "create"
-        ],
-        "authority": "bridge",
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
+        "identity": {
+          "graphId": "library-root"
         },
-        "_classBinding": {
-          "key": "title",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
+        "content": {
+          "kind": "markdown",
+          "value": "# The Library\n\nThe graphs the Twilite Zone publishes, on three shelves.\n\n**The language.** The Glossary, the sixteen Primitives and the Edge classes: what a graph is made of, and what its connections mean.\n\n**Build.** The Templates, the Starter a new graph begins as, and the Node classes a node can be made from.\n\n**Read.** Navigation, the Authoring contract and the Contracts.\n\nThis graph is a collection. Each tile is a portal it contains, and what a tile shows (its name, its description, its colour) is read from the graph behind it, so nothing here is a copy."
         },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "title",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
-        },
-        "target": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "mode": "bridge",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ],
-          "label": "Title",
-          "key": "title"
-        },
-        "isRoot": false,
-        "root": false,
-        "visibilityRole": "editor"
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1791502752029,
+          "reason": "node-drag"
+        }
       }
     },
     {
-      "id": "library-root-type-port",
-      "type": "bridge",
-      "label": "Type Definition",
+      "id": "library-root-collection",
+      "type": "collection",
+      "label": "The Library",
       "position": {
-        "x": -320,
-        "y": 340
+        "x": 1440,
+        "y": 620
       },
-      "width": 280,
-      "height": 120,
+      "width": 300,
+      "height": 180,
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "title": "The Library",
+        "body": "The graphs the Twilite Zone publishes, in three shelves: the language, what to build from, and what to read.",
+        "sort": "order",
+        "includeFolder": false,
+        "sourcesSummary": "9 portals · 9 members",
+        "identity": {
+          "graphId": "library-root",
+          "nodeId": "library-root-collection"
+        },
+        "classRef": "tlz://twilite.zone/library/classes/nodes/collection/collection.node-class.node"
+      },
+      "ports": [
+        {
+          "id": "members",
+          "key": "members",
+          "label": "members",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": true,
+            "targetKinds": [
+              "portal"
+            ]
+          }
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        },
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 250
+        }
+      ],
+      "handles": [
+        {
+          "id": "members",
+          "key": "members",
+          "label": "members",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": true,
+            "targetKinds": [
+              "portal"
+            ]
+          },
+          "portId": "members"
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        },
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 250,
+          "portId": "root"
+        }
+      ]
+    },
+    {
+      "id": "library-root-environment",
+      "type": "face",
+      "label": "The Library environment",
+      "position": {
+        "x": -640,
+        "y": 860
+      },
+      "width": 400,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Bridge for the Type Definition class.",
-        "intent": "external",
-        "resourceKind": "node-class",
-        "scope": "focused-graph",
-        "grants": [
-          "create"
-        ],
-        "authority": "bridge",
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
+        "identity": {
+          "graphId": "library-root"
         },
-        "_classBinding": {
-          "key": "type-definition",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
+        "view": {
+          "intent": "node",
+          "payload": "node.web.environment",
+          "fit": "window"
         },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "type-definition",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-        },
-        "target": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "mode": "bridge",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ],
-          "label": "Type Definition",
-          "key": "type-definition"
-        },
-        "isRoot": false,
-        "root": false
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;background-color:#1c1733;background-image:radial-gradient(90cqw 55cqw at 12% -8%,color-mix(in srgb,#6d28d9 42%,transparent),transparent),repeating-linear-gradient(0deg,transparent 0,transparent 5.6cqw,color-mix(in srgb,#e9c46a 7%,transparent) 5.6cqw,color-mix(in srgb,#e9c46a 7%,transparent) 5.72cqw);font-family:Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#f4eefc'><div style='position:absolute;left:4cqw;top:3cqw;font:800 1.4cqw/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#e9c46a'>Twilite Zone</div><div style='position:absolute;left:4cqw;top:5cqw;font:500 6.6cqw/1 Georgia,Iowan Old Style,Palatino Linotype,Times New Roman,serif;letter-spacing:-.02em;white-space:nowrap'>The Library</div><div style='position:absolute;left:4cqw;width:38.23cqw;top:12.6cqw;font:italic 400 2cqw/1.35 Georgia,Iowan Old Style,Palatino Linotype,Times New Roman,serif;color:#d9cdf0'>The language, what to build from, and what to read.</div><div style='position:absolute;left:25cqw;top:19.08cqw;width:53.68cqw;height:33.82cqw;box-sizing:border-box;border-radius:2cqw;background:color-mix(in srgb,#e9c46a 6%,#1c1733);border:.28cqw solid color-mix(in srgb,#e9c46a 26%,#1c1733)'></div><div style='position:absolute;left:41.83cqw;top:10.48cqw;height:8.6cqw;display:flex;align-items:flex-end;gap:.35cqw'><i style='display:block;width:1.5cqw;height:7.7cqw;background:#e9c46a;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:1.95cqw;height:9.1cqw;background:#4c1d95;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:2.4cqw;height:6.3cqw;background:#8b5cf6;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:2.85cqw;height:8.4cqw;background:#c4b5fd;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:1.5cqw;height:5.6cqw;background:#6d28d9;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:1.95cqw;height:7cqw;background:#e9c46a;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:2.4cqw;height:9.1cqw;background:#5b21b6;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:2.85cqw;height:6.3cqw;background:#a78bfa;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:1.5cqw;height:7.7cqw;background:#7c3aed;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:1.95cqw;height:5.6cqw;background:#e9c46a;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:2.4cqw;height:8.4cqw;background:#4c1d95;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:2.85cqw;height:7cqw;background:#8b5cf6;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:1.5cqw;height:9.1cqw;background:#6d28d9;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:1.95cqw;height:6.3cqw;background:#c4b5fd;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i></div><div style='position:absolute;left:4cqw;right:4cqw;bottom:2.6cqw;display:grid;grid-template-columns:repeat(3,1fr);gap:3cqw;border-top:.2cqw solid color-mix(in srgb,#e9c46a 40%,transparent);padding-top:1.3cqw'><div style='min-width:0'><div style='font:800 1.25cqw/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#e9c46a;margin:0 0 .8cqw'>The language</div><div style='display:flex;flex-direction:column;gap:.5cqw;font:600 1.6cqw/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif'><a href='tlz://twilite.zone/library/glossary/root.node' style='color:#f4eefc;text-decoration:none'>Glossary →</a><a href='tlz://twilite.zone/library/primitives/root.node' style='color:#f4eefc;text-decoration:none'>Primitives →</a><a href='tlz://twilite.zone/library/edges/root.node' style='color:#f4eefc;text-decoration:none'>Edge classes →</a></div></div><div style='min-width:0'><div style='font:800 1.25cqw/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#e9c46a;margin:0 0 .8cqw'>Build</div><div style='display:flex;flex-direction:column;gap:.5cqw;font:600 1.6cqw/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif'><a href='tlz://twilite.zone/library/templates/root.node' style='color:#f4eefc;text-decoration:none'>Templates →</a><a href='tlz://twilite.zone/library/templates/starter/root.node' style='color:#f4eefc;text-decoration:none'>Starter →</a><a href='tlz://twilite.zone/library/classes/nodes/root.node' style='color:#f4eefc;text-decoration:none'>Node classes →</a></div></div><div style='min-width:0'><div style='font:800 1.25cqw/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#e9c46a;margin:0 0 .8cqw'>Read</div><div style='display:flex;flex-direction:column;gap:.5cqw;font:600 1.6cqw/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif'><a href='tlz://twilite.zone/library/documentation/navigation/root.node' style='color:#f4eefc;text-decoration:none'>Navigation →</a><a href='tlz://twilite.zone/library/documentation/authoring-contract/root.node' style='color:#f4eefc;text-decoration:none'>Authoring contract →</a><a href='tlz://twilite.zone/library/documentation/contracts/root.node' style='color:#f4eefc;text-decoration:none'>Contracts →</a></div></div></div></div></div>"
+        }
       }
     },
     {
-      "id": "library-root-field-port",
-      "type": "bridge",
-      "label": "Field",
-      "position": {
-        "x": 0,
-        "y": 340
-      },
-      "width": 280,
-      "height": 120,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Bridge for the Field class.",
-        "intent": "external",
-        "resourceKind": "node-class",
-        "scope": "focused-graph",
-        "grants": [
-          "create"
-        ],
-        "authority": "bridge",
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/data-schema/field.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        },
-        "_classBinding": {
-          "key": "field",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/data-schema/field.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/data-schema/field.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "field",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/data-schema/field.node-class.node"
-        },
-        "target": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/data-schema/field.node-class.node",
-          "mode": "bridge",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ],
-          "label": "Field",
-          "key": "field"
-        },
-        "isRoot": false,
-        "root": false
-      }
-    },
-    {
-      "id": "library-root-view-port",
-      "type": "bridge",
-      "label": "View",
-      "position": {
-        "x": 320,
-        "y": 340
-      },
-      "width": 280,
-      "height": 120,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Bridge for the View class.",
-        "intent": "external",
-        "resourceKind": "node-class",
-        "scope": "focused-graph",
-        "grants": [
-          "create"
-        ],
-        "authority": "bridge",
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        },
-        "_classBinding": {
-          "key": "ui-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
-        },
-        "_bridge": {
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "entryPort": "root",
-          "kind": "node-class",
-          "targetKind": "node-class",
-          "classKey": "ui-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
-        },
-        "target": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "mode": "bridge",
-          "kind": "node-class",
-          "resourceKind": "node-class",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ],
-          "label": "View",
-          "key": "ui-view"
-        },
-        "isRoot": false,
-        "root": false
-      }
-    },
-    {
-      "id": "library-root-title",
-      "type": "title",
-      "label": "Title",
+      "id": "library-root-collection-template",
+      "type": "import",
+      "label": "Collection Template",
       "position": {
         "x": -520,
-        "y": 520
+        "y": 680
       },
-      "width": 500,
-      "height": 240,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "The Library",
-        "subtitle": "Browse documentation, class libraries, and task-planning node classes from here.",
-        "intent": "headline",
-        "status": "active",
-        "_classBinding": {
-          "key": "title",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "identity": {
-            "graphId": "title-node-class",
-            "name": "Title Node Class",
-            "version": "0.1.0",
-            "description": "Template heading or major framing node for reusable graph structures.",
-            "createdAt": "2026-03-26T02:30:00.000Z",
-            "updatedAt": "2026-03-26T02:30:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "Template heading or major framing node for reusable graph structures.",
-          "description": "Template heading or major framing node for reusable graph structures.",
-          "defaults": {
-            "label": "Title",
-            "size": {
-              "width": 420,
-              "height": 240
-            },
-            "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "subtitle": "",
-              "intent": "headline",
-              "status": "draft"
-            }
-          },
-          "nodeDef": {
-            "key": "title",
-            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "Title",
-              "size": {
-                "width": 420,
-                "height": 240
-              },
-              "color": "linear-gradient(135deg, #fde68a, #f59e0b)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "subtitle": "",
-                "intent": "headline",
-                "status": "draft"
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "title",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "title",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "title",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "title",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "title",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "title",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          }
-        },
-        "_bridge": {
-          "sourceBridgeNodeId": "library-root-title-port",
-          "sourceBridgeLabel": "Title",
-          "targetKind": "node-class",
-          "classKey": "title",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
-        },
-        "definitionKey": "title"
-      }
-    },
-    {
-      "id": "library-root-type",
-      "type": "type-definition",
-      "label": "Type",
-      "position": {
-        "x": 60,
-        "y": 560
-      },
-      "width": 260,
+      "width": 320,
       "height": 140,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "name": "Library",
-        "key": "library",
-        "classRef": "github://twilite-zone/public/library/root.node",
-        "meaning": "A top-level library or catalog surface that organizes reusable documentation, classes, contracts, and templates.",
-        "description": "Use this type when a host should render the artifact as a library entry point rather than a generic linked graph.",
-        "category": "navigation",
-        "status": "active",
-        "_classBinding": {
-          "key": "type-definition",
-          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "identity": {
-            "key": "type-definition",
-            "label": "Type Definition"
-          },
-          "meaning": "Declares a legend-facing type with its name, node class authority, and semantic meaning.",
-          "description": "Declares a legend-facing type with its name, node class authority, and semantic meaning.",
-          "defaults": {
-            "label": "Type Definition",
-            "size": {
-              "width": 420,
-              "height": 320
-            }
-          },
-          "views": [
-            {
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-            },
-            {
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-            },
-            {
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-            },
-            {
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-            }
-          ],
-          "nodeView": {
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-          },
-          "editorView": {
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-          }
+        "identity": {
+          "graphId": "library-root"
         },
-        "_bridge": {
-          "sourceBridgeNodeId": "library-root-type-port",
-          "sourceBridgeLabel": "Type Definition",
-          "targetKind": "node-class",
-          "classKey": "type-definition",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node"
-        },
-        "definitionKey": "type-definition"
+        "memo": "The one Bridge to the Collection Template: the Method that derives the views, and the Collection class, come through it.",
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/templates/collection-template/root.node",
+          "resourceKind": "graph",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update",
+            "execute"
+          ]
+        }
       }
     },
     {
-      "id": "library-root-package-count",
-      "type": "field",
-      "label": "Field",
+      "id": "library-root-derive-method",
+      "type": "method",
+      "label": "Derive the collection views",
       "position": {
-        "x": 380,
-        "y": 560
-      },
-      "width": 260,
-      "height": 160,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "Entries",
-        "value": "6",
-        "description": "Top-level destinations currently exposed from the library root.",
-        "fieldType": "number",
-        "required": "true",
-        "_classBinding": {
-          "key": "field",
-          "ref": "github://twilite-zone/public/library/classes/nodes/data-schema/field.node-class.node",
-          "identity": {
-            "key": "field",
-            "label": "Field"
-          },
-          "meaning": "A field belonging to an entity with a specific type or meaning.",
-          "description": "Captures field-level schema structure without collapsing into implementation-specific code.",
-          "defaults": {
-            "label": "Field",
-            "size": {
-              "width": 400,
-              "height": 300
-            }
-          },
-          "views": [
-            {
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/data-schema/field.node-class.node"
-            },
-            {
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/data-schema/field.node-class.node"
-            },
-            {
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/data-schema/field.node-class.node"
-            },
-            {
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/data-schema/field.node-class.node"
-            }
-          ],
-          "nodeView": {
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/data-schema/field.node-class.node"
-          },
-          "editorView": {
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/data-schema/field.node-class.node"
-          }
-        },
-        "_bridge": {
-          "sourceBridgeNodeId": "library-root-field-port",
-          "sourceBridgeLabel": "Field",
-          "targetKind": "node-class",
-          "classKey": "field",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/data-schema/field.node-class.node"
-        },
-        "definitionKey": "field"
-      }
-    },
-    {
-      "id": "library-root-view",
-      "type": "port",
-      "label": "View",
-      "position": {
-        "x": 700,
-        "y": 470
+        "x": 1440,
+        "y": 840
       },
       "width": 420,
-      "height": 280,
+      "height": 260,
+      "ports": [
+        {
+          "id": "call",
+          "key": "call",
+          "label": "Call",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Result",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0
+        }
+      ],
+      "handles": [
+        {
+          "id": "call",
+          "key": "call",
+          "label": "Call",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180,
+          "portId": "call"
+        },
+        {
+          "id": "result",
+          "key": "result",
+          "label": "Result",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0,
+          "portId": "result"
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "The Library",
-        "purpose": "Shared host-facing view for the library root.",
-        "titleSourceNodeId": "library-root-title",
-        "typeSourceNodeId": "library-root-type",
-        "audience": "Author",
-        "status": "active",
-        "svg": "<svg viewBox=\"0 0 220 160\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\">\n  <defs>\n    <linearGradient id=\"libraryShelf\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#eef7ff\"/>\n      <stop offset=\"100%\" stop-color=\"#cfe6ff\"/>\n    </linearGradient>\n    <linearGradient id=\"librarySpineA\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#5fa8ff\"/>\n      <stop offset=\"100%\" stop-color=\"#1d4ed8\"/>\n    </linearGradient>\n    <linearGradient id=\"librarySpineB\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#8dd3c7\"/>\n      <stop offset=\"100%\" stop-color=\"#0f766e\"/>\n    </linearGradient>\n    <linearGradient id=\"librarySpineC\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#fde68a\"/>\n      <stop offset=\"100%\" stop-color=\"#d97706\"/>\n    </linearGradient>\n  </defs>\n  <rect x=\"24\" y=\"26\" width=\"172\" height=\"108\" rx=\"20\" fill=\"url(#libraryShelf)\" stroke=\"#334155\" stroke-width=\"5\"/>\n  <rect x=\"46\" y=\"44\" width=\"24\" height=\"72\" rx=\"6\" fill=\"url(#librarySpineA)\"/>\n  <rect x=\"76\" y=\"36\" width=\"28\" height=\"80\" rx=\"6\" fill=\"url(#librarySpineB)\"/>\n  <rect x=\"110\" y=\"48\" width=\"22\" height=\"68\" rx=\"6\" fill=\"url(#librarySpineC)\"/>\n  <rect x=\"138\" y=\"40\" width=\"36\" height=\"76\" rx=\"6\" fill=\"#e2e8f0\" stroke=\"#64748b\" stroke-width=\"4\"/>\n  <line x1=\"42\" y1=\"124\" x2=\"180\" y2=\"124\" stroke=\"#475569\" stroke-width=\"6\" stroke-linecap=\"round\"/>\n</svg>",
-        "_classBinding": {
-          "key": "ui-view",
-          "sourceRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "identity": {
-            "graphId": "ui-view-node-class",
-            "name": "View Node Class",
-            "version": "0.1.0",
-            "description": "A user-facing interface surface or screen-level view.",
-            "createdAt": "2026-03-24T00:00:00.000Z",
-            "updatedAt": "2026-03-26T19:45:00.000Z"
-          },
-          "intent": "node-class",
-          "meaning": "A user-facing interface surface or screen-level view.",
-          "description": "A user-facing interface surface or screen-level view.",
-          "defaults": {
-            "label": "View",
-            "size": {
-              "width": 420,
-              "height": 320
-            },
-            "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
-            "showLabel": false,
-            "data": {
-              "title": "",
-              "purpose": "",
-              "audience": "",
-              "status": "draft"
-            }
-          },
-          "nodeDef": {
-            "key": "ui-view",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0",
-            "defaults": {
-              "label": "View",
-              "size": {
-                "width": 420,
-                "height": 320
-              },
-              "color": "linear-gradient(135deg, #dbeafe, #60a5fa)",
-              "showLabel": false,
-              "data": {
-                "title": "",
-                "purpose": "",
-                "audience": "",
-                "status": "draft"
-              }
-            }
-          },
-          "views": [
-            {
-              "key": "ui-view",
-              "intent": "editor",
-              "payload": "editor.web",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "ui-view",
-              "intent": "node",
-              "payload": "node.web.detail",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "ui-view",
-              "intent": "node",
-              "payload": "node.web.summary",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            },
-            {
-              "key": "ui-view",
-              "intent": "node",
-              "payload": "node.web.icon",
-              "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-              "source": "local",
-              "version": ">=0.1.0"
-            }
-          ],
-          "nodeView": {
-            "key": "ui-view",
-            "intent": "node",
-            "payload": "node.web.detail",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
-          },
-          "editorView": {
-            "key": "ui-view",
-            "intent": "editor",
-            "payload": "editor.web",
-            "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-            "source": "local",
-            "version": ">=0.1.0"
+        "scriptName": "Derive the collection views",
+        "parameters": [],
+        "source": "",
+        "allowMutations": true,
+        "dryRun": false,
+        "identity": {
+          "graphId": "library-root"
+        },
+        "effects": [
+          {
+            "kind": "update-node",
+            "targets": [
+              "library-root-detail",
+              "library-root-summary",
+              "library-root-glyph",
+              "library-root-declaration",
+              "library-root-collection"
+            ]
           }
+        ],
+        "bridgedMethod": {
+          "bridgeNodeId": "library-root-collection-template",
+          "key": "collection-template-derive-method"
+        }
+      }
+    },
+    {
+      "id": "library-root-member-glossary",
+      "type": "portal",
+      "label": "Glossary",
+      "position": {
+        "x": 0,
+        "y": 200
+      },
+      "width": 420,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
         },
-        "_bridge": {
-          "sourceBridgeNodeId": "library-root-view-port",
-          "sourceBridgeLabel": "View",
-          "targetKind": "node-class",
-          "classKey": "ui-view",
-          "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
         },
-        "definitionKey": "ui-view"
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "sourceRef": "tlz://twilite.zone/library/glossary/root.node",
+        "sourceNodeId": "glossary-root",
+        "target": {
+          "ref": "tlz://twilite.zone/library/glossary/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Glossary"
+        },
+        "authority": "navigate",
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "library-root"
+        },
+        "security": "prompt"
+      }
+    },
+    {
+      "id": "library-root-member-primitives",
+      "type": "portal",
+      "label": "Primitives",
+      "position": {
+        "x": 480,
+        "y": 200
+      },
+      "width": 420,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "sourceRef": "tlz://twilite.zone/library/primitives/root.node",
+        "sourceNodeId": "primitives",
+        "target": {
+          "ref": "tlz://twilite.zone/library/primitives/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Primitives"
+        },
+        "authority": "navigate",
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "library-root"
+        },
+        "security": "prompt"
+      }
+    },
+    {
+      "id": "library-root-member-edge-classes",
+      "type": "portal",
+      "label": "Canon Edge Classes",
+      "position": {
+        "x": 960,
+        "y": 200
+      },
+      "width": 420,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "sourceRef": "tlz://twilite.zone/library/edges/root.node",
+        "sourceNodeId": "canon-edge-classes",
+        "target": {
+          "ref": "tlz://twilite.zone/library/edges/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Canon Edge Classes"
+        },
+        "authority": "navigate",
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "library-root"
+        },
+        "security": "prompt"
+      }
+    },
+    {
+      "id": "library-root-member-templates",
+      "type": "portal",
+      "label": "Canon Templates",
+      "position": {
+        "x": 0,
+        "y": 500
+      },
+      "width": 420,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "sourceRef": "tlz://twilite.zone/library/templates/root.node",
+        "sourceNodeId": "canon-templates",
+        "target": {
+          "ref": "tlz://twilite.zone/library/templates/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Canon Templates"
+        },
+        "authority": "navigate",
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "library-root"
+        },
+        "security": "prompt"
+      }
+    },
+    {
+      "id": "library-root-member-starter",
+      "type": "portal",
+      "label": "Starter Template",
+      "position": {
+        "x": 480,
+        "y": 500
+      },
+      "width": 420,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "sourceRef": "tlz://twilite.zone/library/templates/starter/root.node",
+        "sourceNodeId": "starter",
+        "target": {
+          "ref": "tlz://twilite.zone/library/templates/starter/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Starter Template"
+        },
+        "authority": "navigate",
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "library-root"
+        },
+        "security": "prompt"
+      }
+    },
+    {
+      "id": "library-root-member-node-classes",
+      "type": "portal",
+      "label": "Node Class Library",
+      "position": {
+        "x": 960,
+        "y": 500
+      },
+      "width": 420,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "sourceRef": "tlz://twilite.zone/library/classes/nodes/root.node",
+        "sourceNodeId": "library-node-classes-root-manifest",
+        "target": {
+          "ref": "tlz://twilite.zone/library/classes/nodes/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Node Class Library"
+        },
+        "authority": "navigate",
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "library-root"
+        },
+        "security": "prompt"
+      }
+    },
+    {
+      "id": "library-root-member-navigation",
+      "type": "portal",
+      "label": "Navigation",
+      "position": {
+        "x": 0,
+        "y": 800
+      },
+      "width": 420,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "sourceRef": "tlz://twilite.zone/library/documentation/navigation/root.node",
+        "sourceNodeId": "navigation",
+        "target": {
+          "ref": "tlz://twilite.zone/library/documentation/navigation/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Navigation"
+        },
+        "authority": "navigate",
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "library-root"
+        },
+        "security": "prompt"
+      }
+    },
+    {
+      "id": "library-root-member-authoring-contract",
+      "type": "portal",
+      "label": "Authoring contract",
+      "position": {
+        "x": 480,
+        "y": 800
+      },
+      "width": 420,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "sourceRef": "tlz://twilite.zone/library/documentation/authoring-contract/root.node",
+        "sourceNodeId": "authoring-contract",
+        "target": {
+          "ref": "tlz://twilite.zone/library/documentation/authoring-contract/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Authoring contract"
+        },
+        "authority": "navigate",
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "library-root"
+        },
+        "security": "prompt"
+      }
+    },
+    {
+      "id": "library-root-member-contracts",
+      "type": "portal",
+      "label": "Contracts Index",
+      "position": {
+        "x": 960,
+        "y": 800
+      },
+      "width": 420,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "sourceRef": "tlz://twilite.zone/library/documentation/contracts/root.node",
+        "sourceNodeId": "contracts-declaration",
+        "target": {
+          "ref": "tlz://twilite.zone/library/documentation/contracts/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Contracts Index"
+        },
+        "authority": "navigate",
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "library-root"
+        },
+        "security": "prompt"
       }
     }
   ],
   "edges": [
     {
-      "id": "library-root-edge-1",
-      "type": "reference",
-      "source": "library-root-overview",
-      "target": "library-root-port-1",
-      "sourcePort": "out",
+      "id": "library-root-landing-edge",
+      "type": "ground",
+      "source": "library-root-declaration",
+      "target": "library-root-landing",
+      "sourcePort": "ground",
       "targetPort": "root",
-      "label": "opens",
+      "label": "",
+      "style": {},
+      "data": {
+        "presentation": {
+          "layer": "contract"
+        }
+      }
+    },
+    {
+      "id": "assemble-updates-summary",
+      "type": "derived-view",
+      "source": "library-root-derive-method",
+      "target": "library-root-summary",
+      "sourcePort": "result",
+      "targetPort": "root",
+      "label": "derives",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "route": "curved"
       },
       "data": {}
     },
     {
-      "id": "library-root-edge-2",
-      "type": "reference",
-      "source": "library-root-overview",
-      "target": "library-root-port-2",
-      "sourcePort": "out",
+      "id": "assemble-updates-detail",
+      "type": "derived-view",
+      "source": "library-root-derive-method",
+      "target": "library-root-detail",
+      "sourcePort": "result",
       "targetPort": "root",
-      "label": "opens",
+      "label": "derives",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "route": "curved"
       },
       "data": {}
     },
     {
-      "id": "library-root-edge-3",
-      "type": "reference",
-      "source": "library-root-overview",
-      "target": "library-root-port-3",
-      "sourcePort": "out",
+      "id": "library-root-surface",
+      "type": "surface",
+      "source": "library-root-declaration",
+      "target": "library-root-detail",
+      "sourcePort": "surfaces",
       "targetPort": "root",
-      "label": "opens",
+      "label": "",
+      "style": {},
+      "data": {
+        "surfaceId": "web"
+      }
+    },
+    {
+      "id": "library-root-detail-summary",
+      "type": "next-face",
+      "source": "library-root-detail",
+      "target": "library-root-summary",
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in",
+      "label": "",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "graph-changed-invokes-assemble",
+      "type": "invokes",
+      "source": "library-root-declaration",
+      "target": "library-root-derive-method",
+      "sourcePort": "event:graph.changed",
+      "targetPort": "invokes",
+      "label": "invokes",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "route": "curved"
+      },
+      "data": {
+        "classRef": "tlz://twilite.zone/library/edges/invokes/root.node"
+      }
+    },
+    {
+      "id": "library-root-derive-updates-glyph",
+      "type": "derived-view",
+      "source": "library-root-derive-method",
+      "target": "library-root-glyph",
+      "sourcePort": "result",
+      "targetPort": "root",
+      "label": "derives",
+      "style": {
+        "route": "curved"
       },
       "data": {}
     },
     {
-      "id": "library-root-edge-4",
-      "type": "reference",
-      "source": "library-root-overview",
-      "target": "library-root-port-4",
-      "sourcePort": "out",
+      "id": "library-root-summary-to-glyph",
+      "type": "next-face",
+      "source": "library-root-summary",
+      "target": "library-root-glyph",
+      "sourcePort": "sequence-out",
       "targetPort": "root",
-      "label": "opens",
+      "label": "",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "library-root-edge-environment",
+      "type": "environment",
+      "source": "library-root-declaration",
+      "target": "library-root-environment",
+      "sourcePort": "environment",
+      "targetPort": "root",
+      "label": "",
       "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
+        "route": "curved"
       },
+      "data": {
+        "classRef": "tlz://twilite.zone/library/edges/environment/root.node"
+      }
+    },
+    {
+      "id": "library-root-edge-member-glossary",
+      "type": "contains",
+      "source": "library-root-collection",
+      "target": "library-root-member-glossary",
+      "sourcePort": "members",
+      "targetPort": "part-of",
+      "label": "",
+      "style": {},
       "data": {}
     },
     {
-      "id": "library-root-edge-graph-theory",
-      "type": "reference",
-      "source": "library-root-overview",
-      "target": "library-root-port-graph-theory",
-      "sourcePort": "out",
-      "targetPort": "root",
-      "label": "opens",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
+      "id": "library-root-edge-member-primitives",
+      "type": "contains",
+      "source": "library-root-collection",
+      "target": "library-root-member-primitives",
+      "sourcePort": "members",
+      "targetPort": "part-of",
+      "label": "",
+      "style": {},
       "data": {}
     },
     {
-      "id": "library-root-edge-contracts",
-      "type": "reference",
-      "source": "library-root-overview",
-      "target": "library-root-port-contracts",
-      "sourcePort": "out",
-      "targetPort": "root",
-      "label": "opens",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
+      "id": "library-root-edge-member-edge-classes",
+      "type": "contains",
+      "source": "library-root-collection",
+      "target": "library-root-member-edge-classes",
+      "sourcePort": "members",
+      "targetPort": "part-of",
+      "label": "",
+      "style": {},
       "data": {}
     },
     {
-      "id": "library-root-edge-title-overview",
-      "type": "reference",
-      "source": "library-root-title",
-      "target": "library-root-overview",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "frames",
+      "id": "library-root-edge-member-templates",
+      "type": "contains",
+      "source": "library-root-collection",
+      "target": "library-root-member-templates",
+      "sourcePort": "members",
+      "targetPort": "part-of",
+      "label": "",
+      "style": {},
       "data": {}
     },
     {
-      "id": "library-root-edge-title-type",
-      "type": "reference",
-      "source": "library-root-title",
-      "target": "library-root-type",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "names",
+      "id": "library-root-edge-member-starter",
+      "type": "contains",
+      "source": "library-root-collection",
+      "target": "library-root-member-starter",
+      "sourcePort": "members",
+      "targetPort": "part-of",
+      "label": "",
+      "style": {},
       "data": {}
     },
     {
-      "id": "library-root-edge-type-view",
-      "type": "reference",
-      "source": "library-root-type",
-      "target": "library-root-view",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "declares type",
+      "id": "library-root-edge-member-node-classes",
+      "type": "contains",
+      "source": "library-root-collection",
+      "target": "library-root-member-node-classes",
+      "sourcePort": "members",
+      "targetPort": "part-of",
+      "label": "",
+      "style": {},
       "data": {}
     },
     {
-      "id": "library-root-edge-count-view",
-      "type": "reference",
-      "source": "library-root-package-count",
-      "target": "library-root-view",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "supports",
+      "id": "library-root-edge-member-navigation",
+      "type": "contains",
+      "source": "library-root-collection",
+      "target": "library-root-member-navigation",
+      "sourcePort": "members",
+      "targetPort": "part-of",
+      "label": "",
+      "style": {},
       "data": {}
     },
     {
-      "id": "library-root-edge-overview-view",
-      "type": "reference",
-      "source": "library-root-overview",
-      "target": "library-root-view",
-      "sourcePort": "out",
-      "targetPort": "root",
-      "label": "host view",
+      "id": "library-root-edge-member-authoring-contract",
+      "type": "contains",
+      "source": "library-root-collection",
+      "target": "library-root-member-authoring-contract",
+      "sourcePort": "members",
+      "targetPort": "part-of",
+      "label": "",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "library-root-edge-member-contracts",
+      "type": "contains",
+      "source": "library-root-collection",
+      "target": "library-root-member-contracts",
+      "sourcePort": "members",
+      "targetPort": "part-of",
+      "label": "",
+      "style": {},
       "data": {}
     }
   ],
-  "clusters": [],
-  "scripts": [],
-  "nodeCount": 16,
-  "edgeCount": 10,
-  "timestamp": "2026-03-26T22:40:00.000Z"
+  "settings": {
+    "theme": null,
+    "backgroundImage": null,
+    "defaultNodeColor": "#1976d2",
+    "defaultEdgeColor": "",
+    "snapToGrid": false,
+    "gridSize": 20,
+    "edgeRouting": "auto",
+    "layout": {
+      "mode": "manual",
+      "defaultLayout": "layered",
+      "direction": "DOWN",
+      "edgeLaneGapPx": 10,
+      "serpentine": {
+        "maxPerRow": 6
+      },
+      "cycleFallback": {
+        "enabled": true
+      },
+      "elk": {
+        "algorithm": "fixed",
+        "edgeRouting": "ORTHOGONAL",
+        "portConstraints": "FIXED_SIDE",
+        "nodeSpacing": 120,
+        "layeredEdgeSpacing": 80
+      }
+    },
+    "github": {
+      "repo": "twilite-zone/public",
+      "path": "library/templates/collection-template/root.node",
+      "branch": "main",
+      "autoCreateRepo": true,
+      "repoVisibility": "private",
+      "seedOnCommit": false,
+      "enableGithubPages": false,
+      "installationId": ""
+    }
+  },
+  "scripts": []
 }
