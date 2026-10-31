@@ -2,113 +2,49 @@
 
 Read the onboarding guide first:
 
-- `https://twilite.zone/library/documentation/contracts/onboarding.md`
+- `https://twilite.zone/library/documentation/OnboardLLM.md`
 
-Then complete the handshake.
+If you cannot open links, the rules below are enough for the handshake. Then complete the handshake.
 
-Handshake requirements:
+## Handshake requirements
 
-- return JSON only
-- return one small additive `transaction`
-- use one `createNodes` command
-- create one or two simple nodes that acknowledge readiness
-- use the exact top-level shape:
+- return JSON only: one fenced `json` block, no prose around it
+- return one small additive `transaction` with the exact top-level shape:
   - `{"action":"transaction","commands":[...]}`
-- do not wrap the payload as:
-  - `{"transaction": { ... }}`
-- use `action`, not `actions`
-- use `action`, not `command`
-- use `id`, not `uuid`
-- use `data`, not `metadata`
-- give each created node a real `type`
-- put the node `label` on the node itself, not inside `data`
-- for markdown nodes, put the content in `data.markdown`
-- include a `position`
-- do not invent port names
-- only use port ids that are explicitly declared on the nodes
-- do not confuse handle placement like `side` with a port id
-- if you do not know the schema, inspect first
-- use `root` only when the nodes are known to expose `root`
-- use `reference` as the safe default edge type
-- do not emit empty inline payload placeholders like `html: ""` or `svg: ""`
-- for `port` or `portal` nodes, only include inline render fields when they contain real authored content
-- if a `portal` previews a remote surface, bind it through `sourceRef`, `sourceNodeId`, `sourcePayload`, and `target` instead of storing blank local payload fields
-- if you author a real `port`, put the graph id at `data.identity.graphId`, not `data.graphId`
-- if the user asks for "a port for this graph", treat that as a working graph entry surface, not just a decorative card
-- a graph-owned entry `port` should usually include `data.target.graphId` and `data.target.mode: "navigate"`
-- do not return a metadata-only card when the user asked for a `port` that connects back to the graph
-- when unsure, inspect a real specimen before inventing shape:
-  - first inspect the port tutorial: `github://twilite-zone/public/tutorial/basic-primitives/port/root.node`
-  - then use supporting specimens as needed:
-    - visual port specimen: `github://mikemartinez1974/public/graphs/indiana-jones.node`
-    - navigate specimen: `github://twilite/public/root.node`
-- if you author `renderShape`, use an object like `{"kind":"svg"}`, not a bare string like `"svg"`
-- do not use `{"kind":"card"}` for `renderShape`; `card` is a view role, not a render format
-- do not assume `title`, `description`, `icon`, or `cover` will paint a port card by themselves; provide a real payload such as `data.svg`, `data.markdown`, `data.html`, `data.image`, or `data.text`
-- if you author SVG, keep `xmlns='http://www.w3.org/2000/svg'` as raw XML, not a markdown link
-- if you author inline SVG in JSON, copy a known-good specimen and edit only the artwork; do not retype `xmlns`
-- if you see `[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)` inside `svg`, the payload is invalid
-- inside a JSON `data.svg` string, use single quotes for every SVG/XML attribute; do not emit unescaped double-quoted SVG attributes
+- do not wrap the payload as `{"transaction": { ... }}`
+- use one `createNodes` command and nothing else
+- create two `content` nodes that acknowledge readiness: one with `content.kind: "markdown"` and one with `content.kind: "svg"`
 - parse the complete transaction as strict JSON before returning it
-- when adding a port to an existing graph, create the port and update the declaration's complete `surfaces` array in the same transaction; preserve every existing surface and point the new surface's `viewNodeId` at the new port
-- if you create edges later, use `source` and `target`
-- do not use `sourceNodeId` and `targetNodeId` in `createEdges`
+
+## Node rules
+
+- there are no `markdown` or `svg` node types; all authored material is a `content` node, and `data.content` is `{ "kind": "...", "value": "..." }`
+- content kinds are `markdown`, `html`, `svg`, `text`, `json`, and `image`
+- give each node a real `type`, a `label`, and a `position`
+- `label` goes on the node itself, not inside `data`
+- `width`, `height`, `visible`, `showLabel`, and `style` go on the node itself, never inside `data`
+- use `action`, not `actions` or `command`
+- use `id`, not `uuid`; use real RFC 4122 v4 UUIDs
+- use `data`, not `metadata`
 - do not put `edges` inside a `createNodes` command
-- if you edit one node, use `updateNode`
-- use `updateNodes` only for one shared patch across many ids
-- in `updateNodes`, `updates` must be one object
-- the payload must remain valid strict JSON
-- double quotes inside any JSON string must be escaped or replaced with safe inner single quotes; this applies to `fontFamily`, markdown, labels, URLs, HTML, SVG, and every other string field
-- for example, write `"fontFamily": "Inter, system-ui, 'Segoe UI', sans-serif"` rather than placing unescaped double quotes around `Segoe UI`
-- do not leave trailing commas after the last property in an object or array
-- keep quotes inside `data.svg` or `data.html` escaped so the outer JSON string stays valid
-- if the app reports a JSON syntax error, fix that before debugging declaration or port contract details
-- do not use `updateNodes` with:
-  - a `nodes` array
-  - an `updates` array
-  - per-node `{ id, updates }` entries
-- if you edit one edge, use `updateEdge`
-- use `updateEdges` only for one shared patch across many ids
-- use real existing ids for updates, not placeholder example ids
-- put visual edge styling in `updates.style`
-- do not use top-level `animated: true` for edge styling
-- do not use `updates.style.animated: true`; use `updates.style.animation` instead
-- an edge animation object requires a supported `type`, for example `"animation": { "type": "flow", "duration": 2200 }`
-- supported edge animation types are `dash`, `glow`, `pulse`, and `flow`
-- `animation.enabled` and `animation.direction` are not current edge-animation contract fields
+- if you create edges later, use `source`, `target`, `sourcePort`, `targetPort`, and `type` (`edge` is the plain default); never `sourceNodeId` or `targetNodeId`
+- only use port ids that are explicitly declared; do not invent port names
+- if you edit one node, use `updateNode`; use `updateNodes` only for one shared patch (`ids` plus a single `updates` object) across many nodes
+- use real existing ids for updates, not placeholder ids
 
-This response is a handshake, not a full graph.
+## JSON and SVG safety
 
-After the handshake, when creating a real graph declaration:
+- escape double quotes inside any JSON string, or use safe inner single quotes; this applies to markdown, labels, URLs, HTML, SVG, and `fontFamily`
+- write `"fontFamily": "Inter, system-ui, 'Segoe UI', sans-serif"`, not unescaped double quotes around `Segoe UI`
+- write newlines inside strings as `\n`
+- no trailing commas after the last property in an object or array
+- inside `svg` or `html` strings, use single quotes for every markup attribute
+- keep `xmlns='http://www.w3.org/2000/svg'` as raw XML, never as a markdown link
+- SVG needs a root `<svg>` with a `viewBox`, `width='100%'`, `height='100%'`, `preserveAspectRatio`, `role='img'`, and an `aria-label`; put a plain-language description in `data.altText`
+- no scripts, event-handler attributes, or empty placeholders like `svg: ""`
+- if the app reports a JSON syntax error, fix that before debugging anything else
 
-- create a real `declaration` node, not a substitute primitive
-- include `data.identity`, `data.intent`, `data.dependencies`, `data.authority`, `data.settings`, and `data.declaration`
-- always include non-empty `data.intent.kind` and `data.intent.scope`
-- choose `data.intent.kind` to describe the graph's subject or purpose, such as `person`, `organization`, `event`, `work`, `task-board`, `documentation`, or `graph`
-- use `data.intent.scope: "public"` for intentionally public content, `"local"` for graph-local infrastructure, `"shared"` for reusable shared resources, and `"mixed"` only when the graph genuinely spans scopes or a narrower scope cannot be determined
-- in `data.declaration`, include:
-  - `kind`
-  - `targetMode`
-  - `artifactKind`
-  - `defaultSurfaceId`
-  - `surfaces`
-- if the graph exposes a primary card or reader surface, point the declared surface at the real node with `viewNodeId`
-- if you create a graph-owned entry `port`, expose that same port through the declaration surfaces instead of leaving it undeclared
-- keep `dependencies.nodeTypes` aligned with the node types actually present in the graph
-- keep `identity.graphId` consistent across the declaration and graph-owned nodes
-- do not rely on compatibility-only fields like `primaryNodeViewId` or `portViewNodeId` without also declaring real surfaces
-- a declaration that loads but omits `targetMode`, `artifactKind`, or real surfaces may still trigger saveability or interpretation problems
-- when creating `port` or `portal` nodes, omit empty `html`, `svg`, `markdown`, and `text` fields rather than persisting placeholders
-- for a normal graph declaration, prefer:
-  - `data.declaration.kind: "graph"`
-  - `data.declaration.targetMode: "artifact"`
-  - `data.declaration.artifactKind: "graph"`
-  - declared surface `kind: "view"`
-- treat `data.declaration.kind` as the declaration's type; do not substitute `data.intent.kind` for it
-- for example, a person graph normally has `data.intent.kind: "person"` and `data.declaration.kind: "graph"`
-- do not improvise a normal graph declaration as `knowledge-graph` + `targetMode: "graph"` + surface `kind: "card"` unless the contract explicitly requires that shape
-
-Minimal valid handshake example:
+## Minimal valid handshake example
 
 ```json
 {
@@ -119,13 +55,50 @@ Minimal valid handshake example:
       "nodes": [
         {
           "id": "11111111-1111-4111-8111-111111111111",
-          "type": "markdown",
+          "type": "content",
           "label": "LLM Handshake",
           "position": { "x": 0, "y": 0 },
+          "width": 420,
+          "height": 240,
           "visible": true,
           "showLabel": true,
+          "style": {
+            "background": "#182018",
+            "color": "#edf3df",
+            "borderColor": "#9dbb83",
+            "borderWidth": 2,
+            "borderStyle": "solid",
+            "borderRadius": 24
+          },
           "data": {
-            "markdown": "## LLM Handshake\\n\\nReady to collaborate through valid Twilite graph mutations."
+            "content": {
+              "kind": "markdown",
+              "value": "## LLM Handshake\n\nReady to collaborate through valid Twilite graph mutations."
+            }
+          }
+        },
+        {
+          "id": "22222222-2222-4222-8222-222222222222",
+          "type": "content",
+          "label": "Ready",
+          "position": { "x": 480, "y": 0 },
+          "width": 320,
+          "height": 240,
+          "visible": true,
+          "showLabel": true,
+          "style": {
+            "background": "#0f172a",
+            "borderColor": "#334155",
+            "borderWidth": 1,
+            "borderStyle": "solid",
+            "borderRadius": 24
+          },
+          "data": {
+            "altText": "A green check mark inside a circle.",
+            "content": {
+              "kind": "svg",
+              "value": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Ready'><circle cx='80' cy='80' r='48' fill='none' stroke='#34d399' stroke-width='8'/><path d='M58 82l16 16 30-34' fill='none' stroke='#34d399' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+            }
           }
         }
       ]
@@ -134,4 +107,27 @@ Minimal valid handshake example:
 }
 ```
 
-After the handshake, continue helping through valid Twilite graph mutations.
+This response is a handshake, not a full graph.
+
+## After the handshake
+
+Continue helping through valid Twilite graph mutations, and make them good: real content, one clear structure, and a diagram where a diagram explains better than prose.
+
+When creating a real graph:
+
+- start from one `root` node with `data.identity` (`graphId`, `name`, `version`, `description`) and `data.intent` (`kind` and `scope`, both non-empty)
+- the graph's title belongs in `root.data.identity.name` and its kind in `root.data.intent.kind`; do not create standalone `title` or `type` nodes for the graph itself
+- choose `intent.kind` to describe the graph's subject or purpose, such as `person`, `organization`, `event`, `work`, `task-board`, `documentation`, or `graph`
+- use `intent.scope: "public"` for intentionally public content, `"local"` for graph-local infrastructure, `"shared"` for reusable shared resources, and `"mixed"` only when the graph genuinely spans scopes
+- the root is the implicit root port; do not add a second root `port`
+- connect the root to what it points at with edges whose `sourcePort` names the relationship and whose `targetPort` is `root`:
+  - `surfaces` (required, at least one): an edge of `type` `surface`, with `data.surfaceId`, to the first `face` of a Surface
+  - a Surface is a chain: each `face` points at the next with a `next-face` edge (`sourcePort` `sequence-out`, `targetPort` `sequence-in`), and the last face points at a `glyph` node the same way
+  - `ground` (optional, one): an edge of `type` `ground` to the node you land on inside the graph; a graph that is only a document has none
+  - `exposes-port`: optional and repeatable, one per extra named port
+- a `face` shows material through `data.content` or a `content` node; do not put `renderShape` on new nodes, and do not write `declaration`, `view`, `default-view` or `landing-surface`: they are retired
+- an edge's `type` is its kind (`surface`, `next-face`, `ground`, `leads-to`, and so on); a plain edge with no class is `edge`
+- create nodes before the edges that reference them
+- keep `identity.graphId` consistent across the root and graph-owned nodes
+
+For the full rules, read the guide above.
