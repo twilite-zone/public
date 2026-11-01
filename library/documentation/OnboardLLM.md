@@ -352,6 +352,7 @@ Twilite transactions are strict JSON before they are graph commands.
 - Preserve the address form the user gave you. Do not rewrite one scheme as another, and do not invent legacy aliases.
 - For the Twilite application repository, `public/<path>` is available both as `https://twilite.zone/<path>` and `github://TwiliteLLC/twilite/public/<path>`. `public/root.node` is the application entry graph; do not merge it with the company graph.
 - The templates to start from are listed at `tlz://twilite.zone/library/templates/root.node`. A template is used through one `import` of the template, not by copying its nodes.
+- A new graph begins as the Blank Start (`tlz://twilite.zone/library/starters/blank/root.node`): a root, a Detail, a Summary and a Glyph in one chain, and nothing else. When the graph you are writing is a document, a page and not a scene, write against the Document Starter, `tlz://twilite.zone/library/templates/document-starter/root.node`: its page is the worked example of what a document graph is made of.
 
 ## Using the app, and when things go wrong
 
