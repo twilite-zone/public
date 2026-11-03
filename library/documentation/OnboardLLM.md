@@ -467,6 +467,70 @@ Edge `type`s: `contains` (a goal to each of its tasks, questions and decisions),
 }
 ```
 
+### Changing what you already made
+
+The conversation goes on after the first reply. When the person asks for a change, answer with a `transaction` of only the change, never the whole graph again:
+
+- To change a card you made, send `updateNode` with the `id` you gave it in your earlier reply, and only the fields that change, as in `{ "data": { "status": "in-progress" } }`. Do not send the card's other fields.
+- To add something, send `createNodes` and `createEdges` as before. Draw an edge to a card you made earlier by its `id` in `source` or `target`. Give new cards position 0, 0; Twilite places them clear of what is there.
+- Keep every `id` you wrote, so you can refer to it. If you no longer have an id, ask the person to paste the graph rather than guessing.
+
+The example starts the second task, adds a task and puts it under the goal:
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "updateNode",
+      "id": "f4dbc6a5-8ea1-4f4c-9d97-5a3b2c0e6d44",
+      "updates": {
+        "data": {
+          "status": "in-progress"
+        }
+      }
+    },
+    {
+      "action": "createNodes",
+      "nodes": [
+        {
+          "id": "0b6fdf17-a0c3-4b6e-9fb9-7c5d4e2a8f66",
+          "type": "task",
+          "label": "Choose a tile",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "width": 500,
+          "height": 285,
+          "visible": true,
+          "showLabel": true,
+          "data": {
+            "title": "Choose a tile",
+            "classRef": "tlz://twilite.zone/library/classes/nodes/task-planning/task.node-class.node",
+            "status": "todo",
+            "owner": "Me",
+            "body": "Pick a tile for the floor and the wall."
+          }
+        }
+      ]
+    },
+    {
+      "action": "createEdges",
+      "edges": [
+        {
+          "id": "0c7e0e28-b1d4-4c7f-8ac0-8d6e5f3b9a77",
+          "type": "contains",
+          "source": "d2b9a4e3-6c8f-4d2a-9b75-3e1f0a8c4b22",
+          "target": "0b6fdf17-a0c3-4b6e-9fb9-7c5d4e2a8f66",
+          "data": {}
+        }
+      ]
+    }
+  ]
+}
+```
+
 ## How to respond
 
 - **In an existing graph:** return a `transaction` of small, targeted commands. Preserve everything the user did not ask you to change.
