@@ -1,6 +1,6 @@
 # What a canon template is
 
-Status: Approved 2026-10-21. Each rule is short, says why, and says how it is checked: eleven can be checked mechanically, and two are judgement.
+Status: Approved 2026-10-21. Rule 14 added 2026-11-03. Each rule is short, says why, and says how it is checked: twelve can be checked mechanically, and two are judgement.
 
 ## What it is
 
@@ -109,6 +109,14 @@ A canon template has an environment: a face of its own on an `environment` edge 
 *Why:* A graph's interior is the room its work happens in. A template that sets none leaves every graph made from it on whatever backdrop the app falls back to, so it cannot say what kind of room this is.
 
 *Checked by:* Test (mechanical).
+
+## 14. Where it asks, it has a place to answer
+
+Where a template expects input, the form gives a labelled place for it, near where it is needed, and the card shows what is missing. Every text a card shows has a field for it; a list of short texts is typed one to a line, never as JSON; and what is waiting on a person (an answer, a reason) says so on the card until it is filled in.
+
+*Why:* A starter that asks a question but has nowhere to answer it leaves the person guessing which field to misuse, and a card that never says it is waiting is easy to ignore.
+
+*Checked by:* Test: every text a card of the template's classes shows has a field in its form, and none of those fields is raw JSON (mechanical). That the card says what is missing is judgement; read at approval.
 
 ## What it is not
 
