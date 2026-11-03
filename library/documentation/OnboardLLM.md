@@ -147,7 +147,7 @@ Root relationships. Each is an edge from the root, where `sourcePort` is the rel
 | `ground` | where entry and focus land inside the graph; its geometry with the root defines the authored frame | optional | no |
 | `exposes-port` | an additional named Port offered to other graphs | no | yes |
 
-A Surface is a chain: a `surface` edge (usually from the root's `surfaces` port) points at its first face; each face points at the next with a `next-face` edge (`sourcePort` `sequence-out`, `targetPort` `sequence-in`); the last face points at a `glyph` node the same way. Every Surface begins with a face and ends with a glyph. A document graph may omit ground when its first face is the page. Older graphs use declaration, View, landing-surface, and per-view relationship names; they still load, but do not write them.
+A Surface is a chain: a `surface` edge (usually from the root's `surfaces` port) points at its first face; each face points at the next with a `next-face` edge (`sourcePort` `sequence-out`, `targetPort` `sequence-in`); the last face points at the `glyph` node with the same kind of edge, but a glyph has one port, `root`, so that edge's `targetPort` is `root`, not `sequence-in`. Every Surface begins with a face and ends with a glyph. A document graph may omit ground when its first face is the page. Older graphs use declaration, View, landing-surface, and per-view relationship names; they still load, but do not write them.
 
 Do:
 
@@ -264,7 +264,7 @@ This is a valid new graph: one root, one Surface (a face followed by a glyph), a
           "source": "7a9d2b64-1c3e-4f85-8b06-4d7e9f0a1b02",
           "target": "c3d5f7a9-1b2c-4d4e-9f60-7b8c9d0e1f04",
           "sourcePort": "sequence-out",
-          "targetPort": "sequence-in",
+          "targetPort": "root",
           "data": {}
         },
         {
@@ -284,10 +284,194 @@ This is a valid new graph: one root, one Surface (a face followed by a glyph), a
 
 The nodes come first and the edges second because edges must reference nodes that already exist.
 
+## Keeping track of work
+
+When the user wants to keep track of work (a plan, a project, things to decide), use goals, tasks, questions and decisions instead of a markdown checklist. Each is a card with a status the user can change, and the status shows on it at a glance. They come from the Task Template, which a graph uses through one `import` of the template.
+
+1. **Add one `import` node of the template**, as in the example. It brings all four kinds; do not add one for each.
+2. **Add the cards.** A card's `type` is `goal`, `task`, `open-question` or `decision`, and `data.classRef` names its class. The card shows `data.title` (put the same text in `label`), `data.body`, `data.status` and `data.owner`.
+3. **Draw the relationships as edges with no `sourcePort` and no `targetPort`.** These cards do not carry named ports in a reply, and Twilite refuses an edge that names one.
+
+| `type` | `data.classRef` | `data.status` | Also |
+|---|---|---|---|
+| `goal` | `tlz://twilite.zone/library/classes/nodes/task-planning/goal.node-class.node` | `todo`, `in-progress`, `blocked`, `waiting`, `done`, `cancelled` | `successMetrics`: a list of short texts, "done when" |
+| `task` | `tlz://twilite.zone/library/classes/nodes/task-planning/task.node-class.node` | the same | `blockedReason`; `acceptanceCriteria`: a list of short texts |
+| `open-question` | `tlz://twilite.zone/library/classes/nodes/task-planning/open-question.node-class.node` | `open`, `investigating`, `answered`, `resolved` | `answer`: leave it empty; the user writes it |
+| `decision` | `tlz://twilite.zone/library/classes/nodes/task-planning/decision.node-class.node` | `proposed`, `decided` | `rationale` |
+
+Edge `type`s: `contains` (a goal to each of its tasks, questions and decisions), `precedes` (a task to the task that comes after it), `blocked-by` (a task to the question or task it waits on), `raises` (a task to a question it raises), `resolves` (a decision to the question it answers).
+
+- Size a card 500 wide and 285 high (262 for a question). Put the goal on top, the tasks in a row below it, and the questions under the tasks.
+- Do not mark a goal `done`: when all the work is done, the person confirms the goal. Do not answer a question for the user; leave `answer` empty.
+- Do not add a Method or try to build the graph's own Summary. A graph made from the Task Template itself derives that; a graph that uses its cards does not need it.
+
+```json
+{
+  "action": "transaction",
+  "commands": [
+    {
+      "action": "createNodes",
+      "nodes": [
+        {
+          "id": "c1a8f3d2-5b7e-4c19-8a64-2d0e9f7b3a11",
+          "type": "import",
+          "label": "Task Template",
+          "position": {
+            "x": 0,
+            "y": 700
+          },
+          "width": 320,
+          "height": 140,
+          "data": {
+            "bridge": {
+              "ref": "tlz://twilite.zone/library/templates/task-template/root.node",
+              "resourceKind": "graph",
+              "scope": "focused-graph",
+              "grants": [
+                "read",
+                "create",
+                "update",
+                "execute"
+              ]
+            }
+          }
+        },
+        {
+          "id": "d2b9a4e3-6c8f-4d2a-9b75-3e1f0a8c4b22",
+          "type": "goal",
+          "label": "Finish the kitchen",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "width": 500,
+          "height": 285,
+          "visible": true,
+          "showLabel": true,
+          "data": {
+            "title": "Finish the kitchen",
+            "classRef": "tlz://twilite.zone/library/classes/nodes/task-planning/goal.node-class.node",
+            "status": "in-progress",
+            "owner": "Me",
+            "body": "A kitchen we enjoy cooking in, finished before the holidays.",
+            "successMetrics": [
+              "All three quotes are in",
+              "Work starts in March"
+            ]
+          }
+        },
+        {
+          "id": "e3cab5f4-7d90-4e3b-8c86-4f2a1b9d5c33",
+          "type": "task",
+          "label": "Measure the room",
+          "position": {
+            "x": 0,
+            "y": 340
+          },
+          "width": 500,
+          "height": 285,
+          "visible": true,
+          "showLabel": true,
+          "data": {
+            "title": "Measure the room",
+            "classRef": "tlz://twilite.zone/library/classes/nodes/task-planning/task.node-class.node",
+            "status": "done",
+            "owner": "Me",
+            "body": "Exact measurements, including the windows."
+          }
+        },
+        {
+          "id": "f4dbc6a5-8ea1-4f4c-9d97-5a3b2c0e6d44",
+          "type": "task",
+          "label": "Collect three quotes",
+          "position": {
+            "x": 560,
+            "y": 340
+          },
+          "width": 500,
+          "height": 285,
+          "visible": true,
+          "showLabel": true,
+          "data": {
+            "title": "Collect three quotes",
+            "classRef": "tlz://twilite.zone/library/classes/nodes/task-planning/task.node-class.node",
+            "status": "todo",
+            "owner": "Me",
+            "body": "Ask three contractors for a quote on the same plan."
+          }
+        },
+        {
+          "id": "a5ecd7b6-9fb2-4a5d-8ea8-6b4c3d1f7e55",
+          "type": "open-question",
+          "label": "Open the kitchen up, or keep the layout?",
+          "position": {
+            "x": 560,
+            "y": 700
+          },
+          "width": 500,
+          "height": 262,
+          "visible": true,
+          "showLabel": true,
+          "data": {
+            "title": "Open the kitchen up, or keep the layout?",
+            "classRef": "tlz://twilite.zone/library/classes/nodes/task-planning/open-question.node-class.node",
+            "status": "open",
+            "owner": "Me",
+            "body": "Opening it up costs more but changes the quotes.",
+            "answer": ""
+          }
+        }
+      ]
+    },
+    {
+      "action": "createEdges",
+      "edges": [
+        {
+          "id": "01b1c2d3-4e5f-4a6b-8c7d-9e0f1a2b3c41",
+          "type": "contains",
+          "source": "d2b9a4e3-6c8f-4d2a-9b75-3e1f0a8c4b22",
+          "target": "e3cab5f4-7d90-4e3b-8c86-4f2a1b9d5c33",
+          "data": {}
+        },
+        {
+          "id": "02b1c2d3-4e5f-4a6b-8c7d-9e0f1a2b3c42",
+          "type": "contains",
+          "source": "d2b9a4e3-6c8f-4d2a-9b75-3e1f0a8c4b22",
+          "target": "f4dbc6a5-8ea1-4f4c-9d97-5a3b2c0e6d44",
+          "data": {}
+        },
+        {
+          "id": "03b1c2d3-4e5f-4a6b-8c7d-9e0f1a2b3c43",
+          "type": "contains",
+          "source": "d2b9a4e3-6c8f-4d2a-9b75-3e1f0a8c4b22",
+          "target": "a5ecd7b6-9fb2-4a5d-8ea8-6b4c3d1f7e55",
+          "data": {}
+        },
+        {
+          "id": "04b1c2d3-4e5f-4a6b-8c7d-9e0f1a2b3c44",
+          "type": "precedes",
+          "source": "e3cab5f4-7d90-4e3b-8c86-4f2a1b9d5c33",
+          "target": "f4dbc6a5-8ea1-4f4c-9d97-5a3b2c0e6d44",
+          "data": {}
+        },
+        {
+          "id": "05b1c2d3-4e5f-4a6b-8c7d-9e0f1a2b3c45",
+          "type": "raises",
+          "source": "f4dbc6a5-8ea1-4f4c-9d97-5a3b2c0e6d44",
+          "target": "a5ecd7b6-9fb2-4a5d-8ea8-6b4c3d1f7e55",
+          "data": {}
+        }
+      ]
+    }
+  ]
+}
+```
+
 ## How to respond
 
 - **In an existing graph:** return a `transaction` of small, targeted commands. Preserve everything the user did not ask you to change.
-- **For a brand-new graph:** return a complete `transaction` that creates the root and everything it points at, as in the starter above.
+- **When the user's graph is already open** (they will say so, or you are guiding them from a new graph): do not send a `root`, a `face` or a `glyph`; the graph has them. Return a `transaction` of content nodes and the edges between them, with positions starting at 0, 0. Twilite places them clear of what is already there.
+- **For a brand-new graph** (nothing is open): return a complete `transaction` that creates the root and everything it points at, as in the starter above.
 - **Format:** put the transaction in one fenced `json` code block containing only valid JSON, with no comments and no trailing commas, so the user can copy it straight into Twilite. Put your explanation in ordinary text before or after the block, briefly.
 - **Validate before you send.** A syntax error stops the whole transaction before Twilite can check anything else. Read your JSON through once.
 
