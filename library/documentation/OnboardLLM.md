@@ -131,6 +131,7 @@ Edges store their kind in `type`, their class graph in `data.classRef`, and thei
 - A **root** carries identity (`graphId`, `name`, `version`, `description`) and intent (`kind`, `scope`). It points at Surfaces, an optional ground, and exposed Ports through typed edges.
 - A **Surface** is one ordered chain of faces, richest first, ending in a glyph. Twilite uses the nearest available face as the workspace becomes smaller; do not manufacture Detail, Summary, and Icon faces just to fill bands.
 - **Content** carries markdown, html, svg, text, json, or image values. A face may own `data.content` or delegate to a content node.
+- **A face is how the graph looks from outside**, in a workspace at a distance. It is not shown on the canvas while the person works inside the graph. So what the person should read inside the graph, such as an overview, a summary or notes, goes in a `content` node on the canvas, never only in a face.
 - **Ports** are named connection points. **Portals** open into another graph's exposed surfaces. Graphs can only use what other graphs choose to expose.
 - **Properties** hold functional data inside the graph. They are never for the graph's own title or kind; those belong to the root.
 - **Methods** are the executable primitive. A property or other event source runs a Method only through an authored `invokes` edge in the same graph.
