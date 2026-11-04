@@ -101,7 +101,7 @@ Rules for every transaction:
 
 - The top level is `action`. `transaction` is the value of `action`, not a wrapper key.
 - `commands` is an array. `createNodes` contains `nodes`, never `edges`.
-- Every node has a real `type` (`content`), a `label`, and a `position`.
+- Every node has a real `type` (`content`), and a `label`. Leave out `position` unless the place matters: Twilite arranges cards that have none.
 - Material goes in `data.content` as `{ "kind", "value" }`. Not `data.markdown`, not `data.svg`, not `data.title` and `data.body`.
 - `label` is a node field, not a `data` field.
 - `style`, `width`, `height`, and `visible` go on the node shell, never inside `data`.
@@ -307,7 +307,7 @@ When the user wants to keep track of work (a plan, a project, things to decide),
 
 Edge `type`s: `contains` (a goal to each of its tasks, questions and decisions), `precedes` (a task to the task that comes after it), `blocked-by` (a task to the question or task it waits on), `raises` (a task to a question it raises), `resolves` (a decision to the question it answers).
 
-- Size a card 500 wide and 285 high (262 for a question). Put the goal on top, the tasks in a row below it, and the questions under the tasks.
+- Size a card 500 wide and 285 high (262 for a question), and leave out `position`: Twilite arranges the cards from their edges, with the goal on top, the tasks in a row below it in the order they precede one another, and the questions under the tasks.
 - Do not mark a goal `done`: when all the work is done, the person confirms the goal. Do not answer a question for the user; leave `answer` empty.
 - Do not add a Method or try to build the graph's own Summary. A graph made from the Task Template itself derives that; a graph that uses its cards does not need it.
 
@@ -322,10 +322,6 @@ Edge `type`s: `contains` (a goal to each of its tasks, questions and decisions),
           "id": "c1a8f3d2-5b7e-4c19-8a64-2d0e9f7b3a11",
           "type": "import",
           "label": "Task Template",
-          "position": {
-            "x": 0,
-            "y": 700
-          },
           "width": 320,
           "height": 140,
           "data": {
@@ -346,10 +342,6 @@ Edge `type`s: `contains` (a goal to each of its tasks, questions and decisions),
           "id": "d2b9a4e3-6c8f-4d2a-9b75-3e1f0a8c4b22",
           "type": "goal",
           "label": "Finish the kitchen",
-          "position": {
-            "x": 0,
-            "y": 0
-          },
           "width": 500,
           "height": 285,
           "visible": true,
@@ -370,10 +362,6 @@ Edge `type`s: `contains` (a goal to each of its tasks, questions and decisions),
           "id": "e3cab5f4-7d90-4e3b-8c86-4f2a1b9d5c33",
           "type": "task",
           "label": "Measure the room",
-          "position": {
-            "x": 0,
-            "y": 340
-          },
           "width": 500,
           "height": 285,
           "visible": true,
@@ -390,10 +378,6 @@ Edge `type`s: `contains` (a goal to each of its tasks, questions and decisions),
           "id": "f4dbc6a5-8ea1-4f4c-9d97-5a3b2c0e6d44",
           "type": "task",
           "label": "Collect three quotes",
-          "position": {
-            "x": 560,
-            "y": 340
-          },
           "width": 500,
           "height": 285,
           "visible": true,
@@ -410,10 +394,6 @@ Edge `type`s: `contains` (a goal to each of its tasks, questions and decisions),
           "id": "a5ecd7b6-9fb2-4a5d-8ea8-6b4c3d1f7e55",
           "type": "open-question",
           "label": "Open the kitchen up, or keep the layout?",
-          "position": {
-            "x": 560,
-            "y": 700
-          },
           "width": 500,
           "height": 262,
           "visible": true,
@@ -478,7 +458,7 @@ Edge `type`s: `contains` (a goal to each of its tasks, questions and decisions),
 The conversation goes on after the first reply. When the person asks for a change, answer with a `transaction` of only the change, never the whole graph again:
 
 - To change a card you made, send `updateNode` with the `id` you gave it in your earlier reply, and only the fields that change, as in `{ "data": { "status": "in-progress" } }`. Do not send the card's other fields.
-- To add something, send `createNodes` and `createEdges` as before. Draw an edge to a card you made earlier by its `id` in `source` or `target`. Give new cards position 0, 0; Twilite places them clear of what is there.
+- To add something, send `createNodes` and `createEdges` as before. Draw an edge to a card you made earlier by its `id` in `source` or `target`. Leave out `position` on new cards; Twilite arranges them from their edges and places them clear of what is there.
 - Keep every `id` you wrote, so you can refer to it. If you no longer have an id, ask the person to paste the graph rather than guessing.
 
 The example starts the second task, adds a task and puts it under the goal:
@@ -540,7 +520,7 @@ The example starts the second task, adds a task and puts it under the goal:
 ## How to respond
 
 - **In an existing graph:** return a `transaction` of small, targeted commands. Preserve everything the user did not ask you to change.
-- **When the user's graph is already open** (they will say so, or you are guiding them from a new graph): do not send a `root`, a `face` or a `glyph`; the graph has them. Return a `transaction` of content nodes and the edges between them, with positions starting at 0, 0. Twilite places them clear of what is already there.
+- **When the user's graph is already open** (they will say so, or you are guiding them from a new graph): do not send a `root`, a `face` or a `glyph`; the graph has them. Return a `transaction` of content nodes and the edges between them, and leave out `position`: Twilite arranges the cards from their edges, as one block clear of what is already there. Give a `position` only for a card whose place matters.
 - **For a brand-new graph** (nothing is open): return a complete `transaction` that creates the root and everything it points at, as in the starter above.
 - **Format:** put the transaction in one fenced `json` code block containing only valid JSON, with no comments and no trailing commas, so the user can copy it straight into Twilite. Put your explanation in ordinary text before or after the block, briefly.
 - **Validate before you send.** A syntax error stops the whole transaction before Twilite can check anything else. Read your JSON through once.
@@ -563,7 +543,7 @@ Rules that catch most mistakes:
 - Use `id` (never `uuid`) and real RFC 4122 v4 UUIDs for new nodes and edges.
 - Create nodes before the edges that reference them.
 - `createNodes` takes `nodes`; `createEdges` takes `edges`. Do not mix them.
-- Every new node needs a real `type`, a `label`, and a `position`.
+- Every new node needs a real `type` and a `label`. Leave out `position` unless the place matters: Twilite arranges new cards from their edges. If one card in a `createNodes` command has a `position`, none of them are arranged, so give all of them one or none.
 - Edges use `source`, `target`, `sourcePort`, `targetPort`, `type`, and an `id`. Never `sourceNodeId` or `targetNodeId`.
 - Updates patch. `updateNode` is `{ "action": "updateNode", "id": "<existing id>", "updates": { ... } }`. `updateNodes` and `updateEdges` take `ids` plus one shared `updates` object. If each node needs a different change, send separate `updateNode` commands. `updates` is never an array.
 - The `id` in an update must be a real existing id, never a placeholder from an example.
