@@ -150,7 +150,7 @@ const utility = (id, label, position, body, ref, destinationLabel) => renameNode
     definitionKey: 'arrival-utility',
   },
 });
-const twilite = utility('twilite-zone-twilite', 'Twilite', { x: -40, y: 980 }, 'See the product, its purpose, and the graph-native model behind it.', 'github://twilite-zone/public/products/twilite/root.node', 'Open Twilite');
+const twilite = utility('twilite-zone-twilite', 'Twilite', { x: -40, y: 980 }, 'See the product, its purpose, and the graph-native model behind it.', 'github://TwiliteLLC/public/products/twilite/root.node', 'Open Twilite');
 const commons = utility('twilite-zone-commons', 'Public Commons', { x: 420, y: 980 }, 'Browse the curated commons for public repositories and shared graph resources.', 'github://twilite-zone/public/github/the-commons/root.node', 'Open the Commons');
 const boulevard = utility('twilite-zone-boulevard', 'The Boulevard', { x: 880, y: 980 }, 'Continue from repository-backed graphs into the wider public content ecosystem.', 'github://twilite-zone/public/boulevard/root.node', 'Enter the Boulevard');
 
