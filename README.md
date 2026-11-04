@@ -56,7 +56,7 @@ or save locally.
 Durable Twilite addresses:
 
 ```text
-github://TwiliteLLC/public/products/twilite/root.node
+tlz://twilite.zone/products/twilite/root.node
 github://twilite-zone/public/root.node
 ```
 
