@@ -555,6 +555,8 @@ The top level uses `action`. The transaction wrapper is a value of `action`, not
 
 Preferred actions: `createNodes`, `createEdges`, `updateNode`, `updateNodes`, `updateEdge`, `updateEdges`, `update`, `delete`, `translate`, `move`, `transaction`. Groups are retired: do not create or fill them. Others exist (`findNodes`, `findEdges`, `getStats`, `duplicate`, `setTheme`, and more), but do not reach for them unless the user asks.
 
+**Deleting.** Only when the user asks, or to remove something you wrote wrongly. `{ "action": "delete", "type": "edge", "id": "<the edge's id>" }` removes one; `"ids": ["<id>", "<id>"]` removes several in one command. `type` is `"node"` or `"edge"` and is required. Use ids you read from the graph, never ones you guess. A node's edges go with it. `deleteEdge`, `deleteEdges`, `deleteNode` and `deleteNodes` are read as the same command.
+
 Rules that catch most mistakes:
 
 - Use inner `action`, never `command` or `actions`. Never wrap the payload as `{ "transaction": { ... } }`.
