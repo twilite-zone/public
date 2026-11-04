@@ -1,36 +1,143 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "created": "2026-08-16T18:20:01.232Z",
-    "modified": "2026-08-25T16:56:45.983Z",
-    "author": "",
+    "created": "2026-09-25T01:29:08.039Z",
+    "modified": "2026-11-04T01:00:37.944Z",
     "tags": [
-      "flagship product"
-    ],
-    "preferredViewer": "https://dev.twilite.zone"
+      "primitive-spec",
+      "port"
+    ]
   },
   "nodes": [
     {
       "id": "twilite-product-declaration",
+      "label": "Twilite",
       "type": "root",
-      "label": "Declaration",
       "position": {
-        "x": 232.83333333333326,
-        "y": -651.8449794083899
+        "x": 0,
+        "y": 1280
       },
-      "width": 360,
-      "height": 220,
+      "width": 420,
+      "height": 300,
       "ports": [
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "default-handle",
+          "key": "default-handle",
+          "label": "default handle",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 275,
+          "role": "default-handle",
+          "allowedEdgeTypes": [
+            "edge"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-handle",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "portal",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "boundary-begin",
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 110,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "boundary-end",
+          "key": "boundary-end",
+          "label": "boundary end",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 70,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
         {
           "id": "port",
           "key": "port",
           "label": "port",
           "direction": "output",
           "dataType": "any",
-          "angle": 90,
+          "angle": 250,
           "role": "exposes-port",
           "allowedEdgeTypes": [
-            "reference"
+            "exposes-port"
           ],
           "metadata": {
             "structural": true,
@@ -57,7 +164,7 @@
           "angle": 0,
           "role": "ground",
           "allowedEdgeTypes": [
-            "reference"
+            "ground"
           ],
           "metadata": {
             "structural": true,
@@ -76,184 +183,41 @@
           }
         },
         {
-          "id": "surfaces",
-          "key": "surfaces",
-          "label": "surfaces",
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
           "direction": "output",
           "dataType": "any",
-          "angle": 90,
-          "role": "surface",
+          "angle": 305,
+          "role": "environment",
           "allowedEdgeTypes": [
-            "surface"
+            "environment"
           ],
           "metadata": {
             "structural": true,
             "relationship": true,
-            "role": "surface",
+            "role": "environment",
             "required": false,
-            "repeatable": true,
+            "repeatable": false,
             "behaviors": [
               {
                 "trigger": "drag-create",
                 "action": "create-node",
-                "nodeType": "view",
+                "nodeType": "face",
                 "targetPort": "root"
               }
             ]
           }
         }
       ],
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "root",
-          "nodeId": "twilite",
-          "name": "Twilite Product Story",
-          "version": "0.3.0",
-          "description": "Branded public-facing landing graph for explaining Twilite as a product and platform.",
-          "createdAt": "2026-05-13T00:00:00.000Z",
-          "updatedAt": "2026-08-25T16:56:45.981Z"
-        },
-        "intent": {
-          "kind": "Flagship Product",
-          "scope": "local"
-        },
-        "dependencies": {
-          "nodeTypes": [
-            "declaration",
-            "bridge",
-            "title",
-            "type-definition",
-            "port",
-            "twilite-product-hero",
-            "twilite-product-section",
-            "twilite-product-proof",
-            "twilite-product-cta",
-            "view",
-            "content",
-            "glyph",
-            "portal"
-          ],
-          "portContracts": [
-            "core"
-          ],
-          "skills": [],
-          "schemaVersions": {
-            "nodes": ">=1.0.0",
-            "ports": ">=1.0.0"
-          },
-          "optional": []
-        },
-        "authority": {
-          "mutation": {
-            "allowCreate": true,
-            "allowUpdate": true,
-            "allowDelete": true,
-            "appendOnly": false
-          },
-          "actors": {
-            "humans": true,
-            "agents": true,
-            "tools": true
-          },
-          "styleAuthority": "descriptive",
-          "history": {
-            "rewriteAllowed": false,
-            "squashAllowed": false
-          }
-        },
-        "document": {
-          "url": ""
-        },
-        "settings": {
-          "theme": null,
-          "backgroundImage": null,
-          "uiDensity": "comfortable",
-          "defaultNodeColor": "#1976d2",
-          "defaultEdgeColor": "",
-          "snapToGrid": false,
-          "gridSize": 20,
-          "edgeRouting": "auto",
-          "layout": {
-            "mode": "autoOnMissingPositions",
-            "defaultLayout": "layered",
-            "direction": "DOWN",
-            "edgeLaneGapPx": 10,
-            "serpentine": {
-              "maxPerRow": 6
-            },
-            "cycleFallback": {
-              "enabled": true
-            },
-            "elk": {
-              "algorithm": "fixed",
-              "edgeRouting": "ORTHOGONAL",
-              "portConstraints": "FIXED_SIDE",
-              "nodeSpacing": 120,
-              "layeredEdgeSpacing": 80
-            }
-          },
-          "autoSave": false
-        },
-        "summaryNodeId": "twilite-product-view",
-        "name": "Twilite Product Declaration",
-        "declaresKind": "graph",
-        "purpose": "Declare the branded public landing-story graph for Twilite.",
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "layout",
-          "updatedAt": 1783016789838,
-          "reason": "auto-layout"
-        },
-        "root": {
-          "kind": "graph",
-          "discovery": {
-            "scope": "sibling-graphs",
-            "recursive": false,
-            "match": "identity.nodeId",
-            "exports": "declared-surfaces"
-          },
-          "defaultSurfaceId": "web",
-          "surfaces": [],
-          "graphViewRole": "authoring",
-          "targetMode": "artifact",
-          "artifactKind": "graph",
-          "interfaceContract": {
-            "version": 1,
-            "implicitRootPort": true
-          }
-        }
-      },
       "handles": [
-        {
-          "id": "port",
-          "key": "port",
-          "portId": "port",
-          "label": "port",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90,
-          "role": "exposes-port"
-        },
-        {
-          "id": "ground",
-          "key": "ground",
-          "portId": "ground",
-          "label": "ground",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 0,
-          "role": "ground"
-        },
         {
           "id": "surfaces",
           "key": "surfaces",
           "label": "surfaces",
           "direction": "output",
           "dataType": "any",
-          "angle": 90,
+          "angle": 195,
           "role": "surface",
           "allowedEdgeTypes": [
             "surface"
@@ -268,55 +232,142 @@
               {
                 "trigger": "drag-create",
                 "action": "create-node",
-                "nodeType": "view",
+                "nodeType": "face",
                 "targetPort": "root"
               }
             ]
           },
           "portId": "surfaces"
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-node-detail",
-      "type": "face",
-      "label": "Twilite Product Detail",
-      "position": {
-        "x": 720,
-        "y": -650
-      },
-      "width": 520,
-      "height": 340,
-      "visible": false,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270,
-          "metadata": {
-            "interface": true,
-            "structural": true
-          }
         },
         {
-          "id": "surface-delegate",
-          "key": "surface-delegate",
-          "label": "surface delegate",
+          "id": "default-handle",
+          "key": "default-handle",
+          "label": "default handle",
           "direction": "output",
           "dataType": "any",
-          "angle": 90,
-          "role": "view.content",
+          "angle": 275,
+          "role": "default-handle",
           "allowedEdgeTypes": [
-            "reference"
+            "edge"
           ],
           "metadata": {
             "structural": true,
             "relationship": true,
-            "role": "view.content",
+            "role": "default-handle",
             "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "portal",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "default-handle"
+        },
+        {
+          "id": "boundary-begin",
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 110,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "boundary-begin"
+        },
+        {
+          "id": "boundary-end",
+          "key": "boundary-end",
+          "label": "boundary end",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 70,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "boundary-end"
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 250,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "exposes-port"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "port"
+        },
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "ground",
+          "allowedEdgeTypes": [
+            "ground"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "ground",
+            "required": true,
+            "repeatable": false,
             "behaviors": [
               {
                 "trigger": "drag-create",
@@ -325,2785 +376,171 @@
                 "targetPort": "root"
               }
             ]
-          }
-        }
-      ],
-      "data": {
-        "view": {
-          "intent": "node",
-          "payload": "node.web.detail"
-        },
-        "payload": "node.web.detail",
-        "surfaceId": "detail",
-        "semanticLevel": "detail",
-        "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:30px;border-radius:28px;background:linear-gradient(145deg,#17102f,#3b1768 58%,#6d28d9);border:2px solid #c4b5fd;color:white;font-family:system-ui;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden'><div><div style='display:flex;align-items:center;gap:14px'><div style='width:48px;height:48px;border-radius:14px;background:#7c3aed;display:grid;place-items:center'><img src='https://twilite.zone/logo_light.svg' alt='Twilite' style='width:32px;height:32px;object-fit:contain'/></div><div style='color:#ddd6fe;font-size:13px;font-weight:850;letter-spacing:.16em'>TWILITE</div></div><div style='font-size:36px;font-weight:900;margin-top:24px;line-height:1.05'>Durable knowledge for humans and AI.</div><div style='font-size:16px;color:#e9d5ff;margin-top:18px;line-height:1.45'>Explore public graphs freely. Build, preserve, connect, and publish evolving work in the production environment.</div></div><div style='display:flex;justify-content:space-between;align-items:center;color:#f5d0fe;font-size:14px'><span>Public browsing is free</span><strong style='color:white'>$15/month</strong></div></div>",
-        "interfaceContract": {
-          "version": 1,
-          "ownsContent": true,
-          "surfaceDelegation": true
-        },
-        "content": {
-          "kind": "html",
-          "value": "<div style='width:100%;height:100%;box-sizing:border-box;padding:30px;border-radius:28px;background:linear-gradient(145deg,#17102f,#3b1768 58%,#6d28d9);border:2px solid #c4b5fd;color:white;font-family:system-ui;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden'><div><div style='display:flex;align-items:center;gap:14px'><div style='width:48px;height:48px;border-radius:14px;background:#7c3aed;display:grid;place-items:center'><img src='https://twilite.zone/logo_light.svg' alt='Twilite' style='width:32px;height:32px;object-fit:contain'/></div><div style='color:#ddd6fe;font-size:13px;font-weight:850;letter-spacing:.16em'>TWILITE</div></div><div style='font-size:36px;font-weight:900;margin-top:24px;line-height:1.05'>Durable knowledge for humans and AI.</div><div style='font-size:16px;color:#e9d5ff;margin-top:18px;line-height:1.45'>Explore public graphs freely. Build, preserve, connect, and publish evolving work in the production environment.</div></div><div style='display:flex;justify-content:space-between;align-items:center;color:#f5d0fe;font-size:14px'><span>Public browsing is free</span><strong style='color:white'>$15/month</strong></div></div>"
-        },
-        "identity": {
-          "graphId": "root",
-          "nodeId": "twilite"
-        }
-      },
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270
+          },
+          "portId": "ground"
         },
         {
-          "id": "surface-delegate",
-          "key": "surface-delegate",
-          "portId": "surface-delegate",
-          "label": "surface delegate",
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
           "direction": "output",
           "dataType": "any",
-          "angle": 90,
-          "role": "view.content"
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-node-icon",
-      "type": "face",
-      "label": "Twilite Product Icon",
-      "position": {
-        "x": 1280,
-        "y": -650
-      },
-      "width": 180,
-      "height": 180,
-      "visible": false,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270,
-          "metadata": {
-            "interface": true,
-            "structural": true
-          }
-        },
-        {
-          "id": "surface-delegate",
-          "key": "surface-delegate",
-          "label": "surface delegate",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90,
-          "role": "view.content",
+          "angle": 305,
+          "role": "environment",
           "allowedEdgeTypes": [
-            "reference"
+            "environment"
           ],
           "metadata": {
             "structural": true,
             "relationship": true,
-            "role": "view.content",
+            "role": "environment",
             "required": false,
+            "repeatable": false,
             "behaviors": [
               {
                 "trigger": "drag-create",
                 "action": "create-node",
-                "nodeType": "content",
+                "nodeType": "face",
                 "targetPort": "root"
               }
             ]
-          }
+          },
+          "portId": "environment"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "default-view",
+          "label": "default view",
+          "type": "any"
+        },
+        {
+          "key": "summary-view",
+          "label": "summary view",
+          "type": "any"
+        },
+        {
+          "key": "icon-view",
+          "label": "icon view",
+          "type": "any"
+        },
+        {
+          "key": "next-face",
+          "label": "first view",
+          "type": "any"
+        },
+        {
+          "key": "glyph",
+          "label": "glyph",
+          "type": "any"
+        },
+        {
+          "key": "surface",
+          "label": "surface",
+          "type": "any"
+        },
+        {
+          "key": "default-handle",
+          "label": "default handle",
+          "type": "any"
+        },
+        {
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "type": "any"
+        },
+        {
+          "key": "boundary-end",
+          "label": "boundary end",
+          "type": "any"
+        },
+        {
+          "key": "port",
+          "label": "port",
+          "type": "any"
+        },
+        {
+          "key": "ground",
+          "label": "ground",
+          "type": "any"
         }
       ],
       "data": {
-        "view": {
-          "intent": "node",
-          "payload": "node.web.icon"
-        },
-        "payload": "node.web.icon",
-        "surfaceId": "icon",
-        "semanticLevel": "icon",
-        "html": "<div style='width:100%;height:100%;box-sizing:border-box;border-radius:28px;background:linear-gradient(145deg,#24113f,#5b21b6);border:2px solid #c4b5fd;display:grid;place-items:center;overflow:hidden'><div style='width:104px;height:104px;border-radius:28px;background:#7c3aed;box-shadow:0 18px 45px rgba(0,0,0,.35);display:grid;place-items:center'><img src='https://twilite.zone/logo_light.svg' alt='Twilite' style='width:72px;height:72px;object-fit:contain'/></div></div>",
-        "interfaceContract": {
-          "version": 1,
-          "ownsContent": true,
-          "surfaceDelegation": true
-        },
-        "content": {
-          "kind": "html",
-          "value": "<div style='width:100%;height:100%;box-sizing:border-box;border-radius:28px;background:linear-gradient(145deg,#24113f,#5b21b6);border:2px solid #c4b5fd;display:grid;place-items:center;overflow:hidden'><div style='width:104px;height:104px;border-radius:28px;background:#7c3aed;box-shadow:0 18px 45px rgba(0,0,0,.35);display:grid;place-items:center'><img src='https://twilite.zone/logo_light.svg' alt='Twilite' style='width:72px;height:72px;object-fit:contain'/></div></div>"
-        },
         "identity": {
           "graphId": "root",
-          "nodeId": "twilite"
-        }
-      },
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270
+          "nodeId": "twilite",
+          "name": "Twilite",
+          "version": "0.4.0",
+          "description": "The Twilite page: tell your AI what you want to keep track of, then what is free and what the editor adds.",
+          "updatedAt": "2026-11-04T01:00:37.931Z"
         },
-        {
-          "id": "surface-delegate",
-          "key": "surface-delegate",
-          "portId": "surface-delegate",
-          "label": "surface delegate",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90,
-          "role": "view.content"
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-title-port",
-      "type": "import",
-      "label": "Title",
-      "position": {
-        "x": -1727.1666666666667,
-        "y": -651.8449794083899
-      },
-      "width": 260,
-      "height": 120,
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "layout",
-          "updatedAt": 1783016789838,
-          "reason": "auto-layout"
+        "intent": {
+          "kind": "graph",
+          "scope": "mixed"
         },
-        "identity": {
-          "graphId": "twilite-product-declaration"
+        "glyph": {
+          "kind": "icon",
+          "name": "Hub"
         },
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node",
-          "resourceKind": "node-class",
-          "key": "title",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      },
-      "ports": [],
-      "handles": []
-    },
-    {
-      "id": "twilite-product-type-port",
-      "type": "import",
-      "label": "Type Definition",
-      "position": {
-        "x": -1447.1666666666667,
-        "y": -651.8449794083899
-      },
-      "width": 260,
-      "height": 120,
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "layout",
-          "updatedAt": 1783016789838,
-          "reason": "auto-layout"
+        "name": "Declaration",
+        "purpose": "",
+        "document": {
+          "url": "tlz://twilite.zone/products/twilite/root.node"
         },
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-          "resourceKind": "node-class",
-          "key": "type-definition",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      },
-      "ports": [],
-      "handles": []
-    },
-    {
-      "id": "twilite-product-view-port",
-      "type": "import",
-      "label": "View",
-      "position": {
-        "x": -1167.1666666666667,
-        "y": -651.8449794083899
-      },
-      "width": 260,
-      "height": 120,
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "layout",
-          "updatedAt": 1783016789838,
-          "reason": "auto-layout"
-        },
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node",
-          "resourceKind": "node-class",
-          "key": "ui-view",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      },
-      "ports": [],
-      "handles": []
-    },
-    {
-      "id": "twilite-product-bridge-hero",
-      "type": "import",
-      "label": "Hero Card",
-      "position": {
-        "x": -887.1666666666667,
-        "y": -651.8449794083899
-      },
-      "width": 260,
-      "height": 120,
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "layout",
-          "updatedAt": 1783016789838,
-          "reason": "auto-layout"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/products/twilite/twilite-product-hero.node-class.node",
-          "resourceKind": "node-class",
-          "key": "twilite-product-hero",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      },
-      "ports": [],
-      "handles": []
-    },
-    {
-      "id": "twilite-product-bridge-section",
-      "type": "import",
-      "label": "Section Card",
-      "position": {
-        "x": -607.1666666666667,
-        "y": -651.8449794083899
-      },
-      "width": 260,
-      "height": 120,
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "layout",
-          "updatedAt": 1783016789838,
-          "reason": "auto-layout"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/products/twilite/twilite-product-section.node-class.node",
-          "resourceKind": "node-class",
-          "key": "twilite-product-section",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      },
-      "ports": [],
-      "handles": []
-    },
-    {
-      "id": "twilite-product-bridge-proof",
-      "type": "import",
-      "label": "Proof Card",
-      "position": {
-        "x": -327.16666666666674,
-        "y": -651.8449794083899
-      },
-      "width": 260,
-      "height": 120,
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "layout",
-          "updatedAt": 1783016789838,
-          "reason": "auto-layout"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/products/twilite/twilite-product-proof.node-class.node",
-          "resourceKind": "node-class",
-          "key": "twilite-product-proof",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      },
-      "ports": [],
-      "handles": []
-    },
-    {
-      "id": "twilite-product-bridge-cta",
-      "type": "import",
-      "label": "CTA Card",
-      "position": {
-        "x": -47.16666666666674,
-        "y": -651.8449794083899
-      },
-      "width": 260,
-      "height": 120,
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "layout",
-          "updatedAt": 1783016789838,
-          "reason": "auto-layout"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/products/twilite/twilite-product-cta.node-class.node",
-          "resourceKind": "node-class",
-          "key": "twilite-product-cta",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      },
-      "ports": [],
-      "handles": []
-    },
-    {
-      "id": "twilite-product-back",
-      "type": "portal",
-      "label": "Browse Products",
-      "position": {
-        "x": -1536.1111159563275,
-        "y": -75.92555797804994
-      },
-      "width": 340,
-      "height": 220,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Browse the full Twilite LLC product shelf and related public offerings.",
-        "intent": "external",
-        "target": {
-          "endpoint": "https://twilite.zone/products/root.node:root",
-          "mode": "navigate",
-          "label": "Open",
-          "portId": "root",
-          "ref": "https://twilite.zone/products/root.node",
-          "handleId": "root",
-          "surfaceId": ""
-        },
-        "sourceRef": "https://twilite.zone/products/root.node",
-        "sourceNodeId": "products-view",
-        "sourcePayload": "node.web.summary",
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1785182982013,
-          "reason": "node-drag"
-        },
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "authority": "navigate",
-        "security": "prompt",
-        "ref": "https://twilite.zone/products/root.node",
-        "src": "https://twilite.zone/products/root.node",
-        "endpoint": "https://twilite.zone/products/root.node:root",
-        "surfaceId": ""
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-tutorial",
-      "type": "portal",
-      "label": "Start With The Tutorial",
-      "position": {
-        "x": -1445.1536282862094,
-        "y": 395.48799738150683
-      },
-      "width": 360,
-      "height": 240,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Open the Twilite onboarding and authoring tutorial.",
-        "intent": "external",
-        "target": {
-          "endpoint": "https://twilite.zone/tutorial/root.node:root",
-          "mode": "navigate",
-          "label": "Open",
-          "portId": "root",
-          "ref": "https://twilite.zone/tutorial/root.node",
-          "handleId": "root",
-          "surfaceId": ""
-        },
-        "sourceRef": "https://twilite.zone/tutorial/root.node",
-        "sourceNodeId": "tutorial-icon-view",
-        "sourcePayload": "node.web.icon",
-        "authority": "navigate",
-        "security": "prompt",
-        "ref": "https://twilite.zone/tutorial/root.node",
-        "src": "https://twilite.zone/tutorial/root.node",
-        "endpoint": "https://twilite.zone/tutorial/root.node:root",
-        "surfaceId": "",
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1786032189763,
-          "reason": "node-drag"
-        },
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        }
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-title",
-      "type": "title",
-      "label": "Title",
-      "position": {
-        "x": -782.3725462409934,
-        "y": -180.3000415355167
-      },
-      "width": 520,
-      "height": 240,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any"
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 360
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "Twilite",
-        "subtitle": "Build knowledge that outlives the conversation.",
-        "intent": "headline",
-        "status": "active",
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1785182754354,
-          "reason": "node-drag"
-        },
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "classRef": "github://twilite-zone/public/library/classes/nodes/template-structure/title.node-class.node"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 360
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-type",
-      "type": "type-definition",
-      "label": "Type",
-      "position": {
-        "x": 440.5000000000002,
-        "y": 868.1550205916101
-      },
-      "width": 300,
-      "height": 180,
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "name": "Product Story",
-        "key": "product-story",
-        "classRef": "github://twilite-zone/public/library/classes/nodes/type-definition/type-definition.node-class.node",
-        "meaning": "Branded public-facing graph for explaining Twilite as a navigable launch story.",
-        "description": "Use this type when a graph should behave like a premium Twilite product surface with a flagship hero, evidence, and guided next steps.",
-        "category": "public-landing",
-        "status": "active",
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "layout",
-          "updatedAt": 1783016789838,
-          "reason": "auto-layout"
-        },
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        }
-      },
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-view",
-      "type": "face",
-      "label": "Root Port",
-      "position": {
-        "x": -773.6430619340446,
-        "y": -493.7500826317956
-      },
-      "width": 420,
-      "height": 280,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "Twilite",
-        "purpose": "Default public-facing landing surface for the Twilite product graph, driven by the local Twilite product launch template and branded product cards.",
-        "viewRole": "page",
-        "view": {
-          "intent": "node",
-          "payload": "node.web.summary"
-        },
-        "titleSourceNodeId": "twilite-product-title",
-        "typeSourceNodeId": "twilite-product-type",
-        "audience": "Public",
-        "status": "active",
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1785688998219,
-          "reason": "node-drag"
-        },
-        "identity": {
-          "graphId": "root",
-          "portId": "root",
-          "name": "Root Port",
-          "nodeId": "twilite"
-        },
-        "svg": "<svg viewBox=\"0 0 260 180\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect width=\"260\" height=\"180\" rx=\"24\" fill=\"#111827\"/><rect x=\"14\" y=\"14\" width=\"232\" height=\"152\" rx=\"20\" fill=\"#0f172a\" stroke=\"rgba(255,255,255,0.08)\"/><svg x=\"80\" y=\"30\" width=\"100\" height=\"100\" viewBox=\"0 0 1024 1024\" preserveAspectRatio=\"xMidYMid meet\"><g transform=\"translate(0,1024) scale(0.1,-0.1)\" fill=\"#ffffff\" stroke=\"none\"><path d=\"M4720 8073 c-665 -35 -1351 -269 -1827 -624 -130 -97 -370 -338 -468 -472 -383 -517 -581 -1087 -562 -1612 14 -391 137 -668 374 -843 230 -169 520 -232 1008 -217 199 6 212 5 242 -14 41 -26 58 -53 89 -138 48 -134 85 -194 174 -284 73 -74 100 -93 190 -138 58 -28 150 -63 205 -78 94 -25 114 -27 330 -27 134 -1 285 5 362 13 180 19 203 13 303 -88 42 -42 184 -200 316 -351 715 -817 857 -977 886 -997 40 -29 117 -32 141 -5 22 24 35 148 43 397 3 105 10 205 16 223 26 86 111 142 215 142 147 1 359 40 515 96 293 105 528 319 659 598 76 163 109 331 109 556 l0 111 66 127 c190 366 251 586 261 932 7 271 -15 432 -93 665 -205 616 -823 1263 -1553 1630 -536 268 -1144 409 -1751 403 -107 -1 -220 -3 -250 -5z m324 -532 c121 -43 219 -119 288 -225 53 -81 78 -169 78 -270 l0 -81 58 -28 c56 -27 1043 -471 1134 -509 l47 -20 51 45 c66 60 180 107 274 114 133 10 270 -42 373 -143 129 -127 170 -308 109 -482 -34 -96 -136 -216 -221 -259 -27 -14 -51 -26 -53 -28 -2 -2 77 -702 113 -996 23 -184 19 -176 95 -202 138 -47 244 -136 302 -254 32 -66 33 -72 33 -193 0 -123 -1 -126 -36 -200 -65 -135 -174 -230 -312 -271 -55 -17 -87 -20 -170 -17 -89 3 -110 8 -170 35 -158 75 -277 264 -277 442 l0 36 -712 237 c-392 130 -722 239 -734 242 -17 5 -26 -2 -49 -38 -29 -47 -94 -100 -160 -134 -196 -98 -425 -56 -577 106 -106 115 -152 253 -130 391 7 38 14 75 17 83 3 8 -8 21 -27 33 -18 10 -266 164 -551 342 -285 178 -522 323 -527 323 -5 0 -10 -4 -12 -9 -7 -21 -141 -100 -205 -122 -174 -58 -378 1 -515 148 -141 152 -168 380 -65 555 34 59 132 150 195 182 167 84 393 69 540 -37 l51 -36 208 121 c114 67 348 203 518 302 l310 181 -4 96 c-6 168 43 294 160 410 70 70 151 117 249 144 75 21 225 14 304 -14z\"/><path d=\"M5309 6694 c-24 -46 -111 -116 -193 -155 -44 -22 -86 -39 -93 -39 -11 0 -13 -118 -13 -624 l0 -625 23 -6 c12 -4 59 -29 104 -56 l83 -49 67 34 c78 39 1201 715 1251 753 28 21 33 30 27 52 -4 14 -10 68 -13 119 l-7 93 -250 110 c-579 255 -955 419 -963 419 -5 0 -15 -12 -23 -26z\"/><path d=\"M4380 6648 c-177 -102 -918 -533 -935 -544 -18 -12 -20 -24 -19 -138 l0 -126 542 -339 c298 -186 553 -341 566 -345 19 -5 41 4 87 34 34 22 80 45 101 52 l38 11 2 619 3 618 -55 16 c-84 24 -149 61 -210 120 -31 30 -59 54 -61 54 -2 0 -29 -15 -59 -32z\"/><path d=\"M6474 5602 c-126 -76 -420 -254 -654 -395 -234 -141 -434 -265 -446 -274 -18 -16 -20 -26 -16 -100 4 -78 5 -82 31 -88 14 -3 346 -112 737 -240 l710 -235 66 64 c36 35 88 76 117 90 28 15 51 33 51 42 0 22 -129 1115 -135 1145 -5 21 -16 28 -66 44 -34 10 -84 33 -111 51 -28 19 -51 34 -53 34 -1 0 -106 -62 -231 -138z\"/></g></svg><text x=\"130\" y=\"148\" text-anchor=\"middle\" font-family=\"ui-sans-serif, system-ui, sans-serif\" font-size=\"12\" font-weight=\"700\" letter-spacing=\"0.16em\" fill=\"#f8fafc\">TWILITE</text></svg>",
-        "semanticLevel": "summary",
-        "interfaceContract": {
-          "version": 1,
-          "ownsContent": true,
-          "surfaceDelegation": true
-        },
-        "content": {
-          "kind": "svg",
-          "value": "<svg viewBox=\"0 0 260 180\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect width=\"260\" height=\"180\" rx=\"24\" fill=\"#111827\"/><rect x=\"14\" y=\"14\" width=\"232\" height=\"152\" rx=\"20\" fill=\"#0f172a\" stroke=\"rgba(255,255,255,0.08)\"/><svg x=\"80\" y=\"30\" width=\"100\" height=\"100\" viewBox=\"0 0 1024 1024\" preserveAspectRatio=\"xMidYMid meet\"><g transform=\"translate(0,1024) scale(0.1,-0.1)\" fill=\"#ffffff\" stroke=\"none\"><path d=\"M4720 8073 c-665 -35 -1351 -269 -1827 -624 -130 -97 -370 -338 -468 -472 -383 -517 -581 -1087 -562 -1612 14 -391 137 -668 374 -843 230 -169 520 -232 1008 -217 199 6 212 5 242 -14 41 -26 58 -53 89 -138 48 -134 85 -194 174 -284 73 -74 100 -93 190 -138 58 -28 150 -63 205 -78 94 -25 114 -27 330 -27 134 -1 285 5 362 13 180 19 203 13 303 -88 42 -42 184 -200 316 -351 715 -817 857 -977 886 -997 40 -29 117 -32 141 -5 22 24 35 148 43 397 3 105 10 205 16 223 26 86 111 142 215 142 147 1 359 40 515 96 293 105 528 319 659 598 76 163 109 331 109 556 l0 111 66 127 c190 366 251 586 261 932 7 271 -15 432 -93 665 -205 616 -823 1263 -1553 1630 -536 268 -1144 409 -1751 403 -107 -1 -220 -3 -250 -5z m324 -532 c121 -43 219 -119 288 -225 53 -81 78 -169 78 -270 l0 -81 58 -28 c56 -27 1043 -471 1134 -509 l47 -20 51 45 c66 60 180 107 274 114 133 10 270 -42 373 -143 129 -127 170 -308 109 -482 -34 -96 -136 -216 -221 -259 -27 -14 -51 -26 -53 -28 -2 -2 77 -702 113 -996 23 -184 19 -176 95 -202 138 -47 244 -136 302 -254 32 -66 33 -72 33 -193 0 -123 -1 -126 -36 -200 -65 -135 -174 -230 -312 -271 -55 -17 -87 -20 -170 -17 -89 3 -110 8 -170 35 -158 75 -277 264 -277 442 l0 36 -712 237 c-392 130 -722 239 -734 242 -17 5 -26 -2 -49 -38 -29 -47 -94 -100 -160 -134 -196 -98 -425 -56 -577 106 -106 115 -152 253 -130 391 7 38 14 75 17 83 3 8 -8 21 -27 33 -18 10 -266 164 -551 342 -285 178 -522 323 -527 323 -5 0 -10 -4 -12 -9 -7 -21 -141 -100 -205 -122 -174 -58 -378 1 -515 148 -141 152 -168 380 -65 555 34 59 132 150 195 182 167 84 393 69 540 -37 l51 -36 208 121 c114 67 348 203 518 302 l310 181 -4 96 c-6 168 43 294 160 410 70 70 151 117 249 144 75 21 225 14 304 -14z\"/><path d=\"M5309 6694 c-24 -46 -111 -116 -193 -155 -44 -22 -86 -39 -93 -39 -11 0 -13 -118 -13 -624 l0 -625 23 -6 c12 -4 59 -29 104 -56 l83 -49 67 34 c78 39 1201 715 1251 753 28 21 33 30 27 52 -4 14 -10 68 -13 119 l-7 93 -250 110 c-579 255 -955 419 -963 419 -5 0 -15 -12 -23 -26z\"/><path d=\"M4380 6648 c-177 -102 -918 -533 -935 -544 -18 -12 -20 -24 -19 -138 l0 -126 542 -339 c298 -186 553 -341 566 -345 19 -5 41 4 87 34 34 22 80 45 101 52 l38 11 2 619 3 618 -55 16 c-84 24 -149 61 -210 120 -31 30 -59 54 -61 54 -2 0 -29 -15 -59 -32z\"/><path d=\"M6474 5602 c-126 -76 -420 -254 -654 -395 -234 -141 -434 -265 -446 -274 -18 -16 -20 -26 -16 -100 4 -78 5 -82 31 -88 14 -3 346 -112 737 -240 l710 -235 66 64 c36 35 88 76 117 90 28 15 51 33 51 42 0 22 -129 1115 -135 1145 -5 21 -16 28 -66 44 -34 10 -84 33 -111 51 -28 19 -51 34 -53 34 -1 0 -106 -62 -231 -138z\"/></g></svg><text x=\"130\" y=\"148\" text-anchor=\"middle\" font-family=\"ui-sans-serif, system-ui, sans-serif\" font-size=\"12\" font-weight=\"700\" letter-spacing=\"0.16em\" fill=\"#f8fafc\">TWILITE</text></svg>"
-        },
-        "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
-      },
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270,
-          "metadata": {
-            "interface": true,
-            "structural": true
+        "events": [
+          {
+            "eventKey": "graph.structure.changed",
+            "label": "Graph structure changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          },
+          {
+            "eventKey": "graph.changed",
+            "label": "Graph changed",
+            "payloadContract": {
+              "type": "object"
+            }
           }
-        },
-        {
-          "id": "surface-delegate",
-          "key": "surface-delegate",
-          "label": "surface delegate",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90,
-          "role": "view.content",
-          "allowedEdgeTypes": [
-            "reference"
-          ],
-          "metadata": {
-            "structural": true,
-            "relationship": true,
-            "role": "view.content",
-            "required": false,
-            "behaviors": [
-              {
-                "trigger": "drag-create",
-                "action": "create-node",
-                "nodeType": "content",
-                "targetPort": "root"
-              }
-            ]
-          }
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270
-        },
-        {
-          "id": "surface-delegate",
-          "key": "surface-delegate",
-          "portId": "surface-delegate",
-          "label": "surface delegate",
-          "direction": "output",
-          "dataType": "any",
-          "angle": 90,
-          "role": "view.content"
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-hero",
-      "type": "twilite-product-hero",
-      "label": "Product Promise",
-      "position": {
-        "x": 111.94406209252372,
-        "y": -97.71441689267695
-      },
-      "width": 863.0262794759551,
-      "height": 492.59195785575844,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "eyebrow": "Flagship Product",
-        "title": "Twilite",
-        "body": "Twilite is a graph-native environment where humans and AI build durable, navigable structures instead of leaving valuable work trapped in chats, documents, whiteboards, and disconnected tools.",
-        "proofBadge": "$15 / month",
-        "proofNote": "Public graphs remain open to browse. The subscription unlocks the integrated repository-backed production workflow.",
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1786908233602,
-          "reason": "node-drag"
-        },
-        "classRef": "github://twilite-zone/public/products/twilite/twilite-product-hero.node-class.node"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-difference",
-      "type": "twilite-product-section",
-      "label": "The Context-Loss Problem",
-      "position": {
-        "x": 1505.400071494978,
-        "y": -953.099070804601
-      },
-      "width": 520,
-      "height": 300,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "tag": "Problem",
-        "title": "Important Work Keeps Losing Its Shape",
-        "body": "Chats end. Documents flatten relationships. Whiteboards become snapshots. Tabs and tools multiply until nobody can see the whole system. Twilite keeps the structure itself alive: addressable, inspectable, editable, and durable on the web.",
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1783017284847,
-          "reason": "node-drag"
-        },
-        "classRef": "github://twilite-zone/public/products/twilite/twilite-product-section.node-class.node"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-how",
-      "type": "twilite-product-section",
-      "label": "The Twilite Workflow",
-      "position": {
-        "x": 1532.379579782605,
-        "y": -40.33729886136361
-      },
-      "width": 520,
-      "height": 300,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "tag": "Workflow",
-        "title": "One Artifact From Thought To Execution",
-        "body": "1. Build or evolve a graph.\n2. Give it a durable address.\n3. Let humans and AI work against the same explicit structure.\n4. Save, validate, publish, and return without rebuilding the work in another medium.",
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1783017275704,
-          "reason": "node-drag"
-        },
-        "classRef": "github://twilite-zone/public/products/twilite/twilite-product-section.node-class.node"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-proof",
-      "type": "twilite-product-proof",
-      "label": "Proof",
-      "position": {
-        "x": -138.44750729966165,
-        "y": 1291.0450809425527
-      },
-      "width": 540,
-      "height": 320,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "eyebrow": "Proof",
-        "title": "This Product Story Is The Product",
-        "claims": "- Twilite runs in the browser today.\n- Graphs persist as portable `.node` artifacts.\n- Durable `github://` addresses make graphs linkable.\n- Humans and AI author the same explicit structure.\n- GitHub-backed save and publish flows work today.\n- This product page is itself a navigable Twilite graph.",
-        "footnote": "Present-tense evidence matters more than roadmap promises on a launch page.",
-        "status": "Working Today",
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1786032494157,
-          "reason": "node-drag"
-        },
-        "classRef": "github://twilite-zone/public/products/twilite/twilite-product-proof.node-class.node"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-get-started",
-      "type": "twilite-product-cta",
-      "label": "Explore Twilite Today",
-      "position": {
-        "x": -759.2332201738562,
-        "y": 112.64308292051928
-      },
-      "width": 460.0695916379719,
-      "height": 280.758235450548,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "eyebrow": "Next Step",
-        "title": "Explore Twilite Today",
-        "body": "Browse the public graph web and open the tutorial now. The one-month production trial will be offered after billing, entitlement, and cancellation behavior has passed its launch smoke test.",
-        "ctaLabel": "Open The Tutorial",
-        "status": "Recommended",
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1785182970563,
-          "reason": "node-drag"
-        },
-        "classRef": "github://twilite-zone/public/products/twilite/twilite-product-cta.node-class.node"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "9d3fdc22-f2f0-45d2-bf6f-6d0f9f55a101",
-      "type": "twilite-product-section",
-      "label": "What Twilite Is",
-      "position": {
-        "x": 531.5743467901959,
-        "y": 540.3245574986485
-      },
-      "width": 520,
-      "height": 300,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "tag": "What",
-        "title": "A Durable Graph Artifact",
-        "body": "A Twilite graph holds content, relationships, presentation, and behavior in one portable artifact. People explore it visually; AI can inspect and evolve the same explicit structure over time.",
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1785182854248,
-          "reason": "node-drag"
-        },
-        "classRef": "github://twilite-zone/public/products/twilite/twilite-product-section.node-class.node"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "8b1c5d1e-8d9c-45ec-97e0-6a4d9d9df102",
-      "type": "twilite-product-section",
-      "label": "Who It's For",
-      "position": {
-        "x": -140.1244056215208,
-        "y": 913.7032498221133
-      },
-      "width": 520,
-      "height": 300,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "tag": "Audience",
-        "title": "Who Twilite Is For",
-        "body": "Twilite is for people whose work becomes more valuable as its connections grow: researchers and investigators, software and product architects, knowledge-system builders, and creators managing interconnected bodies of work.",
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1785182843425,
-          "reason": "node-drag"
-        },
-        "classRef": "github://twilite-zone/public/products/twilite/twilite-product-section.node-class.node"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "0f7b1d2a-6386-4f3c-bf3d-5bc04c57d103",
-      "type": "twilite-product-section",
-      "label": "What Makes It Different",
-      "position": {
-        "x": 1524.8377135354447,
-        "y": -511.554579301614
-      },
-      "width": 520,
-      "height": 300,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "tag": "Difference",
-        "title": "The Graph Is The Work",
-        "body": "Twilite is not a whiteboard with graph decoration or a chat that exports a diagram. The graph itself is the durable semantic artifact: addressable, explorable, AI-readable, AI-editable, publishable, portable, and structurally meaningful.",
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1783017273085,
-          "reason": "node-drag"
-        },
-        "classRef": "github://twilite-zone/public/products/twilite/twilite-product-section.node-class.node"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "72b60d74-6d4d-49d2-89f7-95d96231b104",
-      "type": "twilite-product-section",
-      "label": "Human + AI",
-      "position": {
-        "x": 1545.514320692892,
-        "y": 395.02991362262617
-      },
-      "width": 520,
-      "height": 300,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "tag": "Collaboration",
-        "title": "Humans And AI Share The Same Structure",
-        "body": "AI can navigate relationships, update nodes, create connections, preserve references, and work through explicit mutation contracts. You can see what changed, keep the provenance, and continue from the artifact rather than reconstructing context from chat history.",
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1783017057053,
-          "reason": "node-drag"
-        },
-        "classRef": "github://twilite-zone/public/products/twilite/twilite-product-section.node-class.node"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "de4d58e9-60f4-4d58-83dc-857d9091f105",
-      "type": "twilite-product-section",
-      "label": "One Graph, Many Depths",
-      "position": {
-        "x": 1500.5000000000002,
-        "y": 808.1550205916101
-      },
-      "width": 520,
-      "height": 300,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "tag": "Depth",
-        "title": "Public Browsing Stays Free",
-        "body": "Anyone should be able to open, navigate, pan, zoom, and share public Twilite graphs. The public graph web is the commons, the discovery surface, and the clearest way to understand the product before paying.",
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "layout",
-          "updatedAt": 1783016789838,
-          "reason": "auto-layout"
-        },
-        "classRef": "github://twilite-zone/public/products/twilite/twilite-product-section.node-class.node"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "8f27d257-bb70-4c1b-b2e8-63e0e4dc9106",
-      "type": "twilite-product-section",
-      "label": "Why Graph Structure Matters",
-      "position": {
-        "x": -140.11767837046557,
-        "y": 561.7945207462994
-      },
-      "width": 520,
-      "height": 300,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "tag": "Structure",
-        "title": "Subscribe To The Production Environment",
-        "body": "The $15 monthly subscription is for integrated production: GitHub account connection, repository-backed authoring, persistence, validation, commits, publishing, reusable capabilities, automation, and agent-assisted graph work.",
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1786032346854,
-          "reason": "node-drag"
-        },
-        "classRef": "github://twilite-zone/public/products/twilite/twilite-product-section.node-class.node"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "4d91c0d5-7b7d-4d5d-a0d2-6f0f2f7cb201",
-      "type": "twilite-product-section",
-      "label": "Why Persistence Matters",
-      "position": {
-        "x": 1500.5000000000002,
-        "y": 1278.15502059161
-      },
-      "width": 520,
-      "height": 300,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "tag": "Persistence",
-        "title": "One-Month Trial: Pending Final Proof",
-        "body": "A one-month full-product trial is planned, but it will not be advertised as available until checkout, entitlement activation, cancellation, expiration, and post-trial account behavior are verified end to end.",
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "layout",
-          "updatedAt": 1783016789838,
-          "reason": "auto-layout"
-        },
-        "classRef": "github://twilite-zone/public/products/twilite/twilite-product-section.node-class.node"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-icon-view",
-      "type": "port",
-      "label": "Icon View",
-      "position": {
-        "x": 749.5000000000002,
-        "y": 1278.15502059161
-      },
-      "width": 320,
-      "height": 220,
-      "visible": false,
-      "showLabel": true,
-      "data": {
-        "title": "Twilite Icon",
-        "purpose": "Compact opaque dark-logo host preview for the Twilite product graph.",
-        "viewRole": "icon",
-        "view": {
-          "intent": "node",
-          "payload": "node.web.icon",
-          "label": "UI Icon View"
-        },
-        "titleSourceNodeId": "twilite-product-title",
-        "typeSourceNodeId": "twilite-product-type",
-        "audience": "Public",
-        "status": "active",
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1783186367666,
-          "reason": "scripted-authoring"
-        },
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "svg": "<svg viewBox=\"0 0 260 180\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid meet\"><rect width=\"260\" height=\"180\" rx=\"24\" fill=\"#111827\"/><rect x=\"14\" y=\"14\" width=\"232\" height=\"152\" rx=\"20\" fill=\"#0f172a\" stroke=\"rgba(255,255,255,0.08)\"/><svg x=\"92\" y=\"34\" width=\"76\" height=\"76\" viewBox=\"0 0 1024 1024\" preserveAspectRatio=\"xMidYMid meet\"><g transform=\"translate(0,1024) scale(0.1,-0.1)\" fill=\"#ffffff\" stroke=\"none\"><path d=\"M4720 8073 c-665 -35 -1351 -269 -1827 -624 -130 -97 -370 -338 -468 -472 -383 -517 -581 -1087 -562 -1612 14 -391 137 -668 374 -843 230 -169 520 -232 1008 -217 199 6 212 5 242 -14 41 -26 58 -53 89 -138 48 -134 85 -194 174 -284 73 -74 100 -93 190 -138 58 -28 150 -63 205 -78 94 -25 114 -27 330 -27 134 -1 285 5 362 13 180 19 203 13 303 -88 42 -42 184 -200 316 -351 715 -817 857 -977 886 -997 40 -29 117 -32 141 -5 22 24 35 148 43 397 3 105 10 205 16 223 26 86 111 142 215 142 147 1 359 40 515 96 293 105 528 319 659 598 76 163 109 331 109 556 l0 111 66 127 c190 366 251 586 261 932 7 271 -15 432 -93 665 -205 616 -823 1263 -1553 1630 -536 268 -1144 409 -1751 403 -107 -1 -220 -3 -250 -5z m324 -532 c121 -43 219 -119 288 -225 53 -81 78 -169 78 -270 l0 -81 58 -28 c56 -27 1043 -471 1134 -509 l47 -20 51 45 c66 60 180 107 274 114 133 10 270 -42 373 -143 129 -127 170 -308 109 -482 -34 -96 -136 -216 -221 -259 -27 -14 -51 -26 -53 -28 -2 -2 77 -702 113 -996 23 -184 19 -176 95 -202 138 -47 244 -136 302 -254 32 -66 33 -72 33 -193 0 -123 -1 -126 -36 -200 -65 -135 -174 -230 -312 -271 -55 -17 -87 -20 -170 -17 -89 3 -110 8 -170 35 -158 75 -277 264 -277 442 l0 36 -712 237 c-392 130 -722 239 -734 242 -17 5 -26 -2 -49 -38 -29 -47 -94 -100 -160 -134 -196 -98 -425 -56 -577 106 -106 115 -152 253 -130 391 7 38 14 75 17 83 3 8 -8 21 -27 33 -18 10 -266 164 -551 342 -285 178 -522 323 -527 323 -5 0 -10 -4 -12 -9 -7 -21 -141 -100 -205 -122 -174 -58 -378 1 -515 148 -141 152 -168 380 -65 555 34 59 132 150 195 182 167 84 393 69 540 -37 l51 -36 208 121 c114 67 348 203 518 302 l310 181 -4 96 c-6 168 43 294 160 410 70 70 151 117 249 144 75 21 225 14 304 -14z\"/><path d=\"M5309 6694 c-24 -46 -111 -116 -193 -155 -44 -22 -86 -39 -93 -39 -11 0 -13 -118 -13 -624 l0 -625 23 -6 c12 -4 59 -29 104 -56 l83 -49 67 34 c78 39 1201 715 1251 753 28 21 33 30 27 52 -4 14 -10 68 -13 119 l-7 93 -250 110 c-579 255 -955 419 -963 419 -5 0 -15 -12 -23 -26z\"/><path d=\"M4380 6648 c-177 -102 -918 -533 -935 -544 -18 -12 -20 -24 -19 -138 l0 -126 542 -339 c298 -186 553 -341 566 -345 19 -5 41 4 87 34 34 22 80 45 101 52 l38 11 2 619 3 618 -55 16 c-84 24 -149 61 -210 120 -31 30 -59 54 -61 54 -2 0 -29 -15 -59 -32z\"/><path d=\"M6474 5602 c-126 -76 -420 -254 -654 -395 -234 -141 -434 -265 -446 -274 -18 -16 -20 -26 -16 -100 4 -78 5 -82 31 -88 14 -3 346 -112 737 -240 l710 -235 66 64 c36 35 88 76 117 90 28 15 51 33 51 42 0 22 -129 1115 -135 1145 -5 21 -16 28 -66 44 -34 10 -84 33 -111 51 -28 19 -51 34 -53 34 -1 0 -106 -62 -231 -138z\"/></g></svg><text x=\"130\" y=\"130\" text-anchor=\"middle\" font-family=\"ui-sans-serif, system-ui, sans-serif\" font-size=\"10\" font-weight=\"700\" letter-spacing=\"0.14em\" fill=\"#f8fafc\">TWILITE</text></svg>",
-        "classRef": "github://twilite-zone/public/library/classes/nodes/ui-interaction/ui-view.node-class.node"
-      },
-      "ports": [],
-      "handles": []
-    },
-    {
-      "id": "ed94e01b-87e0-4a5a-995d-12a6abe15e2e",
-      "type": "portal",
-      "label": "Portal",
-      "position": {
-        "x": -829.4802758862829,
-        "y": 590.6379185105761
-      },
-      "width": 363.8839027833707,
-      "height": 245.2484103693174,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "left",
-          "offset": 0.2,
-          "position": {
-            "side": "left",
-            "offset": 0.2
-          }
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "left",
-          "offset": 0.5,
-          "position": {
-            "side": "left",
-            "offset": 0.5
-          }
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "side": "right",
-          "offset": 0.5,
-          "position": {
-            "side": "right",
-            "offset": 0.5
-          }
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "",
-        "link": "",
-        "authority": "navigate",
-        "src": "github://mikemartinez1974/public/graphs/twilite-overview.node",
-        "ref": "github://mikemartinez1974/public/graphs/twilite-overview.node",
-        "endpoint": "github://mikemartinez1974/public/graphs/twilite-overview.node:root",
-        "intent": "external",
-        "target": {
-          "endpoint": "github://mikemartinez1974/public/graphs/twilite-overview.node:root",
-          "ref": "github://mikemartinez1974/public/graphs/twilite-overview.node",
-          "mode": "navigate",
-          "url": "",
-          "graphId": "",
-          "nodeId": "",
-          "portId": "root",
-          "label": "Open",
-          "handleId": "root",
-          "surfaceId": ""
-        },
-        "identity": {
-          "graphId": "public-home-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1786032511773,
-          "reason": "node-drag"
-        },
-        "security": "prompt",
-        "sourceNodeId": "c94a0c7e-f5cf-4fe6-8cb5-d124d9e52988",
-        "sourcePayload": "node.web.summary",
-        "surfaceId": "",
-        "sourceRef": "github://mikemartinez1974/public/graphs/twilite-overview.node",
-        "visibilityRole": "browser"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-company",
-      "type": "portal",
-      "label": "Twilite LLC",
-      "position": {
-        "x": 71.17397486229652,
-        "y": -469.26844379865497
-      },
-      "width": 400,
-      "height": 250,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "target": {
-          "endpoint": "https://twilite.zone/company/root.node:root",
-          "mode": "navigate",
-          "label": "Open Twilite LLC",
-          "ref": "https://twilite.zone/company/root.node",
-          "portId": "root",
-          "handleId": "root",
-          "surfaceId": "company-home"
-        },
-        "memo": "Meet the company building and stewarding Twilite.",
-        "authority": "navigate",
-        "sourceRef": "https://twilite.zone/company/root.node",
-        "sourceNodeId": "twilite-company-card",
-        "sourcePayload": "node.web.summary",
-        "ref": "https://twilite.zone/company/root.node",
-        "src": "https://twilite.zone/company/root.node",
-        "endpoint": "https://twilite.zone/company/root.node:root",
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "intent": "external",
-        "security": "prompt",
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1785182979085,
-          "reason": "node-drag"
-        }
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 210
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-user-benefit",
-      "type": "portal",
-      "label": "What Twilite Gives the User",
-      "position": {
-        "x": 533.6045754551378,
-        "y": 910.4739388376172
-      },
-      "width": 523.7380581526668,
-      "height": 719.2332035490747,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Open the document explaining Twilite through concrete user outcomes.",
-        "intent": "external",
-        "target": {
-          "endpoint": "github://twilite-zone/public/products/twilite/user-benefit.document.node:root",
-          "mode": "view",
-          "label": "Read",
-          "portId": "root",
-          "ref": "github://twilite-zone/public/products/twilite/user-benefit.document.node",
-          "handleId": "root",
-          "surfaceId": "document"
-        },
-        "sourceRef": "github://twilite-zone/public/products/twilite/user-benefit.document.node",
-        "sourceNodeId": "twilite-user-benefit-document-port",
-        "sourcePayload": "node.web.document",
-        "authority": "navigate",
-        "security": "prompt",
-        "ref": "github://twilite-zone/public/products/twilite/user-benefit.document.node",
-        "src": "github://twilite-zone/public/products/twilite/user-benefit.document.node",
-        "endpoint": "github://twilite-zone/public/products/twilite/user-benefit.document.node:root",
-        "surfaceId": "document",
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "manually-shaped",
-          "source": "manual",
-          "updatedAt": 1786032485225,
-          "reason": "node-drag"
-        }
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "portId": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "portId": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-subscription-boundary",
-      "type": "portal",
-      "label": "What You Get With Twilite",
-      "position": {
-        "x": 1120,
-        "y": 920
-      },
-      "width": 420,
-      "height": 260,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Open the customer-facing account of concrete subscriber capabilities, continuing service, limits, and support expectations.",
-        "authority": "consume-view",
-        "security": "prompt",
-        "intent": "external",
-        "sourceRef": "github://twilite-zone/public/products/twilite/subscription/root.node",
-        "sourceNodeId": "twilite-subscription-summary-view",
-        "sourcePayload": "node.web.summary",
-        "surfaceId": "root",
-        "ref": "github://twilite-zone/public/products/twilite/subscription/root.node",
-        "src": "github://twilite-zone/public/products/twilite/subscription/root.node",
-        "endpoint": "github://twilite-zone/public/products/twilite/subscription/root.node:root",
-        "target": {
-          "endpoint": "github://twilite-zone/public/products/twilite/subscription/root.node:root",
-          "ref": "github://twilite-zone/public/products/twilite/subscription/root.node",
-          "mode": "navigate",
-          "portId": "root",
-          "surfaceId": "root",
-          "handleId": "root",
-          "label": "Open What You Get With Twilite"
-        },
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        }
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ]
-    },
-    {
-      "id": "twilite-product-trial-readiness",
-      "type": "portal",
-      "label": "Trial Readiness",
-      "position": {
-        "x": 1120,
-        "y": 1260
-      },
-      "width": 420,
-      "height": 260,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Open the authoritative billing task that must verify the one-month trial before it is advertised.",
-        "authority": "navigate",
-        "security": "prompt",
-        "intent": "external",
-        "sourceRef": "github://twilite-zone/public/tasks/beta-readiness/payments-readiness/root.node",
-        "sourceNodeId": "payments-readiness-summary",
-        "sourcePayload": "node.web",
-        "surfaceId": "payments-readiness-summary-surface",
-        "ref": "github://twilite-zone/public/tasks/beta-readiness/payments-readiness/root.node",
-        "src": "github://twilite-zone/public/tasks/beta-readiness/payments-readiness/root.node",
-        "endpoint": "github://twilite-zone/public/tasks/beta-readiness/payments-readiness/root.node:payments-readiness-summary-surface",
-        "target": {
-          "endpoint": "github://twilite-zone/public/tasks/beta-readiness/payments-readiness/root.node:payments-readiness-summary-surface",
-          "ref": "github://twilite-zone/public/tasks/beta-readiness/payments-readiness/root.node",
-          "mode": "navigate",
-          "portId": "payments-readiness-summary-surface",
-          "surfaceId": "payments-readiness-summary-surface",
-          "handleId": "payments-readiness-summary-surface",
-          "label": "Open Trial Readiness"
-        },
-        "identity": {
-          "graphId": "twilite-product-declaration"
-        }
-      },
-      "handles": [
-        {
-          "id": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "portId": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "portId": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ]
+        ],
+        "root": {
+          "kind": "graph",
+          "interfaceContract": {
+            "version": 1,
+            "implicitRootPort": true
+          },
+          "defaultSurfaceId": "web",
+          "surfaces": [
+            {
+              "id": "detail",
+              "kind": "view",
+              "payload": "node.web.detail",
+              "viewNodeId": "twilite-product-detail"
+            },
+            {
+              "id": "summary",
+              "kind": "view",
+              "payload": "node.web.summary",
+              "viewNodeId": "twilite-product-summary"
+            },
+            {
+              "id": "glyph",
+              "kind": "glyph",
+              "payload": "node.web.glyph",
+              "viewNodeId": "twilite-product-glyph"
+            }
+          ]
+        },
+        "memo": "The root of the graph. It holds the graph's name and description, says what kind of graph it is, and is where every other part connects. A graph has exactly one."
+      }
     },
     {
       "id": "twilite-product-glyph",
+      "label": "Glyph",
       "type": "glyph",
-      "label": "Twilite Glyph",
       "position": {
-        "x": 260,
-        "y": -1030
+        "x": 1520,
+        "y": 1280
       },
       "width": 220,
       "height": 140,
@@ -3114,7 +551,7 @@
           "label": "root",
           "direction": "input",
           "dataType": "any",
-          "angle": 270,
+          "angle": 180,
           "metadata": {
             "interface": true,
             "structural": true,
@@ -3122,10 +559,34 @@
           }
         }
       ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "metadata": {
+            "interface": true,
+            "structural": true,
+            "role": "shared-glyph"
+          },
+          "portId": "root"
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        }
+      ],
       "data": {
         "glyph": {
-          "kind": "icon",
-          "name": "Network"
+          "kind": "symbol",
+          "value": "Y",
+          "color": "#6d28d9"
         },
         "interfaceContract": {
           "version": 1,
@@ -3133,31 +594,21 @@
         },
         "identity": {
           "graphId": "root",
-          "nodeId": "twilite"
-        }
-      },
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "portId": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270
-        }
-      ]
+          "nodeId": "twilite-product-glyph"
+        },
+        "memo": "The glyph: the mark that ends the chain of views, for when the graph is seen smallest."
+      }
     },
     {
-      "id": "twilite-product-landing-surface",
-      "type": "content",
-      "label": "Twilite Product Landing Surface",
+      "id": "twilite-product-detail",
+      "type": "face",
+      "label": "Detail view",
       "position": {
-        "x": 1520,
-        "y": -650
+        "x": 480,
+        "y": 1280
       },
-      "width": 520,
-      "height": 320,
+      "width": 640,
+      "height": 480,
       "ports": [
         {
           "id": "root",
@@ -3165,47 +616,141 @@
           "label": "root",
           "direction": "input",
           "dataType": "any",
-          "angle": 270,
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content"
-          }
+          "angle": 270
         }
       ],
-      "data": {
-        "content": {
-          "kind": "html",
-          "value": "<div style='width:100%;height:100%;box-sizing:border-box;padding:30px;border-radius:28px;background:linear-gradient(145deg,#17102f,#3b1768 58%,#6d28d9);border:2px solid #c4b5fd;color:white;font-family:system-ui;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden'><div><div style='display:flex;align-items:center;gap:14px'><div style='width:48px;height:48px;border-radius:14px;background:#7c3aed;display:grid;place-items:center'><img src='https://twilite.zone/logo_light.svg' alt='Twilite' style='width:32px;height:32px;object-fit:contain'/></div><div style='color:#ddd6fe;font-size:13px;font-weight:850;letter-spacing:.16em'>TWILITE</div></div><div style='font-size:36px;font-weight:900;margin-top:24px;line-height:1.05'>Durable knowledge for humans and AI.</div><div style='font-size:16px;color:#e9d5ff;margin-top:18px;line-height:1.45'>Explore public graphs freely. Build, preserve, connect, and publish evolving work in the production environment.</div></div><div style='display:flex;justify-content:space-between;align-items:center;color:#f5d0fe;font-size:14px'><span>Public browsing is free</span><strong style='color:white'>$15/month</strong></div></div>"
-        },
-        "interfaceContract": {
-          "version": 1,
-          "receivesViewContent": true
-        },
-        "identity": {
-          "graphId": "root",
-          "nodeId": "twilite"
-        }
-      },
       "handles": [
         {
           "id": "root",
           "key": "root",
-          "portId": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "root"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail",
+          "scroll": "page"
+        },
+        "semanticLevel": "detail",
+        "content": {
+          "kind": "html",
+          "value": "<div style='width:100%;height:100%;overflow:auto;box-sizing:border-box;container-type:inline-size;background:#ffffff;font-family:Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#0b0b12'><div style='max-width:980px;margin:0 auto'><div style='background:#0b0b12;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:14px;padding-bottom:14px;padding-left:clamp(20px,5cqw,48px);padding-right:clamp(20px,5cqw,48px)'><span style='font:600 13px/1 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.2em;color:#f5c542'>TWILITE</span><span style='display:flex;align-items:center;gap:18px;flex-wrap:wrap;font:400 13px/1 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif'><a href='tlz://twilite.zone/library/root.node' style='color:#ffffff;text-decoration:none'>Library</a><a href='tlz://twilite.zone/root.node' style='color:#ffffff;text-decoration:none'>The Twilite Zone</a><a href='tlz://twilite.zone/library/starters/start-with-your-ai/root.node' style='background:#f5c542;color:#0b0b12;padding:7px 14px;border-radius:6px;font-weight:600;text-decoration:none'>Start free</a></span></div><div style='background:#5b21b6;padding-top:clamp(32px,7cqw,56px);padding-bottom:clamp(28px,5cqw,44px);padding-left:clamp(20px,5cqw,48px);padding-right:clamp(20px,5cqw,48px)'><div style='max-width:560px'><div style='font:700 12px/16px Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.18em;color:#f5c542;margin-bottom:14px'>DURABLE KNOWLEDGE FOR HUMANS AND AI</div><h1 style='margin:0;font:400 clamp(34px,7cqw,52px)/1.06 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.01em;color:#ffffff'>Tell your AI what you want to keep track of.</h1><p style='margin:16px 0 22px;font:400 17px/1.6 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#ede9fe'>Twilite turns its answer into a graph you can see, change, and keep. One paste, and your project is on the canvas.</p><div style='display:flex;gap:18px;align-items:center;flex-wrap:wrap'><a href='tlz://twilite.zone/library/starters/start-with-your-ai/root.node' style='display:inline-block;background:#f5c542;color:#0b0b12;padding:11px 22px;border-radius:8px;font:600 15px/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;text-decoration:none'>Start with your AI</a><a href='#editor' style='color:#ffffff;font:400 14px/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;border-bottom:1px solid #f5c542;padding-bottom:2px;text-decoration:none'>See what the editor adds</a></div></div><div style='display:flex;gap:12px;flex-wrap:wrap;margin-top:32px'><div style='flex:1 1 150px;min-width:150px;background:#ffffff;border-radius:8px;border-left:4px solid #f5c542;padding:10px 14px'><div style='font:700 11px/16px Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.1em;color:#5b21b6'>GOAL · IN PROGRESS</div><div style='font:500 15px/1.4 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#0b0b12;margin-top:4px'>Finish the kitchen</div></div><div style='flex:1 1 150px;min-width:150px;background:#ffffff;border-radius:8px;border-left:4px solid #5b21b6;padding:10px 14px'><div style='font:700 11px/16px Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.1em;color:#5b21b6'>TASK · TO DO</div><div style='font:500 15px/1.4 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#0b0b12;margin-top:4px'>Collect three quotes</div></div><div style='flex:1 1 150px;min-width:150px;background:#ffffff;border-radius:8px;border-left:4px solid #0b0b12;padding:10px 14px'><div style='font:700 11px/16px Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.1em;color:#5b21b6'>QUESTION · OPEN</div><div style='font:500 15px/1.4 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#0b0b12;margin-top:4px'>Open it up, or keep the layout?</div></div></div></div><div style='background:#ffffff;padding-top:34px;padding-bottom:30px;padding-left:clamp(20px,5cqw,48px);padding-right:clamp(20px,5cqw,48px)'><div style='font:700 12px/16px Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#5b21b6'>How it works</div><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:24px;margin-top:16px'><div><div style='font:400 34px/1 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#5b21b6'>1</div><div style='font:600 16px/1.4 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#0b0b12;margin:6px 0 4px'>Tell your AI</div><div style='font:400 14px/1.55 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#444444'>Copy the guide, give it to ChatGPT or Gemini, and say what you want to keep track of.</div></div><div><div style='font:400 34px/1 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#5b21b6'>2</div><div style='font:600 16px/1.4 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#0b0b12;margin:6px 0 4px'>Paste its reply</div><div style='font:400 14px/1.55 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#444444'>Your goal, tasks, and questions land on the canvas, ready to read.</div></div><div><div style='font:400 34px/1 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#5b21b6'>3</div><div style='font:600 16px/1.4 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#0b0b12;margin:6px 0 4px'>Keep going</div><div style='font:400 14px/1.55 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#444444'>Ask for more in the same chat. Change a card yourself. It all stays one graph.</div></div></div><div style='margin-top:20px;border-top:1px solid #e5e7eb;padding-top:12px;font:400 13px/1.5 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#444444'>Tried with ChatGPT and Gemini. It works in the chat you already use.</div></div><div id='editor' style='background:#f6f3ff;padding-top:34px;padding-bottom:34px;padding-left:clamp(20px,5cqw,48px);padding-right:clamp(20px,5cqw,48px)'><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px'><div style='background:#ffffff;border:1px solid #0b0b12;border-radius:10px;padding:22px'><div style='font:700 12px/16px Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#5b21b6'>Free</div><div style='font:400 28px/1.2 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#0b0b12;margin:6px 0 12px'>Start and look around</div><div style='font:400 14px/1.9 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#222222'>Start with your AI<br>Zoom through your graph at three sizes<br>Change cards and statuses<br>Browse every public graph</div></div><div style='background:#0b0b12;border-radius:10px;padding:22px'><div style='font:700 12px/16px Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#f5c542'>The editor · $15 a month</div><div style='font:400 28px/1.2 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#ffffff;margin:6px 0 12px'>Keep it, and build on it</div><div style='font:400 14px/1.9 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#ede9fe'>Save as a file or in your GitHub repository<br>A workspace for many graphs side by side<br>Your AI can keep your tasks up to date<br>Publish what you make</div><div style='margin-top:18px'><a href='tlz://twilite.zone/products/twilite/subscription/root.node' style='display:inline-block;background:#f5c542;color:#0b0b12;padding:10px 20px;border-radius:8px;font:600 14px/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;text-decoration:none'>Subscribe</a></div></div></div></div><div style='background:#1b3a6b;display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between;padding-top:16px;padding-bottom:16px;padding-left:clamp(20px,5cqw,48px);padding-right:clamp(20px,5cqw,48px);font:400 13px/1.4 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif'><a href='tlz://twilite.zone/library/root.node' style='color:#ffffff;text-decoration:none'>The Library</a><a href='tlz://twilite.zone/root.node' style='color:#ffffff;text-decoration:none'>The Twilite Zone</a><a href='tlz://twilite.zone/company/root.node' style='color:#ffffff;text-decoration:none'>Twilite LLC</a><a href='tlz://twilite.zone/products/twilite/subscription/root.node' style='color:#f5c542;text-decoration:none'>Sign in</a></div></div></div>"
+        },
+        "memo": "The Detail view: the page in full. The Method writes it from the masthead, the section and the routes, so edit those and not this.",
+        "link": ""
+      }
+    },
+    {
+      "id": "twilite-product-summary",
+      "type": "face",
+      "label": "Summary view",
+      "position": {
+        "x": 1180,
+        "y": 1280
+      },
+      "width": 300,
+      "height": 200,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
           "label": "root",
           "direction": "input",
           "dataType": "any",
           "angle": 270
         }
-      ]
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "root"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "semanticLevel": "summary",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;padding:7cqw 8cqw;border-radius:6cqw;background:#5b21b6;color:#ffffff;overflow:hidden;display:flex;flex-direction:column'><div style='margin-bottom:3.3cqw;font:700 3.7cqw/1.3 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.2em;color:#f5c542'>TWILITE</div><div style='font:400 9cqw/1.05 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif'>Tell your AI what you want to keep track of.</div><div style='margin-top:auto;display:inline-block;align-self:flex-start;background:#f5c542;color:#0b0b12;padding:2cqw 4.5cqw;border-radius:2cqw;font:600 4.2cqw/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif'>Start with your AI</div></div></div>"
+        },
+        "memo": "The Summary view: the same page as a card, for when the graph is seen smaller. The Method writes it too.",
+        "link": ""
+      }
+    },
+    {
+      "id": "twilite-product-landing",
+      "type": "content",
+      "label": "Twilite",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 980,
+      "height": 1220,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "root"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='width:100%;height:100%;overflow:auto;box-sizing:border-box;container-type:inline-size;background:#ffffff;font-family:Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#0b0b12'><div style='max-width:980px;margin:0 auto'><div style='background:#0b0b12;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:14px;padding-bottom:14px;padding-left:clamp(20px,5cqw,48px);padding-right:clamp(20px,5cqw,48px)'><span style='font:600 13px/1 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.2em;color:#f5c542'>TWILITE</span><span style='display:flex;align-items:center;gap:18px;flex-wrap:wrap;font:400 13px/1 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif'><a href='tlz://twilite.zone/library/root.node' style='color:#ffffff;text-decoration:none'>Library</a><a href='tlz://twilite.zone/root.node' style='color:#ffffff;text-decoration:none'>The Twilite Zone</a><a href='tlz://twilite.zone/library/starters/start-with-your-ai/root.node' style='background:#f5c542;color:#0b0b12;padding:7px 14px;border-radius:6px;font-weight:600;text-decoration:none'>Start free</a></span></div><div style='background:#5b21b6;padding-top:clamp(32px,7cqw,56px);padding-bottom:clamp(28px,5cqw,44px);padding-left:clamp(20px,5cqw,48px);padding-right:clamp(20px,5cqw,48px)'><div style='max-width:560px'><div style='font:700 12px/16px Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.18em;color:#f5c542;margin-bottom:14px'>DURABLE KNOWLEDGE FOR HUMANS AND AI</div><h1 style='margin:0;font:400 clamp(34px,7cqw,52px)/1.06 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.01em;color:#ffffff'>Tell your AI what you want to keep track of.</h1><p style='margin:16px 0 22px;font:400 17px/1.6 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#ede9fe'>Twilite turns its answer into a graph you can see, change, and keep. One paste, and your project is on the canvas.</p><div style='display:flex;gap:18px;align-items:center;flex-wrap:wrap'><a href='tlz://twilite.zone/library/starters/start-with-your-ai/root.node' style='display:inline-block;background:#f5c542;color:#0b0b12;padding:11px 22px;border-radius:8px;font:600 15px/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;text-decoration:none'>Start with your AI</a><a href='#editor' style='color:#ffffff;font:400 14px/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;border-bottom:1px solid #f5c542;padding-bottom:2px;text-decoration:none'>See what the editor adds</a></div></div><div style='display:flex;gap:12px;flex-wrap:wrap;margin-top:32px'><div style='flex:1 1 150px;min-width:150px;background:#ffffff;border-radius:8px;border-left:4px solid #f5c542;padding:10px 14px'><div style='font:700 11px/16px Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.1em;color:#5b21b6'>GOAL · IN PROGRESS</div><div style='font:500 15px/1.4 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#0b0b12;margin-top:4px'>Finish the kitchen</div></div><div style='flex:1 1 150px;min-width:150px;background:#ffffff;border-radius:8px;border-left:4px solid #5b21b6;padding:10px 14px'><div style='font:700 11px/16px Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.1em;color:#5b21b6'>TASK · TO DO</div><div style='font:500 15px/1.4 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#0b0b12;margin-top:4px'>Collect three quotes</div></div><div style='flex:1 1 150px;min-width:150px;background:#ffffff;border-radius:8px;border-left:4px solid #0b0b12;padding:10px 14px'><div style='font:700 11px/16px Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.1em;color:#5b21b6'>QUESTION · OPEN</div><div style='font:500 15px/1.4 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#0b0b12;margin-top:4px'>Open it up, or keep the layout?</div></div></div></div><div style='background:#ffffff;padding-top:34px;padding-bottom:30px;padding-left:clamp(20px,5cqw,48px);padding-right:clamp(20px,5cqw,48px)'><div style='font:700 12px/16px Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#5b21b6'>How it works</div><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:24px;margin-top:16px'><div><div style='font:400 34px/1 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#5b21b6'>1</div><div style='font:600 16px/1.4 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#0b0b12;margin:6px 0 4px'>Tell your AI</div><div style='font:400 14px/1.55 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#444444'>Copy the guide, give it to ChatGPT or Gemini, and say what you want to keep track of.</div></div><div><div style='font:400 34px/1 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#5b21b6'>2</div><div style='font:600 16px/1.4 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#0b0b12;margin:6px 0 4px'>Paste its reply</div><div style='font:400 14px/1.55 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#444444'>Your goal, tasks, and questions land on the canvas, ready to read.</div></div><div><div style='font:400 34px/1 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#5b21b6'>3</div><div style='font:600 16px/1.4 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#0b0b12;margin:6px 0 4px'>Keep going</div><div style='font:400 14px/1.55 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#444444'>Ask for more in the same chat. Change a card yourself. It all stays one graph.</div></div></div><div style='margin-top:20px;border-top:1px solid #e5e7eb;padding-top:12px;font:400 13px/1.5 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#444444'>Tried with ChatGPT and Gemini. It works in the chat you already use.</div></div><div id='editor' style='background:#f6f3ff;padding-top:34px;padding-bottom:34px;padding-left:clamp(20px,5cqw,48px);padding-right:clamp(20px,5cqw,48px)'><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px'><div style='background:#ffffff;border:1px solid #0b0b12;border-radius:10px;padding:22px'><div style='font:700 12px/16px Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#5b21b6'>Free</div><div style='font:400 28px/1.2 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#0b0b12;margin:6px 0 12px'>Start and look around</div><div style='font:400 14px/1.9 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#222222'>Start with your AI<br>Zoom through your graph at three sizes<br>Change cards and statuses<br>Browse every public graph</div></div><div style='background:#0b0b12;border-radius:10px;padding:22px'><div style='font:700 12px/16px Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#f5c542'>The editor · $15 a month</div><div style='font:400 28px/1.2 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#ffffff;margin:6px 0 12px'>Keep it, and build on it</div><div style='font:400 14px/1.9 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#ede9fe'>Save as a file or in your GitHub repository<br>A workspace for many graphs side by side<br>Your AI can keep your tasks up to date<br>Publish what you make</div><div style='margin-top:18px'><a href='tlz://twilite.zone/products/twilite/subscription/root.node' style='display:inline-block;background:#f5c542;color:#0b0b12;padding:10px 20px;border-radius:8px;font:600 14px/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;text-decoration:none'>Subscribe</a></div></div></div></div><div style='background:#1b3a6b;display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between;padding-top:16px;padding-bottom:16px;padding-left:clamp(20px,5cqw,48px);padding-right:clamp(20px,5cqw,48px);font:400 13px/1.4 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif'><a href='tlz://twilite.zone/library/root.node' style='color:#ffffff;text-decoration:none'>The Library</a><a href='tlz://twilite.zone/root.node' style='color:#ffffff;text-decoration:none'>The Twilite Zone</a><a href='tlz://twilite.zone/company/root.node' style='color:#ffffff;text-decoration:none'>Twilite LLC</a><a href='tlz://twilite.zone/products/twilite/subscription/root.node' style='color:#f5c542;text-decoration:none'>Sign in</a></div></div></div>"
+        }
+      },
+      "positionLocked": true
     }
   ],
   "edges": [
     {
-      "id": "twilite-product-node-detail-surface",
+      "id": "port-surface",
       "type": "surface",
       "source": "twilite-product-declaration",
-      "target": "twilite-product-node-detail",
+      "target": "twilite-product-detail",
       "label": "",
       "style": {},
       "data": {
@@ -3215,10 +760,10 @@
       "targetPort": "root"
     },
     {
-      "id": "twilite-product-node-detail-next",
+      "id": "port-detail-summary",
       "type": "next-face",
-      "source": "twilite-product-node-detail",
-      "target": "twilite-product-view",
+      "source": "twilite-product-detail",
+      "target": "twilite-product-summary",
       "label": "",
       "style": {},
       "data": {},
@@ -3226,20 +771,9 @@
       "targetPort": "sequence-in"
     },
     {
-      "id": "twilite-product-view-next",
+      "id": "port-summary-icon",
       "type": "next-face",
-      "source": "twilite-product-view",
-      "target": "twilite-product-node-icon",
-      "label": "",
-      "style": {},
-      "data": {},
-      "sourcePort": "sequence-out",
-      "targetPort": "sequence-in"
-    },
-    {
-      "id": "twilite-product-node-icon-next",
-      "type": "next-face",
-      "source": "twilite-product-node-icon",
+      "source": "twilite-product-summary",
       "target": "twilite-product-glyph",
       "label": "",
       "style": {},
@@ -3248,470 +782,25 @@
       "targetPort": "root"
     },
     {
-      "id": "twilite-product-edge-paid-boundary",
-      "type": "edge",
-      "source": "8f27d257-bb70-4c1b-b2e8-63e0e4dc9106",
-      "target": "twilite-product-subscription-boundary",
-      "label": "defined by",
-      "style": {},
-      "data": {
-        "relation": "offer-policy"
-      },
-      "sourcePort": "bottom",
-      "targetPort": "top"
-    },
-    {
-      "id": "twilite-product-edge-trial-readiness",
-      "type": "edge",
-      "source": "4d91c0d5-7b7d-4d5d-a0d2-6f0f2f7cb201",
-      "target": "twilite-product-trial-readiness",
-      "label": "awaits proof from",
-      "style": {},
-      "data": {
-        "relation": "launch-gate"
-      },
-      "sourcePort": "bottom",
-      "targetPort": "top"
-    },
-    {
-      "id": "twilite-product-edge-title-type",
-      "type": "edge",
-      "source": "twilite-product-title",
-      "target": "twilite-product-type",
-      "label": "declares type",
-      "style": {},
-      "data": {},
-      "sourcePort": "root",
-      "targetPort": "root"
-    },
-    {
-      "id": "twilite-product-edge-type-view",
-      "type": "edge",
-      "source": "twilite-product-type",
-      "target": "twilite-product-view",
-      "label": "informs",
-      "style": {},
-      "data": {},
-      "sourcePort": "root",
-      "targetPort": "root"
-    },
-    {
-      "id": "twilite-product-edge-title-view",
-      "type": "edge",
-      "source": "twilite-product-title",
-      "target": "twilite-product-view",
-      "label": "host view",
-      "style": {},
-      "data": {},
-      "sourcePort": "root",
-      "targetPort": "root"
-    },
-    {
-      "id": "twilite-product-edge-title-back",
-      "type": "edge",
-      "source": "twilite-product-title",
-      "target": "twilite-product-back",
-      "label": "products",
-      "style": {},
-      "data": {},
-      "sourcePort": "left",
-      "targetPort": "top"
-    },
-    {
-      "id": "twilite-product-edge-title-tutorial",
-      "type": "edge",
-      "source": "twilite-product-title",
-      "target": "twilite-product-tutorial",
-      "label": "tutorial",
-      "style": {},
-      "data": {},
-      "sourcePort": "left",
-      "targetPort": "top"
-    },
-    {
-      "id": "a2e5f0c4-98ea-4ec4-9bc6-7281e8f31001",
-      "type": "edge",
-      "source": "twilite-product-title",
-      "target": "9d3fdc22-f2f0-45d2-bf6f-6d0f9f55a101",
-      "portMeta": {
-        "source": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        },
-        "target": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        }
-      },
-      "label": "grounds",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {},
-      "sourcePort": "right",
-      "targetPort": "top"
-    },
-    {
-      "id": "3d6b9dc3-bb77-4459-864f-2a3e857b1002",
-      "type": "edge",
-      "source": "twilite-product-title",
-      "target": "8f27d257-bb70-4c1b-b2e8-63e0e4dc9106",
-      "portMeta": {
-        "source": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        },
-        "target": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        }
-      },
-      "label": "explains",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {},
-      "sourcePort": "right",
-      "targetPort": "top"
-    },
-    {
-      "id": "ec0a9e62-6528-4f71-a70c-bf441c4d1003",
-      "type": "edge",
-      "source": "twilite-product-how",
-      "target": "72b60d74-6d4d-49d2-89f7-95d96231b104",
-      "portMeta": {
-        "source": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        },
-        "target": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        }
-      },
-      "label": "extends",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {},
-      "sourcePort": "left",
-      "targetPort": "left"
-    },
-    {
-      "id": "73b52dc8-0df0-4264-8cb7-cbbd9dd71004",
-      "type": "edge",
-      "source": "twilite-product-difference",
-      "target": "0f7b1d2a-6386-4f3c-bf3d-5bc04c57d103",
-      "portMeta": {
-        "source": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        },
-        "target": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        }
-      },
-      "label": "contrasts",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {},
-      "sourcePort": "left",
-      "targetPort": "left"
-    },
-    {
-      "id": "4e1a9dd4-8c40-460f-9d53-5eb084621005",
-      "type": "edge",
-      "source": "twilite-product-proof",
-      "target": "8b1c5d1e-8d9c-45ec-97e0-6a4d9d9df102",
-      "portMeta": {
-        "source": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        },
-        "target": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        }
-      },
-      "label": "demonstrates",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {},
-      "sourcePort": "bottom",
-      "targetPort": "right"
-    },
-    {
-      "id": "ce5d3d07-18dc-46d2-925d-0bc4a1fc1006",
-      "type": "edge",
-      "source": "72b60d74-6d4d-49d2-89f7-95d96231b104",
-      "target": "de4d58e9-60f4-4d58-83dc-857d9091f105",
-      "portMeta": {
-        "source": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        },
-        "target": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        }
-      },
-      "label": "supports",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {},
-      "sourcePort": "left",
-      "targetPort": "left"
-    },
-    {
-      "id": "58b4dcb5-5af4-4bb8-b42c-3a25e44d1007",
-      "type": "edge",
-      "source": "8f27d257-bb70-4c1b-b2e8-63e0e4dc9106",
-      "target": "8b1c5d1e-8d9c-45ec-97e0-6a4d9d9df102",
-      "portMeta": {
-        "source": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        },
-        "target": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        }
-      },
-      "label": "enables",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {},
-      "sourcePort": "bottom",
-      "targetPort": "left"
-    },
-    {
-      "id": "7e8b4c42-0a84-4dbe-b4a8-0a13b6e9d201",
-      "type": "edge",
-      "source": "72b60d74-6d4d-49d2-89f7-95d96231b104",
-      "target": "4d91c0d5-7b7d-4d5d-a0d2-6f0f2f7cb201",
-      "portMeta": {
-        "source": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        },
-        "target": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        }
-      },
-      "label": "requires",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {},
-      "sourcePort": "right",
-      "targetPort": "right"
-    },
-    {
-      "id": "f5d40dcb-1b18-40b3-b0c6-7b4d5fc0d202",
-      "type": "edge",
-      "source": "de4d58e9-60f4-4d58-83dc-857d9091f105",
-      "target": "4d91c0d5-7b7d-4d5d-a0d2-6f0f2f7cb201",
-      "portMeta": {
-        "source": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        },
-        "target": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        }
-      },
-      "label": "supports",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {},
-      "sourcePort": "left",
-      "targetPort": "left"
-    },
-    {
-      "id": "13c64e6f-22a5-4b7d-8d74-6d0d6f3eb203",
-      "type": "edge",
-      "source": "9d3fdc22-f2f0-45d2-bf6f-6d0f9f55a101",
-      "target": "4d91c0d5-7b7d-4d5d-a0d2-6f0f2f7cb201",
-      "portMeta": {
-        "source": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        },
-        "target": {
-          "key": "root",
-          "label": "root",
-          "type": "value",
-          "direction": "output"
-        }
-      },
-      "label": "extends",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {},
-      "sourcePort": "right",
-      "targetPort": "left"
-    },
-    {
-      "id": "twilite-product-edge-company",
-      "type": "edge",
-      "source": "twilite-product-hero",
-      "target": "twilite-product-company",
-      "label": "built by",
-      "style": {
-        "width": 2,
-        "dash": [],
-        "curved": true
-      },
-      "data": {},
-      "sourcePort": "root",
-      "targetPort": "root"
-    },
-    {
-      "id": "twilite-product-edge-user-benefit",
-      "type": "edge",
-      "source": "9d3fdc22-f2f0-45d2-bf6f-6d0f9f55a101",
-      "target": "twilite-product-user-benefit",
-      "label": "answers why",
-      "style": {
-        "curved": true,
-        "route": "curved",
-        "color": "#818cf8",
-        "width": 3,
-        "showArrow": true,
-        "arrowPosition": "end"
-      },
-      "data": {},
-      "sourcePort": "bottom",
-      "targetPort": "top"
-    },
-    {
-      "id": "twilite-product-declaration-landing",
+      "id": "twilite-product-landing-edge",
       "type": "ground",
       "source": "twilite-product-declaration",
-      "target": "twilite-product-landing-surface",
-      "label": "ground",
+      "target": "twilite-product-landing",
+      "label": "",
       "style": {},
-      "data": {},
+      "data": {
+        "presentation": {
+          "layer": "contract"
+        }
+      },
       "sourcePort": "ground",
-      "targetPort": "root"
-    },
-    {
-      "id": "twilite-product-detail-content",
-      "type": "view.content",
-      "source": "twilite-product-node-detail",
-      "target": "twilite-product-landing-surface",
-      "label": "content",
-      "style": {},
-      "data": {},
-      "sourcePort": "surface-delegate",
       "targetPort": "root"
     }
   ],
   "settings": {
-    "theme": null,
-    "backgroundImage": null,
-    "defaultNodeColor": "#1976d2",
-    "defaultEdgeColor": "",
-    "snapToGrid": false,
-    "gridSize": 20,
-    "edgeRouting": "auto",
-    "layout": {
-      "mode": "autoOnMissingPositions",
-      "defaultLayout": "layered",
-      "direction": "DOWN",
-      "edgeLaneGapPx": 10,
-      "serpentine": {
-        "maxPerRow": 6
-      },
-      "cycleFallback": {
-        "enabled": true
-      },
-      "elk": {
-        "algorithm": "fixed",
-        "edgeRouting": "ORTHOGONAL",
-        "portConstraints": "FIXED_SIDE",
-        "nodeSpacing": 120,
-        "layeredEdgeSpacing": 80
-      }
-    },
     "github": {
-      "repo": "twilite-zone/public",
       "path": "products/twilite/root.node",
-      "branch": "main",
-      "autoCreateRepo": true,
-      "repoVisibility": "private",
-      "seedOnCommit": false,
-      "enableGithubPages": false,
-      "installationId": "120403738"
-    },
-    "autoSave": false
-  },
-  "scripts": []
+      "repo": "twilite-zone/public"
+    }
+  }
 }
