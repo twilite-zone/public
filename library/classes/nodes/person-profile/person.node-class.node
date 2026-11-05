@@ -218,8 +218,8 @@
           "name": "Person Class",
           "version": "0.1.0",
           "description": "A person: the one a profile is about, or someone connected to them.",
-          "createdAt": "2026-11-05T17:30:43.106Z",
-          "updatedAt": "2026-11-05T17:30:43.107Z",
+          "createdAt": "2026-11-05T21:11:25.502Z",
+          "updatedAt": "2026-11-05T21:11:25.520Z",
           "nodeId": "person"
         },
         "intent": {
@@ -294,7 +294,8 @@
                 "sizing": {
                   "fit": "content",
                   "maxHeight": 360
-                }
+                },
+                "avatar": ""
               },
               "ports": [
                 {
@@ -435,6 +436,10 @@
                 "summary": {
                   "mode": "shared",
                   "viewNodeId": "person-summary-view"
+                },
+                "icon": {
+                  "mode": "shared",
+                  "viewNodeId": "person-icon-view"
                 }
               },
               "exposes": {
@@ -453,7 +458,8 @@
           "sharedPresentation": {
             "detailViewNodeId": "person-detail-view",
             "summaryViewNodeId": "person-summary-view",
-            "glyphNodeId": "person-glyph"
+            "glyphNodeId": "person-glyph",
+            "iconViewNodeId": "person-icon-view"
           },
           "primaryNodeViewId": "person-detail-view",
           "primaryEditorViewId": "person-editor-view",
@@ -507,7 +513,7 @@
         "markdown": "Person captures unresolved issues that block clarity.\n\nAuthored fields: `label`, `body`, `status`, `owner`, `resolutionPath`, `prominence`.\n\nThe detail surface represents the full editor contract; card and icon surfaces are deliberate projections.",
         "content": {
           "kind": "markdown",
-          "value": "Person is a person: the one a profile is about, or someone connected to them.\n\nAuthored fields: `title`, `body`, `born`, `died`, `subject`, `check`.\n\nEvery card of the Person Profile carries `check`: set it when you are not sure the fact is right, so the profile can show what still needs checking."
+          "value": "Person is a person: the one a profile is about, or someone connected to them.\n\nAuthored fields: `title`, `body`, `born`, `died`, `avatar`, `subject`, `check`.\n\nEvery card of the Person Profile carries `check`: set it when you are not sure the fact is right, so the profile can show what still needs checking."
         },
         "renderShape": {
           "kind": "markdown"
@@ -624,6 +630,13 @@
                 "type": "text",
                 "path": "data.died",
                 "placeholder": "a year or a date, or leave empty"
+              },
+              {
+                "key": "avatar",
+                "label": "Picture",
+                "type": "text",
+                "path": "data.avatar",
+                "placeholder": "An image address, or leave empty"
               },
               {
                 "key": "subject",
@@ -786,7 +799,7 @@
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#f0fdfa;border:2px solid #0f766e;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#0f766e'></i><div style='position:relative;display:flex;gap:2.4cqw;align-items:center;justify-content:space-between;font-size:3.7cqw;font-weight:700;letter-spacing:.08em;text-transform:uppercase'><span style='color:#0f766e'>Person</span><span style='{{eq(data.check, true, 'display:inline-block', 'display:none')}};padding:.8cqw 2.2cqw;border-radius:99cqw;background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:3.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase'>to check</span></div><div style='position:relative;display:flex;gap:5cqw;align-items:center'><div style='flex:0 0 26cqw;height:26cqw'><svg viewBox='0 0 64 64' style='width:100%;height:100%;display:block' aria-hidden='true'><circle cx='32' cy='32' r='31' fill='#0f766e' opacity='.14'/><circle cx='32' cy='25' r='11' fill='#0f766e'/><path d='M11 56Q13 38 32 38Q51 38 53 56Z' fill='#0f766e'/></svg></div><div style='min-width:0'><div style='font-weight:700;font-size:7.4cqw;line-height:1.12'>{{data.title || label}}</div><div style='font-size:4.2cqw;color:#64748b;margin-top:1.4cqw'>{{data.born}}{{eq(data.died, '', '', ' to ' + data.died)}}</div></div></div><div style='position:relative;flex:1 1 auto;min-height:0;font-size:4.4cqw;line-height:1.45;color:#334155;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden'>{{data.body}}</div></div></div>",
+        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#f0fdfa;border:2px solid #0f766e;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#0f766e'></i><div style='position:relative;display:flex;gap:2.4cqw;align-items:center;justify-content:space-between;font-size:3.7cqw;font-weight:700;letter-spacing:.08em;text-transform:uppercase'><span style='color:#0f766e'>Person</span><span style='{{eq(data.check, true, 'display:inline-block', 'display:none')}};padding:.8cqw 2.2cqw;border-radius:99cqw;background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:3.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase'>to check</span></div><div style='position:relative;display:flex;gap:5cqw;align-items:center'><div style='flex:0 0 26cqw;height:26cqw'><div style='position:relative;width:100%;height:100%'><svg viewBox='0 0 64 64' style='width:100%;height:100%;display:block' aria-hidden='true'><circle cx='32' cy='32' r='31' fill='#0f766e' opacity='.14'/><circle cx='32' cy='25' r='11' fill='#0f766e'/><path d='M11 56Q13 38 32 38Q51 38 53 56Z' fill='#0f766e'/></svg><div style='position:absolute;inset:0;border-radius:50%;background-image:url(\"{{data.avatar}}\");background-size:cover;background-position:center 30%'></div></div></div><div style='min-width:0'><div style='font-weight:700;font-size:7.4cqw;line-height:1.12'>{{data.title || label}}</div><div style='font-size:4.2cqw;color:#64748b;margin-top:1.4cqw'>{{data.born}}{{eq(data.died, '', '', ' to ' + data.died)}}</div></div></div><div style='position:relative;flex:1 1 auto;min-height:0;font-size:4.4cqw;line-height:1.45;color:#334155;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden'>{{data.body}}</div></div></div>",
         "semanticLevel": "detail"
       }
     },
@@ -907,8 +920,11 @@
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#f0fdfa;border:2px solid #0f766e;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#0f766e'></i><div style='position:relative;display:flex;gap:2.4cqw;align-items:center;justify-content:space-between;font-size:3.7cqw;font-weight:700;letter-spacing:.08em;text-transform:uppercase'><span style='color:#0f766e'>Person</span><span style='{{eq(data.check, true, 'display:inline-block', 'display:none')}};padding:.8cqw 2.2cqw;border-radius:99cqw;background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:3.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase'>to check</span></div><div style='position:relative;display:flex;gap:4cqw;align-items:center;flex:1 1 auto;min-height:0'><div style='flex:0 0 22cqw;height:22cqw'><svg viewBox='0 0 64 64' style='width:100%;height:100%;display:block' aria-hidden='true'><circle cx='32' cy='32' r='31' fill='#0f766e' opacity='.14'/><circle cx='32' cy='25' r='11' fill='#0f766e'/><path d='M11 56Q13 38 32 38Q51 38 53 56Z' fill='#0f766e'/></svg></div><div style='min-width:0'><div style='font-weight:700;font-size:6.6cqw;line-height:1.15;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='font-size:3.9cqw;color:#64748b;margin-top:1cqw'>{{data.born}}{{eq(data.died, '', '', ' to ' + data.died)}}</div></div></div><div style='position:relative;font-size:3.9cqw;line-height:1.35;color:#334155;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.body}}</div></div></div>",
-        "semanticLevel": "summary"
+        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#f0fdfa;border:2px solid #0f766e;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#0f766e'></i><div style='position:relative;display:flex;gap:2.4cqw;align-items:center;justify-content:space-between;font-size:3.7cqw;font-weight:700;letter-spacing:.08em;text-transform:uppercase'><span style='color:#0f766e'>Person</span><span style='{{eq(data.check, true, 'display:inline-block', 'display:none')}};padding:.8cqw 2.2cqw;border-radius:99cqw;background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:3.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase'>to check</span></div><div style='position:relative;display:flex;gap:4cqw;align-items:center;flex:1 1 auto;min-height:0'><div style='flex:0 0 22cqw;height:22cqw'><div style='position:relative;width:100%;height:100%'><svg viewBox='0 0 64 64' style='width:100%;height:100%;display:block' aria-hidden='true'><circle cx='32' cy='32' r='31' fill='#0f766e' opacity='.14'/><circle cx='32' cy='25' r='11' fill='#0f766e'/><path d='M11 56Q13 38 32 38Q51 38 53 56Z' fill='#0f766e'/></svg><div style='position:absolute;inset:0;border-radius:50%;background-image:url(\"{{data.avatar}}\");background-size:cover;background-position:center 30%'></div></div></div><div style='min-width:0'><div style='font-weight:700;font-size:6.6cqw;line-height:1.15;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='font-size:3.9cqw;color:#64748b;margin-top:1cqw'>{{data.born}}{{eq(data.died, '', '', ' to ' + data.died)}}</div></div></div><div style='position:relative;font-size:3.9cqw;line-height:1.35;color:#334155;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.body}}</div></div></div>",
+        "semanticLevel": "summary",
+        "semanticZoom": {
+          "resolution": 0.3
+        }
       }
     },
     {
@@ -1198,6 +1214,96 @@
           "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;background-color:#f0fdfa;background-image:linear-gradient(rgba(15,118,110,.16) 0.12cqw,transparent 0.12cqw),linear-gradient(90deg,rgba(15,118,110,.16) 0.12cqw,transparent 0.12cqw),linear-gradient(rgba(15,118,110,.07) 0.08cqw,transparent 0.08cqw),linear-gradient(90deg,rgba(15,118,110,.07) 0.08cqw,transparent 0.08cqw);background-size:10cqw 10cqw,10cqw 10cqw,2cqw 2cqw,2cqw 2cqw'></div></div>"
         }
       }
+    },
+    {
+      "id": "person-icon-view",
+      "type": "face",
+      "label": "Face",
+      "position": {
+        "x": -620,
+        "y": 170
+      },
+      "width": 180,
+      "height": 180,
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "person-class",
+          "nodeId": "person"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "renderShape": {
+          "kind": "html"
+        },
+        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#f0fdfa;border:5cqw solid #0f766e'><div style='position:absolute;inset:6cqw'><svg viewBox='0 0 64 64' style='width:100%;height:100%;display:block' aria-hidden='true'><circle cx='32' cy='32' r='31' fill='#0f766e' opacity='.14'/><circle cx='32' cy='25' r='11' fill='#0f766e'/><path d='M11 56Q13 38 32 38Q51 38 53 56Z' fill='#0f766e'/></svg></div><div style='position:absolute;inset:0;border-radius:50%;background-image:url(\"{{data.avatar}}\");background-size:cover;background-position:center 30%'></div><i style='{{eq(data.check, true, 'display:block', 'display:none')}};position:absolute;right:6cqw;top:6cqw;width:15cqw;height:15cqw;border-radius:50%;background:#f59e0b;border:2.5cqw solid #fffbeb'></i></div></div>",
+        "semanticLevel": "icon",
+        "semanticZoom": {
+          "resolution": 0.0625
+        },
+        "memo": "The Person card seen small: just the face.",
+        "reason": "A person is recognised by their face: at the size where a card has no room for a name, the face says who it is, and a glyph alone is only a mark."
+      }
     }
   ],
   "edges": [
@@ -1224,17 +1330,6 @@
       "data": {},
       "sourcePort": "sequence-out",
       "targetPort": "sequence-in"
-    },
-    {
-      "id": "person-summary-view-next",
-      "type": "next-face",
-      "source": "person-summary-view",
-      "target": "person-glyph",
-      "label": "",
-      "style": {},
-      "data": {},
-      "sourcePort": "sequence-out",
-      "targetPort": "root"
     },
     {
       "id": "person-edge-landing-surface",
@@ -1271,6 +1366,28 @@
       "data": {
         "classRef": "tlz://twilite.zone/library/edges/environment/root.node"
       }
+    },
+    {
+      "id": "person-summary-icon",
+      "type": "next-face",
+      "source": "person-summary-view",
+      "target": "person-icon-view",
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in",
+      "label": "",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "person-icon-glyph",
+      "type": "next-face",
+      "source": "person-icon-view",
+      "target": "person-glyph",
+      "sourcePort": "sequence-out",
+      "targetPort": "root",
+      "label": "",
+      "style": {},
+      "data": {}
     }
   ]
 }
