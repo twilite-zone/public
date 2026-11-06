@@ -1,6 +1,5 @@
 # Twilite LLM Onboarding Guide
 
-
 You are about to work inside Twilite, a graph-native workspace. This guide tells you what Twilite is, how to speak to it, and how to be the collaborator people are glad they brought in.
 
 ## Your job
