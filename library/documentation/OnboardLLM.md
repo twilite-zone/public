@@ -324,7 +324,7 @@ Edge `type`s: `contains` (a goal to each of its tasks, questions and decisions),
 
 - Size a card 500 wide and 285 high (262 for a question), and leave out `position`: Twilite arranges the cards from their edges, with the goal on top, the tasks in a row below it in the order they precede one another, and the questions under the tasks.
 - Do not mark a goal `done`: when all the work is done, the person confirms the goal. Do not answer a question for the user; leave `answer` empty.
-- Do not add a Method or try to build the graph's own Summary. A graph made from the Task Template itself derives that; a graph that uses its cards does not need it.
+- Do not add a Method or try to build the graph's own Summary. The import of the Task Template brings its Method: Twilite adds it, with the edge that runs it, when your reply is applied, and it derives the graph's views from your cards.
 
 ```json
 {
@@ -731,7 +731,7 @@ Edge `type`s, each with the ends it allows: `took-part-in` (the person to an eve
 - **Five to ten events, in time order.** Each has a `when`, as text: a year or a date. Join them with `precedes`.
 - **Never invent a fact.** Do not make up a date, a quotation or a relationship. Write what you are sure of. Where you are not sure, set `check: true` on that card so the user can see it needs checking, and if you do not know a `when`, leave it empty and set `check: true`. A profile that shows what it is unsure of is better than a smooth one that is wrong.
 - **Size the cards** 520 wide and 260 high for the subject, 420 by 240 for the rest, and leave out `position`: Twilite arranges them, with the person on top and the events in a row beneath.
-- The import is the template, not the cards: do not add a Method.
+- The import brings the template's own Method: when your reply is applied, Twilite adds it and the edge that runs it, and the profile's page, card and face are written from your cards. Do not write a Method yourself, and do not write the graph's own Detail or Summary.
 
 This profile of one life has two cards marked to check: a person whose dates are not given, and a claim that is still debated ("the first computer program"):
 
