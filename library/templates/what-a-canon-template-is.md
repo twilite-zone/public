@@ -8,7 +8,7 @@ A **canon template** is a starter graph in the Twilite Zone library (`library/te
 
 ## 1. One surface, three looks
 
-A canon template presents through one Surface: a Detail, then a Summary, then a Glyph. It has no Icon view: the Icon is left off, and one is added only for a compelling reason, which is written next to it.
+A canon template presents through one Surface: a Detail, then a Summary, then a Glyph. An Icon view is optional. Add one when the template benefits from it (the Person Profile's face is an example), and leave it off when it doesn't.
 
 *Why:* The glyph is the floor: it stands for the graph at small sizes and hands over to the lowest view once that view can be read.
 
