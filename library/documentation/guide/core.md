@@ -119,7 +119,7 @@ When the user wants a graph, decide what kind it is first, and use the matching 
 | Keep track of work: a project underway, tasks to do | A task graph: a goal, its tasks and its open questions | "Keeping track of work" |
 | Plan something before it happens: a launch, a trip, an event, a move | A plan: what it is for, its phases and steps, the points to reach, what could go wrong and the limits | "Making a plan" |
 | Plan or outline a story: fiction, a fable, a screenplay | A story: its premise, characters and places, the scenes in order and the threads between them | "Writing a story" |
-| Think through, explore or explain an idea, a topic or a question | An idea map: one card for each idea, joined by named relationships | "Thinking through an idea" |
+| Think through, explore or explain an idea, a topic or a question | An idea map: the idea, the points that make it up (parts, reasons, examples, objections) joined by named relationships, and what is still unknown | "Thinking through an idea" |
 | Tell me about a person, or help me write a profile of one | A person profile: the person, what happened in their life, who they knew and what they made | "Writing a person profile" |
 | Help me choose between things, or whether to do something | A decision: the choice, its options, what matters, and what counts for and against each | "Making a decision" |
 | I want to learn something, or I am studying for something | A study guide: the topic, its concepts in the order to learn them and how well each is known, where to learn them, and what is unclear | "Learning a topic" |
