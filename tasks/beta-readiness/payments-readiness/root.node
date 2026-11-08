@@ -3987,6 +3987,164 @@
           "value": "## Expected States\n\n- paid checkout returns as active without manual repair\n- duplicate webhook delivery leaves billing rows and entitlements stable\n- `cancel_at_period_end` is preserved in billing metadata\n- deleted subscriptions remove paid entitlement cleanly\n- failed-payment and expiration behavior must be explicit because `past_due` is currently treated as active"
         }
       }
+    },
+    {
+      "id": "payments-readiness-task-billing-security",
+      "type": "task",
+      "label": "Review billing security",
+      "position": {
+        "x": -170,
+        "y": 1080
+      },
+      "width": 360,
+      "height": 240,
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "top",
+          "label": "top",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 270
+        },
+        {
+          "id": "left",
+          "label": "left",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 180
+        },
+        {
+          "id": "bottom",
+          "label": "bottom",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 90
+        },
+        {
+          "id": "right",
+          "label": "right",
+          "direction": "bidirectional",
+          "dataType": "value",
+          "angle": 0
+        }
+      ],
+      "inputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "root",
+          "label": "root",
+          "type": "any"
+        },
+        {
+          "key": "top",
+          "label": "top",
+          "type": "value"
+        },
+        {
+          "key": "left",
+          "label": "left",
+          "type": "value"
+        },
+        {
+          "key": "bottom",
+          "label": "bottom",
+          "type": "value"
+        },
+        {
+          "key": "right",
+          "label": "right",
+          "type": "value"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "body": "Review how billing is protected before real money moves: the Stripe keys and webhook secret, who can change a subscription, that the webhook signature is checked, and that one person can never read or change another person's billing.",
+        "priority": "high",
+        "status": "todo",
+        "owner": "Michael",
+        "nextAction": "Walk the billing routes and list every place a secret or an account id is used.",
+        "acceptanceCriteria": [
+          "Keys and webhook secrets are only on the server and not in the repository",
+          "Webhook signatures are verified and replays are harmless",
+          "One account cannot read or change another account's subscription"
+        ],
+        "identity": {
+          "graphId": "payments-readiness-declaration",
+          "nodeId": "payments-readiness-task-billing-security"
+        },
+        "classRef": "github://twilite-zone/public/library/classes/nodes/task-planning/task.node-class.node"
+      }
     }
   ],
   "edges": [
@@ -4152,6 +4310,17 @@
       "sourcePort": "top",
       "targetPort": "bottom",
       "label": "checks",
+      "style": {},
+      "data": {}
+    },
+    {
+      "id": "payments-readiness-edge-goal-billing-security",
+      "type": "edge",
+      "source": "payments-readiness-goal",
+      "target": "payments-readiness-task-billing-security",
+      "sourcePort": "bottom",
+      "targetPort": "top",
+      "label": "protects accounts",
       "style": {},
       "data": {}
     }
