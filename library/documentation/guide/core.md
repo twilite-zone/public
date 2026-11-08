@@ -116,7 +116,8 @@ When the user wants a graph, decide what kind it is first, and use the matching 
 
 | The user wants to... | Build | Recipe |
 |---|---|---|
-| Keep track of work: a plan, a project, tasks to do | A task graph: a goal, its tasks and its open questions | "Keeping track of work" |
+| Keep track of work: a project underway, tasks to do | A task graph: a goal, its tasks and its open questions | "Keeping track of work" |
+| Plan something before it happens: a launch, a trip, an event, a move | A plan: what it is for, its phases and steps, the points to reach, what could go wrong and the limits | "Making a plan" |
 | Think through, explore or explain an idea, a topic or a question | An idea map: one card for each idea, joined by named relationships | "Thinking through an idea" |
 | Tell me about a person, or help me write a profile of one | A person profile: the person, what happened in their life, who they knew and what they made | "Writing a person profile" |
 | Help me choose between things, or whether to do something | A decision: the choice, its options, what matters, and what counts for and against each | "Making a decision" |
@@ -138,6 +139,7 @@ Each kind of graph has its own page. Before you write a kind of graph, read its 
 | "Writing a person profile" | https://twilite.zone/library/documentation/guide/recipes/person.md |
 | "Making a decision" | https://twilite.zone/library/documentation/guide/recipes/decision.md |
 | "Learning a topic" | https://twilite.zone/library/documentation/guide/recipes/learn.md |
+| "Making a plan" | https://twilite.zone/library/documentation/guide/recipes/plan.md |
 
 Reference page: https://twilite.zone/library/documentation/guide/reference.md. Read it only when nothing is open and you must write a whole new graph from scratch (a root, its faces and a glyph), or when the user asks for custom node classes, portals, bridges or scripts.
 

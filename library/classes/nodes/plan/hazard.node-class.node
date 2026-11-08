@@ -1,0 +1,1104 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "created": "2026-03-15T20:30:00.000Z",
+    "modified": "2026-08-27T00:00:00.000Z",
+    "author": "",
+    "tags": [
+      "library",
+      "node-class",
+      "task-planning"
+    ],
+    "preferredViewer": "https://twilite.zone"
+  },
+  "nodes": [
+    {
+      "id": "hazard-declaration",
+      "type": "root",
+      "label": "Risk Declaration",
+      "position": {
+        "x": 0,
+        "y": -420
+      },
+      "width": 360,
+      "height": 240,
+      "handles": [
+        {
+          "id": "port",
+          "key": "port",
+          "portId": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port"
+        },
+        {
+          "id": "ground",
+          "key": "ground",
+          "portId": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "surfaces"
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "environment"
+        }
+      ],
+      "ports": [
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "ground",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "ground",
+            "required": true,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "hazard-class",
+          "name": "Risk Class",
+          "version": "0.1.0",
+          "description": "Something that could go wrong, how likely it is, what reduces it and what to do if it happens.",
+          "createdAt": "2026-11-08T00:37:45.923Z",
+          "updatedAt": "2026-11-08T00:37:45.923Z",
+          "nodeId": "hazard"
+        },
+        "intent": {
+          "kind": "node-class",
+          "scope": "local"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "declaration",
+            "content",
+            "view",
+            "glyph"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "skills": [],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
+        },
+        "nodeClass": {
+          "contractVersion": "1.0.0",
+          "key": "hazard",
+          "nodeDef": {
+            "key": "hazard",
+            "ref": "tlz://twilite.zone/library/classes/nodes/plan/hazard.node-class.node",
+            "source": "local",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Risk",
+              "size": {
+                "width": 460,
+                "height": 280
+              },
+              "color": "linear-gradient(135deg, #fef2f2, #b91c1c)",
+              "showLabel": false,
+              "data": {
+                "title": "",
+                "body": "",
+                "likelihood": "medium",
+                "mitigation": "",
+                "fallback": "",
+                "check": false,
+                "prominence": "normal",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "Warning"
+                  }
+                },
+                "sizing": {
+                  "fit": "content",
+                  "maxHeight": 360
+                }
+              },
+              "ports": [
+                {
+                  "id": "threatens",
+                  "key": "threatens",
+                  "label": "threatens",
+                  "direction": "output",
+                  "dataType": "any",
+                  "angle": 270,
+                  "allowedEdgeTypes": [
+                    "threatens"
+                  ],
+                  "metadata": {
+                    "semantic": true,
+                    "roles": [
+                      "threatens"
+                    ],
+                    "repeatable": true,
+                    "targetKinds": [
+                      "phase",
+                      "step"
+                    ]
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Open question changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          },
+          "label": "Risk",
+          "meaning": "Unresolved question node for planning graphs.",
+          "description": "Unresolved question node for planning graphs.",
+          "requiredDataKeys": [
+            "body"
+          ]
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "#666666",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto",
+          "github": {
+            "repo": "",
+            "path": "",
+            "branch": "main",
+            "autoCreateRepo": true,
+            "repoVisibility": "private",
+            "seedOnCommit": false,
+            "enableGithubPages": false
+          },
+          "autoSave": false
+        },
+        "primaryNodeViewId": "hazard-detail-view",
+        "root": {
+          "kind": "node-class",
+          "targetMode": "artifact",
+          "defaultSurfaceId": "root",
+          "surfaces": [
+            {
+              "id": "root",
+              "kind": "port",
+              "label": "Risk",
+              "memo": "Implicit root port for consuming the Risk class and its semantic views.",
+              "presentation": {
+                "detail": {
+                  "mode": "shared",
+                  "viewNodeId": "hazard-detail-view"
+                },
+                "summary": {
+                  "mode": "shared",
+                  "viewNodeId": "hazard-summary-view"
+                }
+              },
+              "exposes": {
+                "views": {
+                  "mode": "allow"
+                },
+                "declarations": {
+                  "mode": "allow"
+                }
+              },
+              "portNodeId": "hazard-root-port"
+            }
+          ],
+          "artifactKind": "node-class",
+          "graphViewRole": "browser",
+          "sharedPresentation": {
+            "detailViewNodeId": "hazard-detail-view",
+            "summaryViewNodeId": "hazard-summary-view",
+            "glyphNodeId": "hazard-glyph"
+          },
+          "primaryNodeViewId": "hazard-detail-view",
+          "primaryEditorViewId": "hazard-editor-view",
+          "portViewNodeId": ""
+        }
+      }
+    },
+    {
+      "id": "hazard-notes",
+      "type": "content",
+      "label": "Risk Landing Surface",
+      "position": {
+        "x": 520,
+        "y": -360
+      },
+      "width": 460,
+      "height": 220,
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "metadata": {
+            "interface": true,
+            "structural": true,
+            "role": "content.root"
+          }
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "hazard-class",
+          "nodeId": "hazard"
+        },
+        "markdown": "Risk captures unresolved issues that block clarity.\n\nAuthored fields: `label`, `body`, `status`, `owner`, `resolutionPath`, `prominence`.\n\nThe detail surface represents the full editor contract; card and icon surfaces are deliberate projections.",
+        "content": {
+          "kind": "markdown",
+          "value": "Risk is something that could go wrong, how likely it is, what reduces it and what to do if it happens.\n\nAuthored fields: `title`, `body`, `likelihood`, `mitigation`, `fallback`, `check`.\n\nEvery card of the Plan template carries `check`: set it when you are not sure it is right, so the plan can show what still needs checking."
+        },
+        "renderShape": {
+          "kind": "markdown"
+        }
+      }
+    },
+    {
+      "id": "hazard-editor-view",
+      "type": "face",
+      "label": "Editor",
+      "position": {
+        "x": 40,
+        "y": 420
+      },
+      "width": 480,
+      "height": 320,
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "hazard-class",
+          "nodeId": "hazard"
+        },
+        "view": {
+          "intent": "editor",
+          "payload": "editor.web"
+        },
+        "editor": {
+          "web": {
+            "fields": [
+              {
+                "key": "title",
+                "label": "Risk",
+                "type": "text",
+                "path": "data.title",
+                "placeholder": "A short name for what could go wrong"
+              },
+              {
+                "key": "body",
+                "label": "What could happen",
+                "type": "markdown",
+                "path": "data.body",
+                "placeholder": "What goes wrong, and what it would cost.",
+                "multiline": true,
+                "rows": 5
+              },
+              {
+                "key": "likelihood",
+                "label": "How likely",
+                "type": "select",
+                "path": "data.likelihood",
+                "options": [
+                  {
+                    "label": "Unlikely",
+                    "value": "low"
+                  },
+                  {
+                    "label": "Possible",
+                    "value": "medium"
+                  },
+                  {
+                    "label": "Likely",
+                    "value": "high"
+                  }
+                ]
+              },
+              {
+                "key": "mitigation",
+                "label": "What reduces it",
+                "type": "markdown",
+                "path": "data.mitigation",
+                "placeholder": "What you do now to make it less likely or less costly.",
+                "multiline": true,
+                "rows": 5
+              },
+              {
+                "key": "fallback",
+                "label": "If it happens",
+                "type": "markdown",
+                "path": "data.fallback",
+                "placeholder": "What you do if it happens anyway.",
+                "multiline": true,
+                "rows": 5
+              },
+              {
+                "key": "check",
+                "label": "To check",
+                "type": "select",
+                "path": "data.check",
+                "options": [
+                  {
+                    "label": "Looks right",
+                    "value": false
+                  },
+                  {
+                    "label": "To check",
+                    "value": true
+                  }
+                ]
+              },
+              {
+                "key": "label",
+                "label": "List name",
+                "type": "text",
+                "path": "label",
+                "placeholder": "Risk"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "hazard-detail-view",
+      "type": "face",
+      "label": "Surface",
+      "position": {
+        "x": -620,
+        "y": -180
+      },
+      "width": 420,
+      "height": 300,
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "hazard-class",
+          "nodeId": "hazard"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail",
+          "controls": [
+            {
+              "id": "hazard-check",
+              "type": "button",
+              "label": "Mark to check",
+              "icon": "bolt",
+              "variant": "contained",
+              "priority": "highest",
+              "action": "setData",
+              "bind": "data.check",
+              "value": true
+            },
+            {
+              "id": "hazard-looks-right",
+              "type": "button",
+              "label": "Looks right",
+              "icon": "edit",
+              "variant": "outlined",
+              "priority": "high",
+              "action": "setData",
+              "bind": "data.check",
+              "value": false
+            },
+            {
+              "id": "hazard-edit",
+              "type": "button",
+              "label": "Edit",
+              "icon": "edit",
+              "variant": "outlined",
+              "priority": "high",
+              "action": "openEditor"
+            }
+          ],
+          "html": {
+            "chrome": true
+          }
+        },
+        "renderShape": {
+          "kind": "html"
+        },
+        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#fef2f2;border:2px solid #b91c1c;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#b91c1c'></i><div style='position:relative;display:flex;gap:2.4cqw;align-items:center;justify-content:space-between;font-size:3.7cqw;font-weight:700;letter-spacing:.08em;text-transform:uppercase'><span style='color:#b91c1c'>Risk</span><span style='display:flex;gap:2cqw;align-items:center'><span style='padding:.8cqw 2.4cqw;border-radius:99cqw;background:#ffffff;border:1px solid #b91c1c;color:#b91c1c;font-size:3.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase'>{{eq(data.likelihood, 'high', 'Likely', eq(data.likelihood, 'low', 'Unlikely', 'Possible'))}}</span><span style='{{eq(data.check, true, 'display:inline-block', 'display:none')}};padding:.8cqw 2.2cqw;border-radius:99cqw;background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:3.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase'>to check</span></span></div><div style='position:relative;font-weight:700;font-size:7.6cqw;line-height:1.15;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='position:relative;flex:1 1 auto;min-height:0;font-size:4.4cqw;line-height:1.45;color:#334155;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden'>{{data.body}}</div><div style='position:relative;font-size:3.6cqw;line-height:1.4;color:#334155;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'><b style='color:#b91c1c'>Reduces it:</b> {{data.mitigation}}</div><div style='position:relative;font-size:3.6cqw;line-height:1.4;color:#334155;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'><b style='color:#b91c1c'>If it happens:</b> {{data.fallback}}</div></div></div>",
+        "semanticLevel": "detail"
+      }
+    },
+    {
+      "id": "hazard-summary-view",
+      "type": "face",
+      "label": "Card",
+      "position": {
+        "x": -620,
+        "y": 170
+      },
+      "width": 420,
+      "height": 300,
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "hazard-class",
+          "nodeId": "hazard"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary",
+          "controls": [
+            {
+              "id": "hazard-summary-check",
+              "type": "button",
+              "label": "Mark to check",
+              "icon": "bolt",
+              "variant": "contained",
+              "priority": "highest",
+              "action": "setData",
+              "bind": "data.check",
+              "value": true
+            },
+            {
+              "id": "hazard-summary-looks-right",
+              "type": "button",
+              "label": "Looks right",
+              "icon": "edit",
+              "variant": "outlined",
+              "priority": "high",
+              "action": "setData",
+              "bind": "data.check",
+              "value": false
+            },
+            {
+              "id": "hazard-edit",
+              "type": "button",
+              "label": "Edit",
+              "icon": "edit",
+              "variant": "outlined",
+              "priority": "high",
+              "action": "openEditor"
+            }
+          ],
+          "html": {
+            "chrome": true
+          }
+        },
+        "renderShape": {
+          "kind": "html"
+        },
+        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#fef2f2;border:2px solid #b91c1c;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#b91c1c'></i><div style='position:relative;display:flex;gap:2.4cqw;align-items:center;justify-content:space-between;font-size:3.7cqw;font-weight:700;letter-spacing:.08em;text-transform:uppercase'><span style='color:#b91c1c'>Risk</span><span style='display:flex;gap:2cqw;align-items:center'><span style='padding:.8cqw 2.4cqw;border-radius:99cqw;background:#ffffff;border:1px solid #b91c1c;color:#b91c1c;font-size:3.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase'>{{eq(data.likelihood, 'high', 'Likely', eq(data.likelihood, 'low', 'Unlikely', 'Possible'))}}</span><span style='{{eq(data.check, true, 'display:inline-block', 'display:none')}};padding:.8cqw 2.2cqw;border-radius:99cqw;background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:3.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase'>to check</span></span></div><div style='position:relative;font-weight:700;font-size:6.6cqw;line-height:1.15;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='position:relative;flex:1 1 auto;min-height:0;font-size:4.1cqw;line-height:1.45;color:#334155;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden'>{{data.body}}</div></div></div>",
+        "semanticLevel": "summary"
+      }
+    },
+    {
+      "id": "hazard-glyph",
+      "type": "glyph",
+      "label": "Risk Glyph",
+      "position": {
+        "x": 70,
+        "y": -680
+      },
+      "width": 220,
+      "height": 140,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "glyph": {
+          "kind": "icon",
+          "name": "Warning",
+          "color": "#b91c1c"
+        },
+        "interfaceContract": {
+          "version": 1,
+          "receivesGlyphDefinition": true
+        },
+        "identity": {
+          "graphId": "hazard-class",
+          "nodeId": "hazard"
+        }
+      }
+    },
+    {
+      "id": "hazard-root-port",
+      "type": "port",
+      "label": "hazard root port",
+      "position": {
+        "x": 520,
+        "y": -420
+      },
+      "width": 320,
+      "height": 180,
+      "ports": [
+        {
+          "id": "threatens",
+          "key": "threatens",
+          "label": "threatens",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "threatens"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "threatens"
+            ],
+            "repeatable": true,
+            "targetKinds": [
+              "phase",
+              "step"
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "threatens",
+          "key": "threatens",
+          "label": "threatens",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "threatens"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "threatens"
+            ],
+            "repeatable": true,
+            "targetKinds": [
+              "phase",
+              "step"
+            ]
+          },
+          "portId": "threatens"
+        }
+      ],
+      "data": {
+        "identity": {
+          "graphId": "hazard-class",
+          "nodeId": "hazard"
+        },
+        "title": "Risk Declaration",
+        "interfaceContract": {
+          "version": 1,
+          "role": "class.root"
+        }
+      }
+    },
+    {
+      "id": "hazard-class-environment",
+      "type": "face",
+      "label": "Node class environment",
+      "position": {
+        "x": -620,
+        "y": -680
+      },
+      "width": 400,
+      "height": 240,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "hazard-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.environment"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;background-color:#fef2f2;background-image:linear-gradient(rgba(185,28,28,.16) 0.12cqw,transparent 0.12cqw),linear-gradient(90deg,rgba(185,28,28,.16) 0.12cqw,transparent 0.12cqw),linear-gradient(rgba(185,28,28,.07) 0.08cqw,transparent 0.08cqw),linear-gradient(90deg,rgba(185,28,28,.07) 0.08cqw,transparent 0.08cqw);background-size:10cqw 10cqw,10cqw 10cqw,2cqw 2cqw,2cqw 2cqw'></div></div>"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "hazard-detail-view-surface",
+      "type": "surface",
+      "source": "hazard-declaration",
+      "target": "hazard-detail-view",
+      "label": "",
+      "style": {},
+      "data": {
+        "surfaceId": "root"
+      },
+      "sourcePort": "surfaces",
+      "targetPort": "root"
+    },
+    {
+      "id": "hazard-detail-view-next",
+      "type": "next-face",
+      "source": "hazard-detail-view",
+      "target": "hazard-summary-view",
+      "label": "",
+      "style": {},
+      "data": {},
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in"
+    },
+    {
+      "id": "hazard-summary-view-next",
+      "type": "next-face",
+      "source": "hazard-summary-view",
+      "target": "hazard-glyph",
+      "label": "",
+      "style": {},
+      "data": {},
+      "sourcePort": "sequence-out",
+      "targetPort": "root"
+    },
+    {
+      "id": "hazard-edge-landing-surface",
+      "type": "ground",
+      "source": "hazard-declaration",
+      "target": "hazard-notes",
+      "sourcePort": "ground",
+      "targetPort": "root",
+      "label": "ground",
+      "data": {}
+    },
+    {
+      "type": "exposes-port",
+      "sourcePort": "port",
+      "targetPort": "root",
+      "label": "",
+      "style": {},
+      "data": {},
+      "id": "hazard-exposes-root-port",
+      "source": "hazard-declaration",
+      "target": "hazard-root-port"
+    },
+    {
+      "id": "hazard-class-edge-environment",
+      "type": "environment",
+      "source": "hazard-declaration",
+      "target": "hazard-class-environment",
+      "sourcePort": "environment",
+      "targetPort": "root",
+      "label": "",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "classRef": "tlz://twilite.zone/library/edges/environment/root.node"
+      }
+    }
+  ]
+}
