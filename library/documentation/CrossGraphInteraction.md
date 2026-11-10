@@ -41,7 +41,7 @@ Focus is presentation state. It does not deliver data, expand an unrelated graph
 
 ## Typed handoff v1
 
-Script nodes send through the bounded host API:
+Method nodes send through the bounded host API:
 
 ```js
 return await api.sendHandoff({
@@ -54,7 +54,7 @@ return await api.sendHandoff({
 });
 ```
 
-The runtime derives the source and destination from the authored inter-graph edge. The Script does not supply replacement endpoint addresses.
+The runtime derives the source and destination from the authored inter-graph edge. The Method does not supply replacement endpoint addresses.
 
 The returned envelope contains:
 
@@ -78,7 +78,7 @@ Request-response, streaming, session storage, durable delivery, retries, replay,
 
 Before emitting receiver input, Twilite verifies:
 
-- the Script has mutation authority
+- the Method has mutation authority
 - the edge has a valid inter-graph contract
 - the source node and declared output Port match the edge
 - the destination fragment is expanded and its canonical node resolves
@@ -120,7 +120,7 @@ Test the happy path:
 2. Expand **Fragment Portal**.
 3. Confirm **Received Handoff** is visible in the fragment.
 4. Run **Send Typed Handoff** with mutation authority enabled.
-5. Confirm the receiver shows the authored payload and the Script result reports `delivery.status: "delivered"`.
+5. Confirm the receiver shows the authored payload and the Method result reports `delivery.status: "delivered"`.
 
 Test the boundary:
 

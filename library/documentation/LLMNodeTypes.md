@@ -20,7 +20,7 @@ Use this reference when choosing `type` values or wiring ports. Plugin nodes are
 | `delay` | Delay Node | Delayed trigger with queue/cancel support. |
 | `valueTrigger` | Value Adapter | Convert value changes to trigger pulses. |
 | `api` | API Node | HTTP request on trigger (method/headers/body). |
-| `script` | Script Node | Run a saved script on trigger. |
+| `script` | (retired) | Retired 2026-11-10: use a `method`. |
 | `backgroundRpc` | Background RPC | Call methods exposed by the background frame. |
 | `canvas` | Canvas Node | Canvas-rendered native node (custom styles). |
 | `3d` | 3D View | Interactive Three.js scene. |

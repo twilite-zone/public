@@ -143,7 +143,7 @@ Each kind of graph has its own page. Before you write a kind of graph, read its 
 | "Making a plan" | https://twilite.zone/library/documentation/guide/recipes/plan.md |
 | "Writing a story" | https://twilite.zone/library/documentation/guide/recipes/story.md |
 
-Reference page: https://twilite.zone/library/documentation/guide/reference.md. Read it only when nothing is open and you must write a whole new graph from scratch (a root, its faces and a glyph), or when the user asks for custom node classes, portals, bridges or scripts.
+Reference page: https://twilite.zone/library/documentation/guide/reference.md. Read it only when nothing is open and you must write a whole new graph from scratch (a root, its faces and a glyph), or when the user asks for custom node classes, portals, bridges or Methods.
 
 ## How to respond
 

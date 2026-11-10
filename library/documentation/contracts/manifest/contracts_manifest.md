@@ -80,7 +80,7 @@ Declares what must exist for this graph to be valid.
 ```json
 {
   "dependencies": {
-    "nodeTypes": ["markdown", "default", "script", "customType"],
+    "nodeTypes": ["markdown", "default", "method", "customType"],
     "portContracts": ["core", "breadboard"],
     "skills": ["auto-layout", "schema-validation", "batch-mutation"],
     "schemaVersions": {

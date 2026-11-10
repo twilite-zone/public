@@ -1,4 +1,4 @@
-# Skill: ScriptExecution
+# Skill: ScriptExecution (retired 2026-11-10: Scripts are now Methods) (retired 2026-11-10: Scripts are now Methods)
 
 ## Intent
 Execute ScriptNodes to perform constrained, procedural graph mutations safely.

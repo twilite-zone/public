@@ -636,7 +636,7 @@ The example is illustrative. Replace its ids with inspected real ids. If the dec
 - If you paste fenced JSON from a chat response, make sure the payload inside the fence is complete and balanced
 - If the app reports a JSON syntax error, fix that first before debugging node contracts
 
-### Lossless script-source boundary
+### Lossless Method-source boundary
 
 - Put graph-owned JavaScript in `data.source`.
 - Escape it only as required to make the containing graph or transaction valid JSON.
@@ -651,7 +651,7 @@ The required transport is:
 JSON transport -> one JSON decode -> unchanged data.source -> ScriptRunner
 ```
 
-If compilation fails, report it as a script compilation failure with the source
+If compilation fails, report it as a Method compilation failure with the source
 node id. Do not silently rewrite the source and retry.
 
 ## Content versus node styling
