@@ -180,7 +180,8 @@
             "version": 1,
             "implicitRootPort": true
           }
-        }
+        },
+        "events": []
       },
       "handles": [
         {
@@ -1207,103 +1208,34 @@
     },
     {
       "id": "template-standardization-derivation-summary-updater",
-      "type": "script",
+      "type": "method",
       "label": "Summary Updater",
       "position": {
         "x": -1100,
         "y": -180
       },
       "width": 420,
-      "height": 300,
+      "height": 230,
       "visible": true,
-      "showLabel": true,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ],
       "data": {
-        "title": "Summary Updater",
-        "description": "Materialize Template Standardization and Derivation progress.",
-        "language": "javascript",
         "source": "const SUMMARY_NODE_ID = 'template-standardization-derivation-summary';\nconst DONE = new Set(['done','complete','completed','closed']);\nconst ANSWERED = new Set(['answered','done','resolved','closed']);\nconst norm = (v) => String(v || '').trim().toLowerCase();\nconst title = (n) => String(n?.data?.title || n?.label || n?.data?.body || '').trim();\nconst nodes = await api.getNodes();\nconst summary = nodes.find((n) => n?.id === SUMMARY_NODE_ID);\nif (!summary) return { success:false, error:'Summary node missing' };\nconst goal = nodes.find((n) => n?.type === 'goal');\nconst tasks = nodes.filter((n) => n?.type === 'task');\nconst questions = nodes.filter((n) => n?.type === 'open-question');\nconst completed = tasks.filter((n) => DONE.has(norm(n?.data?.status))).length;\nconst taskTitles = tasks.map(title).filter(Boolean);\nconst questionTitles = questions.map(title).filter(Boolean);\nconst nextData = {\n  ...(summary.data || {}),\n  goal: goal?.label || summary.data?.goal || 'Task graph',\n  status: norm(goal?.data?.status) === 'done' && completed === tasks.length ? 'done' : (completed > 0 || tasks.some((n) => norm(n?.data?.status) === 'in-progress') ? 'in-progress' : 'todo'),\n  taskProgress: { completed, total: tasks.length },\n  questionProgress: { answered: questions.filter((n) => ANSWERED.has(norm(n?.data?.status))).length, total: questions.length },\n  taskTitles,\n  questionTitles,\n  taskListText: taskTitles.map((v,i) => `${i+1}. ${v}`).join('\\n'),\n  questionListText: questionTitles.map((v,i) => `${i+1}. ${v}`).join('\\n'),\n  summarySource: 'node-updater',\n  updatedAt: new Date().toISOString()\n};\nawait api.updateNode(SUMMARY_NODE_ID, { data: nextData });\nreturn { success:true, summary:nextData };",
-        "summaryNodeId": "template-standardization-derivation-summary",
-        "visibilityRole": "editor"
-      },
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210,
-          "portId": "root"
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270,
-          "portId": "top"
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0,
-          "portId": "right"
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90,
-          "portId": "bottom"
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180,
-          "portId": "left"
+        "scriptName": "Summary Updater",
+        "parameters": [],
+        "allowMutations": true,
+        "dryRun": false,
+        "effects": [
+          {
+            "kind": "update-node",
+            "targets": [
+              "template-standardization-derivation-summary"
+            ]
+          }
+        ],
+        "identity": {
+          "graphId": "template-standardization-derivation",
+          "nodeId": "template-standardization-derivation-summary-updater"
         }
-      ]
+      }
     },
     {
       "id": "template-standardization-derivation-dependency",
@@ -2725,20 +2657,6 @@
       "data": {},
       "sourcePort": "left",
       "targetPort": "right"
-    },
-    {
-      "id": "template-standardization-derivation-edge-updater-summary",
-      "type": "edge",
-      "source": "template-standardization-derivation-summary-updater",
-      "target": "template-standardization-derivation-summary",
-      "label": "materializes",
-      "style": {
-        "curved": true,
-        "width": 2
-      },
-      "data": {},
-      "sourcePort": "right",
-      "targetPort": "left"
     },
     {
       "id": "template-standardization-derivation-edge-goal-summary",

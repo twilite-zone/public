@@ -180,7 +180,8 @@
             "version": 1,
             "implicitRootPort": true
           }
-        }
+        },
+        "events": []
       },
       "handles": [
         {
@@ -884,60 +885,33 @@
     },
     {
       "id": "bridge-presentation-contract-summary-updater",
-      "type": "script",
+      "type": "method",
       "label": "Summary Updater",
       "position": {
         "x": -1100,
         "y": -180
       },
       "width": 420,
-      "height": 300,
+      "height": 230,
       "visible": true,
-      "showLabel": true,
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 0
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        }
-      ],
       "data": {
-        "title": "Summary Updater",
-        "description": "Materialize Bridge Presentation and Contract progress.",
-        "language": "javascript",
         "source": "const SUMMARY_NODE_ID = 'bridge-presentation-contract-summary';\nconst DONE = new Set(['done','complete','completed','closed']);\nconst ANSWERED = new Set(['answered','done','resolved','closed']);\nconst norm = (v) => String(v || '').trim().toLowerCase();\nconst title = (n) => String(n?.data?.title || n?.label || n?.data?.body || '').trim();\nconst nodes = await api.getNodes();\nconst summary = nodes.find((n) => n?.id === SUMMARY_NODE_ID);\nif (!summary) return { success:false, error:'Summary node missing' };\nconst goal = nodes.find((n) => n?.type === 'goal');\nconst tasks = nodes.filter((n) => n?.type === 'task');\nconst questions = nodes.filter((n) => n?.type === 'open-question');\nconst completed = tasks.filter((n) => DONE.has(norm(n?.data?.status))).length;\nconst taskTitles = tasks.map(title).filter(Boolean);\nconst questionTitles = questions.map(title).filter(Boolean);\nconst nextData = {\n  ...(summary.data || {}),\n  goal: goal?.label || summary.data?.goal || 'Task graph',\n  status: norm(goal?.data?.status) === 'done' && completed === tasks.length ? 'done' : (completed > 0 || tasks.some((n) => norm(n?.data?.status) === 'in-progress') ? 'in-progress' : 'todo'),\n  taskProgress: { completed, total: tasks.length },\n  questionProgress: { answered: questions.filter((n) => ANSWERED.has(norm(n?.data?.status))).length, total: questions.length },\n  taskTitles,\n  questionTitles,\n  taskListText: taskTitles.map((v,i) => `${i+1}. ${v}`).join('\\n'),\n  questionListText: questionTitles.map((v,i) => `${i+1}. ${v}`).join('\\n'),\n  summarySource: 'node-updater',\n  updatedAt: new Date().toISOString()\n};\nawait api.updateNode(SUMMARY_NODE_ID, { data: nextData });\nreturn { success:true, summary:nextData };",
-        "summaryNodeId": "bridge-presentation-contract-summary",
-        "visibilityRole": "editor"
+        "scriptName": "Summary Updater",
+        "parameters": [],
+        "allowMutations": true,
+        "dryRun": false,
+        "effects": [
+          {
+            "kind": "update-node",
+            "targets": [
+              "bridge-presentation-contract-summary"
+            ]
+          }
+        ],
+        "identity": {
+          "graphId": "bridge-presentation-contract",
+          "nodeId": "bridge-presentation-contract-summary-updater"
+        }
       }
     },
     {
@@ -2047,20 +2021,6 @@
       "sourcePort": "left",
       "targetPort": "right",
       "label": "informs",
-      "style": {
-        "curved": true,
-        "width": 2
-      },
-      "data": {}
-    },
-    {
-      "id": "bridge-presentation-contract-edge-updater-summary",
-      "type": "edge",
-      "source": "bridge-presentation-contract-summary-updater",
-      "target": "bridge-presentation-contract-summary",
-      "sourcePort": "right",
-      "targetPort": "left",
-      "label": "materializes",
       "style": {
         "curved": true,
         "width": 2

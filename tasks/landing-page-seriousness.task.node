@@ -131,7 +131,23 @@
               }
             }
           ]
-        }
+        },
+        "events": [
+          {
+            "eventKey": "graph.opened",
+            "label": "Graph opened",
+            "payloadContract": {
+              "type": "object"
+            }
+          },
+          {
+            "eventKey": "graph.changed",
+            "label": "Graph changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          }
+        ]
       },
       "handles": [
         {
@@ -674,30 +690,33 @@
     },
     {
       "id": "landing-page-seriousness-summary-updater",
-      "type": "script",
+      "type": "method",
       "label": "Summary Updater",
       "position": {
         "x": -820,
         "y": 320
       },
       "width": 420,
-      "height": 240,
+      "height": 230,
       "visible": true,
-      "showLabel": true,
       "data": {
-        "mode": "auto",
-        "status": "idle",
-        "scriptRef": "",
-        "source": "const SUMMARY_NODE_ID = 'landing-page-seriousness-summary';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed', 'cancelled']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || fallback || '').trim();\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nif (!summaryNode) return { success: false, error: 'Summary port missing' };\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task' && entry?.data?.countAsTask !== false);\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst taskTitles = tasks.map((entry) => toTitle(entry, 'Untitled task')).filter(Boolean);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completed = tasks.filter((entry) => DONE_TASK_STATUSES.has(normalize(entry?.data?.status))).length;\nconst answered = questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length;\nconst status = goalNode?.data?.status || summaryNode.data?.status || 'todo';\nconst nextData = { ...summaryNode.data, goal: goalNode?.label || summaryNode.data?.goal || 'Task graph', status, health: normalize(status) === 'cancelled' ? 'cancelled' : summaryNode.data?.health, taskProgress: { completed, total: tasks.length }, questionProgress: { answered, total: questions.length }, taskTitles, questionTitles, taskListText: taskTitles.length ? taskTitles.map((title, index) => (index + 1) + '. ' + title).join('\\n') : 'No tasks listed.', questionListText: questionTitles.length ? questionTitles.map((title, index) => (index + 1) + '. ' + title).join('\\n') : 'No open questions.', summarySource: 'node-updater', updatedAt: new Date().toISOString() };\nawait api.updateNode(SUMMARY_NODE_ID, { data: nextData });\nreturn { success: true, summary: nextData };",
-        "summaryNodeId": "landing-page-seriousness-summary",
-        "autoRun": true,
-        "description": "Keep the ordinary outward summary port synchronized with this cancelled task graph.",
+        "source": "const SUMMARY_NODE_ID = 'landing-page-seriousness-summary';\nconst DONE_TASK_STATUSES = new Set(['done', 'complete', 'completed', 'closed']);\nconst ANSWERED_STATUSES = new Set(['answered', 'done', 'resolved', 'closed', 'cancelled']);\nconst normalize = (value) => String(value || '').trim().toLowerCase();\nconst toTitle = (entry, fallback) => String(entry?.data?.title || entry?.label || fallback || '').trim();\nconst nodes = await api.getNodes();\nconst summaryNode = nodes.find((entry) => entry?.id === SUMMARY_NODE_ID);\nif (!summaryNode) return { success: false, error: 'Summary port missing' };\nconst goalNode = nodes.find((entry) => entry?.type === 'goal');\nconst tasks = nodes.filter((entry) => entry?.type === 'task' && entry?.data?.countAsTask !== false);\nconst questions = nodes.filter((entry) => entry?.type === 'open-question');\nconst taskTitles = tasks.map((entry) => toTitle(entry, 'Untitled task')).filter(Boolean);\nconst questionTitles = questions.map((entry) => toTitle(entry, 'Untitled question')).filter(Boolean);\nconst completed = tasks.filter((entry) => DONE_TASK_STATUSES.has(normalize(entry?.data?.status))).length;\nconst answered = questions.filter((entry) => ANSWERED_STATUSES.has(normalize(entry?.data?.status))).length;\nconst status = goalNode?.data?.status || summaryNode.data?.status || 'todo';\nconst nextData = { ...summaryNode.data, goal: goalNode?.label || summaryNode.data?.goal || 'Task graph', status, health: normalize(status) === 'cancelled' ? 'cancelled' : summaryNode.data?.health, taskProgress: { completed, total: tasks.length }, questionProgress: { answered, total: questions.length }, taskTitles, questionTitles, taskListText: taskTitles.length ? taskTitles.map((title, index) => (index + 1) + '. ' + title).join('\\n') : 'No tasks listed.', questionListText: questionTitles.length ? questionTitles.map((title, index) => (index + 1) + '. ' + title).join('\\n') : 'No open questions.', summarySource: 'node-updater', updatedAt: new Date().toISOString() };\nconst { updatedAt: _stampThen, ...comparableThen } = summaryNode.data || {};\nconst { updatedAt: _stampNow, ...comparableNow } = nextData;\nif (JSON.stringify(comparableThen) !== JSON.stringify(comparableNow)) await api.updateNode(SUMMARY_NODE_ID, { data: nextData });\nreturn { success: true, summary: nextData };",
         "scriptName": "Task Node Updater",
-        "scriptId": "",
-        "autoRunOnGraphChange": true,
+        "parameters": [],
         "allowMutations": true,
         "dryRun": false,
-        "autoRunOnLoad": true
+        "effects": [
+          {
+            "kind": "update-node",
+            "targets": [
+              "landing-page-seriousness-summary"
+            ]
+          }
+        ],
+        "identity": {
+          "graphId": "landing-page-seriousness",
+          "nodeId": "landing-page-seriousness-summary-updater"
+        }
       }
     },
     {
@@ -1424,15 +1443,6 @@
       "label": "summary"
     },
     {
-      "id": "landing-page-seriousness-edge-summary-updater",
-      "type": "edge",
-      "source": "landing-page-seriousness-summary-updater",
-      "target": "landing-page-seriousness-summary",
-      "sourcePort": "root",
-      "targetPort": "root",
-      "label": "updates"
-    },
-    {
       "id": "tasks-landing-page-seriousness-task-node-edge-goal",
       "type": "edge",
       "source": "landing-seriousness-overview",
@@ -1464,6 +1474,36 @@
       "label": "question",
       "style": {},
       "data": {}
+    },
+    {
+      "id": "landing-page-seriousness-declaration-graph-opened-invokes-landing-page-seriousness-summary-updater",
+      "type": "invokes",
+      "source": "landing-page-seriousness-declaration",
+      "target": "landing-page-seriousness-summary-updater",
+      "label": "invokes",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "classRef": "tlz://twilite.zone/library/edges/invokes/root.node"
+      },
+      "sourcePort": "event:graph.opened",
+      "targetPort": "invokes"
+    },
+    {
+      "id": "landing-page-seriousness-declaration-graph-changed-invokes-landing-page-seriousness-summary-updater",
+      "type": "invokes",
+      "source": "landing-page-seriousness-declaration",
+      "target": "landing-page-seriousness-summary-updater",
+      "label": "invokes",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "classRef": "tlz://twilite.zone/library/edges/invokes/root.node"
+      },
+      "sourcePort": "event:graph.changed",
+      "targetPort": "invokes"
     }
   ],
   "type": "task",

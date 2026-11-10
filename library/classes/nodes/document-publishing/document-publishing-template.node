@@ -194,7 +194,16 @@
           "primaryEditorViewId": "",
           "iconViewNodeId": "",
           "portViewNodeId": ""
-        }
+        },
+        "events": [
+          {
+            "eventKey": "graph.opened",
+            "label": "Graph opened",
+            "payloadContract": {
+              "type": "object"
+            }
+          }
+        ]
       }
     },
     {
@@ -2002,65 +2011,34 @@
     },
     {
       "id": "document-publishing-template-document-updater",
-      "type": "script",
+      "type": "method",
       "label": "Document Updater",
       "position": {
         "x": 1880,
         "y": 620
       },
-      "width": 320,
-      "height": 190,
+      "width": 420,
+      "height": 230,
       "visible": true,
-      "showLabel": true,
       "data": {
-        "key": "document-view-updater",
+        "source": "const DOCUMENT_VIEW_ID = 'document-publishing-template-document-view';\nconst ORDERED_IDS = [\n  'document-publishing-template-title',\n  'document-publishing-template-overview',\n  'document-publishing-template-section',\n  'document-publishing-template-note',\n  'document-publishing-template-reference',\n  'document-publishing-template-figure',\n  'document-publishing-template-embed',\n  'document-publishing-template-annotation',\n  'document-publishing-template-summary'\n];\nconst isEqual = (a, b) => {\n  if (a === b) return true;\n  if (!a || !b || typeof a !== 'object' || typeof b !== 'object') return false;\n  const aKeys = Object.keys(a);\n  const bKeys = Object.keys(b);\n  if (aKeys.length != bKeys.length) return false;\n  for (const key of aKeys) {\n    if (!Object.prototype.hasOwnProperty.call(b, key)) return false;\n    const aVal = a[key];\n    const bVal = b[key];\n    if (Array.isArray(aVal) || Array.isArray(bVal)) {\n      if (JSON.stringify(aVal) != JSON.stringify(bVal)) return false;\n      continue;\n    }\n    if (aVal && typeof aVal === 'object') {\n      if (!isEqual(aVal, bVal)) return false;\n      continue;\n    }\n    if (aVal != bVal) return false;\n  }\n  return true;\n};\nconst escapeHtml = (value) => String(value || '')\n  .replace(/&/g, '&amp;')\n  .replace(/</g, '&lt;')\n  .replace(/>/g, '&gt;')\n  .replace(/\\\"/g, '&quot;')\n  .replace(/'/g, '&#39;');\nconst paragraphize = (value) => escapeHtml(value).replace(/\\n\\n+/g, '<br><br>').replace(/\\n/g, '<br>');\nconst renderErrorCard = (title, detail) => `<section style=\\\"padding:18px;border:1px solid rgba(220,38,38,0.22);border-radius:16px;background:linear-gradient(180deg, rgba(254,242,242,0.98), rgba(255,255,255,0.98));display:flex;flex-direction:column;gap:10px;\\\"><div style=\\\"font:700 18px/1.25 ui-sans-serif, system-ui, sans-serif;color:#991b1b;\\\">${escapeHtml(title)}</div><div style=\\\"font:500 14px/1.6 ui-sans-serif, system-ui, sans-serif;color:#7f1d1d;\\\">${escapeHtml(detail)}</div></section>`;\nconst renderGraphic = (data, fallbackImageAlt = '') => {\n  if (String(data.svg || '').trim()) {\n    return `<div style=\\\"padding:12px;border-radius:16px;background:rgba(248,250,252,0.95);border:1px solid rgba(15,23,42,0.08);display:flex;align-items:center;justify-content:center;overflow:hidden;\\\">${data.svg}</div>`;\n  }\n  if (String(data.assetRef || '').trim()) {\n    return `<div style=\\\"padding:0;overflow:hidden;border-radius:16px;border:1px solid rgba(15,23,42,0.12);background:white;\\\"><img src=\\\"${escapeHtml(data.assetRef)}\\\" alt=\\\"${escapeHtml(data.altText || fallbackImageAlt)}\\\" style=\\\"max-width:100%;display:block;\\\"/></div>`;\n  }\n  return '';\n};\nconst renderCardPart = ({ title, badge, badgeStyle, ruleStyle, body, graphic, meta, anchor }) => {\n  const safeTitle = escapeHtml(title || 'Untitled');\n  const bodyHtml = body ? `<div style=\\\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\\\">${body}</div>` : '';\n  const metaHtml = meta ? `<div style=\\\"font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#64748b;\\\">${meta}</div>` : '';\n  const anchorAttr = anchor ? ` id=\\\"${escapeHtml(anchor)}\\\"` : '';\n  return `<section style=\\\"margin:0 0 20px 0;\\\"><div style=\\\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\\\"><div style=\\\"display:flex;align-items:center;justify-content:space-between;gap:12px;\\\"><div${anchorAttr} style=\\\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\\\">${safeTitle}</div><div style=\\\"display:flex;gap:6px;flex-wrap:wrap;\\\"><span style=\\\"${badgeStyle}\\\">${escapeHtml(badge)}</span></div></div><div style=\\\"${ruleStyle}\\\"></div>${graphic || ''}${bodyHtml}${metaHtml}</div></section>`;\n};\nconst renderTitlePart = (data) => {\n  const safeTitle = escapeHtml(data.title || 'Untitled Title');\n  const safeSubtitle = escapeHtml(data.subtitle || 'Use this node to frame the document.');\n  return `<section style=\\\"margin:0 0 20px 0;\\\"><div style=\\\"display:flex;flex-direction:column;box-sizing:border-box;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,252,245,0.99), rgba(255,248,235,0.96));border:1px solid rgba(146,64,14,0.16);box-shadow:0 12px 28px rgba(180,83,9,0.10);gap:14px;\\\"><div style=\\\"display:flex;align-items:flex-start;justify-content:space-between;gap:12px;\\\"><div style=\\\"display:flex;flex-direction:column;gap:6px;min-width:0;\\\"><div style=\\\"font:700 11px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#b45309;\\\">Title</div><div style=\\\"font:700 28px/1.12 ui-sans-serif, system-ui, sans-serif;color:#1f2937;word-break:break-word;\\\">${safeTitle}</div></div><div style=\\\"display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;\\\"><span style=\\\"padding:4px 8px;border-radius:999px;background:rgba(180,83,9,0.1);color:#92400e;font-size:11px;font-weight:700;letter-spacing:0.04em;\\\">${escapeHtml(data.intent || 'headline')}</span><span style=\\\"font:600 10px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.12em;text-transform:uppercase;color:#9a3412;opacity:0.72;\\\">${escapeHtml(data.status || 'draft')}</span></div></div><div style=\\\"height:1px;background:linear-gradient(90deg, rgba(245,158,11,0.45), rgba(245,158,11,0));\\\"></div><div style=\\\"font:500 15px/1.65 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\\\">${safeSubtitle}</div></div></section>`;\n};\nconst renderNodePart = (node) => {\n  const data = node.data || {};\n  if (node.type === 'title') return renderTitlePart(data);\n  if (node.type === 'section') return renderCardPart({ title: data.title || node.label || 'Section', badge: 'Section', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Section graphic'), body: paragraphize(data.summary), anchor: data.anchor });\n  if (node.type === 'reference') return renderCardPart({ title: data.title || 'Reference', badge: 'Reference', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(124,58,237,0.14);color:#5b21b6;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #7c3aed, #8b5cf6);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Reference graphic'), body: paragraphize(data.citation), meta: data.locator ? `Locator: ${escapeHtml(data.locator)}` : '' });\n  if (node.type === 'figure') return renderCardPart({ title: data.title || 'Figure', badge: 'Figure', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(14,165,233,0.14);color:#0369a1;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #0284c7, #38bdf8);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Figure graphic'), body: paragraphize(data.caption), meta: data.altText ? `Alt: ${escapeHtml(data.altText)}` : '' });\n  if (node.type === 'embed') return renderCardPart({ title: data.title || 'Embed', badge: 'Embed', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(34,197,94,0.14);color:#166534;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #16a34a, #4ade80);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Embed graphic'), body: paragraphize(data.description), meta: data.url ? `URL: ${escapeHtml(data.url)}` : '' });\n  if (node.type === 'annotation') { const meta = [data.anchorRef ? `Anchor: ${escapeHtml(data.anchorRef)}` : '', data.author ? `Author: ${escapeHtml(data.author)}` : ''].filter(Boolean).join(' • '); return renderCardPart({ title: data.title || 'Annotation', badge: 'Annotation', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(245,158,11,0.16);color:#92400e;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #d97706, #f59e0b);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Annotation graphic'), body: paragraphize(data.note), meta }); }\n  if (node.type === 'document-summary') return renderCardPart({ title: data.title || 'Summary', badge: 'Summary', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(219,39,119,0.14);color:#9d174d;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #db2777, #f472b6);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Summary graphic'), body: paragraphize(data.summary), meta: data.scope ? `Scope: ${escapeHtml(data.scope)}` : '' });\n  return '';\n};\nconst nodes = await api.getNodes();\nconst documentView = nodes.find((entry) => entry?.id === DOCUMENT_VIEW_ID);\nif (!documentView) return { success: false, error: 'Document view missing' };\nconst nodesById = new Map(nodes.map((entry) => [entry?.id, entry]));\nconst existingIds = new Set(nodes.map((entry) => entry?.id).filter(Boolean));\nconst missingOrderedIds = ORDERED_IDS.filter((id) => !existingIds.has(id));\nconst resolvedOrder = ORDERED_IDS.filter((id) => existingIds.has(id));\nconst renderedParts = resolvedOrder.map((id) => renderNodePart(nodesById.get(id))).filter(Boolean);\nconst invalidOrdering = missingOrderedIds.length > 0 || renderedParts.length !== resolvedOrder.length;\nconst documentHtml = invalidOrdering ? renderErrorCard('Document view contract error', `Document order is invalid or incomplete. Missing: ${missingOrderedIds.join(', ') || 'unknown part rendering failure'}.`) : (renderedParts.join('') || renderErrorCard('Document view contract error', 'Document content is missing. Add document parts or provide documentHtml/documentBlocks.'));\nconst nextData = { ...(documentView.data || {}), partNodeIds: resolvedOrder, documentOrder: resolvedOrder, documentHtml, summarySource: 'node-updater', updatedAt: new Date().toISOString() };\nif (JSON.stringify(documentView.data || {}) !== JSON.stringify(nextData)) await api.updateNode(DOCUMENT_VIEW_ID, { data: nextData });\nreturn { success: true, updated: resolvedOrder.length, invalidOrdering, missingOrderedIds };",
         "scriptName": "Template Document View Updater",
-        "summaryNodeId": "document-publishing-template-document-view",
-        "autoRun": true,
-        "autoRunOnLoad": true,
-        "autoRunOnGraphChange": false,
+        "parameters": [],
         "allowMutations": true,
         "dryRun": false,
-        "source": "const DOCUMENT_VIEW_ID = 'document-publishing-template-document-view';\nconst ORDERED_IDS = [\n  'document-publishing-template-title',\n  'document-publishing-template-overview',\n  'document-publishing-template-section',\n  'document-publishing-template-note',\n  'document-publishing-template-reference',\n  'document-publishing-template-figure',\n  'document-publishing-template-embed',\n  'document-publishing-template-annotation',\n  'document-publishing-template-summary'\n];\nconst isEqual = (a, b) => {\n  if (a === b) return true;\n  if (!a || !b || typeof a !== 'object' || typeof b !== 'object') return false;\n  const aKeys = Object.keys(a);\n  const bKeys = Object.keys(b);\n  if (aKeys.length != bKeys.length) return false;\n  for (const key of aKeys) {\n    if (!Object.prototype.hasOwnProperty.call(b, key)) return false;\n    const aVal = a[key];\n    const bVal = b[key];\n    if (Array.isArray(aVal) || Array.isArray(bVal)) {\n      if (JSON.stringify(aVal) != JSON.stringify(bVal)) return false;\n      continue;\n    }\n    if (aVal && typeof aVal === 'object') {\n      if (!isEqual(aVal, bVal)) return false;\n      continue;\n    }\n    if (aVal != bVal) return false;\n  }\n  return true;\n};\nconst escapeHtml = (value) => String(value || '')\n  .replace(/&/g, '&amp;')\n  .replace(/</g, '&lt;')\n  .replace(/>/g, '&gt;')\n  .replace(/\\\"/g, '&quot;')\n  .replace(/'/g, '&#39;');\nconst paragraphize = (value) => escapeHtml(value).replace(/\\n\\n+/g, '<br><br>').replace(/\\n/g, '<br>');\nconst renderErrorCard = (title, detail) => `<section style=\\\"padding:18px;border:1px solid rgba(220,38,38,0.22);border-radius:16px;background:linear-gradient(180deg, rgba(254,242,242,0.98), rgba(255,255,255,0.98));display:flex;flex-direction:column;gap:10px;\\\"><div style=\\\"font:700 18px/1.25 ui-sans-serif, system-ui, sans-serif;color:#991b1b;\\\">${escapeHtml(title)}</div><div style=\\\"font:500 14px/1.6 ui-sans-serif, system-ui, sans-serif;color:#7f1d1d;\\\">${escapeHtml(detail)}</div></section>`;\nconst renderGraphic = (data, fallbackImageAlt = '') => {\n  if (String(data.svg || '').trim()) {\n    return `<div style=\\\"padding:12px;border-radius:16px;background:rgba(248,250,252,0.95);border:1px solid rgba(15,23,42,0.08);display:flex;align-items:center;justify-content:center;overflow:hidden;\\\">${data.svg}</div>`;\n  }\n  if (String(data.assetRef || '').trim()) {\n    return `<div style=\\\"padding:0;overflow:hidden;border-radius:16px;border:1px solid rgba(15,23,42,0.12);background:white;\\\"><img src=\\\"${escapeHtml(data.assetRef)}\\\" alt=\\\"${escapeHtml(data.altText || fallbackImageAlt)}\\\" style=\\\"max-width:100%;display:block;\\\"/></div>`;\n  }\n  return '';\n};\nconst renderCardPart = ({ title, badge, badgeStyle, ruleStyle, body, graphic, meta, anchor }) => {\n  const safeTitle = escapeHtml(title || 'Untitled');\n  const bodyHtml = body ? `<div style=\\\"font:500 15px/1.7 ui-sans-serif, system-ui, sans-serif;color:#1f2937;\\\">${body}</div>` : '';\n  const metaHtml = meta ? `<div style=\\\"font:600 12px/1.4 ui-sans-serif, system-ui, sans-serif;color:#64748b;\\\">${meta}</div>` : '';\n  const anchorAttr = anchor ? ` id=\\\"${escapeHtml(anchor)}\\\"` : '';\n  return `<section style=\\\"margin:0 0 20px 0;\\\"><div style=\\\"display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.96));border:1px solid rgba(15,23,42,0.12);box-shadow:0 12px 28px rgba(15,23,42,0.08);\\\"><div style=\\\"display:flex;align-items:center;justify-content:space-between;gap:12px;\\\"><div${anchorAttr} style=\\\"font:700 24px/1.15 ui-sans-serif, system-ui, sans-serif;color:#111827;\\\">${safeTitle}</div><div style=\\\"display:flex;gap:6px;flex-wrap:wrap;\\\"><span style=\\\"${badgeStyle}\\\">${escapeHtml(badge)}</span></div></div><div style=\\\"${ruleStyle}\\\"></div>${graphic || ''}${bodyHtml}${metaHtml}</div></section>`;\n};\nconst renderTitlePart = (data) => {\n  const safeTitle = escapeHtml(data.title || 'Untitled Title');\n  const safeSubtitle = escapeHtml(data.subtitle || 'Use this node to frame the document.');\n  return `<section style=\\\"margin:0 0 20px 0;\\\"><div style=\\\"display:flex;flex-direction:column;box-sizing:border-box;padding:20px;border-radius:20px;background:linear-gradient(180deg, rgba(255,252,245,0.99), rgba(255,248,235,0.96));border:1px solid rgba(146,64,14,0.16);box-shadow:0 12px 28px rgba(180,83,9,0.10);gap:14px;\\\"><div style=\\\"display:flex;align-items:flex-start;justify-content:space-between;gap:12px;\\\"><div style=\\\"display:flex;flex-direction:column;gap:6px;min-width:0;\\\"><div style=\\\"font:700 11px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#b45309;\\\">Title</div><div style=\\\"font:700 28px/1.12 ui-sans-serif, system-ui, sans-serif;color:#1f2937;word-break:break-word;\\\">${safeTitle}</div></div><div style=\\\"display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;\\\"><span style=\\\"padding:4px 8px;border-radius:999px;background:rgba(180,83,9,0.1);color:#92400e;font-size:11px;font-weight:700;letter-spacing:0.04em;\\\">${escapeHtml(data.intent || 'headline')}</span><span style=\\\"font:600 10px/1.2 ui-sans-serif, system-ui, sans-serif;letter-spacing:0.12em;text-transform:uppercase;color:#9a3412;opacity:0.72;\\\">${escapeHtml(data.status || 'draft')}</span></div></div><div style=\\\"height:1px;background:linear-gradient(90deg, rgba(245,158,11,0.45), rgba(245,158,11,0));\\\"></div><div style=\\\"font:500 15px/1.65 ui-sans-serif, system-ui, sans-serif;color:#4b5563;\\\">${safeSubtitle}</div></div></section>`;\n};\nconst renderNodePart = (node) => {\n  const data = node.data || {};\n  if (node.type === 'title') return renderTitlePart(data);\n  if (node.type === 'section') return renderCardPart({ title: data.title || node.label || 'Section', badge: 'Section', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(37,99,235,0.14);color:#1d4ed8;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #2563eb, #60a5fa);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Section graphic'), body: paragraphize(data.summary), anchor: data.anchor });\n  if (node.type === 'reference') return renderCardPart({ title: data.title || 'Reference', badge: 'Reference', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(124,58,237,0.14);color:#5b21b6;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #7c3aed, #8b5cf6);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Reference graphic'), body: paragraphize(data.citation), meta: data.locator ? `Locator: ${escapeHtml(data.locator)}` : '' });\n  if (node.type === 'figure') return renderCardPart({ title: data.title || 'Figure', badge: 'Figure', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(14,165,233,0.14);color:#0369a1;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #0284c7, #38bdf8);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Figure graphic'), body: paragraphize(data.caption), meta: data.altText ? `Alt: ${escapeHtml(data.altText)}` : '' });\n  if (node.type === 'embed') return renderCardPart({ title: data.title || 'Embed', badge: 'Embed', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(34,197,94,0.14);color:#166534;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #16a34a, #4ade80);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Embed graphic'), body: paragraphize(data.description), meta: data.url ? `URL: ${escapeHtml(data.url)}` : '' });\n  if (node.type === 'annotation') { const meta = [data.anchorRef ? `Anchor: ${escapeHtml(data.anchorRef)}` : '', data.author ? `Author: ${escapeHtml(data.author)}` : ''].filter(Boolean).join(' • '); return renderCardPart({ title: data.title || 'Annotation', badge: 'Annotation', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(245,158,11,0.16);color:#92400e;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #d97706, #f59e0b);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Annotation graphic'), body: paragraphize(data.note), meta }); }\n  if (node.type === 'document-summary') return renderCardPart({ title: data.title || 'Summary', badge: 'Summary', badgeStyle: 'padding:4px 8px;border-radius:999px;background:rgba(219,39,119,0.14);color:#9d174d;font-size:11px;font-weight:600;', ruleStyle: 'height:4px;border-radius:999px;background:linear-gradient(90deg, #db2777, #f472b6);opacity:0.95;', graphic: renderGraphic(data, data.title || 'Summary graphic'), body: paragraphize(data.summary), meta: data.scope ? `Scope: ${escapeHtml(data.scope)}` : '' });\n  return '';\n};\nconst nodes = await api.getNodes();\nconst documentView = nodes.find((entry) => entry?.id === DOCUMENT_VIEW_ID);\nif (!documentView) return { success: false, error: 'Document view missing' };\nconst nodesById = new Map(nodes.map((entry) => [entry?.id, entry]));\nconst existingIds = new Set(nodes.map((entry) => entry?.id).filter(Boolean));\nconst missingOrderedIds = ORDERED_IDS.filter((id) => !existingIds.has(id));\nconst resolvedOrder = ORDERED_IDS.filter((id) => existingIds.has(id));\nconst renderedParts = resolvedOrder.map((id) => renderNodePart(nodesById.get(id))).filter(Boolean);\nconst invalidOrdering = missingOrderedIds.length > 0 || renderedParts.length !== resolvedOrder.length;\nconst documentHtml = invalidOrdering ? renderErrorCard('Document view contract error', `Document order is invalid or incomplete. Missing: ${missingOrderedIds.join(', ') || 'unknown part rendering failure'}.`) : (renderedParts.join('') || renderErrorCard('Document view contract error', 'Document content is missing. Add document parts or provide documentHtml/documentBlocks.'));\nconst nextData = { ...(documentView.data || {}), partNodeIds: resolvedOrder, documentOrder: resolvedOrder, documentHtml, summarySource: 'node-updater', updatedAt: new Date().toISOString() };\nif (JSON.stringify(documentView.data || {}) !== JSON.stringify(nextData)) await api.updateNode(DOCUMENT_VIEW_ID, { data: nextData });\nreturn { success: true, updated: resolvedOrder.length, invalidOrdering, missingOrderedIds };",
-        "_semanticLevel": "detail"
-      },
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
+        "effects": [
+          {
+            "kind": "update-node",
+            "targets": [
+              "document-publishing-template-document-view"
+            ]
+          }
+        ],
+        "identity": {
+          "graphId": "work-document-template",
+          "nodeId": "document-publishing-template-document-updater"
         }
-      ]
+      }
     },
     {
       "id": "document-publishing-template-export-runtime",
@@ -2580,17 +2558,6 @@
       "data": {}
     },
     {
-      "id": "document-publishing-template-edge-updater-document",
-      "type": "edge",
-      "source": "document-publishing-template-document-updater",
-      "target": "document-publishing-template-document-view",
-      "sourcePort": "left",
-      "targetPort": "right",
-      "label": "updates",
-      "style": {},
-      "data": {}
-    },
-    {
       "id": "document-publishing-template-edge-overview-bridge-ui-view",
       "type": "edge",
       "source": "document-publishing-template-overview",
@@ -2600,6 +2567,21 @@
       "label": "bridge",
       "style": {},
       "data": {}
+    },
+    {
+      "id": "document-publishing-template-declaration-graph-opened-invokes-document-publishing-template-document-updater",
+      "type": "invokes",
+      "source": "document-publishing-template-declaration",
+      "target": "document-publishing-template-document-updater",
+      "label": "invokes",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "classRef": "tlz://twilite.zone/library/edges/invokes/root.node"
+      },
+      "sourcePort": "event:graph.opened",
+      "targetPort": "invokes"
     }
   ],
   "scripts": []

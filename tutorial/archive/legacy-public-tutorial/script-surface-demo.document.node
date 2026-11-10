@@ -84,7 +84,8 @@
           "gridSize": 20,
           "edgeRouting": "auto",
           "autoSave": false
-        }
+        },
+        "events": []
       }
     },
     {
@@ -132,34 +133,26 @@
     },
     {
       "id": "script-surface-demo-script",
-      "type": "script",
+      "type": "method",
       "label": "Script",
       "position": {
         "x": 140,
         "y": 90
       },
-      "width": 360,
-      "height": 240,
+      "width": 420,
+      "height": 230,
       "visible": true,
-      "showLabel": true,
-      "inputs": [
-        {
-          "key": "trigger",
-          "label": "Trigger",
-          "type": "trigger"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "result",
-          "label": "Result",
-          "type": "value"
-        }
-      ],
       "data": {
-        "dryRun": true,
+        "source": "const nodes = await api.getNodes();\nconst edges = await api.getEdges();\n\nreturn {\n  ok: true,\n  nodeCount: Array.isArray(nodes) ? nodes.length : 0,\n  edgeCount: Array.isArray(edges) ? edges.length : 0,\n  at: new Date().toISOString()\n};",
+        "scriptName": "Script",
+        "parameters": [],
         "allowMutations": false,
-        "source": "const nodes = await api.getNodes();\nconst edges = await api.getEdges();\n\nreturn {\n  ok: true,\n  nodeCount: Array.isArray(nodes) ? nodes.length : 0,\n  edgeCount: Array.isArray(edges) ? edges.length : 0,\n  at: new Date().toISOString()\n};"
+        "dryRun": true,
+        "effects": [],
+        "identity": {
+          "graphId": "script-surface-demo",
+          "nodeId": "script-surface-demo-script"
+        }
       }
     },
     {
@@ -195,18 +188,5 @@
       }
     }
   ],
-  "edges": [
-    {
-      "id": "script-surface-demo-edge-result",
-      "source": "script-surface-demo-script",
-      "target": "script-surface-demo-field",
-      "sourcePort": "result",
-      "targetPort": "set",
-      "type": "edge",
-      "style": {
-        "stroke": "#10b981",
-        "strokeWidth": 2
-      }
-    }
-  ]
+  "edges": []
 }
