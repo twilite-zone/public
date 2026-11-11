@@ -1,53 +1,625 @@
 {
   "fileVersion": "1.0",
   "metadata": {
-    "created": "2026-06-14T18:01:50.621Z",
-    "modified": "2026-06-14T19:26:16.639Z",
+    "created": "2026-11-11T06:51:10.778Z",
+    "modified": "2026-11-11T06:51:10.778Z",
     "author": "",
     "tags": [
-      "tutorial"
-    ],
-    "preferredViewer": "https://twilite.zone"
+      "library",
+      "collection"
+    ]
   },
   "nodes": [
     {
-      "id": "tutorial-howto-guides",
+      "id": "tutorial-how-to-declaration",
       "type": "root",
-      "label": "Declaration",
+      "label": "How-To Guides",
       "position": {
-        "x": -1240,
-        "y": -1380
+        "x": -640,
+        "y": 0
       },
-      "width": 360,
-      "height": 220,
+      "width": 300,
+      "height": 200,
+      "ports": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 55,
+          "role": "default-view"
+        },
+        {
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 70,
+          "role": "shared-summary"
+        },
+        {
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 85,
+          "role": "shared-icon"
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 100,
+          "role": "shared-glyph"
+        },
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 115,
+          "role": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "default-handle",
+          "key": "default-handle",
+          "label": "default handle",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "default-handle",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-handle",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "graphReference",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "boundary-begin",
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 300,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "boundary-end",
+          "key": "boundary-end",
+          "label": "boundary end",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 135,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 225,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "event:graph.changed",
+          "key": "event:graph.changed",
+          "label": "Graph changed",
+          "direction": "output",
+          "dataType": "event",
+          "role": "emits-event",
+          "allowedEdgeTypes": [
+            "invokes"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "emits-event",
+            "required": false,
+            "repeatable": true,
+            "eventKey": "graph.changed",
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "method",
+                "targetPort": "invokes"
+              }
+            ]
+          }
+        },
+        {
+          "id": "event:graph.structure.changed",
+          "key": "event:graph.structure.changed",
+          "label": "Graph structure changed",
+          "direction": "output",
+          "dataType": "event",
+          "role": "emits-event",
+          "allowedEdgeTypes": [
+            "invokes"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "emits-event",
+            "required": false,
+            "repeatable": true,
+            "eventKey": "graph.structure.changed",
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "method",
+                "targetPort": "invokes"
+              }
+            ]
+          }
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "default-view",
+          "key": "default-view",
+          "label": "default-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 55,
+          "role": "default-view",
+          "portId": "default-view"
+        },
+        {
+          "id": "summary-view",
+          "key": "summary-view",
+          "label": "summary-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 70,
+          "role": "shared-summary",
+          "portId": "summary-view"
+        },
+        {
+          "id": "icon-view",
+          "key": "icon-view",
+          "label": "icon-view",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 85,
+          "role": "shared-icon",
+          "portId": "icon-view"
+        },
+        {
+          "id": "glyph",
+          "key": "glyph",
+          "label": "glyph",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 100,
+          "role": "shared-glyph",
+          "portId": "glyph"
+        },
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 115,
+          "role": "ground",
+          "portId": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "surfaces"
+        },
+        {
+          "id": "default-handle",
+          "key": "default-handle",
+          "label": "default handle",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 195,
+          "role": "default-handle",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "default-handle",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "graphReference",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "default-handle"
+        },
+        {
+          "id": "boundary-begin",
+          "key": "boundary-begin",
+          "label": "boundary begin",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 300,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "boundary-begin"
+        },
+        {
+          "id": "boundary-end",
+          "key": "boundary-end",
+          "label": "boundary end",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 135,
+          "role": "membrane-control",
+          "allowedEdgeTypes": [
+            "membrane"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "membrane-control",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "membrane",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "boundary-end"
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 225,
+          "role": "exposes-port",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "exposes-port",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "port",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "port"
+        },
+        {
+          "id": "event:graph.changed",
+          "key": "event:graph.changed",
+          "label": "Graph changed",
+          "direction": "output",
+          "dataType": "event",
+          "role": "emits-event",
+          "allowedEdgeTypes": [
+            "invokes"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "emits-event",
+            "required": false,
+            "repeatable": true,
+            "eventKey": "graph.changed",
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "method",
+                "targetPort": "invokes"
+              }
+            ]
+          },
+          "portId": "event:graph.changed"
+        },
+        {
+          "id": "event:graph.structure.changed",
+          "key": "event:graph.structure.changed",
+          "label": "Graph structure changed",
+          "direction": "output",
+          "dataType": "event",
+          "role": "emits-event",
+          "allowedEdgeTypes": [
+            "invokes"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "emits-event",
+            "required": false,
+            "repeatable": true,
+            "eventKey": "graph.structure.changed",
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "method",
+                "targetPort": "invokes"
+              }
+            ]
+          },
+          "portId": "event:graph.structure.changed"
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "environment"
+        }
+      ],
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "tutorial-howto-guides",
+          "graphId": "tutorial-how-to-declaration",
+          "nodeId": "tutorial-how-to",
           "name": "How-To Guides",
-          "version": "0.2.0",
-          "description": "Practical Twilite guides for concrete jobs like using templates, building repo homes, working with ports, and reusing nodes."
+          "version": "1.0.0",
+          "description": "Practical guides for the jobs around the editor: your account, GitHub, and billing.",
+          "updatedAt": "2026-11-11T06:51:10.776Z"
         },
         "intent": {
-          "kind": "tutorial",
-          "scope": "local"
+          "kind": "collection",
+          "scope": "public"
+        },
+        "dependencies": {
+          "nodeTypes": [
+            "declaration",
+            "view",
+            "glyph",
+            "content",
+            "bridge",
+            "method",
+            "collection",
+            "portal"
+          ],
+          "portContracts": [
+            "core"
+          ],
+          "schemaVersions": {
+            "nodes": ">=1.0.0",
+            "ports": ">=1.0.0"
+          },
+          "optional": []
+        },
+        "authority": {
+          "mutation": {
+            "allowCreate": true,
+            "allowUpdate": true,
+            "allowDelete": true,
+            "appendOnly": false
+          },
+          "actors": {
+            "humans": true,
+            "agents": true,
+            "tools": true
+          },
+          "styleAuthority": "descriptive",
+          "history": {
+            "rewriteAllowed": false,
+            "squashAllowed": false
+          }
         },
         "settings": {
-          "theme": null,
-          "backgroundImage": null,
-          "defaultNodeColor": "#1976d2",
-          "defaultEdgeColor": "#666666",
-          "snapToGrid": false,
-          "gridSize": 20,
-          "edgeRouting": "auto",
           "layout": {
-            "mode": "autoOnMissingPositions",
-            "defaultLayout": "layered",
+            "mode": "manual",
             "direction": "DOWN",
+            "defaultLayout": "layered",
             "edgeLaneGapPx": 10,
             "serpentine": {
-              "maxPerRow": 5
+              "maxPerRow": 6
             },
             "cycleFallback": {
               "enabled": true
@@ -60,2866 +632,1052 @@
               "layeredEdgeSpacing": 80
             }
           },
-          "autoSave": false
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "auto"
         },
         "document": {
-          "url": ""
+          "url": "tlz://twilite.zone/tutorial/how-to-guides/root.node"
         },
+        "visibilityRole": "editor",
+        "events": [
+          {
+            "eventKey": "graph.changed",
+            "label": "Graph changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          },
+          {
+            "eventKey": "graph.structure.changed",
+            "label": "Graph structure changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          }
+        ],
         "root": {
+          "kind": "graph",
           "targetMode": "artifact",
-          "defaultSurfaceId": "howto-guides-reader",
+          "artifactKind": "collection",
+          "interfaceContract": {
+            "version": 1,
+            "implicitRootPort": true
+          },
+          "defaultSurfaceId": "web",
+          "landingSurfaceId": "landing",
           "surfaces": [
             {
-              "id": "howto-guides-reader",
+              "id": "detail",
               "kind": "view",
-              "label": "How-To Guides Reader",
-              "memo": "Primary declared reader surface for the how-to guides hub.",
-              "viewNodeId": "howto-guides-reader"
+              "payload": "node.web.detail",
+              "viewNodeId": "tutorial-how-to-detail"
+            },
+            {
+              "id": "summary",
+              "kind": "view",
+              "payload": "node.web.summary",
+              "viewNodeId": "tutorial-how-to-summary"
+            },
+            {
+              "id": "glyph",
+              "kind": "glyph",
+              "payload": "node.web.glyph",
+              "viewNodeId": "tutorial-how-to-glyph"
+            },
+            {
+              "id": "landing",
+              "kind": "content",
+              "payload": "node.web.landing",
+              "viewNodeId": "tutorial-how-to-landing"
             }
           ]
+        },
+        "membrane": {
+          "bounds": {
+            "x": -720,
+            "y": -322,
+            "width": 2720,
+            "height": 1813
+          },
+          "clip": true
         }
       }
     },
     {
-      "id": "howto-guides-title-bridge",
-      "type": "import",
-      "label": "Tutorial Title",
+      "id": "tutorial-how-to-detail",
+      "type": "face",
+      "label": "How-To Guides",
       "position": {
-        "x": -2740,
-        "y": -1380
+        "x": -640,
+        "y": 240
       },
-      "width": 280,
-      "height": 120,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Bridge for the tutorial title class.",
-        "intent": "external",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node",
-          "resourceKind": "node-class",
-          "key": "tutorial-title",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      }
-    },
-    {
-      "id": "howto-guides-concept-bridge",
-      "type": "import",
-      "label": "Tutorial Concept",
-      "position": {
-        "x": -2440,
-        "y": -1380
-      },
-      "width": 280,
-      "height": 120,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Bridge for the tutorial concept class.",
-        "intent": "external",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node",
-          "resourceKind": "node-class",
-          "key": "tutorial-concept",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      }
-    },
-    {
-      "id": "howto-guides-example-bridge",
-      "type": "import",
-      "label": "Tutorial Example",
-      "position": {
-        "x": -2140,
-        "y": -1380
-      },
-      "width": 280,
-      "height": 120,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Bridge for the tutorial example class.",
-        "intent": "external",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-example.node-class.node",
-          "resourceKind": "node-class",
-          "key": "tutorial-example",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      }
-    },
-    {
-      "id": "howto-guides-challenge-bridge",
-      "type": "import",
-      "label": "Tutorial Challenge",
-      "position": {
-        "x": -1840,
-        "y": -1380
-      },
-      "width": 280,
-      "height": 120,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Bridge for the tutorial challenge class.",
-        "intent": "external",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-challenge.node-class.node",
-          "resourceKind": "node-class",
-          "key": "tutorial-challenge",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      }
-    },
-    {
-      "id": "howto-guides-checkpoint-bridge",
-      "type": "import",
-      "label": "Tutorial Checkpoint",
-      "position": {
-        "x": -1540,
-        "y": -1380
-      },
-      "width": 280,
-      "height": 120,
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Bridge for the tutorial checkpoint class.",
-        "intent": "external",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
-        },
-        "bridge": {
-          "ref": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-checkpoint.node-class.node",
-          "resourceKind": "node-class",
-          "key": "tutorial-checkpoint",
-          "scope": "focused-graph",
-          "grants": [
-            "create"
-          ]
-        }
-      }
-    },
-    {
-      "id": "howto-guides-reader",
-      "type": "port",
-      "label": "How-To Guides Reader",
-      "position": {
-        "x": -1160,
-        "y": -980
-      },
-      "width": 320,
-      "height": 210,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
+      "width": 600,
+      "height": 400,
       "ports": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
+          "direction": "input",
           "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
           "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
         }
       ],
-      "inputs": [
+      "handles": [
         {
+          "id": "root",
           "key": "root",
           "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
         }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "tutorial-howto-guides"
+          "graphId": "tutorial-how-to"
         },
         "view": {
           "intent": "node",
-          "payload": "node.web.detail"
+          "payload": "node.web.detail",
+          "scroll": "page"
         },
-        "renderShape": {
-          "kind": "markdown"
+        "semanticLevel": "detail",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;font-family:system-ui,-apple-system,Segoe UI,sans-serif;padding:4cqw;border-radius:3cqw;background:#ffffff;border:1px solid #e2e8f0;display:flex;flex-direction:column;gap:2cqw'><div style='display:flex;justify-content:space-between;align-items:baseline;gap:2cqw'><div style='min-width:0'><div style='font-size:2.2cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Collection</div><div style='font-weight:600;font-size:4cqw;line-height:1.2;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis'>How-To Guides</div></div><div style='font-size:2.2cqw;color:#64748b;white-space:nowrap'>3 graphs</div></div><div style='flex:1;min-height:0;overflow:auto'><div style='display:grid;grid-template-columns:repeat(auto-fill,minmax(26.2cqw,1fr));gap:1.4cqw;align-content:start'><a href='tlz://twilite.zone/tutorial/how-to-guides/accounts/root.node' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:14.2cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'><span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:#6d28d922;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>A</span><span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>Accounts</span><span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>What a Twilite account is, how to create one and sign in with an emailed code, and what the account keeps.</span></span></a><a href='tlz://twilite.zone/tutorial/how-to-guides/github/root.node' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:14.2cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'><span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:#6d28d922;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>G</span><span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>GitHub</span><span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>How to connect GitHub, choose the repositories Twilite may use, open a graph by its address, and save to GitHub.</span></span></a><a href='tlz://twilite.zone/tutorial/how-to-guides/billing/root.node' style='display:flex;gap:2.2cqw;align-items:flex-start;box-sizing:border-box;height:14.2cqw;padding:1.6cqw 2.1cqw;border:1px solid #e2e8f0;border-radius:2.4cqw;background:#f8fafc;text-decoration:none;color:inherit;min-width:0;overflow:hidden'><span style='flex:none;width:6.2cqw;height:6.2cqw;border-radius:1.6cqw;background:#6d28d922;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:3cqw'>B</span><span style='min-width:0'><span style='display:block;font-weight:600;font-size:2.9cqw;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a'>Billing</span><span style='display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:2.6cqw;line-height:1.3;color:#64748b'>What the editor subscription gives you, how to subscribe and come back from Stripe, and how to manage or cancel it.</span></span></a></div></div></div></div>"
         },
-        "markdown": "# How-To Guides\n---\n\nUse this hub when you already know the job you want to get done and you want the shortest Twilite path that still respects the graph model."
+        "memo": "",
+        "link": ""
       }
     },
     {
-      "id": "howto-guides-intro",
-      "type": "tutorial-title",
-      "label": "Lesson Hero",
+      "id": "tutorial-how-to-summary",
+      "type": "face",
+      "label": "How-To Guides Summary",
       "position": {
-        "x": -520,
-        "y": -980
+        "x": 1440,
+        "y": 0
       },
-      "width": 640,
-      "height": 260,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
+      "width": 480,
+      "height": 320,
       "ports": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
-          "direction": "bidirectional",
+          "direction": "input",
           "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
           "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
         }
       ],
-      "inputs": [
+      "handles": [
         {
+          "id": "root",
           "key": "root",
           "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
         }
       ],
       "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-how-to"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "semanticLevel": "summary",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;font-family:system-ui,-apple-system,Segoe UI,sans-serif;padding:5cqw;border-radius:4cqw;background:#ffffff;border:1px solid #e2e8f0;display:flex;flex-direction:column;gap:2cqw;overflow:hidden'><div style='display:flex;justify-content:space-between;align-items:flex-end;gap:2cqw'><div style='min-width:0'><div style='font-size:2.8cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Collection</div><div style='font-weight:600;font-size:5.4cqw;line-height:1.2;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis'>How-To Guides</div></div><div style='font-size:3.4cqw;color:#475569;white-space:nowrap'>3 graphs</div></div><div style='position:relative;margin:auto -5cqw'><div style='display:flex;align-items:flex-end;gap:2.5cqw;overflow-x:auto;overflow-y:hidden;padding:0 5cqw;scroll-snap-type:x proximity;scroll-padding:0 5cqw;scrollbar-width:thin;scrollbar-color:#64748b #cbd5e1'><div style='position:relative;flex:none;width:39.6cqw;height:26.4cqw;scroll-snap-align:start'><div style='container-type:inline-size;width:100%;height:100%'><div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;min-height:100%;padding:clamp(0.5px,7.33cqw,33px) clamp(0.5px,8.00cqw,36px);border-radius:min(18px,6cqw);background:#ffffff;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column'><div style='margin-bottom:clamp(0.5px,3.33cqw,15px);font-weight:800;font-size:clamp(0.5px,3.67cqw,17px);line-height:1.3;font-family:system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>TUTORIAL · how-to</div><div style='font-weight:500;font-size:clamp(0.5px,10.67cqw,48px);line-height:1;font-family:Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>Accounts</div><div style='margin-top:auto;padding-top:clamp(0.5px,2.67cqw,12px);font-weight:400;font-size:clamp(0.5px,4.00cqw,18px);line-height:1.3;font-family:system-ui;color:#475569'>5 pieces</div></div></div></div><a href='tlz://twilite.zone/tutorial/how-to-guides/accounts/root.node' title='Accounts' aria-label='Accounts' style='position:absolute;inset:0'></a></div><div style='position:relative;flex:none;width:39.6cqw;height:26.4cqw;scroll-snap-align:start'><div style='container-type:inline-size;width:100%;height:100%'><div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;min-height:100%;padding:clamp(0.5px,7.33cqw,33px) clamp(0.5px,8.00cqw,36px);border-radius:min(18px,6cqw);background:#ffffff;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column'><div style='margin-bottom:clamp(0.5px,3.33cqw,15px);font-weight:800;font-size:clamp(0.5px,3.67cqw,17px);line-height:1.3;font-family:system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>TUTORIAL · how-to</div><div style='font-weight:500;font-size:clamp(0.5px,10.67cqw,48px);line-height:1;font-family:Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>GitHub</div><div style='margin-top:auto;padding-top:clamp(0.5px,2.67cqw,12px);font-weight:400;font-size:clamp(0.5px,4.00cqw,18px);line-height:1.3;font-family:system-ui;color:#475569'>5 pieces</div></div></div></div><a href='tlz://twilite.zone/tutorial/how-to-guides/github/root.node' title='GitHub' aria-label='GitHub' style='position:absolute;inset:0'></a></div><div style='position:relative;flex:none;width:39.6cqw;height:26.4cqw;scroll-snap-align:start'><div style='container-type:inline-size;width:100%;height:100%'><div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;min-height:100%;padding:clamp(0.5px,7.33cqw,33px) clamp(0.5px,8.00cqw,36px);border-radius:min(18px,6cqw);background:#ffffff;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column'><div style='margin-bottom:clamp(0.5px,3.33cqw,15px);font-weight:800;font-size:clamp(0.5px,3.67cqw,17px);line-height:1.3;font-family:system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>TUTORIAL · how-to</div><div style='font-weight:500;font-size:clamp(0.5px,10.67cqw,48px);line-height:1;font-family:Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>Billing</div><div style='margin-top:auto;padding-top:clamp(0.5px,2.67cqw,12px);font-weight:400;font-size:clamp(0.5px,4.00cqw,18px);line-height:1.3;font-family:system-ui;color:#475569'>5 pieces</div></div></div></div><a href='tlz://twilite.zone/tutorial/how-to-guides/billing/root.node' title='Billing' aria-label='Billing' style='position:absolute;inset:0'></a></div></div><div style='position:absolute;right:0;top:0;bottom:12px;width:6cqw;pointer-events:none;background:linear-gradient(270deg,#ffffff,rgba(255,255,255,0))'></div></div></div></div>"
+        },
+        "memo": "",
+        "link": ""
+      }
+    },
+    {
+      "id": "tutorial-how-to-glyph",
+      "type": "glyph",
+      "label": "How-To Guides glyph",
+      "position": {
+        "x": -320,
+        "y": 0
+      },
+      "width": 90,
+      "height": 90,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-how-to"
+        },
+        "glyph": {
+          "kind": "icon",
+          "name": "Folder",
+          "color": "#6d28d9"
+        },
+        "view": {
+          "payload": "node.web.glyph"
+        }
+      }
+    },
+    {
+      "id": "tutorial-how-to-landing",
+      "type": "content",
+      "label": "How-To Guides landing",
+      "position": {
+        "x": 1440,
+        "y": 340
+      },
+      "width": 360,
+      "height": 140,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": false,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-how-to"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "# How-To Guides\n\nPractical guides for the jobs around the editor, in the order you will meet them.\n\n**Accounts.** A name, an email and a code.\n\n**GitHub.** Where your graphs live and how they are saved.\n\n**Billing.** The editor subscription.\n\nThis graph is a collection. Each tile is a portal it contains, and what a tile shows (its name, its description, how many pieces it has) is read from the graph behind it, so nothing here is a copy."
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1791502752029,
+          "reason": "node-drag"
+        }
+      }
+    },
+    {
+      "id": "tutorial-how-to-collection",
+      "type": "collection",
+      "label": "How-To Guides",
+      "position": {
+        "x": 1440,
+        "y": 500
+      },
+      "width": 300,
+      "height": 120,
+      "visible": false,
       "showLabel": true,
       "data": {
         "title": "How-To Guides",
-        "subtitle": "Practical recipes for specific Twilite jobs. Pick the guide that matches the task, get the artifact working, then come back to the deeper lessons when the work widens.",
+        "body": "Guides for the jobs around the editor: your account, GitHub, and billing.",
+        "sort": "order",
+        "includeFolder": false,
+        "sourcesSummary": "3 portals · 3 members",
         "identity": {
-          "graphId": "tutorial-howto-guides"
+          "graphId": "tutorial-how-to",
+          "nodeId": "tutorial-how-to-collection"
         },
-        "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-title.node-class.node"
-      }
+        "classRef": "tlz://twilite.zone/library/classes/nodes/collection/collection.node-class.node"
+      },
+      "ports": [
+        {
+          "id": "members",
+          "key": "members",
+          "label": "members",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": true,
+            "targetKinds": [
+              "portal"
+            ]
+          }
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        },
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 250
+        }
+      ],
+      "handles": [
+        {
+          "id": "members",
+          "key": "members",
+          "label": "members",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": true,
+            "targetKinds": [
+              "portal"
+            ]
+          },
+          "portId": "members"
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        },
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 250,
+          "portId": "root"
+        }
+      ]
     },
     {
-      "id": "howto-guides-task-note",
-      "type": "tutorial-concept",
-      "label": "Start With The Task",
+      "id": "tutorial-how-to-environment",
+      "type": "face",
+      "label": "How-To Guides environment",
       "position": {
-        "x": -720,
-        "y": -560
+        "x": 1440,
+        "y": 860
       },
       "width": 360,
-      "height": 240,
+      "height": 170,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "tutorial-how-to"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.environment",
+          "fit": "window"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;background-color:#1c1733;background-image:radial-gradient(90cqw 55cqw at 12% -8%,color-mix(in srgb,#6d28d9 42%,transparent),transparent),repeating-linear-gradient(0deg,transparent 0,transparent 5.6cqw,color-mix(in srgb,#e9c46a 7%,transparent) 5.6cqw,color-mix(in srgb,#e9c46a 7%,transparent) 5.72cqw);font-family:Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;color:#f4eefc'><div style='position:absolute;left:4cqw;top:3cqw;font:800 1.4cqw/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#e9c46a'>Tutorial · Learn</div><div style='position:absolute;left:4cqw;top:5cqw;font:500 6.6cqw/1 Georgia,Iowan Old Style,Palatino Linotype,Times New Roman,serif;letter-spacing:-.02em;white-space:nowrap'>How-To Guides</div><div style='position:absolute;left:4cqw;width:38.23cqw;top:12.6cqw;font:italic 400 2cqw/1.35 Georgia,Iowan Old Style,Palatino Linotype,Times New Roman,serif;color:#d9cdf0'>Sign in, connect GitHub, and subscribe to the editor.</div><div style='position:absolute;left:25cqw;top:19.93cqw;width:53.68cqw;height:11.76cqw;box-sizing:border-box;border-radius:2cqw;background:color-mix(in srgb,#e9c46a 6%,#1c1733);border:.28cqw solid color-mix(in srgb,#e9c46a 26%,#1c1733)'></div><div style='position:absolute;left:41.83cqw;top:11.33cqw;height:8.6cqw;display:flex;align-items:flex-end;gap:.35cqw'><i style='display:block;width:1.5cqw;height:7.7cqw;background:#e9c46a;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:1.95cqw;height:9.1cqw;background:#4c1d95;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:2.4cqw;height:6.3cqw;background:#8b5cf6;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:2.85cqw;height:8.4cqw;background:#c4b5fd;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:1.5cqw;height:5.6cqw;background:#6d28d9;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:1.95cqw;height:7cqw;background:#e9c46a;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:2.4cqw;height:9.1cqw;background:#5b21b6;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:2.85cqw;height:6.3cqw;background:#a78bfa;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:1.5cqw;height:7.7cqw;background:#7c3aed;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:1.95cqw;height:5.6cqw;background:#e9c46a;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:2.4cqw;height:8.4cqw;background:#4c1d95;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:2.85cqw;height:7cqw;background:#8b5cf6;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:1.5cqw;height:9.1cqw;background:#6d28d9;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i><i style='display:block;width:1.95cqw;height:6.3cqw;background:#c4b5fd;border-radius:.25cqw .25cqw 0 0;box-shadow:inset -.2cqw 0 0 rgba(0,0,0,.28)'></i></div><div style='position:absolute;left:4cqw;right:4cqw;bottom:2.6cqw;display:grid;grid-template-columns:repeat(1,1fr);gap:3cqw;border-top:.2cqw solid color-mix(in srgb,#e9c46a 40%,transparent);padding-top:1.3cqw'><div style='min-width:0'><div style='font:800 1.25cqw/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#e9c46a;margin:0 0 .8cqw'>Set up</div><div style='display:flex;flex-direction:column;gap:.5cqw;font:600 1.6cqw/1.2 Inter,system-ui,Segoe UI,Helvetica Neue,Arial,sans-serif'><a href='tlz://twilite.zone/tutorial/how-to-guides/accounts/root.node' style='color:#f4eefc;text-decoration:none'>Accounts →</a><a href='tlz://twilite.zone/tutorial/how-to-guides/github/root.node' style='color:#f4eefc;text-decoration:none'>GitHub →</a><a href='tlz://twilite.zone/tutorial/how-to-guides/billing/root.node' style='color:#f4eefc;text-decoration:none'>Billing →</a></div></div></div></div></div>"
+        }
+      }
+    },
+    {
+      "id": "tutorial-how-to-collection-template",
+      "type": "import",
+      "label": "Collection Template",
+      "position": {
+        "x": 1440,
+        "y": 1060
+      },
+      "width": 280,
+      "height": 110,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 270,
+          "position": {
+            "side": "top",
+            "offset": 0.2
+          }
+        }
+      ],
       "handles": [
         {
           "id": "root",
           "label": "root",
           "direction": "bidirectional",
           "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
+          "angle": 180,
+          "portId": "root"
         }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Start With The Task",
-        "body": "A how-to guide is for a concrete job: set up a repo home, work with ports, reuse a node, or choose the right template. It is intentionally narrower than a full ontology lesson.",
         "identity": {
-          "graphId": "tutorial-howto-guides"
+          "graphId": "tutorial-how-to"
         },
-        "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        "memo": "The one Bridge to the Collection Template: the Method that derives the views, and the Collection class, come through it.",
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/templates/collection-template/root.node",
+          "resourceKind": "graph",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update",
+            "execute"
+          ]
+        }
       }
     },
     {
-      "id": "howto-guides-recipe-note",
-      "type": "tutorial-concept",
-      "label": "Use The Smallest Recipe",
+      "id": "tutorial-how-to-derive-method",
+      "type": "method",
+      "label": "Derive the collection views",
       "position": {
-        "x": -260,
-        "y": -560
+        "x": 1440,
+        "y": 640
       },
       "width": 360,
-      "height": 240,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
+      "height": 180,
       "ports": [
         {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
+          "id": "call",
+          "key": "call",
+          "label": "Call",
+          "direction": "input",
+          "dataType": "event",
           "angle": 180
         },
         {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
+          "id": "result",
+          "key": "result",
+          "label": "Result",
+          "direction": "output",
           "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
+          "angle": 0
         }
       ],
-      "inputs": [
+      "handles": [
         {
-          "key": "root",
-          "label": "root",
-          "type": "any"
+          "id": "call",
+          "key": "call",
+          "label": "Call",
+          "direction": "input",
+          "dataType": "event",
+          "angle": 180,
+          "portId": "call"
         },
         {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
+          "id": "result",
+          "key": "result",
+          "label": "Result",
+          "direction": "output",
+          "dataType": "value",
+          "angle": 0,
+          "portId": "result"
         }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "title": "Use The Smallest Recipe",
-        "body": "Good guides stay bounded. They show the smallest sequence that produces a working result instead of re-explaining every primitive on every visit.",
+        "scriptName": "Derive the collection views",
+        "parameters": [],
+        "source": "",
+        "allowMutations": true,
+        "dryRun": false,
         "identity": {
-          "graphId": "tutorial-howto-guides"
+          "graphId": "tutorial-how-to"
         },
-        "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
+        "effects": [
+          {
+            "kind": "update-node",
+            "targets": [
+              "tutorial-how-to-detail",
+              "tutorial-how-to-summary",
+              "tutorial-how-to-glyph",
+              "tutorial-how-to-declaration",
+              "tutorial-how-to-collection"
+            ]
+          }
+        ],
+        "bridgedMethod": {
+          "bridgeNodeId": "tutorial-how-to-collection-template",
+          "key": "collection-template-derive-method"
+        }
       }
     },
     {
-      "id": "howto-guides-model-note",
-      "type": "tutorial-concept",
-      "label": "Return To Structure",
-      "position": {
-        "x": 200,
-        "y": -560
-      },
-      "width": 360,
-      "height": 240,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "Return To Structure",
-        "body": "After the task works, reconnect it to the declaration, surface, port, and portal model. The recipe gets you moving; the structure keeps the graph coherent.",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
-        },
-        "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-concept.node-class.node"
-      }
-    },
-    {
-      "id": "howto-guides-example",
-      "type": "tutorial-example",
-      "label": "Guide Selection Checklist",
-      "position": {
-        "x": -500,
-        "y": -120
-      },
-      "width": 700,
-      "height": 280,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "Guide Selection Checklist",
-        "body": "1. Name the exact outcome you need.\n2. Choose the guide that matches that job.\n3. Follow the smallest recipe until the artifact works.\n4. Verify the graph still makes sense through declarations and surfaces.\n5. Escalate to the deeper tutorials only when the job grows.",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
-        },
-        "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-example.node-class.node"
-      }
-    },
-    {
-      "id": "howto-guides-challenge",
-      "type": "tutorial-challenge",
-      "label": "Choose Your Guide",
-      "position": {
-        "x": 300,
-        "y": -120
-      },
-      "width": 420,
-      "height": 260,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "Choose Your Guide",
-        "body": "Pick the next job you actually want to do in Twilite. Decide whether it is a template problem, a repo-home problem, a ports problem, or a reuse problem before you open the next graph.",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
-        },
-        "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-challenge.node-class.node"
-      }
-    },
-    {
-      "id": "howto-guides-checkpoint",
-      "type": "tutorial-checkpoint",
-      "label": "Checkpoint",
-      "position": {
-        "x": -100,
-        "y": 280
-      },
-      "width": 520,
-      "height": 240,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "title": "Checkpoint",
-        "body": "You are ready to leave this hub when you can explain why a how-to guide is narrower than a lesson and which guide matches your next concrete task.",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
-        },
-        "classRef": "github://twilite-zone/public/tutorial/basic-primitives/tutorial-checkpoint.node-class.node"
-      }
-    },
-    {
-      "id": "howto-guides-template-gallery",
-      "type": "portal",
-      "label": "Template Gallery",
-      "position": {
-        "x": -970,
-        "y": 700
-      },
-      "width": 320,
-      "height": 190,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Open the guide for choosing and applying templates.",
-        "intent": "external",
-        "target": {
-          "endpoint": "github://twilite-zone/public/tutorial/how-to-guides/template-gallery/root.node:root",
-          "mode": "navigate",
-          "label": "Open",
-          "portId": "root",
-          "ref": "github://twilite-zone/public/tutorial/how-to-guides/template-gallery/root.node",
-          "handleId": "root"
-        },
-        "security": "prompt",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
-        },
-        "authority": "navigate",
-        "ref": "github://twilite-zone/public/tutorial/how-to-guides/template-gallery/root.node",
-        "src": "github://twilite-zone/public/tutorial/how-to-guides/template-gallery/root.node",
-        "endpoint": "github://twilite-zone/public/tutorial/how-to-guides/template-gallery/root.node:root",
-        "sourceNodeId": "howto-template-gallery-view",
-        "sourcePayload": "node.web.summary",
-        "sourceRef": "github://twilite-zone/public/tutorial/how-to-guides/template-gallery/root.node"
-      }
-    },
-    {
-      "id": "howto-guides-repo-home",
-      "type": "portal",
-      "label": "Repo Home",
-      "position": {
-        "x": -520,
-        "y": 700
-      },
-      "width": 320,
-      "height": 190,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Open the guide for setting up a repo-home style graph.",
-        "intent": "external",
-        "target": {
-          "endpoint": "github://twilite-zone/public/tutorial/how-to-guides/repo-home/root.node:root",
-          "mode": "navigate",
-          "label": "Open",
-          "portId": "root",
-          "ref": "github://twilite-zone/public/tutorial/how-to-guides/repo-home/root.node",
-          "handleId": "root"
-        },
-        "security": "prompt",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
-        },
-        "authority": "navigate",
-        "ref": "github://twilite-zone/public/tutorial/how-to-guides/repo-home/root.node",
-        "src": "github://twilite-zone/public/tutorial/how-to-guides/repo-home/root.node",
-        "endpoint": "github://twilite-zone/public/tutorial/how-to-guides/repo-home/root.node:root",
-        "sourceNodeId": "howto-repo-home-view",
-        "sourcePayload": "node.web.summary",
-        "sourceRef": "github://twilite-zone/public/tutorial/how-to-guides/repo-home/root.node"
-      }
-    },
-    {
-      "id": "howto-guides-ports",
-      "type": "portal",
-      "label": "Build With Ports",
-      "position": {
-        "x": -70,
-        "y": 700
-      },
-      "width": 320,
-      "height": 190,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Open the guide for using ports in practical authoring flows.",
-        "intent": "external",
-        "target": {
-          "endpoint": "github://twilite-zone/public/tutorial/how-to-guides/ports/root.node:root",
-          "mode": "navigate",
-          "label": "Open",
-          "portId": "root",
-          "ref": "github://twilite-zone/public/tutorial/how-to-guides/ports/root.node",
-          "handleId": "root"
-        },
-        "security": "prompt",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
-        },
-        "authority": "navigate",
-        "ref": "github://twilite-zone/public/tutorial/how-to-guides/ports/root.node",
-        "src": "github://twilite-zone/public/tutorial/how-to-guides/ports/root.node",
-        "endpoint": "github://twilite-zone/public/tutorial/how-to-guides/ports/root.node:root",
-        "sourceNodeId": "howto-ports-view",
-        "sourcePayload": "node.web.summary",
-        "sourceRef": "github://twilite-zone/public/tutorial/how-to-guides/ports/root.node"
-      }
-    },
-    {
-      "id": "howto-guides-reuse-nodes",
-      "type": "portal",
-      "label": "Reuse Nodes",
-      "position": {
-        "x": 380,
-        "y": 700
-      },
-      "width": 320,
-      "height": 190,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Open the guide for reusing nodes and patterns across graphs.",
-        "intent": "external",
-        "target": {
-          "endpoint": "github://twilite-zone/public/tutorial/how-to-guides/reuse-nodes/root.node:root",
-          "mode": "navigate",
-          "label": "Open",
-          "portId": "root",
-          "ref": "github://twilite-zone/public/tutorial/how-to-guides/reuse-nodes/root.node",
-          "handleId": "root"
-        },
-        "security": "prompt",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
-        },
-        "authority": "navigate",
-        "ref": "github://twilite-zone/public/tutorial/how-to-guides/reuse-nodes/root.node",
-        "src": "github://twilite-zone/public/tutorial/how-to-guides/reuse-nodes/root.node",
-        "endpoint": "github://twilite-zone/public/tutorial/how-to-guides/reuse-nodes/root.node:root",
-        "sourceNodeId": "howto-reuse-nodes-view",
-        "sourcePayload": "node.web.summary",
-        "sourceRef": "github://twilite-zone/public/tutorial/how-to-guides/reuse-nodes/root.node"
-      }
-    },
-    {
-      "id": "howto-guides-back",
-      "type": "portal",
-      "label": "Back To Tutorial Root",
-      "position": {
-        "x": 830,
-        "y": 700
-      },
-      "width": 320,
-      "height": 190,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "memo": "Return to the main tutorial shelf.",
-        "intent": "external",
-        "target": {
-          "endpoint": "github://twilite-zone/public/tutorial/root.node:root",
-          "mode": "navigate",
-          "label": "Open",
-          "portId": "root",
-          "ref": "github://twilite-zone/public/tutorial/root.node",
-          "handleId": "root"
-        },
-        "security": "prompt",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
-        },
-        "authority": "navigate",
-        "ref": "github://twilite-zone/public/tutorial/root.node",
-        "src": "github://twilite-zone/public/tutorial/root.node",
-        "endpoint": "github://twilite-zone/public/tutorial/root.node:root",
-        "sourceNodeId": "tutorial-root-reader",
-        "sourcePayload": "node.web.detail",
-        "sourceRef": "github://twilite-zone/public/tutorial/root.node"
-      }
-    },
-    {
-      "id": "howto-guides-accounts",
+      "id": "tutorial-how-to-member-accounts",
       "type": "portal",
       "label": "Accounts",
       "position": {
-        "x": -970,
-        "y": 950
+        "x": 0,
+        "y": 260
       },
-      "width": 320,
-      "height": 190,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
+      "width": 420,
+      "height": 240,
       "ports": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
           "direction": "bidirectional",
           "dataType": "any",
           "angle": 210
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
         }
       ],
-      "inputs": [
+      "handles": [
         {
+          "id": "root",
           "key": "root",
+          "portId": "root",
           "label": "root",
-          "type": "any"
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
         },
         {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
         }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Open the accounts guide.",
-        "intent": "external",
+        "sourceRef": "tlz://twilite.zone/tutorial/how-to-guides/accounts/root.node",
+        "sourceNodeId": "tutorial-how-to-guides-accounts",
         "target": {
-          "endpoint": "tlz://twilite.zone/tutorial/how-to-guides/accounts/root.node:root",
-          "mode": "navigate",
-          "label": "Open",
-          "portId": "root",
           "ref": "tlz://twilite.zone/tutorial/how-to-guides/accounts/root.node",
-          "handleId": "root"
-        },
-        "security": "prompt",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Accounts"
         },
         "authority": "navigate",
-        "ref": "tlz://twilite.zone/tutorial/how-to-guides/accounts/root.node",
-        "src": "tlz://twilite.zone/tutorial/how-to-guides/accounts/root.node",
-        "endpoint": "tlz://twilite.zone/tutorial/how-to-guides/accounts/root.node:root",
-        "sourceNodeId": "tutorial-how-to-guides-accounts",
-        "sourcePayload": "node.web.summary",
-        "sourceRef": "tlz://twilite.zone/tutorial/how-to-guides/accounts/root.node"
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "tutorial-how-to"
+        },
+        "security": "prompt"
       }
     },
     {
-      "id": "howto-guides-github",
+      "id": "tutorial-how-to-member-github",
       "type": "portal",
       "label": "GitHub",
       "position": {
-        "x": -520,
-        "y": 950
+        "x": 480,
+        "y": 260
       },
-      "width": 320,
-      "height": 190,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
+      "width": 420,
+      "height": 240,
       "ports": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
           "direction": "bidirectional",
           "dataType": "any",
           "angle": 210
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
         }
       ],
-      "inputs": [
+      "handles": [
         {
+          "id": "root",
           "key": "root",
+          "portId": "root",
           "label": "root",
-          "type": "any"
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
         },
         {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
         }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Open the github guide.",
-        "intent": "external",
+        "sourceRef": "tlz://twilite.zone/tutorial/how-to-guides/github/root.node",
+        "sourceNodeId": "tutorial-how-to-guides-github",
         "target": {
-          "endpoint": "tlz://twilite.zone/tutorial/how-to-guides/github/root.node:root",
-          "mode": "navigate",
-          "label": "Open",
-          "portId": "root",
           "ref": "tlz://twilite.zone/tutorial/how-to-guides/github/root.node",
-          "handleId": "root"
-        },
-        "security": "prompt",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open GitHub"
         },
         "authority": "navigate",
-        "ref": "tlz://twilite.zone/tutorial/how-to-guides/github/root.node",
-        "src": "tlz://twilite.zone/tutorial/how-to-guides/github/root.node",
-        "endpoint": "tlz://twilite.zone/tutorial/how-to-guides/github/root.node:root",
-        "sourceNodeId": "tutorial-how-to-guides-github",
-        "sourcePayload": "node.web.summary",
-        "sourceRef": "tlz://twilite.zone/tutorial/how-to-guides/github/root.node"
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "tutorial-how-to"
+        },
+        "security": "prompt"
       }
     },
     {
-      "id": "howto-guides-billing",
+      "id": "tutorial-how-to-member-billing",
       "type": "portal",
       "label": "Billing",
       "position": {
-        "x": -70,
-        "y": 950
+        "x": 960,
+        "y": 260
       },
-      "width": 320,
-      "height": 190,
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 210
-        },
-        {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
-        }
-      ],
+      "width": 420,
+      "height": 240,
       "ports": [
         {
           "id": "root",
+          "key": "root",
           "label": "root",
           "direction": "bidirectional",
           "dataType": "any",
           "angle": 210
         },
         {
-          "id": "top",
-          "label": "top",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 270
-        },
-        {
-          "id": "left",
-          "label": "left",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 180
-        },
-        {
-          "id": "bottom",
-          "label": "bottom",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 90
-        },
-        {
-          "id": "right",
-          "label": "right",
-          "direction": "bidirectional",
-          "dataType": "value",
-          "angle": 360
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
         }
       ],
-      "inputs": [
+      "handles": [
         {
+          "id": "root",
           "key": "root",
+          "portId": "root",
           "label": "root",
-          "type": "any"
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
         },
         {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        },
-        {
-          "key": "top",
-          "label": "top",
-          "type": "value"
-        },
-        {
-          "key": "left",
-          "label": "left",
-          "type": "value"
-        },
-        {
-          "key": "bottom",
-          "label": "bottom",
-          "type": "value"
-        },
-        {
-          "key": "right",
-          "label": "right",
-          "type": "value"
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
         }
       ],
       "visible": true,
       "showLabel": true,
       "data": {
-        "memo": "Open the billing guide.",
-        "intent": "external",
+        "sourceRef": "tlz://twilite.zone/tutorial/how-to-guides/billing/root.node",
+        "sourceNodeId": "tutorial-how-to-guides-billing",
         "target": {
-          "endpoint": "tlz://twilite.zone/tutorial/how-to-guides/billing/root.node:root",
-          "mode": "navigate",
-          "label": "Open",
-          "portId": "root",
           "ref": "tlz://twilite.zone/tutorial/how-to-guides/billing/root.node",
-          "handleId": "root"
-        },
-        "security": "prompt",
-        "identity": {
-          "graphId": "tutorial-howto-guides"
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Billing"
         },
         "authority": "navigate",
-        "ref": "tlz://twilite.zone/tutorial/how-to-guides/billing/root.node",
-        "src": "tlz://twilite.zone/tutorial/how-to-guides/billing/root.node",
-        "endpoint": "tlz://twilite.zone/tutorial/how-to-guides/billing/root.node:root",
-        "sourceNodeId": "tutorial-how-to-guides-billing",
-        "sourcePayload": "node.web.summary",
-        "sourceRef": "tlz://twilite.zone/tutorial/how-to-guides/billing/root.node"
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "tutorial-how-to"
+        },
+        "security": "prompt"
+      }
+    },
+    {
+      "id": "tutorial-how-to-back",
+      "type": "portal",
+      "label": "Tutorial",
+      "position": {
+        "x": -640,
+        "y": 700
+      },
+      "width": 360,
+      "height": 200,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "sourceRef": "tlz://twilite.zone/tutorial/root.node",
+        "sourceNodeId": "tutorial-root",
+        "target": {
+          "ref": "tlz://twilite.zone/tutorial/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "label": "Open Tutorial"
+        },
+        "authority": "navigate",
+        "intent": "external",
+        "visibilityRole": "browser",
+        "identity": {
+          "graphId": "tutorial-how-to"
+        },
+        "security": "prompt",
+        "memo": "The front of the tutorial."
       }
     }
   ],
   "edges": [
     {
-      "id": "howto-guides-edge-reader-intro",
-      "type": "edge",
-      "source": "howto-guides-reader",
-      "target": "howto-guides-intro",
-      "sourcePort": "right",
-      "targetPort": "left",
-      "label": "surface",
+      "id": "tutorial-how-to-landing-edge",
+      "type": "ground",
+      "source": "tutorial-how-to-declaration",
+      "target": "tutorial-how-to-landing",
+      "sourcePort": "ground",
+      "targetPort": "root",
+      "label": "",
+      "style": {},
+      "data": {
+        "presentation": {
+          "layer": "contract"
+        }
+      }
+    },
+    {
+      "id": "assemble-updates-summary",
+      "type": "derived-view",
+      "source": "tutorial-how-to-derive-method",
+      "target": "tutorial-how-to-summary",
+      "sourcePort": "result",
+      "targetPort": "root",
+      "label": "derives",
+      "style": {
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "assemble-updates-detail",
+      "type": "derived-view",
+      "source": "tutorial-how-to-derive-method",
+      "target": "tutorial-how-to-detail",
+      "sourcePort": "result",
+      "targetPort": "root",
+      "label": "derives",
+      "style": {
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "tutorial-how-to-surface",
+      "type": "surface",
+      "source": "tutorial-how-to-declaration",
+      "target": "tutorial-how-to-detail",
+      "sourcePort": "surfaces",
+      "targetPort": "root",
+      "label": "",
+      "style": {},
+      "data": {
+        "surfaceId": "web"
+      }
+    },
+    {
+      "id": "tutorial-how-to-detail-summary",
+      "type": "next-face",
+      "source": "tutorial-how-to-detail",
+      "target": "tutorial-how-to-summary",
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in",
+      "label": "",
       "style": {},
       "data": {}
     },
     {
-      "id": "howto-guides-edge-intro-task",
-      "type": "edge",
-      "source": "howto-guides-intro",
-      "target": "howto-guides-task-note",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "frame the job",
+      "id": "graph-changed-invokes-assemble",
+      "type": "invokes",
+      "source": "tutorial-how-to-declaration",
+      "target": "tutorial-how-to-derive-method",
+      "sourcePort": "event:graph.changed",
+      "targetPort": "invokes",
+      "label": "invokes",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "classRef": "tlz://twilite.zone/library/edges/invokes/root.node"
+      }
+    },
+    {
+      "id": "tutorial-how-to-derive-updates-glyph",
+      "type": "derived-view",
+      "source": "tutorial-how-to-derive-method",
+      "target": "tutorial-how-to-glyph",
+      "sourcePort": "result",
+      "targetPort": "root",
+      "label": "derives",
+      "style": {
+        "route": "curved"
+      },
+      "data": {}
+    },
+    {
+      "id": "tutorial-how-to-summary-to-glyph",
+      "type": "next-face",
+      "source": "tutorial-how-to-summary",
+      "target": "tutorial-how-to-glyph",
+      "sourcePort": "sequence-out",
+      "targetPort": "root",
+      "label": "",
       "style": {},
       "data": {}
     },
     {
-      "id": "howto-guides-edge-intro-recipe",
-      "type": "edge",
-      "source": "howto-guides-intro",
-      "target": "howto-guides-recipe-note",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "stay bounded",
+      "id": "tutorial-how-to-edge-environment",
+      "type": "environment",
+      "source": "tutorial-how-to-declaration",
+      "target": "tutorial-how-to-environment",
+      "sourcePort": "environment",
+      "targetPort": "root",
+      "label": "",
+      "style": {
+        "route": "curved"
+      },
+      "data": {
+        "classRef": "tlz://twilite.zone/library/edges/environment/root.node"
+      }
+    },
+    {
+      "id": "tutorial-how-to-edge-member-accounts",
+      "type": "contains",
+      "source": "tutorial-how-to-collection",
+      "target": "tutorial-how-to-member-accounts",
+      "sourcePort": "members",
+      "targetPort": "part-of",
+      "label": "",
       "style": {},
       "data": {}
     },
     {
-      "id": "howto-guides-edge-intro-model",
-      "type": "edge",
-      "source": "howto-guides-intro",
-      "target": "howto-guides-model-note",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "keep the model",
+      "id": "tutorial-how-to-edge-member-github",
+      "type": "contains",
+      "source": "tutorial-how-to-collection",
+      "target": "tutorial-how-to-member-github",
+      "sourcePort": "members",
+      "targetPort": "part-of",
+      "label": "",
       "style": {},
       "data": {}
     },
     {
-      "id": "howto-guides-edge-task-example",
-      "type": "edge",
-      "source": "howto-guides-task-note",
-      "target": "howto-guides-example",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "recipe",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "howto-guides-edge-recipe-example",
-      "type": "edge",
-      "source": "howto-guides-recipe-note",
-      "target": "howto-guides-example",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "checklist",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "howto-guides-edge-model-challenge",
-      "type": "edge",
-      "source": "howto-guides-model-note",
-      "target": "howto-guides-challenge",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "choose the next move",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "howto-guides-edge-example-checkpoint",
-      "type": "edge",
-      "source": "howto-guides-example",
-      "target": "howto-guides-checkpoint",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "ready?",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "howto-guides-edge-challenge-checkpoint",
-      "type": "edge",
-      "source": "howto-guides-challenge",
-      "target": "howto-guides-checkpoint",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "decision",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "howto-guides-edge-checkpoint-template-gallery",
-      "type": "edge",
-      "source": "howto-guides-checkpoint",
-      "target": "howto-guides-template-gallery",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "pick a template path",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "howto-guides-edge-checkpoint-repo-home",
-      "type": "edge",
-      "source": "howto-guides-checkpoint",
-      "target": "howto-guides-repo-home",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "build a home",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "howto-guides-edge-checkpoint-ports",
-      "type": "edge",
-      "source": "howto-guides-checkpoint",
-      "target": "howto-guides-ports",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "work with ports",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "howto-guides-edge-checkpoint-reuse",
-      "type": "edge",
-      "source": "howto-guides-checkpoint",
-      "target": "howto-guides-reuse-nodes",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "reuse patterns",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "howto-guides-edge-checkpoint-back",
-      "type": "edge",
-      "source": "howto-guides-checkpoint",
-      "target": "howto-guides-back",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "tutorial shelf",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "howto-guides-edge-checkpoint-accounts",
-      "type": "edge",
-      "source": "howto-guides-checkpoint",
-      "target": "howto-guides-accounts",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "sign in",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "howto-guides-edge-checkpoint-github",
-      "type": "edge",
-      "source": "howto-guides-checkpoint",
-      "target": "howto-guides-github",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "connect",
-      "style": {},
-      "data": {}
-    },
-    {
-      "id": "howto-guides-edge-checkpoint-billing",
-      "type": "edge",
-      "source": "howto-guides-checkpoint",
-      "target": "howto-guides-billing",
-      "sourcePort": "bottom",
-      "targetPort": "top",
-      "label": "subscribe",
+      "id": "tutorial-how-to-edge-member-billing",
+      "type": "contains",
+      "source": "tutorial-how-to-collection",
+      "target": "tutorial-how-to-member-billing",
+      "sourcePort": "members",
+      "targetPort": "part-of",
+      "label": "",
       "style": {},
       "data": {}
     }
@@ -2928,17 +1686,17 @@
     "theme": null,
     "backgroundImage": null,
     "defaultNodeColor": "#1976d2",
-    "defaultEdgeColor": "#666666",
+    "defaultEdgeColor": "",
     "snapToGrid": false,
     "gridSize": 20,
     "edgeRouting": "auto",
     "layout": {
-      "mode": "autoOnMissingPositions",
+      "mode": "manual",
       "defaultLayout": "layered",
       "direction": "DOWN",
       "edgeLaneGapPx": 10,
       "serpentine": {
-        "maxPerRow": 5
+        "maxPerRow": 6
       },
       "cycleFallback": {
         "enabled": true
@@ -2959,9 +1717,8 @@
       "repoVisibility": "private",
       "seedOnCommit": false,
       "enableGithubPages": false,
-      "installationId": "120403738"
-    },
-    "autoSave": false
+      "installationId": ""
+    }
   },
   "scripts": []
 }
