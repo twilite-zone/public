@@ -412,7 +412,7 @@ Focused graph page views inherit policy from their verified source repository. A
 
 ### Port guidance
 - When a user says "create a port for this graph", interpret that as: create a graph-owned entry surface that can open or connect back to this graph
-- Before inventing a port shape, inspect the port tutorial graph: `github://twilite-zone/public/tutorial/basic-primitives/port/root.node`
+- Before inventing a port shape, read the Port page: `tlz://twilite.zone/library/primitives/port/root.node`
 - Put the graph id on the port too: `data.identity.graphId`
 - Give the port a real navigation target in `data.target`
 - For a graph-owned entry port, prefer `data.target.graphId` and `data.target.mode: "navigate"` unless the graph is using a more specific endpoint contract
@@ -439,10 +439,10 @@ Focused graph page views inherit policy from their verified source repository. A
 - Expose a named port deliberately with an `exposes-port` edge from the root; a port node's existence does not make it externally connectable
 - Do not stop at metadata-only fields such as `title`, `icon`, `description`, or `cover`
 
-### Reference specimens in this repo
-- Primary tutorial reference: `github://twilite-zone/public/tutorial/basic-primitives/port/root.node`
+### Reference
+- Primary reference: `tlz://twilite.zone/library/primitives/port/root.node`
   - Use this first when the task is to author or repair a `port`
-  - It contains older port specimens that are useful for reading and migration
+  - It is the Port primitive's own page, and it says what a port is
   - Use the current `port` plus `face` and `content` relationship pattern for new work
 - Visual card specimen: `github://mikemartinez1974/public/graphs/indiana-jones.node`
   - Look at the `port` node labeled `Indiana Jones Portal Card`
