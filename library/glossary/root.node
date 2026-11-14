@@ -2,10 +2,11 @@
   "fileVersion": "1.0",
   "metadata": {
     "created": "2026-10-15T03:55:15.106Z",
-    "modified": "2026-10-15T03:55:15.106Z",
+    "modified": "2026-11-14T20:30:00.000Z",
     "tags": [
       "glossary",
-      "vocabulary"
+      "library",
+      "reference"
     ]
   },
   "nodes": [
@@ -14,11 +15,11 @@
       "label": "Glossary",
       "type": "root",
       "position": {
-        "x": -1600,
-        "y": -1000
+        "x": -970,
+        "y": 1090
       },
-      "width": 420,
-      "height": 300,
+      "width": 360,
+      "height": 230,
       "ports": [
         {
           "id": "default-view",
@@ -317,6 +318,33 @@
                 "trigger": "drag-create",
                 "action": "create-node",
                 "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
                 "targetPort": "root"
               }
             ]
@@ -636,6 +664,34 @@
             ]
           },
           "portId": "ground"
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "environment"
         }
       ],
       "outputs": [
@@ -698,11 +754,11 @@
       "data": {
         "identity": {
           "graphId": "glossary",
-          "nodeId": "glossary-root",
+          "nodeId": "glossary",
           "name": "Glossary",
-          "version": "1.0.0",
-          "description": "The words of the Twilite Zone, in three layers: what a reader needs, what an author needs, and what a builder needs.",
-          "updatedAt": "2026-10-15T03:55:15.106Z"
+          "version": "2.0.0",
+          "description": "A field guide to the vocabulary of the Twilite Zone, from reading to making to building.",
+          "updatedAt": "2026-11-14T20:30:00.000Z"
         },
         "intent": {
           "kind": "document",
@@ -716,22 +772,6 @@
         "document": {
           "url": "tlz://twilite.zone/library/glossary/root.node"
         },
-        "events": [
-          {
-            "eventKey": "graph.structure.changed",
-            "label": "Graph structure changed",
-            "payloadContract": {
-              "type": "object"
-            }
-          },
-          {
-            "eventKey": "graph.changed",
-            "label": "Graph changed",
-            "payloadContract": {
-              "type": "object"
-            }
-          }
-        ],
         "root": {
           "kind": "graph",
           "interfaceContract": {
@@ -763,8 +803,15 @@
               "kind": "glyph",
               "payload": "node.web.glyph",
               "viewNodeId": "glossary-glyph"
+            },
+            {
+              "id": "landing",
+              "kind": "content",
+              "payload": "node.web.landing",
+              "viewNodeId": "glossary-landing"
             }
-          ]
+          ],
+          "landingSurfaceId": "landing"
         },
         "membrane": {
           "bounds": {
@@ -773,16 +820,164 @@
             "width": 4140,
             "height": 2760
           }
+        },
+        "name": "Glossary"
+      }
+    },
+    {
+      "id": "glossary-detail",
+      "type": "face",
+      "label": "Glossary page",
+      "position": {
+        "x": -530,
+        "y": 1090
+      },
+      "width": 540,
+      "height": 350,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
         }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "glossary"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%;box-sizing:border-box;background:#121a31;color:#f8f5ff;overflow:auto;font-family:system-ui'><main style='padding:clamp(22px,5cqw,52px);max-width:1100px;margin:auto'><div style='border-top:3px solid #e8ce90;padding-top:18px;color:#e8ce90;font:800 12px system-ui;letter-spacing:.18em'>THE TWILITE ZONE / LIBRARY</div><h1 style='font:600 clamp(48px,10cqw,90px)/.98 Georgia,serif;margin:30px 0 14px;letter-spacing:-.045em'>The Glossary</h1><p style='font:400 clamp(18px,2.8cqw,23px)/1.48 system-ui;max-width:740px;color:#cbd3e5'>Understand the graph. Author the graph. Build with the graph. The vocabulary grows with what you're trying to do.</p><nav style='display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 42px'><a href='#glossary-reading' style='color:#b8d8ff;padding:9px 13px;border:1px solid #b8d8ff77;border-radius:8px;text-decoration:none;font:700 12px system-ui'>READING</a><a href='#glossary-making' style='color:#e8ce90;padding:9px 13px;border:1px solid #e8ce9077;border-radius:8px;text-decoration:none;font:700 12px system-ui'>MAKING</a><a href='#glossary-building' style='color:#c9b8ff;padding:9px 13px;border:1px solid #c9b8ff77;border-radius:8px;text-decoration:none;font:700 12px system-ui'>BUILDING</a><a href='#glossary-patterns' style='color:#b4e9d4;padding:9px 13px;border:1px solid #b4e9d477;border-radius:8px;text-decoration:none;font:700 12px system-ui'>PATTERNS</a><a href='#glossary-in-the-app' style='color:#f1c4d5;padding:9px 13px;border:1px solid #f1c4d577;border-radius:8px;text-decoration:none;font:700 12px system-ui'>NAVIGATION</a><a href='#glossary-retired' style='color:#d0d4e3;padding:9px 13px;border:1px solid #d0d4e377;border-radius:8px;text-decoration:none;font:700 12px system-ui'>OLDER WORDS</a></nav><div style='border-left:4px solid #e8ce90;padding:16px 22px;margin-bottom:30px;background:#222b46;font:400 16px/1.6 system-ui;color:#e5e5f0'>A graph is both an artifact you can open and, from outside, a node among other nodes. That shift of perspective is the key to reading Twilite.</div><section id='glossary-reading' style='padding:34px 0;border-top:1px solid #48516c'><div style='color:#b8d8ff;font:800 13px system-ui;letter-spacing:.18em'>01 / READING</div><h2 style='font:600 clamp(28px,5cqw,43px)/1.07 Georgia,serif;margin:10px 0 15px'>A visitor&#39;s vocabulary</h2><p style='font:400 16px/1.65 system-ui;color:#d2d6e6;margin:0 0 18px'>These are the only words a visitor needs to read anything in the Twilite Zone.<p><strong>Graph or node.</strong> The same thing is a graph or a node depending on where you stand. Inside it, it is a graph, with nodes of its own. From outside, it is a node: it has faces and a Glyph, and it sits in the workspace or behind a Portal like any other node. Use whichever word fits where the reader is standing.</p><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:0 30px'><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#b8d8ff'><strong>graph</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>A thing you can open: a set of nodes and the edges between them, saved as one <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>.node</code> file with its own address (<code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>tlz://host/path/root.node</code>).</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#b8d8ff'><strong>node</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>One thing inside a graph. Stored as an entry in <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>nodes</code>.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#b8d8ff'><strong>edge</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>A named connection between two nodes. Its name says what the connection means; click the name to read about that kind of connection. Stored as an entry in <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>edges</code>.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#b8d8ff'><strong>page</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>What a graph or a node looks like when you are close enough to read it: its first, largest face.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#b8d8ff'><strong>Portal</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>A door to another graph. Click it to go through. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>portal</code>.</div></div></div></section><section id='glossary-making' style='padding:34px 0;border-top:1px solid #48516c'><div style='color:#e8ce90;font:800 13px system-ui;letter-spacing:.18em'>02 / MAKING</div><h2 style='font:600 clamp(28px,5cqw,43px)/1.07 Georgia,serif;margin:10px 0 15px'>How graphs become things</h2><p style='font:400 16px/1.65 system-ui;color:#d2d6e6;margin:0 0 18px'>Words that arrive when someone starts making things.</p><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:0 30px'><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#e8ce90'><strong>content</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>The words, pictures or markup a node shows. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>content</code>, with <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>data.content.kind</code> and <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>data.content.value</code>.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#e8ce90'><strong>link</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>An edge on the web: a connection to a graph or a web page, written in content or set on a node (<code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>data.link</code>, <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>url</code>, <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>href</code>). It is drawn as an edge, by the <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>link</code> edge class, wherever both of its ends are in the workspace.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#e8ce90'><strong>ground</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>What you stand on inside a graph: where you land when you go in. A graph with graph content has one; a document has none. Joined to the root by a <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>ground</code> edge from the root&#39;s <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>ground</code> port.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#e8ce90'><strong>faces</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>How a graph or node looks from further away, largest to smallest. The author names them; the usual names are Detail, Summary and Icon. The first face is the page. What the app shows depends on a face&#39;s place in the order and the room it has, never on its name. The order ends at the Glyph. Stored as <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>face</code> nodes joined by <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>next-face</code> edges.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#e8ce90'><strong>Glyph</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>A node&#39;s mark: the symbol that stands for it. Faces are how a node looks; the Glyph is how it is recognised. A graph has one because, seen from outside, a graph is a node. It is shown when there is no room for even the smallest face, and wherever the node is named in a small space: lists, the trail, link chips, tabs, bookmarks. It has its own editor and its name is always Glyph. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>glyph</code>.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#e8ce90'><strong>template</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>A graph you start a new graph from. Templates are how the shapes that work get passed on, and each generation built from one can become a template in turn.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#e8ce90'><strong>workspace</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>Where open graphs sit side by side. Not stored in graphs.</div></div></div></section><section id='glossary-building' style='padding:34px 0;border-top:1px solid #48516c'><div style='color:#c9b8ff;font:800 13px system-ui;letter-spacing:.18em'>03 / BUILDING</div><h2 style='font:600 clamp(28px,5cqw,43px)/1.07 Georgia,serif;margin:10px 0 15px'>The authoring language</h2><p style='font:400 16px/1.65 system-ui;color:#d2d6e6;margin:0 0 18px'>Words for the template builder. A visitor never needs them.</p><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:0 30px'><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>root</strong> (noun)</div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>The node a graph begins from. It says what the graph is (its name, description and faces) and everything else in the graph hangs from it. Every graph has exactly one. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>root</code>, in the file <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>root.node</code>.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>root</strong> (verb)</div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>To select several graphs in the workspace and make a new graph from them, with a root of its own. It is what Twilite has instead of grouping. It works on graphs only: lifting nodes out of a graph into a new one is copy and paste. <em>Not built yet.</em></div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>Surface</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>One ordered set of faces a graph shows from outside. A graph can have more than one. A <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>surface</code> edge from the root to the first face.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>Port</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>A named place where a graph offers something to other graphs. The root is the graph&#39;s root Port. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>port</code>; an edge&#39;s ends are its <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>sourcePort</code> and <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>targetPort</code>.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>export</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>What a graph offers to other graphs: a class, a set of classes, or the whole graph. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>export</code>.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>import</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>What a graph uses from another graph&#39;s export. A class used in a graph must come in through an import. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>import</code>.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>Bridge</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>The connection from an export to the import that uses it: one graph drawing on another. A classed edge (the <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>bridge</code> edge class), drawn in the workspace between the two graphs, and what Tidy arranges by. Not stored: worked out from the imports and exports of open graphs.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>class</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>The definition a node or edge follows: which Properties it has and how it looks. On nodes and edges alike, <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>type</code> is the class key and <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>classRef</code> the class graph&#39;s address.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>Edge Class</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>A class for edges: what a kind of connection means and what it may join. A graph built from the Edge Class template.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>Property</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>One named value on a node, as its class defines it. Every Property announces <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>property.changed</code> when its value changes; nothing happens unless an edge is drawn from it. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>property</code>.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>Method</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>The only code in a graph. It runs when something invokes it, and declares what it may change; the app refuses anything else. A Method has an <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>invokes</code> port of its own, so one Method can run the next. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>method</code>.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>invokes</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>The edge that makes something happen: from what raises an event (a Property, a node, a button, a Method) to the Method it runs, naming the event. Every source draws its own edge: structure matters. Edge type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>invokes</code>.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>Membrane</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>A graph&#39;s boundary: what it holds in, and where its ports sit for things to cross. A graph grows from its root and is held by its membrane. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>membrane</code> for its control points, edge <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>membrane</code>, and the root&#39;s <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>data.membrane</code>.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>Specification</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>The page that defines a primitive. An ordinary graph under <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>library/primitives/</code>.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#c9b8ff'><strong>primitive</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>A canonical part of the graph model. See the Primitives index for the current inventory.</div></div></div></section><section id='glossary-patterns' style='padding:34px 0;border-top:1px solid #48516c'><div style='color:#b4e9d4;font:800 13px system-ui;letter-spacing:.18em'>04 / PATTERNS</div><h2 style='font:600 clamp(28px,5cqw,43px)/1.07 Georgia,serif;margin:10px 0 15px'>Shapes, not categories</h2><p style='font:400 16px/1.65 system-ui;color:#d2d6e6;margin:0 0 18px'>A graph can grow into anything. Some shapes come up again and again: a page on its own, a picture, a list of doors to other graphs. People call these <strong>documents</strong>, <strong>scenes</strong> and <strong>collections</strong>. They are patterns, not kinds of graph: nothing in a file says which one a graph is, and a graph can be more than one at once. What a graph does follows from what is in it, never from a label on it (a graph with no ground shows its page because it has no ground). Templates are how the patterns are passed on.</p><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:0 30px'></div><p style='font:400 16px/1.6 system-ui;color:#d5d9e9'>Documents, scenes and collections describe recurring <em>patterns</em>. They are not separate graph file types.</p></section><section id='glossary-in-the-app' style='padding:34px 0;border-top:1px solid #48516c'><div style='color:#f1c4d5;font:800 13px system-ui;letter-spacing:.18em'>05 / NAVIGATION</div><h2 style='font:600 clamp(28px,5cqw,43px)/1.07 Georgia,serif;margin:10px 0 15px'>Finding your way</h2><p style='font:400 16px/1.65 system-ui;color:#d2d6e6;margin:0 0 18px'>Words for finding your way.</p><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:0 30px'><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#f1c4d5'><strong>inside</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>Where you are after entering a graph: standing on its ground.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#f1c4d5'><strong>trail</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>The path at the top of the window: Workspace › graph › node › Inside.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#f1c4d5'><strong>going through</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>Following a Portal, or the end of a line, to where it leads.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#f1c4d5'><strong>Tidy</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>Arranging the workspace: graphs joined by a Bridge close together (imports on the left, exports on the right), Portal graphs further out.</div></div></div></section><section id='glossary-retired' style='padding:34px 0;border-top:1px solid #48516c'><div style='color:#d0d4e3;font:800 13px system-ui;letter-spacing:.18em'>06 / OLDER WORDS</div><h2 style='font:600 clamp(28px,5cqw,43px)/1.07 Georgia,serif;margin:10px 0 15px'>What terminology replaced</h2><p style='font:400 16px/1.65 system-ui;color:#d2d6e6;margin:0 0 18px'>Words older graphs and pages use, and what replaced them. A current graph never uses them.</p><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:0 30px'><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#d0d4e3'><strong>Declaration</strong>, <strong>manifest</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>the root.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#d0d4e3'><strong>View</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>a face. <strong>View sequence</strong> — next-face.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#d0d4e3'><strong>landing surface</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>the ground.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#d0d4e3'><strong>Field</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>a Property.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#d0d4e3'><strong>Markdown node</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>Content with kind <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>markdown</code>.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#d0d4e3'><strong>Bridge node</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>an import or an export. The Bridge is the connection between them.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#d0d4e3'><strong>Graph Reference</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>a Portal.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#d0d4e3'><strong>groups</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>rooting.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#d0d4e3'><strong>frame</strong>, <strong>border</strong>, <strong>wrap</strong> (for a graph&#39;s boundary)</div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>the Membrane.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#d0d4e3'><strong>handle</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>An editor interaction point on a node. A Port is a named connection interface; the modern model distinguishes ports from handles.</div></div><div style='padding:11px 0;border-bottom:1px solid #3c4968'><div style='font:700 14px/1.35 system-ui;color:#d0d4e3'><strong>Event Handler</strong>, <strong>Script</strong></div><div style='font:400 13px/1.55 system-ui;color:#c7d0e5;margin-top:4px'>leaving in favour of Methods and the <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>invokes</code> edge.</div></div></div></section><footer style='display:flex;flex-wrap:wrap;gap:24px;border-top:2px solid #e8ce90;padding:26px 0 50px;font:700 15px system-ui'><a style='color:#e8ce90' href='tlz://twilite.zone/library/root.node'>← The Library</a><a style='color:#e8ce90' href='tlz://twilite.zone/library/primitives/root.node'>Explore the Primitives</a><a style='color:#e8ce90' href='tlz://twilite.zone/boulevard/root.node'>The Boulevard</a></footer></main></div>"
+        },
+        "memo": ""
+      }
+    },
+    {
+      "id": "glossary-summary",
+      "type": "face",
+      "label": "Glossary summary",
+      "position": {
+        "x": 100,
+        "y": 1090
+      },
+      "width": 380,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "glossary"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%;box-sizing:border-box;padding:7cqw;background:linear-gradient(140deg,#302c55,#121c37);border:1px solid #b6a5df;border-radius:4cqw;color:#f4f0ff;display:flex;flex-direction:column;justify-content:space-between'><div style='font:800 3.4cqw system-ui;letter-spacing:.16em;color:#e8cf91'>THE TWILITE ZONE / LIBRARY</div><div style='font:600 17cqw/.95 Georgia,serif;letter-spacing:-.04em'>Glossary.</div><div style='font:500 5.5cqw/1.25 system-ui;color:#d6d4ee'>Read a graph.<br>Make a graph.<br>Build with graphs.</div></div>"
+        },
+        "memo": ""
+      }
+    },
+    {
+      "id": "glossary-icon",
+      "type": "face",
+      "label": "Glossary icon",
+      "position": {
+        "x": 550,
+        "y": 1090
+      },
+      "width": 170,
+      "height": 170,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "glossary",
+          "nodeId": "glossary-icon"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "semanticLevel": "summary",
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%;display:grid;place-items:center;background:#222345;border:1px solid #ab9fd7;border-radius:14px;color:#e8cf91'><span style='font:700 26cqw Georgia,serif'>Aa</span></div>"
+        },
+        "memo": "",
+        "link": ""
       }
     },
     {
       "id": "glossary-glyph",
-      "label": "Script Glyph",
+      "label": "Glossary glyph",
       "type": "glyph",
       "position": {
-        "x": -1600,
-        "y": -640
+        "x": 800,
+        "y": 1090
       },
       "width": 220,
       "height": 140,
@@ -827,8 +1022,8 @@
       "data": {
         "glyph": {
           "kind": "symbol",
-          "value": "G",
-          "color": "#6d28d9"
+          "value": "Aa",
+          "color": "#e7ca8f"
         },
         "interfaceContract": {
           "version": 1,
@@ -841,69 +1036,38 @@
       }
     },
     {
-      "id": "glossary-page-template",
-      "type": "import",
-      "label": "Page Template",
+      "id": "glossary-landing",
+      "type": "content",
+      "label": "Glossary introduction",
       "position": {
-        "x": -1600,
-        "y": -420
+        "x": -970,
+        "y": 660
       },
-      "width": 320,
-      "height": 140,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 270,
-          "position": {
-            "side": "top",
-            "offset": 0.2
-          }
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "label": "root",
-          "direction": "bidirectional",
-          "dataType": "any",
-          "angle": 180,
-          "portId": "root"
-        }
-      ],
+      "width": 1260,
+      "height": 290,
       "visible": true,
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "glossary"
+          "graphId": "glossary",
+          "nodeId": "glossary-landing"
         },
-        "memo": "The one import of the Page Template: the masthead, route, settings and section classes all come through it.",
-        "bridge": {
-          "ref": "tlz://twilite.zone/library/templates/page-template/root.node",
-          "resourceKind": "graph",
-          "scope": "focused-graph",
-          "grants": [
-            "read",
-            "create",
-            "update",
-            "execute"
-          ]
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%;box-sizing:border-box;padding:4cqw;background:#222b48;border:1px solid #e4ca8e;border-radius:16px;color:#f5efff;font-family:system-ui'><div style='font:800 2cqw system-ui;letter-spacing:.15em;color:#e8cf91'>GLOSSARY / A FIELD GUIDE</div><h2 style='font:600 6.4cqw/1.1 Georgia,serif;margin:2cqw 0'>One graph. Several ways of seeing it.</h2><p style='font:400 2.9cqw/1.45 system-ui;color:#cfd6e8;margin:0'>Begin with Reading, move into Making, and visit Building when you want to define the model itself. The complete definitions are on the Glossary page below.</p></div>"
         }
       }
     },
     {
-      "id": "glossary-detail",
+      "id": "glossary-environment",
       "type": "face",
-      "label": "Script page",
+      "label": "Glossary environment",
       "position": {
-        "x": -1600,
-        "y": 880
+        "x": -1080,
+        "y": -850
       },
-      "width": 760,
-      "height": 507,
+      "width": 2080,
+      "height": 1830,
       "ports": [
         {
           "id": "root",
@@ -929,821 +1093,41 @@
       "showLabel": true,
       "data": {
         "identity": {
-          "graphId": "glossary"
+          "graphId": "glossary",
+          "nodeId": "glossary-environment"
         },
         "view": {
           "intent": "node",
-          "payload": "node.web.detail",
-          "scroll": "page"
+          "payload": "node.web.environment",
+          "fit": "window"
         },
-        "semanticLevel": "detail",
         "content": {
           "kind": "html",
-          "value": "<div style='width:100%;height:100%;overflow:auto;box-sizing:border-box;container-type:inline-size;background:#ffffff;font-family:Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#0f172a'><div style='box-sizing:border-box;max-width:900px;margin:0 auto;padding:0 clamp(20px,5cqw,40px) 64px'><div style='padding-top:32px'><header data-role='masthead'><div style='padding:10px 0;border-top:3px solid #0f172a;border-bottom:1px solid #0f172a;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>LIBRARY · glossary</div><h1 style='margin:40px 0 0;font:500 clamp(40px,9.5cqw,72px)/.98 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.025em;text-wrap:balance;color:#0f172a'>Glossary</h1><p style='margin:18px 0 0;max-width:36ch;font:italic 400 clamp(20px,3.6cqw,26px)/1.35 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#475569'>The words of the Twilite Zone, and how each is stored.</p></header></div><div style='padding-top:48px'><div style='display:flex;flex-wrap:wrap;flex-direction:row-reverse;align-items:flex-start;gap:32px 40px'><div style='flex:1 1 220px;min-width:0'><section data-role='settings' style='padding-top:10px;border-top:3px solid #0f172a'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#0f172a'>At a glance</h2><dl style='margin:0;display:grid;grid-template-columns:max-content 1fr;column-gap:12px;border-bottom:1px solid #cbd5e1'><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Reading</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>graph, node, edge, page, Portal</dd><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Making</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>content, link, ground, faces, Glyph, template, workspace</dd><dt style='grid-column:1/-1;padding:9px 0 0px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Building</dt><dd style='grid-column:1/-1;margin:0;padding:2px 0 9px;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>root, Surface, Port, import, export, Bridge, class, Edge Class, Property, Method, invokes, Membrane, Specification, primitive</dd><dt style='padding:9px 0 9px;border-top:1px solid #cbd5e1;font:400 13px/20px system-ui;color:#475569'>Settled</dt><dd style='margin:0;padding:9px 0;border-top:1px solid #cbd5e1;text-align:right;font:600 14px/20px system-ui;color:#0f172a;overflow-wrap:anywhere'>2026-10-14</dd></dl></section></div><div style='flex:999 1 380px;min-width:0'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Reading</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><span style='float:left;padding:6px 10px 0 0;font:500 68px/54px Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#0f172a'>T</span>hese are the only words a visitor needs to read anything in the Twilite Zone.</p><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><strong>Graph or node.</strong> The same thing is a graph or a node depending on where you stand. Inside it, it is a graph, with nodes of its own. From outside, it is a node: it has faces and a Glyph, and it sits in the workspace or behind a Portal like any other node. Use whichever word fits where the reader is standing.</p><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>graph</strong> — A thing you can open: a set of nodes and the edges between them, saved as one <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>.node</code> file with its own address (<code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>tlz://host/path/root.node</code>).</li><li style='margin:0 0 6px'><strong>node</strong> — One thing inside a graph. Stored as an entry in <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>nodes</code>.</li><li style='margin:0 0 6px'><strong>edge</strong> — A named connection between two nodes. Its name says what the connection means; click the name to read about that kind of connection. Stored as an entry in <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>edges</code>.</li><li style='margin:0 0 6px'><strong>page</strong> — What a graph or a node looks like when you are close enough to read it: its first, largest face.</li><li style='margin:0 0 6px'><strong>Portal</strong> — A door to another graph. Click it to go through. Node type <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>portal</code>.</li></ul></section></div></div></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Making</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Words that arrive when someone starts making things.</p><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>content</strong> — The words, pictures or markup a node shows. Node type <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>content</code>, with <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>data.content.kind</code> and <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>data.content.value</code>.</li><li style='margin:0 0 6px'><strong>link</strong> — An edge on the web: a connection to a graph or a web page, written in content or set on a node (<code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>data.link</code>, <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>url</code>, <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>href</code>). It is drawn as an edge, by the <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>link</code> edge class, wherever both of its ends are in the workspace.</li><li style='margin:0 0 6px'><strong>ground</strong> — What you stand on inside a graph: where you land when you go in. A graph with graph content has one; a document has none. Joined to the root by a <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>ground</code> edge from the root&#39;s <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>ground</code> port.</li><li style='margin:0 0 6px'><strong>faces</strong> — How a graph or node looks from further away, largest to smallest. The author names them; the usual names are Detail, Summary and Icon. The first face is the page. What the app shows depends on a face&#39;s place in the order and the room it has, never on its name. The order ends at the Glyph. Stored as <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>face</code> nodes joined by <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>next-face</code> edges.</li><li style='margin:0 0 6px'><strong>Glyph</strong> — A node&#39;s mark: the symbol that stands for it. Faces are how a node looks; the Glyph is how it is recognised. A graph has one because, seen from outside, a graph is a node. It is shown when there is no room for even the smallest face, and wherever the node is named in a small space: lists, the trail, link chips, tabs, bookmarks. It has its own editor and its name is always Glyph. Node type <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>glyph</code>.</li><li style='margin:0 0 6px'><strong>template</strong> — A graph you start a new graph from. Templates are how the shapes that work get passed on, and each generation built from one can become a template in turn.</li><li style='margin:0 0 6px'><strong>workspace</strong> — Where open graphs sit side by side. Not stored in graphs.</li></ul></section></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Patterns, not kinds of graph</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>A graph can grow into anything. Some shapes come up again and again: a page on its own, a picture, a list of doors to other graphs. People call these <strong>documents</strong>, <strong>scenes</strong> and <strong>collections</strong>. They are patterns, not kinds of graph: nothing in a file says which one a graph is, and a graph can be more than one at once. What a graph does follows from what is in it, never from a label on it (a graph with no ground shows its page because it has no ground). Templates are how the patterns are passed on.</p></section></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Building</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Words for the template builder. A visitor never needs them.</p><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>root</strong> (noun) — The node a graph begins from. It says what the graph is (its name, description and faces) and everything else in the graph hangs from it. Every graph has exactly one. Node type <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>root</code>, in the file <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>root.node</code>.</li><li style='margin:0 0 6px'><strong>root</strong> (verb) — To select several graphs in the workspace and make a new graph from them, with a root of its own. It is what Twilite has instead of grouping. It works on graphs only: lifting nodes out of a graph into a new one is copy and paste. *Not built yet.*</li><li style='margin:0 0 6px'><strong>Surface</strong> — One ordered set of faces a graph shows from outside. A graph can have more than one. A <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>surface</code> edge from the root to the first face.</li><li style='margin:0 0 6px'><strong>Port</strong> — A named place where a graph offers something to other graphs. The root is the graph&#39;s root Port. Node type <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>port</code>; an edge&#39;s ends are its <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>sourcePort</code> and <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>targetPort</code>.</li><li style='margin:0 0 6px'><strong>export</strong> — What a graph offers to other graphs: a class, a set of classes, or the whole graph. Node type <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>export</code>.</li><li style='margin:0 0 6px'><strong>import</strong> — What a graph uses from another graph&#39;s export. A class used in a graph must come in through an import. Node type <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>import</code>.</li><li style='margin:0 0 6px'><strong>Bridge</strong> — The connection from an export to the import that uses it: one graph drawing on another. A classed edge (the <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>bridge</code> edge class), drawn in the workspace between the two graphs, and what Tidy arranges by. Not stored: worked out from the imports and exports of open graphs.</li><li style='margin:0 0 6px'><strong>class</strong> — The definition a node or edge follows: which Properties it has and how it looks. On nodes and edges alike, <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>type</code> is the class key and <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>classRef</code> the class graph&#39;s address.</li><li style='margin:0 0 6px'><strong>Edge Class</strong> — A class for edges: what a kind of connection means and what it may join. A graph built from the Edge Class template.</li><li style='margin:0 0 6px'><strong>Property</strong> — One named value on a node, as its class defines it. Every Property announces <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>property.changed</code> when its value changes; nothing happens unless an edge is drawn from it. Node type <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>property</code>.</li><li style='margin:0 0 6px'><strong>Method</strong> — The only code in a graph. It runs when something invokes it, and declares what it may change; the app refuses anything else. A Method has an <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>invokes</code> port of its own, so one Method can run the next. Node type <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>method</code>.</li><li style='margin:0 0 6px'><strong>invokes</strong> — The edge that makes something happen: from what raises an event (a Property, a node, a button, a Method) to the Method it runs, naming the event. Every source draws its own edge: structure matters. Edge type <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>invokes</code>.</li><li style='margin:0 0 6px'><strong>Membrane</strong> — A graph&#39;s boundary: what it holds in, and where its ports sit for things to cross. A graph grows from its root and is held by its membrane. Node type <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>membrane</code> for its control points, edge <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>membrane</code>, and the root&#39;s <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>data.membrane</code>.</li><li style='margin:0 0 6px'><strong>Specification</strong> — The page that defines a primitive. An ordinary graph under <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>library/primitives/</code>.</li><li style='margin:0 0 6px'><strong>primitive</strong> — One of the sixteen parts every graph is made of. Each has a Specification.</li></ul></section></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>In the app</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Words for finding your way.</p><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>inside</strong> — Where you are after entering a graph: standing on its ground.</li><li style='margin:0 0 6px'><strong>trail</strong> — The path at the top of the window: Workspace › graph › node › Inside.</li><li style='margin:0 0 6px'><strong>going through</strong> — Following a Portal, or the end of a line, to where it leads.</li><li style='margin:0 0 6px'><strong>Tidy</strong> — Arranging the workspace: graphs joined by a Bridge close together (imports on the left, exports on the right), Portal graphs further out.</li></ul></section></div><div style='padding-top:48px'><section data-role='section'><h2 style='margin:0 0 14px;font:800 12px/16px system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>Retired words</h2><p style='margin:0 0 14px;max-width:60ch;font:400 19px/1.6 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'>Words older graphs and pages use, and what replaced them. A current graph never uses them.</p><ul style='margin:0 0 14px;padding-left:22px;max-width:60ch;font:400 18px/1.55 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;color:#1e293b'><li style='margin:0 0 6px'><strong>Declaration</strong>, <strong>manifest</strong> — the root.</li><li style='margin:0 0 6px'><strong>View</strong> — a face. <strong>View sequence</strong> — next-face.</li><li style='margin:0 0 6px'><strong>landing surface</strong> — the ground.</li><li style='margin:0 0 6px'><strong>Field</strong> — a Property.</li><li style='margin:0 0 6px'><strong>Markdown node</strong> — Content with kind <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>markdown</code>.</li><li style='margin:0 0 6px'><strong>Bridge node</strong> — an import or an export. The Bridge is the connection between them.</li><li style='margin:0 0 6px'><strong>Graph Reference</strong> — a Portal.</li><li style='margin:0 0 6px'><strong>groups</strong> — rooting.</li><li style='margin:0 0 6px'><strong>frame</strong>, <strong>border</strong>, <strong>wrap</strong> (for a graph&#39;s boundary) — the Membrane.</li><li style='margin:0 0 6px'><strong>handle</strong> (in a file) — a Port. &quot;Handle&quot; is only the spot you grab on screen, and is never saved.</li><li style='margin:0 0 6px'><strong>Event Handler</strong>, <strong>Script</strong> — leaving in favour of Methods and the <code style='padding:1px 4px;border-radius:3px;background:#f1f5f9;font:400 .84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere'>invokes</code> edge.</li></ul></section></div><div style='padding-top:40px'><div style='display:flex;flex-wrap:wrap;align-items:stretch;gap:28px 32px'><div style='flex:1 1 190px;min-width:0'><section data-role='route' data-prominence='secondary' style='height:100%;box-sizing:border-box;display:flex;flex-direction:column;padding-top:14px;border-top:1px solid #0f172a'><h2 style='margin:0 0 8px;font:500 22px/1.1 Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.01em;color:#0f172a'>The Library</h2><p style='margin:0 0 10px;font:400 14px/1.55 system-ui;color:#475569'>What the Twilite Zone publishes, by shelf.</p><a data-role='route-link' href='tlz://twilite.zone/library/root.node' style='margin-top:auto;font:700 13px/20px system-ui;text-decoration:none;color:#475569'>Open the library →</a></section></div></div></div></div></div>"
-        },
-        "memo": "",
-        "link": ""
-      }
-    },
-    {
-      "id": "glossary-summary",
-      "type": "face",
-      "label": "Script summary",
-      "position": {
-        "x": -780,
-        "y": 880
-      },
-      "width": 300,
-      "height": 200,
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270
-        }
-      ],
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "angle": 270,
-          "portId": "root"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "identity": {
-          "graphId": "glossary"
-        },
-        "view": {
-          "intent": "node",
-          "payload": "node.web.summary"
-        },
-        "semanticLevel": "summary",
-        "content": {
-          "kind": "html",
-          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;min-height:100%;padding:clamp(0.5px,7.33cqw,33px) clamp(0.5px,8.00cqw,36px);border-radius:min(18px,6cqw);background:#ffffff;border:1px solid #e2e8f0;color:#0f172a;overflow:hidden;display:flex;flex-direction:column'><div style='margin-bottom:clamp(0.5px,3.33cqw,15px);font-weight:800;font-size:clamp(0.5px,3.67cqw,17px);line-height:1.3;font-family:system-ui;letter-spacing:.18em;text-transform:uppercase;color:#6d28d9'>LIBRARY · glossary</div><div style='font-weight:500;font-size:clamp(0.5px,10.67cqw,48px);line-height:1;font-family:Newsreader,Iowan Old Style,Palatino Linotype,Book Antiqua,Georgia,serif;letter-spacing:-.02em'>Glossary</div><div style='margin-top:clamp(0.5px,3.33cqw,15px);font-weight:600;font-size:clamp(0.5px,4.33cqw,20px);line-height:1.4;font-family:system-ui;color:#6d28d9'>The Library</div><div style='margin-top:auto;padding-top:clamp(0.5px,2.67cqw,12px);font-weight:400;font-size:clamp(0.5px,4.00cqw,18px);line-height:1.3;font-family:system-ui;color:#475569'>9 pieces</div></div></div>"
-        },
-        "memo": "",
-        "link": ""
-      }
-    },
-    {
-      "id": "assemble-page-method",
-      "type": "method",
-      "label": "Assemble the page",
-      "position": {
-        "x": 1960,
-        "y": -320
-      },
-      "width": 420,
-      "height": 260,
-      "ports": [
-        {
-          "id": "call",
-          "key": "call",
-          "label": "Call",
-          "direction": "input",
-          "dataType": "event",
-          "angle": 180
-        },
-        {
-          "id": "result",
-          "key": "result",
-          "label": "Result",
-          "direction": "output",
-          "dataType": "value",
-          "angle": 0
-        }
-      ],
-      "handles": [
-        {
-          "id": "call",
-          "key": "call",
-          "label": "Call",
-          "direction": "input",
-          "dataType": "event",
-          "angle": 180,
-          "portId": "call"
-        },
-        {
-          "id": "result",
-          "key": "result",
-          "label": "Result",
-          "direction": "output",
-          "dataType": "value",
-          "angle": 0,
-          "portId": "result"
-        }
-      ],
-      "visible": true,
-      "showLabel": true,
-      "data": {
-        "scriptName": "Assemble the page",
-        "parameters": [],
-        "source": "",
-        "effects": [
-          {
-            "kind": "update-node",
-            "targets": [
-              "glossary-detail",
-              "glossary-summary",
-              "glossary-glyph",
-              "glossary"
-            ]
-          }
-        ],
-        "allowMutations": true,
-        "dryRun": false,
-        "identity": {
-          "graphId": "glossary"
-        },
-        "bridgedMethod": {
-          "bridgeNodeId": "glossary-page-template",
-          "key": "assemble-page-method"
+          "value": "\n<div style='container-type:inline-size;width:100%;height:100%;box-sizing:border-box;overflow:hidden;position:relative;background:radial-gradient(circle at 50% -20%,#554474,#181d37 52%,#10172d);color:#f4efff;font-family:system-ui'>\n<div style='position:absolute;inset:2.3cqw;border:1px solid #8d7aa8;border-radius:2cqw;pointer-events:none'></div>\n<div style='position:absolute;top:4cqw;left:6cqw;font:800 1.7cqw system-ui;letter-spacing:.20em;color:#e8cf91'>THE TWILITE ZONE · THE LIBRARY</div>\n<h1 style='position:absolute;top:7cqw;left:6cqw;margin:0;font:600 10cqw/1 Georgia,serif;letter-spacing:-.045em'>The Glossary</h1>\n<div style='position:absolute;left:6cqw;top:20cqw;font:400 2.5cqw/1.4 system-ui;color:#c9d1e5'>An atlas of the language behind every graph.</div>\n<div style='position:absolute;left:5cqw;right:5cqw;top:29cqw;bottom:15cqw;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5cqw'>\n<div style='border-top:.8cqw solid #b8d8ff;padding:3cqw 2.8cqw;background:#212946a8'><div style='font:800 1.6cqw system-ui;color:#b8d8ff;letter-spacing:.15em'>01 / READING</div><div style='font:600 4cqw/1.1 Georgia,serif;margin-top:3cqw'>Understand what you see.</div><div style='margin-top:5cqw;width:80%;height:1px;background:#b8d8ff;opacity:.65'></div></div><div style='border-top:.8cqw solid #e8ce90;padding:3cqw 2.8cqw;background:#212946a8'><div style='font:800 1.6cqw system-ui;color:#e8ce90;letter-spacing:.15em'>02 / MAKING</div><div style='font:600 4cqw/1.1 Georgia,serif;margin-top:3cqw'>Give ideas a durable shape.</div><div style='margin-top:5cqw;width:80%;height:1px;background:#e8ce90;opacity:.65'></div></div><div style='border-top:.8cqw solid #c9b8ff;padding:3cqw 2.8cqw;background:#212946a8'><div style='font:800 1.6cqw system-ui;color:#c9b8ff;letter-spacing:.15em'>03 / BUILDING</div><div style='font:600 4cqw/1.1 Georgia,serif;margin-top:3cqw'>Define behavior and reuse.</div><div style='margin-top:5cqw;width:80%;height:1px;background:#c9b8ff;opacity:.65'></div></div>\n</div><div style='position:absolute;bottom:4cqw;left:6cqw;font:700 2cqw system-ui;color:#e8cf91'>WORDS → STRUCTURE → EXPERIENCE</div>\n</div>"
         }
       }
-    },
-    {
-      "id": "glossary-masthead",
-      "type": "page-masthead",
-      "label": "Script",
-      "position": {
-        "x": -180,
-        "y": -1000
-      },
-      "width": 520,
-      "height": 260,
-      "data": {
-        "eyebrow": "LIBRARY · glossary",
-        "title": "Glossary",
-        "subtitle": "The words of the Twilite Zone, and how each is stored.",
-        "presentation": {
-          "glyph": {
-            "kind": "icon",
-            "name": "Abc"
-          },
-          "baseLevel": "detail"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "bridge",
-          "updatedAt": 1791592074865,
-          "reason": "bridge-reference"
-        },
-        "identity": {
-          "graphId": "glossary"
-        },
-        "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-masthead.node-class.node"
-      },
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          }
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          }
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          }
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          }
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
-        }
-      ],
-      "visible": false,
-      "resizable": true,
-      "portPosition": "center",
-      "showLabel": false,
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          },
-          "portId": "root"
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          },
-          "portId": "input"
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          },
-          "portId": "prev"
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-right"
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          },
-          "portId": "next"
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-bottom"
-        }
-      ]
-    },
-    {
-      "id": "glossary-at-a-glance",
-      "type": "page-settings",
-      "label": "At a glance",
-      "position": {
-        "x": 380,
-        "y": -1000
-      },
-      "width": 520,
-      "height": 320,
-      "data": {
-        "title": "At a glance",
-        "rows": [
-          {
-            "label": "Reading",
-            "value": "graph, node, edge, page, Portal"
-          },
-          {
-            "label": "Making",
-            "value": "content, link, ground, faces, Glyph, template, workspace"
-          },
-          {
-            "label": "Building",
-            "value": "root, Surface, Port, import, export, Bridge, class, Edge Class, Property, Method, invokes, Membrane, Specification, primitive"
-          },
-          {
-            "label": "Settled",
-            "value": "2026-10-14"
-          }
-        ],
-        "presentation": {
-          "glyph": {
-            "kind": "icon",
-            "name": "Settings"
-          },
-          "baseLevel": "detail"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "bridge",
-          "updatedAt": 1791592074869,
-          "reason": "bridge-reference"
-        },
-        "identity": {
-          "graphId": "glossary"
-        },
-        "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-settings.node-class.node"
-      },
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          }
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          }
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          }
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          }
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
-        }
-      ],
-      "visible": false,
-      "resizable": true,
-      "portPosition": "center",
-      "showLabel": false,
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          },
-          "portId": "root"
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          },
-          "portId": "input"
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          },
-          "portId": "prev"
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-right"
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          },
-          "portId": "next"
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-bottom"
-        }
-      ]
     },
     {
       "id": "glossary-reading",
-      "type": "page-section",
+      "type": "content",
       "label": "Reading",
       "position": {
-        "x": -180,
-        "y": -640
+        "x": -970,
+        "y": -350
       },
-      "width": 520,
-      "height": 320,
+      "width": 590,
+      "height": 430,
       "data": {
-        "title": "Reading",
-        "body": "These are the only words a visitor needs to read anything in the Twilite Zone.\n\n**Graph or node.** The same thing is a graph or a node depending on where you stand. Inside it, it is a graph, with nodes of its own. From outside, it is a node: it has faces and a Glyph, and it sits in the workspace or behind a Portal like any other node. Use whichever word fits where the reader is standing.\n\n- **graph** — A thing you can open: a set of nodes and the edges between them, saved as one `.node` file with its own address (`tlz://host/path/root.node`).\n- **node** — One thing inside a graph. Stored as an entry in `nodes`.\n- **edge** — A named connection between two nodes. Its name says what the connection means; click the name to read about that kind of connection. Stored as an entry in `edges`.\n- **page** — What a graph or a node looks like when you are close enough to read it: its first, largest face.\n- **Portal** — A door to another graph. Click it to go through. Node type `portal`.",
-        "presentation": {
-          "glyph": {
-            "kind": "icon",
-            "name": "Article"
-          },
-          "baseLevel": "detail"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "bridge",
-          "updatedAt": 1791592074867,
-          "reason": "bridge-reference"
-        },
         "identity": {
-          "graphId": "glossary"
+          "graphId": "glossary",
+          "nodeId": "glossary-reading"
         },
-        "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%;box-sizing:border-box;overflow:auto;background:linear-gradient(145deg,#222b49,#171f38);border:2px solid #b8d8ff88;border-radius:18px;padding:5cqw;color:#f8f3ff;font-family:system-ui'><div style='color:#b8d8ff;font:800 3.4cqw system-ui;letter-spacing:.16em'>01 / READING</div><h2 style='margin:3cqw 0 2cqw;font:600 8cqw/.98 Georgia,serif'>A visitor&#39;s vocabulary</h2><p style='margin:0 0 3cqw;font:400 3.2cqw/1.42 system-ui;color:#bfcce7'>What you need to understand what you see.</p><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#b8d8ff;font:700 3.9cqw/1.2 system-ui'><strong>graph</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>A thing you can open: a set of nodes and the edges between them, saved as one <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>.node</code> file with its own address (<code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>tlz://host/path/root.node</code>).</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#b8d8ff;font:700 3.9cqw/1.2 system-ui'><strong>node</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>One thing inside a graph. Stored as an entry in <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>nodes</code>.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#b8d8ff;font:700 3.9cqw/1.2 system-ui'><strong>edge</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>A named connection between two nodes. Its name says what the connection means; click the name to read about that kind of connection. Stored as an entry in <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>edges</code>.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#b8d8ff;font:700 3.9cqw/1.2 system-ui'><strong>page</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>What a graph or a node looks like when you are close enough to read it: its first, largest face.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#b8d8ff;font:700 3.9cqw/1.2 system-ui'><strong>Portal</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>A door to another graph. Click it to go through. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>portal</code>.</span></div></div>"
+        },
+        "sourceMarkdown": "These are the only words a visitor needs to read anything in the Twilite Zone.\n\n**Graph or node.** The same thing is a graph or a node depending on where you stand. Inside it, it is a graph, with nodes of its own. From outside, it is a node: it has faces and a Glyph, and it sits in the workspace or behind a Portal like any other node. Use whichever word fits where the reader is standing.\n\n- **graph** — A thing you can open: a set of nodes and the edges between them, saved as one `.node` file with its own address (`tlz://host/path/root.node`).\n- **node** — One thing inside a graph. Stored as an entry in `nodes`.\n- **edge** — A named connection between two nodes. Its name says what the connection means; click the name to read about that kind of connection. Stored as an entry in `edges`.\n- **page** — What a graph or a node looks like when you are close enough to read it: its first, largest face.\n- **Portal** — A door to another graph. Click it to go through. Node type `portal`.",
+        "memo": "Section of the Glossary. The Detail page contains the complete definitions; update both views when editing."
       },
       "inputs": [
         {
@@ -1755,307 +1139,38 @@
       "ports": [
         {
           "id": "root",
-          "key": "root",
           "label": "root",
-          "direction": "input",
+          "direction": "bidirectional",
           "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          }
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          }
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          }
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          }
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
+          "angle": 0
         }
       ],
       "visible": false,
       "resizable": true,
       "portPosition": "center",
-      "showLabel": false,
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          },
-          "portId": "root"
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          },
-          "portId": "input"
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          },
-          "portId": "prev"
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-right"
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          },
-          "portId": "next"
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-bottom"
-        }
-      ]
+      "showLabel": false
     },
     {
       "id": "glossary-making",
-      "type": "page-section",
+      "type": "content",
       "label": "Making",
       "position": {
-        "x": 380,
-        "y": -640
+        "x": -300,
+        "y": -350
       },
-      "width": 520,
-      "height": 320,
+      "width": 590,
+      "height": 430,
       "data": {
-        "title": "Making",
-        "body": "Words that arrive when someone starts making things.\n\n- **content** — The words, pictures or markup a node shows. Node type `content`, with `data.content.kind` and `data.content.value`.\n- **link** — An edge on the web: a connection to a graph or a web page, written in content or set on a node (`data.link`, `url`, `href`). It is drawn as an edge, by the `link` edge class, wherever both of its ends are in the workspace.\n- **ground** — What you stand on inside a graph: where you land when you go in. A graph with graph content has one; a document has none. Joined to the root by a `ground` edge from the root's `ground` port.\n- **faces** — How a graph or node looks from further away, largest to smallest. The author names them; the usual names are Detail, Summary and Icon. The first face is the page. What the app shows depends on a face's place in the order and the room it has, never on its name. The order ends at the Glyph. Stored as `face` nodes joined by `next-face` edges.\n- **Glyph** — A node's mark: the symbol that stands for it. Faces are how a node looks; the Glyph is how it is recognised. A graph has one because, seen from outside, a graph is a node. It is shown when there is no room for even the smallest face, and wherever the node is named in a small space: lists, the trail, link chips, tabs, bookmarks. It has its own editor and its name is always Glyph. Node type `glyph`.\n- **template** — A graph you start a new graph from. Templates are how the shapes that work get passed on, and each generation built from one can become a template in turn.\n- **workspace** — Where open graphs sit side by side. Not stored in graphs.",
-        "presentation": {
-          "glyph": {
-            "kind": "icon",
-            "name": "Article"
-          },
-          "baseLevel": "detail"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "bridge",
-          "updatedAt": 1791592074867,
-          "reason": "bridge-reference"
-        },
         "identity": {
-          "graphId": "glossary"
+          "graphId": "glossary",
+          "nodeId": "glossary-making"
         },
-        "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%;box-sizing:border-box;overflow:auto;background:linear-gradient(145deg,#222b49,#171f38);border:2px solid #e8ce9088;border-radius:18px;padding:5cqw;color:#f8f3ff;font-family:system-ui'><div style='color:#e8ce90;font:800 3.4cqw system-ui;letter-spacing:.16em'>02 / MAKING</div><h2 style='margin:3cqw 0 2cqw;font:600 8cqw/.98 Georgia,serif'>How graphs become things</h2><p style='margin:0 0 3cqw;font:400 3.2cqw/1.42 system-ui;color:#bfcce7'>What you meet when you begin authoring.</p><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#e8ce90;font:700 3.9cqw/1.2 system-ui'><strong>content</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>The words, pictures or markup a node shows. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>content</code>, with <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>data.content.kind</code> and <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>data.content.value</code>.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#e8ce90;font:700 3.9cqw/1.2 system-ui'><strong>link</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>An edge on the web: a connection to a graph or a web page, written in content or set on a node (<code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>data.link</code>, <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>url</code>, <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>href</code>). It is drawn as an edge, by the <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>link</code> edge class, wherever both of its ends are in the workspace.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#e8ce90;font:700 3.9cqw/1.2 system-ui'><strong>ground</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>What you stand on inside a graph: where you land when you go in. A graph with graph content has one; a document has none. Joined to the root by a <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>ground</code> edge from the root&#39;s <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>ground</code> port.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#e8ce90;font:700 3.9cqw/1.2 system-ui'><strong>faces</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>How a graph or node looks from further away, largest to smallest. The author names them; the usual names are Detail, Summary and Icon. The first face is the page. What the app shows depends on a face&#39;s place in the order and the room it has, never on its name. The order ends at the Glyph. Stored as <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>face</code> nodes joined by <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>next-face</code> edges.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#e8ce90;font:700 3.9cqw/1.2 system-ui'><strong>Glyph</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>A node&#39;s mark: the symbol that stands for it. Faces are how a node looks; the Glyph is how it is recognised. A graph has one because, seen from outside, a graph is a node. It is shown when there is no room for even the smallest face, and wherever the node is named in a small space: lists, the trail, link chips, tabs, bookmarks. It has its own editor and its name is always Glyph. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>glyph</code>.</span></div><div style='margin-top:15px;color:#e8ce90;font:700 13px system-ui'>+ 2 more terms in the full Glossary page →</div></div>"
+        },
+        "sourceMarkdown": "Words that arrive when someone starts making things.\n\n- **content** — The words, pictures or markup a node shows. Node type `content`, with `data.content.kind` and `data.content.value`.\n- **link** — An edge on the web: a connection to a graph or a web page, written in content or set on a node (`data.link`, `url`, `href`). It is drawn as an edge, by the `link` edge class, wherever both of its ends are in the workspace.\n- **ground** — What you stand on inside a graph: where you land when you go in. A graph with graph content has one; a document has none. Joined to the root by a `ground` edge from the root's `ground` port.\n- **faces** — How a graph or node looks from further away, largest to smallest. The author names them; the usual names are Detail, Summary and Icon. The first face is the page. What the app shows depends on a face's place in the order and the room it has, never on its name. The order ends at the Glyph. Stored as `face` nodes joined by `next-face` edges.\n- **Glyph** — A node's mark: the symbol that stands for it. Faces are how a node looks; the Glyph is how it is recognised. A graph has one because, seen from outside, a graph is a node. It is shown when there is no room for even the smallest face, and wherever the node is named in a small space: lists, the trail, link chips, tabs, bookmarks. It has its own editor and its name is always Glyph. Node type `glyph`.\n- **template** — A graph you start a new graph from. Templates are how the shapes that work get passed on, and each generation built from one can become a template in turn.\n- **workspace** — Where open graphs sit side by side. Not stored in graphs.",
+        "memo": "Section of the Glossary. The Detail page contains the complete definitions; update both views when editing."
       },
       "inputs": [
         {
@@ -2067,619 +1182,38 @@
       "ports": [
         {
           "id": "root",
-          "key": "root",
           "label": "root",
-          "direction": "input",
+          "direction": "bidirectional",
           "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          }
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          }
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          }
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          }
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
+          "angle": 0
         }
       ],
       "visible": false,
       "resizable": true,
       "portPosition": "center",
-      "showLabel": false,
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          },
-          "portId": "root"
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          },
-          "portId": "input"
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          },
-          "portId": "prev"
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-right"
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          },
-          "portId": "next"
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-bottom"
-        }
-      ]
-    },
-    {
-      "id": "glossary-patterns",
-      "type": "page-section",
-      "label": "Patterns, not kinds of graph",
-      "position": {
-        "x": -180,
-        "y": -280
-      },
-      "width": 520,
-      "height": 320,
-      "data": {
-        "title": "Patterns, not kinds of graph",
-        "body": "A graph can grow into anything. Some shapes come up again and again: a page on its own, a picture, a list of doors to other graphs. People call these **documents**, **scenes** and **collections**. They are patterns, not kinds of graph: nothing in a file says which one a graph is, and a graph can be more than one at once. What a graph does follows from what is in it, never from a label on it (a graph with no ground shows its page because it has no ground). Templates are how the patterns are passed on.",
-        "presentation": {
-          "glyph": {
-            "kind": "icon",
-            "name": "Article"
-          },
-          "baseLevel": "detail"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "bridge",
-          "updatedAt": 1791592074867,
-          "reason": "bridge-reference"
-        },
-        "identity": {
-          "graphId": "glossary"
-        },
-        "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
-      },
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        }
-      ],
-      "ports": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          }
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          }
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          }
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          }
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
-        }
-      ],
-      "visible": false,
-      "resizable": true,
-      "portPosition": "center",
-      "showLabel": false,
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          },
-          "portId": "root"
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          },
-          "portId": "input"
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          },
-          "portId": "prev"
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-right"
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          },
-          "portId": "next"
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-bottom"
-        }
-      ]
+      "showLabel": false
     },
     {
       "id": "glossary-building",
-      "type": "page-section",
+      "type": "content",
       "label": "Building",
       "position": {
-        "x": 380,
-        "y": -280
+        "x": 370,
+        "y": -350
       },
-      "width": 520,
-      "height": 320,
+      "width": 590,
+      "height": 480,
       "data": {
-        "title": "Building",
-        "body": "Words for the template builder. A visitor never needs them.\n\n- **root** (noun) — The node a graph begins from. It says what the graph is (its name, description and faces) and everything else in the graph hangs from it. Every graph has exactly one. Node type `root`, in the file `root.node`.\n- **root** (verb) — To select several graphs in the workspace and make a new graph from them, with a root of its own. It is what Twilite has instead of grouping. It works on graphs only: lifting nodes out of a graph into a new one is copy and paste. *Not built yet.*\n- **Surface** — One ordered set of faces a graph shows from outside. A graph can have more than one. A `surface` edge from the root to the first face.\n- **Port** — A named place where a graph offers something to other graphs. The root is the graph's root Port. Node type `port`; an edge's ends are its `sourcePort` and `targetPort`.\n- **export** — What a graph offers to other graphs: a class, a set of classes, or the whole graph. Node type `export`.\n- **import** — What a graph uses from another graph's export. A class used in a graph must come in through an import. Node type `import`.\n- **Bridge** — The connection from an export to the import that uses it: one graph drawing on another. A classed edge (the `bridge` edge class), drawn in the workspace between the two graphs, and what Tidy arranges by. Not stored: worked out from the imports and exports of open graphs.\n- **class** — The definition a node or edge follows: which Properties it has and how it looks. On nodes and edges alike, `type` is the class key and `classRef` the class graph's address.\n- **Edge Class** — A class for edges: what a kind of connection means and what it may join. A graph built from the Edge Class template.\n- **Property** — One named value on a node, as its class defines it. Every Property announces `property.changed` when its value changes; nothing happens unless an edge is drawn from it. Node type `property`.\n- **Method** — The only code in a graph. It runs when something invokes it, and declares what it may change; the app refuses anything else. A Method has an `invokes` port of its own, so one Method can run the next. Node type `method`.\n- **invokes** — The edge that makes something happen: from what raises an event (a Property, a node, a button, a Method) to the Method it runs, naming the event. Every source draws its own edge: structure matters. Edge type `invokes`.\n- **Membrane** — A graph's boundary: what it holds in, and where its ports sit for things to cross. A graph grows from its root and is held by its membrane. Node type `membrane` for its control points, edge `membrane`, and the root's `data.membrane`.\n- **Specification** — The page that defines a primitive. An ordinary graph under `library/primitives/`.\n- **primitive** — One of the sixteen parts every graph is made of. Each has a Specification.",
-        "presentation": {
-          "glyph": {
-            "kind": "icon",
-            "name": "Article"
-          },
-          "baseLevel": "detail"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "bridge",
-          "updatedAt": 1791592074867,
-          "reason": "bridge-reference"
-        },
         "identity": {
-          "graphId": "glossary"
+          "graphId": "glossary",
+          "nodeId": "glossary-building"
         },
-        "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%;box-sizing:border-box;overflow:auto;background:linear-gradient(145deg,#222b49,#171f38);border:2px solid #c9b8ff88;border-radius:18px;padding:5cqw;color:#f8f3ff;font-family:system-ui'><div style='color:#c9b8ff;font:800 3.4cqw system-ui;letter-spacing:.16em'>03 / BUILDING</div><h2 style='margin:3cqw 0 2cqw;font:600 8cqw/.98 Georgia,serif'>The authoring language</h2><p style='margin:0 0 3cqw;font:400 3.2cqw/1.42 system-ui;color:#bfcce7'>Structure, behavior, and reuse.</p><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#c9b8ff;font:700 3.9cqw/1.2 system-ui'><strong>root</strong> (noun)</b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>The node a graph begins from. It says what the graph is (its name, description and faces) and everything else in the graph hangs from it. Every graph has exactly one. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>root</code>, in the file <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>root.node</code>.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#c9b8ff;font:700 3.9cqw/1.2 system-ui'><strong>root</strong> (verb)</b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>To select several graphs in the workspace and make a new graph from them, with a root of its own. It is what Twilite has instead of grouping. It works on graphs only: lifting nodes out of a graph into a new one is copy and paste. <em>Not built yet.</em></span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#c9b8ff;font:700 3.9cqw/1.2 system-ui'><strong>Surface</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>One ordered set of faces a graph shows from outside. A graph can have more than one. A <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>surface</code> edge from the root to the first face.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#c9b8ff;font:700 3.9cqw/1.2 system-ui'><strong>Port</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>A named place where a graph offers something to other graphs. The root is the graph&#39;s root Port. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>port</code>; an edge&#39;s ends are its <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>sourcePort</code> and <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>targetPort</code>.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#c9b8ff;font:700 3.9cqw/1.2 system-ui'><strong>export</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>What a graph offers to other graphs: a class, a set of classes, or the whole graph. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>export</code>.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#c9b8ff;font:700 3.9cqw/1.2 system-ui'><strong>import</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>What a graph uses from another graph&#39;s export. A class used in a graph must come in through an import. Node type <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>import</code>.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#c9b8ff;font:700 3.9cqw/1.2 system-ui'><strong>Bridge</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>The connection from an export to the import that uses it: one graph drawing on another. A classed edge (the <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>bridge</code> edge class), drawn in the workspace between the two graphs, and what Tidy arranges by. Not stored: worked out from the imports and exports of open graphs.</span></div><div style='margin-top:15px;color:#c9b8ff;font:700 13px system-ui'>+ 8 more terms in the full Glossary page →</div></div>"
+        },
+        "sourceMarkdown": "Words for the template builder. A visitor never needs them.\n\n- **root** (noun) — The node a graph begins from. It says what the graph is (its name, description and faces) and everything else in the graph hangs from it. Every graph has exactly one. Node type `root`, in the file `root.node`.\n- **root** (verb) — To select several graphs in the workspace and make a new graph from them, with a root of its own. It is what Twilite has instead of grouping. It works on graphs only: lifting nodes out of a graph into a new one is copy and paste. *Not built yet.*\n- **Surface** — One ordered set of faces a graph shows from outside. A graph can have more than one. A `surface` edge from the root to the first face.\n- **Port** — A named place where a graph offers something to other graphs. The root is the graph's root Port. Node type `port`; an edge's ends are its `sourcePort` and `targetPort`.\n- **export** — What a graph offers to other graphs: a class, a set of classes, or the whole graph. Node type `export`.\n- **import** — What a graph uses from another graph's export. A class used in a graph must come in through an import. Node type `import`.\n- **Bridge** — The connection from an export to the import that uses it: one graph drawing on another. A classed edge (the `bridge` edge class), drawn in the workspace between the two graphs, and what Tidy arranges by. Not stored: worked out from the imports and exports of open graphs.\n- **class** — The definition a node or edge follows: which Properties it has and how it looks. On nodes and edges alike, `type` is the class key and `classRef` the class graph's address.\n- **Edge Class** — A class for edges: what a kind of connection means and what it may join. A graph built from the Edge Class template.\n- **Property** — One named value on a node, as its class defines it. Every Property announces `property.changed` when its value changes; nothing happens unless an edge is drawn from it. Node type `property`.\n- **Method** — The only code in a graph. It runs when something invokes it, and declares what it may change; the app refuses anything else. A Method has an `invokes` port of its own, so one Method can run the next. Node type `method`.\n- **invokes** — The edge that makes something happen: from what raises an event (a Property, a node, a button, a Method) to the Method it runs, naming the event. Every source draws its own edge: structure matters. Edge type `invokes`.\n- **Membrane** — A graph's boundary: what it holds in, and where its ports sit for things to cross. A graph grows from its root and is held by its membrane. Node type `membrane` for its control points, edge `membrane`, and the root's `data.membrane`.\n- **Specification** — The page that defines a primitive. An ordinary graph under `library/primitives/`.\n- **primitive** — One of the sixteen parts every graph is made of. Each has a Specification.",
+        "memo": "Section of the Glossary. The Detail page contains the complete definitions; update both views when editing."
       },
       "inputs": [
         {
@@ -2691,307 +1225,81 @@
       "ports": [
         {
           "id": "root",
-          "key": "root",
           "label": "root",
-          "direction": "input",
+          "direction": "bidirectional",
           "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          }
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          }
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          }
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          }
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
+          "angle": 0
         }
       ],
       "visible": false,
       "resizable": true,
       "portPosition": "center",
-      "showLabel": false,
-      "handles": [
+      "showLabel": false
+    },
+    {
+      "id": "glossary-patterns",
+      "type": "content",
+      "label": "Patterns",
+      "position": {
+        "x": -970,
+        "y": 160
+      },
+      "width": 590,
+      "height": 430,
+      "data": {
+        "identity": {
+          "graphId": "glossary",
+          "nodeId": "glossary-patterns"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%;box-sizing:border-box;overflow:auto;background:linear-gradient(145deg,#222b49,#171f38);border:2px solid #b4e9d488;border-radius:18px;padding:5cqw;color:#f8f3ff;font-family:system-ui'><div style='color:#b4e9d4;font:800 3.4cqw system-ui;letter-spacing:.16em'>04 / PATTERNS</div><h2 style='margin:3cqw 0 2cqw;font:600 8cqw/.98 Georgia,serif'>Shapes, not categories</h2><p style='margin:0 0 3cqw;font:400 3.2cqw/1.42 system-ui;color:#bfcce7'>One graph, many possibilities.</p></div>"
+        },
+        "sourceMarkdown": "A graph can grow into anything. Some shapes come up again and again: a page on its own, a picture, a list of doors to other graphs. People call these **documents**, **scenes** and **collections**. They are patterns, not kinds of graph: nothing in a file says which one a graph is, and a graph can be more than one at once. What a graph does follows from what is in it, never from a label on it (a graph with no ground shows its page because it has no ground). Templates are how the patterns are passed on.",
+        "memo": "Section of the Glossary. The Detail page contains the complete definitions; update both views when editing."
+      },
+      "inputs": [
         {
-          "id": "root",
           "key": "root",
           "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          },
-          "portId": "root"
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          },
-          "portId": "input"
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          },
-          "portId": "prev"
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-right"
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          },
-          "portId": "next"
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-bottom"
+          "type": "any"
         }
-      ]
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 0
+        }
+      ],
+      "visible": false,
+      "resizable": true,
+      "portPosition": "center",
+      "showLabel": false
     },
     {
       "id": "glossary-in-the-app",
-      "type": "page-section",
-      "label": "In the app",
+      "type": "content",
+      "label": "Navigation",
       "position": {
-        "x": -180,
-        "y": 80
+        "x": -300,
+        "y": 160
       },
-      "width": 520,
-      "height": 320,
+      "width": 590,
+      "height": 430,
       "data": {
-        "title": "In the app",
-        "body": "Words for finding your way.\n\n- **inside** — Where you are after entering a graph: standing on its ground.\n- **trail** — The path at the top of the window: Workspace › graph › node › Inside.\n- **going through** — Following a Portal, or the end of a line, to where it leads.\n- **Tidy** — Arranging the workspace: graphs joined by a Bridge close together (imports on the left, exports on the right), Portal graphs further out.",
-        "presentation": {
-          "glyph": {
-            "kind": "icon",
-            "name": "Article"
-          },
-          "baseLevel": "detail"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "bridge",
-          "updatedAt": 1791592074867,
-          "reason": "bridge-reference"
-        },
         "identity": {
-          "graphId": "glossary"
+          "graphId": "glossary",
+          "nodeId": "glossary-in-the-app"
         },
-        "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%;box-sizing:border-box;overflow:auto;background:linear-gradient(145deg,#222b49,#171f38);border:2px solid #f1c4d588;border-radius:18px;padding:5cqw;color:#f8f3ff;font-family:system-ui'><div style='color:#f1c4d5;font:800 3.4cqw system-ui;letter-spacing:.16em'>05 / NAVIGATION</div><h2 style='margin:3cqw 0 2cqw;font:600 8cqw/.98 Georgia,serif'>Finding your way</h2><p style='margin:0 0 3cqw;font:400 3.2cqw/1.42 system-ui;color:#bfcce7'>The language of moving through the Zone.</p><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#f1c4d5;font:700 3.9cqw/1.2 system-ui'><strong>inside</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>Where you are after entering a graph: standing on its ground.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#f1c4d5;font:700 3.9cqw/1.2 system-ui'><strong>trail</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>The path at the top of the window: Workspace › graph › node › Inside.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#f1c4d5;font:700 3.9cqw/1.2 system-ui'><strong>going through</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>Following a Portal, or the end of a line, to where it leads.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#f1c4d5;font:700 3.9cqw/1.2 system-ui'><strong>Tidy</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>Arranging the workspace: graphs joined by a Bridge close together (imports on the left, exports on the right), Portal graphs further out.</span></div></div>"
+        },
+        "sourceMarkdown": "Words for finding your way.\n\n- **inside** — Where you are after entering a graph: standing on its ground.\n- **trail** — The path at the top of the window: Workspace › graph › node › Inside.\n- **going through** — Following a Portal, or the end of a line, to where it leads.\n- **Tidy** — Arranging the workspace: graphs joined by a Bridge close together (imports on the left, exports on the right), Portal graphs further out.",
+        "memo": "Section of the Glossary. The Detail page contains the complete definitions; update both views when editing."
       },
       "inputs": [
         {
@@ -3003,307 +1311,38 @@
       "ports": [
         {
           "id": "root",
-          "key": "root",
           "label": "root",
-          "direction": "input",
+          "direction": "bidirectional",
           "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          }
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          }
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          }
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          }
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
+          "angle": 0
         }
       ],
       "visible": false,
       "resizable": true,
       "portPosition": "center",
-      "showLabel": false,
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          },
-          "portId": "root"
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          },
-          "portId": "input"
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          },
-          "portId": "prev"
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-right"
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          },
-          "portId": "next"
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-bottom"
-        }
-      ]
+      "showLabel": false
     },
     {
       "id": "glossary-retired",
-      "type": "page-section",
-      "label": "Retired words",
+      "type": "content",
+      "label": "Older words",
       "position": {
-        "x": 380,
-        "y": 80
+        "x": 370,
+        "y": 160
       },
-      "width": 520,
-      "height": 320,
+      "width": 590,
+      "height": 430,
       "data": {
-        "title": "Retired words",
-        "body": "Words older graphs and pages use, and what replaced them. A current graph never uses them.\n\n- **Declaration**, **manifest** — the root.\n- **View** — a face. **View sequence** — next-face.\n- **landing surface** — the ground.\n- **Field** — a Property.\n- **Markdown node** — Content with kind `markdown`.\n- **Bridge node** — an import or an export. The Bridge is the connection between them.\n- **Graph Reference** — a Portal.\n- **groups** — rooting.\n- **frame**, **border**, **wrap** (for a graph's boundary) — the Membrane.\n- **handle** (in a file) — a Port. \"Handle\" is only the spot you grab on screen, and is never saved.\n- **Event Handler**, **Script** — leaving in favour of Methods and the `invokes` edge.",
-        "presentation": {
-          "glyph": {
-            "kind": "icon",
-            "name": "Article"
-          },
-          "baseLevel": "detail"
-        },
-        "_placement": {
-          "version": 1,
-          "state": "auto-placed",
-          "source": "bridge",
-          "updatedAt": 1791592074867,
-          "reason": "bridge-reference"
-        },
         "identity": {
-          "graphId": "glossary"
+          "graphId": "glossary",
+          "nodeId": "glossary-retired"
         },
-        "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-section.node-class.node"
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%;box-sizing:border-box;overflow:auto;background:linear-gradient(145deg,#222b49,#171f38);border:2px solid #d0d4e388;border-radius:18px;padding:5cqw;color:#f8f3ff;font-family:system-ui'><div style='color:#d0d4e3;font:800 3.4cqw system-ui;letter-spacing:.16em'>06 / OLDER WORDS</div><h2 style='margin:3cqw 0 2cqw;font:600 8cqw/.98 Georgia,serif'>What terminology replaced</h2><p style='margin:0 0 3cqw;font:400 3.2cqw/1.42 system-ui;color:#bfcce7'>A map from older vocabulary to the current model.</p><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#d0d4e3;font:700 3.9cqw/1.2 system-ui'><strong>Declaration</strong>, <strong>manifest</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>the root.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#d0d4e3;font:700 3.9cqw/1.2 system-ui'><strong>View</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>a face. <strong>View sequence</strong> — next-face.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#d0d4e3;font:700 3.9cqw/1.2 system-ui'><strong>landing surface</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>the ground.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#d0d4e3;font:700 3.9cqw/1.2 system-ui'><strong>Field</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>a Property.</span></div><div style='border-top:1px solid #48516b;padding:2cqw 0'><b style='display:block;color:#d0d4e3;font:700 3.9cqw/1.2 system-ui'><strong>Markdown node</strong></b><span style='font:400 3.0cqw/1.42 system-ui;color:#d0d8e9'>Content with kind <code style='color:#e6c987;background:#242c48;border-radius:4px;padding:0 3px'>markdown</code>.</span></div><div style='margin-top:15px;color:#d0d4e3;font:700 13px system-ui'>+ 6 more terms in the full Glossary page →</div></div>"
+        },
+        "sourceMarkdown": "Words older graphs and pages use, and what replaced them. A current graph never uses them.\n\n- **Declaration**, **manifest** — the root.\n- **View** — a face. **View sequence** — next-face.\n- **landing surface** — the ground.\n- **Field** — a Property.\n- **Markdown node** — Content with kind `markdown`.\n- **Bridge node** — an import or an export. The Bridge is the connection between them.\n- **Graph Reference** — a Portal.\n- **groups** — rooting.\n- **frame**, **border**, **wrap** (for a graph's boundary) — the Membrane.\n- **handle** — An editor interaction point on a node. A Port is a named connection interface; the modern model distinguishes ports from handles.\n- **Event Handler**, **Script** — leaving in favour of Methods and the `invokes` edge.",
+        "memo": "Section of the Glossary. The Detail page contains the complete definitions; update both views when editing."
       },
       "inputs": [
         {
@@ -3315,673 +1354,388 @@
       "ports": [
         {
           "id": "root",
-          "key": "root",
           "label": "root",
-          "direction": "input",
+          "direction": "bidirectional",
           "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          }
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          }
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          }
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          }
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
+          "angle": 0
         }
       ],
       "visible": false,
       "resizable": true,
       "portPosition": "center",
-      "showLabel": false,
-      "handles": [
-        {
-          "id": "root",
-          "key": "root",
-          "label": "root",
-          "direction": "input",
-          "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
-          "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          },
-          "portId": "root"
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          },
-          "portId": "input"
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          },
-          "portId": "prev"
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-right"
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          },
-          "portId": "next"
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-bottom"
-        }
-      ]
+      "showLabel": false
     },
     {
-      "id": "route-library",
-      "type": "page-route",
-      "label": "The Library",
+      "id": "glossary-to-primitives",
+      "type": "portal",
+      "label": "Primitives",
       "position": {
-        "x": 940,
-        "y": -640
+        "x": 400,
+        "y": 700
       },
-      "width": 460,
-      "height": 280,
-      "data": {
-        "title": "The Library",
-        "body": "What the Twilite Zone publishes, by shelf.",
-        "destinationRef": "tlz://twilite.zone/library/root.node",
-        "destinationLabel": "Open the library",
-        "prominence": "secondary",
-        "presentation": {
-          "glyph": {
-            "kind": "icon",
-            "name": "AltRoute"
-          },
-          "baseLevel": "detail"
-        },
-        "target": {
-          "mode": "navigate",
-          "kind": "graph",
-          "ref": "tlz://twilite.zone/library/templates/page-template/root.node",
-          "entryPort": "root"
-        },
-        "identity": {
-          "graphId": "glossary"
-        },
-        "classRef": "tlz://twilite.zone/library/templates/page-template/classes/page-route.node-class.node"
-      },
-      "inputs": [
-        {
-          "key": "root",
-          "label": "root",
-          "type": "any"
-        }
-      ],
+      "width": 300,
+      "height": 210,
       "ports": [
         {
           "id": "root",
           "key": "root",
           "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
           "direction": "input",
           "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
           "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
-          }
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          }
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          }
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          }
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          }
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
           }
         }
       ],
-      "visible": false,
-      "resizable": true,
-      "portPosition": "center",
-      "showLabel": false,
       "handles": [
         {
           "id": "root",
           "key": "root",
+          "portId": "root",
           "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
           "direction": "input",
           "dataType": "any",
-          "side": "top",
-          "offset": 0.5,
-          "position": {
-            "side": "top",
-            "offset": 0.5
-          },
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
           "metadata": {
-            "interface": true,
-            "structural": true,
-            "role": "view.content",
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Login"
-            }
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
           },
-          "portId": "root"
-        },
-        {
-          "id": "input",
-          "key": "input",
-          "label": "input",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.35,
-          "position": {
-            "side": "left",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Input"
-            }
-          },
-          "portId": "input"
-        },
-        {
-          "id": "prev",
-          "key": "prev",
-          "label": "prev",
-          "direction": "input",
-          "dataType": "any",
-          "side": "left",
-          "offset": 0.65,
-          "position": {
-            "side": "left",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "West"
-            }
-          },
-          "portId": "prev"
-        },
-        {
-          "id": "out-right",
-          "key": "out-right",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.35,
-          "position": {
-            "side": "right",
-            "offset": 0.35
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-right"
-        },
-        {
-          "id": "next",
-          "key": "next",
-          "label": "next",
-          "direction": "output",
-          "dataType": "any",
-          "side": "right",
-          "offset": 0.65,
-          "position": {
-            "side": "right",
-            "offset": 0.65
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "East"
-            }
-          },
-          "portId": "next"
-        },
-        {
-          "id": "out-bottom",
-          "key": "out-bottom",
-          "label": "out",
-          "direction": "output",
-          "dataType": "any",
-          "side": "bottom",
-          "offset": 0.5,
-          "position": {
-            "side": "bottom",
-            "offset": 0.5
-          },
-          "metadata": {
-            "structural": true,
-            "courtesy": true,
-            "hideLabel": true,
-            "glyph": {
-              "kind": "icon",
-              "name": "Output"
-            }
-          },
-          "portId": "out-bottom"
+          "portId": "part-of"
         }
-      ]
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "glossary",
+          "nodeId": "glossary-to-primitives"
+        },
+        "memo": "Open the canonical inventory of graph primitives.",
+        "authority": "navigate",
+        "intent": "external",
+        "src": "tlz://twilite.zone/library/primitives/root.node",
+        "ref": "tlz://twilite.zone/library/primitives/root.node",
+        "endpoint": "tlz://twilite.zone/library/primitives/root.node",
+        "sourceRef": "tlz://twilite.zone/library/primitives/root.node",
+        "sourcePayload": "node.web.detail",
+        "surfaceId": "root",
+        "target": {
+          "ref": "tlz://twilite.zone/library/primitives/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "surfaceId": "root",
+          "label": "Open Primitives"
+        },
+        "visibilityRole": "browser"
+      }
+    },
+    {
+      "id": "glossary-to-library",
+      "type": "portal",
+      "label": "The Library",
+      "position": {
+        "x": 730,
+        "y": 700
+      },
+      "width": 300,
+      "height": 210,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "glossary",
+          "nodeId": "glossary-to-library"
+        },
+        "memo": "Return to the Twilite Library.",
+        "authority": "navigate",
+        "intent": "external",
+        "src": "tlz://twilite.zone/library/root.node",
+        "ref": "tlz://twilite.zone/library/root.node",
+        "endpoint": "tlz://twilite.zone/library/root.node",
+        "sourceRef": "tlz://twilite.zone/library/root.node",
+        "sourcePayload": "node.web.detail",
+        "surfaceId": "root",
+        "target": {
+          "ref": "tlz://twilite.zone/library/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "surfaceId": "root",
+          "label": "Open The Library"
+        },
+        "visibilityRole": "browser"
+      }
+    },
+    {
+      "id": "glossary-to-boulevard",
+      "type": "portal",
+      "label": "The Boulevard",
+      "position": {
+        "x": 400,
+        "y": 940
+      },
+      "width": 300,
+      "height": 210,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "portId": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 210
+        },
+        {
+          "id": "part-of",
+          "key": "part-of",
+          "label": "part-of",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "allowedEdgeTypes": [
+            "contains"
+          ],
+          "metadata": {
+            "semantic": true,
+            "roles": [
+              "contains"
+            ],
+            "repeatable": false
+          },
+          "portId": "part-of"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "glossary",
+          "nodeId": "glossary-to-boulevard"
+        },
+        "memo": "Return to the Boulevard.",
+        "authority": "navigate",
+        "intent": "external",
+        "src": "tlz://twilite.zone/boulevard/root.node",
+        "ref": "tlz://twilite.zone/boulevard/root.node",
+        "endpoint": "tlz://twilite.zone/boulevard/root.node",
+        "sourceRef": "tlz://twilite.zone/boulevard/root.node",
+        "sourcePayload": "node.web.detail",
+        "surfaceId": "root",
+        "target": {
+          "ref": "tlz://twilite.zone/boulevard/root.node",
+          "mode": "navigate",
+          "portId": "root",
+          "surfaceId": "root",
+          "label": "Open The Boulevard"
+        },
+        "visibilityRole": "browser"
+      }
     }
   ],
   "edges": [
     {
-      "id": "assemble-updates-summary",
-      "type": "derived-view",
-      "source": "assemble-page-method",
-      "target": "glossary-summary",
-      "label": "refreshes",
+      "id": "glossary-ground",
+      "type": "ground",
+      "source": "glossary",
+      "target": "glossary-landing",
+      "sourcePort": "ground",
+      "targetPort": "root",
+      "label": "",
       "style": {
-        "route": "curved"
+        "route": "orthogonal"
       },
-      "data": {},
-      "sourcePort": "result",
-      "targetPort": "root"
-    },
-    {
-      "id": "assemble-updates-detail",
-      "type": "derived-view",
-      "source": "assemble-page-method",
-      "target": "glossary-detail",
-      "label": "refreshes",
-      "style": {
-        "route": "curved"
-      },
-      "data": {},
-      "sourcePort": "result",
-      "targetPort": "root"
+      "data": {}
     },
     {
       "id": "glossary-surface",
       "type": "surface",
       "source": "glossary",
       "target": "glossary-detail",
+      "sourcePort": "surface",
+      "targetPort": "root",
       "label": "",
-      "style": {},
-      "data": {
-        "surfaceId": "web"
+      "style": {
+        "route": "orthogonal"
       },
-      "sourcePort": "surfaces",
-      "targetPort": "root"
+      "data": {}
     },
     {
       "id": "glossary-detail-summary",
       "type": "next-face",
       "source": "glossary-detail",
       "target": "glossary-summary",
-      "label": "",
-      "style": {},
-      "data": {},
       "sourcePort": "sequence-out",
-      "targetPort": "sequence-in"
-    },
-    {
-      "id": "glossary-graph-changed-invokes-assemble-page-method",
-      "type": "invokes",
-      "source": "glossary",
-      "target": "assemble-page-method",
-      "label": "invokes",
+      "targetPort": "sequence-in",
+      "label": "",
       "style": {
-        "route": "curved"
+        "route": "orthogonal"
       },
-      "data": {
-        "classRef": "tlz://twilite.zone/library/edges/invokes/root.node"
-      },
-      "sourcePort": "event:graph.changed",
-      "targetPort": "invokes"
+      "data": {}
     },
     {
       "id": "glossary-summary-icon",
       "type": "next-face",
       "source": "glossary-summary",
-      "target": "glossary-glyph",
-      "label": "",
-      "style": {},
-      "data": {},
+      "target": "glossary-icon",
       "sourcePort": "sequence-out",
-      "targetPort": "root"
+      "targetPort": "sequence-in",
+      "label": "",
+      "style": {
+        "route": "orthogonal"
+      },
+      "data": {}
+    },
+    {
+      "id": "glossary-icon-glyph",
+      "type": "next-face",
+      "source": "glossary-icon",
+      "target": "glossary-glyph",
+      "sourcePort": "sequence-out",
+      "targetPort": "root",
+      "label": "",
+      "style": {
+        "route": "orthogonal"
+      },
+      "data": {}
+    },
+    {
+      "id": "glossary-env-edge",
+      "type": "environment",
+      "source": "glossary",
+      "target": "glossary-environment",
+      "sourcePort": "environment",
+      "targetPort": "root",
+      "label": "",
+      "style": {
+        "route": "orthogonal"
+      },
+      "data": {
+        "classRef": "tlz://twilite.zone/library/edges/environment/root.node"
+      }
     }
   ],
   "settings": {
     "github": {
       "path": "library/glossary/root.node",
       "repo": "twilite-zone/public"
-    }
+    },
+    "edgeRouting": "auto",
+    "edgeAvoidNodes": true
   }
 }
