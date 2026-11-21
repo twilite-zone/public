@@ -218,8 +218,8 @@
           "name": "Release Entry Class",
           "version": "0.1.0",
           "description": "One change in a release, written for a customer: a title, a category (new, changed or fixed) and a plain summary. It carries its review state in a private record that is never published.",
-          "createdAt": "2026-11-21T18:46:28.540Z",
-          "updatedAt": "2026-11-21T18:46:28.540Z",
+          "createdAt": "2026-11-21T19:27:34.925Z",
+          "updatedAt": "2026-11-21T19:27:34.925Z",
           "nodeId": "release-entry"
         },
         "intent": {
@@ -453,7 +453,7 @@
         "markdown": "Release Entry captures unresolved issues that block clarity.\n\nAuthored fields: `label`, `body`, `status`, `owner`, `resolutionPath`, `prominence`.\n\nThe detail surface represents the full editor contract; card and icon surfaces are deliberate projections.",
         "content": {
           "kind": "markdown",
-          "value": "Release Entry is one change in a release, written for a customer.\n\n**Public fields** (copied into the release graph and drawn on the page): `title`, `category` (`new`, `changed` or `fixed`), `summary`, `detail` and `ref`. A public entry carries no commit link and no review state.\n\n**Private record**, `review` (kept in the review queue, never published): `status`, `deployStatus`, `sourceCommits`, `candidateKey`, `note`, `reviewedAt` and `releasedIn`. The form edits `status`, `deployStatus`, `note` and `reviewedAt`. `sourceCommits`, `candidateKey` and `releasedIn` are kept by the daily reviewer and the publish step.\n\n`review.status` is `pending-review`, `approved`, `excluded` or `published`. An entry is approved only when `deployStatus` is `verified` or `not-applicable`. Editing an approved entry sets it back to `pending-review`. Only the publish step sets `published`, and a published entry is not edited.\n\nThe card shows a status chip while it has a review record, and none once it has been published into a release graph."
+          "value": "Release Entry is one change in a release, written for a customer.\n\n**Public fields** (copied into the release graph and drawn on the page): `title`, `category` (`new`, `changed` or `fixed`), `summary`, `detail` and `ref`. A public entry carries no commit link and no review state.\n\n**Private record**, `review` (kept in the review queue, never published): `status`, `deployStatus`, `sourceCommits`, `candidateKey`, `note`, `reviewedAt` and `releasedIn`. The form edits `status`, `deployStatus`, `note` and `reviewedAt`. `sourceCommits`, `candidateKey` and `releasedIn` are kept by the daily reviewer and the publish step.\n\n`review.status` is `pending-review`, `approved`, `deferred`, `excluded` or `published`. An entry is approved only when `deployStatus` is `verified` or `not-applicable`. Editing an approved entry sets it back to `pending-review`. Only the publish step sets `published`, and a published entry is not edited.\n\nThe card shows a status chip while it has a review record, and none once it has been published into a release graph."
         },
         "renderShape": {
           "kind": "markdown"
@@ -606,6 +606,10 @@
                   {
                     "label": "Approved",
                     "value": "approved"
+                  },
+                  {
+                    "label": "Deferred",
+                    "value": "deferred"
                   },
                   {
                     "label": "Excluded",
