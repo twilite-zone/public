@@ -257,7 +257,8 @@
                     "name": "Folder"
                   }
                 },
-                "flipped": false
+                "flipped": false,
+                "summaryFrom": "members"
               },
               "ports": [
                 {
@@ -437,7 +438,7 @@
         "markdown": "A collection is a graph that presents other graphs. A member is a graph the collection contains through a portal and a `contains` edge from its `members` port; everything else in the graph is an ordinary node.\n\nAuthored fields: `title`, `body`, `sort`.",
         "content": {
           "kind": "markdown",
-          "value": "A collection is a graph that presents other graphs. A member is a graph the collection contains through a portal and a `contains` edge from its `members` port; everything else in the graph is an ordinary node.\n\nAuthored fields: `title`, `body`, `sort`.\n\n`sort` is `order` (as the portals are listed), `name`, `kind`, or `newest`: by the `releaseDate` on each member graph's identity, newest first. A member with no date comes after the dated ones."
+          "value": "A collection is a graph that presents other graphs. A member is a graph the collection contains through a portal and a `contains` edge from its `members` port; everything else in the graph is an ordinary node.\n\nAuthored fields: `title`, `body`, `sort`.\n\n`sort` is `order` (as the portals are listed), `name`, `kind`, or `newest`: by the `releaseDate` on each member graph's identity, newest first. A member with no date comes after the dated ones.\n\n`summaryFrom` is `members` (the Summary names the members) or `first`: the Summary is the first member's own card. With the order `newest`, that is the newest member, so a portal to the collection shows the latest of what it holds."
         },
         "renderShape": {
           "kind": "markdown"
@@ -569,6 +570,22 @@
                   {
                     "label": "Newest first",
                     "value": "newest"
+                  }
+                ]
+              },
+              {
+                "key": "summaryFrom",
+                "label": "Summary shows",
+                "type": "select",
+                "path": "data.summaryFrom",
+                "options": [
+                  {
+                    "label": "The members",
+                    "value": "members"
+                  },
+                  {
+                    "label": "The first member's card",
+                    "value": "first"
                   }
                 ]
               },
