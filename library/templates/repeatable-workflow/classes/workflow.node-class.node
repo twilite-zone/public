@@ -168,8 +168,8 @@
           "graphId": "workflow-class",
           "nodeId": "workflow",
           "name": "Workflow Class",
-          "version": "0.2.0",
-          "description": "One reusable process with an explicit purpose, trigger, input/output contract, and steps. Stages belong to the graph's single Workflow; workflow.next edges define their order.",
+          "version": "0.3.0",
+          "description": "Workflow class with explicit questionId binding and a distinct question/answer contract; the ordered Steps and Gates remain independent of the question.",
           "updatedAt": "2026-11-23T15:00:00.000Z"
         },
         "intent": {
@@ -235,7 +235,7 @@
           "contractVersion": "1.0.0",
           "key": "workflow",
           "label": "Workflow",
-          "meaning": "One reusable process with an explicit purpose, trigger, input/output contract, and steps.",
+          "meaning": "A repeatable process bound to an independently specified Question and answer contract. Steps define a procedure, not the success criterion.",
           "requiredDataKeys": [
             "title",
             "purpose",
@@ -274,7 +274,9 @@
                     "name": "Workflow"
                   }
                 },
-                "startStepId": ""
+                "startStepId": "",
+                "questionId": "",
+                "questionRequired": true
               },
               "ports": [
                 {
@@ -498,7 +500,7 @@
         "name": "meaning",
         "valueKind": "stored",
         "valueType": "text",
-        "value": "One workflow owns the graph's Step/Gate nodes. startStepId anchors the ordered workflow.next sequence.",
+        "value": "A repeatable process bound to an independently specified Question and answer contract. Steps define a procedure, not the success criterion.",
         "access": {
           "read": true,
           "write": true
@@ -1647,7 +1649,7 @@
           "graphId": "workflow-class"
         },
         "title": "Description and rationale",
-        "body": "One reusable process with an explicit purpose, trigger, input/output contract, and steps.\n\nClass key: `workflow`. Instances hold their authored fields in node.data and render through this class's faces. Edges connect using named ports; no data JSON blob substitutes for a class.",
+        "body": "A Workflow describes how a question is answered. The linked workflow-question node defines the question and its independent answer contract. Workflow Step and Gate nodes implement the procedure. The run record must state whether the question was resolved, unresolved or blocked, independently of the sequence outcome.",
         "presentation": {
           "glyph": {
             "kind": "icon",
@@ -2945,6 +2947,128 @@
         "defaultValue": "",
         "options": "",
         "description": "ID of the first Step/Gate node; all stages are reached via workflow.next",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "workflow-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "workflow-class-field-questionId",
+      "type": "class-field-row",
+      "label": "Question node ID",
+      "position": {
+        "x": 1590,
+        "y": 2270
+      },
+      "width": 420,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "questionId",
+        "label": "Question node ID",
+        "fieldType": "text",
+        "required": true,
+        "defaultValue": "",
+        "options": "",
+        "description": "ID of the local workflow-question node defining what must be answered",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "workflow-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "workflow-class-field-questionRequired",
+      "type": "class-field-row",
+      "label": "Require a Question",
+      "position": {
+        "x": 1120,
+        "y": 2580
+      },
+      "width": 420,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "questionRequired",
+        "label": "Require a Question",
+        "fieldType": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "options": "",
+        "description": "New workflows require Question; legacy existing graphs without this field may be inspected with a warning",
         "presentation": {
           "glyph": {
             "kind": "icon",
