@@ -1,0 +1,1218 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "created": "2026-11-24T21:45:00.000Z",
+    "modified": "2026-11-24T21:45:00.000Z",
+    "author": "Twilite",
+    "tags": [
+      "private",
+      "node-class",
+      "workflow",
+      "presentation"
+    ]
+  },
+  "settings": {
+    "theme": null,
+    "edgeRouting": "orthogonal",
+    "autoSave": false
+  },
+  "nodes": [
+    {
+      "id": "workflow-info-card-class-declaration",
+      "type": "root",
+      "label": "Workflow Info Card · Class",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 380,
+      "height": 240,
+      "ports": [
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "ground",
+          "portId": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "surfaces"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class",
+          "nodeId": "workflow-info-card",
+          "name": "Workflow Info Card Class",
+          "version": "0.1.1",
+          "description": "Reusable workflow guidance panel with title-forward icon, summary and detail views. Content belongs to each instance."
+        },
+        "intent": {
+          "kind": "node-class",
+          "scope": "private"
+        },
+        "document": {
+          "url": "tlz://twilite.zone/library/templates/repeatable-workflow/classes/workflow-info-card.node-class.node"
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1789705190346,
+          "reason": "node-drag"
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "orthogonal",
+          "layout": {
+            "mode": "manual",
+            "defaultLayout": "layered",
+            "direction": "DOWN",
+            "edgeLaneGapPx": 18,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
+          },
+          "autoSave": false
+        },
+        "events": [
+          {
+            "eventKey": "graph.structure.changed",
+            "label": "Graph structure changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          },
+          {
+            "eventKey": "graph.changed",
+            "label": "Graph changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          }
+        ],
+        "nodeClass": {
+          "contractVersion": "1.0.0",
+          "key": "workflow-info-card",
+          "label": "Workflow Info Card",
+          "meaning": "Reusable narrative guidance panel, parameterized by eyebrow, title, body and note. Browsability is optional.",
+          "requiredDataKeys": [
+            "title",
+            "body"
+          ],
+          "nodeDef": {
+            "key": "workflow-info-card",
+            "ref": "tlz://twilite.zone/library/templates/repeatable-workflow/classes/workflow-info-card.node-class.node",
+            "source": "github",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Workflow Info Card",
+              "size": {
+                "width": 710,
+                "height": 390
+              },
+              "showLabel": false,
+              "data": {
+                "eyebrow": "WORKFLOW GUIDANCE",
+                "title": "Guidance",
+                "body": "Describe this workflow guidance.",
+                "note": "",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "FileText"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.5
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Info card changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "root": {
+          "kind": "node-class",
+          "targetMode": "artifact",
+          "artifactKind": "node-class",
+          "defaultSurfaceId": "web",
+          "surfaces": [
+            {
+              "id": "detail",
+              "kind": "view",
+              "payload": "node.web.detail",
+              "portNodeId": "workflow-info-card-class-detail",
+              "viewNodeId": "workflow-info-card-class-detail"
+            },
+            {
+              "id": "summary",
+              "kind": "view",
+              "payload": "node.web.summary",
+              "portNodeId": "workflow-info-card-class-summary",
+              "viewNodeId": "workflow-info-card-class-summary"
+            },
+            {
+              "id": "icon",
+              "kind": "view",
+              "payload": "node.web.icon",
+              "portNodeId": "workflow-info-card-class-icon",
+              "viewNodeId": "workflow-info-card-class-icon"
+            }
+          ]
+        },
+        "membrane": {
+          "bounds": {
+            "x": -80,
+            "y": -50,
+            "width": 2600,
+            "height": 1450
+          }
+        }
+      },
+      "outputs": [
+        {
+          "key": "default-view",
+          "label": "default-view",
+          "type": "any"
+        },
+        {
+          "key": "summary-view",
+          "label": "summary-view",
+          "type": "any"
+        },
+        {
+          "key": "icon-view",
+          "label": "icon-view",
+          "type": "any"
+        },
+        {
+          "key": "glyph",
+          "label": "glyph",
+          "type": "any"
+        },
+        {
+          "key": "editor-view",
+          "label": "editor-view",
+          "type": "any"
+        }
+      ]
+    },
+    {
+      "id": "workflow-info-card-class-detail",
+      "type": "face",
+      "label": "Detail",
+      "position": {
+        "x": 540,
+        "y": 0
+      },
+      "width": 710,
+      "height": 390,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;overflow:auto;padding:4.2cqw;border:2px solid #46767c;border-radius:19px;background:#153340;color:#eaf5f2;font-family:system-ui'><div style='color:#e9b96d;font-weight:800;letter-spacing:.13em;font-size:clamp(10px,1.65cqw,15px)'>{{data.eyebrow}}</div><h2 style='font:600 clamp(23px,4cqw,41px)/1.12 Georgia,serif;margin:2.6cqw 0 2.1cqw'>{{data.title}}</h2><div style='color:#cde2df;font-size:clamp(13px,2.15cqw,20px);line-height:1.55;white-space:pre-line;overflow-wrap:anywhere'>{{data.body}}</div><div style='margin-top:3cqw;border-top:1px solid #42656c;padding-top:2cqw;color:#e9b96d;font-size:clamp(11px,1.7cqw,16px);line-height:1.4;white-space:pre-line'>{{data.note}}</div></div>"
+        },
+        "semanticLevel": "detail"
+      }
+    },
+    {
+      "id": "workflow-info-card-class-summary",
+      "type": "face",
+      "label": "Summary",
+      "position": {
+        "x": 1320,
+        "y": 0
+      },
+      "width": 480,
+      "height": 290,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;box-sizing:border-box;width:100%;height:100%;overflow:hidden;padding:4cqw;border:1px solid #46767c;border-radius:18px;background:#153340;color:#f2f8f5;font-family:system-ui;display:flex;flex-direction:column;gap:2cqw'><div style='color:#e9b96d;font:800 clamp(9px,2.1cqw,15px)/1.15 system-ui;letter-spacing:.13em'>{{data.eyebrow}}</div><div style='font:650 clamp(21px,6.2cqw,39px)/1.1 Georgia,serif;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical'>{{data.title}}</div><div style='color:#cde2df;font:500 clamp(12px,3cqw,18px)/1.4 system-ui;white-space:pre-line;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical'>{{data.body}}</div></div>"
+        },
+        "semanticLevel": "summary"
+      }
+    },
+    {
+      "id": "workflow-info-card-class-icon",
+      "type": "face",
+      "label": "Icon",
+      "position": {
+        "x": 1880,
+        "y": 0
+      },
+      "width": 210,
+      "height": 140,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style=\"container-type:inline-size;box-sizing:border-box;width:100%;height:100%;position:relative;overflow:hidden;border:2px solid #508087;border-radius:17px;background:linear-gradient(135deg,#173f4c 0%,#102d3b 65%,#0a202c 100%);color:#f2faf5;font-family:system-ui\">\n<div style=\"position:absolute;inset:0;overflow:hidden;pointer-events:none\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 710 390\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid slice\"><path d=\"M0 74 H710\" stroke=\"#508087\" stroke-width=\"2\" opacity=\".48\"/><path d=\"M522 -18 L710 170 M586 -25 L710 99\" fill=\"none\" stroke=\"#467b83\" stroke-width=\"2\" opacity=\".22\"/><g transform=\"translate(607 131)\"><path d=\"M0 -67 L67 0 L0 67 L-67 0 Z\" fill=\"#224959\" stroke=\"#e9b96d\" stroke-width=\"5\" stroke-linejoin=\"round\"/><path d=\"M-30 0 H30 M0 -30 V30\" stroke=\"#e9b96d\" stroke-width=\"7\" stroke-linecap=\"round\"/></g><path d=\"M0 384 H710\" stroke=\"#e9b96d\" stroke-width=\"7\" opacity=\".85\"/></svg></div>\n<div style=\"position:absolute;top:5.8%;left:5.5%;right:5%;font:800 clamp(14px,2.7cqw,21px)/1.25 system-ui;letter-spacing:.10em;color:#e9b96d;overflow-wrap:anywhere\">{{data.eyebrow}}</div>\n<div style=\"position:absolute;left:5.5%;right:7%;top:37%;bottom:12%;display:flex;align-items:center\"><div style=\"max-width:78%;font:700 clamp(34px,8.3cqw,65px)/1.04 Georgia,serif;letter-spacing:-.025em;overflow-wrap:break-word;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;text-shadow:0 2px 7px rgba(0,0,0,.2)\">{{data.title}}</div></div>\n</div>"
+        },
+        "semanticLevel": "icon"
+      }
+    },
+    {
+      "id": "workflow-info-card-class-editor",
+      "type": "face",
+      "label": "Editor",
+      "position": {
+        "x": 540,
+        "y": 490
+      },
+      "width": 410,
+      "height": 280,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "view": {
+          "intent": "editor",
+          "payload": "editor.web"
+        }
+      }
+    },
+    {
+      "id": "workflow-info-card-class-glyph",
+      "type": "glyph",
+      "label": "Glyph",
+      "position": {
+        "x": 2180,
+        "y": 0
+      },
+      "width": 160,
+      "height": 110,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "view": {
+          "payload": "node.web.glyph"
+        },
+        "glyph": {
+          "kind": "icon",
+          "name": "FileText"
+        }
+      }
+    },
+    {
+      "id": "workflow-info-card-class-landing",
+      "type": "content",
+      "label": "Reusable workflow info card",
+      "position": {
+        "x": 0,
+        "y": 490
+      },
+      "width": 470,
+      "height": 300,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "# Workflow Info Card\n\nReusable class for authoring guidance and permission panels. Instance fields: eyebrow, title, body, note.\n\nNot every class requires a standalone browser page."
+        }
+      }
+    },
+    {
+      "id": "workflow-info-card-class-environment",
+      "type": "face",
+      "label": "Environment",
+      "position": {
+        "x": 1040,
+        "y": 490
+      },
+      "width": 620,
+      "height": 330,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.environment"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='width:100%;height:100%;background:#0e2230'></div>"
+        }
+      }
+    },
+    {
+      "id": "workflow-info-card-class-export",
+      "type": "export",
+      "label": "Workflow Info Card · Export",
+      "position": {
+        "x": 1790,
+        "y": 490
+      },
+      "width": 480,
+      "height": 310,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/templates/repeatable-workflow/classes/workflow-info-card.node-class.node",
+          "resourceKind": "graph",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "workflow-info-card"
+              ]
+            },
+            "methods": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "workflow-info-card-class-field-eyebrow",
+      "type": "class-field-row",
+      "label": "Eyebrow",
+      "position": {
+        "x": 80,
+        "y": 900
+      },
+      "width": 420,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "eyebrow",
+        "label": "Eyebrow",
+        "fieldType": "text",
+        "required": false,
+        "defaultValue": "WORKFLOW GUIDANCE",
+        "options": "",
+        "description": "Reusable workflow info card eyebrow",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "workflow-info-card-class-field-title",
+      "type": "class-field-row",
+      "label": "Title",
+      "position": {
+        "x": 620,
+        "y": 900
+      },
+      "width": 420,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "title",
+        "label": "Title",
+        "fieldType": "text",
+        "required": true,
+        "defaultValue": "Guidance",
+        "options": "",
+        "description": "Reusable workflow info card title",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "workflow-info-card-class-field-body",
+      "type": "class-field-row",
+      "label": "Body",
+      "position": {
+        "x": 80,
+        "y": 1160
+      },
+      "width": 420,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "body",
+        "label": "Body",
+        "fieldType": "multiline",
+        "required": true,
+        "defaultValue": "Describe this workflow guidance.",
+        "options": "",
+        "description": "Reusable workflow info card body",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "workflow-info-card-class-field-note",
+      "type": "class-field-row",
+      "label": "Footnote",
+      "position": {
+        "x": 620,
+        "y": 1160
+      },
+      "width": 420,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "note",
+        "label": "Footnote",
+        "fieldType": "multiline",
+        "required": false,
+        "defaultValue": "",
+        "options": "",
+        "description": "Reusable workflow info card note",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "workflow-info-card-class-property-key",
+      "type": "property",
+      "label": "key",
+      "position": {
+        "x": 1300,
+        "y": 900
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "name": "key",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "workflow-info-card"
+      }
+    },
+    {
+      "id": "workflow-info-card-class-property-label",
+      "type": "property",
+      "label": "label",
+      "position": {
+        "x": 1670,
+        "y": 900
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "name": "label",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "Workflow Info Card"
+      }
+    },
+    {
+      "id": "workflow-info-card-class-property-meaning",
+      "type": "property",
+      "label": "meaning",
+      "position": {
+        "x": 2040,
+        "y": 900
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "name": "meaning",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "Reusable guidance with instance-defined copy and class-defined presentation."
+      }
+    },
+    {
+      "id": "workflow-info-card-class-property-width",
+      "type": "property",
+      "label": "width",
+      "position": {
+        "x": 1300,
+        "y": 1150
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "name": "width",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": 710
+      }
+    },
+    {
+      "id": "workflow-info-card-class-property-height",
+      "type": "property",
+      "label": "height",
+      "position": {
+        "x": 1670,
+        "y": 1150
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "name": "height",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": 390
+      }
+    },
+    {
+      "id": "workflow-info-card-class-property-glyph",
+      "type": "property",
+      "label": "glyph",
+      "position": {
+        "x": 2040,
+        "y": 1150
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "name": "glyph",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "FileText"
+      }
+    },
+    {
+      "id": "workflow-info-card-class-bridge-property",
+      "type": "import",
+      "label": "Property Class",
+      "position": {
+        "x": 2280,
+        "y": 1560
+      },
+      "width": 360,
+      "height": 120,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+          "resourceKind": "node-class",
+          "key": "property",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "id": "workflow-info-card-class-bridge-field",
+      "type": "import",
+      "label": "Class Field Class",
+      "position": {
+        "x": 2280,
+        "y": 1720
+      },
+      "width": 360,
+      "height": 120,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workflow-info-card-class"
+        },
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node",
+          "resourceKind": "node-class",
+          "key": "class-field-row",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ]
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "workflow-info-card-class-surface",
+      "type": "surface",
+      "source": "workflow-info-card-class-declaration",
+      "target": "workflow-info-card-class-detail",
+      "sourcePort": "surfaces",
+      "targetPort": "root",
+      "data": {}
+    },
+    {
+      "id": "workflow-info-card-class-detail-summary",
+      "type": "next-face",
+      "source": "workflow-info-card-class-detail",
+      "target": "workflow-info-card-class-summary",
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in",
+      "data": {}
+    },
+    {
+      "id": "workflow-info-card-class-summary-icon",
+      "type": "next-face",
+      "source": "workflow-info-card-class-summary",
+      "target": "workflow-info-card-class-icon",
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in",
+      "data": {}
+    },
+    {
+      "id": "workflow-info-card-class-icon-glyph",
+      "type": "next-face",
+      "source": "workflow-info-card-class-icon",
+      "target": "workflow-info-card-class-glyph",
+      "sourcePort": "sequence-out",
+      "targetPort": "root",
+      "data": {}
+    },
+    {
+      "id": "workflow-info-card-class-ground",
+      "type": "ground",
+      "source": "workflow-info-card-class-declaration",
+      "target": "workflow-info-card-class-landing",
+      "sourcePort": "ground",
+      "targetPort": "root",
+      "data": {}
+    },
+    {
+      "id": "workflow-info-card-class-environment",
+      "type": "environment",
+      "source": "workflow-info-card-class-declaration",
+      "target": "workflow-info-card-class-environment",
+      "sourcePort": "environment",
+      "targetPort": "root",
+      "data": {}
+    }
+  ],
+  "groups": [],
+  "scripts": []
+}
