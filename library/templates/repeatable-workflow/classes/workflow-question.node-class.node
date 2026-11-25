@@ -1,0 +1,1410 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "created": "2026-11-24T21:45:00.000Z",
+    "modified": "2026-11-25",
+    "author": "Twilite",
+    "tags": [
+      "node-class",
+      "workflow",
+      "question",
+      "answer-contract",
+      "pre-canon"
+    ]
+  },
+  "settings": {
+    "theme": null,
+    "edgeRouting": "orthogonal",
+    "autoSave": false
+  },
+  "nodes": [
+    {
+      "id": "workflow-question-class-declaration",
+      "type": "root",
+      "label": "Question · Class",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 380,
+      "height": 240,
+      "ports": [
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "ground",
+          "portId": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "surfaces"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class",
+          "nodeId": "workflow-question",
+          "name": "Workflow Question Class",
+          "version": "0.1.0",
+          "description": "A first-class, reusable problem statement and answer contract, independently addressable by workflows."
+        },
+        "intent": {
+          "kind": "node-class",
+          "scope": "private"
+        },
+        "document": {
+          "url": "tlz://twilite.zone/library/templates/repeatable-workflow/classes/workflow-question.node-class.node"
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1789705190346,
+          "reason": "node-drag"
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "orthogonal",
+          "layout": {
+            "mode": "manual",
+            "defaultLayout": "layered",
+            "direction": "DOWN",
+            "edgeLaneGapPx": 18,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
+          },
+          "autoSave": false
+        },
+        "events": [
+          {
+            "eventKey": "graph.structure.changed",
+            "label": "Graph structure changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          },
+          {
+            "eventKey": "graph.changed",
+            "label": "Graph changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          }
+        ],
+        "nodeClass": {
+          "contractVersion": "1.0.0",
+          "key": "workflow-question",
+          "label": "Question",
+          "meaning": "The problem to resolve, its required answer shape, evidence, completion criterion and unresolved response. The question is independent of the workflow steps.",
+          "requiredDataKeys": [
+            "title",
+            "question",
+            "answerKind",
+            "answerSchema",
+            "requiredEvidence",
+            "completion",
+            "onUnresolved"
+          ],
+          "nodeDef": {
+            "key": "workflow-question",
+            "ref": "tlz://twilite.zone/library/templates/repeatable-workflow/classes/workflow-question.node-class.node",
+            "source": "github",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Question",
+              "size": {
+                "width": 600,
+                "height": 350
+              },
+              "showLabel": false,
+              "data": {
+                "title": "Question to resolve",
+                "question": "What must this workflow determine or accomplish?",
+                "answerKind": "structured-answer",
+                "answerSchema": "{\"type\":\"object\",\"required\":[\"answer\",\"evidence\",\"resolution\"],\"properties\":{\"answer\":{\"type\":\"string\"},\"evidence\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"resolution\":{\"enum\":[\"resolved\",\"unresolved\",\"blocked\"]}},\"additionalProperties\":false}",
+                "requiredEvidence": "Verifiable source references\nAcceptance-check result",
+                "completion": "All required evidence is present and the answer passes the declared acceptance checks.",
+                "onUnresolved": "Report unresolved or blocked with the reason and missing evidence; do not fabricate an answer.",
+                "presentation": {
+                  "glyph": {
+                    "kind": "icon",
+                    "name": "CircleHelp"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.5
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Question card changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "root": {
+          "kind": "node-class",
+          "targetMode": "artifact",
+          "artifactKind": "node-class",
+          "defaultSurfaceId": "web",
+          "surfaces": [
+            {
+              "id": "detail",
+              "kind": "view",
+              "payload": "node.web.detail",
+              "portNodeId": "workflow-question-class-detail",
+              "viewNodeId": "workflow-question-class-detail"
+            },
+            {
+              "id": "summary",
+              "kind": "view",
+              "payload": "node.web.summary",
+              "portNodeId": "workflow-question-class-summary",
+              "viewNodeId": "workflow-question-class-summary"
+            },
+            {
+              "id": "icon",
+              "kind": "view",
+              "payload": "node.web.icon",
+              "portNodeId": "workflow-question-class-icon",
+              "viewNodeId": "workflow-question-class-icon"
+            }
+          ]
+        },
+        "membrane": {
+          "bounds": {
+            "x": -80,
+            "y": -50,
+            "width": 2600,
+            "height": 1450
+          }
+        }
+      },
+      "outputs": [
+        {
+          "key": "default-view",
+          "label": "default-view",
+          "type": "any"
+        },
+        {
+          "key": "summary-view",
+          "label": "summary-view",
+          "type": "any"
+        },
+        {
+          "key": "icon-view",
+          "label": "icon-view",
+          "type": "any"
+        },
+        {
+          "key": "glyph",
+          "label": "glyph",
+          "type": "any"
+        },
+        {
+          "key": "editor-view",
+          "label": "editor-view",
+          "type": "any"
+        }
+      ]
+    },
+    {
+      "id": "workflow-question-class-detail",
+      "type": "face",
+      "label": "Detail",
+      "position": {
+        "x": 540,
+        "y": 0
+      },
+      "width": 710,
+      "height": 390,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style=\"container-type:inline-size;box-sizing:border-box;width:100%;height:100%;overflow:auto;padding:4cqw;border:2px solid #63858b;border-radius:19px;background:#132c3b;color:#effaf6;font-family:system-ui\"><div style=\"font:800 clamp(10px,1.7cqw,17px)/1.2 system-ui;letter-spacing:.14em;color:#e9c27c\">QUESTION / ANSWER CONTRACT</div><h2 style=\"font:600 clamp(24px,4.3cqw,44px)/1.1 Georgia,serif;margin:2cqw 0\">{{data.title}}</h2><div style=\"font:500 clamp(17px,2.8cqw,26px)/1.35 Georgia,serif;color:#8fe3d1;white-space:pre-line\">{{data.question}}</div><div style=\"margin-top:2.8cqw;border-top:1px solid #42656c;padding-top:2cqw;font-size:clamp(12px,1.9cqw,18px);line-height:1.48\"><b style=\"color:#e9c27c\">ANSWER KIND</b><div>{{data.answerKind}}</div><b style=\"display:block;margin-top:1.6cqw;color:#e9c27c\">REQUIRED EVIDENCE</b><div style=\"white-space:pre-line\">{{data.requiredEvidence}}</div><b style=\"display:block;margin-top:1.6cqw;color:#e9c27c\">WHEN RESOLVED</b><div style=\"white-space:pre-line\">{{data.completion}}</div><b style=\"display:block;margin-top:1.6cqw;color:#e9c27c\">IF UNRESOLVED</b><div style=\"white-space:pre-line\">{{data.onUnresolved}}</div><b style=\"display:block;margin-top:1.6cqw;color:#e9c27c\">ANSWER SCHEMA (JSON)</b><div style=\"font:clamp(10px,1.55cqw,14px)/1.45 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere\">{{data.answerSchema}}</div></div></div>"
+        },
+        "semanticLevel": "detail"
+      }
+    },
+    {
+      "id": "workflow-question-class-summary",
+      "type": "face",
+      "label": "Summary",
+      "position": {
+        "x": 1320,
+        "y": 0
+      },
+      "width": 480,
+      "height": 290,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style=\"container-type:inline-size;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border:2px solid #63858b;border-radius:18px;background:#132c3b;color:#effaf6;padding:4.5cqw;font-family:system-ui\"><div style=\"font:800 clamp(10px,2.4cqw,16px)/1.2 system-ui;letter-spacing:.15em;color:#e9c27c\">THE QUESTION</div><h2 style=\"font:600 clamp(21px,5.5cqw,35px)/1.12 Georgia,serif;margin:2cqw 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden\">{{data.title}}</h2><p style=\"font:500 clamp(13px,3.6cqw,20px)/1.35 Georgia,serif;color:#a7e1d3;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden\">{{data.question}}</p></div>"
+        },
+        "semanticLevel": "summary"
+      }
+    },
+    {
+      "id": "workflow-question-class-icon",
+      "type": "face",
+      "label": "Icon",
+      "position": {
+        "x": 1880,
+        "y": 0
+      },
+      "width": 210,
+      "height": 140,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style=\"container-type:inline-size;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border:2px solid #63858b;border-radius:19px;background:linear-gradient(140deg,#184353,#0d2434);color:#f4fbf8;padding:5cqw;font-family:system-ui;position:relative\"><div style=\"font:800 clamp(12px,2.5cqw,19px)/1.2 system-ui;color:#e9c27c;letter-spacing:.15em\">QUESTION</div><div style=\"font:700 clamp(26px,7cqw,55px)/1.08 Georgia,serif;margin-top:8cqw;max-width:90%;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden\">{{data.title}}</div><div style=\"position:absolute;right:5%;top:3%;font:700 clamp(30px,12cqw,90px) Georgia,serif;color:#497f86;opacity:.55\">?</div></div>"
+        },
+        "semanticLevel": "icon"
+      }
+    },
+    {
+      "id": "workflow-question-class-editor",
+      "type": "face",
+      "label": "Editor",
+      "position": {
+        "x": 540,
+        "y": 490
+      },
+      "width": 410,
+      "height": 280,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "view": {
+          "intent": "editor",
+          "payload": "editor.web"
+        }
+      }
+    },
+    {
+      "id": "workflow-question-class-glyph",
+      "type": "glyph",
+      "label": "Glyph",
+      "position": {
+        "x": 2180,
+        "y": 0
+      },
+      "width": 160,
+      "height": 110,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "view": {
+          "payload": "node.web.glyph"
+        },
+        "glyph": {
+          "kind": "icon",
+          "name": "FileText"
+        }
+      }
+    },
+    {
+      "id": "workflow-question-class-landing",
+      "type": "content",
+      "label": "Question contract",
+      "position": {
+        "x": 0,
+        "y": 490
+      },
+      "width": 470,
+      "height": 300,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "# Question · Workflow class\n\nA first-class problem statement, independent of its executing workflow. Define the question, answer kind, JSON answer schema, required evidence, completion criterion and unresolved response. A Workflow binds one Question through `questionId`. The preflight validates the binding and answer contract, but does not verify real answers.\n\nA completed sequence is not automatically a resolved question. Answer outcomes are `resolved`, `unresolved`, or `blocked` and belong to each run record."
+        }
+      }
+    },
+    {
+      "id": "workflow-question-class-environment",
+      "type": "face",
+      "label": "Environment",
+      "position": {
+        "x": 1040,
+        "y": 490
+      },
+      "width": 620,
+      "height": 330,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.environment"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='width:100%;height:100%;background:#0e2230'></div>"
+        }
+      }
+    },
+    {
+      "id": "workflow-question-class-export",
+      "type": "export",
+      "label": "Question Class · Export",
+      "position": {
+        "x": 1790,
+        "y": 490
+      },
+      "width": 480,
+      "height": 310,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/templates/repeatable-workflow/classes/workflow-question.node-class.node",
+          "resourceKind": "graph",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "workflow-question"
+              ]
+            },
+            "methods": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "workflow-question-class-property-key",
+      "type": "property",
+      "label": "key",
+      "position": {
+        "x": 1300,
+        "y": 900
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "name": "key",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "workflow-question"
+      }
+    },
+    {
+      "id": "workflow-question-class-property-label",
+      "type": "property",
+      "label": "label",
+      "position": {
+        "x": 1670,
+        "y": 900
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "name": "label",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "Question"
+      }
+    },
+    {
+      "id": "workflow-question-class-property-meaning",
+      "type": "property",
+      "label": "meaning",
+      "position": {
+        "x": 2040,
+        "y": 900
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "name": "meaning",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "The problem to resolve, its required answer shape, evidence, completion criterion and unresolved response. The question is independent of the workflow steps."
+      }
+    },
+    {
+      "id": "workflow-question-class-property-width",
+      "type": "property",
+      "label": "width",
+      "position": {
+        "x": 1300,
+        "y": 1150
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "name": "width",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": 600
+      }
+    },
+    {
+      "id": "workflow-question-class-property-height",
+      "type": "property",
+      "label": "height",
+      "position": {
+        "x": 1670,
+        "y": 1150
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "name": "height",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": 350
+      }
+    },
+    {
+      "id": "workflow-question-class-property-glyph",
+      "type": "property",
+      "label": "glyph",
+      "position": {
+        "x": 2040,
+        "y": 1150
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "name": "glyph",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "CircleHelp"
+      }
+    },
+    {
+      "id": "workflow-question-class-bridge-property",
+      "type": "import",
+      "label": "Property Class",
+      "position": {
+        "x": 2280,
+        "y": 1560
+      },
+      "width": 360,
+      "height": 120,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+          "resourceKind": "node-class",
+          "key": "property",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "id": "workflow-question-class-bridge-field",
+      "type": "import",
+      "label": "Class Field Class",
+      "position": {
+        "x": 2280,
+        "y": 1720
+      },
+      "width": 360,
+      "height": 120,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node",
+          "resourceKind": "node-class",
+          "key": "class-field-row",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "id": "workflow-question-class-field-title",
+      "type": "class-field-row",
+      "label": "Question title",
+      "position": {
+        "x": 460,
+        "y": 1000
+      },
+      "width": 425,
+      "height": 310,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "title",
+        "label": "Question title",
+        "fieldType": "text",
+        "required": true,
+        "defaultValue": "Question to resolve",
+        "options": "",
+        "description": "A short name for the question",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "workflow-question-class-field-question",
+      "type": "class-field-row",
+      "label": "Question",
+      "position": {
+        "x": 935,
+        "y": 1000
+      },
+      "width": 425,
+      "height": 310,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "question",
+        "label": "Question",
+        "fieldType": "multiline",
+        "required": true,
+        "defaultValue": "What must this workflow determine or accomplish?",
+        "options": "",
+        "description": "What must be determined or accomplished, independently of the process",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "workflow-question-class-field-answerKind",
+      "type": "class-field-row",
+      "label": "Answer kind",
+      "position": {
+        "x": 1410,
+        "y": 1000
+      },
+      "width": 425,
+      "height": 310,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "answerKind",
+        "label": "Answer kind",
+        "fieldType": "text",
+        "required": true,
+        "defaultValue": "structured-answer",
+        "options": "",
+        "description": "Semantic name for the answer shape",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "workflow-question-class-field-answerSchema",
+      "type": "class-field-row",
+      "label": "Answer schema (JSON)",
+      "position": {
+        "x": 460,
+        "y": 1380
+      },
+      "width": 425,
+      "height": 310,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "answerSchema",
+        "label": "Answer schema (JSON)",
+        "fieldType": "multiline",
+        "required": true,
+        "defaultValue": "{\"type\":\"object\",\"required\":[\"answer\",\"evidence\",\"resolution\"],\"properties\":{\"answer\":{\"type\":\"string\"},\"evidence\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"resolution\":{\"enum\":[\"resolved\",\"unresolved\",\"blocked\"]}},\"additionalProperties\":false}",
+        "options": "",
+        "description": "Machine-readable JSON object schema describing the answer; it is validated before the workflow runs",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "workflow-question-class-field-requiredEvidence",
+      "type": "class-field-row",
+      "label": "Evidence required",
+      "position": {
+        "x": 935,
+        "y": 1380
+      },
+      "width": 425,
+      "height": 310,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "requiredEvidence",
+        "label": "Evidence required",
+        "fieldType": "multiline",
+        "required": true,
+        "defaultValue": "Verifiable source references\nAcceptance-check result",
+        "options": "",
+        "description": "One named evidence requirement per line",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "workflow-question-class-field-completion",
+      "type": "class-field-row",
+      "label": "Completion criterion",
+      "position": {
+        "x": 1410,
+        "y": 1380
+      },
+      "width": 425,
+      "height": 310,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "completion",
+        "label": "Completion criterion",
+        "fieldType": "multiline",
+        "required": true,
+        "defaultValue": "All required evidence is present and the answer passes the declared acceptance checks.",
+        "options": "",
+        "description": "How an independent verifier determines the question was resolved",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "workflow-question-class-field-onUnresolved",
+      "type": "class-field-row",
+      "label": "Unresolved response",
+      "position": {
+        "x": 460,
+        "y": 1760
+      },
+      "width": 425,
+      "height": 310,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "onUnresolved",
+        "label": "Unresolved response",
+        "fieldType": "multiline",
+        "required": true,
+        "defaultValue": "Report unresolved or blocked with the reason and missing evidence; do not fabricate an answer.",
+        "options": "",
+        "description": "What to report when evidence is insufficient or the question cannot be answered",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "workflow-question-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "workflow-question-class-surface",
+      "type": "surface",
+      "source": "workflow-question-class-declaration",
+      "target": "workflow-question-class-detail",
+      "sourcePort": "surfaces",
+      "targetPort": "root",
+      "data": {}
+    },
+    {
+      "id": "workflow-question-class-detail-summary",
+      "type": "next-face",
+      "source": "workflow-question-class-detail",
+      "target": "workflow-question-class-summary",
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in",
+      "data": {}
+    },
+    {
+      "id": "workflow-question-class-summary-icon",
+      "type": "next-face",
+      "source": "workflow-question-class-summary",
+      "target": "workflow-question-class-icon",
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in",
+      "data": {}
+    },
+    {
+      "id": "workflow-question-class-icon-glyph",
+      "type": "next-face",
+      "source": "workflow-question-class-icon",
+      "target": "workflow-question-class-glyph",
+      "sourcePort": "sequence-out",
+      "targetPort": "root",
+      "data": {}
+    },
+    {
+      "id": "workflow-question-class-ground",
+      "type": "ground",
+      "source": "workflow-question-class-declaration",
+      "target": "workflow-question-class-landing",
+      "sourcePort": "ground",
+      "targetPort": "root",
+      "data": {}
+    },
+    {
+      "id": "workflow-question-class-environment",
+      "type": "environment",
+      "source": "workflow-question-class-declaration",
+      "target": "workflow-question-class-environment",
+      "sourcePort": "environment",
+      "targetPort": "root",
+      "data": {}
+    }
+  ],
+  "groups": [],
+  "scripts": []
+}
