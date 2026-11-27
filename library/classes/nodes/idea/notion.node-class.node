@@ -284,8 +284,9 @@
                 "prominence": "normal",
                 "presentation": {
                   "glyph": {
-                    "kind": "icon",
-                    "name": "Lightbulb"
+                    "kind": "svg",
+                    "value": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"4 4 112 112\"><path d=\"M35 79C35 66 18 64 18 42A42 42 0 0 1 102 42C102 64 85 66 85 79ZM38 85H82V94H38ZM45 100H75V110H45Z\" fill=\"white\"/></svg>",
+                    "color": "#6C86D9"
                   }
                 },
                 "sizing": {
@@ -390,6 +391,10 @@
                 "summary": {
                   "mode": "shared",
                   "viewNodeId": "notion-summary-view"
+                },
+                "icon": {
+                  "mode": "shared",
+                  "viewNodeId": "notion-icon"
                 }
               },
               "exposes": {
@@ -408,7 +413,8 @@
           "sharedPresentation": {
             "detailViewNodeId": "notion-detail-view",
             "summaryViewNodeId": "notion-summary-view",
-            "glyphNodeId": "notion-glyph"
+            "glyphNodeId": "notion-glyph",
+            "iconViewNodeId": "notion-icon"
           },
           "primaryNodeViewId": "notion-detail-view",
           "primaryEditorViewId": "notion-editor-view",
@@ -623,6 +629,15 @@
           "dataType": "any",
           "angle": 90,
           "role": "view.content"
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "sequence-out"
         }
       ],
       "ports": [
@@ -659,6 +674,14 @@
               }
             ]
           }
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
         }
       ],
       "visible": true,
@@ -711,7 +734,7 @@
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#fff7ed;border:2px solid #c2410c;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#c2410c'></i><div style='position:relative;display:flex;gap:2.4cqw;align-items:center;justify-content:space-between;font-size:3.7cqw;font-weight:700;letter-spacing:.08em;text-transform:uppercase'><span style='color:#c2410c'>Idea</span><span style='display:flex;gap:2cqw;align-items:center'><span style='{{eq(data.check, true, 'display:inline-block', 'display:none')}};padding:.8cqw 2.2cqw;border-radius:99cqw;background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:3.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase'>to check</span></span></div><div style='position:relative;font-weight:700;font-size:8.6cqw;line-height:1.15;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='position:relative;flex:1 1 auto;min-height:0;font-size:4.7cqw;line-height:1.45;color:#334155;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden'>{{data.body}}</div></div></div>",
+        "html": "<div style=\"container-type:inline-size;width:100%;height:100%\"><div style=\"box-sizing:border-box;width:100%;height:100%;background:#EEF3FF;color:#31406B;font-family:system-ui,sans-serif;border-radius:4cqw;border:.6cqw solid #C3D2FF;border-bottom:1.6cqw solid #31406B;overflow:hidden;display:flex;flex-direction:column\"><div style=\"display:flex;gap:3cqw;align-items:center;padding:3cqw;min-height:0;\"><div style=\"width:24cqw;aspect-ratio:1;flex:none\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 120 120\"><circle cx=\"60\" cy=\"63\" r=\"56\" fill=\"#31406B\"/><circle cx=\"60\" cy=\"59\" r=\"54\" fill=\"#C3D2FF\"/><circle cx=\"60\" cy=\"59\" r=\"47\" fill=\"#6C86D9\"/><circle cx=\"60\" cy=\"59\" r=\"43\" fill=\"none\" stroke=\"#F4F8FF\" stroke-opacity=\".4\" stroke-width=\"1.8\"/><path d=\"M44 80C44 69 30 65 30 47A30 30 0 0 1 90 47C90 65 76 69 76 80Z\" fill=\"#E2F8FF\"/><path d=\"M45 85H75M49 93H71M54 101H66\" stroke=\"#F4F8FF\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M60 12V5M22 23 15 16M98 23 105 16\" stroke=\"#A6DCEB\" stroke-width=\"5\" stroke-linecap=\"round\"/><path d=\"M48 52 60 65 73 51\" stroke=\"#6C86D9\" stroke-width=\"5\" stroke-linecap=\"round\" fill=\"none\"/></svg></div><div style=\"min-width:0;flex:1\"><div style=\"font:850 3.1cqw/1.15 system-ui;letter-spacing:.1em;text-transform:uppercase;color:#31406B\">Idea</div><div style=\"font:850 6.5cqw/1.06 system-ui;letter-spacing:-.035em;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:.9cqw 0\">{{data.title || label}}</div><div style=\"display:flex;gap:1.4cqw;align-items:center;flex-wrap:wrap\"><span style=\"font:800 3.5cqw/1.2 system-ui;color:#31406B\"></span><span style=\"display:{{eq(data.check, true, 'inline-block', 'none')}};color:#31406B;background:#EEF3FF;border:1px solid #B9C7F5;padding:.5cqw 1.6cqw;border-radius:2cqw;font:800 3.4cqw/1.2 system-ui\">TO CHECK</span></div></div></div><div style=\"padding:0 4cqw 3cqw;flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:1.8cqw\"><div style=\"border-top:1px solid #0002;padding-top:1.6cqw\"><div style=\"font:800 3cqw/1.2 system-ui;letter-spacing:.07em;text-transform:uppercase\">The idea</div><div style=\"font-size:4.2cqw;line-height:1.35;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:.6cqw\">{{data.body}}</div></div></div></div></div>",
         "semanticLevel": "detail"
       }
     },
@@ -744,6 +767,24 @@
           "dataType": "any",
           "angle": 90,
           "role": "view.content"
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "sequence-in"
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "sequence-out"
         }
       ],
       "ports": [
@@ -780,6 +821,22 @@
               }
             ]
           }
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
         }
       ],
       "visible": true,
@@ -832,7 +889,7 @@
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#fff7ed;border:2px solid #c2410c;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#c2410c'></i><div style='position:relative;display:flex;gap:2.4cqw;align-items:center;justify-content:space-between;font-size:3.7cqw;font-weight:700;letter-spacing:.08em;text-transform:uppercase'><span style='color:#c2410c'>Idea</span><span style='display:flex;gap:2cqw;align-items:center'><span style='{{eq(data.check, true, 'display:inline-block', 'display:none')}};padding:.8cqw 2.2cqw;border-radius:99cqw;background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:3.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase'>to check</span></span></div><div style='position:relative;font-weight:700;font-size:7.6cqw;line-height:1.15;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='position:relative;flex:1 1 auto;min-height:0;font-size:4.2cqw;line-height:1.45;color:#334155;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden'>{{data.body}}</div></div></div>",
+        "html": "<div style=\"container-type:inline-size;width:100%;height:100%\"><div style=\"box-sizing:border-box;width:100%;height:100%;background:#EEF3FF;color:#31406B;font-family:system-ui,sans-serif;border-radius:4cqw;border:.6cqw solid #C3D2FF;border-bottom:1.6cqw solid #31406B;overflow:hidden;display:flex;flex-direction:column\"><div style=\"display:flex;gap:3cqw;align-items:center;padding:3cqw;min-height:0;\"><div style=\"width:24cqw;aspect-ratio:1;flex:none\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 120 120\"><circle cx=\"60\" cy=\"63\" r=\"56\" fill=\"#31406B\"/><circle cx=\"60\" cy=\"59\" r=\"54\" fill=\"#C3D2FF\"/><circle cx=\"60\" cy=\"59\" r=\"47\" fill=\"#6C86D9\"/><circle cx=\"60\" cy=\"59\" r=\"43\" fill=\"none\" stroke=\"#F4F8FF\" stroke-opacity=\".4\" stroke-width=\"1.8\"/><path d=\"M44 80C44 69 30 65 30 47A30 30 0 0 1 90 47C90 65 76 69 76 80Z\" fill=\"#E2F8FF\"/><path d=\"M45 85H75M49 93H71M54 101H66\" stroke=\"#F4F8FF\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M60 12V5M22 23 15 16M98 23 105 16\" stroke=\"#A6DCEB\" stroke-width=\"5\" stroke-linecap=\"round\"/><path d=\"M48 52 60 65 73 51\" stroke=\"#6C86D9\" stroke-width=\"5\" stroke-linecap=\"round\" fill=\"none\"/></svg></div><div style=\"min-width:0;flex:1\"><div style=\"font:850 3.1cqw/1.15 system-ui;letter-spacing:.1em;text-transform:uppercase;color:#31406B\">Idea</div><div style=\"font:850 6.5cqw/1.06 system-ui;letter-spacing:-.035em;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:.9cqw 0\">{{data.title || label}}</div><div style=\"display:flex;gap:1.4cqw;align-items:center;flex-wrap:wrap\"><span style=\"font:800 3.5cqw/1.2 system-ui;color:#31406B\"></span><span style=\"display:{{eq(data.check, true, 'inline-block', 'none')}};color:#31406B;background:#EEF3FF;border:1px solid #B9C7F5;padding:.5cqw 1.6cqw;border-radius:2cqw;font:800 3.4cqw/1.2 system-ui\">TO CHECK</span></div></div></div><div style=\"padding:0 4cqw 3cqw;flex:1;min-height:0;overflow:hidden\"><div style=\"font-size:4.2cqw;line-height:1.28;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden\">{{data.body}}</div></div></div></div>",
         "semanticLevel": "summary"
       }
     },
@@ -847,7 +904,7 @@
       "width": 420,
       "height": 300,
       "visible": true,
-      "showLabel": true,
+      "showLabel": false,
       "data": {
         "identity": {
           "graphId": "notion-class",
@@ -858,12 +915,50 @@
           "payload": "node.web.class-card"
         },
         "semanticLevel": "summary",
-        "html": "<div style=\"container-type:inline-size;width:100%;height:100%;box-sizing:border-box;overflow:hidden\"><div style=\"box-sizing:border-box;width:100%;height:100%;border-radius:4cqw;border:.7cqw solid #c2410c;background:#fff7ed;color:#1f2937;padding:7cqw 8cqw;display:flex;flex-direction:column;justify-content:center;gap:3cqw;font-family:system-ui\"><div style=\"font:900 3.4cqw/1.1 system-ui;letter-spacing:.16em;color:#c2410c\">NODE CLASS</div><div style=\"font:650 12cqw/1.05 Georgia,serif;letter-spacing:-.02em\">Idea</div><div style=\"font:450 4.4cqw/1.45 system-ui;color:#4b5563\">The idea the map is about: the thing being explored or explained, said plainly.</div></div></div>",
+        "html": "<div style=\"container-type:inline-size;width:100%;height:100%;box-sizing:border-box;overflow:hidden\"><div style=\"box-sizing:border-box;width:100%;height:100%;border-radius:4cqw;border:.7cqw solid #465B9E;background:#EEF3FF;color:#1f2937;padding:7cqw 8cqw;display:flex;flex-direction:column;justify-content:center;gap:3cqw;font-family:system-ui\"><div style=\"font:900 3.4cqw/1.1 system-ui;letter-spacing:.16em;color:#465B9E\">NODE CLASS</div><div style=\"font:650 12cqw/1.05 Georgia,serif;letter-spacing:-.02em\">Idea</div><div style=\"font:450 4.4cqw/1.45 system-ui;color:#4b5563\">The idea the map is about: the thing being explored or explained, said plainly.</div></div></div>",
         "content": {
           "kind": "html",
-          "value": "<div style=\"container-type:inline-size;width:100%;height:100%;box-sizing:border-box;overflow:hidden\"><div style=\"box-sizing:border-box;width:100%;height:100%;border-radius:4cqw;border:.7cqw solid #c2410c;background:#fff7ed;color:#1f2937;padding:7cqw 8cqw;display:flex;flex-direction:column;justify-content:center;gap:3cqw;font-family:system-ui\"><div style=\"font:900 3.4cqw/1.1 system-ui;letter-spacing:.16em;color:#c2410c\">NODE CLASS</div><div style=\"font:650 12cqw/1.05 Georgia,serif;letter-spacing:-.02em\">Idea</div><div style=\"font:450 4.4cqw/1.45 system-ui;color:#4b5563\">The idea the map is about: the thing being explored or explained, said plainly.</div></div></div>"
+          "value": "<div style=\"container-type:inline-size;width:100%;height:100%\"><div style=\"box-sizing:border-box;width:100%;height:100%;background:#EEF3FF;color:#31406B;font-family:system-ui,sans-serif;border-radius:4cqw;border:.6cqw solid #C3D2FF;border-bottom:1.6cqw solid #31406B;overflow:hidden;display:flex;flex-direction:column\"><div style=\"display:flex;align-items:center;justify-content:center;height:100%;gap:4cqw;padding:4cqw\"><div style=\"width:36cqw;aspect-ratio:1\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 120 120\"><circle cx=\"60\" cy=\"63\" r=\"56\" fill=\"#31406B\"/><circle cx=\"60\" cy=\"59\" r=\"54\" fill=\"#C3D2FF\"/><circle cx=\"60\" cy=\"59\" r=\"47\" fill=\"#6C86D9\"/><circle cx=\"60\" cy=\"59\" r=\"43\" fill=\"none\" stroke=\"#F4F8FF\" stroke-opacity=\".4\" stroke-width=\"1.8\"/><path d=\"M44 80C44 69 30 65 30 47A30 30 0 0 1 90 47C90 65 76 69 76 80Z\" fill=\"#E2F8FF\"/><path d=\"M45 85H75M49 93H71M54 101H66\" stroke=\"#F4F8FF\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M60 12V5M22 23 15 16M98 23 105 16\" stroke=\"#A6DCEB\" stroke-width=\"5\" stroke-linecap=\"round\"/><path d=\"M48 52 60 65 73 51\" stroke=\"#6C86D9\" stroke-width=\"5\" stroke-linecap=\"round\" fill=\"none\"/></svg></div><div style=\"font:850 8cqw/1.05 system-ui\">Idea</div></div></div></div>"
         }
-      }
+      },
+      "ports": [
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
+        }
+      ],
+      "handles": [
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "sequence-in"
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "sequence-out"
+        }
+      ]
     },
     {
       "id": "notion-class-card",
@@ -876,7 +971,7 @@
       "width": 420,
       "height": 300,
       "visible": true,
-      "showLabel": true,
+      "showLabel": false,
       "data": {
         "identity": {
           "graphId": "notion-class",
@@ -887,12 +982,50 @@
           "payload": "node.web.class-card"
         },
         "semanticLevel": "summary",
-        "html": "<div style=\"container-type:inline-size;width:100%;height:100%;box-sizing:border-box;overflow:hidden\"><div style=\"box-sizing:border-box;width:100%;height:100%;border-radius:4cqw;border:.7cqw solid #c2410c;background:#fff7ed;color:#1f2937;padding:7cqw 8cqw;display:flex;flex-direction:column;justify-content:center;gap:3cqw;font-family:system-ui\"><div style=\"font:900 3.4cqw/1.1 system-ui;letter-spacing:.16em;color:#c2410c\">NODE CLASS</div><div style=\"font:650 12cqw/1.05 Georgia,serif;letter-spacing:-.02em\">Idea</div><div style=\"font:450 4.4cqw/1.45 system-ui;color:#4b5563\">The idea the map is about: the thing being explored or explained, said plainly.</div></div></div>",
+        "html": "<div style=\"container-type:inline-size;width:100%;height:100%;box-sizing:border-box;overflow:hidden\"><div style=\"box-sizing:border-box;width:100%;height:100%;border-radius:4cqw;border:.7cqw solid #465B9E;background:#EEF3FF;color:#1f2937;padding:7cqw 8cqw;display:flex;flex-direction:column;justify-content:center;gap:3cqw;font-family:system-ui\"><div style=\"font:900 3.4cqw/1.1 system-ui;letter-spacing:.16em;color:#465B9E\">NODE CLASS</div><div style=\"font:650 12cqw/1.05 Georgia,serif;letter-spacing:-.02em\">Idea</div><div style=\"font:450 4.4cqw/1.45 system-ui;color:#4b5563\">The idea the map is about: the thing being explored or explained, said plainly.</div></div></div>",
         "content": {
           "kind": "html",
-          "value": "<div style=\"container-type:inline-size;width:100%;height:100%;box-sizing:border-box;overflow:hidden\"><div style=\"box-sizing:border-box;width:100%;height:100%;border-radius:4cqw;border:.7cqw solid #c2410c;background:#fff7ed;color:#1f2937;padding:7cqw 8cqw;display:flex;flex-direction:column;justify-content:center;gap:3cqw;font-family:system-ui\"><div style=\"font:900 3.4cqw/1.1 system-ui;letter-spacing:.16em;color:#c2410c\">NODE CLASS</div><div style=\"font:650 12cqw/1.05 Georgia,serif;letter-spacing:-.02em\">Idea</div><div style=\"font:450 4.4cqw/1.45 system-ui;color:#4b5563\">The idea the map is about: the thing being explored or explained, said plainly.</div></div></div>"
+          "value": "<div style=\"container-type:inline-size;width:100%;height:100%\"><div style=\"box-sizing:border-box;width:100%;height:100%;background:#EEF3FF;color:#31406B;font-family:system-ui,sans-serif;border-radius:4cqw;border:.6cqw solid #C3D2FF;border-bottom:1.6cqw solid #31406B;overflow:hidden;display:flex;flex-direction:column\"><div style=\"display:flex;align-items:center;justify-content:center;height:100%;gap:4cqw;padding:4cqw\"><div style=\"width:36cqw;aspect-ratio:1\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 120 120\"><circle cx=\"60\" cy=\"63\" r=\"56\" fill=\"#31406B\"/><circle cx=\"60\" cy=\"59\" r=\"54\" fill=\"#C3D2FF\"/><circle cx=\"60\" cy=\"59\" r=\"47\" fill=\"#6C86D9\"/><circle cx=\"60\" cy=\"59\" r=\"43\" fill=\"none\" stroke=\"#F4F8FF\" stroke-opacity=\".4\" stroke-width=\"1.8\"/><path d=\"M44 80C44 69 30 65 30 47A30 30 0 0 1 90 47C90 65 76 69 76 80Z\" fill=\"#E2F8FF\"/><path d=\"M45 85H75M49 93H71M54 101H66\" stroke=\"#F4F8FF\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M60 12V5M22 23 15 16M98 23 105 16\" stroke=\"#A6DCEB\" stroke-width=\"5\" stroke-linecap=\"round\"/><path d=\"M48 52 60 65 73 51\" stroke=\"#6C86D9\" stroke-width=\"5\" stroke-linecap=\"round\" fill=\"none\"/></svg></div><div style=\"font:850 8cqw/1.05 system-ui\">Idea</div></div></div></div>"
         }
-      }
+      },
+      "ports": [
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
+        }
+      ],
+      "handles": [
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "sequence-in"
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "sequence-out"
+        }
+      ]
     },
     {
       "id": "notion-glyph",
@@ -929,9 +1062,9 @@
       "showLabel": true,
       "data": {
         "glyph": {
-          "kind": "icon",
-          "name": "Lightbulb",
-          "color": "#c2410c"
+          "kind": "svg",
+          "value": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"4 4 112 112\"><path d=\"M35 79C35 66 18 64 18 42A42 42 0 0 1 102 42C102 64 85 66 85 79ZM38 85H82V94H38ZM45 100H75V110H45Z\" fill=\"white\"/></svg>",
+          "color": "#6C86D9"
         },
         "interfaceContract": {
           "version": 1,
@@ -992,6 +1125,14 @@
               "query"
             ]
           }
+        },
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180
         }
       ],
       "handles": [
@@ -1035,6 +1176,15 @@
             ]
           },
           "portId": "asks"
+        },
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
         }
       ],
       "data": {
@@ -1092,8 +1242,163 @@
         },
         "content": {
           "kind": "html",
-          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;background-color:#fff7ed;background-image:linear-gradient(rgba(194,65,12,.16) 0.12cqw,transparent 0.12cqw),linear-gradient(90deg,rgba(194,65,12,.16) 0.12cqw,transparent 0.12cqw),linear-gradient(rgba(194,65,12,.07) 0.08cqw,transparent 0.08cqw),linear-gradient(90deg,rgba(194,65,12,.07) 0.08cqw,transparent 0.08cqw);background-size:10cqw 10cqw,10cqw 10cqw,2cqw 2cqw,2cqw 2cqw'></div></div>"
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;background-color:#EEF3FF;background-image:linear-gradient(rgba(194,65,12,.16) 0.12cqw,transparent 0.12cqw),linear-gradient(90deg,rgba(194,65,12,.16) 0.12cqw,transparent 0.12cqw),linear-gradient(rgba(194,65,12,.07) 0.08cqw,transparent 0.08cqw),linear-gradient(90deg,rgba(194,65,12,.07) 0.08cqw,transparent 0.08cqw);background-size:10cqw 10cqw,10cqw 10cqw,2cqw 2cqw,2cqw 2cqw'></div></div>"
         }
+      }
+    },
+    {
+      "id": "notion-icon",
+      "type": "face",
+      "label": "Enamel icon",
+      "position": {
+        "x": -80,
+        "y": 90
+      },
+      "width": 420,
+      "height": 260,
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "sequence-in"
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "sequence-out"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "notion-class",
+          "nodeId": "notion-icon"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon",
+          "controls": [
+            {
+              "id": "notion-summary-check",
+              "type": "button",
+              "label": "Mark to check",
+              "icon": "bolt",
+              "variant": "contained",
+              "priority": "highest",
+              "action": "setData",
+              "bind": "data.check",
+              "value": true
+            },
+            {
+              "id": "notion-summary-looks-right",
+              "type": "button",
+              "label": "Looks right",
+              "icon": "edit",
+              "variant": "outlined",
+              "priority": "high",
+              "action": "setData",
+              "bind": "data.check",
+              "value": false
+            },
+            {
+              "id": "notion-edit",
+              "type": "button",
+              "label": "Edit",
+              "icon": "edit",
+              "variant": "outlined",
+              "priority": "high",
+              "action": "openEditor"
+            }
+          ],
+          "html": {
+            "chrome": true
+          }
+        },
+        "renderShape": {
+          "kind": "html"
+        },
+        "html": "<div style=\"container-type:inline-size;width:100%;height:100%\"><div style=\"box-sizing:border-box;width:100%;height:100%;background:#EEF3FF;color:#31406B;font-family:system-ui,sans-serif;border-radius:4cqw;border:.6cqw solid #C3D2FF;border-bottom:1.6cqw solid #31406B;overflow:hidden;display:flex;flex-direction:column\"><div style=\"display:flex;gap:3cqw;align-items:center;padding:4cqw;min-height:0;flex:1\"><div style=\"width:38cqw;aspect-ratio:1;flex:none\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 120 120\"><circle cx=\"60\" cy=\"63\" r=\"56\" fill=\"#31406B\"/><circle cx=\"60\" cy=\"59\" r=\"54\" fill=\"#C3D2FF\"/><circle cx=\"60\" cy=\"59\" r=\"47\" fill=\"#6C86D9\"/><circle cx=\"60\" cy=\"59\" r=\"43\" fill=\"none\" stroke=\"#F4F8FF\" stroke-opacity=\".4\" stroke-width=\"1.8\"/><path d=\"M44 80C44 69 30 65 30 47A30 30 0 0 1 90 47C90 65 76 69 76 80Z\" fill=\"#E2F8FF\"/><path d=\"M45 85H75M49 93H71M54 101H66\" stroke=\"#F4F8FF\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M60 12V5M22 23 15 16M98 23 105 16\" stroke=\"#A6DCEB\" stroke-width=\"5\" stroke-linecap=\"round\"/><path d=\"M48 52 60 65 73 51\" stroke=\"#6C86D9\" stroke-width=\"5\" stroke-linecap=\"round\" fill=\"none\"/></svg></div><div style=\"min-width:0;flex:1\"><div style=\"font:850 3.9cqw/1.15 system-ui;letter-spacing:.1em;text-transform:uppercase;color:#31406B\">Idea</div><div style=\"font:850 8cqw/1.06 system-ui;letter-spacing:-.035em;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin:.9cqw 0\">{{data.title || label}}</div></div></div><div style=\"background:#fff8;padding:1.2cqw 4cqw;border-top:1px solid #C3D2FF;display:flex;justify-content:space-between;align-items:center;gap:1cqw\"><span style=\"font:800 3.8cqw/1.2 system-ui\"></span><span style=\"display:{{eq(data.check, true, 'inline-block', 'none')}};color:#31406B;background:#EEF3FF;border:1px solid #B9C7F5;padding:.5cqw 1.6cqw;border-radius:2cqw;font:800 3.4cqw/1.2 system-ui\">TO CHECK</span></div></div></div>",
+        "semanticLevel": "icon"
       }
     }
   ],
@@ -1148,12 +1453,12 @@
       "id": "notion-class-card-glyph",
       "type": "next-face",
       "source": "notion-class-card",
-      "target": "notion-glyph",
+      "target": "notion-icon",
       "label": "",
       "style": {},
       "data": {},
       "sourcePort": "sequence-out",
-      "targetPort": "root"
+      "targetPort": "sequence-in"
     },
     {
       "id": "notion-edge-landing-surface",
@@ -1190,6 +1495,17 @@
       "data": {
         "classRef": "tlz://twilite.zone/library/edges/environment/root.node"
       }
+    },
+    {
+      "id": "notion-icon-glyph",
+      "type": "next-face",
+      "source": "notion-icon",
+      "target": "notion-glyph",
+      "label": "",
+      "style": {},
+      "data": {},
+      "sourcePort": "sequence-out",
+      "targetPort": "root"
     }
   ]
 }
