@@ -285,8 +285,9 @@
                 "prominence": "high",
                 "presentation": {
                   "glyph": {
-                    "kind": "icon",
-                    "name": "HelpOutline"
+                    "kind": "svg",
+                    "value": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"8 8 104 104\"><path d=\"M27 38C27 4 93 4 93 40 93 60 68 65 68 78H52C52 57 77 51 77 40 77 22 43 22 43 38Z\" fill=\"white\"/><circle cx=\"60\" cy=\"96\" r=\"10\" fill=\"white\"/></svg>",
+                    "color": "#8650ab"
                   }
                 },
                 "sizing": {
@@ -433,6 +434,10 @@
                 "summary": {
                   "mode": "shared",
                   "viewNodeId": "open-question-summary-view"
+                },
+                "icon": {
+                  "mode": "shared",
+                  "viewNodeId": "open-question-icon"
                 }
               },
               "exposes": {
@@ -451,7 +456,8 @@
           "sharedPresentation": {
             "detailViewNodeId": "open-question-detail-view",
             "summaryViewNodeId": "open-question-summary-view",
-            "glyphNodeId": "open-question-glyph"
+            "glyphNodeId": "open-question-glyph",
+            "iconViewNodeId": "open-question-icon"
           },
           "primaryNodeViewId": "open-question-detail-view",
           "primaryEditorViewId": "open-question-editor-view",
@@ -715,6 +721,15 @@
           "dataType": "any",
           "angle": 90,
           "role": "view.content"
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "sequence-out"
         }
       ],
       "ports": [
@@ -751,6 +766,14 @@
               }
             ]
           }
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
         }
       ],
       "visible": true,
@@ -814,7 +837,7 @@
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='width:100%;height:100%;display:flex;flex-direction:column;box-sizing:border-box;padding:0;overflow:hidden;border-radius:18px;border:2px solid #8750c7;background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(244,236,255,.94));color:#23160a;position:relative;'>\n  <div style='display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:linear-gradient(135deg, #ead6ff, #8750c7);color:#261339;border-bottom:1px solid rgba(0,0,0,.08);'>\n    <div style='display:flex;align-items:center;gap:10px;min-width:0;'>\n      <div style='width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.10);font:800 14px system-ui,sans-serif;flex:0 0 auto;'>?</div>\n      <div style='min-width:0;'>\n        <div style='font:700 10px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:.68;margin-bottom:2px;'>Open Question</div>\n        <div style='font:800 17px/1.1 Georgia, \"Times New Roman\", serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;'>{{data.title || label}}</div>\n      </div>\n    </div>\n    <div style='display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.38);border:1px solid rgba(0,0,0,.08);font:700 10px system-ui,sans-serif;text-transform:uppercase;white-space:nowrap;'>{{data.status}}</div>\n  </div>\n  <div style='display:flex;flex-direction:column;gap:9px;padding:11px 14px 12px 14px;min-height:0;flex:1;color:#23160a;'>\n    <div style='display:flex;flex-direction:column;flex:1 1 auto;min-height:0;padding:8px 11px;border-radius:12px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.06);'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.66;margin-bottom:3px;color:#6b533a;'>Details</div>\n      <div style='font:500 12px/1.4 system-ui,sans-serif;flex:1 1 auto;min-height:3em;overflow:hidden;white-space:pre-wrap;color:#23160a;'>{{data.body}}</div>\n    </div>\n    <div style='flex:1;min-height:0;padding:8px 11px;border-radius:12px;overflow:hidden;{{eq(data.answer, '', 'color:#92400e;background:#fffbeb;border:1px solid #fde68a', 'color:#14532d;background:#f0fdf4;border:1px solid #bbf7d0')}}'>\n      <div style='font:700 10px system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin-bottom:3px;'>Answer</div>\n      <div style='font:600 13px/1.4 system-ui,sans-serif;white-space:pre-wrap;overflow:hidden;'>{{data.answer || 'Waiting for your answer'}}</div>\n    </div>\n    <div style='display:flex;justify-content:space-between;gap:10px;font:600 10px system-ui,sans-serif;color:#6b533a;'>\n      <span>Owner: {{data.owner || '—'}}</span><span>Resolved by: {{data.resolutionPath || '—'}}</span>\n    </div>\n  </div>\n</div>",
+        "html": "<div style=\"container-type:inline-size;width:100%;height:100%\"><div style=\"box-sizing:border-box;width:100%;height:100%;background:#f4e9fb;color:#56346c;font-family:system-ui,sans-serif;border-radius:4cqw;border:.6cqw solid #d5b7ef;border-bottom:1.6cqw solid #56346c;overflow:hidden;display:flex;flex-direction:column\"><div style=\"display:flex;gap:3cqw;align-items:center;padding:3cqw;min-height:0;\"><div style=\"width:23cqw;aspect-ratio:1;flex:none\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 120 120\"><circle cx=\"60\" cy=\"63\" r=\"56\" fill=\"#56346c\"/><circle cx=\"60\" cy=\"59\" r=\"54\" fill=\"#d5b7ef\"/><circle cx=\"60\" cy=\"59\" r=\"47\" fill=\"#8650ab\"/><circle cx=\"60\" cy=\"59\" r=\"43\" fill=\"none\" stroke=\"#fff5df\" stroke-opacity=\".4\" stroke-width=\"1.8\"/><path d=\"M38 40C38 19 82 19 82 42 82 57 60 57 60 72\" stroke=\"#fff5df\" stroke-width=\"11\" stroke-linecap=\"round\" fill=\"none\"/><circle cx=\"60\" cy=\"91\" r=\"6\" fill=\"#fff5df\"/></svg></div><div style=\"min-width:0;flex:1\"><div style=\"font:850 3.1cqw/1.15 system-ui;letter-spacing:.1em;text-transform:uppercase;color:#56346c\">Open question</div><div style=\"font:850 6.5cqw/1.06 system-ui;letter-spacing:-.035em;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:.9cqw 0\">{{data.title || label}}</div><span style=\"display:{{eq(data.status, 'todo', 'inline-flex', 'none')}};color:#475569;font-weight:800;font-size:3.6cqw;white-space:nowrap\">○ To do</span><span style=\"display:{{eq(data.status, 'open', 'inline-flex', 'none')}};color:#475569;font-weight:800;font-size:3.6cqw;white-space:nowrap\">○ Open</span><span style=\"display:{{eq(data.status, 'in-progress', 'inline-flex', 'none')}};color:#1d4ed8;font-weight:800;font-size:3.6cqw;white-space:nowrap\">▶ In progress</span><span style=\"display:{{eq(data.status, 'blocked', 'inline-flex', 'none')}};color:#b91c1c;font-weight:800;font-size:3.6cqw;white-space:nowrap\">■ Blocked</span><span style=\"display:{{eq(data.status, 'waiting', 'inline-flex', 'none')}};color:#92400e;font-weight:800;font-size:3.6cqw;white-space:nowrap\">… Waiting</span><span style=\"display:{{eq(data.status, 'done', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Done</span><span style=\"display:{{eq(data.status, 'achieved', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Achieved</span><span style=\"display:{{eq(data.status, 'cancelled', 'inline-flex', 'none')}};color:#64748b;font-weight:800;font-size:3.6cqw;white-space:nowrap\">× Cancelled</span><span style=\"display:{{eq(data.status, 'answered', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Answered</span><span style=\"display:{{eq(data.status, 'proposed', 'inline-flex', 'none')}};color:#475569;font-weight:800;font-size:3.6cqw;white-space:nowrap\">○ Proposed</span><span style=\"display:{{eq(data.status, 'decided', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Decided</span><span style=\"display:{{eq(data.status, 'accepted', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Accepted</span><span style=\"display:{{eq(data.status, 'review', 'inline-flex', 'none')}};color:#6d28d9;font-weight:800;font-size:3.6cqw;white-space:nowrap\">◎ Review</span></div></div><div style=\"padding:0 4cqw 3cqw;flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:1.8cqw\"><div style=\"border-top:1px solid #0002;padding-top:1.6cqw\"><div style=\"font:800 3cqw/1.2 system-ui;letter-spacing:.07em;text-transform:uppercase\">Details</div><div style=\"font-size:3.9cqw;line-height:1.35;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:.6cqw\">{{data.body}}</div></div><div style=\"border-top:1px solid #0002;padding-top:1.6cqw\"><div style=\"font:800 3cqw/1.2 system-ui;letter-spacing:.07em;text-transform:uppercase\">Answer</div><div style=\"font-size:3.9cqw;line-height:1.35;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:.6cqw\">{{data.answer || 'Waiting for your answer'}}</div></div><div style=\"border-top:1px solid #0002;padding-top:1.6cqw\"><div style=\"font:800 3cqw/1.2 system-ui;letter-spacing:.07em;text-transform:uppercase\">Resolution path</div><div style=\"font-size:3.9cqw;line-height:1.35;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:.6cqw\">{{data.resolutionPath}}</div></div><div style=\"font:600 3.1cqw/1.35 system-ui;overflow-wrap:anywhere\">Owner: {{data.owner}}</div></div></div></div>",
         "semanticLevel": "detail"
       }
     },
@@ -847,6 +870,24 @@
           "dataType": "any",
           "angle": 90,
           "role": "view.content"
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "sequence-in"
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "sequence-out"
         }
       ],
       "ports": [
@@ -883,6 +924,22 @@
               }
             ]
           }
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
         }
       ],
       "visible": true,
@@ -926,7 +983,7 @@
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#ffffff;border:2px solid #8750c7;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#8750c7'></i><div style='position:relative;display:flex;gap:2.4cqw;align-items:baseline;font-size:3.7cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase'><span style='color:#8750c7'>Question</span><span>{{data.status}}</span></div><div style='position:relative;flex:1 1 auto;min-height:0;font-weight:600;font-size:6.4cqw;line-height:1.2;display:-webkit-box;-webkit-line-clamp:12;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='position:relative;font-size:3.9cqw;line-height:1.3;padding:1.4cqw 2.4cqw;border-radius:2.4cqw;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;{{eq(data.answer, '', 'color:#92400e;background:#fffbeb;border:1px solid #fde68a', 'color:#14532d;background:#f0fdf4;border:1px solid #bbf7d0')}}'>{{data.answer || 'Waiting for your answer'}}</div><div style='position:relative;margin-top:auto;display:flex;flex-direction:column;gap:1cqw;font-size:4cqw;color:#64748b'><div>{{data.owner}}</div></div></div></div>",
+        "html": "<div style=\"container-type:inline-size;width:100%;height:100%\"><div style=\"box-sizing:border-box;width:100%;height:100%;background:#f4e9fb;color:#56346c;font-family:system-ui,sans-serif;border-radius:4cqw;border:.6cqw solid #d5b7ef;border-bottom:1.6cqw solid #56346c;overflow:hidden;display:flex;flex-direction:column\"><div style=\"display:flex;gap:3cqw;align-items:center;padding:3cqw;min-height:0;\"><div style=\"width:23cqw;aspect-ratio:1;flex:none\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 120 120\"><circle cx=\"60\" cy=\"63\" r=\"56\" fill=\"#56346c\"/><circle cx=\"60\" cy=\"59\" r=\"54\" fill=\"#d5b7ef\"/><circle cx=\"60\" cy=\"59\" r=\"47\" fill=\"#8650ab\"/><circle cx=\"60\" cy=\"59\" r=\"43\" fill=\"none\" stroke=\"#fff5df\" stroke-opacity=\".4\" stroke-width=\"1.8\"/><path d=\"M38 40C38 19 82 19 82 42 82 57 60 57 60 72\" stroke=\"#fff5df\" stroke-width=\"11\" stroke-linecap=\"round\" fill=\"none\"/><circle cx=\"60\" cy=\"91\" r=\"6\" fill=\"#fff5df\"/></svg></div><div style=\"min-width:0;flex:1\"><div style=\"font:850 3.1cqw/1.15 system-ui;letter-spacing:.1em;text-transform:uppercase;color:#56346c\">Open question</div><div style=\"font:850 6.5cqw/1.06 system-ui;letter-spacing:-.035em;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:.9cqw 0\">{{data.title || label}}</div><span style=\"display:{{eq(data.status, 'todo', 'inline-flex', 'none')}};color:#475569;font-weight:800;font-size:3.6cqw;white-space:nowrap\">○ To do</span><span style=\"display:{{eq(data.status, 'open', 'inline-flex', 'none')}};color:#475569;font-weight:800;font-size:3.6cqw;white-space:nowrap\">○ Open</span><span style=\"display:{{eq(data.status, 'in-progress', 'inline-flex', 'none')}};color:#1d4ed8;font-weight:800;font-size:3.6cqw;white-space:nowrap\">▶ In progress</span><span style=\"display:{{eq(data.status, 'blocked', 'inline-flex', 'none')}};color:#b91c1c;font-weight:800;font-size:3.6cqw;white-space:nowrap\">■ Blocked</span><span style=\"display:{{eq(data.status, 'waiting', 'inline-flex', 'none')}};color:#92400e;font-weight:800;font-size:3.6cqw;white-space:nowrap\">… Waiting</span><span style=\"display:{{eq(data.status, 'done', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Done</span><span style=\"display:{{eq(data.status, 'achieved', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Achieved</span><span style=\"display:{{eq(data.status, 'cancelled', 'inline-flex', 'none')}};color:#64748b;font-weight:800;font-size:3.6cqw;white-space:nowrap\">× Cancelled</span><span style=\"display:{{eq(data.status, 'answered', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Answered</span><span style=\"display:{{eq(data.status, 'proposed', 'inline-flex', 'none')}};color:#475569;font-weight:800;font-size:3.6cqw;white-space:nowrap\">○ Proposed</span><span style=\"display:{{eq(data.status, 'decided', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Decided</span><span style=\"display:{{eq(data.status, 'accepted', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Accepted</span><span style=\"display:{{eq(data.status, 'review', 'inline-flex', 'none')}};color:#6d28d9;font-weight:800;font-size:3.6cqw;white-space:nowrap\">◎ Review</span></div></div><div style=\"padding:0 4cqw 3cqw;flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:1.5cqw\"><div style=\"font-size:4cqw;line-height:1.28;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden\">{{data.answer || 'Waiting for your answer'}}</div><div style=\"margin-top:auto;font:700 3.5cqw/1.25 system-ui\">{{data.owner}}</div></div></div></div>",
         "semanticLevel": "summary"
       }
     },
@@ -965,9 +1022,9 @@
       "showLabel": true,
       "data": {
         "glyph": {
-          "kind": "icon",
-          "name": "HelpOutline",
-          "color": "#8750c7"
+          "kind": "svg",
+          "value": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"8 8 104 104\"><path d=\"M27 38C27 4 93 4 93 40 93 60 68 65 68 78H52C52 57 77 51 77 40 77 22 43 22 43 38Z\" fill=\"white\"/><circle cx=\"60\" cy=\"96\" r=\"10\" fill=\"white\"/></svg>",
+          "color": "#8650ab"
         },
         "interfaceContract": {
           "version": 1,
@@ -1216,6 +1273,152 @@
           "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;background-color:#f5f3ff;background-image:linear-gradient(rgba(109,40,217,.16) 0.12cqw,transparent 0.12cqw),linear-gradient(90deg,rgba(109,40,217,.16) 0.12cqw,transparent 0.12cqw),linear-gradient(rgba(109,40,217,.07) 0.08cqw,transparent 0.08cqw),linear-gradient(90deg,rgba(109,40,217,.07) 0.08cqw,transparent 0.08cqw);background-size:10cqw 10cqw,10cqw 10cqw,2cqw 2cqw,2cqw 2cqw'></div></div>"
         }
       }
+    },
+    {
+      "id": "open-question-icon",
+      "type": "face",
+      "label": "Enamel icon",
+      "position": {
+        "x": -80,
+        "y": 170
+      },
+      "width": 420,
+      "height": 260,
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "sequence-in"
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "sequence-out"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "open-question-class",
+          "nodeId": "open-question-icon"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon",
+          "controls": [
+            {
+              "id": "open-question-summary-answered",
+              "type": "button",
+              "label": "Answered",
+              "icon": "bolt",
+              "variant": "contained",
+              "priority": "highest",
+              "action": "setData",
+              "bind": "data.status",
+              "value": "answered"
+            },
+            {
+              "id": "open-question-summary-reopen",
+              "type": "button",
+              "label": "Reopen",
+              "icon": "edit",
+              "variant": "outlined",
+              "priority": "high",
+              "action": "setData",
+              "bind": "data.status",
+              "value": "open"
+            }
+          ],
+          "html": {
+            "chrome": true
+          }
+        },
+        "renderShape": {
+          "kind": "html"
+        },
+        "html": "<div style=\"container-type:inline-size;width:100%;height:100%\"><div style=\"box-sizing:border-box;width:100%;height:100%;background:#f4e9fb;color:#56346c;font-family:system-ui,sans-serif;border-radius:4cqw;border:.6cqw solid #d5b7ef;border-bottom:1.6cqw solid #56346c;overflow:hidden;display:flex;flex-direction:column\"><div style=\"display:flex;gap:3cqw;align-items:center;padding:4cqw;min-height:0;flex:1\"><div style=\"width:38cqw;aspect-ratio:1;flex:none\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 120 120\"><circle cx=\"60\" cy=\"63\" r=\"56\" fill=\"#56346c\"/><circle cx=\"60\" cy=\"59\" r=\"54\" fill=\"#d5b7ef\"/><circle cx=\"60\" cy=\"59\" r=\"47\" fill=\"#8650ab\"/><circle cx=\"60\" cy=\"59\" r=\"43\" fill=\"none\" stroke=\"#fff5df\" stroke-opacity=\".4\" stroke-width=\"1.8\"/><path d=\"M38 40C38 19 82 19 82 42 82 57 60 57 60 72\" stroke=\"#fff5df\" stroke-width=\"11\" stroke-linecap=\"round\" fill=\"none\"/><circle cx=\"60\" cy=\"91\" r=\"6\" fill=\"#fff5df\"/></svg></div><div style=\"min-width:0;flex:1\"><div style=\"font:850 3.9cqw/1.15 system-ui;letter-spacing:.1em;text-transform:uppercase;color:#56346c\">Open question</div><div style=\"font:850 8cqw/1.06 system-ui;letter-spacing:-.035em;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin:.9cqw 0\">{{data.title || label}}</div></div></div><div style=\"background:#fff8;padding:1.2cqw 4cqw;border-top:1px solid #d5b7ef;text-align:right\"><span style=\"display:{{eq(data.status, 'todo', 'inline-flex', 'none')}};color:#475569;font-weight:800;font-size:3.6cqw;white-space:nowrap\">○ To do</span><span style=\"display:{{eq(data.status, 'open', 'inline-flex', 'none')}};color:#475569;font-weight:800;font-size:3.6cqw;white-space:nowrap\">○ Open</span><span style=\"display:{{eq(data.status, 'in-progress', 'inline-flex', 'none')}};color:#1d4ed8;font-weight:800;font-size:3.6cqw;white-space:nowrap\">▶ In progress</span><span style=\"display:{{eq(data.status, 'blocked', 'inline-flex', 'none')}};color:#b91c1c;font-weight:800;font-size:3.6cqw;white-space:nowrap\">■ Blocked</span><span style=\"display:{{eq(data.status, 'waiting', 'inline-flex', 'none')}};color:#92400e;font-weight:800;font-size:3.6cqw;white-space:nowrap\">… Waiting</span><span style=\"display:{{eq(data.status, 'done', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Done</span><span style=\"display:{{eq(data.status, 'achieved', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Achieved</span><span style=\"display:{{eq(data.status, 'cancelled', 'inline-flex', 'none')}};color:#64748b;font-weight:800;font-size:3.6cqw;white-space:nowrap\">× Cancelled</span><span style=\"display:{{eq(data.status, 'answered', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Answered</span><span style=\"display:{{eq(data.status, 'proposed', 'inline-flex', 'none')}};color:#475569;font-weight:800;font-size:3.6cqw;white-space:nowrap\">○ Proposed</span><span style=\"display:{{eq(data.status, 'decided', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Decided</span><span style=\"display:{{eq(data.status, 'accepted', 'inline-flex', 'none')}};color:#166534;font-weight:800;font-size:3.6cqw;white-space:nowrap\">✓ Accepted</span><span style=\"display:{{eq(data.status, 'review', 'inline-flex', 'none')}};color:#6d28d9;font-weight:800;font-size:3.6cqw;white-space:nowrap\">◎ Review</span></div></div></div>",
+        "semanticLevel": "icon"
+      }
     }
   ],
   "edges": [
@@ -1247,12 +1450,12 @@
       "id": "open-question-summary-view-next",
       "type": "next-face",
       "source": "open-question-summary-view",
-      "target": "open-question-glyph",
+      "target": "open-question-icon",
       "label": "",
       "style": {},
       "data": {},
       "sourcePort": "sequence-out",
-      "targetPort": "root"
+      "targetPort": "sequence-in"
     },
     {
       "id": "open-question-edge-landing-surface",
@@ -1289,6 +1492,17 @@
       "data": {
         "classRef": "tlz://twilite.zone/library/edges/environment/root.node"
       }
+    },
+    {
+      "id": "open-question-icon-glyph",
+      "type": "next-face",
+      "source": "open-question-icon",
+      "target": "open-question-glyph",
+      "label": "",
+      "style": {},
+      "data": {},
+      "sourcePort": "sequence-out",
+      "targetPort": "root"
     }
   ]
 }
