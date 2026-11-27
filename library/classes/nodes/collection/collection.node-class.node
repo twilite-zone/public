@@ -100,6 +100,33 @@
             ]
           },
           "portId": "environment"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "surfaces"
+        },
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "ground"
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "port"
         }
       ],
       "ports": [
@@ -176,6 +203,30 @@
               }
             ]
           }
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
+        },
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
+        },
+        {
+          "id": "port",
+          "key": "port",
+          "label": "port",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
         }
       ],
       "visible": true,
@@ -253,8 +304,9 @@
                 "sourcesSummary": "",
                 "presentation": {
                   "glyph": {
-                    "kind": "icon",
-                    "name": "Folder"
+                    "kind": "svg",
+                    "value": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 120\"><path d=\"M14 16H106V42H14ZM14 48H106V74H14ZM14 80H106V106H14Z\" fill=\"#fff\"/></svg>",
+                    "color": "#7543a4"
                   }
                 },
                 "flipped": false,
@@ -366,6 +418,10 @@
                 "summary": {
                   "mode": "shared",
                   "viewNodeId": "collection-summary-view"
+                },
+                "icon": {
+                  "mode": "shared",
+                  "viewNodeId": "collection-icon"
                 }
               },
               "exposes": {
@@ -384,7 +440,8 @@
           "sharedPresentation": {
             "detailViewNodeId": "collection-detail-view",
             "summaryViewNodeId": "collection-summary-view",
-            "glyphNodeId": "collection-glyph"
+            "glyphNodeId": "collection-glyph",
+            "iconViewNodeId": "collection-icon"
           },
           "primaryNodeViewId": "collection-detail-view",
           "primaryEditorViewId": "collection-editor-view",
@@ -641,6 +698,15 @@
           "dataType": "any",
           "angle": 90,
           "role": "view.content"
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "sequence-out"
         }
       ],
       "ports": [
@@ -677,6 +743,14 @@
               }
             ]
           }
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
         }
       ],
       "visible": true,
@@ -756,7 +830,7 @@
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#ffffff;border:2px solid #6d28d9;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#6d28d9'></i><div style='position:absolute;inset:0;display:{{eq(data.flipped,'true','none','flex')}};flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><div style='position:relative;font-size:3.7cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Collection</div><div style='position:relative;font-weight:600;font-size:6.4cqw;line-height:1.2;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='position:relative;font-size:4cqw;line-height:1.4;color:#475569;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.body}}</div><span data-twilite-control='flip' style='cursor:pointer;position:absolute;right:4cqw;top:3.5cqw;font-size:5.4cqw;line-height:1;color:#6d28d9;opacity:.75'>&#9881;</span></div><div style='position:absolute;inset:0;display:{{eq(data.flipped,'true','flex','none')}};flex-direction:column;gap:3cqw;padding:5cqw 6cqw 5cqw 8cqw;background:#f5f3ff'><div style='display:flex;justify-content:space-between;align-items:center'><span style='font-size:3.7cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Collection settings</span><span data-twilite-control='flip' style='cursor:pointer;font-size:3.8cqw;font-weight:600;color:#6d28d9;padding:1cqw 3.5cqw;border-radius:6cqw;border:1px solid #6d28d9;background:#ffffff'>Done</span></div><div style='display:flex;justify-content:space-between;align-items:center;gap:3cqw'><span style='font-size:4.2cqw;font-weight:600'>Graphs in this folder</span><span data-twilite-control='folder' style='cursor:pointer;padding:1cqw 4cqw;border-radius:6cqw;font-size:3.8cqw;font-weight:600;background:{{eq(data.includeFolder,'true','#6d28d9','#e9e5f5')}};color:{{eq(data.includeFolder,'true','#ffffff','#4c1d95')}}'>{{eq(data.includeFolder,'true','On','Off')}}</span></div><div style='display:flex;justify-content:space-between;align-items:center;gap:3cqw'><span style='font-size:4.2cqw;font-weight:600'>Order</span><span style='display:flex;gap:1.1cqw'><span data-twilite-control='sort-order' style='cursor:pointer;padding:1cqw 2.2cqw;border-radius:6cqw;font-size:3.3cqw;font-weight:600;background:{{eq(data.sort,'order','#6d28d9','#e9e5f5')}};color:{{eq(data.sort,'order','#ffffff','#4c1d95')}}'>As listed</span><span data-twilite-control='sort-name' style='cursor:pointer;padding:1cqw 2.2cqw;border-radius:6cqw;font-size:3.3cqw;font-weight:600;background:{{eq(data.sort,'name','#6d28d9','#e9e5f5')}};color:{{eq(data.sort,'name','#ffffff','#4c1d95')}}'>By name</span><span data-twilite-control='sort-kind' style='cursor:pointer;padding:1cqw 2.2cqw;border-radius:6cqw;font-size:3.3cqw;font-weight:600;background:{{eq(data.sort,'kind','#6d28d9','#e9e5f5')}};color:{{eq(data.sort,'kind','#ffffff','#4c1d95')}}'>By kind</span><span data-twilite-control='sort-newest' style='cursor:pointer;padding:1cqw 2.2cqw;border-radius:6cqw;font-size:3.3cqw;font-weight:600;background:{{eq(data.sort,'newest','#6d28d9','#e9e5f5')}};color:{{eq(data.sort,'newest','#ffffff','#4c1d95')}}'>Newest</span></span></div><div style='font-size:3.7cqw;line-height:1.4;color:#475569;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.sourcesSummary || 'Members come from the portals this collection contains.'}}</div></div></div></div>",
+        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;background:#f4edf9;font-family:system-ui;color:#172b3b'><div style=\"position:absolute;inset:0;display:{{eq(data.flipped,'true','none','flex')}};flex-direction:column\"><div style=\"background:#7543a4;color:white;padding:3cqw 4cqw;display:flex;align-items:center;gap:3cqw;border-bottom:1cqw solid #42245f\"><div style=\"flex:1;min-width:0\"><div style=\"font:800 3.6cqw/1.15 system-ui;color:#e0c9f5;letter-spacing:.1em;text-transform:uppercase\">Collection</div><div style=\"font:850 8.7cqw/1.04 system-ui;letter-spacing:-.04em;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden\">{{data.title || label}}</div></div><div style=\"width:24cqw;flex:none;aspect-ratio:1\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 120 128\" preserveAspectRatio=\"xMidYMid meet\"><path d=\"M14 16H106V42H14ZM14 48H106V74H14ZM14 80H106V106H14Z\" fill=\"#fff\"/><path d=\"M24 29H44M24 61H60M24 93H76\" stroke=\"#7543a4\" stroke-width=\"6\"/></svg></div></div><div style=\"padding:3cqw 4cqw;display:flex;flex-direction:column;gap:1.5cqw;overflow:auto;flex:1;min-height:0\"><div style=\"font-size:4.1cqw;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden\">{{data.body}}</div><div style=\"font-size:3.7cqw;color:#7543a4;font-weight:750\">{{data.sourcesSummary || 'Member count not available'}}</div></div><span data-twilite-control=\"flip\" style=\"position:absolute;right:2cqw;top:2cqw;background:#42245f;color:white;padding:1cqw;cursor:pointer;font-size:5cqw\">&#9881;</span></div><div style='position:absolute;inset:0;display:{{eq(data.flipped,'true','flex','none')}};flex-direction:column;gap:3cqw;padding:5cqw 6cqw 5cqw 8cqw;background:#f4edf9'><div style='display:flex;justify-content:space-between;align-items:center'><span style='font-size:3.7cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#7543a4'>Collection settings</span><span data-twilite-control='flip' style='cursor:pointer;font-size:3.8cqw;font-weight:600;color:#7543a4;padding:1cqw 3.5cqw;border-radius:6cqw;border:1px solid #7543a4;background:#ffffff'>Done</span></div><div style='display:flex;justify-content:space-between;align-items:center;gap:3cqw'><span style='font-size:4.2cqw;font-weight:600'>Graphs in this folder</span><span data-twilite-control='folder' style='cursor:pointer;padding:1cqw 4cqw;border-radius:6cqw;font-size:3.8cqw;font-weight:600;background:{{eq(data.includeFolder,'true','#7543a4','#e9e5f5')}};color:{{eq(data.includeFolder,'true','#ffffff','#4c1d95')}}'>{{eq(data.includeFolder,'true','On','Off')}}</span></div><div style='display:flex;justify-content:space-between;align-items:center;gap:3cqw'><span style='font-size:4.2cqw;font-weight:600'>Order</span><span style='display:flex;gap:1.1cqw'><span data-twilite-control='sort-order' style='cursor:pointer;padding:1cqw 2.2cqw;border-radius:6cqw;font-size:3.3cqw;font-weight:600;background:{{eq(data.sort,'order','#7543a4','#e9e5f5')}};color:{{eq(data.sort,'order','#ffffff','#4c1d95')}}'>As listed</span><span data-twilite-control='sort-name' style='cursor:pointer;padding:1cqw 2.2cqw;border-radius:6cqw;font-size:3.3cqw;font-weight:600;background:{{eq(data.sort,'name','#7543a4','#e9e5f5')}};color:{{eq(data.sort,'name','#ffffff','#4c1d95')}}'>By name</span><span data-twilite-control='sort-kind' style='cursor:pointer;padding:1cqw 2.2cqw;border-radius:6cqw;font-size:3.3cqw;font-weight:600;background:{{eq(data.sort,'kind','#7543a4','#e9e5f5')}};color:{{eq(data.sort,'kind','#ffffff','#4c1d95')}}'>By kind</span><span data-twilite-control='sort-newest' style='cursor:pointer;padding:1cqw 2.2cqw;border-radius:6cqw;font-size:3.3cqw;font-weight:600;background:{{eq(data.sort,'newest','#7543a4','#e9e5f5')}};color:{{eq(data.sort,'newest','#ffffff','#4c1d95')}}'>Newest</span></span></div><div style='font-size:3.7cqw;line-height:1.4;color:#475569;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.sourcesSummary || 'Members come from the portals this collection contains.'}}</div></div></div></div>",
         "semanticLevel": "detail"
       }
     },
@@ -789,6 +863,24 @@
           "dataType": "any",
           "angle": 90,
           "role": "view.content"
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "sequence-in"
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "sequence-out"
         }
       ],
       "ports": [
@@ -825,6 +917,22 @@
               }
             ]
           }
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
         }
       ],
       "visible": true,
@@ -844,7 +952,7 @@
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#ffffff;border:2px solid #6d28d9;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#6d28d9'></i><div style='position:relative;font-size:3.7cqw;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6d28d9'>Collection</div><div style='position:relative;font-weight:600;font-size:6.4cqw;line-height:1.2;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='position:relative;font-size:4cqw;line-height:1.4;color:#475569;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.body}}</div></div></div>",
+        "html": "<div style=\"container-type:inline-size;width:100%;height:100%\"><div style=\"box-sizing:border-box;height:100%;background:#f4edf9;color:#172b3b;font-family:system-ui;overflow:hidden;display:flex;flex-direction:column\"><div style=\"background:#7543a4;color:white;padding:3cqw 4cqw;display:flex;align-items:center;gap:3cqw;border-bottom:1cqw solid #42245f\"><div style=\"flex:1;min-width:0\"><div style=\"font:800 3.6cqw/1.15 system-ui;color:#e0c9f5;letter-spacing:.1em;text-transform:uppercase\">Collection</div><div style=\"font:850 8.7cqw/1.04 system-ui;letter-spacing:-.04em;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden\">{{data.title || label}}</div></div><div style=\"width:24cqw;flex:none;aspect-ratio:1\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 120 128\" preserveAspectRatio=\"xMidYMid meet\"><path d=\"M14 16H106V42H14ZM14 48H106V74H14ZM14 80H106V106H14Z\" fill=\"#fff\"/><path d=\"M24 29H44M24 61H60M24 93H76\" stroke=\"#7543a4\" stroke-width=\"6\"/></svg></div></div><div style=\"padding:2.5cqw 4cqw;display:flex;flex-direction:column;gap:1.4cqw;overflow:hidden\"><div style=\"font-size:4.1cqw;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden\">{{data.body}}</div><div style=\"font-size:3.8cqw;color:#7543a4;font-weight:750\">{{data.sourcesSummary || 'Member count not available'}}</div></div></div></div>",
         "semanticLevel": "summary"
       }
     },
@@ -883,9 +991,9 @@
       "showLabel": true,
       "data": {
         "glyph": {
-          "kind": "icon",
-          "name": "Folder",
-          "color": "#6d28d9"
+          "kind": "svg",
+          "value": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 120\"><path d=\"M14 16H106V42H14ZM14 48H106V74H14ZM14 80H106V106H14Z\" fill=\"#fff\"/></svg>",
+          "color": "#7543a4"
         },
         "interfaceContract": {
           "version": 1,
@@ -1374,6 +1482,128 @@
           "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;background-color:#f5f3ff;background-image:linear-gradient(rgba(109,40,217,.16) 0.12cqw,transparent 0.12cqw),linear-gradient(90deg,rgba(109,40,217,.16) 0.12cqw,transparent 0.12cqw),linear-gradient(rgba(109,40,217,.07) 0.08cqw,transparent 0.08cqw),linear-gradient(90deg,rgba(109,40,217,.07) 0.08cqw,transparent 0.08cqw);background-size:10cqw 10cqw,10cqw 10cqw,2cqw 2cqw,2cqw 2cqw'></div></div>"
         }
       }
+    },
+    {
+      "id": "collection-icon",
+      "type": "face",
+      "label": "Collection icon",
+      "position": {
+        "x": -80,
+        "y": 170
+      },
+      "width": 420,
+      "height": 260,
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "sequence-in"
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "sequence-out"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "collection-class",
+          "nodeId": "collection-icon"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon",
+          "html": {
+            "chrome": true
+          }
+        },
+        "renderShape": {
+          "kind": "html"
+        },
+        "html": "<div style=\"container-type:inline-size;width:100%;height:100%\"><div style=\"box-sizing:border-box;height:100%;background:#7543a4;color:white;display:flex;flex-direction:column;padding:3cqw 4cqw;font-family:system-ui;overflow:hidden\"><div style=\"flex:1;min-height:0;display:flex;align-items:center;justify-content:center\"><div style=\"width:37cqw;height:100%;max-height:37cqw\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 120 128\" preserveAspectRatio=\"xMidYMid meet\"><path d=\"M14 16H106V42H14ZM14 48H106V74H14ZM14 80H106V106H14Z\" fill=\"#fff\"/><path d=\"M24 29H44M24 61H60M24 93H76\" stroke=\"#7543a4\" stroke-width=\"6\"/></svg></div></div><div style=\"background:#42245f;padding:2.5cqw 3cqw;margin:0 -4cqw -3cqw\"><div style=\"font:800 3.8cqw/1.1 system-ui;color:#e0c9f5;letter-spacing:.12em;text-transform:uppercase\">Collection</div><div style=\"font:850 10cqw/1.03 system-ui;letter-spacing:-.04em;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden\">{{data.title || label}}</div></div></div></div>",
+        "semanticLevel": "icon"
+      }
     }
   ],
   "edges": [
@@ -1405,12 +1635,12 @@
       "id": "collection-summary-view-next",
       "type": "next-face",
       "source": "collection-summary-view",
-      "target": "collection-glyph",
+      "target": "collection-icon",
       "label": "",
       "style": {},
       "data": {},
       "sourcePort": "sequence-out",
-      "targetPort": "root"
+      "targetPort": "sequence-in"
     },
     {
       "id": "collection-edge-landing-surface",
@@ -1447,6 +1677,17 @@
       "data": {
         "classRef": "tlz://twilite.zone/library/edges/environment/root.node"
       }
+    },
+    {
+      "id": "collection-icon-glyph",
+      "type": "next-face",
+      "source": "collection-icon",
+      "target": "collection-glyph",
+      "label": "",
+      "style": {},
+      "data": {},
+      "sourcePort": "sequence-out",
+      "targetPort": "root"
     }
   ]
 }
