@@ -286,8 +286,9 @@
                 "prominence": "normal",
                 "presentation": {
                   "glyph": {
-                    "kind": "icon",
-                    "name": "Checklist"
+                    "kind": "svg",
+                    "value": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"4 4 112 112\"><path d=\"M13 50H72L48 26 62 12 110 60 62 108 48 94 72 70H13Z\" fill=\"white\"/></svg>",
+                    "color": "#3266b1"
                   }
                 },
                 "sizing": {
@@ -446,6 +447,10 @@
                 "summary": {
                   "mode": "shared",
                   "viewNodeId": "step-summary-view"
+                },
+                "icon": {
+                  "mode": "shared",
+                  "viewNodeId": "step-icon"
                 }
               },
               "exposes": {
@@ -464,7 +469,8 @@
           "sharedPresentation": {
             "detailViewNodeId": "step-detail-view",
             "summaryViewNodeId": "step-summary-view",
-            "glyphNodeId": "step-glyph"
+            "glyphNodeId": "step-glyph",
+            "iconViewNodeId": "step-icon"
           },
           "primaryNodeViewId": "step-detail-view",
           "primaryEditorViewId": "step-editor-view",
@@ -706,6 +712,15 @@
           "dataType": "any",
           "angle": 90,
           "role": "view.content"
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "sequence-out"
         }
       ],
       "ports": [
@@ -742,6 +757,14 @@
               }
             ]
           }
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
         }
       ],
       "visible": true,
@@ -794,7 +817,7 @@
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#f0f9ff;border:2px solid #0369a1;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#0369a1'></i><div style='position:relative;display:flex;gap:2.4cqw;align-items:center;justify-content:space-between;font-size:3.7cqw;font-weight:700;letter-spacing:.08em;text-transform:uppercase'><span style='color:#0369a1'>Step</span><span style='display:flex;gap:2cqw;align-items:center'><span style='padding:.8cqw 2.4cqw;border-radius:99cqw;background:#ffffff;border:1px solid #0369a1;color:#0369a1;font-size:3.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase'>{{eq(data.status, 'done', 'Done', eq(data.status, 'doing', 'Doing', 'To do'))}}</span><span style='{{eq(data.check, true, 'display:inline-block', 'display:none')}};padding:.8cqw 2.2cqw;border-radius:99cqw;background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:3.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase'>to check</span></span></div><div style='position:relative;font-weight:700;font-size:8cqw;line-height:1.15;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='position:relative;flex:1 1 auto;min-height:0;font-size:4.6cqw;line-height:1.45;color:#334155;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden'>{{data.body}}</div></div></div>",
+        "html": "<div style=\"container-type:inline-size;width:100%;height:100%\"><div style=\"box-sizing:border-box;width:100%;height:100%;background:#e5effb;color:#254772;font-family:system-ui,sans-serif;border-radius:4cqw;border:.6cqw solid #a8c8f3;border-bottom:1.6cqw solid #254772;overflow:hidden;display:flex;flex-direction:column\"><div style=\"display:flex;gap:3cqw;align-items:center;padding:3cqw;min-height:0;\"><div style=\"width:24cqw;aspect-ratio:1;flex:none\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 120 120\"><circle cx=\"60\" cy=\"63\" r=\"56\" fill=\"#254772\"/><circle cx=\"60\" cy=\"59\" r=\"54\" fill=\"#a8c8f3\"/><circle cx=\"60\" cy=\"59\" r=\"47\" fill=\"#3266b1\"/><circle cx=\"60\" cy=\"59\" r=\"43\" fill=\"none\" stroke=\"#fff5df\" stroke-opacity=\".4\" stroke-width=\"1.8\"/><path d=\"M31 61H84M64 41 84 61 64 81\" fill=\"none\" stroke=\"#fff5df\" stroke-width=\"11\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"28\" cy=\"61\" r=\"5\" fill=\"#f5bd65\"/></svg></div><div style=\"min-width:0;flex:1\"><div style=\"font:850 3.1cqw/1.15 system-ui;letter-spacing:.1em;text-transform:uppercase;color:#254772\">Step</div><div style=\"font:850 6.5cqw/1.06 system-ui;letter-spacing:-.035em;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:.9cqw 0\">{{data.title || label}}</div><div style=\"display:flex;gap:1.4cqw;align-items:center;flex-wrap:wrap\"><span style=\"font:800 3.5cqw/1.2 system-ui;color:#254772\">{{eq(data.status, 'done', '✓ Done', eq(data.status, 'doing', '◐ Doing', '○ To do'))}}</span><span style=\"display:{{eq(data.check, true, 'inline-block', 'none')}};color:#92400e;background:#fff3cf;border:1px solid #e9ba6d;padding:.5cqw 1.6cqw;border-radius:2cqw;font:800 3.4cqw/1.2 system-ui\">TO CHECK</span></div></div></div><div style=\"padding:0 4cqw 3cqw;flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:1.8cqw\"><div style=\"border-top:1px solid #0002;padding-top:1.6cqw\"><div style=\"font:800 3cqw/1.2 system-ui;letter-spacing:.07em;text-transform:uppercase\">Work</div><div style=\"font-size:3.9cqw;line-height:1.35;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:.6cqw\">{{data.body}}</div></div><div style=\"border-top:1px solid #0002;padding-top:1.6cqw\"><div style=\"font:800 3cqw/1.2 system-ui;letter-spacing:.07em;text-transform:uppercase\">Owner</div><div style=\"font-size:3.9cqw;line-height:1.35;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:.6cqw\">{{data.owner}}</div></div></div></div></div>",
         "semanticLevel": "detail"
       }
     },
@@ -827,6 +850,24 @@
           "dataType": "any",
           "angle": 90,
           "role": "view.content"
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "sequence-in"
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "sequence-out"
         }
       ],
       "ports": [
@@ -863,6 +904,22 @@
               }
             ]
           }
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
         }
       ],
       "visible": true,
@@ -915,7 +972,7 @@
         "renderShape": {
           "kind": "html"
         },
-        "html": "<div style='container-type:inline-size;width:100%;height:100%'><div style='position:relative;box-sizing:border-box;width:100%;height:100%;overflow:hidden;border-radius:6cqw;background:#f0f9ff;border:2px solid #0369a1;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;gap:2.4cqw;padding:5cqw 6cqw 5cqw 8cqw'><i style='position:absolute;left:0;top:0;bottom:0;width:3cqw;background:#0369a1'></i><div style='position:relative;display:flex;gap:2.4cqw;align-items:center;justify-content:space-between;font-size:3.7cqw;font-weight:700;letter-spacing:.08em;text-transform:uppercase'><span style='color:#0369a1'>Step</span><span style='display:flex;gap:2cqw;align-items:center'><span style='padding:.8cqw 2.4cqw;border-radius:99cqw;background:#ffffff;border:1px solid #0369a1;color:#0369a1;font-size:3.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase'>{{eq(data.status, 'done', 'Done', eq(data.status, 'doing', 'Doing', 'To do'))}}</span><span style='{{eq(data.check, true, 'display:inline-block', 'display:none')}};padding:.8cqw 2.2cqw;border-radius:99cqw;background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:3.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase'>to check</span></span></div><div style='position:relative;font-weight:700;font-size:6.6cqw;line-height:1.15;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='position:relative;flex:1 1 auto;min-height:0;font-size:4.1cqw;line-height:1.45;color:#334155;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden'>{{data.body}}</div></div></div>",
+        "html": "<div style=\"container-type:inline-size;width:100%;height:100%\"><div style=\"box-sizing:border-box;width:100%;height:100%;background:#e5effb;color:#254772;font-family:system-ui,sans-serif;border-radius:4cqw;border:.6cqw solid #a8c8f3;border-bottom:1.6cqw solid #254772;overflow:hidden;display:flex;flex-direction:column\"><div style=\"display:flex;gap:3cqw;align-items:center;padding:3cqw;min-height:0;\"><div style=\"width:24cqw;aspect-ratio:1;flex:none\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 120 120\"><circle cx=\"60\" cy=\"63\" r=\"56\" fill=\"#254772\"/><circle cx=\"60\" cy=\"59\" r=\"54\" fill=\"#a8c8f3\"/><circle cx=\"60\" cy=\"59\" r=\"47\" fill=\"#3266b1\"/><circle cx=\"60\" cy=\"59\" r=\"43\" fill=\"none\" stroke=\"#fff5df\" stroke-opacity=\".4\" stroke-width=\"1.8\"/><path d=\"M31 61H84M64 41 84 61 64 81\" fill=\"none\" stroke=\"#fff5df\" stroke-width=\"11\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"28\" cy=\"61\" r=\"5\" fill=\"#f5bd65\"/></svg></div><div style=\"min-width:0;flex:1\"><div style=\"font:850 3.1cqw/1.15 system-ui;letter-spacing:.1em;text-transform:uppercase;color:#254772\">Step</div><div style=\"font:850 6.5cqw/1.06 system-ui;letter-spacing:-.035em;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:.9cqw 0\">{{data.title || label}}</div><div style=\"display:flex;gap:1.4cqw;align-items:center;flex-wrap:wrap\"><span style=\"font:800 3.5cqw/1.2 system-ui;color:#254772\">{{eq(data.status, 'done', '✓ Done', eq(data.status, 'doing', '◐ Doing', '○ To do'))}}</span><span style=\"display:{{eq(data.check, true, 'inline-block', 'none')}};color:#92400e;background:#fff3cf;border:1px solid #e9ba6d;padding:.5cqw 1.6cqw;border-radius:2cqw;font:800 3.4cqw/1.2 system-ui\">TO CHECK</span></div></div></div><div style=\"padding:0 4cqw 3cqw;flex:1;min-height:0;overflow:hidden\"><div style=\"font-size:4.2cqw;line-height:1.28;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden\">{{data.body}}</div></div></div></div>",
         "semanticLevel": "summary"
       }
     },
@@ -954,9 +1011,9 @@
       "showLabel": true,
       "data": {
         "glyph": {
-          "kind": "icon",
-          "name": "Checklist",
-          "color": "#0369a1"
+          "kind": "svg",
+          "value": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"4 4 112 112\"><path d=\"M13 50H72L48 26 62 12 110 60 62 108 48 94 72 70H13Z\" fill=\"white\"/></svg>",
+          "color": "#3266b1"
         },
         "interfaceContract": {
           "version": 1,
@@ -1071,6 +1128,14 @@
             ],
             "repeatable": true
           }
+        },
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180
         }
       ],
       "handles": [
@@ -1171,6 +1236,15 @@
             "repeatable": true
           },
           "portId": "limited-by"
+        },
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
         }
       ],
       "data": {
@@ -1231,6 +1305,161 @@
           "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;background-color:#f0f9ff;background-image:linear-gradient(rgba(3,105,161,.16) 0.12cqw,transparent 0.12cqw),linear-gradient(90deg,rgba(3,105,161,.16) 0.12cqw,transparent 0.12cqw),linear-gradient(rgba(3,105,161,.07) 0.08cqw,transparent 0.08cqw),linear-gradient(90deg,rgba(3,105,161,.07) 0.08cqw,transparent 0.08cqw);background-size:10cqw 10cqw,10cqw 10cqw,2cqw 2cqw,2cqw 2cqw'></div></div>"
         }
       }
+    },
+    {
+      "id": "step-icon",
+      "type": "face",
+      "label": "Enamel icon",
+      "position": {
+        "x": -80,
+        "y": 90
+      },
+      "width": 420,
+      "height": 260,
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270,
+          "portId": "root"
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "portId": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content"
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "sequence-in"
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "portId": "sequence-out"
+        }
+      ],
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 270
+        },
+        {
+          "id": "surface-delegate",
+          "key": "surface-delegate",
+          "label": "surface delegate",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "view.content",
+          "allowedEdgeTypes": [
+            "reference"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "view.content",
+            "required": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "content",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "sequence-in",
+          "key": "sequence-in",
+          "label": "sequence-in",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180
+        },
+        {
+          "id": "sequence-out",
+          "key": "sequence-out",
+          "label": "sequence-out",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "step-class",
+          "nodeId": "step-icon"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon",
+          "controls": [
+            {
+              "id": "step-summary-check",
+              "type": "button",
+              "label": "Mark to check",
+              "icon": "bolt",
+              "variant": "contained",
+              "priority": "highest",
+              "action": "setData",
+              "bind": "data.check",
+              "value": true
+            },
+            {
+              "id": "step-summary-looks-right",
+              "type": "button",
+              "label": "Looks right",
+              "icon": "edit",
+              "variant": "outlined",
+              "priority": "high",
+              "action": "setData",
+              "bind": "data.check",
+              "value": false
+            },
+            {
+              "id": "step-edit",
+              "type": "button",
+              "label": "Edit",
+              "icon": "edit",
+              "variant": "outlined",
+              "priority": "high",
+              "action": "openEditor"
+            }
+          ],
+          "html": {
+            "chrome": true
+          }
+        },
+        "renderShape": {
+          "kind": "html"
+        },
+        "html": "<div style=\"container-type:inline-size;width:100%;height:100%\"><div style=\"box-sizing:border-box;width:100%;height:100%;background:#e5effb;color:#254772;font-family:system-ui,sans-serif;border-radius:4cqw;border:.6cqw solid #a8c8f3;border-bottom:1.6cqw solid #254772;overflow:hidden;display:flex;flex-direction:column\"><div style=\"display:flex;gap:3cqw;align-items:center;padding:4cqw;min-height:0;flex:1\"><div style=\"width:38cqw;aspect-ratio:1;flex:none\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 120 120\"><circle cx=\"60\" cy=\"63\" r=\"56\" fill=\"#254772\"/><circle cx=\"60\" cy=\"59\" r=\"54\" fill=\"#a8c8f3\"/><circle cx=\"60\" cy=\"59\" r=\"47\" fill=\"#3266b1\"/><circle cx=\"60\" cy=\"59\" r=\"43\" fill=\"none\" stroke=\"#fff5df\" stroke-opacity=\".4\" stroke-width=\"1.8\"/><path d=\"M31 61H84M64 41 84 61 64 81\" fill=\"none\" stroke=\"#fff5df\" stroke-width=\"11\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"28\" cy=\"61\" r=\"5\" fill=\"#f5bd65\"/></svg></div><div style=\"min-width:0;flex:1\"><div style=\"font:850 3.9cqw/1.15 system-ui;letter-spacing:.1em;text-transform:uppercase;color:#254772\">Step</div><div style=\"font:850 8cqw/1.06 system-ui;letter-spacing:-.035em;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin:.9cqw 0\">{{data.title || label}}</div></div></div><div style=\"background:#fff8;padding:1.2cqw 4cqw;border-top:1px solid #a8c8f3;display:flex;justify-content:space-between;align-items:center;gap:1cqw\"><span style=\"font:800 3.8cqw/1.2 system-ui\">{{eq(data.status, 'done', '✓ Done', eq(data.status, 'doing', '◐ Doing', '○ To do'))}}</span><span style=\"display:{{eq(data.check, true, 'inline-block', 'none')}};color:#92400e;background:#fff3cf;border:1px solid #e9ba6d;padding:.5cqw 1.6cqw;border-radius:2cqw;font:800 3.4cqw/1.2 system-ui\">TO CHECK</span></div></div></div>",
+        "semanticLevel": "icon"
+      }
     }
   ],
   "edges": [
@@ -1262,12 +1491,12 @@
       "id": "step-summary-view-next",
       "type": "next-face",
       "source": "step-summary-view",
-      "target": "step-glyph",
+      "target": "step-icon",
       "label": "",
       "style": {},
       "data": {},
       "sourcePort": "sequence-out",
-      "targetPort": "root"
+      "targetPort": "sequence-in"
     },
     {
       "id": "step-edge-landing-surface",
@@ -1304,6 +1533,17 @@
       "data": {
         "classRef": "tlz://twilite.zone/library/edges/environment/root.node"
       }
+    },
+    {
+      "id": "step-icon-glyph",
+      "type": "next-face",
+      "source": "step-icon",
+      "target": "step-glyph",
+      "label": "",
+      "style": {},
+      "data": {},
+      "sourcePort": "sequence-out",
+      "targetPort": "root"
     }
   ]
 }
