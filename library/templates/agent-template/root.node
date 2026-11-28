@@ -505,10 +505,10 @@
         ],
         "membrane": {
           "bounds": {
-            "x": -100,
-            "y": -100,
-            "width": 3550,
-            "height": 2880
+            "x": -598,
+            "y": -85,
+            "width": 4177,
+            "height": 2785
           }
         }
       }
@@ -571,8 +571,8 @@
         "x": 1280,
         "y": 1800
       },
-      "width": 540,
-      "height": 360,
+      "width": 430,
+      "height": 287,
       "visible": true,
       "showLabel": true,
       "data": {
@@ -621,8 +621,8 @@
         "x": 2100,
         "y": 1800
       },
-      "width": 420,
-      "height": 280,
+      "width": 180,
+      "height": 120,
       "visible": true,
       "showLabel": true,
       "data": {
@@ -1300,7 +1300,7 @@
         },
         "scriptName": "Derive agent presentation",
         "parameters": [],
-        "source": "// Presentation only. Counts authored declarations, never host connectivity, authorization, or completed runs.\nconst nodes = await api.getNodes();\nconst edges = await api.getEdges();\nconst esc = x => String(x ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;').replace(/\"/g,'&quot;');\nconst clean = x => String(x ?? '').trim();\nconst root = nodes.find(n => n.type === 'root');\nconst profiles = nodes.filter(n => n.type === 'agent-profile');\nconst profile = profiles.length === 1 ? profiles[0] : null;\nconst named = profile ? clean(profile.data?.title) || 'Unnamed agent' : 'Agent definition';\nconst role = profile ? clean(profile.data?.role) : 'Exactly one Agent Profile is required.';\nconst status = profile ? clean(profile.data?.status) || 'draft' : 'incomplete';\nconst related = kind => nodes.filter(n => n.type === kind && profile && edges.some(e => e.source === profile.id && e.target === n.id && e.type === 'reference'));\nconst contracts = related('agent-contract'), prompts = related('agent-prompt'), caps = related('agent-capability');\nconst destinations = nodes.filter(n => n.type === 'portal' && profile && edges.some(e => e.source === profile.id && e.target === n.id && e.type === 'reference'));\nconst face = level => nodes.find(n => n.type === 'face' && n.data?.semanticLevel === level);\nconst mark = profile?.data?.presentation?.glyph?.kind === 'svg' ? profile.data.presentation.glyph.value : '';\n// Use a fixed authored mark, not arbitrary instance-provided SVG, when assembling a face.\nconst symbol = \"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Agent Profile'><rect x='3' y='3' width='114' height='114' rx='12' fill='#112B3C' stroke='#397D8E' stroke-width='2'/><g color='#72F0E5'><circle cx='60' cy='52' r='22' fill='none' stroke='currentColor' stroke-width='5'/><path d='M60 30V15M38 52H22M82 52h16M43 67 29 83M77 67l14 16M29 98h62' stroke='currentColor' stroke-width='5' stroke-linecap='round'/><circle cx='60' cy='52' r='6' fill='currentColor'/></g></svg>\";\nconst roleText = esc(role);\nconst facts = caps.length + ' declared capabilities · ' + destinations.length + ' linked destinations';\nconst footer = 'Definition only · host availability and authorization unverified';\nconst chips = [['#FFD08A',contracts.length,'contracts'],['#D5BCFF',prompts.length,'instructions'],['#84D7FF',caps.length,'declared capabilities']].map(([color,n,label]) => `<div style='flex:1;min-width:0;border:1px solid #32546C;border-radius:6px;padding:1.5cqw'><div style='color:${color};font:800 5cqw/1.1 system-ui'>${n}</div><div style='font:600 2.1cqw/1.15 system-ui;color:#B6CBE7'>${label}</div></div>`).join('');\nconst frame = level => {\n const detail = level === 'detail', icon = level === 'icon';\n const capList = detail ? `<div style='display:flex;gap:1.2cqw;margin:2cqw 0'>${chips}</div>` : '';\n return `<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;padding:4.4cqw;background:#101B29;color:#F0F7FF;border:1px solid #397D8E;border-radius:10px;display:flex;flex-direction:column;overflow:hidden;font-family:system-ui'><div style='font:800 ${detail?2.5:4.2}cqw/1.2 system-ui;letter-spacing:.12em;color:#72F0E5;border-bottom:1px solid #397D8E;padding-bottom:1.3cqw'>AGENT DEFINITION · ${esc(status).toUpperCase()}</div><div style='display:flex;gap:3cqw;align-items:center;margin-top:2cqw;${icon?'flex:1;min-height:0':''}'><div style='flex:1;min-width:0;font:850 ${detail?7.2:8.8}cqw/1.03 system-ui;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>${esc(named)}</div><div style='width:${detail?20:30}cqw;flex:none'>${symbol}</div></div>${icon?'':`<div style='flex:1;min-height:0;margin-top:2cqw;overflow:hidden;color:#DCE8F2;font:500 ${detail?3.4:4.1}cqw/1.35 system-ui'>${roleText}${capList}</div>`}<div style='border-top:1px solid #397D8E;padding-top:1.3cqw;font:750 ${detail?2.5:3.5}cqw/1.2 system-ui;color:#72F0E5'>${esc(facts)}</div>${icon?'':`<div style='font:500 ${detail?2.3:3.2}cqw/1.25 system-ui;color:#B6CBE7;margin-top:1cqw'>${footer}</div>`}</div></div>`;\n};\nconst updated = [];\nfor (const level of ['detail','summary','icon']) {\n const n = face(level);\n if (!n) continue;\n await api.updateView(n.id, {content:{kind:'html',value:frame(level)}});\n updated.push(n.id);\n}\nreturn {updated,profiles:profiles.length,contracts:contracts.length,instructions:prompts.length,declaredCapabilities:caps.length,linkedDestinations:destinations.length,hostAvailability:'unverified',executionAuthority:'none'};\n",
+        "source": "// Presentation only. Counts authored declarations, never host connectivity, authorization, or completed runs.\nconst nodes = await api.getNodes();\nconst edges = await api.getEdges();\nconst esc = x => String(x ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;').replace(/\"/g,'&quot;');\nconst clean = x => String(x ?? '').trim();\nconst root = nodes.find(n => n.type === 'root');\nconst profiles = nodes.filter(n => n.type === 'agent-profile');\nconst profile = profiles.length === 1 ? profiles[0] : null;\nconst named = profile ? clean(profile.data?.title) || 'Unnamed agent' : 'Agent definition';\nconst role = profile ? clean(profile.data?.role) : 'Exactly one Agent Profile is required.';\nconst status = profile ? clean(profile.data?.status) || 'draft' : 'incomplete';\nconst related = kind => nodes.filter(n => n.type === kind && profile && edges.some(e => e.source === profile.id && e.target === n.id && [\"bounded-by\",\"guided-by\",\"declares\",\"consults\",\"may-follow\",\"records-separately\"].includes(e.type)));\nconst contracts = related('agent-contract'), prompts = related('agent-prompt'), caps = related('agent-capability');\nconst destinations = nodes.filter(n => n.type === 'portal' && profile && edges.some(e => e.source === profile.id && e.target === n.id && [\"bounded-by\",\"guided-by\",\"declares\",\"consults\",\"may-follow\",\"records-separately\"].includes(e.type)));\nconst face = level => nodes.find(n => n.type === 'face' && n.data?.semanticLevel === level);\nconst mark = profile?.data?.presentation?.glyph?.kind === 'svg' ? profile.data.presentation.glyph.value : '';\n// Use a fixed authored mark, not arbitrary instance-provided SVG, when assembling a face.\nconst symbol = \"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Agent Profile'><rect x='3' y='3' width='114' height='114' rx='12' fill='#112B3C' stroke='#397D8E' stroke-width='2'/><g color='#72F0E5'><circle cx='60' cy='52' r='22' fill='none' stroke='currentColor' stroke-width='5'/><path d='M60 30V15M38 52H22M82 52h16M43 67 29 83M77 67l14 16M29 98h62' stroke='currentColor' stroke-width='5' stroke-linecap='round'/><circle cx='60' cy='52' r='6' fill='currentColor'/></g></svg>\";\nconst roleText = esc(role);\nconst facts = caps.length + ' declared capabilities · ' + destinations.length + ' linked destinations';\nconst footer = 'Definition only · host availability and authorization unverified';\nconst chips = [['#FFD08A',contracts.length,'contracts'],['#D5BCFF',prompts.length,'instructions'],['#84D7FF',caps.length,'declared capabilities']].map(([color,n,label]) => `<div style='flex:1;min-width:0;border:1px solid #32546C;border-radius:6px;padding:1.5cqw'><div style='color:${color};font:800 5cqw/1.1 system-ui'>${n}</div><div style='font:600 2.1cqw/1.15 system-ui;color:#B6CBE7'>${label}</div></div>`).join('');\nconst frame = level => {\n const detail = level === 'detail', icon = level === 'icon';\n const capList = detail ? `<div style='display:flex;gap:1.2cqw;margin:2cqw 0'>${chips}</div>` : '';\n return `<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;padding:4.4cqw;background:#101B29;color:#F0F7FF;border:1px solid #397D8E;border-radius:10px;display:flex;flex-direction:column;overflow:hidden;font-family:system-ui'><div style='font:800 ${detail?2.5:4.2}cqw/1.2 system-ui;letter-spacing:.12em;color:#72F0E5;border-bottom:1px solid #397D8E;padding-bottom:1.3cqw'>AGENT DEFINITION · ${esc(status).toUpperCase()}</div><div style='display:flex;gap:3cqw;align-items:center;margin-top:2cqw;${icon?'flex:1;min-height:0':''}'><div style='flex:1;min-width:0;font:850 ${detail?7.2:8.8}cqw/1.03 system-ui;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>${esc(named)}</div><div style='width:${detail?20:30}cqw;flex:none'>${symbol}</div></div>${icon?'':`<div style='flex:1;min-height:0;margin-top:2cqw;overflow:hidden;color:#DCE8F2;font:500 ${detail?3.4:4.1}cqw/1.35 system-ui'>${roleText}${capList}</div>`}<div style='border-top:1px solid #397D8E;padding-top:1.3cqw;font:750 ${detail?2.5:3.5}cqw/1.2 system-ui;color:#72F0E5'>${esc(facts)}</div>${icon?'':`<div style='font:500 ${detail?2.3:3.2}cqw/1.25 system-ui;color:#B6CBE7;margin-top:1cqw'>${footer}</div>`}</div></div>`;\n};\nconst updated = [];\nfor (const level of ['detail','summary','icon']) {\n const n = face(level);\n if (!n) continue;\n await api.updateView(n.id, {content:{kind:'html',value:frame(level)}});\n updated.push(n.id);\n}\nreturn {updated,profiles:profiles.length,contracts:contracts.length,instructions:prompts.length,declaredCapabilities:caps.length,linkedDestinations:destinations.length,hostAvailability:'unverified',executionAuthority:'none'};\n",
         "allowMutations": true,
         "dryRun": false,
         "effects": [
@@ -1381,7 +1381,7 @@
     },
     {
       "id": "lumen-agent-template-profile-lumen-agent-template-contract",
-      "type": "reference",
+      "type": "bounded-by",
       "source": "lumen-agent-template-profile",
       "target": "lumen-agent-template-contract",
       "sourcePort": "root",
@@ -1398,7 +1398,7 @@
     },
     {
       "id": "lumen-agent-template-profile-lumen-agent-template-prompt",
-      "type": "reference",
+      "type": "guided-by",
       "source": "lumen-agent-template-profile",
       "target": "lumen-agent-template-prompt",
       "sourcePort": "root",
@@ -1415,7 +1415,7 @@
     },
     {
       "id": "lumen-agent-template-profile-lumen-agent-template-cap-read",
-      "type": "reference",
+      "type": "declares",
       "source": "lumen-agent-template-profile",
       "target": "lumen-agent-template-cap-read",
       "sourcePort": "root",
@@ -1432,7 +1432,7 @@
     },
     {
       "id": "lumen-agent-template-profile-lumen-agent-template-cap-check",
-      "type": "reference",
+      "type": "declares",
       "source": "lumen-agent-template-profile",
       "target": "lumen-agent-template-cap-check",
       "sourcePort": "root",
@@ -1449,7 +1449,7 @@
     },
     {
       "id": "lumen-agent-template-profile-lumen-agent-template-knowledge",
-      "type": "reference",
+      "type": "consults",
       "source": "lumen-agent-template-profile",
       "target": "lumen-agent-template-knowledge",
       "sourcePort": "root",
@@ -1466,7 +1466,7 @@
     },
     {
       "id": "lumen-agent-template-profile-lumen-agent-template-workflow",
-      "type": "reference",
+      "type": "may-follow",
       "source": "lumen-agent-template-profile",
       "target": "lumen-agent-template-workflow",
       "sourcePort": "root",
@@ -1483,7 +1483,7 @@
     },
     {
       "id": "lumen-agent-template-profile-lumen-agent-template-runs",
-      "type": "reference",
+      "type": "records-separately",
       "source": "lumen-agent-template-profile",
       "target": "lumen-agent-template-runs",
       "sourcePort": "root",
