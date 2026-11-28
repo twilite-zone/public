@@ -1,0 +1,1261 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "created": "2026-11-27",
+    "modified": "2026-11-27",
+    "author": "Twilite",
+    "tags": [
+      "lumen",
+      "node-class",
+      "review"
+    ]
+  },
+  "settings": {
+    "theme": null,
+    "edgeRouting": "orthogonal",
+    "autoSave": false
+  },
+  "nodes": [
+    {
+      "id": "agent-capability-class-declaration",
+      "type": "root",
+      "label": "Capability · Class",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 380,
+      "height": 240,
+      "ports": [
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "ground",
+          "portId": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "surfaces"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class",
+          "nodeId": "agent-capability",
+          "name": "Capability Class",
+          "version": "0.1.0",
+          "description": "A declared capability; availability and permission must be established by the host for each run."
+        },
+        "intent": {
+          "kind": "node-class",
+          "scope": "private"
+        },
+        "document": {
+          "url": "tlz://twilite.zone/library/templates/agent-template/classes/agent-capability.node-class.node"
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1789705190346,
+          "reason": "node-drag"
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "orthogonal",
+          "layout": {
+            "mode": "manual",
+            "defaultLayout": "layered",
+            "direction": "DOWN",
+            "edgeLaneGapPx": 18,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
+          },
+          "autoSave": false
+        },
+        "events": [
+          {
+            "eventKey": "graph.structure.changed",
+            "label": "Graph structure changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          },
+          {
+            "eventKey": "graph.changed",
+            "label": "Graph changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          }
+        ],
+        "nodeClass": {
+          "contractVersion": "1.0.0",
+          "key": "agent-capability",
+          "label": "Capability",
+          "meaning": "A declared capability; availability and permission must be established by the host for each run.",
+          "requiredDataKeys": [
+            "title",
+            "capability",
+            "boundary",
+            "failure"
+          ],
+          "nodeDef": {
+            "key": "agent-capability",
+            "ref": "tlz://twilite.zone/library/templates/agent-template/classes/agent-capability.node-class.node",
+            "source": "github",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Capability",
+              "size": {
+                "width": 650,
+                "height": 440
+              },
+              "showLabel": false,
+              "data": {
+                "title": "Named capability",
+                "capability": "Describe the operation, not a credential.",
+                "boundary": "Verify host availability and authorization for this operation.",
+                "failure": "Report the blocker; do not invent evidence.",
+                "presentation": {
+                  "glyph": {
+                    "kind": "svg",
+                    "value": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Capability'><rect x='3' y='3' width='114' height='114' rx='12' fill='#122B40' stroke='#396B91' stroke-width='2'/><g color='#84D7FF'><path d='M38 16v30M82 16v30M28 46h64v13c0 18-14 30-32 30S28 77 28 59Zm32 43v16' stroke='currentColor' stroke-width='6' fill='none' stroke-linecap='round'/></g></svg>",
+                    "color": "#84D7FF"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.5
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Capability changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "root": {
+          "kind": "node-class",
+          "targetMode": "artifact",
+          "artifactKind": "node-class",
+          "defaultSurfaceId": "web",
+          "surfaces": [
+            {
+              "id": "detail",
+              "kind": "view",
+              "payload": "node.web.detail",
+              "portNodeId": "agent-capability-class-detail",
+              "viewNodeId": "agent-capability-class-detail"
+            },
+            {
+              "id": "summary",
+              "kind": "view",
+              "payload": "node.web.summary",
+              "portNodeId": "agent-capability-class-summary",
+              "viewNodeId": "agent-capability-class-summary"
+            },
+            {
+              "id": "icon",
+              "kind": "view",
+              "payload": "node.web.icon",
+              "portNodeId": "agent-capability-class-icon",
+              "viewNodeId": "agent-capability-class-icon"
+            }
+          ]
+        },
+        "membrane": {
+          "bounds": {
+            "x": -80,
+            "y": -50,
+            "width": 2800,
+            "height": 2300
+          }
+        }
+      },
+      "outputs": [
+        {
+          "key": "default-view",
+          "label": "default-view",
+          "type": "any"
+        },
+        {
+          "key": "summary-view",
+          "label": "summary-view",
+          "type": "any"
+        },
+        {
+          "key": "icon-view",
+          "label": "icon-view",
+          "type": "any"
+        },
+        {
+          "key": "glyph",
+          "label": "glyph",
+          "type": "any"
+        },
+        {
+          "key": "editor-view",
+          "label": "editor-view",
+          "type": "any"
+        }
+      ]
+    },
+    {
+      "id": "agent-capability-class-detail",
+      "type": "face",
+      "label": "Detail",
+      "position": {
+        "x": 540,
+        "y": 0
+      },
+      "width": 710,
+      "height": 390,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;padding:4.5cqw;background:#122B40;color:#F0F7FF;border:1px solid #396B91;border-radius:10px;display:flex;flex-direction:column;overflow:auto;font-family:system-ui'><div style='font:800 3.7cqw/1.2 system-ui;letter-spacing:.12em;color:#84D7FF;border-bottom:1px solid #396B91;padding-bottom:1.4cqw'>CAPABILITY</div><div style='display:flex;align-items:center;gap:3cqw;margin:2cqw 0;'><div style='flex:1;min-width:0;font:800 6.5cqw/1.07 system-ui;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='width:21cqw;flex:none'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Capability'><rect x='3' y='3' width='114' height='114' rx='12' fill='#122B40' stroke='#396B91' stroke-width='2'/><g color='#84D7FF'><path d='M38 16v30M82 16v30M28 46h64v13c0 18-14 30-32 30S28 77 28 59Zm32 43v16' stroke='currentColor' stroke-width='6' fill='none' stroke-linecap='round'/></g></svg></div></div><div style='margin:1.6cqw 0;'><div style='font:800 3cqw/1.15 system-ui;color:#84D7FF;text-transform:uppercase;letter-spacing:.08em'>Purpose</div><div style='font:500 3.4cqw/1.32 system-ui;color:#DCE8F2;white-space:pre-line;overflow-wrap:anywhere'>{{data.capability}}</div></div><div style='margin:1.6cqw 0;'><div style='font:800 3cqw/1.15 system-ui;color:#84D7FF;text-transform:uppercase;letter-spacing:.08em'>Invocation boundary</div><div style='font:500 3.4cqw/1.32 system-ui;color:#DCE8F2;white-space:pre-line;overflow-wrap:anywhere'>{{data.boundary}}</div></div><div style='margin:1.6cqw 0;'><div style='font:800 3cqw/1.15 system-ui;color:#84D7FF;text-transform:uppercase;letter-spacing:.08em'>When unavailable</div><div style='font:500 3.4cqw/1.32 system-ui;color:#DCE8F2;white-space:pre-line;overflow-wrap:anywhere'>{{data.failure}}</div></div><div style='margin-top:auto;border-top:1px solid #396B91;padding-top:1.3cqw;font:750 3.3cqw/1.2 system-ui;color:#84D7FF'>DECLARED · HOST UNVERIFIED</div></div></div>"
+        },
+        "semanticLevel": "detail"
+      }
+    },
+    {
+      "id": "agent-capability-class-summary",
+      "type": "face",
+      "label": "Summary",
+      "position": {
+        "x": 1320,
+        "y": 0
+      },
+      "width": 480,
+      "height": 290,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;padding:4.5cqw;background:#122B40;color:#F0F7FF;border:1px solid #396B91;border-radius:10px;display:flex;flex-direction:column;overflow:hidden;font-family:system-ui'><div style='font:800 3.7cqw/1.2 system-ui;letter-spacing:.12em;color:#84D7FF;border-bottom:1px solid #396B91;padding-bottom:1.4cqw'>CAPABILITY</div><div style='display:flex;align-items:center;gap:3cqw;margin:2cqw 0;'><div style='flex:1;min-width:0;font:800 6.5cqw/1.07 system-ui;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='width:21cqw;flex:none'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Capability'><rect x='3' y='3' width='114' height='114' rx='12' fill='#122B40' stroke='#396B91' stroke-width='2'/><g color='#84D7FF'><path d='M38 16v30M82 16v30M28 46h64v13c0 18-14 30-32 30S28 77 28 59Zm32 43v16' stroke='currentColor' stroke-width='6' fill='none' stroke-linecap='round'/></g></svg></div></div><div style='margin:1.6cqw 0;flex:1;min-height:0;overflow:hidden'><div style='font:800 3cqw/1.15 system-ui;color:#84D7FF;text-transform:uppercase;letter-spacing:.08em'>Purpose</div><div style='font:500 4.1cqw/1.32 system-ui;color:#DCE8F2;white-space:pre-line;overflow-wrap:anywhere'>{{data.capability}}</div></div><div style='margin-top:auto;border-top:1px solid #396B91;padding-top:1.3cqw;font:750 3.3cqw/1.2 system-ui;color:#84D7FF'>DECLARED · HOST UNVERIFIED</div></div></div>"
+        },
+        "semanticLevel": "summary"
+      }
+    },
+    {
+      "id": "agent-capability-class-icon",
+      "type": "face",
+      "label": "Icon",
+      "position": {
+        "x": 1880,
+        "y": 0
+      },
+      "width": 210,
+      "height": 140,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;padding:4.5cqw;background:#122B40;color:#F0F7FF;border:1px solid #396B91;border-radius:10px;display:flex;flex-direction:column;overflow:hidden;font-family:system-ui'><div style='font:800 3.7cqw/1.2 system-ui;letter-spacing:.12em;color:#84D7FF;border-bottom:1px solid #396B91;padding-bottom:1.4cqw'>CAPABILITY</div><div style='display:flex;align-items:center;gap:3cqw;margin:2cqw 0;flex:1;min-height:0'><div style='flex:1;min-width:0;font:800 8.8cqw/1.07 system-ui;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='width:30cqw;flex:none'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Capability'><rect x='3' y='3' width='114' height='114' rx='12' fill='#122B40' stroke='#396B91' stroke-width='2'/><g color='#84D7FF'><path d='M38 16v30M82 16v30M28 46h64v13c0 18-14 30-32 30S28 77 28 59Zm32 43v16' stroke='currentColor' stroke-width='6' fill='none' stroke-linecap='round'/></g></svg></div></div><div style='margin-top:auto;border-top:1px solid #396B91;padding-top:1.3cqw;font:750 3.3cqw/1.2 system-ui;color:#84D7FF'>DECLARED · HOST UNVERIFIED</div></div></div>"
+        },
+        "semanticLevel": "icon"
+      }
+    },
+    {
+      "id": "agent-capability-class-editor",
+      "type": "face",
+      "label": "Editor",
+      "position": {
+        "x": 540,
+        "y": 490
+      },
+      "width": 410,
+      "height": 280,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "view": {
+          "intent": "editor",
+          "payload": "editor.web"
+        },
+        "editor": {
+          "web": {
+            "fields": [
+              {
+                "key": "label",
+                "label": "Label",
+                "type": "text",
+                "path": "label"
+              },
+              {
+                "key": "title",
+                "label": "Capability name",
+                "type": "text",
+                "path": "data.title",
+                "placeholder": "Named capability"
+              },
+              {
+                "key": "capability",
+                "label": "Purpose",
+                "type": "textarea",
+                "path": "data.capability",
+                "placeholder": "Describe the operation, not a credential."
+              },
+              {
+                "key": "boundary",
+                "label": "Invocation boundary",
+                "type": "textarea",
+                "path": "data.boundary",
+                "placeholder": "Verify host availability and authorization for this operation."
+              },
+              {
+                "key": "failure",
+                "label": "When unavailable",
+                "type": "textarea",
+                "path": "data.failure",
+                "placeholder": "Report the blocker; do not invent evidence."
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "agent-capability-class-glyph",
+      "type": "glyph",
+      "label": "Glyph",
+      "position": {
+        "x": 2180,
+        "y": 0
+      },
+      "width": 160,
+      "height": 110,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "view": {
+          "payload": "node.web.glyph"
+        },
+        "glyph": {
+          "kind": "svg",
+          "value": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Capability'><rect x='3' y='3' width='114' height='114' rx='12' fill='#122B40' stroke='#396B91' stroke-width='2'/><g color='#84D7FF'><path d='M38 16v30M82 16v30M28 46h64v13c0 18-14 30-32 30S28 77 28 59Zm32 43v16' stroke='currentColor' stroke-width='6' fill='none' stroke-linecap='round'/></g></svg>",
+          "color": "#84D7FF"
+        }
+      }
+    },
+    {
+      "id": "agent-capability-class-landing",
+      "type": "content",
+      "label": "Capability",
+      "position": {
+        "x": 0,
+        "y": 490
+      },
+      "width": 470,
+      "height": 300,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "# Capability\n\nA declared capability; availability and permission must be established by the host for each run.\n\nFields: Capability name, Purpose, Invocation boundary, When unavailable."
+        }
+      }
+    },
+    {
+      "id": "agent-capability-class-environment",
+      "type": "face",
+      "label": "Environment",
+      "position": {
+        "x": 1040,
+        "y": 490
+      },
+      "width": 620,
+      "height": 330,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.environment"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='width:100%;height:100%;background:#101B29;background-image:linear-gradient(#29405755 1px,transparent 1px),linear-gradient(90deg,#29405755 1px,transparent 1px);background-size:32px 32px'></div>"
+        }
+      }
+    },
+    {
+      "id": "agent-capability-class-export",
+      "type": "export",
+      "label": "Capability · Export",
+      "position": {
+        "x": 1790,
+        "y": 490
+      },
+      "width": 480,
+      "height": 310,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/templates/agent-template/classes/agent-capability.node-class.node",
+          "resourceKind": "graph",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "agent-capability"
+              ]
+            },
+            "methods": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "agent-capability-class-property-key",
+      "type": "property",
+      "label": "key",
+      "position": {
+        "x": 1300,
+        "y": 900
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "name": "key",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "agent-capability"
+      }
+    },
+    {
+      "id": "agent-capability-class-property-label",
+      "type": "property",
+      "label": "label",
+      "position": {
+        "x": 1670,
+        "y": 900
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "name": "label",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "Capability"
+      }
+    },
+    {
+      "id": "agent-capability-class-property-meaning",
+      "type": "property",
+      "label": "meaning",
+      "position": {
+        "x": 2040,
+        "y": 900
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "name": "meaning",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "A declared capability; availability and permission must be established by the host for each run."
+      }
+    },
+    {
+      "id": "agent-capability-class-property-width",
+      "type": "property",
+      "label": "width",
+      "position": {
+        "x": 1300,
+        "y": 1150
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "name": "width",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "650"
+      }
+    },
+    {
+      "id": "agent-capability-class-property-height",
+      "type": "property",
+      "label": "height",
+      "position": {
+        "x": 1670,
+        "y": 1150
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "name": "height",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "440"
+      }
+    },
+    {
+      "id": "agent-capability-class-property-glyph",
+      "type": "property",
+      "label": "glyph",
+      "position": {
+        "x": 2040,
+        "y": 1150
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "name": "glyph",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "SmartToy"
+      }
+    },
+    {
+      "id": "agent-capability-class-bridge-property",
+      "type": "import",
+      "label": "Property Class",
+      "position": {
+        "x": 2280,
+        "y": 1560
+      },
+      "width": 360,
+      "height": 120,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+          "resourceKind": "node-class",
+          "key": "property",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "id": "agent-capability-class-bridge-field",
+      "type": "import",
+      "label": "Class Field Class",
+      "position": {
+        "x": 2280,
+        "y": 1720
+      },
+      "width": 360,
+      "height": 120,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node",
+          "resourceKind": "node-class",
+          "key": "class-field-row",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "id": "agent-capability-class-field-title",
+      "type": "class-field-row",
+      "label": "Capability name",
+      "position": {
+        "x": 80,
+        "y": 900
+      },
+      "width": 420,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "title",
+        "label": "Capability name",
+        "fieldType": "text",
+        "required": true,
+        "defaultValue": "Named capability",
+        "options": "",
+        "description": "Capability name",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "agent-capability-class-field-capability",
+      "type": "class-field-row",
+      "label": "Purpose",
+      "position": {
+        "x": 560,
+        "y": 900
+      },
+      "width": 420,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "capability",
+        "label": "Purpose",
+        "fieldType": "textarea",
+        "required": true,
+        "defaultValue": "Describe the operation, not a credential.",
+        "options": "",
+        "description": "Purpose",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "agent-capability-class-field-boundary",
+      "type": "class-field-row",
+      "label": "Invocation boundary",
+      "position": {
+        "x": 80,
+        "y": 1290
+      },
+      "width": 420,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "boundary",
+        "label": "Invocation boundary",
+        "fieldType": "textarea",
+        "required": true,
+        "defaultValue": "Verify host availability and authorization for this operation.",
+        "options": "",
+        "description": "Invocation boundary",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "agent-capability-class-field-failure",
+      "type": "class-field-row",
+      "label": "When unavailable",
+      "position": {
+        "x": 560,
+        "y": 1290
+      },
+      "width": 420,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "failure",
+        "label": "When unavailable",
+        "fieldType": "textarea",
+        "required": true,
+        "defaultValue": "Report the blocker; do not invent evidence.",
+        "options": "",
+        "description": "When unavailable",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "agent-capability-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "agent-capability-class-surface",
+      "type": "surface",
+      "source": "agent-capability-class-declaration",
+      "target": "agent-capability-class-detail",
+      "sourcePort": "surfaces",
+      "targetPort": "root",
+      "data": {}
+    },
+    {
+      "id": "agent-capability-class-detail-summary",
+      "type": "next-face",
+      "source": "agent-capability-class-detail",
+      "target": "agent-capability-class-summary",
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in",
+      "data": {}
+    },
+    {
+      "id": "agent-capability-class-summary-icon",
+      "type": "next-face",
+      "source": "agent-capability-class-summary",
+      "target": "agent-capability-class-icon",
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in",
+      "data": {}
+    },
+    {
+      "id": "agent-capability-class-icon-glyph",
+      "type": "next-face",
+      "source": "agent-capability-class-icon",
+      "target": "agent-capability-class-glyph",
+      "sourcePort": "sequence-out",
+      "targetPort": "root",
+      "data": {}
+    },
+    {
+      "id": "agent-capability-class-ground",
+      "type": "ground",
+      "source": "agent-capability-class-declaration",
+      "target": "agent-capability-class-landing",
+      "sourcePort": "ground",
+      "targetPort": "root",
+      "data": {}
+    },
+    {
+      "id": "agent-capability-class-environment",
+      "type": "environment",
+      "source": "agent-capability-class-declaration",
+      "target": "agent-capability-class-environment",
+      "sourcePort": "environment",
+      "targetPort": "root",
+      "data": {}
+    }
+  ],
+  "groups": [],
+  "scripts": []
+}

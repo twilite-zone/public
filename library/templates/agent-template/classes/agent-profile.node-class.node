@@ -1,0 +1,1261 @@
+{
+  "fileVersion": "1.0",
+  "metadata": {
+    "created": "2026-11-27",
+    "modified": "2026-11-27",
+    "author": "Twilite",
+    "tags": [
+      "lumen",
+      "node-class",
+      "review"
+    ]
+  },
+  "settings": {
+    "theme": null,
+    "edgeRouting": "orthogonal",
+    "autoSave": false
+  },
+  "nodes": [
+    {
+      "id": "agent-profile-class-declaration",
+      "type": "root",
+      "label": "Agent Profile · Class",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "width": 380,
+      "height": 240,
+      "ports": [
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          }
+        },
+        {
+          "id": "environment",
+          "key": "environment",
+          "label": "environment",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 45,
+          "role": "environment",
+          "allowedEdgeTypes": [
+            "environment"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "environment",
+            "required": false,
+            "repeatable": false,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "face",
+                "targetPort": "root"
+              }
+            ]
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "ground",
+          "key": "ground",
+          "label": "ground",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 0,
+          "role": "ground",
+          "portId": "ground"
+        },
+        {
+          "id": "surfaces",
+          "key": "surfaces",
+          "label": "surfaces",
+          "direction": "output",
+          "dataType": "any",
+          "angle": 90,
+          "role": "surface",
+          "allowedEdgeTypes": [
+            "surface"
+          ],
+          "metadata": {
+            "structural": true,
+            "relationship": true,
+            "role": "surface",
+            "required": false,
+            "repeatable": true,
+            "behaviors": [
+              {
+                "trigger": "drag-create",
+                "action": "create-node",
+                "nodeType": "view",
+                "targetPort": "root"
+              }
+            ]
+          },
+          "portId": "surfaces"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class",
+          "nodeId": "agent-profile",
+          "name": "Agent Profile Class",
+          "version": "0.1.0",
+          "description": "Persistent identity and role, independent of a run."
+        },
+        "intent": {
+          "kind": "node-class",
+          "scope": "private"
+        },
+        "document": {
+          "url": "tlz://twilite.zone/library/templates/agent-template/classes/agent-profile.node-class.node"
+        },
+        "_placement": {
+          "version": 1,
+          "state": "manually-shaped",
+          "source": "manual",
+          "updatedAt": 1789705190346,
+          "reason": "node-drag"
+        },
+        "settings": {
+          "theme": null,
+          "backgroundImage": null,
+          "defaultNodeColor": "#1976d2",
+          "defaultEdgeColor": "",
+          "snapToGrid": false,
+          "gridSize": 20,
+          "edgeRouting": "orthogonal",
+          "layout": {
+            "mode": "manual",
+            "defaultLayout": "layered",
+            "direction": "DOWN",
+            "edgeLaneGapPx": 18,
+            "serpentine": {
+              "maxPerRow": 6
+            },
+            "cycleFallback": {
+              "enabled": true
+            },
+            "elk": {
+              "algorithm": "fixed",
+              "edgeRouting": "ORTHOGONAL",
+              "portConstraints": "FIXED_SIDE",
+              "nodeSpacing": 120,
+              "layeredEdgeSpacing": 80
+            }
+          },
+          "autoSave": false
+        },
+        "events": [
+          {
+            "eventKey": "graph.structure.changed",
+            "label": "Graph structure changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          },
+          {
+            "eventKey": "graph.changed",
+            "label": "Graph changed",
+            "payloadContract": {
+              "type": "object"
+            }
+          }
+        ],
+        "nodeClass": {
+          "contractVersion": "1.0.0",
+          "key": "agent-profile",
+          "label": "Agent Profile",
+          "meaning": "Persistent identity and role, independent of a run.",
+          "requiredDataKeys": [
+            "title",
+            "role",
+            "owner",
+            "status"
+          ],
+          "nodeDef": {
+            "key": "agent-profile",
+            "ref": "tlz://twilite.zone/library/templates/agent-template/classes/agent-profile.node-class.node",
+            "source": "github",
+            "version": ">=0.1.0",
+            "defaults": {
+              "label": "Agent Profile",
+              "size": {
+                "width": 650,
+                "height": 440
+              },
+              "showLabel": false,
+              "data": {
+                "title": "Untitled agent",
+                "role": "Describe the enduring responsibility.",
+                "owner": "Not assigned",
+                "status": "draft",
+                "presentation": {
+                  "glyph": {
+                    "kind": "svg",
+                    "value": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Agent Profile'><rect x='3' y='3' width='114' height='114' rx='12' fill='#112B3C' stroke='#397D8E' stroke-width='2'/><g color='#72F0E5'><circle cx='60' cy='52' r='22' fill='none' stroke='currentColor' stroke-width='5'/><path d='M60 30V15M38 52H22M82 52h16M43 67 29 83M77 67l14 16M29 98h62' stroke='currentColor' stroke-width='5' stroke-linecap='round'/><circle cx='60' cy='52' r='6' fill='currentColor'/></g></svg>",
+                    "color": "#72F0E5"
+                  }
+                }
+              },
+              "ports": [
+                {
+                  "id": "root",
+                  "key": "root",
+                  "label": "root",
+                  "direction": "bidirectional",
+                  "dataType": "any",
+                  "angle": 270,
+                  "position": {
+                    "side": "top",
+                    "offset": 0.5
+                  }
+                }
+              ],
+              "events": [
+                {
+                  "eventKey": "node.changed",
+                  "label": "Agent Profile changed",
+                  "payloadContract": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "root": {
+          "kind": "node-class",
+          "targetMode": "artifact",
+          "artifactKind": "node-class",
+          "defaultSurfaceId": "web",
+          "surfaces": [
+            {
+              "id": "detail",
+              "kind": "view",
+              "payload": "node.web.detail",
+              "portNodeId": "agent-profile-class-detail",
+              "viewNodeId": "agent-profile-class-detail"
+            },
+            {
+              "id": "summary",
+              "kind": "view",
+              "payload": "node.web.summary",
+              "portNodeId": "agent-profile-class-summary",
+              "viewNodeId": "agent-profile-class-summary"
+            },
+            {
+              "id": "icon",
+              "kind": "view",
+              "payload": "node.web.icon",
+              "portNodeId": "agent-profile-class-icon",
+              "viewNodeId": "agent-profile-class-icon"
+            }
+          ]
+        },
+        "membrane": {
+          "bounds": {
+            "x": -80,
+            "y": -50,
+            "width": 2800,
+            "height": 2300
+          }
+        }
+      },
+      "outputs": [
+        {
+          "key": "default-view",
+          "label": "default-view",
+          "type": "any"
+        },
+        {
+          "key": "summary-view",
+          "label": "summary-view",
+          "type": "any"
+        },
+        {
+          "key": "icon-view",
+          "label": "icon-view",
+          "type": "any"
+        },
+        {
+          "key": "glyph",
+          "label": "glyph",
+          "type": "any"
+        },
+        {
+          "key": "editor-view",
+          "label": "editor-view",
+          "type": "any"
+        }
+      ]
+    },
+    {
+      "id": "agent-profile-class-detail",
+      "type": "face",
+      "label": "Detail",
+      "position": {
+        "x": 540,
+        "y": 0
+      },
+      "width": 710,
+      "height": 390,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.detail"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;padding:4.5cqw;background:#112B3C;color:#F0F7FF;border:1px solid #397D8E;border-radius:10px;display:flex;flex-direction:column;overflow:auto;font-family:system-ui'><div style='font:800 3.7cqw/1.2 system-ui;letter-spacing:.12em;color:#72F0E5;border-bottom:1px solid #397D8E;padding-bottom:1.4cqw'>AGENT PROFILE</div><div style='display:flex;align-items:center;gap:3cqw;margin:2cqw 0;'><div style='flex:1;min-width:0;font:800 6.5cqw/1.07 system-ui;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='width:21cqw;flex:none'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Agent Profile'><rect x='3' y='3' width='114' height='114' rx='12' fill='#112B3C' stroke='#397D8E' stroke-width='2'/><g color='#72F0E5'><circle cx='60' cy='52' r='22' fill='none' stroke='currentColor' stroke-width='5'/><path d='M60 30V15M38 52H22M82 52h16M43 67 29 83M77 67l14 16M29 98h62' stroke='currentColor' stroke-width='5' stroke-linecap='round'/><circle cx='60' cy='52' r='6' fill='currentColor'/></g></svg></div></div><div style='margin:1.6cqw 0;'><div style='font:800 3cqw/1.15 system-ui;color:#72F0E5;text-transform:uppercase;letter-spacing:.08em'>Role</div><div style='font:500 3.4cqw/1.32 system-ui;color:#DCE8F2;white-space:pre-line;overflow-wrap:anywhere'>{{data.role}}</div></div><div style='margin:1.6cqw 0;'><div style='font:800 3cqw/1.15 system-ui;color:#72F0E5;text-transform:uppercase;letter-spacing:.08em'>Accountable owner</div><div style='font:500 3.4cqw/1.32 system-ui;color:#DCE8F2;white-space:pre-line;overflow-wrap:anywhere'>{{data.owner}}</div></div><div style='margin:1.6cqw 0;'><div style='font:800 3cqw/1.15 system-ui;color:#72F0E5;text-transform:uppercase;letter-spacing:.08em'>Definition status</div><div style='font:500 3.4cqw/1.32 system-ui;color:#DCE8F2;white-space:pre-line;overflow-wrap:anywhere'>{{data.status}}</div></div><div style='margin-top:auto;border-top:1px solid #397D8E;padding-top:1.3cqw;font:750 3.3cqw/1.2 system-ui;color:#72F0E5'>{{data.status}} · DEFINITION</div></div></div>"
+        },
+        "semanticLevel": "detail"
+      }
+    },
+    {
+      "id": "agent-profile-class-summary",
+      "type": "face",
+      "label": "Summary",
+      "position": {
+        "x": 1320,
+        "y": 0
+      },
+      "width": 480,
+      "height": 290,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.summary"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;padding:4.5cqw;background:#112B3C;color:#F0F7FF;border:1px solid #397D8E;border-radius:10px;display:flex;flex-direction:column;overflow:hidden;font-family:system-ui'><div style='font:800 3.7cqw/1.2 system-ui;letter-spacing:.12em;color:#72F0E5;border-bottom:1px solid #397D8E;padding-bottom:1.4cqw'>AGENT PROFILE</div><div style='display:flex;align-items:center;gap:3cqw;margin:2cqw 0;'><div style='flex:1;min-width:0;font:800 6.5cqw/1.07 system-ui;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='width:21cqw;flex:none'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Agent Profile'><rect x='3' y='3' width='114' height='114' rx='12' fill='#112B3C' stroke='#397D8E' stroke-width='2'/><g color='#72F0E5'><circle cx='60' cy='52' r='22' fill='none' stroke='currentColor' stroke-width='5'/><path d='M60 30V15M38 52H22M82 52h16M43 67 29 83M77 67l14 16M29 98h62' stroke='currentColor' stroke-width='5' stroke-linecap='round'/><circle cx='60' cy='52' r='6' fill='currentColor'/></g></svg></div></div><div style='margin:1.6cqw 0;flex:1;min-height:0;overflow:hidden'><div style='font:800 3cqw/1.15 system-ui;color:#72F0E5;text-transform:uppercase;letter-spacing:.08em'>Role</div><div style='font:500 4.1cqw/1.32 system-ui;color:#DCE8F2;white-space:pre-line;overflow-wrap:anywhere'>{{data.role}}</div></div><div style='margin-top:auto;border-top:1px solid #397D8E;padding-top:1.3cqw;font:750 3.3cqw/1.2 system-ui;color:#72F0E5'>{{data.status}} · DEFINITION</div></div></div>"
+        },
+        "semanticLevel": "summary"
+      }
+    },
+    {
+      "id": "agent-profile-class-icon",
+      "type": "face",
+      "label": "Icon",
+      "position": {
+        "x": 1880,
+        "y": 0
+      },
+      "width": 210,
+      "height": 140,
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.icon"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='container-type:inline-size;width:100%;height:100%'><div style='box-sizing:border-box;width:100%;height:100%;padding:4.5cqw;background:#112B3C;color:#F0F7FF;border:1px solid #397D8E;border-radius:10px;display:flex;flex-direction:column;overflow:hidden;font-family:system-ui'><div style='font:800 3.7cqw/1.2 system-ui;letter-spacing:.12em;color:#72F0E5;border-bottom:1px solid #397D8E;padding-bottom:1.4cqw'>AGENT PROFILE</div><div style='display:flex;align-items:center;gap:3cqw;margin:2cqw 0;flex:1;min-height:0'><div style='flex:1;min-width:0;font:800 8.8cqw/1.07 system-ui;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden'>{{data.title || label}}</div><div style='width:30cqw;flex:none'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Agent Profile'><rect x='3' y='3' width='114' height='114' rx='12' fill='#112B3C' stroke='#397D8E' stroke-width='2'/><g color='#72F0E5'><circle cx='60' cy='52' r='22' fill='none' stroke='currentColor' stroke-width='5'/><path d='M60 30V15M38 52H22M82 52h16M43 67 29 83M77 67l14 16M29 98h62' stroke='currentColor' stroke-width='5' stroke-linecap='round'/><circle cx='60' cy='52' r='6' fill='currentColor'/></g></svg></div></div><div style='margin-top:auto;border-top:1px solid #397D8E;padding-top:1.3cqw;font:750 3.3cqw/1.2 system-ui;color:#72F0E5'>{{data.status}} · DEFINITION</div></div></div>"
+        },
+        "semanticLevel": "icon"
+      }
+    },
+    {
+      "id": "agent-profile-class-editor",
+      "type": "face",
+      "label": "Editor",
+      "position": {
+        "x": 540,
+        "y": 490
+      },
+      "width": 410,
+      "height": 280,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "view": {
+          "intent": "editor",
+          "payload": "editor.web"
+        },
+        "editor": {
+          "web": {
+            "fields": [
+              {
+                "key": "label",
+                "label": "Label",
+                "type": "text",
+                "path": "label"
+              },
+              {
+                "key": "title",
+                "label": "Name",
+                "type": "text",
+                "path": "data.title",
+                "placeholder": "Untitled agent"
+              },
+              {
+                "key": "role",
+                "label": "Role",
+                "type": "textarea",
+                "path": "data.role",
+                "placeholder": "Describe the enduring responsibility."
+              },
+              {
+                "key": "owner",
+                "label": "Accountable owner",
+                "type": "text",
+                "path": "data.owner",
+                "placeholder": "Not assigned"
+              },
+              {
+                "key": "status",
+                "label": "Definition status",
+                "type": "text",
+                "path": "data.status",
+                "placeholder": "draft"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "agent-profile-class-glyph",
+      "type": "glyph",
+      "label": "Glyph",
+      "position": {
+        "x": 2180,
+        "y": 0
+      },
+      "width": 160,
+      "height": 110,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "view": {
+          "payload": "node.web.glyph"
+        },
+        "glyph": {
+          "kind": "svg",
+          "value": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Agent Profile'><rect x='3' y='3' width='114' height='114' rx='12' fill='#112B3C' stroke='#397D8E' stroke-width='2'/><g color='#72F0E5'><circle cx='60' cy='52' r='22' fill='none' stroke='currentColor' stroke-width='5'/><path d='M60 30V15M38 52H22M82 52h16M43 67 29 83M77 67l14 16M29 98h62' stroke='currentColor' stroke-width='5' stroke-linecap='round'/><circle cx='60' cy='52' r='6' fill='currentColor'/></g></svg>",
+          "color": "#72F0E5"
+        }
+      }
+    },
+    {
+      "id": "agent-profile-class-landing",
+      "type": "content",
+      "label": "Agent Profile",
+      "position": {
+        "x": 0,
+        "y": 490
+      },
+      "width": 470,
+      "height": 300,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "content": {
+          "kind": "markdown",
+          "value": "# Agent Profile\n\nPersistent identity and role, independent of a run.\n\nFields: Name, Role, Accountable owner, Definition status."
+        }
+      }
+    },
+    {
+      "id": "agent-profile-class-environment",
+      "type": "face",
+      "label": "Environment",
+      "position": {
+        "x": 1040,
+        "y": 490
+      },
+      "width": 620,
+      "height": 330,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "view": {
+          "intent": "node",
+          "payload": "node.web.environment"
+        },
+        "content": {
+          "kind": "html",
+          "value": "<div style='width:100%;height:100%;background:#101B29;background-image:linear-gradient(#29405755 1px,transparent 1px),linear-gradient(90deg,#29405755 1px,transparent 1px);background-size:32px 32px'></div>"
+        }
+      }
+    },
+    {
+      "id": "agent-profile-class-export",
+      "type": "export",
+      "label": "Agent Profile · Export",
+      "position": {
+        "x": 1790,
+        "y": 490
+      },
+      "width": 480,
+      "height": 310,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/templates/agent-template/classes/agent-profile.node-class.node",
+          "resourceKind": "graph",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ],
+          "exposure": {
+            "nodeClasses": {
+              "mode": "allowlist",
+              "allowKeys": [
+                "agent-profile"
+              ]
+            },
+            "methods": {
+              "mode": "deny"
+            },
+            "views": {
+              "mode": "deny"
+            },
+            "edgeClasses": {
+              "mode": "deny"
+            },
+            "declarations": {
+              "mode": "deny"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "agent-profile-class-property-key",
+      "type": "property",
+      "label": "key",
+      "position": {
+        "x": 1300,
+        "y": 900
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "name": "key",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "agent-profile"
+      }
+    },
+    {
+      "id": "agent-profile-class-property-label",
+      "type": "property",
+      "label": "label",
+      "position": {
+        "x": 1670,
+        "y": 900
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "name": "label",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "Agent Profile"
+      }
+    },
+    {
+      "id": "agent-profile-class-property-meaning",
+      "type": "property",
+      "label": "meaning",
+      "position": {
+        "x": 2040,
+        "y": 900
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "name": "meaning",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "Persistent identity and role, independent of a run."
+      }
+    },
+    {
+      "id": "agent-profile-class-property-width",
+      "type": "property",
+      "label": "width",
+      "position": {
+        "x": 1300,
+        "y": 1150
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "name": "width",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "650"
+      }
+    },
+    {
+      "id": "agent-profile-class-property-height",
+      "type": "property",
+      "label": "height",
+      "position": {
+        "x": 1670,
+        "y": 1150
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "name": "height",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "440"
+      }
+    },
+    {
+      "id": "agent-profile-class-property-glyph",
+      "type": "property",
+      "label": "glyph",
+      "position": {
+        "x": 2040,
+        "y": 1150
+      },
+      "width": 420,
+      "height": 260,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "input",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "name": "glyph",
+        "valueKind": "stored",
+        "valueType": "text",
+        "access": {
+          "read": true,
+          "write": true
+        },
+        "classRef": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+        "value": "SmartToy"
+      }
+    },
+    {
+      "id": "agent-profile-class-bridge-property",
+      "type": "import",
+      "label": "Property Class",
+      "position": {
+        "x": 2280,
+        "y": 1560
+      },
+      "width": 360,
+      "height": 120,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/edges/classes/property.node-class.node",
+          "resourceKind": "node-class",
+          "key": "property",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "id": "agent-profile-class-bridge-field",
+      "type": "import",
+      "label": "Class Field Class",
+      "position": {
+        "x": 2280,
+        "y": 1720
+      },
+      "width": 360,
+      "height": 120,
+      "ports": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": true,
+      "data": {
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "bridge": {
+          "ref": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node",
+          "resourceKind": "node-class",
+          "key": "class-field-row",
+          "scope": "focused-graph",
+          "grants": [
+            "read",
+            "create",
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "id": "agent-profile-class-field-title",
+      "type": "class-field-row",
+      "label": "Name",
+      "position": {
+        "x": 80,
+        "y": 900
+      },
+      "width": 420,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "title",
+        "label": "Name",
+        "fieldType": "text",
+        "required": true,
+        "defaultValue": "Untitled agent",
+        "options": "",
+        "description": "Name",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "agent-profile-class-field-role",
+      "type": "class-field-row",
+      "label": "Role",
+      "position": {
+        "x": 560,
+        "y": 900
+      },
+      "width": 420,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "role",
+        "label": "Role",
+        "fieldType": "textarea",
+        "required": true,
+        "defaultValue": "Describe the enduring responsibility.",
+        "options": "",
+        "description": "Role",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "agent-profile-class-field-owner",
+      "type": "class-field-row",
+      "label": "Accountable owner",
+      "position": {
+        "x": 80,
+        "y": 1290
+      },
+      "width": 420,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "owner",
+        "label": "Accountable owner",
+        "fieldType": "text",
+        "required": true,
+        "defaultValue": "Not assigned",
+        "options": "",
+        "description": "Accountable owner",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    },
+    {
+      "id": "agent-profile-class-field-status",
+      "type": "class-field-row",
+      "label": "Definition status",
+      "position": {
+        "x": 560,
+        "y": 1290
+      },
+      "width": 420,
+      "height": 320,
+      "ports": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          }
+        }
+      ],
+      "handles": [
+        {
+          "id": "root",
+          "key": "root",
+          "label": "root",
+          "direction": "bidirectional",
+          "dataType": "any",
+          "angle": 180,
+          "position": {
+            "side": "left",
+            "offset": 0.5
+          },
+          "portId": "root"
+        }
+      ],
+      "visible": true,
+      "showLabel": false,
+      "data": {
+        "name": "status",
+        "label": "Definition status",
+        "fieldType": "text",
+        "required": true,
+        "defaultValue": "draft",
+        "options": "",
+        "description": "Definition status",
+        "presentation": {
+          "glyph": {
+            "kind": "icon",
+            "name": "DataObject"
+          }
+        },
+        "identity": {
+          "graphId": "agent-profile-class"
+        },
+        "classRef": "tlz://twilite.zone/library/templates/node-class-template/classes/nodes/class-field-row.node-class.node"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "agent-profile-class-surface",
+      "type": "surface",
+      "source": "agent-profile-class-declaration",
+      "target": "agent-profile-class-detail",
+      "sourcePort": "surfaces",
+      "targetPort": "root",
+      "data": {}
+    },
+    {
+      "id": "agent-profile-class-detail-summary",
+      "type": "next-face",
+      "source": "agent-profile-class-detail",
+      "target": "agent-profile-class-summary",
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in",
+      "data": {}
+    },
+    {
+      "id": "agent-profile-class-summary-icon",
+      "type": "next-face",
+      "source": "agent-profile-class-summary",
+      "target": "agent-profile-class-icon",
+      "sourcePort": "sequence-out",
+      "targetPort": "sequence-in",
+      "data": {}
+    },
+    {
+      "id": "agent-profile-class-icon-glyph",
+      "type": "next-face",
+      "source": "agent-profile-class-icon",
+      "target": "agent-profile-class-glyph",
+      "sourcePort": "sequence-out",
+      "targetPort": "root",
+      "data": {}
+    },
+    {
+      "id": "agent-profile-class-ground",
+      "type": "ground",
+      "source": "agent-profile-class-declaration",
+      "target": "agent-profile-class-landing",
+      "sourcePort": "ground",
+      "targetPort": "root",
+      "data": {}
+    },
+    {
+      "id": "agent-profile-class-environment",
+      "type": "environment",
+      "source": "agent-profile-class-declaration",
+      "target": "agent-profile-class-environment",
+      "sourcePort": "environment",
+      "targetPort": "root",
+      "data": {}
+    }
+  ],
+  "groups": [],
+  "scripts": []
+}
